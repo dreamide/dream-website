@@ -32,7 +32,9 @@ export default function SparkleTitle() {
       palette={PALETTES[index]}
       onClick={cyclePalette}
     >
-      <div className="absolute inset-0 flex items-center justify-center font-bold text-[12rem] z-10">DREAM</div>
+      <div className="absolute inset-0 flex items-center justify-center font-bold text-[12rem] z-10">
+        DREAM
+      </div>
     </Sparkles>
   );
 }

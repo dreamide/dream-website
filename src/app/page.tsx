@@ -1,5 +1,9 @@
 import Hero from "@/components/Hero";
+import AnthropicIcon from "@/components/icons/AnthropicIcon";
+import OpenAIIcon from "@/components/icons/OpenAIIcon";
+import OpenCodeIcon from "@/components/icons/OpenCodeIcon";
 import Screenshot from "@/components/Screenshot";
+import { cn } from "@/lib/utils";
 
 export default function Home() {
   return (
@@ -7,8 +11,19 @@ export default function Home() {
       <Hero />
       <Screenshot />
       <Block title="Bring Your Own Provider">
-        Dream integrates with the AI services you already use, like OpenAI and
-        Anthropic, so you can keep your existing accounts and credits.
+        Dream works with your existing subscription from OpenAI, Anthropic or
+        OpenCode.
+        <div className="flex justify-center gap-8 mt-6">
+          <Provider icon={<OpenAIIcon className="size-8" />} label="Codex" />
+          <Provider
+            icon={<AnthropicIcon className="size-8" />}
+            label="Claude"
+          />
+          <Provider
+            icon={<OpenCodeIcon className="size-8" />}
+            label="OpenCode"
+          />
+        </div>
       </Block>
       <footer className="text-center text-sm text-muted py-8">
         Copyright &copy; {new Date().getFullYear()} The Dream IDE Company. All
@@ -21,12 +36,27 @@ export default function Home() {
 const Block = ({
   title,
   children,
+  className,
 }: {
   title: string;
   children: React.ReactNode;
+  className?: string;
 }) => (
-  <div className="flex flex-col gap-4 py-8">
-    <h2 className="text-4xl font-bold">{title}</h2>
-    <div className="text-lg text-muted">{children}</div>
+  <div className={cn("flex flex-col gap-4 py-8 w-auto mx-auto", className)}>
+    <h2 className="text-xl font-bold">{title}</h2>
+    <div className="text-md text-muted">{children}</div>
+  </div>
+);
+
+const Provider = ({
+  icon,
+  label,
+}: {
+  icon: React.ReactNode;
+  label: string;
+}) => (
+  <div className="flex flex-col items-center gap-2 border border-muted/20 rounded-lg p-16 my-16">
+    {icon}
+    <span className="text-sm text-muted">{label}</span>
   </div>
 );
