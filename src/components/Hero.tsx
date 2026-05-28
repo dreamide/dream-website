@@ -8,8 +8,8 @@ export default function Hero() {
   return (
     <div className="text-center">
       <SparkleTitle />
-      <div className="text-lg mb-16 text-muted">
-        Dream is an IDE built for AI coding.
+      <div className="text-lg my-16 text-muted">
+        An IDE built for AI coding. Beautifully crafted. Open source.
       </div>
       <div className="flex justify-center gap-3">
         <DownloadButton />

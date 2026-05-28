@@ -1,3 +1,9 @@
 export default function Screenshot() {
-  return <img src="/screen.jpg" alt="Dream IDE screenshot" />;
+  return (
+    <img
+      className="w-full h-auto rounded-lg"
+      src="/screen.jpg"
+      alt="Dream IDE screenshot"
+    />
+  );
 }

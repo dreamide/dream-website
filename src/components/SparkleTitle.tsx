@@ -25,14 +25,14 @@ export default function SparkleTitle() {
   return (
     <Sparkles
       ref={burstRef}
-      className="inline-block cursor-pointer select-none w-[400px] h-[400px] mx-auto"
+      className="inline-block cursor-pointer select-none w-[300px] h-[400px] mx-auto"
       position="bottom"
       height={300}
       density={100}
       palette={PALETTES[index]}
       onClick={cyclePalette}
     >
-      <div className="absolute inset-0 flex items-center justify-center font-bold text-[12rem] z-10">
+      <div className="absolute inset-0 flex items-center justify-center text-[12rem] z-10">
         DREAM
       </div>
     </Sparkles>
