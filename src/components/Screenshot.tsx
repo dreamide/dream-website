@@ -6,7 +6,7 @@ export default function Screenshot() {
     >
       <img
         className="w-full h-auto rounded-lg"
-        src="/screen.jpg"
+        src="/screen.png"
         alt="Dream IDE screenshot"
       />
     </div>

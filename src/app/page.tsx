@@ -106,8 +106,7 @@ export default function Home() {
         </div>
         <Block title="Built-in tools." className="w-2xl">
           A file explorer, integrated terminals, and a browser are included.
-          View files, run commands, and preview your work without leaving the
-          editor.
+          View files, run commands, and preview your work all in one place.
         </Block>
       </div>
       <CallToAction />
