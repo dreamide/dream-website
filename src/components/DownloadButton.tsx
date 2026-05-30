@@ -3,6 +3,7 @@
 import { Download } from "lucide-react";
 import { useEffect, useState } from "react";
 import Button from "./Button";
+import SparkleButton from "./SparkleButton";
 
 function detectOS(): string {
   if (typeof navigator === "undefined") return "your OS";
@@ -17,17 +18,23 @@ function detectOS(): string {
   return "your OS";
 }
 
-export default function DownloadButton() {
+export default function DownloadButton({
+  sparkle = true,
+}: {
+  sparkle?: boolean;
+}) {
   const [os, setOs] = useState("your OS");
 
   useEffect(() => {
     setOs(detectOS());
   }, []);
 
+  const Component = sparkle ? SparkleButton : Button;
+
   return (
-    <Button variant="primary" href="/download">
+    <Component variant="primary" href="/download">
       <Download className="size-4" />
       Download for {os}
-    </Button>
+    </Component>
   );
 }
