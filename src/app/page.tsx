@@ -10,22 +10,25 @@ import Screenshot from "@/components/Screenshot";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 max-w-[1400px] w-full mx-auto px-8 gap-36">
+    <div className="flex flex-col flex-1 max-w-[1400px] w-full mx-auto px-8 gap-60">
       <Hero />
       <Screenshot />
-      <div>
+      <div className="flex flex-col gap-16">
         <Block title="Bring Your Own Provider" className="w-3xl">
-          Dream works with your existing subscription from OpenAI, Anthropic or
+          Dream works with your existing subscription from OpenAI, Anthropic and
           OpenCode.
         </Block>
         <div
-          className="flex items-center justify-center rounded-lg p-16 gap-8"
+          className="flex items-center justify-center rounded-lg p-16 gap-8 flex-grow"
           style={{
             background: "url(/bg-01.jpg) center/cover no-repeat",
           }}
         >
           <Provider icon={<OpenAIIcon className="size-8" />} label="Codex" />
-          <Provider icon={<ClaudeIcon className="size-8" />} label="Claude" />
+          <Provider
+            icon={<ClaudeIcon className="size-8 text-[#d97757]" />}
+            label="Claude"
+          />
           <Provider
             icon={<OpenCodeIcon className="size-8" />}
             label="OpenCode"
@@ -45,7 +48,7 @@ export default function Home() {
           className="flex items-center rounded-lg p-16"
         >
           <img
-            src="/tabs.png"
+            src="/projects.png"
             alt="Screenshot of Dream's tabbed interface"
             className="rounded-lg mt-8 shadow-xl"
           />
@@ -54,7 +57,7 @@ export default function Home() {
       <div className="flex gap-32 items-center">
         <div
           style={{
-            background: "url(/bg-03.jpg) center/cover no-repeat",
+            background: "url(/bg-04.jpg) center/cover no-repeat",
           }}
           className="flex items-center rounded-lg p-16"
         >
@@ -64,7 +67,7 @@ export default function Home() {
             className="rounded-lg mt-8"
           />
         </div>
-        <Block title="Multiple chats. All at once." className="w-2xl">
+        <Block title="Multiple chats." className="w-2xl">
           Run several AI conversations side by side. Compare answers, branch off
           new ideas, and explore different approaches without losing your train
           of thought.
@@ -77,12 +80,12 @@ export default function Home() {
         </Block>
         <div
           style={{
-            background: "url(/bg-04.jpg) center/cover no-repeat",
+            background: "url(/bg-03.jpg) center/cover no-repeat",
           }}
           className="flex items-center rounded-lg p-16"
         >
           <img
-            src="/tabs.png"
+            src="/changes.png"
             alt="Screenshot of Dream's tabbed interface"
             className="rounded-lg mt-8"
           />
@@ -96,14 +99,15 @@ export default function Home() {
           className="flex items-center rounded-lg p-16"
         >
           <img
-            src="/tabs.png"
-            alt="Screenshot of Dream's tabbed interface"
+            src="/files.png"
+            alt="Screenshot of Dream's built-in files, terminal, and browser tools"
             className="rounded-lg mt-8"
           />
         </div>
-        <Block title="A faster Git workflow." className="w-2xl">
-          Review diffs, stage changes, and write commit messages without leaving
-          your editor. Everything you reach for most, built right in.
+        <Block title="Built-in tools." className="w-2xl">
+          A file explorer, integrated terminals, and a browser are included.
+          View files, run commands, and preview your work without leaving the
+          editor.
         </Block>
       </div>
       <CallToAction />
