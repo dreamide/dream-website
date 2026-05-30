@@ -10,16 +10,16 @@ import Screenshot from "@/components/Screenshot";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 max-w-[1400px] w-full mx-auto px-8 gap-60">
+    <div className="flex flex-col flex-1 max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-8 gap-24 sm:gap-40 lg:gap-60">
       <Hero />
       <Screenshot />
       <div className="flex flex-col gap-16">
-        <Block title="Bring Your Own Provider" className="w-3xl">
+        <Block title="Bring Your Own Provider" className="w-full lg:w-3xl">
           Dream works with your existing subscription from OpenAI, Anthropic and
           OpenCode.
         </Block>
         <div
-          className="flex items-center justify-center rounded-lg p-16 gap-8 flex-grow"
+          className="flex flex-wrap items-center justify-center rounded-lg p-6 sm:p-10 lg:p-16 gap-4 sm:gap-8 flex-grow"
           style={{
             background: "url(/bg-01.jpg) center/cover no-repeat",
           }}
@@ -35,8 +35,8 @@ export default function Home() {
           />
         </div>
       </div>
-      <div className="flex gap-32 items-center">
-        <Block title="Organize with tabs." className="w-2xl">
+      <div className="flex flex-col lg:flex-row gap-8 lg:gap-32 items-center">
+        <Block title="Organize with tabs." className="w-full lg:w-2xl">
           All your projects live in one window. Switch between them in a flash,
           and keep your context &mdash; open files, chats, and terminals &mdash;
           right where you left it.
@@ -45,7 +45,7 @@ export default function Home() {
           style={{
             background: "url(/bg-06.jpg) center/cover no-repeat",
           }}
-          className="flex items-center rounded-lg p-16"
+          className="flex items-center rounded-lg p-4 sm:p-8 lg:p-16"
         >
           <img
             src="/projects.png"
@@ -54,12 +54,12 @@ export default function Home() {
           />
         </div>
       </div>
-      <div className="flex gap-32 items-center">
+      <div className="flex flex-col-reverse lg:flex-row gap-8 lg:gap-32 items-center">
         <div
           style={{
             background: "url(/bg-04.jpg) center/cover no-repeat",
           }}
-          className="flex items-center rounded-lg p-16"
+          className="flex items-center rounded-lg p-4 sm:p-8 lg:p-16"
         >
           <img
             src="/multi-chats.png"
@@ -67,14 +67,14 @@ export default function Home() {
             className="rounded-lg mt-8"
           />
         </div>
-        <Block title="Multiple chats." className="w-2xl">
+        <Block title="Multiple chats." className="w-full lg:w-2xl">
           Run several AI conversations side by side. Compare answers, branch off
           new ideas, and explore different approaches without losing your train
           of thought.
         </Block>
       </div>
-      <div className="flex gap-32 items-center">
-        <Block title="A faster Git workflow." className="w-2xl">
+      <div className="flex flex-col lg:flex-row gap-8 lg:gap-32 items-center">
+        <Block title="A faster Git workflow." className="w-full lg:w-2xl">
           Review diffs, stage changes, and write commit messages without leaving
           your editor. Everything you reach for most, built right in.
         </Block>
@@ -82,7 +82,7 @@ export default function Home() {
           style={{
             background: "url(/bg-03.jpg) center/cover no-repeat",
           }}
-          className="flex items-center rounded-lg p-16"
+          className="flex items-center rounded-lg p-4 sm:p-8 lg:p-16"
         >
           <img
             src="/changes.png"
@@ -91,12 +91,12 @@ export default function Home() {
           />
         </div>
       </div>
-      <div className="flex gap-32 items-center">
+      <div className="flex flex-col-reverse lg:flex-row gap-8 lg:gap-32 items-center">
         <div
           style={{
-            background: "url(/bg-02.jpg) center/cover no-repeat",
+            background: "url(/bg-08.jpg) center/cover no-repeat",
           }}
-          className="flex items-center rounded-lg p-16"
+          className="flex items-center rounded-lg p-4 sm:p-8 lg:p-16"
         >
           <img
             src="/files.png"
@@ -104,7 +104,7 @@ export default function Home() {
             className="rounded-lg mt-8"
           />
         </div>
-        <Block title="Built-in tools." className="w-2xl">
+        <Block title="Built-in tools." className="w-full lg:w-2xl">
           A file explorer, integrated terminals, and a browser are included.
           View files, run commands, and preview your work all in one place.
         </Block>
