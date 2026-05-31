@@ -5,7 +5,7 @@ import GitHubIcon from "@/components/icons/GitHubIcon";
 
 export default function Hero() {
   return (
-    <div className="text-center">
+    <div className="text-center py-32">
       <div className="flex items-center justify-center text-[clamp(5rem,25vw,28rem)] font-bold leading-none">
         DREAM
       </div>

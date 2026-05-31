@@ -74,9 +74,9 @@ export default function Home() {
         </Block>
       </div>
       <div className="flex flex-col lg:flex-row gap-8 lg:gap-32 items-center">
-        <Block title="A faster Git workflow." className="w-full lg:w-2xl">
-          Review diffs, stage changes, and write commit messages without leaving
-          your editor. Everything you reach for most, built right in.
+        <Block title="Built-in tools." className="w-full lg:w-2xl">
+          A file explorer, integrated terminals, and a browser are included.
+          View files, run commands, and preview your work all in one place.
         </Block>
         <div
           style={{
@@ -85,8 +85,8 @@ export default function Home() {
           className="flex items-center rounded-lg p-4 sm:p-8 lg:p-16"
         >
           <img
-            src="/changes.png"
-            alt="Screenshot of Dream's tabbed interface"
+            src="/files.png"
+            alt="Screenshot of Dream's built-in files, terminal, and browser tools"
             className="rounded-lg mt-8"
           />
         </div>
@@ -99,14 +99,14 @@ export default function Home() {
           className="flex items-center rounded-lg p-4 sm:p-8 lg:p-16"
         >
           <img
-            src="/files.png"
-            alt="Screenshot of Dream's built-in files, terminal, and browser tools"
+            src="/changes.png"
+            alt="Screenshot of Dream's Git workflow interface"
             className="rounded-lg mt-8"
           />
         </div>
-        <Block title="Built-in tools." className="w-full lg:w-2xl">
-          A file explorer, integrated terminals, and a browser are included.
-          View files, run commands, and preview your work all in one place.
+        <Block title="A faster Git workflow." className="w-full lg:w-2xl">
+          Review diffs, stage changes, and write commit messages without leaving
+          your editor. Everything you reach for most, built right in.
         </Block>
       </div>
       <CallToAction />
