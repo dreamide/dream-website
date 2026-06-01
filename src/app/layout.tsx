@@ -15,6 +15,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Dream",
   description: "Dream is an IDE built for AI coding.",
+  icons: {
+    icon: "/dream.png",
+  },
 };
 
 export default function RootLayout({

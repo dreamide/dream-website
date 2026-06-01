@@ -3,6 +3,7 @@ import CallToAction from "@/components/CallToAction";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import ClaudeIcon from "@/components/icons/ClaudeIcon";
+import CursorIcon from "@/components/icons/CursorIcon";
 import OpenAIIcon from "@/components/icons/OpenAIIcon";
 import OpenCodeIcon from "@/components/icons/OpenCodeIcon";
 import Provider from "@/components/Provider";
@@ -12,11 +13,10 @@ export default function Home() {
   return (
     <div className="flex flex-col flex-1 max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-8 gap-24 sm:gap-40 lg:gap-60">
       <Hero />
-      <Screenshot />
       <div className="flex flex-col gap-16">
-        <Block title="Bring Your Own Provider" className="w-full lg:w-3xl">
-          Dream works with your existing subscription from OpenAI, Anthropic and
-          OpenCode.
+        <Block title="Bring Your Own Provider" className="w-full lg:w-4xl">
+          Dream works with your existing subscription from OpenAI, Anthropic,
+          OpenCode and Cursor.
         </Block>
         <div
           className="flex flex-wrap items-center justify-center rounded-lg p-6 sm:p-10 lg:p-16 gap-4 sm:gap-8 flex-grow"
@@ -33,6 +33,7 @@ export default function Home() {
             icon={<OpenCodeIcon className="size-8" />}
             label="OpenCode"
           />
+          <Provider icon={<CursorIcon className="size-8" />} label="Cursor" />
         </div>
       </div>
       <div className="flex flex-col lg:flex-row gap-8 lg:gap-32 items-center">
@@ -104,9 +105,9 @@ export default function Home() {
             className="rounded-lg mt-8"
           />
         </div>
-        <Block title="A faster Git workflow." className="w-full lg:w-2xl">
+        <Block title="Faster Git workflow." className="w-full lg:w-2xl">
           Review diffs, stage changes, and write commit messages without leaving
-          your editor. Everything you reach for most, built right in.
+          your editor. Stay in flow from first edit to final commit.
         </Block>
       </div>
       <CallToAction />
