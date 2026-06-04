@@ -7,7 +7,6 @@ import CursorIcon from "@/components/icons/CursorIcon";
 import OpenAIIcon from "@/components/icons/OpenAIIcon";
 import OpenCodeIcon from "@/components/icons/OpenCodeIcon";
 import Provider from "@/components/Provider";
-import Screenshot from "@/components/Screenshot";
 
 export default function Home() {
   return (
@@ -51,7 +50,7 @@ export default function Home() {
           <img
             src="/projects.png"
             alt="Screenshot of Dream's tabbed interface"
-            className="rounded-lg mt-8 shadow-xl"
+            className="rounded-lg"
           />
         </div>
       </div>
@@ -65,7 +64,7 @@ export default function Home() {
           <img
             src="/multi-chats.png"
             alt="Screenshot of Dream's multi-chat interface"
-            className="rounded-lg mt-8"
+            className="rounded-lg"
           />
         </div>
         <Block title="Multiple chats." className="w-full lg:w-2xl">
@@ -88,7 +87,7 @@ export default function Home() {
           <img
             src="/files.png"
             alt="Screenshot of Dream's built-in files, terminal, and browser tools"
-            className="rounded-lg mt-8"
+            className="rounded-lg"
           />
         </div>
       </div>
@@ -102,7 +101,7 @@ export default function Home() {
           <img
             src="/changes.png"
             alt="Screenshot of Dream's Git workflow interface"
-            className="rounded-lg mt-8"
+            className="rounded-lg"
           />
         </div>
         <Block title="Faster Git workflow." className="w-full lg:w-2xl">
