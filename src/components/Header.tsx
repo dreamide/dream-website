@@ -1,0 +1,25 @@
+import GitHubIcon from "@/components/icons/GitHubIcon";
+import Button from "./Button";
+
+export default function Header() {
+  return (
+    <header className="flex justify-between items-center py-4 font-bold">
+      <a href="/" className="flex items-center justify-center gap-4">
+        <img src="/dream.png" alt="Dream IDE logo" className="w-8" />
+        Dream
+      </a>
+      <div className="flex items-center gap-4">
+        <a
+          href="https://github.com/dreamide/dream"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="GitHub repository"
+          className="hover:opacity-70 transition-opacity"
+        >
+          <GitHubIcon className="size-5" />
+        </a>
+        <Button href="/download">Download</Button>
+      </div>
+    </header>
+  );
+}

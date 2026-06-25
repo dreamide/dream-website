@@ -1,6 +1,5 @@
 import Block from "@/components/Block";
 import CallToAction from "@/components/CallToAction";
-import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import ClaudeIcon from "@/components/icons/ClaudeIcon";
 import CursorIcon from "@/components/icons/CursorIcon";
@@ -10,7 +9,7 @@ import Provider from "@/components/Provider";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-8 gap-24 sm:gap-40 lg:gap-60">
+    <div className="flex flex-col flex-1 gap-24 sm:gap-40 lg:gap-60">
       <Hero />
       <div className="flex flex-col gap-16">
         <Block title="Bring Your Own Provider" className="w-full lg:w-4xl">
@@ -110,7 +109,6 @@ export default function Home() {
         </Block>
       </div>
       <CallToAction />
-      <Footer />
     </div>
   );
 }

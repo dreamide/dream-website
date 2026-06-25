@@ -11,7 +11,7 @@ export default function Hero() {
         DREAM
       </div>
       <div className="text-base sm:text-lg my-8 sm:my-16 text-muted">
-        An IDE built for AI coding. Fast. Powerful. Open source.
+        Open-source frontier IDE built for AI coding.
       </div>
       <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-32">
         <DownloadButton sparkle />
