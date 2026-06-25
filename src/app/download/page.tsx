@@ -6,46 +6,12 @@ import DownloadButton from "@/components/DownloadButton";
 import AppleIcon from "@/components/icons/AppleIcon";
 import LinuxIcon from "@/components/icons/LinuxIcon";
 import WindowsIcon from "@/components/icons/WindowsIcon";
+import { DOWNLOADS, downloadUrl, type OS } from "@/lib/downloads";
 
-const releaseBase = "https://files.dreamide.app/latest";
-
-type Platform = {
-  heading: string;
-  Icon: ComponentType<{ className?: string }>;
-  items: { label: string; href: string }[];
-};
-
-const platforms: Platform[] = [
-  {
-    heading: "macOS",
-    Icon: AppleIcon,
-    items: [
-      { label: "Mac (ARM64)", href: `${releaseBase}/Dream-mac-arm64.dmg` },
-      { label: "Mac (x64)", href: `${releaseBase}/Dream-mac-x64.dmg` },
-    ],
-  },
-  {
-    heading: "Windows",
-    Icon: WindowsIcon,
-    items: [
-      {
-        label: "Windows (x64)",
-        href: `${releaseBase}/Dream-windows-x64.exe`,
-      },
-    ],
-  },
-  {
-    heading: "Linux",
-    Icon: LinuxIcon,
-    items: [
-      { label: "Linux .deb (x64)", href: `${releaseBase}/Dream-linux-x64.deb` },
-      { label: "Linux RPM (x64)", href: `${releaseBase}/Dream-linux-x64.rpm` },
-      {
-        label: "Linux AppImage (x64)",
-        href: `${releaseBase}/Dream-linux-x64.AppImage`,
-      },
-    ],
-  },
+const platforms: { os: OS; Icon: ComponentType<{ className?: string }> }[] = [
+  { os: "macOS", Icon: AppleIcon },
+  { os: "Windows", Icon: WindowsIcon },
+  { os: "Linux", Icon: LinuxIcon },
 ];
 
 export const metadata: Metadata = {
@@ -55,25 +21,26 @@ export const metadata: Metadata = {
 
 export default function DownloadPage() {
   return (
-    <div className="flex flex-col flex-1 py-12 gap-12">
-      <Block title="Download Dream">
+    <div className="flex flex-col flex-1 py-12">
+      <Block title="Download Dream" className="mb-12">
         Available for macOS, Windows, and Linux.
       </Block>
-      <div className="flex items-center justify-center">
+      <div className="flex items-center justify-center mb-24">
         <DownloadButton />
       </div>
       <div className="grid gap-6 md:grid-cols-3 items-stretch">
-        {platforms.map(({ heading, Icon, items }) => (
-          <div key={heading} className="rounded-lg bg-white/[0.04] p-6">
+        {platforms.map(({ os, Icon }) => (
+          <div key={os} className="rounded-lg bg-white/[0.04] p-6">
             <h3 className="flex items-center gap-2 text-sm font-bold">
               <Icon className="size-4" />
-              {heading}
+              {os}
             </h3>
             <ul className="mt-4 divide-y divide-white/10">
-              {items.map((item) => (
+              {DOWNLOADS[os].map((item) => (
                 <li key={item.label}>
                   <a
-                    href={item.href}
+                    href={downloadUrl(item.file)}
+                    download
                     className="flex items-center justify-between gap-4 py-4 text-sm transition-colors hover:text-foreground/70"
                   >
                     {item.label}
