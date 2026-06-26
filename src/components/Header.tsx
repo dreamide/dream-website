@@ -3,7 +3,7 @@ import Button from "./Button";
 
 export default function Header() {
   return (
-    <header className="flex justify-between items-center py-4 font-bold">
+    <header className="relative z-50 flex justify-between items-center py-4 font-bold">
       <a href="/" className="flex items-center justify-center gap-4">
         <img src="/dream.png" alt="Dream IDE logo" className="w-8" />
         Dream

@@ -6,14 +6,14 @@ import Screenshot from "@/components/Screenshot";
 
 export default function Hero() {
   return (
-    <div className="text-center py-32">
-      <div className="flex items-center justify-center text-[clamp(5rem,25vw,28rem)] font-bold leading-none">
+    <div className="text-center">
+      <div className="pointer-events-none select-none flex items-center justify-center text-[clamp(5rem,25vw,28rem)] font-bold leading-none">
         DREAM
       </div>
       <div className="text-base sm:text-lg my-8 sm:my-16 text-muted">
-        Open-source frontier IDE built for AI coding.
+        Open-source IDE built for AI coding.
       </div>
-      <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-32">
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-3 my-32">
         <DownloadButton sparkle />
         <Button
           href="https://github.com/dreamide/dream"
