@@ -26,7 +26,7 @@ export default function DownloadPage() {
         Available for macOS, Windows, and Linux.
       </Block>
       <div className="flex items-center justify-center mb-24">
-        <DownloadButton />
+        <DownloadButton eventName="Download page recommended download" />
       </div>
       <div className="grid gap-6 md:grid-cols-3 items-stretch">
         {platforms.map(({ os, Icon }) => (
@@ -41,6 +41,7 @@ export default function DownloadPage() {
                   <a
                     href={downloadUrl(item.file)}
                     download
+                    data-umami-event={`Manual download ${os} ${item.label}`}
                     className="flex items-center justify-between gap-4 py-4 text-sm transition-colors hover:text-foreground/70"
                   >
                     {item.label}

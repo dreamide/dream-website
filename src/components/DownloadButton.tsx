@@ -14,8 +14,10 @@ import SparkleButton from "./SparkleButton";
 
 export default function DownloadButton({
   sparkle = true,
+  eventName = "Download",
 }: {
   sparkle?: boolean;
+  eventName?: string;
 }) {
   const [os, setOs] = useState<OS | null>(null);
   const [href, setHref] = useState<string | null>(null);
@@ -37,7 +39,11 @@ export default function DownloadButton({
   // download page so they can pick the right build themselves.
   if (!os || !href) {
     return (
-      <Component variant="primary" href="/download">
+      <Component
+        variant="primary"
+        href="/download"
+        data-umami-event={`${eventName} - open download page`}
+      >
         <Download className="size-4" />
         Download
       </Component>
@@ -45,7 +51,12 @@ export default function DownloadButton({
   }
 
   return (
-    <Component variant="primary" href={href} download>
+    <Component
+      variant="primary"
+      href={href}
+      download
+      data-umami-event={`${eventName} - download ${os}`}
+    >
       <Download className="size-4" />
       Download for {os}
     </Component>

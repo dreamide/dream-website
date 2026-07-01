@@ -14,11 +14,14 @@ export default function Header() {
           target="_blank"
           rel="noreferrer"
           aria-label="GitHub repository"
+          data-umami-event="Header GitHub repository"
           className="hover:opacity-70 transition-opacity"
         >
           <GitHubIcon className="size-5" />
         </a>
-        <Button href="/download">Download</Button>
+        <Button href="/download" data-umami-event="Header download">
+          Download
+        </Button>
       </div>
     </header>
   );
