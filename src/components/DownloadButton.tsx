@@ -42,7 +42,7 @@ export default function DownloadButton({
       <Component
         variant="primary"
         href="/download"
-        data-umami-event={`${eventName} - open download page`}
+        data-umami-event={`${eventName} page`}
       >
         <Download className="size-4" />
         Download
@@ -55,7 +55,7 @@ export default function DownloadButton({
       variant="primary"
       href={href}
       download
-      data-umami-event={`${eventName} - download ${os}`}
+      data-umami-event={`${eventName} ${os}`}
     >
       <Download className="size-4" />
       Download for {os}

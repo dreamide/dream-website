@@ -19,7 +19,7 @@ export default function Hero() {
           href="https://github.com/dreamide/dream"
           target="_blank"
           rel="noopener noreferrer"
-          data-umami-event="Hero star on GitHub"
+          data-umami-event="Hero GitHub"
         >
           <GitHubIcon className="size-4" />
           Star on GitHub
