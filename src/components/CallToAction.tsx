@@ -1,4 +1,4 @@
-import DownloadButton from "@/components/DownloadButton";
+import DownloadButton from "./DownloadButton";
 
 export default function CallToAction() {
   return (

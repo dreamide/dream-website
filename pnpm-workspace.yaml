@@ -1,5 +1,6 @@
 packages:
   - "."
-
 allowBuilds:
   sharp: true
+minimumReleaseAgeExclude:
+  - '@umami/shiso'

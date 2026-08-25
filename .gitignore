@@ -13,8 +13,10 @@
 # testing
 /coverage
 
-# next.js
+# generated sites
 /.next/
+/.shiso/
+/dist/
 /out/
 nexzt-env.d.ts
 

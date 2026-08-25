@@ -1,0 +1,36 @@
+---
+title: Git workflows
+description: Review changes, work with branches, and use Git worktrees in Dream.
+---
+
+Dream's Git tools are available when the project folder is a Git repository.
+
+## Review and publish changes
+
+1. Open **Changes** to inspect modified, added, and deleted files.
+2. Review each diff in unified or split view.
+3. Stage the changes that belong in the commit.
+4. Open the commit action and review the drafted commit message.
+5. Commit, then push the branch or open a pull request.
+
+Dream can use the model selected in **Settings → Models → Default model for commits and PRs** to
+draft commit messages and pull-request text. Always review generated text before publishing it.
+
+## Branches
+
+Use the branch switcher to move between local branches or create and check out a new branch. Refresh
+the branch list if changes made outside Dream do not appear immediately.
+
+## Continue a chat in a worktree
+
+When branching a chat from a message, choose **New worktree** to continue the conversation in a
+separate Git worktree created from a base ref. This is useful when you want the new approach to edit
+an isolated checkout.
+
+<Warning>
+  A new worktree represents a committed Git ref. Uncommitted changes in the current workspace are
+  not copied into it.
+</Warning>
+
+App-managed worktrees appear with your projects. Remove one from Dream after you no longer need the
+isolated checkout and have preserved any work you want to keep.

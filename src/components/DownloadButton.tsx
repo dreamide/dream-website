@@ -8,7 +8,7 @@ import {
   downloadUrl,
   type OS,
   recommendedDownload,
-} from "@/lib/downloads";
+} from "../lib/downloads";
 import Button from "./Button";
 import SparkleButton from "./SparkleButton";
 

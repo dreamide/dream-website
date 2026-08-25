@@ -1,9 +1,9 @@
 "use client";
 
 import type { ComponentProps } from "react";
-import Button from "@/components/Button";
-import Sparkles, { type SparklesProps } from "@/components/ui/sparkles";
-import { cn } from "@/lib/utils";
+import { cn } from "../lib/utils";
+import Button from "./Button";
+import Sparkles, { type SparklesProps } from "./ui/sparkles";
 
 type ButtonProps = ComponentProps<typeof Button>;
 

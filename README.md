@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dream website
 
-## Getting Started
+The Dream product site and documentation, built with
+[@umami/shiso](https://shiso.umami.is).
 
-First, run the development server:
+## Project structure
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
+- `content/pages/home.tsx` — standalone marketing home page at `/`
+- `content/pages/download.tsx` — standalone download page at `/download`
+- `content/docs/` — product documentation under `/docs`
+- `docs.json` — Shiso navigation, branding, and site configuration
+- `src/components/` — React components used by the standalone pages
+- `public/` — screenshots, artwork, icons, and static hosting configuration
+- `functions/` — Cloudflare Pages Function for the first-party analytics script
+
+## Development
+
+Install dependencies and start Shiso:
+
+```sh
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The local URL is printed in the terminal.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Validation
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Check the Shiso configuration and create the production site:
 
-## Learn More
+```sh
+pnpm check
+pnpm typecheck
+pnpm build
+```
 
-To learn more about Next.js, take a look at the following resources:
+The static output is written to `dist/client`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Writing documentation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Add Markdown or MDX files to `content/docs`, then register them in the
+`navigation` section of `docs.json`. Add non-documentation routes to `pages`
+and place their MDX files in `content/pages`.

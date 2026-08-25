@@ -1,0 +1,84 @@
+{
+  "$schema": "./node_modules/@umami/shiso/docs.schema.json",
+  "theme": "shiso",
+  "name": "Dream",
+  "description": "Dream is an open-source desktop IDE for working with AI coding agents.",
+  "logo": {
+    "light": "/dream.png",
+    "href": "/"
+  },
+  "favicon": "/dream.png",
+  "appearance": {
+    "default": "dark",
+    "strict": true
+  },
+  "background": {
+    "color": {
+      "dark": "#0a0a0a"
+    }
+  },
+  "colors": {
+    "primary": "#fafafa"
+  },
+  "pages": [
+    {
+      "path": "/",
+      "page": "home"
+    },
+    {
+      "path": "/download",
+      "page": "download"
+    }
+  ],
+  "navbar": {
+    "links": [
+      {
+        "label": "Docs",
+        "href": "/docs"
+      },
+      {
+        "icon": "github",
+        "ariaLabel": "Dream on GitHub",
+        "href": "https://github.com/dreamide/dream"
+      }
+    ],
+    "primary": {
+      "label": "Download",
+      "icon": "download",
+      "href": "/download"
+    }
+  },
+  "footer": {
+    "socials": [
+      {
+        "icon": "github",
+        "ariaLabel": "Dream on GitHub",
+        "href": "https://github.com/dreamide/dream"
+      }
+    ]
+  },
+  "contextual": {
+    "options": ["copy", "view"]
+  },
+  "navigation": {
+    "groups": [
+      {
+        "group": "Getting started",
+        "collapsible": false,
+        "pages": [
+          {
+            "page": "index",
+            "title": "Introduction"
+          },
+          "installation",
+          "providers",
+          "first-project"
+        ]
+      },
+      {
+        "group": "Using Dream",
+        "pages": ["workspace", "git-workflows"]
+      }
+    ]
+  }
+}

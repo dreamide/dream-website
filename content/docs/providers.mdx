@@ -1,0 +1,48 @@
+---
+title: Connect a provider
+description: Configure the coding-agent CLIs and models that Dream can use.
+---
+
+Dream works with coding-agent command-line tools already installed on your computer.
+
+## Supported providers
+
+| Provider | Required CLI |
+| --- | --- |
+| OpenAI | Codex CLI |
+| Anthropic | Claude Code CLI |
+| OpenCode | OpenCode CLI |
+| Cursor | Cursor Agent CLI |
+
+Install the CLI from its provider, then complete that CLI's normal sign-in or authentication flow
+outside Dream.
+
+## Enable models
+
+1. Open **Settings** in Dream.
+2. Select **Providers**.
+3. Refresh the provider after installing or authenticating its CLI.
+4. Enable one or more of the detected models.
+5. In **Models**, choose defaults for new chats and for commit and pull-request drafting.
+
+You must enable at least one model before opening your first project. A chat can use a different
+enabled model from the default after it starts.
+
+## Permissions
+
+Each chat offers two permission levels:
+
+- **Standard** keeps tool use within the agent's normal approval boundaries.
+- **Full access** allows broader agent actions and should only be used for work you trust.
+
+Permission behavior ultimately depends on the selected CLI. Review the request shown by Dream and
+the provider before approving an action.
+
+## Troubleshooting detection
+
+If a provider says **CLI not detected**:
+
+1. Open your system terminal and verify that the CLI command starts successfully.
+2. Finish any sign-in or first-run setup requested by the CLI.
+3. Return to **Settings → Providers** and refresh it.
+4. For OpenCode, run its authentication flow or configure `opencode.json` if no models appear.

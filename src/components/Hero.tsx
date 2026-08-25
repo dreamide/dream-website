@@ -1,8 +1,8 @@
 import { ArrowUpRight } from "lucide-react";
-import Button from "@/components/Button";
-import DownloadButton from "@/components/DownloadButton";
-import GitHubIcon from "@/components/icons/GitHubIcon";
-import Screenshot from "@/components/Screenshot";
+import Button from "./Button";
+import DownloadButton from "./DownloadButton";
+import GitHubIcon from "./icons/GitHubIcon";
+import Screenshot from "./Screenshot";
 
 export default function Hero() {
   return (
@@ -10,7 +10,7 @@ export default function Hero() {
       <div className="pointer-events-none select-none flex items-center justify-center text-[clamp(5rem,25vw,28rem)] font-bold leading-none my-18">
         DREAM
       </div>
-      <div className="text-base sm:text-lg my-8 sm:my-16 text-muted">
+      <div className="my-8 text-base text-muted-foreground sm:my-16 sm:text-lg">
         Open-source IDE built for AI coding.
       </div>
       <div className="flex flex-col sm:flex-row items-center justify-center gap-3 my-32">
@@ -23,7 +23,7 @@ export default function Hero() {
         >
           <GitHubIcon className="size-4" />
           Star on GitHub
-          <ArrowUpRight className="size-4 text-muted" />
+          <ArrowUpRight className="size-4 text-muted-foreground" />
         </Button>
       </div>
       <Screenshot />
