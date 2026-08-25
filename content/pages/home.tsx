@@ -109,8 +109,6 @@ export default function HomePage() {
           your editor. Stay in flow from first edit to final commit.
         </Block>
       </section>
-
-      <CallToAction />
     </div>
   );
 }

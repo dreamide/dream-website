@@ -3,10 +3,6 @@
   "theme": "shiso",
   "name": "Dream",
   "description": "Dream is an open-source desktop IDE for working with AI coding agents.",
-  "logo": {
-    "light": "/dream.png",
-    "href": "/"
-  },
   "favicon": "/dream.png",
   "appearance": {
     "default": "dark",
@@ -33,6 +29,7 @@
   "navbar": {
     "links": [
       {
+        "icon": "book-open",
         "label": "Docs",
         "href": "/docs"
       },
@@ -54,6 +51,11 @@
         "icon": "github",
         "ariaLabel": "Dream on GitHub",
         "href": "https://github.com/dreamide/dream"
+      },
+      {
+        "icon": "discord",
+        "ariaLabel": "Dream on Discord",
+        "href": "https://discord.gg/HxRQRzpkD"
       }
     ]
   },
