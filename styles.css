@@ -8,7 +8,9 @@ html, body, .docs-markdown {
 [data-theme="dark"] {
   --primary: #bbf7d0;
   --primary-foreground: #0a0a0a;
+  --ring: #bbf7d0;
   --sidebar-primary: #bbf7d0;
+  --sidebar-ring: #bbf7d0;
   --font-sans:
     "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
   --font-heading: var(--font-sans);
