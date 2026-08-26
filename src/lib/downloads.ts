@@ -11,8 +11,12 @@ export type DownloadFile = {
 
 export const DOWNLOADS: Record<OS, DownloadFile[]> = {
   macOS: [
-    { label: ".dmg (ARM64)", file: "Dream-mac-arm64.dmg", arch: "arm64" },
-    { label: ".dmg (x64)", file: "Dream-mac-x64.dmg", arch: "x64" },
+    {
+      label: ".dmg (Apple Silicon)",
+      file: "Dream-mac-arm64.dmg",
+      arch: "arm64",
+    },
+    { label: ".dmg (Intel x64)", file: "Dream-mac-x64.dmg", arch: "x64" },
   ],
   Windows: [
     { label: ".exe (x64)", file: "Dream-windows-x64.exe", arch: "x64" },
@@ -21,7 +25,7 @@ export const DOWNLOADS: Record<OS, DownloadFile[]> = {
     { label: ".deb (x64)", file: "Dream-linux-x64.deb", arch: "x64" },
     { label: ".rpm (x64)", file: "Dream-linux-x64.rpm", arch: "x64" },
     {
-      label: "AppImage (x64)",
+      label: ".AppImage (x64)",
       file: "Dream-linux-x64.AppImage",
       arch: "x64",
     },

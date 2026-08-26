@@ -14,7 +14,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@umami/shiso": "^1.8.0",
+    "@umami/shiso": "^1.9.0",
     "clsx": "^2.1.1",
     "lucide-react": "^1.28.0",
     "react": "19.2.7",

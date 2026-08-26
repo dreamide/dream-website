@@ -5,6 +5,7 @@ import DownloadOptions from "../../src/components/DownloadOptions";
 export const frontmatter = {
   title: "Download Dream",
   description: "Download Dream for macOS, Windows, and Linux.",
+  search: false
 };
 
 export default function DownloadPage() {
