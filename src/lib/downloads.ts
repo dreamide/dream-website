@@ -1,4 +1,5 @@
-export const DOWNLOAD_BASE = "https://files.dreamide.app/latest";
+export const DOWNLOAD_BASE =
+  "https://github.com/dreamide/dream/releases/latest/download";
 
 export type OS = "macOS" | "Windows" | "Linux";
 export type Arch = "arm64" | "x64";
@@ -16,17 +17,25 @@ export const DOWNLOADS: Record<OS, DownloadFile[]> = {
       file: "Dream-mac-arm64.dmg",
       arch: "arm64",
     },
-    { label: ".dmg (Intel x64)", file: "Dream-mac-x64.dmg", arch: "x64" },
+    {
+      label: ".zip (Apple Silicon)",
+      file: "Dream-mac-arm64.zip",
+      arch: "arm64",
+    },
   ],
   Windows: [
     { label: ".exe (x64)", file: "Dream-windows-x64.exe", arch: "x64" },
   ],
   Linux: [
-    { label: ".deb (x64)", file: "Dream-linux-x64.deb", arch: "x64" },
-    { label: ".rpm (x64)", file: "Dream-linux-x64.rpm", arch: "x64" },
+    { label: ".deb (x64)", file: "Dream-linux-amd64.deb", arch: "x64" },
+    {
+      label: ".rpm (x64)",
+      file: "Dream-linux-x86_64.rpm",
+      arch: "x64",
+    },
     {
       label: ".AppImage (x64)",
-      file: "Dream-linux-x64.AppImage",
+      file: "Dream-linux-x86_64.AppImage",
       arch: "x64",
     },
   ],
