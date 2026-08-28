@@ -16,7 +16,7 @@ export default function Hero() {
       <div className="flex flex-col sm:flex-row items-center justify-center gap-3 my-32">
         <DownloadButton sparkle eventName="Hero download" />
         <Button
-          href="https://github.com/dreamide/dream"
+          href="https://github.com/umami-software/dream"
           target="_blank"
           rel="noopener noreferrer"
           data-umami-event="Hero GitHub"

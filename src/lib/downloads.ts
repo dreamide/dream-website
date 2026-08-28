@@ -1,5 +1,5 @@
 export const DOWNLOAD_BASE =
-  "https://github.com/dreamide/dream/releases/latest/download";
+  "https://github.com/umami-software/dream/releases/latest/download";
 
 export type OS = "macOS" | "Windows" | "Linux";
 export type Arch = "arm64" | "x64";
