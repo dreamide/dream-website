@@ -24,6 +24,10 @@
     {
       "path": "/download",
       "page": "download"
+    },
+    {
+      "path": "/hello",
+      "page": "hello"
     }
   ],
   "navbar": {

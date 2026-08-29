@@ -1,9 +1,5 @@
 /* Dream-specific extensions to Shiso's base theme. */
 
-html, body, .docs-markdown {
-  font-size: 14px;
-}
-
 :root,
 [data-theme="dark"] {
   --primary: #bbf7d0;
