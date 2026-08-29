@@ -14,12 +14,12 @@ export default function Hero() {
         Open-source IDE built for AI coding.
       </div>
       <div className="flex flex-col sm:flex-row items-center justify-center gap-3 my-32">
-        <DownloadButton sparkle eventName="Hero download" />
+        <DownloadButton sparkle eventName="hero-download" />
         <Button
           href="https://github.com/umami-software/dream"
           target="_blank"
           rel="noopener noreferrer"
-          data-umami-event="Hero GitHub"
+          data-umami-event="hero-github"
         >
           <GitHubIcon className="size-4" />
           Star on GitHub

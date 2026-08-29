@@ -2,6 +2,7 @@
 
 import { Download } from "lucide-react";
 import { useEffect, useState } from "react";
+import { umamiEventName } from "../lib/analytics";
 import {
   detectArch,
   detectOS,
@@ -14,7 +15,7 @@ import SparkleButton from "./SparkleButton";
 
 export default function DownloadButton({
   sparkle = true,
-  eventName = "Download",
+  eventName = "download",
 }: {
   sparkle?: boolean;
   eventName?: string;
@@ -42,7 +43,7 @@ export default function DownloadButton({
       <Component
         variant="primary"
         href="/download"
-        data-umami-event={`${eventName} page`}
+        data-umami-event={umamiEventName(eventName, "page")}
       >
         <Download className="size-4" />
         Download
@@ -55,7 +56,7 @@ export default function DownloadButton({
       variant="primary"
       href={href}
       download
-      data-umami-event={`${eventName} ${os}`}
+      data-umami-event={umamiEventName(eventName, os)}
     >
       <Download className="size-4" />
       Download for {os}

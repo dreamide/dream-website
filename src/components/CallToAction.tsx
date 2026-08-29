@@ -7,7 +7,7 @@ export default function CallToAction() {
         Dream your dream.
       </h2>
       <div className="flex justify-center gap-3">
-        <DownloadButton eventName="CTA download" />
+        <DownloadButton eventName="cta-download" />
       </div>
     </div>
   );

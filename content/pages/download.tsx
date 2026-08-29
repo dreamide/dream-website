@@ -15,7 +15,7 @@ export default function DownloadPage() {
         Available for macOS, Windows, and Linux.
       </Block>
       <div className="mb-24 flex items-center justify-center">
-        <DownloadButton eventName="Recommended download" />
+        <DownloadButton eventName="recommended-download" />
       </div>
       <DownloadOptions />
     </div>

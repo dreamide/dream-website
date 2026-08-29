@@ -1,5 +1,6 @@
 import { Download } from "lucide-react";
 import type { ComponentType } from "react";
+import { umamiEventName } from "../lib/analytics";
 import { DOWNLOADS, downloadUrl, type OS } from "../lib/downloads";
 import AppleIcon from "./icons/AppleIcon";
 import LinuxIcon from "./icons/LinuxIcon";
@@ -26,7 +27,11 @@ export default function DownloadOptions() {
                 <a
                   href={downloadUrl(item.file)}
                   download
-                  data-umami-event={`Download ${os} ${item.label}`}
+                  data-umami-event={umamiEventName(
+                    "download",
+                    os,
+                    item.label,
+                  )}
                   className="flex items-center justify-between gap-4 py-4 text-sm text-foreground transition-colors hover:text-primary"
                 >
                   {item.label}
