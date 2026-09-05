@@ -18,9 +18,9 @@ export const DOWNLOADS: Record<OS, DownloadFile[]> = {
       arch: "arm64",
     },
     {
-      label: ".zip (Apple Silicon)",
-      file: "Dream-mac-arm64.zip",
-      arch: "arm64",
+      label: ".dmg (Intel)",
+      file: "Dream-mac-x64.dmg",
+      arch: "x64",
     },
   ],
   Windows: [
