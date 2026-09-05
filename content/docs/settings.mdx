@@ -1,0 +1,74 @@
+---
+title: Settings reference
+description: Find general preferences, model defaults, provider configuration, and archived-chat controls.
+---
+
+Open **Settings** with the gear icon at the top of Dream. The sidebar has **General**, **Providers**,
+and **Archived Chats**. Changes to preferences are applied as you select them; there is no separate
+Save button for the settings dialog.
+
+## General
+
+| Setting | What it controls |
+| --- | --- |
+| Language | The interface language |
+| Terminal | The shell used for new terminal sessions |
+| Theme | System, Light, or Dark appearance |
+| Base color | The interface's gray tones |
+| Accent color | Primary actions and active states |
+
+Changing the terminal shell affects new sessions. Open a new terminal to use the selection; see
+[Terminals](/docs/terminals).
+
+### Chat messages
+
+| Setting | Default | What it controls |
+| --- | --- | --- |
+| Show reasoning summaries | On | Display of summaries supplied by the model |
+| Group tool calls | Off | Compact grouping of tool activity |
+| Expand tool calls | Off | Whether tool-call details start expanded |
+
+These settings affect the display of conversations across projects. They do not change the model's
+reasoning effort or grant additional tool permissions.
+
+### Models
+
+The **Models** group is inside General, below the chat-message preferences.
+
+| Setting | Scope |
+| --- | --- |
+| Default model for new chats | Newly created chats across projects |
+| Effort | Reasoning effort for new chats, when supported by the default model |
+| Speed | Speed tier for new chats, when supported by the default model |
+| Default model for commits and PRs | Generated commit messages and pull-request text |
+
+Existing chats retain their own selections. Enable a model under Providers before choosing it as a
+default. Follow [Models and defaults](/docs/models) for the complete setup workflow.
+
+## Providers
+
+Each provider card shows its detected CLI status, version when available, refresh action, and model
+list. Enable models to make them available in chat and default-model selectors.
+
+Install and sign in through the provider's CLI outside Dream, then refresh its card. Dream settings
+do not replace the CLI's authentication flow. See [Connect a provider](/docs/providers).
+
+## Archived Chats
+
+| Control | What it does |
+| --- | --- |
+| Row checkboxes | Select archived conversations across projects |
+| Header checkbox | Select all archived conversations |
+| Restore | Returns selected chats to active history |
+| Delete | Permanently removes selected chats and messages from Dream |
+| Archive chats after | Sets the inactivity cutoff in days; default 30 |
+| Archive now | Archives chats that meet that cutoff |
+
+The cutoff does not schedule an automatic job. See [Archiving and restoring chats](/docs/archived-chats)
+before using bulk actions or permanent deletion.
+
+## Controls outside Settings
+
+Some preferences belong to individual chats or projects. Set a chat's model, effort, speed, mode,
+and permissions in its composer. Toggle multi-chat in the left toolbar. Resize chat columns and
+tool panels directly in the workspace.

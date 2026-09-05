@@ -1,0 +1,101 @@
+---
+title: Troubleshooting
+description: Resolve missing models and chats, terminal and preview problems, and common Git errors.
+---
+
+Start with the error shown in the affected chat or tool. Check which project and provider are
+selected before changing settings, especially when several chats are open.
+
+## A provider CLI is not detected
+
+1. Open your system terminal and verify that the provider CLI starts.
+2. Complete its sign-in or first-run setup.
+3. Open **Settings → Providers** in Dream and refresh that provider.
+4. If you installed it while Dream was open and detection still fails, restart Dream so it can
+   pick up the changed environment.
+
+Dream needs the executable to be available to the app, not only through a shortcut or alias in an
+interactive shell. See [Connect a provider](/docs/providers).
+
+## A model is missing or I cannot start a chat
+
+Check **Settings → Providers** and enable at least one detected model. A detected CLI with no enabled
+models is not enough to start a chat. Refresh after changing the provider's authentication or model
+configuration. For OpenCode, complete its authentication or configuration before refreshing.
+
+Then check **Settings → General → Models**. If a previously selected default is unavailable, choose
+an enabled model again. Existing chats have their own selectors; changing the global default does
+not replace those selections.
+
+## Effort or speed controls are missing
+
+These controls depend on the selected model's capabilities. Choose a model that exposes the option
+you need. Switching a chat's model resets its effort and speed selection, so check both afterward.
+See [Models and defaults](/docs/models).
+
+## I cannot find a chat
+
+1. Select the project where the conversation took place.
+2. Open **Chat history** and clear its search field.
+3. Search by the chat's title, rather than words inside its messages.
+4. Check **Settings → Archived Chats** and restore the chat if it is there.
+5. If its project is closed, reopen it through **Recently closed** on the getting-started screen.
+
+Closing a multi-chat column does not archive the conversation. Empty chats without messages are
+not listed in history. A permanently deleted chat cannot be restored through Dream.
+
+## A restored chat was archived again
+
+Restoring a chat preserves its last-activity date. If you run **Archive now** again and that date is
+older than the cutoff, it qualifies for archiving again. Review the cutoff and the conversations you
+want to keep before running the action.
+
+## Branching is unavailable
+
+Wait for the current response to finish before branching. **New worktree** also requires a Git
+repository. A missing or invalid base ref can prevent worktree creation; verify that the repository
+has the committed branch or ref you want to use.
+
+If expected edits are missing from a new worktree, check whether they were uncommitted in the
+original project. Worktrees do not copy those changes. See [Git worktrees](/docs/worktrees).
+
+## Continue in terminal is missing
+
+The action is available for Claude chats with a valid resumable provider session and is disabled
+while a response is processing. A new chat, another provider, or a session reset after changing the
+model or speed may not have it. See [Terminals](/docs/terminals#continue-a-claude-chat-in-a-terminal).
+
+## A terminal fails to open
+
+Check that the project directory still exists. Choose an available shell in **Settings → General →
+Terminal**, then open a new session. For Claude continuation, the original session directory must
+also exist. Try the same shell in your system terminal to identify environment problems.
+
+## A browser preview is blank or stale
+
+Confirm that the application is running and use the exact URL and port shown in its terminal.
+Inspect terminal errors, then try **Refresh browser** or **Force reload**. Compare the URL in your
+system browser. Use DevTools for page errors; reserve clearing cookies or cache for the relevant
+authentication or caching problem. See [Browser previews](/docs/browser).
+
+## A file cannot be saved
+
+Check whether the file is writable and read the editor's error. If it changed on disk while you
+were editing, preserve your draft before **Reload from disk**, then reapply the intended changes.
+See [Files and search](/docs/files#handle-a-file-changed-outside-the-editor).
+
+## Git actions fail
+
+| Symptom | What to check |
+| --- | --- |
+| No Git tools for a folder | Open a folder inside a Git repository |
+| No staged changes to commit | Review Include unstaged, or stage the intended files through Git |
+| Staged changes outside the active project | Commit them separately before using Dream's commit action |
+| Push has no destination | Configure a Git remote and verify access to it |
+| PR creation reports a CLI error | Verify that GitHub CLI is installed, authenticated, and can access the repository |
+| PR source and base are the same | Switch to a feature branch before creating the PR |
+| PR creation reports detached HEAD | Check out a branch before creating the PR |
+| Worktree removal fails | Review and preserve uncommitted changes in that checkout |
+
+After a combined action fails, inspect the branch state before retrying: a commit or push may have
+succeeded before a later step failed. See [Git workflows](/docs/git-workflows).

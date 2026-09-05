@@ -13,6 +13,7 @@ Dream works with coding-agent command-line tools already installed on your compu
 | Anthropic | Claude Code CLI |
 | OpenCode | OpenCode CLI |
 | Cursor | Cursor Agent CLI |
+| Grok Build | Grok Build CLI |
 
 Install the CLI from its provider, then complete that CLI's normal sign-in or authentication flow
 outside Dream.
@@ -23,20 +24,30 @@ outside Dream.
 2. Select **Providers**.
 3. Refresh the provider after installing or authenticating its CLI.
 4. Enable one or more of the detected models.
-5. In **Models**, choose defaults for new chats and for commit and pull-request drafting.
+5. Open **General**, scroll to **Models**, and choose defaults for new chats and for commit and
+   pull-request drafting.
 
 You must enable at least one model before opening your first project. A chat can use a different
 enabled model from the default after it starts.
 
-## Permissions
+## Use more than one provider
 
-Each chat offers two permission levels:
+Enable models from each provider you want to use. The chat composer lists enabled models, so you
+can choose a different provider for another conversation or change the model in an existing chat.
 
-- **Standard** keeps tool use within the agent's normal approval boundaries.
-- **Full access** allows broader agent actions and should only be used for work you trust.
+For example, keep your implementation chat on one provider and create a review chat using another.
+You do not need to change your global default each time. Follow [Models and defaults](/docs/models)
+to configure new-chat defaults, reasoning effort, speed, and the separate Git drafting model.
 
-Permission behavior ultimately depends on the selected CLI. Review the request shown by Dream and
-the provider before approving an action.
+## Understand provider differences
+
+The installed CLI handles authentication and executes agent work. Model lists, supported effort
+and speed options, attachment handling, usage information, and permission behavior can differ
+between providers.
+
+Dream exposes **Build** and **Plan** modes and **Standard** and **Full access** permissions per chat.
+Read [Agent modes and permissions](/docs/agent-modes) before choosing them. Claude chats with a
+resumable session also offer [Continue in terminal](/docs/terminals#continue-a-claude-chat-in-a-terminal).
 
 ## Troubleshooting detection
 
@@ -46,3 +57,10 @@ If a provider says **CLI not detected**:
 2. Finish any sign-in or first-run setup requested by the CLI.
 3. Return to **Settings → Providers** and refresh it.
 4. For OpenCode, run its authentication flow or configure `opencode.json` if no models appear.
+
+If the CLI was installed while Dream was open, restart Dream if refresh still cannot detect it.
+The command must be available to Dream's environment; a shell alias alone is not an installed CLI.
+
+If a CLI is detected but your desired model is missing, check the provider's account/configuration
+and refresh the list. If models are listed but unavailable in chats, enable them with their
+checkboxes. See [Troubleshooting](/docs/troubleshooting) for additional checks.

@@ -1,0 +1,61 @@
+---
+title: Using multiple chats
+description: Work with conversations side by side, arrange columns, and understand their shared project files.
+---
+
+Multi-chat displays several conversations beside each other in the same project. Each conversation
+keeps its own messages and model selection, so you can compare approaches or keep a review visible
+while working on an implementation.
+
+![Three conversations displayed side by side in a Dream project](/multi-chats.png)
+
+## Open chats side by side
+
+1. Open a project and the conversation you want to keep visible.
+2. Click **Enable multi-chat** in the left toolbar. Hover over the toolbar icons to see their names.
+3. Click **New chat** to add a conversation beside the open one.
+4. Choose a model in the new chat's composer and send a message.
+
+To bring back an existing conversation, open **Chat history** and select it. Selecting a chat already
+in the layout focuses that conversation rather than creating a duplicate.
+
+Multi-chat is a project setting. You can keep several conversations visible in one project and use a
+single conversation in another.
+
+## Arrange the workspace
+
+- **Resize:** Drag the divider between chat columns to adjust their widths.
+- **Reorder:** Drag a chat by its title area to move it beside another conversation.
+- **Close a column:** Click the **×** in its header. The conversation remains in Chat history.
+- **Return to one conversation:** Select the chat you want to keep in view, then click
+  **Disable multi-chat** in the left toolbar.
+
+The close control is available when there is another open chat to leave in view. Turning off
+multi-chat does not archive the other conversations; open them again from history when needed.
+
+## Example: implement, then review
+
+1. Start a chat named “Implement settings persistence” and ask it to fix the settings form.
+2. Enable multi-chat and create a second chat named “Review settings persistence.”
+3. Choose another enabled model in the review chat if you want a second model's assessment.
+4. Once the implementation is ready, ask the review chat to inspect the current changes and report
+   issues without editing files.
+5. Keep the review visible while asking the implementation chat to address its findings.
+6. Close the review column when you need more room. Reopen it from history to revisit the findings.
+
+The second chat does not automatically receive the first chat's messages. Give it the task context
+and [reference the relevant files](/docs/providing-context), or use
+[conversation branching](/docs/branching-chats) when you want to copy earlier messages.
+
+## Understand what is shared
+
+All chats in the same project work against the same project folder. File edits and Git branch
+changes are visible to the other chats, even though their conversation histories are separate.
+
+<Warning>
+  Two agents editing the same files can interfere with each other's work. Use separate
+  [Git worktrees](/docs/worktrees) when tasks need independent checkouts. Enabling multi-chat alone
+  does not isolate file changes.
+</Warning>
+
+For completed conversations, use [archiving](/docs/archived-chats) to keep history manageable.

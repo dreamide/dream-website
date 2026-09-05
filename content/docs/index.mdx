@@ -12,7 +12,7 @@ chats without switching tools.
     Choose the package for macOS, Windows, or Linux.
   </Card>
   <Card title="Connect a provider" icon="plug" href="/docs/providers">
-    Use Codex, Claude Code, OpenCode, or Cursor Agent.
+    Enable models from your installed coding-agent CLIs.
   </Card>
   <Card title="Open your first project" icon="folder-open" href="/docs/first-project">
     Add a folder and start a chat in its workspace.
@@ -26,11 +26,35 @@ chats without switching tools.
 
 - A multi-project workspace with persistent project tabs
 - Multiple side-by-side chats and chat branching
-- Support for Codex CLI, Claude Code CLI, OpenCode CLI, and Cursor Agent CLI
-- A file explorer, code search, file editing, integrated terminals, and browser previews
+- Support for Codex CLI, Claude Code CLI, OpenCode CLI, Cursor Agent CLI, and Grok Build CLI
+- A file explorer, file search and editing, integrated terminals, and browser previews
 - Git status, branch, diff, commit, push, pull request, and worktree workflows
 
 <Note>
   Dream runs coding agents through their installed CLIs. You need at least one supported CLI before
   you can begin a chat.
 </Note>
+
+## Common workflows
+
+| I want to… | Read |
+| --- | --- |
+| Keep implementation and review conversations open together | [Using multiple chats](/docs/multiple-chats) |
+| Find, archive, or recover an old conversation | [Working with chats](/docs/chats) and [Archived Chats](/docs/archived-chats) |
+| Choose a starting model and reasoning effort | [Models and defaults](/docs/models) |
+| Try another approach from an earlier message | [Branching conversations](/docs/branching-chats) |
+| Prepare a task to run later | [Saving prompts with Stash](/docs/stash) |
+| Give an agent files or a screenshot | [Providing context](/docs/providing-context) |
+| Work in an independent checkout | [Git worktrees](/docs/worktrees) |
+| Review and publish code changes | [Git workflows](/docs/git-workflows) |
+
+## Understand the workspace
+
+A **project** is a local folder with its own chats and tools. A **chat** is a conversation with its
+own model and settings. Multiple chats in one project share its files; a **worktree** gives a task a
+separate Git checkout.
+
+Use [Agent modes and permissions](/docs/agent-modes) to choose how an agent works, and
+[Context and usage](/docs/context-and-usage) to understand the information below the composer.
+The [settings reference](/docs/settings) lists app-wide preferences. If something is missing or
+fails to run, start with [Troubleshooting](/docs/troubleshooting).

@@ -1,0 +1,74 @@
+---
+title: Working with chats
+description: Start conversations, find previous work, rename chats, and manage your chat history.
+---
+
+A chat holds one conversation with a coding agent. Each chat belongs to a project and has its own
+model, permissions, and conversation history. Use separate chats for tasks you want to return to
+independently, such as fixing a bug and reviewing a feature.
+
+## Start a conversation
+
+1. Select the project tab you want to work in.
+2. Click **New chat** in the left toolbar.
+3. Check the model, agent mode, and permissions below the message box.
+4. Describe the task and submit your message.
+
+New chats use your [default model settings](/docs/models). An empty draft may be reused when you
+click **New chat** again before sending a message. Once you send a message, the conversation appears
+in the project's history.
+
+For a useful first message, give the agent an outcome and a way to check it. For example:
+
+> Find why the settings form loses its values after a refresh. Fix the cause and explain how you
+> verified the fix.
+
+Use [file references and attachments](/docs/providing-context) to point to relevant code or an image.
+
+## Return to a conversation
+
+1. Click **Chat history** in the left toolbar.
+2. Browse the current project's chats, with recently updated conversations first.
+3. Enter part of a chat's title in **Search history** to narrow the list.
+4. Select the conversation to open it.
+
+History search matches titles, so a descriptive name makes work easier to find. It does not search
+the text of every message. If a chat is missing, check the selected project and then
+[Archived Chats](/docs/archived-chats).
+
+When [multi-chat](/docs/multiple-chats) is enabled, selecting a conversation can bring it into the
+side-by-side layout. With multi-chat disabled, you view one conversation at a time.
+
+## Rename a chat
+
+Dream can generate a title after a conversation starts. To give it a more specific name, double-click
+the title at the top of the chat, type a name, and press **Enter**. Press **Escape** to cancel.
+You can also open the chat's **…** menu and choose **Edit**.
+
+Names such as “Fix settings persistence” and “Review settings tests” are easier to distinguish than
+several chats named after the same project.
+
+## Follow work in progress
+
+While an agent responds, the chat shows its progress and tool activity. Open tool details to inspect
+commands, file reads, or changes. When the agent supplies a task list, the task control beside the
+message box shows its progress.
+
+History and project tabs include status indicators for work that is processing or has finished;
+project tabs can also indicate that an agent is waiting for your answer. Return to the relevant chat
+to respond. Use the stop control in the composer to interrupt a response. Stopping a response does
+not undo file changes already made.
+
+## Close, archive, or delete?
+
+| Action | Result | How to return |
+| --- | --- | --- |
+| Close a chat column | Removes it from the multi-chat layout | Open it from Chat history |
+| Archive a chat | Removes it from active chat history | Restore it in Settings → Archived Chats |
+| Delete an archived chat | Permanently removes the chat and its messages from Dream | It cannot be restored through Dream |
+
+Closing a column is useful when you need more space. Archiving is useful when a task is finished.
+Neither action reverts the agent's changes to project files.
+
+To try a different approach while keeping the conversation so far, [branch from a message](/docs/branching-chats).
+To prepare a task for later, [save a prompt in Stash](/docs/stash).

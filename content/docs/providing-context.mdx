@@ -1,0 +1,53 @@
+---
+title: Providing context
+description: Reference project files and folders, attach files, and give an agent a clear task.
+---
+
+Give the agent an outcome, the relevant context, and any constraints before it starts work. A file
+reference helps it locate code; an attachment can provide additional material such as a screenshot.
+
+## Reference a project file or folder
+
+1. In a chat's message box, type **@** followed by part of a file or folder path.
+2. Choose a result from the list. Use **Arrow Up** and **Arrow Down** to move through results, then
+   **Enter** or **Tab** to select one.
+3. Add your instructions around the inserted reference.
+4. Submit the message.
+
+For example, reference the settings component and ask:
+
+> Explain how this form loads and saves preferences. Find why a refresh loses the selected value.
+
+Select a file when you know where the task belongs, or a folder when the agent needs to inspect
+several related files. The result list shows parent paths to help distinguish files with the same
+name. Press **Escape** to dismiss the list.
+
+References identify locations in the current project. They do not freeze file contents or attach a
+copy of an entire directory to the conversation.
+
+## Attach a file
+
+1. Click the **Attach file** control beside the message box.
+2. Choose the attachment action and select a file from your computer.
+3. Check that the attachment appears in the composer.
+4. Explain what the agent should do with it, then submit the message.
+
+For a screenshot, describe the expected behavior as well as what is wrong. The selected provider
+and model determine which attachment types they can use.
+
+## Remove context before sending
+
+Use an attachment's remove control to remove it from the composer. For an inline project reference,
+delete its mention from the message; the reference is removed with it. Check the remaining text so
+the request still makes sense.
+
+If **@** does not find a path, verify the active project and look for the file in
+[Files](/docs/files). Use its current path if it has been moved or renamed.
+
+## Give another chat enough context
+
+Separate chats do not automatically share their messages. When starting a review beside an
+implementation chat, identify what changed, which files matter, and what the reviewer should check.
+
+Use [branching](/docs/branching-chats) to carry earlier messages into another conversation, or
+[Stash](/docs/stash) to save a prompt with project references for later.

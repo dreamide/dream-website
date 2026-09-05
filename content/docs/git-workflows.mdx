@@ -3,34 +3,86 @@ title: Git workflows
 description: Review changes, work with branches, and use Git worktrees in Dream.
 ---
 
-Dream's Git tools are available when the project folder is a Git repository.
+Dream's Git tools are available when the project folder is a Git repository. Use **Changes** in the
+right toolbar to inspect files and **Open Git actions** to commit, push, or create a pull request.
 
-## Review and publish changes
+## Before you start
+
+For commits, your repository needs a Git author identity configured. For pushing, it needs a remote
+and credentials that can access it. Pull-request creation uses GitHub CLI, which must be installed
+and authenticated for the destination repository.
+
+You can type commit messages and PR text yourself. To generate them, enable a provider model and
+choose **Settings → General → Models → Default model for commits and PRs**.
+
+## Review changes
 
 1. Open **Changes** to inspect modified, added, and deleted files.
-2. Review each diff in unified or split view.
-3. Stage the changes that belong in the commit.
-4. Open the commit action and review the drafted commit message.
-5. Commit, then push the branch or open a pull request.
+2. Expand a file to review its diff.
+3. Choose **Unified diff** or **Split diff** in the panel's actions, and enable word wrap if useful.
+4. Use **Refresh changes** if work done outside Dream is not yet reflected.
 
-Dream can use the model selected in **Settings → Models → Default model for commits and PRs** to
-draft commit messages and pull-request text. Always review generated text before publishing it.
+For very large diffs, Dream may show **Diff too large to render**. Use **Render anyway** only when
+you want to load that larger view, or inspect the file in your editor or terminal.
 
-## Branches
+Use a file's **Revert file changes** action to discard unwanted working changes. **Revert all
+changes** applies more broadly; review its scope before confirming. Reverting code is separate from
+archiving the chat that produced it.
 
-Use the branch switcher to move between local branches or create and check out a new branch. Refresh
-the branch list if changes made outside Dream do not appear immediately.
+## Commit your work
 
-## Continue a chat in a worktree
+1. Open **Git actions → Commit**.
+2. Review the changes included in the dialog.
+3. Check **Include unstaged**. It is enabled by default and includes unstaged changes in the commit.
+4. Enter a commit message or use **Auto generate message**, then edit the result as needed.
+5. Choose **Commit**, or **Commit & push** if you are ready to publish the commit to the remote.
 
-When branching a chat from a message, choose **New worktree** to continue the conversation in a
-separate Git worktree created from a base ref. This is useful when you want the new approach to edit
-an isolated checkout.
+To commit only a selected subset, stage those files using Git in a terminal or external editor and
+turn **Include unstaged** off. The Changes panel does not provide individual staging controls.
+
+Dream rejects commits when there are staged changes outside the active project folder. Commit
+those separately before continuing with this action.
 
 <Warning>
-  A new worktree represents a committed Git ref. Uncommitted changes in the current workspace are
-  not copied into it.
+  Review the included files as well as the message. With Include unstaged enabled, a commit can
+  contain work from several chats sharing this checkout.
 </Warning>
 
-App-managed worktrees appear with your projects. Remove one from Dream after you no longer need the
-isolated checkout and have preserved any work you want to keep.
+## Push a branch
+
+Open **Git actions → Push**, review the outgoing commits and destination, and choose **Push**.
+The destination depends on the branch's upstream and repository remote configuration.
+
+If pushing fails, inspect the error and confirm your remote access. A successful local commit
+remains committed even if a following push fails; check the branch state before repeating a
+combined action.
+
+## Create a pull request
+
+1. Work on a feature branch whose name differs from the PR's base branch.
+2. Open **Git actions → Create PR**.
+3. Review the source and base branches and the proposed changes.
+4. Enter a title and description, or use **Auto generate PR details** and review the generated text.
+5. Under **Next steps**, select the action that matches the branch's state.
+6. Review **Draft** and **Open PR page**, then submit.
+
+| Next step | What happens |
+| --- | --- |
+| Create PR | Creates a PR for work already pushed |
+| Push & create PR | Pushes commits before creating the PR |
+| Commit, push & create PR | Commits working changes, pushes, and creates the PR |
+
+The dialog starts with **Draft** selected. Clear it when the PR is ready for review. PR creation
+requires a branch rather than a detached HEAD, and source and base cannot be the same branch.
+
+If a combined action fails, earlier steps may already have completed. Check for the commit, remote
+branch, or PR before retrying.
+
+## Switch or create branches
+
+Open the branch switcher beneath the chat, search local branches, and select one to check it out.
+Use **Create and checkout new branch…** to name and create a branch. Refresh the list if a branch
+created outside Dream is missing.
+
+Changing branches changes the files used by every chat in that project. Review unfinished work
+before switching. For parallel tasks with independent checkouts, use [Git worktrees](/docs/worktrees).

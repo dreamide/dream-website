@@ -1,0 +1,62 @@
+---
+title: Files and search
+description: Browse project files, search names and file contents, edit code, and handle unsaved changes.
+---
+
+Click **Files** in the right toolbar to browse the active project's folder. Open a file from the
+tree to inspect it alongside your chat. File tabs let you move between several open files.
+
+## Find a file
+
+1. Open **Files**.
+2. Enter part of a file name or path in **Search files** above the tree.
+3. Select a result to open it.
+4. Clear the search to return to browsing the tree.
+
+Use **Refresh files** in the file actions when changes made outside Dream are not reflected in the
+tree. Searching for a file locates its path; use the editor's search to find text inside that file.
+
+## Search and replace within a file
+
+1. Open the file and click **Search current file** in the editor toolbar.
+2. Enter the text in **Find**.
+3. Use **Next match** or **Previous match** to move through results.
+4. Enable **Match case**, **Match whole word**, or **Use regular expression** if needed.
+
+The search panel also offers replacement controls. Review the matches before using **Replace all**,
+then save the file to write the changes to disk. Replacement affects the current file.
+
+## Edit and save
+
+Edit a writable text file in the code editor. Unsaved changes are marked in its tab, and the panel
+can show how many files have unsaved drafts.
+
+Click **Save** in the editor toolbar, or press **Command+S** on macOS or **Ctrl+S** on Windows/Linux
+while the editor is focused. Save each edited file before asking an agent or terminal command to
+use the new contents; those tools read files on disk.
+
+Switching file tabs lets you keep drafts while inspecting other files. Use **Discard changes** to
+abandon a local draft. This is separate from reverting changes through Git.
+
+## Handle a file changed outside the editor
+
+An agent, terminal command, or external editor may change the same file while you have a draft.
+Dream checks the disk contents when saving and reports a conflict rather than silently overwriting
+that newer version.
+
+1. Preserve any draft text you want to keep.
+2. Read the conflict message.
+3. Use **Reload from disk** to load the current file.
+4. Reapply the changes you still need, then save again.
+
+<Warning>
+  Reload from disk replaces your local draft. Copy any unsaved work you need before using it.
+</Warning>
+
+## Adjust the view
+
+Use **Enable word wrap** for long lines. Resize the file tree and editor panes to give the content
+more room. Use available **Open in** actions to continue in an external editor.
+
+After saving, open [Changes](/docs/git-workflows) to review the Git diff. To ask an agent about a
+file, [reference it with @](/docs/providing-context) in the chat composer.

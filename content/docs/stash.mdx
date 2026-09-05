@@ -1,0 +1,55 @@
+---
+title: Saving prompts with Stash
+description: Prepare tasks for later, edit saved prompts, and submit them into new conversations.
+---
+
+Stash holds prompts you want to run later in the current project. Each saved item includes its text,
+project references, model, effort, speed, agent mode, and permissions.
+
+Use it to capture a follow-up task while another chat is busy. For example, save “Review the error
+states in the settings form” while finishing the implementation.
+
+## Save a task for later
+
+1. Select the project that the task belongs to.
+2. Click **Stash**, the inbox icon at the bottom of the right toolbar.
+3. Write the task in the new-prompt composer at the bottom of the panel.
+4. Add project references with **@** and choose the model, mode, and permissions.
+5. Submit the new prompt to add it to the saved list.
+
+Submitting from this bottom composer saves the task; it does not start an agent response. A saved
+item appears above it in the Stash panel. Switch projects to see that project's separate stash.
+
+## Edit a saved prompt
+
+Edit the text directly in its saved item and adjust the controls beneath it. Check the model and
+permissions again before running it, especially if you have changed your default models since
+saving the task. Saved items retain their own selections.
+
+Project references point to paths. They do not preserve a snapshot of the referenced files. The
+agent will work with the project as it exists when you run the task.
+
+<Note>
+  Use project references for context you want to keep in Stash. File attachments selected through
+  the attachment picker are not retained in saved items; attach those files in a regular chat.
+</Note>
+
+## Run a saved task
+
+1. Find the saved item you want to run.
+2. Review its text, references, model, and permissions.
+3. Click that item's submit control.
+
+Dream creates a new chat with the saved settings and submits the prompt. If multi-chat is enabled,
+the conversation opens beside the current chats. Otherwise it becomes the visible chat.
+
+The item is removed from Stash when it is handed to the new chat. If the response fails, inspect the
+new conversation for the error rather than expecting the item to remain in Stash.
+
+## Remove a saved task
+
+Use **Delete stashed chat** on the saved item to remove it without starting a conversation. This
+removes the saved prompt, not files in the project.
+
+Stash stores future tasks. To keep a completed conversation out of active history, use
+[Archived Chats](/docs/archived-chats). To isolate code changes, use [Git worktrees](/docs/worktrees).

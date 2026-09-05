@@ -1,0 +1,54 @@
+---
+title: Browser previews
+description: Preview a local application, manage browser tabs, and inspect pages inside Dream.
+---
+
+Dream's browser opens web pages alongside your project and chats. Use it to inspect a local
+application while an agent works on its code.
+
+## Preview your application
+
+1. Start the application using its normal project command in a [terminal](/docs/terminals).
+2. Copy the local URL printed by the application, including its port.
+3. Click **Browser** in the right toolbar.
+4. Enter the URL in the address bar and press **Enter**.
+
+The page opens inside the workspace. If the application uses a different port on its next run,
+update the address accordingly. Dream's browser opens the URL; it does not start the application.
+
+## Use browser tabs
+
+Click **New tab** to open another page and select a tab to switch to it. This is useful for keeping
+two routes visible in your browsing history without replacing one with the other.
+
+Use **Go back**, **Go forward**, and **Refresh browser** to navigate. Close an individual tab using
+its close control. Hiding the browser panel lets you return to its open tabs later.
+
+## Inspect and share what you see
+
+The browser actions include:
+
+| Action | Use it to… |
+| --- | --- |
+| Open DevTools | Inspect the page's console, elements, and network activity |
+| Take screenshot | Capture the page for a bug report or further discussion |
+| Zoom in / Zoom out / Reset zoom | Adjust the preview's display scale |
+| Open in system browser | View the current URL in your regular browser |
+
+Use **Expand browser** when you need more room and **Collapse browser** to return to the smaller
+view. To give an agent a screenshot, use the chat's [attachment control](/docs/providing-context).
+
+## Reload and clear site data
+
+Try a normal refresh after changing application code. If the page still appears stale, use
+**Force reload** from the browser actions.
+
+**Clear cache** removes cached browser data. **Clear cookies** clears cookies and can sign you out
+of sites in the embedded browser. Use these actions deliberately when investigating caching or
+authentication behavior.
+
+## If a local page does not load
+
+Check that the application is still running, confirm the full URL and port in its terminal output,
+and inspect any server error there. Try the same address in your system browser to narrow down
+whether the issue belongs to the application or the embedded preview.

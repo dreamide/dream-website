@@ -1,38 +1,67 @@
 ---
-title: The workspace
-description: Understand Dream's project tabs, chats, and built-in development tools.
+title: Projects and workspace
+description: Manage project tabs, arrange panels, and move between chats and development tools.
 ---
 
 Each Dream project has its own workspace. Project tabs let you move between repositories while
 keeping each project's open chats and tools together.
 
-## Chats
+## Add and switch projects
 
-- Start independent chats for different tasks in the same project.
-- Enable multi-chat to view multiple conversations side by side.
-- Branch a conversation from an earlier message to explore another approach without replacing the
-  original chat.
-- Archive inactive chats automatically, or manage archived chats from settings.
-- Stash project prompts and restore them later.
+1. Click the **+** beside the project tabs, or use **Open Folder** on the getting-started screen.
+2. Choose the folder you want to work in.
+3. Select its tab to make it the active project.
 
-## Files
+The active project determines which chats, files, terminals, browser tabs, and stash items you see.
+Check the selected tab before sending a task or running a command. Drag project tabs to reorder them
+when you want related projects next to each other.
 
-The **Files** panel provides a project tree, project-wide file search, and file editing. Opened files
-can keep their drafts and word-wrap preferences. Use file actions to open a file in an external
-editor when needed.
+## Rename or open a project externally
 
-## Terminal
+Open the project's **…** menu and choose **Edit** to change its display name. Renaming a project in
+Dream does not rename its folder on disk. Use the menu's **Open in** choices to open it in an
+available external editor.
 
-Dream includes project terminals alongside your chats. Terminal sessions stay associated with the
-project, and the terminal shell can be configured in **Settings → General**.
+## Close and reopen a project
 
-## Browser
+1. Open the project's **…** menu and choose **Close**.
+2. When you want to return, open the getting-started screen through the project **+** button.
+3. Find the project in **Recently closed**, using its search field if needed.
+4. Select the project to reopen it.
 
-Use browser tabs to preview a local application or inspect another URL without leaving the
-workspace. The browser includes navigation, reload, zoom, screenshots, DevTools, cache and cookie
-controls, and an action to open the current page in your system browser.
+Closing a project removes its open tab; it does not delete its folder. Dream restores saved project
+context such as chats and open tools when possible. Do not use a closed project as a way to keep a
+terminal process running.
 
-## Changes
+## Find the workspace controls
 
-The **Changes** panel shows the repository's Git status and diffs. Switch between unified and split
-diffs, inspect files, stage work, or revert selected changes before committing.
+The left toolbar contains **Chat history**, **New chat**, and **Enable multi-chat**. Hover over an
+icon to see its label. The chat composer holds the selected model, effort and speed when supported,
+agent mode, and permissions.
+
+The right toolbar opens project tools:
+
+| Tool | What you can do |
+| --- | --- |
+| [Changes](/docs/git-workflows) | Review Git diffs and revert file changes |
+| [Files](/docs/files) | Browse files, search paths, and edit file contents |
+| [Browser](/docs/browser) | Preview URLs and inspect web pages |
+| [Terminal](/docs/terminals) | Run project commands in separate sessions |
+| [Git actions](/docs/git-workflows) | Commit, push, and create pull requests |
+| [Stash](/docs/stash) | Save prompts and run them later |
+
+Git controls appear for repository projects. The branch control beneath the chat shows the active
+branch; use it to switch branches or [create a worktree](/docs/worktrees).
+
+## Arrange chats and panels
+
+Click a tool to open its panel. Use the panel's close or collapse control when you need more room
+for chats, and drag panel dividers to resize the layout. Closing a tool panel is different from
+closing its individual terminal sessions or browser tabs.
+
+Enable [multi-chat](/docs/multiple-chats) to arrange conversations in resizable columns. Each chat has
+its own conversation history, while all chats in the project use the same files. Use worktrees for
+independent checkouts.
+
+For app-wide appearance, language, and model preferences, open [Settings](/docs/settings). To find
+older conversations, use [Chat history](/docs/chats) or [Archived Chats](/docs/archived-chats).

@@ -1,0 +1,64 @@
+---
+title: Archiving and restoring chats
+description: Archive finished conversations, restore previous work, and clean up old chat history.
+---
+
+Archive a conversation when you want to remove it from active history while keeping the option to
+return to it. Archived chats are managed centrally in **Settings → Archived Chats**.
+
+## Archive a conversation
+
+1. Open the chat you want to archive.
+2. Open its **…** menu in the chat header.
+3. Select **Archive**.
+
+You can also use the archive action beside a conversation in **Chat history**. The chat disappears
+from active history and from the open layout. Its messages remain available for restoration.
+
+Archiving does not undo code changes, remove the project folder, or create a Git stash. To remove
+only a column from view, [close the column](/docs/multiple-chats) instead.
+
+## Find and restore archived chats
+
+1. Open **Settings** using the gear icon at the top of Dream.
+2. Select **Archived Chats**.
+3. Find the conversation in the table. Each row shows its title, project, and archive date.
+4. Select the checkbox beside the chat, then click **Restore**.
+5. Return to its project and open **Chat history** to select the restored conversation.
+
+You can select several rows and restore them together. The checkbox in the table header selects all
+archived chats, including chats from other projects. Check the **Project** column before applying a
+bulk action.
+
+Restoring makes a chat available in history; it does not automatically open that chat or its project.
+If its project is closed, reopen it from **Recently closed** on the getting-started screen.
+
+## Archive older conversations together
+
+1. In **Settings → Archived Chats**, find **Archive chats after**.
+2. Enter a positive number of days. The default is **30**.
+3. Click **Archive now**.
+
+Dream archives conversations whose last activity is at least that many days old. Chats that are
+currently responding or generating a title are skipped. This action applies across projects.
+
+The day value is a cutoff for **Archive now**. Changing it alone does not schedule automatic
+archiving. Restoring a chat also does not change its last-activity date, so an old restored chat may
+qualify again the next time you run **Archive now**.
+
+## Permanently delete archived chats
+
+1. Open **Settings → Archived Chats**.
+2. Select the conversations you no longer need.
+3. Check the selected rows and click **Delete**.
+
+<Warning>
+  Delete permanently removes the selected chats and their messages from Dream. The action takes
+  effect without another confirmation dialog, and those chats cannot be restored through Dream.
+</Warning>
+
+Deletion affects Dream's chat history. It does not revert changes in the project or delete the
+project's files.
+
+If a conversation is missing from both active and archived history, see
+[troubleshooting missing chats](/docs/troubleshooting#i-cannot-find-a-chat).

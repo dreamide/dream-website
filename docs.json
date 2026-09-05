@@ -82,8 +82,29 @@
         ]
       },
       {
-        "group": "Using Dream",
-        "pages": ["workspace", "git-workflows"]
+        "group": "Chats",
+        "pages": [
+          "chats",
+          "multiple-chats",
+          "providing-context",
+          "agent-modes",
+          "branching-chats",
+          "stash",
+          "archived-chats",
+          "context-and-usage"
+        ]
+      },
+      {
+        "group": "Workspace tools",
+        "pages": ["workspace", "files", "terminals", "browser"]
+      },
+      {
+        "group": "Git",
+        "pages": ["git-workflows", "worktrees"]
+      },
+      {
+        "group": "Configuration and help",
+        "pages": ["models", "settings", "troubleshooting"]
       }
     ]
   }

@@ -1,0 +1,55 @@
+---
+title: Terminals
+description: Run project commands, manage terminal sessions, and continue a Claude conversation in the terminal.
+---
+
+The integrated terminal runs commands in your project without leaving Dream. Click **Terminal** in
+the right toolbar to open it. A normal project terminal starts in the project folder.
+
+## Run commands alongside a chat
+
+Use a terminal to inspect the project, run tests, or start its local application using the commands
+documented by that project. The terminal and agent chats work with the same files in this workspace.
+
+For a browser preview, start the project's application, note the URL it prints, and open that URL
+in Dream's [Browser](/docs/browser). Opening Browser does not start a server automatically.
+
+## Manage terminal sessions
+
+1. Open **Terminal**.
+2. Click **Open another terminal**, the **+** control, to create another session.
+3. Select a terminal tab to switch sessions.
+4. Use a terminal's close control when you are finished with it.
+
+Use separate sessions for a long-running application and occasional commands such as tests.
+Hiding the terminal panel is different from closing a terminal session. Reopen the panel to return
+to its existing sessions; closing a session ends its terminal process.
+
+When copying text, select it first. **Command+C** on macOS or **Ctrl+C** on Windows/Linux copies
+selected terminal text. Without a selection, the terminal can pass Ctrl+C through to interrupt
+the foreground command.
+
+## Choose a shell
+
+1. Open **Settings → General**.
+2. Find **Terminal** and choose an available shell from its selector.
+3. Open a new terminal session to use the selected shell.
+
+Existing sessions keep the shell they were started with. If a shell or command is unavailable,
+verify that it is installed and works in your system terminal.
+
+## Continue a Claude chat in a terminal
+
+For a Claude conversation with an established resumable session:
+
+1. Wait for the current response to finish.
+2. Open the chat header's **…** menu.
+3. Choose **Continue in terminal**.
+
+Dream opens a terminal named **Claude** in that session's working directory and runs the CLI's
+resume command. This action is specific to Claude sessions; it is not a general export action for
+every provider.
+
+If the option is missing, check that the chat uses Claude and has started a provider session.
+Changing its model or speed can reset that session. If continuation fails, verify that the original
+working directory still exists and the Claude CLI is available.

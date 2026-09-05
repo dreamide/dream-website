@@ -1,0 +1,55 @@
+---
+title: Branching conversations
+description: Continue from an earlier message in the same workspace or an isolated Git worktree.
+---
+
+Branch a chat when you want to explore another approach using the conversation so far. Dream copies
+the messages through the selected message into a new chat and preserves the original conversation.
+Messages after that point are not included in the new chat.
+
+## Continue in the same workspace
+
+1. Open the source conversation and wait for its response to finish.
+2. Find the message you want to branch from.
+3. Use its **Continue from this message…** action.
+4. Select **This workspace** under **Branch chat**.
+5. Send a follow-up in the new conversation describing the alternative you want to try.
+
+The new chat starts with the source chat's model and mode settings. In multi-chat, it opens beside
+the source; in a single-chat layout, it becomes the visible conversation.
+
+For example, branch after the agent explains a bug and ask the new chat to compare a smaller fix.
+Both conversations can use the current project files.
+
+<Note>
+  Branching copies conversation history. It does not restore the filesystem to the state it had
+  when the selected message was sent. Both chats in this workspace still share the same files.
+</Note>
+
+## Continue in a new worktree
+
+For an independent checkout, use **Continue from this message… → New worktree**. This option requires
+a Git repository. Dream creates a worktree project and a new chat containing the copied history.
+
+This shortcut uses the current branch as its base and generates a branch name from the chat title.
+It does not prompt you to choose a custom base ref. To choose a base ref and branch name yourself,
+[create a worktree from the branch switcher](/docs/worktrees#create-a-worktree).
+
+<Warning>
+  A new worktree starts from committed Git history. It does not include uncommitted changes or
+  recreate the exact file state at the selected message. Save and commit any changes you need in
+  the new checkout before branching into a worktree.
+</Warning>
+
+## Choose the right kind of branch
+
+| You want to… | Use |
+| --- | --- |
+| Ask a different question about the same current code | This workspace |
+| Compare reasoning while keeping the earlier discussion | This workspace |
+| Let another agent edit an independent checkout | New worktree |
+| Start a task without copying any messages | New chat |
+
+Branching is unavailable while a response is processing. If the worktree option is unavailable,
+check that the project is inside a Git repository. See [Worktrees](/docs/worktrees) for opening and
+removing the resulting project.

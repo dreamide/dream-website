@@ -1,0 +1,57 @@
+---
+title: Context and usage
+description: Read context usage, understand compaction, and adjust how agent activity is displayed.
+---
+
+Dream shows information about the current conversation and, where available, the selected
+provider's usage limits. These answer different questions: how much context a chat is using, and
+how much of a provider's allowance has been used.
+
+## Check conversation context
+
+Use the context indicator beneath the message box to inspect the conversation's context usage.
+The context window is the amount of material the model can consider for a response, including
+conversation content and tool results.
+
+Dream uses usage information supplied by the provider when available and may estimate usage from
+messages otherwise. Treat the indicator as guidance rather than an exact billing measurement.
+Changing models can change the available context window.
+
+## Understand compaction
+
+Some providers compact long conversations by summarizing older context. When the provider reports
+this activity, Dream displays **Compacting context…** or **Context compacted** in the conversation.
+
+Compaction helps the agent continue a long task, but a summary may not retain every detail. Restate
+critical requirements and reference the current files if the conversation has moved far from the
+original request. Dream's displayed transcript and the context used by the provider are not
+necessarily identical.
+
+Compaction behavior is controlled by the provider integration. It is not the same as archiving a
+chat, and it does not free up a provider's account usage allowance.
+
+## Check provider usage
+
+1. Open a chat using the provider you want to inspect.
+2. Click the usage gauge beneath the message box.
+3. Review the available usage information and reset times.
+
+The popover is labeled **Plan usage** for most providers and **Usage stats** for OpenCode.
+Availability and detail vary by provider. An unavailable reading does not by itself mean the chat
+cannot run; check any error on the actual response and the provider's own account information.
+
+## Make tool activity easier to read
+
+Open **Settings → General** and find **Chat messages**:
+
+| Setting | Effect |
+| --- | --- |
+| Show reasoning summaries | Displays reasoning summaries supplied by the model |
+| Group tool calls | Groups tool activity into compact count chips |
+| Expand tool calls | Shows tool-call details expanded by default |
+
+These settings change presentation. They do not change the reasoning effort requested from the
+model; configure that in [Models and defaults](/docs/models).
+
+For a new task with a different goal, start a [new chat](/docs/chats). To retain a specific portion
+of a conversation while exploring an alternative, [branch from a message](/docs/branching-chats).

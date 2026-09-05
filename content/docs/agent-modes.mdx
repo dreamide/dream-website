@@ -1,0 +1,53 @@
+---
+title: Agent modes and permissions
+description: Choose Build or Plan, configure tool permissions, and respond to agent requests.
+---
+
+Each chat has an agent mode and a permission selection beneath its message box. Set both before
+sending a task. New chats start in **Build** mode with **Full access** permissions.
+
+## Choose an agent mode
+
+Click the agent-mode control below the message box and select:
+
+| Mode | When to use it |
+| --- | --- |
+| Build | Ask the agent to carry out an implementation or other task |
+| Plan | Ask the agent to investigate and work out an approach before implementation |
+
+A typical workflow is to start in **Plan**, ask the agent to explain its proposed changes, and then
+switch to **Build** before asking it to implement the agreed approach.
+
+The selected CLI determines how the mode is enforced. Mode and permissions are separate controls;
+selecting Plan is not a universal guarantee that every provider runs in a read-only sandbox.
+
+## Choose permissions
+
+1. Open the shield control beneath the message box. Its tooltip is **Permissions**.
+2. Select **Standard** or **Full access**.
+3. Check the agent mode and submit your task.
+
+**Standard** uses a more restricted permission configuration. In Build mode, some providers can
+still accept file edits automatically. Standard does not mean every file change requires a click.
+
+**Full access** gives the agent broader permission to act without approval prompts. Use it when
+that scope is appropriate for the task and project.
+
+<Note>
+  Permissions are interpreted by the provider CLI. An agent mode, a prompt asking for review only,
+  and a filesystem permission boundary serve different purposes. Check the selected permissions
+  when moving from planning to implementation.
+</Note>
+
+## Respond to questions and approvals
+
+An agent may ask you to clarify a requirement, choose an option, or approve an action. Read the
+request in the conversation and respond using the controls it provides. A project tab can indicate
+that it is waiting for your answer, which is useful when you have several projects open.
+
+If the request requires changing the task, give the agent the revised instruction in that chat.
+Use the stop control to interrupt a response when necessary. Stopping does not roll back edits or
+commands that already completed; inspect [Changes](/docs/git-workflows) afterward.
+
+For parallel tasks that need separate files, use [worktrees](/docs/worktrees). Permission settings
+do not give two chats in the same folder independent checkouts.

@@ -15,14 +15,27 @@ Once at least one provider model is enabled, you can add a local folder to Dream
     other enabled provider and model.
   </Step>
   <Step title="Choose permissions">
-    Keep **Standard** permissions for routine work, or deliberately select **Full access** when the
-    task requires broader access.
+    New chats start with **Full access**. Open the shield control below the message box and select
+    **Standard** if you want a more restricted permission configuration. Check the **Build** or
+    **Plan** mode as well. See [Agent modes and permissions](/docs/agent-modes).
   </Step>
   <Step title="Send a prompt">
-    Describe the outcome you want. Dream keeps the conversation and the project's tools together in
-    the same workspace.
+    Describe the outcome you want and how it should be checked. For example: “Explain how this
+    project starts, identify its test command, and suggest where to add a settings page.” Dream
+    keeps the conversation and the project's tools together in the same workspace.
   </Step>
 </Steps>
+
+## Inspect the result
+
+Read the response and open tool details when you want to inspect what the agent did. If it asks a
+question, answer in the same conversation. If it changes files, open **Changes** in the right
+toolbar to review the diff. Use **Files** to inspect code or **Terminal** to run the project's checks.
+
+For tasks that need specific code or a screenshot, [add context](/docs/providing-context) before
+sending the request. You can change the chat's model using the selector beneath its message box.
+To change the starting model for future chats, use
+**Settings → General → Models → Default model for new chats**.
 
 ## Return to a project
 
@@ -32,5 +45,10 @@ tools when possible.
 
 ## Start another chat
 
-Use **New chat** to begin a separate conversation for the same project. Enable multi-chat when you
-want to view and work with multiple conversations side by side.
+Use **New chat** to begin a separate conversation for the same project. Enable
+[multi-chat](/docs/multiple-chats) when you want conversations side by side. Each has its own messages,
+but chats in the same project share its files.
+
+Open [Chat history](/docs/chats) to return to earlier work. When a task is finished,
+[archive the conversation](/docs/archived-chats) to remove it from active history while keeping it
+available to restore.

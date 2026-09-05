@@ -1,0 +1,71 @@
+---
+title: Models and defaults
+description: Enable models, choose defaults for chats and Git drafting, and change a conversation's model.
+---
+
+Dream separates the models available to use from the model selected for a particular task.
+**Settings → Providers** controls availability. **Settings → General**, in the **Models** group,
+controls defaults. The selector beneath each chat's message box controls that conversation.
+
+## Enable models
+
+1. Install and authenticate a [supported provider CLI](/docs/providers).
+2. Open **Settings → Providers**.
+3. Refresh the provider to detect its CLI and available models.
+4. Enable the models you want to appear in Dream's selectors.
+
+You can enable models from several providers. If a model is missing from a selector, check that it
+is enabled here first. Refreshing detects availability; it is separate from choosing your default.
+
+## Set the default for new chats
+
+1. Open **Settings → General** and scroll to **Models**.
+2. Under **Default model for new chats**, select an enabled model.
+3. Choose **Effort** and **Speed** if the selected model offers those controls.
+4. Return to a project and start a new chat to use the selection.
+
+The default applies to newly created chats across projects. Existing conversations keep their own
+model settings. If **New chat** brings back an empty draft you already opened, check its composer
+and change the model there if necessary.
+
+## Set a model for commit and PR drafting
+
+In the same **Models** group, choose **Default model for commits and PRs**. Dream uses this selection
+when drafting commit messages and pull-request text.
+
+For example, you can use one model for implementation chats and another for Git summaries. Changing
+the Git drafting model does not change your chat models. See [Git workflows](/docs/git-workflows)
+for reviewing and editing generated text before publishing it.
+
+## Change a chat's model
+
+1. Open the conversation and wait for its current response to finish.
+2. Click the model name beneath the message box.
+3. Select an enabled model, including a model from another provider if needed.
+4. Check the effort and speed controls before sending the next message.
+
+The conversation remains visible in Dream. Changing the model resets its effort and speed
+selections, so choose them again if you need specific values. A model change also starts a new
+provider session for subsequent work; it does not change messages already generated.
+
+## Effort and speed
+
+| Control | Purpose |
+| --- | --- |
+| Effort | Selects a reasoning-effort level offered by that model |
+| Speed | Selects a supported speed tier, such as Standard or Fast |
+
+These controls appear only when the selected model supports them. Available effort levels vary by
+model. Speed tiers can have different usage implications; use the option descriptions and your
+provider's usage information when choosing a tier.
+
+Default effort and speed apply to new chats. Changing either in a chat affects that conversation.
+Changing the speed also resets its provider session for subsequent work.
+
+## If a default becomes unavailable
+
+Disabling a selected default or refreshing a changed model list can cause Dream to select another
+enabled model. Recheck both default selectors after changing your enabled models. If no models are
+enabled, enable one before starting a new chat.
+
+For missing controls or detection failures, see [Troubleshooting](/docs/troubleshooting).

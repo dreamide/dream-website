@@ -1,0 +1,63 @@
+---
+title: Git worktrees
+description: Create independent checkouts for parallel tasks and remove completed worktree projects.
+---
+
+A Git worktree gives a task a separate working directory in the same repository. Dream opens it as
+another project, with its own chats and tools. Use worktrees when agents need to edit independently
+without changing each other's checkout.
+
+## Create a worktree
+
+Start from a project that is a Git repository with a committed base ref.
+
+1. Open the branch switcher beneath the chat.
+2. Choose **New worktree**.
+3. Enter a name for the new **Branch**, such as `fix-settings-persistence`.
+4. Set **Base ref** to the commit or branch you want to start from, such as `main`.
+5. Click **Create worktree**.
+
+Dream creates the checkout and opens its project. Check the worktree branch shown beneath the chat
+before sending the task. Commands and agent edits in this project use the new directory.
+
+The base ref must exist in your local repository. If you need newer remote commits, fetch them
+through your normal Git workflow before creating the worktree.
+
+## Carry a conversation into a worktree
+
+From a message, choose **Continue from this message… → New worktree**. Dream copies the conversation
+through that message, uses the current branch as the base, and generates a new branch name.
+
+Use this shortcut when you want the agent to continue with the earlier discussion. Use the branch
+switcher workflow when you need to choose a custom base and branch name. See
+[Branching conversations](/docs/branching-chats) for the difference between copying messages and
+copying files.
+
+<Warning>
+  Worktrees start from committed Git history. Uncommitted changes in the original project are not
+  copied. A chat branched from an earlier message does not recreate the filesystem at that point
+  in the conversation.
+</Warning>
+
+## Move between checkouts
+
+Use the project tabs to switch between the original checkout and the worktree project. App-managed
+worktrees also appear in the project's **Chat history** panel, where you can open them again.
+
+Review, commit, and push changes from the project where they were made. Creating a worktree does
+not merge its changes into the original branch. Bring finished work back through your usual Git
+merge or pull-request workflow.
+
+## Remove a completed worktree
+
+1. Preserve the work you need by committing it and, if appropriate, pushing it or opening a PR.
+2. Stop processes using the worktree, such as a local application running in its terminal.
+3. Open the parent project's **Chat history** panel and find the worktree.
+4. Use its remove action and review the confirmation.
+5. Confirm **Remove worktree** when you no longer need that checkout.
+
+Removal deletes the worktree directory from disk. Git refuses removal when it contains uncommitted
+changes. Return to that project and review the changes before trying again.
+
+Closing a project tab only removes it from the open workspace; removing a worktree deletes its
+checkout. For commit and PR steps, see [Git workflows](/docs/git-workflows).
