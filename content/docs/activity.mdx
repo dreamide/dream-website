@@ -1,0 +1,60 @@
+---
+title: Activity panel
+description: Track the status of every open chat across your projects and jump to a chat that needs your attention.
+---
+
+The **Activity** panel lists every open chat across all of your projects with its current status. Use
+it to see which agents are working, which have finished, and which are waiting for an answer, without
+clicking through each project tab.
+
+## Open the Activity panel
+
+1. Click **Activity**, the star icon at the left end of the header.
+2. Review the list. The most recently active chats appear first.
+3. Select an entry to switch to that chat's project and bring the chat into view.
+4. Click **Activity** again, or double-click the panel's edge, to close it.
+
+Drag the panel's edge to resize it. The panel starts closed each time Dream launches, and the
+current chat is highlighted while the panel is open.
+
+## Read an entry
+
+Each entry shows the chat title and a relative time such as **5 min ago**. Hover over the time to see
+the full date. Beneath the title, the entry lists the project name, the branch when the project is a
+[worktree](/docs/worktrees), and the chat's model, effort, and speed.
+
+A status badge summarizes the chat's last activity:
+
+| Status | Meaning |
+| --- | --- |
+| Working | The agent is responding |
+| Needs input | The agent asked a question or is waiting for an approval |
+| Completed | The last response finished normally |
+| Failed | The last response ended with an error |
+| Interrupted | The response was stopped or disconnected, or was still running when Dream last closed |
+| Idle | The chat is open but has no recorded activity |
+
+For **Needs input**, the entry shows the agent's question when it asked one. For **Failed**, it shows
+the error message. Hover over a truncated line to read the full text.
+
+The colored dot beside each entry uses the same colors as project tabs and Chat history: blue while
+working, amber when it needs attention, green when finished, and red on failure. A green indicator
+clears once you view that chat.
+
+## What the list includes
+
+The panel lists open chats only. Closing a chat column, archiving a chat, or deleting a chat removes
+its entry. There are no dismiss or filter controls; to remove an entry, close the chat.
+
+Statuses are stored locally and survive restarts. Because a response cannot continue across a
+restart, chats that were **Working** or **Needs input** appear as **Interrupted** after Dream
+relaunches. Open the chat to check its last message and send a follow-up if needed.
+
+<Note>
+  Project tabs summarize the same information per project: an amber dot means a chat in that
+  project is awaiting your answer, and a green dot means a background project finished processing.
+  Use the Activity panel when you need the per-chat detail.
+</Note>
+
+To respond to an agent's question, see [Agent modes and permissions](/docs/agent-modes). To review
+what a completed reply changed, see [Reviewing and restoring changes](/docs/checkpoints).

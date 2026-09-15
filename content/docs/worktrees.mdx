@@ -1,6 +1,6 @@
 ---
 title: Git worktrees
-description: Create independent checkouts for parallel tasks and remove completed worktree projects.
+description: Create independent checkouts for parallel tasks, then merge, publish, or remove them when the work is done.
 ---
 
 A Git worktree gives a task a separate working directory in the same repository. Dream opens it as
@@ -42,13 +42,70 @@ copying files.
 ## Move between checkouts
 
 Use the project tabs to switch between the original checkout and the worktree project. App-managed
-worktrees also appear in the project's **Chat history** panel, where you can open them again.
+worktrees also appear in the parent project's **Chat history** panel, where you can open them again.
+The [Activity panel](/docs/activity) shows the worktree's branch beside each of its chats.
 
-Review, commit, and push changes from the project where they were made. Creating a worktree does
-not merge its changes into the original branch. Bring finished work back through your usual Git
-merge or pull-request workflow.
+Review and commit changes from the project where they were made. Creating a worktree does not
+merge its changes into the original branch; use **Complete worktree** when the work is ready.
 
-## Remove a completed worktree
+## Complete a worktree
+
+The **Complete worktree** dialog reviews the worktree branch against its base, then merges it,
+opens a pull request, or simply removes the checkout.
+
+1. In the worktree project, click the **worktree** button showing the branch name beneath the chat.
+   Its tooltip is **Complete worktree** followed by the branch.
+2. Review the summary: the **Base branch**, how many **Commits** the branch is ahead and behind,
+   the changed **Files**, and the **Main checkout**'s current branch and whether it is clean.
+3. Read the commit list and expand any file to inspect its diff.
+4. If the dialog lists uncommitted files, click **Commit changes...** to commit them, or select
+   **Discard uncommitted changes** to let them be deleted with the worktree.
+5. Under **Next steps**, choose one option.
+6. Click **Merge & remove**, **Continue to pull request**, or **Remove worktree**.
+
+| Next step | What happens |
+| --- | --- |
+| Merge into *base* and remove worktree | Merges the branch into the base from the main checkout, removes the worktree, and deletes the branch |
+| Create pull request and remove worktree | Opens the pull-request dialog, then removes the worktree and keeps the branch |
+| Remove worktree only | Removes the worktree and keeps the branch |
+
+Dream preselects merge when it is possible, then pull request, then remove. The merge runs
+`git merge` in the main checkout; if that checkout is on another branch, Dream switches it to the
+base branch first and tells you so in the summary. A base branch that exists only on the remote is
+created locally.
+
+The **Done** screen reports the result: whether the base was fast-forwarded or received a merge
+commit, whether the main checkout switched branches, a **View pull request** button when a PR was
+created, and whether the branch was deleted or kept.
+
+<Warning>
+  Completing a worktree deletes its directory and closes its project. The worktree project's chats
+  are discarded with it and do not appear in Chat history or Recently closed. If you want to keep a
+  conversation, [branch it into the parent workspace](/docs/branching-chats) before completing.
+</Warning>
+
+### When an option is unavailable
+
+| Message | What to do |
+| --- | --- |
+| This branch has no commits ahead of *base* | Commit the work you want to keep, or choose Remove worktree only |
+| The main checkout has uncommitted files | Commit or stash changes in the parent project before merging |
+| The main checkout has a merge or rebase in progress | Finish or abort that operation in the parent project |
+| This branch shares no history with *base* | Merge through your own Git workflow |
+| No Git remote is configured | Add a remote before creating a pull request |
+| GitHub CLI (gh) is not available | Install and authenticate GitHub CLI |
+
+The primary button stays disabled while the worktree has uncommitted changes and you have neither
+committed nor chosen to discard them. The pull-request path lets you commit inside the PR dialog.
+
+If the merge produces conflicts, Dream aborts it and reports **Merging into *base* produced
+conflicts. The merge was aborted and nothing was changed**, with the conflicting files. Bring the
+base branch into the worktree, resolve the conflicts, commit, and then run **Complete worktree**
+again.
+
+## Remove a worktree from the parent project
+
+You can also remove a worktree without the completion dialog:
 
 1. Preserve the work you need by committing it and, if appropriate, pushing it or opening a PR.
 2. Stop processes using the worktree, such as a local application running in its terminal.

@@ -1,0 +1,73 @@
+---
+title: Reviewing and restoring changes
+description: Inspect the files an agent reply changed and restore selected files from a checkpoint.
+---
+
+When **Change checkpoints** is enabled, Dream snapshots your project files before each agent reply
+and again when the reply finishes. Use these checkpoints to review exactly which files a reply
+changed and to restore selected files if you want to take a different approach.
+
+## How checkpoints work
+
+- A checkpoint records the project's working tree, including untracked files, in a private store
+  inside Dream's application data. It does not create commits, stashes, or branches in your own
+  repository, and it works in folders that are not Git repositories.
+- Paths ignored by the project's `.gitignore` and common build folders such as `node_modules`,
+  `dist`, `build`, and `coverage` are never captured.
+- Dream takes the **before** snapshot once per message you send, and the **after** snapshot when the
+  response finishes or when you stop it.
+- Checkpoints require the `git` executable to be available to Dream. If capture fails or takes too
+  long, the reply proceeds without a checkpoint and its review control is not shown.
+
+Checkpoints are on by default. To turn them off, open **Settings → General**, find **Chat messages**,
+and disable **Change checkpoints**.
+
+## Review a reply's changes
+
+1. Wait for the response to finish.
+2. Hover over the assistant message and click **View file changes from this reply**, the clock icon
+   in the message footer.
+3. In **Changes in this reply**, review the list of files. Each row shows the path, a status of
+   **Added**, **Deleted**, **Modified**, or **Renamed**, and its line counts.
+4. Expand a row to read the diff.
+
+The dialog compares the before and after snapshots for that reply only; changes from other replies
+or from your own edits are not included. If the response was interrupted, the dialog notes that the
+after state was captured when you opened it.
+
+A file that changed again after the reply, whether from a later reply, a terminal command, or your
+editor, shows an **Edited later** badge. Binary files list without a diff.
+
+## Restore files
+
+1. Select the files you want to restore. Files without later edits are selected by default; use
+   **Select all** to include every file.
+2. Click **Restore**. The button shows how many files are selected.
+3. Review the rows marked **Restored**, then click **Close**.
+
+Restoring reverses the reply's changes in the selected files while keeping unrelated edits made
+afterward in the same file. A file the reply created is deleted, a file it deleted is recreated, and
+a renamed file is moved back to its previous path.
+
+If later edits overlap with the reply's changes, Dream leaves that file untouched and warns you.
+Choose **Overwrite anyway** to replace the file with its complete pre-reply contents, discarding
+those later edits.
+
+<Warning>
+  Restore cannot be undone from the dialog. Copy any later work you need from the affected files
+  before restoring. Restoring files does not remove messages from the conversation; tell the agent
+  what you restored before asking it to continue.
+</Warning>
+
+Restore is a file operation, not a Git operation. Open [Changes](/docs/git-workflows) afterward to
+review the working tree, and [save any editor drafts](/docs/files) before restoring the same files.
+
+## Checkpoint storage
+
+Checkpoints remain available as long as their chat exists. Permanently deleting a chat from
+**Settings → Archived Chats** removes its checkpoints, and completing or removing a
+[worktree project](/docs/worktrees) removes that project's checkpoints. Archiving a chat keeps them.
+
+To try a different approach while keeping the conversation so far, combine a restore with
+[branching from an earlier message](/docs/branching-chats). Branching alone copies messages and
+does not change files.

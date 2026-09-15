@@ -1,0 +1,66 @@
+---
+title: Sending feedback to a chat
+description: Comment on specific diff lines or on an element in the browser preview and send it to an agent.
+---
+
+Dream can build a message for you from what you are looking at. Select lines in a diff or pick an
+element in the browser preview, add a comment, and Dream sends the comment together with a
+reference the agent can act on.
+
+## Comment on lines in a diff
+
+1. Open **Changes** in the right toolbar and expand a file.
+2. Drag across the line numbers to select a range, or hover over a line number and click its **+**
+   control to select a single line. Selected lines are highlighted.
+3. Type your comment in the popover's **Ask anything...** box.
+4. Enable **New chat** if you want the comment to start a separate conversation.
+5. Press **Enter** or click **Send message**.
+
+The agent receives your comment followed by a **Referenced diff** block containing the file path, the
+line range, whether the lines come from the old or new version, and the selected lines themselves.
+You can select lines on either side of a unified or split diff, and a selection can span both sides.
+
+Line selection is available in the Changes panel only. Diffs shown inside chat messages, in
+[Changes in this reply](/docs/checkpoints), and in the worktree completion dialog do not offer it.
+
+For example, select the lines of a new condition and ask:
+
+> This branch never runs when the list is empty. Handle that case and add a test.
+
+## Send a page element from the browser
+
+1. Open **Browser** and load the page you want to discuss.
+2. Click **Select an element to send to chat** in the browser toolbar. The same action is
+   available in the browser actions menu.
+3. Move the pointer over the page. Dream outlines the element under the pointer and shows its name
+   and size.
+4. Click the element. Clicks in this mode select elements rather than activating links or buttons.
+   Press **Escape** to leave the mode without selecting anything.
+5. In the **Send to chat** form, check the thumbnail and element name, type your comment, choose
+   whether to enable **New chat**, and click **Send to chat**.
+
+The message includes the page URL and title, the element's name and CSS selector, its parents, size
+and position, visible text, key computed styles, and its HTML. For React and Vue applications, Dream
+adds the component chain and, in development builds, the source file location. A screenshot of the
+element is attached as `browser-element.png`.
+
+Element selection works on the active browser tab in Dream. Elements inside embedded frames cannot
+be selected individually; picking one selects the frame. Navigating or reloading the page cancels
+the selection, and long attribute values, text, and HTML are truncated.
+
+## Where the message goes
+
+| New chat | Destination |
+| --- | --- |
+| Off | The project's first open chat, which becomes the active chat |
+| On | A new chat, opened beside the current chats when multi-chat is enabled |
+
+If the destination chat is busy, the send control is disabled and shows **Chat busy**. The message is
+not queued behind the current response; wait for it to finish or enable **New chat**.
+
+Text you have already typed in the chat composer is kept. If the message cannot be sent, Dream
+appends your comment to that composer so you can send it yourself. Press **Escape** or click outside
+the popover to discard a comment before sending it.
+
+Use [project references and attachments](/docs/providing-context) when you want to point at files
+without selecting specific lines, and [Stash](/docs/stash) to save a prompt for later.

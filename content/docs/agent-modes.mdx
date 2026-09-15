@@ -43,11 +43,13 @@ that scope is appropriate for the task and project.
 
 An agent may ask you to clarify a requirement, choose an option, or approve an action. Read the
 request in the conversation and respond using the controls it provides. A project tab can indicate
-that it is waiting for your answer, which is useful when you have several projects open.
+that it is waiting for your answer, and the [Activity panel](/docs/activity) lists waiting chats
+across all projects with the question that was asked.
 
 If the request requires changing the task, give the agent the revised instruction in that chat.
 Use the stop control to interrupt a response when necessary. Stopping does not roll back edits or
-commands that already completed; inspect [Changes](/docs/git-workflows) afterward.
+commands that already completed; inspect [Changes](/docs/git-workflows) afterward, or use the
+reply's [checkpoint](/docs/checkpoints) to restore files it changed.
 
 For parallel tasks that need separate files, use [worktrees](/docs/worktrees). Permission settings
 do not give two chats in the same folder independent checkouts.

@@ -27,7 +27,12 @@ you want to load that larger view, or inspect the file in your editor or termina
 
 Use a file's **Revert file changes** action to discard unwanted working changes. **Revert all
 changes** applies more broadly; review its scope before confirming. Reverting code is separate from
-archiving the chat that produced it.
+archiving the chat that produced it. To undo only what a particular reply changed, use that
+reply's [checkpoint](/docs/checkpoints).
+
+To ask an agent about specific lines, drag across the line numbers in a diff or click a line's
+**+** control, then type a comment. Dream sends it with the file path and selected lines. See
+[Sending feedback to a chat](/docs/feedback).
 
 ## Commit your work
 
@@ -86,3 +91,5 @@ created outside Dream is missing.
 
 Changing branches changes the files used by every chat in that project. Review unfinished work
 before switching. For parallel tasks with independent checkouts, use [Git worktrees](/docs/worktrees).
+When a worktree is finished, its **Complete worktree** dialog can merge the branch into its base or
+open a pull request and then remove the checkout.

@@ -86,9 +86,12 @@
         "pages": [
           "chats",
           "multiple-chats",
+          "activity",
           "providing-context",
+          "feedback",
           "agent-modes",
           "branching-chats",
+          "checkpoints",
           "stash",
           "archived-chats",
           "context-and-usage"

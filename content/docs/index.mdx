@@ -25,10 +25,13 @@ chats without switching tools.
 ## What Dream includes
 
 - A multi-project workspace with persistent project tabs
-- Multiple side-by-side chats and chat branching
+- Multiple side-by-side chats, chat branching, and an Activity panel that tracks every open chat
+- Per-reply checkpoints for reviewing and restoring the files an agent changed
 - Support for Codex CLI, Claude Code CLI, OpenCode CLI, Cursor Agent CLI, and Grok Build CLI
 - A file explorer, file search and editing, integrated terminals, and browser previews
-- Git status, branch, diff, commit, push, pull request, and worktree workflows
+- Git status, branch, diff, commit, push, pull request, and worktree workflows, including merging
+  a finished worktree back into its base branch
+- Line-level diff feedback and browser element selection that send targeted messages to a chat
 
 <Note>
   Dream runs coding agents through their installed CLIs. You need at least one supported CLI before
@@ -43,9 +46,12 @@ chats without switching tools.
 | Find, archive, or recover an old conversation | [Working with chats](/docs/chats) and [Archived Chats](/docs/archived-chats) |
 | Choose a starting model and reasoning effort | [Models and defaults](/docs/models) |
 | Try another approach from an earlier message | [Branching conversations](/docs/branching-chats) |
+| See which agents are working or waiting for me | [Activity panel](/docs/activity) |
+| Check what a reply changed and undo part of it | [Reviewing and restoring changes](/docs/checkpoints) |
+| Comment on specific diff lines or a page element | [Sending feedback to a chat](/docs/feedback) |
 | Prepare a task to run later | [Saving prompts with Stash](/docs/stash) |
 | Give an agent files or a screenshot | [Providing context](/docs/providing-context) |
-| Work in an independent checkout | [Git worktrees](/docs/worktrees) |
+| Work in an independent checkout, then merge it back | [Git worktrees](/docs/worktrees) |
 | Review and publish code changes | [Git workflows](/docs/git-workflows) |
 
 ## Understand the workspace

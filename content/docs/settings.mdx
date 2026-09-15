@@ -27,9 +27,11 @@ Changing the terminal shell affects new sessions. Open a new terminal to use the
 | Show reasoning summaries | On | Display of summaries supplied by the model |
 | Group tool calls | Off | Compact grouping of tool activity |
 | Expand tool calls | Off | Whether tool-call details start expanded |
+| Change checkpoints | On | Snapshots project files before each reply so you can review and restore changes |
 
-These settings affect the display of conversations across projects. They do not change the model's
-reasoning effort or grant additional tool permissions.
+The display settings affect conversations across projects. They do not change the model's
+reasoning effort or grant additional tool permissions. Turning off **Change checkpoints** stops new
+snapshots; see [Reviewing and restoring changes](/docs/checkpoints).
 
 ### Models
 
@@ -70,5 +72,5 @@ before using bulk actions or permanent deletion.
 ## Controls outside Settings
 
 Some preferences belong to individual chats or projects. Set a chat's model, effort, speed, mode,
-and permissions in its composer. Toggle multi-chat in the left toolbar. Resize chat columns and
-tool panels directly in the workspace.
+and permissions in its composer. Toggle multi-chat in the left toolbar. Resize chat columns, the
+[Activity panel](/docs/activity), and tool panels directly in the workspace.

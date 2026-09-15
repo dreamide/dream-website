@@ -59,6 +59,27 @@ has the committed branch or ref you want to use.
 If expected edits are missing from a new worktree, check whether they were uncommitted in the
 original project. Worktrees do not copy those changes. See [Git worktrees](/docs/worktrees).
 
+## A reply has no View file changes control
+
+The control appears on assistant messages after the response finishes, and only when a checkpoint
+was captured for that reply. Check that **Change checkpoints** is enabled in **Settings → General →
+Chat messages**, and that the `git` executable is available to Dream. Very large projects can exceed
+the capture time limit, in which case the reply runs without a checkpoint. See
+[Reviewing and restoring changes](/docs/checkpoints).
+
+## A chat shows Interrupted in the Activity panel
+
+A response cannot continue across a restart, so chats that were working or waiting for input when
+Dream closed are marked **Interrupted**. Open the chat, read its last message, and send a follow-up
+to resume the task. See [Activity panel](/docs/activity).
+
+## I cannot send diff or element feedback
+
+The send control is disabled while the destination chat is responding and shows **Chat busy**. Wait
+for it to finish or enable **New chat** in the popover. If the popover reports that the selection no
+longer matches the diff, refresh Changes and select the lines again. See
+[Sending feedback to a chat](/docs/feedback).
+
 ## Continue in terminal is missing
 
 The action is available for Claude chats with a valid resumable provider session and is disabled
@@ -96,6 +117,9 @@ See [Files and search](/docs/files#handle-a-file-changed-outside-the-editor).
 | PR source and base are the same | Switch to a feature branch before creating the PR |
 | PR creation reports detached HEAD | Check out a branch before creating the PR |
 | Worktree removal fails | Review and preserve uncommitted changes in that checkout |
+| Merge & remove is unavailable | The worktree has no commits ahead of its base, or the main checkout has uncommitted changes or a merge in progress |
+| Complete worktree reports conflicts | The merge was aborted and nothing changed; merge the base branch into the worktree, resolve conflicts, commit, then retry |
+| Create pull request is unavailable in Complete worktree | Configure a Git remote and install GitHub CLI |
 
 After a combined action fails, inspect the branch state before retrying: a commit or push may have
 succeeded before a later step failed. See [Git workflows](/docs/git-workflows).
