@@ -1,3 +1,6 @@
+@import "@fontsource-variable/jetbrains-mono";
+@import "./src/components/home/home.css";
+
 /* Dream-specific extensions to Shiso's base theme. */
 
 :root,
@@ -13,25 +16,18 @@
   --font-heading: var(--font-sans);
 }
 
-.landing-page,
 .download-page {
   max-width: none;
 }
 
-.landing-page a,
 .download-page a {
   text-decoration: none;
 }
 
-.landing-page h2,
 .download-page h2 {
   margin: 0;
   border: 0;
   padding: 0;
-}
-
-.dream-media-frame img {
-  margin: 0;
 }
 
 @supports not selector(::-webkit-scrollbar) {
