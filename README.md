@@ -41,3 +41,14 @@ The static output is written to `dist/client`.
 Add Markdown or MDX files to `content/docs`, then register them in the
 `navigation` section of `docs.json`. Add non-documentation routes to `pages`
 and place their MDX files in `content/pages`.
+
+Use screenshots from `public/images` inside a `<Frame caption="...">` with
+descriptive image alt text and explicit dimensions. Focused documentation crops
+live in `public/images/docs`; regenerate them from the originals on Windows with:
+
+```powershell
+./scripts/crop-docs-images.ps1
+```
+
+Crop coordinates are recorded in that script so screenshots can be refreshed
+without guessing which part of the interface each example shows.

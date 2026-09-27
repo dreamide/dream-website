@@ -91,7 +91,6 @@
         "pages": [
           "chats",
           "multiple-chats",
-          "activity",
           "providing-context",
           "feedback",
           "agent-modes",

@@ -22,6 +22,16 @@ choose **Settings → General → Models → Default model for commits and PRs**
 3. Choose **Unified diff** or **Split diff** in the panel's actions, and enable word wrap if useful.
 4. Use **Refresh changes** if work done outside Dream is not yet reflected.
 
+<Frame caption="Expand files to review additions and deletions before committing.">
+  <img
+    src="/images/docs/changes-panel.png"
+    alt="Changes panel showing file paths and a unified diff with green additions and red deletions."
+    width={950}
+    height={680}
+    loading="lazy"
+  />
+</Frame>
+
 For very large diffs, Dream may show **Diff too large to render**. Use **Render anyway** only when
 you want to load that larger view, or inspect the file in your editor or terminal.
 
@@ -42,6 +52,16 @@ To ask an agent about specific lines, drag across the line numbers in a diff or 
 4. Enter a commit message or use **Auto generate message**, then edit the result as needed.
 5. Choose **Commit**, or **Commit & push** if you are ready to publish the commit to the remote.
 
+<Frame caption="Review the included changes and message before choosing Commit or Commit & push.">
+  <img
+    src="/images/docs/commit-dialog.png"
+    alt="Commit your changes dialog with branch, change counts, Include unstaged, and a generated commit message."
+    width={672}
+    height={439}
+    loading="lazy"
+  />
+</Frame>
+
 To commit only a selected subset, stage those files using Git in a terminal or external editor and
 turn **Include unstaged** off. The Changes panel does not provide individual staging controls.
 
@@ -58,6 +78,16 @@ those separately before continuing with this action.
 Open **Git actions → Push**, review the outgoing commits and destination, and choose **Push**.
 The destination depends on the branch's upstream and repository remote configuration.
 
+<Frame caption="Check the destination and outgoing commits before pushing.">
+  <img
+    src="/images/docs/push-dialog.png"
+    alt="Push changes dialog listing the branch, origin/main destination, ahead and behind counts, and outgoing commits."
+    width={672}
+    height={364}
+    loading="lazy"
+  />
+</Frame>
+
 If pushing fails, inspect the error and confirm your remote access. A successful local commit
 remains committed even if a following push fails; check the branch state before repeating a
 combined action.
@@ -70,6 +100,16 @@ combined action.
 4. Enter a title and description, or use **Auto generate PR details** and review the generated text.
 5. Under **Next steps**, select the action that matches the branch's state.
 6. Review **Draft** and **Open PR page**, then submit.
+
+<Frame caption="Review the PR details and choose the next step. Draft is turned off in this example.">
+  <img
+    src="/images/docs/create-pr-dialog.png"
+    alt="Create PR dialog with source and base branches, title, description, next-step choices, and Draft toggle."
+    width={672}
+    height={680}
+    loading="lazy"
+  />
+</Frame>
 
 | Next step | What happens |
 | --- | --- |
