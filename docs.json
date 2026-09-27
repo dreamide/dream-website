@@ -60,6 +60,11 @@
         "icon": "discord",
         "ariaLabel": "Dream on Discord",
         "href": "https://umami.is/discord"
+      },
+      {
+        "icon": "x",
+        "ariaLabel": "Dream on X",
+        "href": "https://x.com/dreamide"
       }
     ]
   },
