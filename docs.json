@@ -97,6 +97,8 @@
           "branching-chats",
           "checkpoints",
           "stash",
+          "saved-prompts",
+          "skills",
           "archived-chats",
           "context-and-usage"
         ]
@@ -107,11 +109,19 @@
       },
       {
         "group": "Git",
-        "pages": ["git-workflows", "worktrees"]
+        "pages": ["git-workflows", "pull-requests", "worktrees"]
       },
       {
         "group": "Configuration and help",
-        "pages": ["models", "settings", "troubleshooting"]
+        "pages": [
+          "models",
+          {
+            "page": "mcp-servers",
+            "title": "MCP servers"
+          },
+          "settings",
+          "troubleshooting"
+        ]
       }
     ]
   }

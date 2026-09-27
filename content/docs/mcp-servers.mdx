@@ -1,0 +1,67 @@
+---
+title: MCP servers
+description: Add or import external tools for supported coding agents.
+---
+
+Model Context Protocol (MCP) servers make additional tools available to agents. Configure them in
+**Settings → MCP servers**. Dream supports these connections for **Claude Code**, **Codex**,
+**OpenCode**, and **Grok Build**. Cursor does not support Dream-managed MCP connections.
+
+## Add a server
+
+1. Open **Settings → MCP servers** and click **Add server**.
+2. Choose a unique **Name** using letters, numbers, dashes, and underscores, beginning with a letter
+   or number.
+3. Choose the **Transport** and enter the connection details supplied by the server.
+4. Leave **Enabled** on to make the server available, then click **Save**.
+
+| Transport | Fields |
+| --- | --- |
+| Command (stdio) | Executable in **Command**, one argument per line in **Arguments**, and optional **Environment variables** |
+| HTTP | An HTTP or HTTPS **URL** and optional **Headers** |
+| SSE | An HTTP or HTTPS **URL** and optional **Headers** |
+
+Enter environment variables and headers as one `KEY=VALUE` pair per line. Keep the executable
+separate from its arguments. For example, a local server might use `node` as its command and an
+absolute path to its entry file as an argument.
+
+Server definitions are stored in Dream's local database, including any credentials you enter.
+Those values are stored unencrypted.
+
+## Import existing configuration
+
+1. Select the project whose configuration you want to include.
+2. Open **Settings → MCP servers → Import…**.
+3. Review the detected servers, their source files, and any warnings.
+4. Select the servers to add and click **Import**.
+
+Dream scans Claude user and project configuration, Codex's user configuration, and Cursor's user
+and project MCP configuration. Entries whose names are already configured are marked
+**Already exists** and are not imported again.
+
+Importing copies definitions into Dream. Later changes to the original files are not automatically
+synchronized. Importing a Cursor configuration makes its server available to Dream's supported
+providers; it does not add MCP support to Cursor chats in Dream.
+
+## Edit, disable, or remove a server
+
+<Frame caption="Manage each server's enabled state and connection definition from the MCP servers list.">
+  <img
+    src="/images/docs/mcp-servers-panel.png"
+    alt="MCP servers settings with enabled stdio and HTTP servers, edit and delete controls, and Import and Add server buttons."
+    width={1016}
+    height={216}
+    loading="lazy"
+  />
+</Frame>
+
+Use **Edit** to change a definition and **Save** to apply it. Switch **Enabled** off to keep its
+configuration without making it available to subsequent agent requests. To remove it, use
+**Delete**, then **Confirm delete**. Removing the definition does not uninstall its executable.
+
+After changing a server, send a new request in a supported chat. If the provider still uses an old
+connection, start a new chat. Check the executable, URL, credentials, and chat error if tools do
+not become available.
+
+Dream's [built-in browser tools](/docs/browser#ask-an-agent-to-use-the-browser) are connected
+automatically for supported providers; you do not need to add a server for them here.

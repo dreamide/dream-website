@@ -1,0 +1,67 @@
+---
+title: Reusable prompts
+description: Save instructions once and run them in any project's chat.
+---
+
+Use **Settings → Prompts** for instructions you repeat across projects, such as reviewing changes
+or addressing review comments. A saved prompt has a name and text; it runs in the conversation you
+choose, using that chat's model and settings.
+
+## Create a prompt
+
+1. Open **Settings → Prompts** and click **New prompt**.
+2. Enter a short **Name** that you will recognize in the chat menu.
+3. Write the instructions in **Prompt** and click **Create**.
+
+For example, name a prompt “Review changes” and save:
+
+> Review the current changes for bugs, missing edge cases, and unintended behavior. Report findings
+> with file references. Do not edit files yet.
+
+The prompt is available across projects. Keep reusable instructions independent of a particular
+folder, or make sure any paths in the text apply to the project where you run it.
+
+## Run a prompt in a chat
+
+1. Open the project and conversation you want to use.
+2. Review that chat's model and [permissions](/docs/agent-modes).
+3. Open the **+** menu beside the message box.
+4. Choose **Run prompt**, then select the saved prompt.
+
+Selecting a prompt sends its text immediately to that chat. It does not first insert an editable
+draft. Text you already typed in the composer is kept, and the saved prompt remains available for
+reuse. If you want to adapt the text before sending, copy it from Settings and paste it into the
+composer yourself.
+
+**Run prompt** is unavailable while the chat is busy. Wait for the response to finish before
+running another prompt. If submission fails, check the composer for the prompt text.
+
+## Manage the list
+
+<Frame caption="Select a reusable prompt to read and copy its text. The row controls reorder, convert, edit, or delete it.">
+  <img
+    src="/images/docs/saved-prompts-panel.png"
+    alt="Prompts settings with four saved prompts, row action icons, and the full text of a selected code review prompt."
+    width={1016}
+    height={782}
+    loading="lazy"
+  />
+</Frame>
+
+Select a prompt in **Settings → Prompts** to preview and copy its text. Use **Edit**, or double-click
+its name, to change it. **Move up** and **Move down** change its position in the list and chat menu.
+To remove a prompt, click its delete control and then **Confirm delete**.
+
+**Manage prompts…** in the chat's **Run prompt** menu opens this settings page.
+
+## Turn a prompt into a skill
+
+Use **Save as skill** beside a saved prompt to open the skill creation dialog with its name and
+instructions filled in. Add a description, choose where to save it, and click **Create**. See
+[Agent skills](/docs/skills) for provider support and storage locations.
+
+| You want to… | Use |
+| --- | --- |
+| Send the same instructions repeatedly in different chats | Reusable prompts |
+| Prepare a one-time task with its own model settings for later | [Stash](/docs/stash) |
+| Give an agent reusable instructions it can load for a task | [Skills](/docs/skills) |

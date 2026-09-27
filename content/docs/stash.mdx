@@ -4,7 +4,7 @@ description: Prepare tasks for later, edit saved prompts, and submit them into n
 ---
 
 Stash holds prompts you want to run later in the current project. Each saved item includes its text,
-project references, model, effort, speed, agent mode, and permissions.
+project references, model, effort, speed, and permissions.
 
 Use it to capture a follow-up task while another chat is busy. For example, save “Review the error
 states in the settings form” while finishing the implementation.
@@ -24,7 +24,7 @@ states in the settings form” while finishing the implementation.
 1. Select the project that the task belongs to.
 2. Click **Stash**, the inbox icon at the bottom of the right toolbar.
 3. Write the task in the new-prompt composer at the bottom of the panel.
-4. Add project references with **@** and choose the model, mode, and permissions.
+4. Add project references with **@** and choose the model and permissions.
 5. Submit the new prompt to add it to the saved list.
 
 Submitting from this bottom composer saves the task; it does not start an agent response. A saved
@@ -71,5 +71,6 @@ new conversation for the error rather than expecting the item to remain in Stash
 Use **Delete stashed chat** on the saved item to remove it without starting a conversation. This
 removes the saved prompt, not files in the project.
 
-Stash stores future tasks. To keep a completed conversation out of active history, use
+Stash stores future tasks for one project. For instructions you want to keep using across projects,
+use [reusable prompts](/docs/saved-prompts). To keep a completed conversation out of active history, use
 [Archived Chats](/docs/archived-chats). To isolate code changes, use [Git worktrees](/docs/worktrees).

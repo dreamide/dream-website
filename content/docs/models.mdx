@@ -10,7 +10,7 @@ controls defaults. The selector beneath each chat's message box controls that co
 ## Enable models
 
 1. Install and authenticate a [supported provider CLI](/docs/providers).
-2. Open **Settings → Providers**.
+2. Open **Settings → Providers** and enable the provider.
 3. Refresh the provider to detect its CLI and available models.
 4. Enable the models you want to appear in Dream's selectors.
 
@@ -19,8 +19,8 @@ is enabled here first. Refreshing detects availability; it is separate from choo
 
 ## Set the default for new chats
 
-1. Open **Settings → General** and scroll to **Models**.
-2. Under **Default model for new chats**, select an enabled model.
+1. Open **Settings → General → Models**.
+2. Under **Default chat model**, select an enabled model.
 3. Choose **Effort** and **Speed** if the selected model offers those controls.
 4. Return to a project and start a new chat to use the selection.
 
@@ -40,8 +40,8 @@ and change the model there if necessary.
 
 ## Set a model for commit and PR drafting
 
-In the same **Models** group, choose **Default model for commits and PRs**. Dream uses this selection
-when drafting commit messages and pull-request text.
+In the same **Models** group, choose **Text generation model** and its effort and speed when
+supported. Dream uses these selections when drafting commit messages and pull-request text.
 
 For example, you can use one model for implementation chats and another for Git summaries. Changing
 the Git drafting model does not change your chat models. See [Git workflows](/docs/git-workflows)

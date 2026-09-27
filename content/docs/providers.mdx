@@ -23,8 +23,8 @@ outside Dream.
 1. Open **Settings** in Dream.
 2. Select **Providers**.
 3. Refresh the provider after installing or authenticating its CLI.
-4. Enable one or more of the detected models.
-5. Open **General**, scroll to **Models**, and choose defaults for new chats and for commit and
+4. Turn on the provider's enable switch, then enable one or more of its detected models.
+5. Open **General → Models** and choose defaults for new chats and for commit and
    pull-request drafting.
 
 You must enable at least one model before opening your first project. A chat can use a different
@@ -55,9 +55,23 @@ The installed CLI handles authentication and executes agent work. Model lists, s
 and speed options, attachment handling, usage information, and permission behavior can differ
 between providers.
 
-Dream exposes **Build** and **Plan** modes and **Standard** and **Full access** permissions per chat.
-Read [Agent modes and permissions](/docs/agent-modes) before choosing them. Claude chats with a
+Dream exposes **Ask**, **Accept edits**, and **Full access** permissions per chat.
+Read [Agent permissions](/docs/agent-modes) before choosing them. Claude chats with a
 resumable session also offer [Continue in terminal](/docs/terminals#continue-a-claude-chat-in-a-terminal).
+
+[Skills](/docs/skills) are available for Claude Code, Codex, OpenCode, and Cursor.
+[MCP servers](/docs/mcp-servers) and Dream's built-in browser tools are available for Claude Code,
+Codex, OpenCode, and Grok Build; Cursor does not support these Dream-managed tool connections.
+
+## Check for CLI updates
+
+Provider cards show the installed CLI version when available. Dream also checks for newer versions
+and shows an **Update available: …** badge when one is found. The badge reports availability; it
+does not install the update. Update using that CLI's normal installation method, then refresh its
+provider card in Dream.
+
+Use the provider's enable switch to hide its models from the available selections without
+uninstalling the CLI. Recheck your defaults after changing enabled providers or models.
 
 ## Troubleshooting detection
 
@@ -73,4 +87,5 @@ The command must be available to Dream's environment; a shell alias alone is not
 
 If a CLI is detected but your desired model is missing, check the provider's account/configuration
 and refresh the list. If models are listed but unavailable in chats, enable them with their
-checkboxes. See [Troubleshooting](/docs/troubleshooting) for additional checks.
+toggles and confirm the provider itself is enabled. See [Troubleshooting](/docs/troubleshooting)
+for additional checks.

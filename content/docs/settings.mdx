@@ -1,11 +1,11 @@
 ---
 title: Settings reference
-description: Find general preferences, model defaults, provider configuration, and archived-chat controls.
+description: Find model defaults, providers, prompts, skills, MCP servers, and archived-chat controls.
 ---
 
 Open **Settings** with the gear icon at the top of Dream. The sidebar has **General**, **Providers**,
-and **Archived Chats**. Changes to preferences are applied as you select them; there is no separate
-Save button for the settings dialog.
+**Prompts**, **Skills**, **MCP servers**, and **Archived Chats**. General preferences apply as you
+select them. Forms for prompts, skills, and server definitions have their own Create or Save action.
 
 ## General
 
@@ -45,14 +45,15 @@ snapshots; see [Reviewing and restoring changes](/docs/checkpoints).
 
 ### Models
 
-The **Models** group is inside General, below the chat-message preferences.
+The **Models** group is at the top of General.
 
 | Setting | Scope |
 | --- | --- |
-| Default model for new chats | Newly created chats across projects |
+| Default chat model | Newly created chats across projects |
+| Default permissions | Ask, Accept edits, or Full access for new chats |
 | Effort | Reasoning effort for new chats, when supported by the default model |
 | Speed | Speed tier for new chats, when supported by the default model |
-| Default model for commits and PRs | Generated commit messages and pull-request text |
+| Text generation model | Generated commit messages and pull-request text, with its own effort and speed |
 
 Existing chats retain their own selections. Enable a model under Providers before choosing it as a
 default. Follow [Models and defaults](/docs/models) for the complete setup workflow.
@@ -69,11 +70,21 @@ default. Follow [Models and defaults](/docs/models) for the complete setup workf
 
 ## Providers
 
-Each provider card shows its detected CLI status, version when available, refresh action, and model
-list. Enable models to make them available in chat and default-model selectors.
+Each provider card shows its detected CLI status, installed version, refresh action, and an enable
+switch. Enable the provider and individual models to make them available in selectors. An
+**Update available** badge shows a newer CLI version when detected; update the CLI outside Dream
+and refresh the card afterward.
 
 Install and sign in through the provider's CLI outside Dream, then refresh its card. Dream settings
 do not replace the CLI's authentication flow. See [Connect a provider](/docs/providers).
+
+## Prompts, Skills, and MCP servers
+
+| Section | What you can do |
+| --- | --- |
+| [Prompts](/docs/saved-prompts) | Create, preview, copy, reorder, and edit reusable prompts for any project's chat |
+| [Skills](/docs/skills) | Browse skills by provider and project, preview SKILL.md files, and create new skills |
+| [MCP servers](/docs/mcp-servers) | Add or import tool servers and manage their connection settings |
 
 ## Archived Chats
 
@@ -91,6 +102,6 @@ before using bulk actions or permanent deletion.
 
 ## Controls outside Settings
 
-Some preferences belong to individual chats or projects. Set a chat's model, effort, speed, mode,
+Some preferences belong to individual chats or projects. Set a chat's model, effort, speed,
 and permissions in its composer. Toggle multi-chat in the left toolbar. Resize chat columns and
 tool panels directly in the workspace.

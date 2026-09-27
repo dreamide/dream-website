@@ -28,9 +28,21 @@ when you want related projects next to each other.
 
 ## Rename or open a project externally
 
-Open the project's **…** menu and choose **Edit** to change its display name. Renaming a project in
-Dream does not rename its folder on disk. Use the menu's **Open in** choices to open it in an
-available external editor.
+Open the project's **…** menu and choose **Edit** to change its display name or icon. Click the icon
+to upload an image up to 5 MB, then **Save**. Reset a custom icon to return to automatic detection
+from the project. Renaming a project in Dream does not rename its folder on disk.
+
+Use the menu's **Open in** choices to open the project in an available external editor.
+
+## Go back to a previous chat
+
+Use **Back** and **Forward** beside the project tabs to revisit projects and chats you opened.
+On Windows and Linux, use **Alt+Left** and **Alt+Right**; on macOS, use **Command+[** and
+**Command+]**. Mouse back and forward buttons work too.
+
+This history follows project and chat selections. Switching tool panels does not add entries, and
+the embedded browser has its own navigation history. Keyboard shortcuts inside the terminal or
+code editor are left to those tools.
 
 ## Close and reopen a project
 
@@ -47,7 +59,7 @@ terminal process running.
 
 The left toolbar contains **Chat history**, **New chat**, and **Enable multi-chat**. Hover over an
 icon to see its label. The chat composer holds the selected model, effort and speed when supported,
-agent mode, and permissions.
+and permissions.
 
 The right toolbar opens project tools:
 
@@ -58,9 +70,11 @@ The right toolbar opens project tools:
 | [Browser](/docs/browser) | Preview URLs and inspect web pages |
 | [Terminal](/docs/terminals) | Run project commands in separate sessions |
 | [Git actions](/docs/git-workflows) | Commit, push, and create pull requests |
+| [Pull requests](/docs/pull-requests) | Read the current branch's PR, post comments, and merge |
 | [Stash](/docs/stash) | Save prompts and run them later |
 
-Git controls appear for repository projects. The branch control beneath the chat shows the active
+**Git actions** is at the top of the right toolbar. Git controls appear for repository projects.
+The branch control beneath the chat shows the active
 branch; use it to switch branches or [create a worktree](/docs/worktrees). In a worktree project,
 the same spot shows a **worktree** button that opens the
 [Complete worktree](/docs/worktrees#complete-a-worktree) dialog.
@@ -74,6 +88,15 @@ closing its individual terminal sessions or browser tabs.
 Enable [multi-chat](/docs/multiple-chats) to arrange conversations in resizable columns. Each chat has
 its own conversation history, while all chats in the project use the same files. Use worktrees for
 independent checkouts.
+
+## Capture the Dream window
+
+Press **Ctrl+Shift+S** on Windows/Linux or **Command+Shift+S** on macOS to capture the Dream window.
+Dream copies the screenshot to the clipboard, then opens a dialog to save it as a PNG. Canceling
+the save dialog keeps the clipboard copy. A notification reports whether the image was copied,
+saved, or could not be captured.
+
+For a screenshot of a web page, use the [browser's screenshot action](/docs/browser) instead.
 
 For app-wide appearance, language, and model preferences, open [Settings](/docs/settings). To find
 older conversations, use [Chat history](/docs/chats) or [Archived Chats](/docs/archived-chats).

@@ -13,7 +13,7 @@ and credentials that can access it. Pull-request creation uses GitHub CLI, which
 and authenticated for the destination repository.
 
 You can type commit messages and PR text yourself. To generate them, enable a provider model and
-choose **Settings → General → Models → Default model for commits and PRs**.
+choose **Settings → General → Models → Text generation model**.
 
 ## Review changes
 
@@ -99,7 +99,7 @@ combined action.
 3. Review the source and base branches and the proposed changes.
 4. Enter a title and description, or use **Auto generate PR details** and review the generated text.
 5. Under **Next steps**, select the action that matches the branch's state.
-6. Review **Draft** and **Open PR page**, then submit.
+6. Turn on **Draft** if the PR is not ready for review, then submit.
 
 <Frame caption="Review the PR details and choose the next step. Draft is turned off in this example.">
   <img
@@ -117,11 +117,18 @@ combined action.
 | Push & create PR | Pushes commits before creating the PR |
 | Commit, push & create PR | Commits working changes, pushes, and creates the PR |
 
-The dialog starts with **Draft** selected. Clear it when the PR is ready for review. PR creation
+The dialog starts with **Draft** off. Enable it to create a draft PR. PR creation
 requires a branch rather than a detached HEAD, and source and base cannot be the same branch.
 
 If a combined action fails, earlier steps may already have completed. Check for the commit, remote
 branch, or PR before retrying.
+
+## Review and merge a pull request
+
+Open **Pull requests** in the right toolbar to view the current branch's PR. Use **Summary** for
+its description, checks, and discussion, or **Code** to inspect diffs and post inline comments.
+You can edit the title and description when permitted and use **Merge** to choose a merge method.
+See [Reviewing pull requests](/docs/pull-requests) for the full workflow.
 
 ## Switch or create branches
 

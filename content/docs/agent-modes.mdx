@@ -1,42 +1,31 @@
 ---
-title: Agent modes and permissions
-description: Choose Build or Plan, configure tool permissions, and respond to agent requests.
+title: Agent permissions
+description: Choose Ask, Accept edits, or Full access and respond to agent requests.
 ---
 
-Each chat has an agent mode and a permission selection beneath its message box. Set both before
-sending a task. New chats start in **Build** mode with **Full access** permissions.
-
-## Choose an agent mode
-
-Click the agent-mode control below the message box and select:
-
-| Mode | When to use it |
-| --- | --- |
-| Build | Ask the agent to carry out an implementation or other task |
-| Plan | Ask the agent to investigate and work out an approach before implementation |
-
-A typical workflow is to start in **Plan**, ask the agent to explain its proposed changes, and then
-switch to **Build** before asking it to implement the agreed approach.
-
-The selected CLI determines how the mode is enforced. Mode and permissions are separate controls;
-selecting Plan is not a universal guarantee that every provider runs in a read-only sandbox.
+Each chat has a **Permissions** control beneath its message box. New chats inherit
+**Settings → General → Models → Default permissions**, which starts at **Full access**.
+Changing the default does not change existing chats.
 
 ## Choose permissions
 
 1. Open the shield control beneath the message box. Its tooltip is **Permissions**.
-2. Select **Standard** or **Full access**.
-3. Check the agent mode and submit your task.
+2. Select **Ask**, **Accept edits**, or **Full access**.
+3. Review your task and submit it.
 
-**Standard** uses a more restricted permission configuration. In Build mode, some providers can
-still accept file edits automatically. Standard does not mean every file change requires a click.
+| Permission | Intended behavior |
+| --- | --- |
+| Ask | Request approval for actions that require permission under the provider's configuration |
+| Accept edits | Allow file edits automatically while retaining approval handling for other actions |
+| Full access | Give the agent broader access to act without approval prompts |
 
-**Full access** gives the agent broader permission to act without approval prompts. Use it when
-that scope is appropriate for the task and project.
+The selected provider determines the exact permission behavior. **Ask** does not mean every read
+or tool call prompts, and **Accept edits** does not approve every command.
 
 <Note>
-  Permissions are interpreted by the provider CLI. An agent mode, a prompt asking for review only,
-  and a filesystem permission boundary serve different purposes. Check the selected permissions
-  when moving from planning to implementation.
+  Dream no longer has separate Build and Plan controls. To plan first, ask the agent to investigate
+  and propose an approach before making changes. That instruction is not a read-only filesystem
+  boundary; choose permissions appropriate to the task as well.
 </Note>
 
 <Frame caption="The shield and Full access label identify this chat's permission control.">

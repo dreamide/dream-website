@@ -48,6 +48,11 @@ use the new contents; those tools read files on disk.
 Switching file tabs lets you keep drafts while inspecting other files. Use **Discard changes** to
 abandon a local draft. This is separate from reverting changes through Git.
 
+Closing a tab with unsaved changes opens a **Save / Don't Save / Cancel** prompt. **Save** writes
+the draft and closes the tab, **Don't Save** discards the draft and closes it, and **Cancel** keeps
+the tab open. If saving fails or conflicts with an external edit, the file stays open so you can
+resolve the problem.
+
 ## Handle a file changed outside the editor
 
 An agent, terminal command, or external editor may change the same file while you have a draft.

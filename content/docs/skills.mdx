@@ -1,0 +1,81 @@
+---
+title: Agent skills
+description: Find, invoke, preview, and create skills for your coding agents.
+---
+
+A skill packages instructions in a `SKILL.md` file. Dream discovers skills for the selected agent
+and project using that provider's skill locations. The skill picker supports **Claude Code**,
+**Codex**, **OpenCode**, and **Cursor Agent**.
+
+## Use a skill in a chat
+
+1. Open a chat and select the model you want to use.
+2. Type **$** followed by part of a skill's name in the message box.
+3. Choose a skill from the picker and add your task instructions.
+4. Send the message.
+
+For example, select a `release-checklist` skill and ask it to review the current changes before a
+release. Dream shows the chosen skill as an inline mention and records used skills on the sent
+message. Available skills can change when you switch the chat's provider or project.
+
+Skill invocation is handled by the selected provider. Mentioning a skill supplies instructions;
+it does not change the chat's [permission settings](/docs/agent-modes).
+
+## Browse and preview skills
+
+1. Open **Settings → Skills**.
+2. Choose the provider tab and the project to inspect.
+3. Select a skill to see its description, source, path, and `SKILL.md` preview.
+4. Use **Open folder** to edit its files in your preferred editor.
+
+<Frame caption="Select a provider and project to see the skills that agent can load, then preview a skill's instructions.">
+  <img
+    src="/images/docs/skills-panel.png"
+    alt="Skills settings with provider tabs, a project picker, a list of personal skills, and the selected SKILL.md preview."
+    width={1016}
+    height={720}
+    loading="lazy"
+  />
+</Frame>
+
+Skills are grouped by scope, such as **Project**, **Personal**, **Plugin**, **Managed**, and
+**Built-in**, when those sources are available. Use **Refresh** after installing or editing a
+skill if it has not appeared yet.
+
+## Enable or disable a skill
+
+Claude Code and Codex offer per-skill switches. These update the provider's own configuration,
+so they also affect skill availability outside Dream. Claude Code stores overrides in
+`~/.claude/settings.json`; Codex stores them through its app-server in `~/.codex/config.toml`.
+
+OpenCode and Cursor do not offer a per-skill switch in Dream. To stop loading a skill, manage its
+folder in the provider's skill locations.
+
+## Create a skill
+
+1. In **Settings → Skills**, choose the project if the skill should belong to one.
+2. Click **New skill**.
+3. Enter a **Name**, a **Description** explaining when to use it, and **Instructions (SKILL.md)**.
+4. Select one or more **Location** choices.
+5. Optionally select **Only run when mentioned**, then click **Create**.
+
+Names use lowercase letters, digits, and hyphens, with a maximum of 64 characters. Dream creates
+a folder with that name and a `SKILL.md` file in each chosen location.
+
+| Location | Intended use |
+| --- | --- |
+| Project · `.agents/skills` | Shared project skills for Codex, OpenCode, and Cursor |
+| Project · `.claude/skills` | Project skills for Claude Code |
+| Personal · `~/.agents/skills` | Shared personal skills for Codex, OpenCode, and Cursor |
+| Personal · `~/.claude/skills` | Personal skills for Claude Code |
+
+Project locations require an open project. **Only run when mentioned** writes the skill's
+`disable-model-invocation` setting; how that setting is enforced depends on the provider.
+
+You can also start from **Save as skill** in [Settings → Prompts](/docs/saved-prompts).
+
+## If a skill is missing
+
+Check the selected provider and project, refresh the list, and read any discovery error shown in
+Settings. Confirm that the skill is in a location the provider reads and that it has not been
+disabled. A skill available to one provider is not necessarily available to another.

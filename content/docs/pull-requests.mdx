@@ -1,0 +1,62 @@
+---
+title: Reviewing pull requests
+description: Read GitHub pull requests, review diffs, post comments, edit details, and merge from Dream.
+---
+
+The **Pull requests** button in the right toolbar opens the GitHub PR for the current branch.
+Install and authenticate GitHub CLI for the repository first. To publish a new PR, follow
+[Git workflows](/docs/git-workflows#create-a-pull-request).
+
+## Open the current branch's PR
+
+1. Select the project and check its current branch.
+2. Click **Pull requests** in the right toolbar.
+3. Review the PR's title, state, source and base branches, and checks.
+4. Use **Summary** for the description and discussion, or **Code** for changed files.
+
+<Frame caption="The PR summary keeps its description, checks, and discussion alongside your project. This example is already merged.">
+  <img
+    src="/images/docs/pull-request-panel.png"
+    alt="Pull request panel showing a merged PR, Summary and Code tabs, its description, and passed checks."
+    width={876}
+    height={600}
+    loading="lazy"
+  />
+</Frame>
+
+If the branch has no PR, the panel offers **Create pull request**. Use **Pull request actions →
+Refresh** after changes made on GitHub, or **Open on GitHub** to view the PR in your browser.
+A merged PR stops appearing once the branch contains newer commits beyond that PR's head.
+
+## Review code and post comments
+
+In **Summary**, read the discussion and use **Write** and **Preview** to compose a Markdown comment.
+Choose **Post comment** to publish it to GitHub.
+
+In **Code**, expand a file and select lines in its diff to write a **Post inline comment**.
+You can read existing review threads and use **Reply** to continue them. When a text patch is
+unavailable, open the PR on GitHub to inspect that file.
+
+These comments are posted to GitHub. To ask your coding agent about local changes, use
+[diff feedback in Changes](/docs/feedback#comment-on-lines-in-a-diff).
+
+## Edit the title and description
+
+When your account has permission, use **Edit title** or **Edit description**. Save the title after
+editing it; for the description, use **Write** and **Preview**, then **Save**. You can also edit
+your own comments where an edit control is available.
+
+## Merge a pull request
+
+1. Review the code, discussion, and checks.
+2. Click **Merge** in the panel header.
+3. Confirm the source and base branches in **Merge PR**.
+4. Choose an available method: **Create a merge commit**, **Squash and merge**, or **Rebase and merge**.
+5. Submit the merge.
+
+Only open, non-draft PRs can be merged. Mark a draft ready on GitHub first. Your account needs merge
+permission, and the repository determines which merge methods are available. GitHub can reject a
+merge when repository requirements are unmet.
+
+Dream checks that the PR still has the head commit shown when merge details were loaded. If it
+changed on GitHub, refresh and review the new changes before retrying.
