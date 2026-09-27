@@ -8,6 +8,7 @@ import DownloadButton from "../DownloadButton";
 import ClaudeIcon from "../icons/ClaudeIcon";
 import CursorIcon from "../icons/CursorIcon";
 import GitHubIcon from "../icons/GitHubIcon";
+import GrokIcon from "../icons/GrokIcon";
 import OpenAIIcon from "../icons/OpenAIIcon";
 import OpenCodeIcon from "../icons/OpenCodeIcon";
 import { useCycle, useInView, useScrollProgress } from "./hooks";
@@ -140,8 +141,8 @@ function Hero() {
               Open-source IDE built for AI coding.
             </p>
             <p className="max-w-md text-[var(--dh-400)] sm:text-lg">
-              Our goal is to create the best experience for working with AI agents.
-              All your agents in a single workspace, organized as tabs,
+              Our goal is to create the best experience for working with AI
+              agents. All your agents in a single workspace, organized as tabs,
               under a clean, focused interface.
             </p>
           </div>
@@ -194,6 +195,7 @@ const PROVIDER_ICONS = (
     <ClaudeIcon className="size-5" />
     <OpenCodeIcon className="size-5" />
     <CursorIcon className="size-5" />
+    <GrokIcon className="size-5" />
   </div>
 );
 
@@ -230,7 +232,7 @@ const GROUPS: Group[] = [
       {
         id: "1.2",
         title: "Bring your own provider",
-        body: "Dream works with your existing subscriptions and local agent CLIs from OpenAI, Anthropic, OpenCode, and Cursor.",
+        body: "Dream works with your existing subscriptions and local agent CLIs from OpenAI, Anthropic, OpenCode, Cursor, and Grok.",
         bg: "/bg-01.jpg",
         extra: PROVIDER_ICONS,
         items: [
