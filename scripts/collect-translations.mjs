@@ -143,7 +143,7 @@ for (const match of theme.matchAll(/: '([^']+)'/g)) add(match[1], ui);
 for (const value of [
   "Powered by",
   "Language",
-  "Docs",
+  "Documentation",
   "Download",
   "Search documentation...",
   "Dream on GitHub",
