@@ -15,7 +15,7 @@ import { useCycle, useInView, useScrollProgress } from "./hooks";
 import ShotStage, { ShotReel } from "./ShotStage";
 import { type Frame, lerpRegion, R } from "./shots";
 
-const GITHUB_URL = "https://github.com/umami-software/dream";
+const GITHUB_URL = "https://github.com/dreamide/dream";
 
 /* ------------------------------------------------------------------ */
 /* Primitives                                                          */

@@ -40,7 +40,7 @@
       {
         "icon": "github",
         "ariaLabel": "Dream on GitHub",
-        "href": "https://github.com/umami-software/dream"
+        "href": "https://github.com/dreamide/dream"
       }
     ],
     "primary": {
@@ -54,12 +54,12 @@
       {
         "icon": "github",
         "ariaLabel": "Dream on GitHub",
-        "href": "https://github.com/umami-software/dream"
+        "href": "https://github.com/dreamide/dream"
       },
       {
         "icon": "discord",
         "ariaLabel": "Dream on Discord",
-        "href": "https://umami.is/discord"
+        "href": "https://discord.gg/HxRQRzpkD"
       },
       {
         "icon": "x",
