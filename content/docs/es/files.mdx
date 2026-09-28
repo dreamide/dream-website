@@ -1,0 +1,63 @@
+---
+title: "Archivos y búsqueda"
+description: "Explora archivos del proyecto, busca nombres y contenido de archivos, edita código y maneja cambios no guardados."
+---
+
+Haga clic en **Archivos** en la barra lateral derecha para navegar por el directorio del proyecto activo. Abra un archivo desde el árbol para inspeccionarlo junto con su conversación. Las pestañas de archivo le permiten moverse entre varios archivos abiertos.
+
+## Buscar un archivo
+
+1. Abrir **Archivos**.
+2. Introduzca parte del nombre de archivo o ruta en **Buscar archivos** encima del árbol.
+3. Selecciona un resultado para abrirlo.
+4. Borrar la búsqueda para volver a navegar por el árbol.
+
+Usa **Actualizar archivos** en las acciones de archivo cuando los cambios realizados fuera de Dream no se reflejan en el árbol. Buscar un archivo localiza su ruta; utiliza la búsqueda del editor para encontrar texto dentro de ese archivo.
+
+<Frame caption="Busca o navega por el árbol de archivos, luego abre un archivo junto a tu chat.">
+  <img
+    src="/images/docs/files-panel.png"
+    alt="Panel de archivos con Buscar archivos encima del árbol de carpetas y app-error-boundary.tsx abierto en el editor."
+    width={950}
+    height={610}
+    loading="lazy"
+  />
+</Frame>
+
+## Buscar y reemplazar dentro de un archivo
+
+1. Abre el archivo y haz clic en **Buscar en el archivo actual** en la barra de herramientas del editor.
+2. Introduzca el texto en **Buscar**.
+3. Use **Siguiente coincidencia** o **Coincidencia anterior** para desplazarse por los resultados.
+4. Habilite **Distinguir mayúsculas y minúsculas**, **Solo palabras completas**, o **Usar expresión regular** si es necesario.
+
+El panel de búsqueda también ofrece controles de reemplazo. Revise los coincididos antes de usar **Reemplazar todo**, luego guarde el archivo para escribir los cambios en el disco. El reemplazo afecta al archivo actual.
+
+## Editar y guardar
+
+Edite un archivo de texto escribible en el editor de código. Los cambios no guardados se marcan en su pestaña, y el panel puede mostrar cuántos archivos tienen borradores no guardados.
+
+Haga clic en **Guardar** en la barra de herramientas del editor, o presione **Command+S** en macOS o **Ctrl+S** en Windows/Linux mientras el editor esté enfocado. Guarde cada archivo editado antes de pedirle a un agente o a un comando terminal que use el nuevo contenido; esas herramientas leen los archivos en el disco.
+
+Cambiar entre pestañas de archivo te permite mantener bocetos mientras inspeccionas otros archivos. Utiliza **Descartar cambios** para abandonar un boceto local. Esto es distinto de revertir cambios a través de Git.
+
+Cerrar una pestaña con cambios no guardados abre un **prompt de Guardar / No guardar / Cancelar**. **Guardar** escribe el borrador y cierra la pestaña, **No guardar** descarta el borrador y cierra la pestaña, y **Cancelar** mantiene la pestaña abierta. Si el guardado falla o hay conflicto con un cambio externo, el archivo permanece abierto para que puedas resolver el problema.
+
+## Manejar un archivo cambiado fuera del editor
+
+Un agente, un comando terminal o un editor externo puede modificar el mismo archivo mientras tienes un borrador. Dream verifica el contenido del disco al guardar y reporta un conflicto en lugar de sobrescribir silenciosamente esa versión más reciente.
+
+1. Preserva cualquier texto en borrador que quieras mantener.
+2. Lee el mensaje de conflicto.
+3. Use **Recargar desde el disco** para cargar el archivo actual.
+4. Reaplique los cambios que aún necesitas, luego guárdelos de nuevo.
+
+<Warning>
+  Recargar desde el disco reemplaza tu borrador local. Copia cualquier trabajo no guardado que necesites antes de usarlo.
+</Warning>
+
+## Ajustar la vista
+
+Use **Activar ajuste de línea** para líneas largas. Ajuste el tamaño del árbol de archivos y de los paneles de editor para dar más espacio al contenido. Use las acciones disponibles **Abrir en** para continuar en un editor externo.
+
+Después de guardar, abre [Cambios](/docs/es/git-workflows) para revisar el diff de Git. Para pedirle a un agente sobre un archivo, [referencialo con @](/docs/es/providing-context) en el compositor de chat.

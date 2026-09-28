@@ -1,0 +1,55 @@
+---
+title: "Terminals"
+description: "Projektbefehle ausführen, Terminal-Sessions verwalten und eine Claude-Dialogverbindung im Terminal fortsetzen."
+---
+
+Der integrierte Terminal führt Befehle in deinem Projekt ohne den Einsatz von Dream aus. Klicken Sie auf **Terminal** in der rechten Werkzeugleiste, um es zu öffnen. Ein normaler Projektterminal startet im Projektverzeichnis.
+
+## Befehle neben einem Chat ausführen
+
+Verwenden Sie einen Terminal, um das Projekt zu untersuchen, Tests auszuführen oder seine lokale Anwendung zu starten, indem Sie die in dem Projekt dokumentierten Befehle verwenden. Der Terminal- und Agent-Chat arbeiten mit den gleichen Dateien in diesem Arbeitsbereich.
+
+Um eine Browser-Vorschau zu starten, beginnen Sie mit dem Start der Anwendung des Projekts, notieren Sie die URL, die es ausgibt, und öffnen Sie diese URL in Dreams [Browser](/docs/de/browser). Das Öffnen des Browsers startet keinen Server automatisch.
+
+<Frame caption="Der Terminal-Tab speichert den Befehlsausgang im Arbeitsbereich; + öffnet eine weitere Sitzung.">
+  <img
+    src="/images/docs/terminal-panel.png"
+    alt="Terminal 1-Register, eine Plus-Steuerung für eine weitere Sitzung und Ausgabe des Projekttcommands."
+    width={855}
+    height={350}
+    loading="lazy"
+  />
+</Frame>
+
+## Terminal-Sessions verwalten
+
+1. Offen **Terminal**.
+2. Klicken Sie auf **Öffnen Sie ein anderes Terminal**, die **+**-Steuerung, um eine weitere Sitzung zu erstellen.
+3. Wählen Sie ein Terminal-Tab aus, um Sessions zu wechseln.
+4. Nutzen Sie die Schließungskontrolle eines Terminals, wenn Sie damit fertig sind.
+
+Verwenden Sie separate Sitzungen für eine langlaufende Anwendung und gelegentliche Befehle wie Tests. Das Beenden einer Terminal-Sitzung beendet deren Prozess. Das Schließen des Panels behält die Sitzungen, die Sie verwendet haben, bei, Dream bereinigt jedoch automatisch jene Sitzungen, die eröffnet wurden, aber keine Benutzer-Eingaben erhalten haben.
+
+Verwende **Terminal erweitern**, um dem Panel mehr Platz zu geben und **Terminal einklappen**, um seine gewöhnliche Größe wiederherzustellen. Das Ausklappen oder Einklappen ändert die Layout-Struktur ohne die Sitzung zu schließen.
+
+Beim Kopieren von Text muss dieser zuerst ausgewählt werden. **Command+C** auf macOS oder **Ctrl+C** auf Windows/Linux kopiert den ausgewählten Terminal-Text. Ohne eine Auswahl kann der Terminal **Ctrl+C** an die vorherrschende Befehlszeile weiterleiten und diesen unterbrechen.
+
+## Ein Shell wählen
+
+1. Offene **Einstellungen → Allgemein**.
+2. Suche **Terminal** und wähle eine verfügbare Shell aus ihrem Selector.
+3. Öffne eine neue Terminal-Sitzung, um die ausgewählte Shell zu verwenden.
+
+Bestehende Sitzungen behalten die Shell bei, mit der sie gestartet wurden. Wenn eine Shell oder Befehl nicht verfügbar ist, überprüfen Sie, ob sie in Ihrem Systemterminal installiert und funktioniert.
+
+## Eine Claude-Chatsitzung im Terminal fortsetzen
+
+Für einen Claude-Conversations mit einer etablierten wiederaufzuführenden Sitzung:
+
+1. Warte auf das aktuelle Antwort, bis sie beendet ist.
+2. Öffne das Menü mit **…** im Chatkopf.
+3. Wählen Sie **Im Terminal fortsetzen**.
+
+Dream öffnet einen Terminal namens **Claude** im Arbeitsverzeichnis dieser Sitzung und führt den Befehl „resume“ der CLI aus. Dieser Vorgang gilt ausschließlich für Claude-Sitzungen; es handelt sich nicht um eine allgemeine Exportfunktion für alle Anbieter.
+
+Wenn die Option fehlt, überprüfen Sie, ob das Chat-Verfahren Claude verwendet und ein Provider-Sitzung gestartet wurde. Das Ändern des Modells oder der Geschwindigkeit kann diese Sitzung zurücksetzen. Falls die Fortsetzung fehlschlägt, überprüfen Sie, ob das ursprüngliche Arbeitsverzeichnis noch existiert und die Claude-CLI verfügbar ist.

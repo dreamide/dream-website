@@ -1,0 +1,126 @@
+---
+title: "Flujos de trabajo de Git"
+description: "Revisar cambios, trabajar con ramas y usar árboles de trabajo de Git en Dream."
+---
+
+Las herramientas de Git de Dream están disponibles cuando el directorio del proyecto es un repositorio de Git. Use **Cambios** en la barra de herramientas derecha para inspeccionar archivos y **Abrir acciones de Git** para commiter, empujar o crear una solicitud de incorporación.
+
+## Antes de comenzar
+
+Para hacer commits, el repositorio necesita una identidad de autor de Git configurada. Para hacer push, necesita un remoto y credenciales con acceso a él. La creación de pull requests utiliza GitHub CLI, que debe estar instalado y autenticado para el repositorio de destino.
+
+Puedes escribir tus mensajes de commit y el texto de la solicitud de cambios tú mismo. Para generarlos, activa un modelo de proveedor y elige **Configuración → General → Modelos → Modelo de generación de texto**.
+
+## Revisar cambios
+
+1. Abrir **Cambios** para inspeccionar los archivos modificados, añadidos y eliminados.
+2. Expandir un archivo para revisar su diff.
+3. Elige **Diff unificado** o **Diff dividido** en las acciones del panel, y activa el envío de palabras si es útil.
+4. Use **Actualizar cambios** si los cambios realizados fuera de Dream aún no se reflejan.
+
+<Frame caption="Expandir archivos para revisar las añadiciones y eliminaciones antes de commitear.">
+  <img
+    src="/images/docs/changes-panel.png"
+    alt="Panel de Cambios mostrando rutas de archivos y un diff unificado con añadidos en verde y eliminaciones en rojo."
+    width={950}
+    height={680}
+    loading="lazy"
+  />
+</Frame>
+
+Para diffs muy grandes, Dream puede mostrar **Diferencia demasiado grande para renderizar**. Utiliza **Renderizar de todos modos** solo cuando quieras cargar esa vista más grande, o inspeccionar el archivo en tu editor o terminal.
+
+Use la acción **Revertir cambios de archivo** para descartar cambios de trabajo no deseados. **Revertir todos los cambios** se aplica de forma más amplia; revísalo antes de confirmarlo. Revertir código es distinto de archivar el chat que lo generó. Para anular solo lo que cambió una respuesta específica, utiliza el [punto de control](/docs/es/checkpoints) de esa respuesta.
+
+Para pedir a un agente sobre líneas específicas, arrastre sobre los números de línea en un diff o haga clic en el control **+** de una línea, luego escriba un comentario. Dream lo envía junto con la ruta del archivo y las líneas seleccionadas. Vea [Enviar retroalimentación a un chat](/docs/es/feedback).
+
+## Comitea tu trabajo
+
+1. Abierta **Acciones de Git → Confirmar**.
+2. Revisar los cambios incluidos en el diálogo.
+3. Revise **Incluir no preparado**. Está habilitado por defecto y incluye los cambios no etiquetados en el commit.
+4. Introduzca un mensaje de commit o use **Generar mensaje automáticamente**, luego edite el resultado según sea necesario.
+5. Elige **Confirmar**, o **Confirmar y enviar** si estás listo para publicar el commit en el remoto.
+
+<Frame caption="Revisa los cambios incluidos y el mensaje antes de elegir Comitar o Comitar y empujar.">
+  <img
+    src="/images/docs/commit-dialog.png"
+    alt="Diálogo para commit de cambios con rama, conteo de cambios, incluir no etiquetados y un mensaje de commit generado."
+    width={672}
+    height={439}
+    loading="lazy"
+  />
+</Frame>
+
+Para commiter solo un subconjunto seleccionado, stage esos archivos usando Git en un terminal o en un editor externo y desactiva **Incluir no preparado**. El panel de cambios no proporciona controles individuales de estaging.
+
+Dream rechaza los commits cuando hay cambios estagados fuera del directorio activo del proyecto. Comitea esos cambios por separado antes de continuar con esta acción.
+
+<Warning>
+  Revisar los archivos incluidos así como el mensaje. Con Include unstaged habilitado, un commit puede contener trabajo de varios chats que comparten este checkout.
+</Warning>
+
+## Empujar una rama
+
+Abierta **Acciones de Git → Enviar**, revisa los commits de salida y el destino, y elige **Enviar**. El destino depende de la configuración de upstream y remoto del repositorio de la rama.
+
+<Frame caption="Revise los commits de destino y de salida antes de empujar.">
+  <img
+    src="/images/docs/push-dialog.png"
+    alt="Dialogo de empuje de cambios que lista la rama, el destino origin/main, los conteos de adelante y atrás y los commits enviados."
+    width={672}
+    height={364}
+    loading="lazy"
+  />
+</Frame>
+
+Si el empuje falla, revisa el error y confirma tu acceso remoto. Un commit local exitoso permanece commitado incluso si un empuje posterior falla; verifica el estado de la rama antes de repetir una acción combinada.
+
+## Crea un pull request
+
+1. Trabaja en una rama de características cuyo nombre difiera de la rama base del pedido.
+2. Abierta **Acciones de Git → Crear PR**.
+3. Revisa los branches de origen y base y los cambios propuestos.
+4. Ingrese un título y una descripción, o use **Generar detalles de PR automáticamente** y revise el texto generado.
+5. Bajo **Próximos pasos**, seleccione la acción que corresponda al estado de la rama.
+6. Activa **Borrador** si el pedido de cambios no está listo para la revisión, luego envíalo.
+
+<Frame caption="Revisar los detalles de la solicitud de cambios y elegir el siguiente paso. El borrador está desactivado en este ejemplo.">
+  <img
+    src="/images/docs/create-pr-dialog.png"
+    alt="Crear diálogo de solicitud de incorporación con ramas de origen y base, título, descripción, opciones de paso siguiente y interruptor de borrador."
+    width={672}
+    height={680}
+    loading="lazy"
+  />
+</Frame>
+
+| Paso siguiente | ¿Qué sucede? |
+| --- | --- |
+| Crear PR | Crea una solicitud de incorporación para trabajo ya empujado |
+| Empujar y crear solicitud de cambios | Empuja los commits antes de crear el pedido de cambios |
+| Comitear, empujar y crear una solicitud de cambios | Comitea los cambios en curso, los envía y crea la solicitud de incorporación. |
+
+El diálogo comienza con **Borrador** desactivado. Actívalo para crear una PR de borrador. La creación de una PR requiere un ramo en lugar de un HEAD desacoplado, y origen y base no pueden ser el mismo ramo.
+
+Si una acción combinada falla, pasos anteriores pueden haberse completado ya. Verifica el commit, el ramo remoto o la solicitud de cambios antes de reintentarlo.
+
+## Revisar y fusionar una solicitud de incorporación
+
+Abre los **solicitudes de fusión** en la barra lateral derecha para ver la solicitud de fusión de la rama actual. Utiliza **Resumen** para su descripción, comprobaciones y discusión, o **Código** para inspeccionar los diffs y dejar comentarios en línea. Puedes editar el título y la descripción cuando sea permitido y utiliza **Fusionar** para elegir el método de fusión. Consulta [Revisión de solicitudes de fusión](/docs/es/pull-requests) para el flujo completo.
+
+## Cambiar o crear ramas
+
+Abre el interruptor de ramas debajo del chat, busca ramas locales y elige una para verificarla. Utiliza **Crear y cambiar a una nueva rama…** para nombrar y crear una rama. Actualiza la lista si una rama creada fuera de Dream está faltando.
+
+<Frame caption="La marca de verificación identifica la rama actual. Buscar otra rama o crear una nueva desde menú.">
+  <img
+    src="/images/docs/branch-switcher.png"
+    alt="Switchador de ramas mostrando Buscar ramas, main seleccionado, otra rama local, Crear y cambiar a nueva rama, y Nuevo árbol de trabajo."
+    width={377}
+    height={256}
+    loading="lazy"
+  />
+</Frame>
+
+Cambiar de rama cambia los archivos utilizados por cada chat en ese proyecto. Revisa el trabajo incompleto antes de cambiar. Para tareas paralelas con checkouts independientes, utiliza [Git worktrees](/docs/es/worktrees). Cuando un árbol de trabajo ha terminado, su diálogo **Completar árbol de trabajo** puede fusionar la rama en su base o abrir una solicitud de fusión y luego eliminar el checkout.

@@ -1,0 +1,55 @@
+---
+title: "Prompts réutilisables"
+description: "Enregistrer les instructions une fois et les exécuter dans n'importe quel chat de projet."
+---
+
+Utilisez **Paramètres → Prompts** pour des instructions que vous répétez dans plusieurs projets, comme la révision des modifications ou la réponse aux commentaires de revue. Un prompt enregistré possède un nom et du texte ; il s'exécute dans la conversation que vous choisissez, en utilisant le modèle et les paramètres de ce chat.
+
+## Créer un prompt
+
+1. Ouvrir **Paramètres → Prompts** et cliquer sur **Nouveau prompt**.
+2. Saisissez un **Nom** court que vous reconnaîtrez dans le menu de conversation.
+3. Écrivez les instructions dans **Prompt** puis cliquez sur **Créer**.
+
+Par exemple, nommez un prompt « Revue des modifications » et enregistrez-le :
+
+> Examine les modifications actuelles pour repérer les bugs, les cas limites oubliés et les comportements inattendus. Rapporte les résultats avec des références aux fichiers. Ne modifie pas encore les fichiers.
+
+L'invite est disponible dans tous les projets. Gardez les instructions réutilisables indépendantes d'un dossier particulier, ou assurez-vous que tout chemin présent dans le texte s'applique au projet où vous l'exécutez.
+
+## Exécuter un prompt dans un chat
+
+1. Ouvrir le projet et la conversation que vous souhaitez utiliser.
+2. Vérifiez le modèle de ce chat et [permissions](/docs/fr/agent-modes).
+3. Ouvrir le menu **+** à côté de la boîte de message.
+4. Choisissez **Exécuter un prompt**, puis sélectionnez le prompt enregistré.
+
+Le choix d'un prompt envoie immédiatement son texte dans ce chat. Il ne s'insère pas d'abord un brouillon éditable. Le texte que vous avez déjà saisi dans le composateur est conservé, et le prompt enregistré reste disponible pour une utilisation ultérieure. Si vous souhaitez adapter le texte avant d'envoyer, copiez-le des Paramètres et collez-le vous-même dans le composateur.
+
+**Exécuter un prompt** est indisponible lorsque le chat est en cours d'exécution. Attendez que la réponse se termine avant d'exécuter un autre prompt. Si l'envoi échoue, vérifiez le composant du prompt texte.
+
+## Gérer la liste
+
+<Frame caption="Sélectionnez un prompt réutilisable pour le lire et copier son texte. Les cases de ligne permettent de réorganiser, de convertir, d'éditer ou de le supprimer.">
+  <img
+    src="/images/docs/saved-prompts-panel.png"
+    alt="Paramètres des prompts avec quatre prompts enregistrés, des icônes d'action en ligne, et le texte complet d'un prompt de revue de code sélectionné."
+    width={1016}
+    height={782}
+    loading="lazy"
+  />
+</Frame>
+
+Sélectionnez un prompt dans **Paramètres → Prompts** pour le prévisualiser et le copier. Utilisez **Modifier**, ou cliquez dessus pour modifier son nom. **Monter** et **Descendre** changent sa position dans la liste et le menu de conversation. Pour supprimer un prompt, cliquez sur le contrôle de suppression et puis **Confirmer la suppression**.
+
+**Gérer les prompts…** dans le menu **Exécuter un prompt** de la discussion ouvre cette page de paramètres.
+
+## Transformer un prompt en compétence
+
+Utilisez **Enregistrer comme skill** à côté d'un prompt enregistré pour ouvrir le dialogue de création de compétence avec son nom et ses instructions déjà saisis. Ajoutez une description, choisissez où le sauvegarder et cliquez sur **Créer**. Voir [Compétences des agents](/docs/fr/skills) pour le support des fournisseurs et les emplacements de stockage.
+
+| Vous voulez… | Utilisez |
+| --- | --- |
+| Envoyer les mêmes instructions de manière répétée dans différents chats | Prompts réutilisables |
+| Préparer une tâche unique avec ses propres paramètres de modèle pour plus tard | [Stash](/docs/fr/stash) |
+| Donnez une instruction réutilisable à un agent qu'il peut charger pour une tâche | [Compétences](/docs/fr/skills) |

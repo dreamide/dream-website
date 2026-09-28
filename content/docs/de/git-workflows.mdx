@@ -1,0 +1,126 @@
+---
+title: "Git-Arbeitsabläufe"
+description: "Änderungen überprüfen, mit Branchen arbeiten und Git-Worktrees in Dream verwenden."
+---
+
+Die Git-Tools von Dream sind verfügbar, wenn das Projektverzeichnis ein Git-Repository ist. Verwenden Sie **Änderungen** in der rechten Werkzeugleiste, um Dateien zu inspektieren, und **Öffnen Sie Git-Aktionen**, um zu commiten, zu pushen oder einen Pull Request zu erstellen.
+
+## Bevor Sie beginnen
+
+Für Commits benötigt Ihr Repository eine konfigurierte Git-Autoridentität. Für Push-Vorgänge ist ein Remote-Repository und die entsprechenden Anmeldeinformationen erforderlich, die darauf zugreifen können. Die Erstellung von Pull-Requests verwendet den GitHub CLI, der installiert und für das Zielrepository authentifiziert sein muss.
+
+Sie können Commit-Beschreibungen und PR-Texte selbst eingeben. Um sie zu generieren, aktivieren Sie ein Provider-Modell und wählen **Einstellungen → Allgemein → Modelle → Textgenerierungsmodell**.
+
+## Änderungen überprüfen
+
+1. Offene **Änderungen** zum Inspektieren von geänderten, hinzugefügten und gelöschten Dateien.
+2. Eine Datei ausklappen, um deren Diff zu überprüfen.
+3. Wählen Sie im Panel-Aktionen **Vereinheitlichtes Diff** oder **Geteiltes Diff** aus, und aktivieren Sie den Wortumbruch, wenn nützlich.
+4. Verwenden Sie **Änderungen aktualisieren**, wenn Änderungen außerhalb von Dream noch nicht berücksichtigt wurden.
+
+<Frame caption="Dateien ausklappen, um hinzugefügte und gelöschte Inhalte vor dem Commit zu überprüfen.">
+  <img
+    src="/images/docs/changes-panel.png"
+    alt="Änderungsübersicht mit Dateipfaden und einem zusammengefassten Diff mit grünen Hinzufügungen und roten Löschungen."
+    width={950}
+    height={680}
+    loading="lazy"
+  />
+</Frame>
+
+Bei sehr großen Diffs kann Dream **Diff zu groß zum Rendern** anzeigen. Verwenden Sie **Trotzdem rendern**, nur dann, wenn Sie die größere Ansicht laden oder die Datei in Ihrem Editor oder Terminal untersuchen möchten.
+
+Verwenden Sie die Aktion **Dateiänderungen rückgängig machen**, um ungewünschte Arbeitsänderungen zu verworfen. Die Aktion **Alle Änderungen verwerfen** gilt breiter; prüfen Sie ihren Umfang, bevor Sie bestätigen. Das Zurücksetzen von Code ist unabhängig von der Archivierung des Chats, der diese Codegenerierung hervorbrachte. Um nur das zu rückgängig zu machen, was eine bestimmte Antwort geändert hat, verwenden Sie den [Checkpoint](/docs/de/checkpoints) dieser Antwort.
+
+Um einem Agenten über bestimmte Zeilen Fragen zu stellen, ziehen Sie über die Zeilennummern in einer Diff oder klicken Sie auf das **+**-Symbol einer Zeile und geben dann einen Kommentar ein. Dream sendet diese Mitteilung mit der Dateipfad und den ausgewählten Zeilen. Siehe [Feedback an einen Chat senden](/docs/de/feedback).
+
+## Ihre Arbeit einreichen
+
+1. Offene **Git-Aktionen → Festschreiben**.
+2. Überprüfen Sie die in dem Dialog enthaltenen Änderungen.
+3. Prüfen Sie **Unstaged einschließen**. Sie ist standardmäßig aktiviert und beinhaltet ungekennzeichnete Änderungen in der Commit.
+4. Geben Sie eine Commit-Meldung ein oder verwenden Sie **Nachricht automatisch generieren**, dann bearbeiten Sie das Ergebnis entsprechend.
+5. Wählen Sie **Festschreiben**, oder **Festschreiben und pushen**, wenn Sie bereit sind, den Commit an das Remote-System zu veröffentlichen.
+
+<Frame caption="Überprüfen Sie die eingereichten Änderungen und die Nachricht, bevor Sie Commit oder Commit &amp; Push wählen.">
+  <img
+    src="/images/docs/commit-dialog.png"
+    alt="Dialog zum Commit der Änderungen mit Branch, Anzahlen der Änderungen, Eingeben von ungestellten Änderungen und einem generierten Commit-Beschreibung."
+    width={672}
+    height={439}
+    loading="lazy"
+  />
+</Frame>
+
+Um nur einen ausgewählten Teil zu commiten, stufen Sie diese Dateien über Git in einer Terminal- oder externen Editor und schalten Sie **Unstaged einschließen** aus. Das Änderungsübersichts-Fenster bietet keine individuellen Staging-Steuerungen.
+
+Dream lehnt Commits ab, wenn Änderungen im aktiven Projektverzeichnis vorbereitet sind. Commit diese getrennt, bevor Sie mit dieser Aktion fortfahren.
+
+<Warning>
+  Überprüfen Sie die eingereichten Dateien sowie die Nachricht. Bei „Include unstaged“ aktiviert, kann ein Commit Arbeiten aus mehreren Chats, die diesen Checkout teilen, enthalten.
+</Warning>
+
+## Eine Branch pushen
+
+Offene **Git-Aktionen → Pushen**, überprüfen Sie die ausgehenden Commits und Ziel, und wählen Sie **Pushen** aus. Das Ziel hängt von der Überwachung der Branch- und Repository-Remote-Konfiguration ab.
+
+<Frame caption="Prüfen Sie den Ziel- und Ausgangscommit, bevor Sie pushen.">
+  <img
+    src="/images/docs/push-dialog.png"
+    alt="Dialog zum Pushen von Änderungen, der den Branch, das Ziel origin/main, die Anzahl der vorangehenden und hinterliegenden Commits sowie die ausgehenden Commits auflistet."
+    width={672}
+    height={364}
+    loading="lazy"
+  />
+</Frame>
+
+Wenn das Push fehlschlägt, prüfen Sie den Fehler und bestätigen Sie Ihre Remote-Zugriffsberechtigungen. Ein erfolgreicher lokaler Commit bleibt verankert, selbst wenn ein anschließendes Push scheitert; überprüfen Sie den Branch-Zustand vor dem Wiederholen einer kombinierten Aktion.
+
+## Pull Request erstellen
+
+1. Arbeite an einem Feature-Branch, dessen Name von dem Basis-Branch des PR abweicht.
+2. Offene **Git-Aktionen → PR erstellen**.
+3. Überprüfen Sie die Quell- und Basiszweige sowie die vorgeschlagenen Änderungen.
+4. Titel und Beschreibung eingeben, oder verwenden Sie **PR-Details automatisch generieren** und überprüfen Sie den erzeugten Text.
+5. Unter **Nächste Schritte**, wählen Sie die Aktion aus, die dem Zustand des Branches entspricht.
+6. Schalte **Entwurf** ein, wenn das PR nicht für die Prüfung bereit ist, dann submit.
+
+<Frame caption="Überprüfen Sie die PR-Details und wählen Sie den nächsten Schritt. Draft ist in diesem Beispiel deaktiviert.">
+  <img
+    src="/images/docs/create-pr-dialog.png"
+    alt="Dialog zum Erstellen eines Pull-Requests mit Quell- und Basisbranch, Titel, Beschreibung, Optionen für den nächsten Schritt und einem Schaltflächen-Status „Entwurf“."
+    width={672}
+    height={680}
+    loading="lazy"
+  />
+</Frame>
+
+| Nächster Schritt | Was passiert |
+| --- | --- |
+| PR erstellen | Erstellt einen PR für bereits pushete Arbeit |
+| Pushen und PR erstellen | Pushet Commits vor der Erstellung des PR |
+| Commit, push und PR erstellen | Committet die arbeitenden Änderungen, pushet und erstellt den PR |
+
+Das Dialogfeld beginnt mit **Entwurf** deaktiviert. Aktivieren Sie es, um einen Draft-PR zu erstellen. Die Erstellung eines PR erfordert einen Branch anstelle eines getrennten HEAD, und Quelle und Basis dürfen nicht der gleiche Branch sein.
+
+Wenn eine kombinierte Aktion scheitert, haben frühere Schritte möglicherweise bereits abgeschlossen. Prüfen Sie den Commit, den remote Branch oder die PR, bevor Sie erneut versuchen.
+
+## Überprüfen und einen Pull Request vereinigen
+
+Öffne **Pull Requests** in der rechten Toolbar, um den aktuellen Branch-PR zu betrachten. Verwende **Zusammenfassung**, um seine Beschreibung, Prüfungen und Diskussion zu sehen, oder **Code**, um Diffs zu inspizieren und inline Kommentare zu hinterlassen. Du kannst den Titel und die Beschreibung bearbeiten, wenn dies erlaubt ist, und verwende **Zusammenführen**, um eine Fusionsmethode auszuwählen. Siehe [Pull Requests prüfen](/docs/de/pull-requests), um den vollständigen Workflow zu erfahren.
+
+## Branch erstellen oder wechseln
+
+Öffnen Sie den Branch-Wechsler unter dem Chat, suchen Sie lokale Branches und wählen Sie einen aus, um ihn auszuführen. Verwenden Sie **Neuen Branch erstellen und auschecken…**, um einen Branch zu benennen und zu erstellen. Aktualisieren Sie die Liste, wenn ein Branch außerhalb von Dream erstellt wurde.
+
+<Frame caption="Das Auge zeigt die aktuelle Branch an. Suchen Sie nach einer anderen Branch oder erstellen Sie eine neue aus demselben Menü.">
+  <img
+    src="/images/docs/branch-switcher.png"
+    alt="Branch-Wechsler mit Suchen von Branchen, Hauptbranch ausgewählt, ein weiterer lokaler Branch, Erstellen und Check-out eines neuen Branches sowie Neuer Arbeitsbaum."
+    width={377}
+    height={256}
+    loading="lazy"
+  />
+</Frame>
+
+Änderungen der Branches ändern die Dateien, die von jeder Chat-Session in diesem Projekt verwendet werden. Überprüfen Sie unvollständige Arbeit, bevor Sie wechseln. Für parallele Aufgaben mit unabhängigen Checkouts verwenden Sie [Git-Worktrees](/docs/de/worktrees). Wenn ein Worktree fertig ist, kann das **Worktree abschließen**-Dialogfeld den Branch in seine Basis integrieren oder einen Pull-Request öffnen und dann die Checkout entfernen.

@@ -1,0 +1,74 @@
+---
+title: "Einführung"
+description: "Beginnen Sie mit Dream, einer open-source Desktop-IDE für AI-Coding-Agents."
+---
+
+Dream bringt Ihre Projekte, AI-Coding-Agenten, Dateien, Terminals, Browser-Vorabilder und Git-Arbeitsschritte in eine einzige Desktop-Arbeitsfläche. Verbinden Sie einen unterstützten Agent-CLI, öffnen Sie einen Ordner und arbeiten Sie mit einem oder mehreren Chats, ohne zwischen Tools wechseln zu müssen.
+
+<Frame caption="Halten Sie separate Konversationen in einem Projekt-Arbeitsbereich getrennt.">
+  <img
+    src="/images/screen-multiple-chats.png"
+    alt="Drei Konversationen öffnen sich nebeneinander unter dem aktiven Projekt-Tab in Dream."
+    width={1920}
+    height={1080}
+    loading="lazy"
+  />
+</Frame>
+
+<CardGroup cols={2}>
+  <Card title="Install Dream" icon="download" href="/docs/de/installation">
+    Wählen Sie das Paket für macOS, Windows oder Linux.
+  </Card>
+  <Card title="Anbieter verbinden" icon="plug" href="/docs/de/providers">
+    Aktiviere Modelle aus deinen installierten Coding-Agent-CLI-Tools.
+  </Card>
+  <Card title="Dein erstes Projekt öffnen" icon="folder-open" href="/docs/de/first-project">
+    Ein Ordner hinzufügen und einen Chat in seinem Arbeitsbereich starten.
+  </Card>
+  <Card title="Entdecken Sie das Arbeitsbereichs-Verzeichnis" icon="panels-top-left" href="/docs/de/workspace">
+    Lernen Sie, wie Projekte, Chats, Dateien, Terminals und Vorschauen zusammenpassen.
+  </Card>
+</CardGroup>
+
+## Was Dream enthält
+
+- Ein mehrprojekt-Workspace mit persistierenden Projekt-Optionen
+- Mehrere Seitlich nebeneinander liegende Chats und chat-Verzweigungen
+- Wiederverwendbare Prompts über Projekte hinweg und providerbewusste Agent-Fähigkeiten
+- Per-Reply-Checkpoints zum Überprüfen und Wiederherstellen der Dateien, die ein Agent geändert hat
+- Unterstützung für Codex CLI, Claude Code CLI, OpenCode CLI, Cursor Agent CLI und Grok Build CLI
+- Ein Datei-Explorer, Dateisuche und -bearbeitung, integrierte Terminals und Browser-Vorschau
+- Git-Status, Branch, Diff, Commit, Push, Pull Request und Worktree-Arbeiten, einschließlich des Fusions eines abgeschlossenen Worktree in seinen Basis-Branch
+- Zeilenbezogene Differenz-Feedback und Auswahl von Browser-Elementen, die gezielte Nachrichten an ein Chat-System senden
+- Ein GitHub-Pull-Request-Panel zum Überprüfen von Code, Kommentare posten, Details bearbeiten und Zusammenführen
+- Konfigurierbare MCP-Server und integrierte Agent-Tools für die Interaktion mit dem Browser
+
+<Note>
+  Dream führt Coding-Agents über ihre installierten CLIs aus. Sie benötigen mindestens einen unterstützten CLI, bevor Sie ein Chat-Verfahren beginnen können.
+</Note>
+
+## Gängige Workflows
+
+| Ich möchte… | Lesen |
+| --- | --- |
+| Behalte Implementierungs- und Überprüfungsgespräche gemeinsam offen | [More than one Chat verwenden](/docs/de/multiple-chats) |
+| Suchen, archivieren oder eine alte Konversation wiederherstellen | [Mit Chats arbeiten](/docs/de/chats) und [Archivierte Chats](/docs/de/archived-chats) |
+| Ein Startmodell und eine Entscheidungsfindungshaltung auswählen | [Modelle und Standardeinstellungen](/docs/de/models) |
+| Probier einen anderen Ansatz aus einer früheren Nachricht | [Gespräche verzweigen](/docs/de/branching-chats) |
+| Eine Agenten-Progression verfolgen oder auf eine Frage antworten | [Mit Chats arbeiten](/docs/de/chats#fortschritt-verfolgen) |
+| Prüfe, was eine Antwort geändert hat, und gib einen Teil davon zurück | [Änderungen prüfen und wiederherstellen](/docs/de/checkpoints) |
+| Kommentar zu bestimmten Diff-Zeilen oder einem Seitenelement | [Feedback an einen Chat senden](/docs/de/feedback) |
+| Eine Aufgabe vorbereiten, um später auszuführen | [Prompts mit Stash speichern](/docs/de/stash) |
+| Anweisungen über verschiedene Projekte hinweg wiederverwenden | [Wiederverwendbare Prompts](/docs/de/saved-prompts) |
+| Durchsuchen, aufrufen oder ein Agent-Fähigkeits-Element erstellen | [Agenten-Skills](/docs/de/skills) |
+| Additional Tools an Agent verbinden | [MCP-Server](/docs/de/mcp-servers) |
+| Eine Agent-Datei oder ein Screenshot geben | [Kontext bereitstellen](/docs/de/providing-context) |
+| Arbeite in einem separaten Checkout, dann füge ihn wieder ein | [Git-Worktrees](/docs/de/worktrees) |
+| Code-Änderungen überprüfen und veröffentlichen | [Git-Arbeitsabläufe](/docs/de/git-workflows) |
+| Reviewe Kommentare und füge eine GitHub-Pull-Anfrage ein | [Pull Requests prüfen](/docs/de/pull-requests) |
+
+## Verstehe den Arbeitsbereich
+
+Ein **Projekt** ist ein lokaler Ordner mit eigenen Chats und Werkzeugen. Ein **Chat** ist ein Gespräch mit eigener Modell- und Einstellungs-Einstellungen. Mehrere Chats in einem Projekt teilen seine Dateien; ein **Arbeitsbaum** gibt einer Aufgabe eine separate Git-Checkout.
+
+Verwenden Sie [Agentenberechtigungen](/docs/de/agent-modes), um zu wählen, wie ein Agent funktioniert, und [Kontext und Nutzung](/docs/de/context-and-usage), um die Informationen unter dem Composer zu verstehen. Die [Einstellungsreferenz](/docs/de/settings) enthält die allgemeinen Einstellungen der Anwendung. Wenn etwas fehlt oder nicht funktioniert, beginnen Sie mit [Fehlerbehebung](/docs/de/troubleshooting).

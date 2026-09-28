@@ -1,0 +1,126 @@
+---
+title: "Fluxos de trabalho do Git"
+description: "Revise alterações, trabalhe com ramificações e use Worktrees do Git no Dream."
+---
+
+As ferramentas de Git do Dream estão disponíveis quando o diretório do projeto for um repositório Git. Use **Alterações** na barra de ferramentas direita para inspecionar arquivos e **Abrir ações do Git** para commitar, pushar ou criar uma solicitação de pull.
+
+## Antes de começar
+
+Para commits, seu repositório precisa ter uma identidade de autor Git configurada. Para push, é necessário um remoto e credenciais que possam acessá-lo. A criação de pull request utiliza o GitHub CLI, que deve estar instalado e autenticado para o repositório de destino.
+
+Você pode digitar os mensagens de commit e o texto do PR por si. Para gerá-los, habilite um modelo de provedor e escolha **Configurações → Geral → Modelos → Modelo de geração de texto**.
+
+## Revise as alterações
+
+1. Aberto **Alterações** para inspecionar arquivos modificados, adicionados e excluídos.
+2. Expandir um arquivo para revisar sua diferença.
+3. Escolha **Diff unificado** ou **Diff dividido** no painel de ações, e habilite o wrap de palavras se necessário.
+4. Use **Atualizar alterações** se as alterações realizadas fora do Dream ainda não foram refletidas.
+
+<Frame caption="Expandir arquivos para revisar adições e exclusões antes de commitar.">
+  <img
+    src="/images/docs/changes-panel.png"
+    alt="Painel de alterações exibindo caminhos de arquivos e uma diferença unificada com adições em verde e exclusões em vermelho."
+    width={950}
+    height={680}
+    loading="lazy"
+  />
+</Frame>
+
+Para diffs muito grandes, o Dream pode exibir **Diferença muito grande para renderizar**. Use **Renderizar mesmo assim** apenas quando quiser carregar essa visualização maior ou inspecionar o arquivo no seu editor ou terminal.
+
+Use a ação **Reverter alterações no arquivo** para descartar alterações de trabalho indesejadas. A ação **Reverter todas as alterações** se aplica de forma mais ampla; revise seu escopo antes de confirmar. Reverter código é distinto de arquivar a conversa que o gerou. Para desfazer apenas o que uma resposta específica alterou, use o [ponto de verificação](/docs/pt/checkpoints) dessa resposta.
+
+Para pedir a um agente sobre linhas específicas, arraste entre os números de linha em uma diff ou clique no controle **+** de uma linha, depois digite um comentário. O Dream envia com o caminho do arquivo e as linhas selecionadas. Veja [Enviar feedback para um chat](/docs/pt/feedback).
+
+## Commitar seu trabalho
+
+1. Aberto **Ações do Git → Confirmar**.
+2. Revise as alterações incluídas no diálogo.
+3. Verifique **Incluir não preparado**. Ela está habilitada por padrão e inclui mudanças não marcadas no commit.
+4. Entre uma mensagem de commit ou use **Gerar mensagem automaticamente**, depois edite o resultado conforme necessário.
+5. Escolha **Confirmar**, ou **Confirmar e enviar** se você estiver pronto para publicar o commit no remoto.
+
+<Frame caption="Revise as mudanças incluídas e a mensagem antes de escolher Commit ou Commit e push.">
+  <img
+    src="/images/docs/commit-dialog.png"
+    alt="Diálogo para commitar alterações com ramos, contagem de mudanças, incluir não estagios e uma mensagem de commit gerada."
+    width={672}
+    height={439}
+    loading="lazy"
+  />
+</Frame>
+
+Para commitar apenas um subconjunto selecionado, estagie esses arquivos usando Git em um terminal ou em um editor externo e desative **Incluir não preparado**. O Painel de alterações não fornece controles individuais de estagio.
+
+O Dream rejeita commits quando há mudanças staged fora do diretório ativo do projeto. Faça o commit separadamente antes de continuar com esta ação.
+
+<Warning>
+  Revise os arquivos incluídos bem como a mensagem. Com "Incluir não estagial" habilitado, um commit pode conter trabalho de várias conversas compartilhando este checkout.
+</Warning>
+
+## Empurrar uma ramificação
+
+Aberto **Ações do Git → Enviar**, revise os commits de saída e o destino, e escolha **Enviar**. O destino depende da configuração de upstream e remoto do repositório da branch.
+
+<Frame caption="Verifique os commits de destino e de saída antes de empurrar.">
+  <img
+    src="/images/docs/push-dialog.png"
+    alt="Dialogo de push de alterações listando a ramificação, o destino origin/main, os números de commits à frente e atrás, e os commits enviados."
+    width={672}
+    height={364}
+    loading="lazy"
+  />
+</Frame>
+
+Se o empurrar falhar, verifique o erro e confirme o acesso remoto. Um commit local bem-sucedido permanece comitado mesmo se um empurrar posterior falhe; verifique o estado da ramificação antes de repetir a ação combinada.
+
+## Criar um pull request
+
+1. Trabalhe em uma ramificação de recurso cujo nome difere do nome da base da solicitação de alteração.
+2. Aberto **Ações do Git → Criar PR**.
+3. Revise as branches de origem e base e as mudanças propostas.
+4. Insira um título e uma descrição, ou use **Gerar automaticamente detalhes de PR** e revise o texto gerado.
+5. Em **Próximas etapas**, selecione a ação que corresponde ao estado da ramificação.
+6. Ligue o **Rascunho** se o PR não estiver pronto para revisão, em seguida, submeta.
+
+<Frame caption="Revise os detalhes da solicitação de alteração e escolha o próximo passo. O rascunho está desativado neste exemplo.">
+  <img
+    src="/images/docs/create-pr-dialog.png"
+    alt="Criar diálogo de solicitação de pull com ramos de origem e base, título, descrição, opções de próximos passos e interruptor de rascunho."
+    width={672}
+    height={680}
+    loading="lazy"
+  />
+</Frame>
+
+| Próximo passo | O que acontece |
+| --- | --- |
+| Criar PR | Cria uma solicitação de pull para trabalho já empurrado |
+| Empurrar e criar solicitação de alteração | Envia commits antes de criar a solicitação de alteração |
+| Commit, empurre e crie um pedido de alteração | Commita alterações em andamento, envia e cria a solicitação de alteração |
+
+O diálogo inicia com **Rascunho** desativado. Ative-o para criar um PR em rascunho. A criação de um PR exige uma ramificação, e não um HEAD desacoplado; fonte e base não podem ser a mesma ramificação.
+
+Se uma ação combinada falhar, etapas anteriores podem ter sido concluídas já. Verifique o commit, a ramificação remota ou a solicitação de alteração antes de tentar novamente.
+
+## Revise e融e um pedido de pull
+
+Abra **pedidos de pull** na barra lateral direita para visualizar o PR da branch atual. Use **Resumo** para sua descrição, verificações e discussão, ou **Código** para inspecionar as diferenças e deixar comentários inline. Pode editar o título e a descrição quando permitido e use **Mesclar** para escolher um método de mesclagem. Veja [Revisar pedidos de pull](/docs/pt/pull-requests) para o fluxo completo.
+
+## Alternar ou criar ramificações
+
+Abra o switcher de ramo abaixo do chat, procure ramos locais e selecione um para saí-lo. Use **Criar e checkout de novo ramo…** para nomear e criar um ramo. Atualize a lista se um ramo criado fora do Dream estiver faltando.
+
+<Frame caption="O marcador de verificação identifica a branch atual. Busque por outra branch ou crie uma nova a partir do mesmo menu.">
+  <img
+    src="/images/docs/branch-switcher.png"
+    alt="Switchador de ramo exibindo Busca de ramos, main selecionado, outro ramo local, Criar e checkout de novo ramo, e Nova árvore de trabalho."
+    width={377}
+    height={256}
+    loading="lazy"
+  />
+</Frame>
+
+Mudar de ramo altera os arquivos usados por cada chat nesse projeto. Revise o trabalho não finalizado antes de fazer a mudança. Para tarefas paralelas com checkouts independentes, use [Worktrees do Git](/docs/pt/worktrees). Quando um worktree está concluído, seu diálogo **Concluir worktree** pode mesclar a ramificação em sua base ou abrir um pull request e, em seguida, remover o checkout.

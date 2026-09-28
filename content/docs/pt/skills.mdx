@@ -1,0 +1,67 @@
+---
+title: "Skills dos agentes"
+description: "Localize, invoque, visualize e crie habilidades para seus agentes de codificação."
+---
+
+Um skill empacota instruções em um arquivo `SKILL.md`. O Dream descobre habilidades para o agente e projeto selecionados usando as localizações de habilidades desse provedor. O picker de habilidades suporta **Claude Code**, **Codex**, **OpenCode** e **Cursor Agent**.
+
+## Use uma habilidade em um chat
+
+1. Abra um chat e selecione o modelo que deseja usar.
+2. Digite **$** seguido de parte do nome de uma habilidade no campo de mensagem.
+3. Escolha uma habilidade no picker e adicione suas instruções de tarefa.
+4. Envie a mensagem.
+
+Por exemplo, selecione uma habilidade `release-checklist` e peça que ela revise as alterações atuais antes de uma release. O Dream exibe a habilidade escolhida como menção em linha e registra as habilidades utilizadas na mensagem enviada. As habilidades disponíveis podem mudar quando você mudar o provedor ou projeto da conversa.
+
+A invocação de habilidades é gerenciada pelo provedor selecionado. Mencionar uma habilidade fornece instruções; não altera as [configurações de permissão](/docs/pt/agent-modes) do chat.
+
+## Navegue e visualize habilidades
+
+1. Aberto **Configurações → Skills**.
+2. Escolha a guia do provedor e o projeto para inspeção.
+3. Selecione uma habilidade para ver sua descrição, fonte, caminho e pré-visualização do `SKILL.md`.
+4. Use **Abrir pasta** para editar seus arquivos no seu editor preferido.
+
+<Frame caption="Selecione um provedor e projeto para ver as habilidades que o agente pode carregar, em seguida, visualize as instruções de uma habilidade.">
+  <img
+    src="/images/docs/skills-panel.png"
+    alt="Configurações de habilidades com guias de fornecedores, um seletor de projeto, uma lista de habilidades pessoais e a prévia da habilidade selecionada SKILL.md."
+    width={1016}
+    height={720}
+    loading="lazy"
+  />
+</Frame>
+
+Habilidades são agrupadas por escopo, como **Projeto**, **Pessoal**, **Plugin**, **Gerenciado** e **Integrado**, quando essas fontes estiverem disponíveis. Use **Atualizar** após instalar ou editar uma habilidade se ela ainda não aparecer.
+
+## Habilitar ou desabilitar uma habilidade
+
+O Claude Code e o Codex oferecem switches por habilidade. Esses atualizam a configuração própria do provedor, portanto também afetam a disponibilidade de habilidades fora do Dream. O Claude Code armazena as sobrescritas em `~/.claude/settings.json`; o Codex armazena através do seu servidor de aplicativo em `~/.codex/config.toml`.
+
+OpenCode e Cursor não oferecem uma opção por habilidade no Dream. Para parar de carregar uma habilidade, gerencie seu diretório nas localizações de habilidades do provedor.
+
+## Criar uma habilidade
+
+1. Em **Configurações → Skills**, escolha o projeto se a habilidade deveria pertencer a um.
+2. Clique em **Novo skill**.
+3. Insira um **Nome**, uma **Descrição** explicando em que contexto usá-lo, e **Instruções (SKILL.md)**.
+4. Selecione um ou mais **Local**.
+5. Opcionalmente selecione **Executar apenas quando mencionado**, em seguida clique em **Criar**.
+
+Os nomes usam letras minúsculas, dígitos e hífens, com um máximo de 64 caracteres. O Dream cria uma pasta com esse nome e um arquivo `SKILL.md` em cada local escolhido.
+
+| Localização | Uso intencional |
+| --- | --- |
+| Projeto · `.agents/skills` | Habilidades de projeto compartilhadas para o Codex, OpenCode e Cursor |
+| Projeto · `.claude/skills` | Habilidades de projeto para o Claude Code |
+| Pessoal · `~/.agents/skills` | Habilidades pessoais compartilhadas para o Codex, OpenCode e Cursor |
+| Pessoal · `~/.claude/skills` | Habilidades pessoais para o Claude Code |
+
+As localizações do projeto exigem um projeto aberto. **Executar apenas quando mencionado** escreve a configuração `disable-model-invocation` da habilidade; a forma como essa configuração é enforcada depende do provedor.
+
+Você também pode começar com **Salvar como skill** em [Configurações → Prompt](/docs/pt/saved-prompts).
+
+## Se uma habilidade estiver faltando
+
+Verifique o provedor e o projeto selecionados, atualize a lista e leia qualquer erro de descoberta exibido nas Configurações. Confirme que a habilidade está em um local que o provedor pode ler e que não foi desativada. Uma habilidade disponível para um provedor não é necessariamente disponível para outro.

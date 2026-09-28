@@ -1,0 +1,47 @@
+---
+title: "Abre tu primer proyecto"
+description: "Agrega una carpeta de proyecto y comienza tu primer chat de programación con IA."
+---
+
+Una vez que al menos un modelo de proveedor esté activado, puedes agregar una carpeta local a Dream.
+
+<Steps>
+  <Step title="Abrir una carpeta">
+    Desde la pantalla de inicio, seleccione **Abrir carpeta** y elija el directorio del proyecto que desea que use Dream.
+  </Step>
+  <Step title="Elige un modelo">
+    Dream comienza con tu modelo predeterminado. Utiliza el selector de modelo en el compositor de chat para elegir cualquier otro proveedor y modelo habilitado.
+  </Step>
+  <Step title="Elige permisos">
+    Los chats nuevos heredan los **Permisos predeterminados** de Ajustes. Abre el control con el icono de escudo debajo del cuadro de mensaje y elige **Preguntar**, **Aceptar ediciones** o **Acceso completo** para esta tarea. Consulta [Permisos del agente](/docs/es/agent-modes).
+  </Step>
+  <Step title="Enviar un prompt">
+    Describe el resultado que deseas y cómo debe ser verificado. Por ejemplo: "Explica cómo inicia este proyecto, identifica su comando de prueba y sugiere dónde agregar una página de configuraciones". Dream mantiene la conversación y las herramientas del proyecto juntas en el mismo entorno de trabajo.
+  </Step>
+</Steps>
+
+<Frame caption="Revise los controles debajo de tu mensaje antes de enviar la primera tarea.">
+  <img
+    src="/images/docs/chat-composer.png"
+    alt="Compositor de chat con botón de adjunto, modelo, esfuerzo, velocidad, permisos y control de envío."
+    width={600}
+    height={108}
+    loading="lazy"
+  />
+</Frame>
+
+## Inspeccione el resultado
+
+Lee la respuesta y abre los detalles de la herramienta cuando quieras inspeccionar lo que hizo el agente. Si pregunta una pregunta, responde en la misma conversación. Si modifica archivos, abre **Cambios** en la barra de herramientas de la derecha para revisar el diff. Usa **Archivos** para inspeccionar el código o **Terminal** para ejecutar las comprobaciones del proyecto.
+
+Para tareas que necesitan código específico o una captura de pantalla, [agrega contexto](/docs/es/providing-context) antes de enviar la solicitud. Puedes cambiar el modelo del chat usando el selector debajo de su cuadro de mensaje. Para cambiar el modelo inicial para futuras conversaciones, usa **Configuración → General → Modelos → Modelo de chat predeterminado**.
+
+## Volver a un proyecto
+
+Los proyectos abiertos permanecen disponibles como pestañas. Si los cierras, usa **Cerrados recientemente** en la pantalla de inicio para encontrarlos y restaurarlos. Dream restaura el contexto del proyecto, como chats y herramientas abiertas, cuando sea posible.
+
+## Comience otra conversación
+
+Utiliza **Nuevo chat** para comenzar una conversación separada para el mismo proyecto. Activa [multi-chat](/docs/es/multiple-chats) cuando quieras tener conversaciones lado a lado. Cada una tiene sus propios mensajes, pero los chats dentro del mismo proyecto comparten sus archivos.
+
+Abierta [Historial de chats](/docs/es/chats) para regresar a trabajos anteriores. Cuando una tarea está finalizada, [archiva la conversación](/docs/es/archived-chats) para eliminarla del historial activo mientras se mantiene disponible para restaurar.

@@ -1,0 +1,58 @@
+---
+title: "Änderungen prüfen und wiederherstellen"
+description: "Prüfen Sie die Dateien, antwortete der Agent und änderte sich, und stellen Sie die ausgewählten Dateien aus einem Checkpoint wieder her."
+---
+
+Wenn **Änderungs-Checkpoints** aktiviert ist, erstellt Dream eine Schnittstelle Ihrer Projektdateien vor jeder Agentenantwort und erneut, wenn die Antwort beendet ist. Verwenden Sie diese Checkpoints, um genau zu überprüfen, welche Dateien eine Antwort geändert hat, und um bestimmte Dateien wiederherzustellen, wenn Sie eine andere Herangehensweise wählen möchten.
+
+## Wie Checkpoints funktionieren
+
+- Ein Checkpoint erfasst das Arbeitsverzeichnis des Projekts, einschließlich unverfolgter Dateien, in einem privaten Speicher innerhalb der Anwendungsdaten von Dream. Er erzeugt keine Commits, Stashes oder Branches in Ihrem eigenen Repository und funktioniert in Ordnern, die keine Git-Repositories sind.
+- Pfade, die von der Projekt-`.gitignore` ignoriert werden und häufige Build-Verzeichnisse wie `node_modules`, `dist`, `build` und `coverage`, werden niemals aufgenommen.
+- Dream erstellt für jede von dir gesendete Nachricht einmal den **Vorher**-Snapshot und den **Nachher**-Snapshot, wenn die Antwort abgeschlossen ist oder du sie stoppst.
+- Checkpoints erfordern, dass das `git`-Executabel für Dream verfügbar ist. Wenn die Aufzeichnung fehlschlägt oder zu lang dauert, folgt die Antwort ohne Checkpoint und die Kontrolle der Überprüfung wird nicht angezeigt.
+
+Checkpoints sind standardmäßig aktiv. Um sie zu deaktivieren, öffnen Sie **Einstellungen → Allgemein**, finden Sie **Chatnachrichten** und deaktivieren **Änderungs-Checkpoints**.
+
+<Frame caption="Aktivieren Sie „Change checkpoints“ in Einstellungen → Allgemein, um Dateien um jeden Antwort zu erfassen.">
+  <img
+    src="/images/docs/checkpoint-setting.png"
+    alt="Einstellungen für Checkpoints ändern mit aktiviertem Schalter."
+    width={1000}
+    height={68}
+    loading="lazy"
+  />
+</Frame>
+
+## Änderungen einer Antwort überprüfen
+
+1. Warte auf das Beantworten des Responses.
+2. Fahren Sie mit der Maus über die Assistenten-Nachricht und klicken Sie auf **Dateiänderungen dieser Antwort anzeigen**, das Uhrzeichen im Footer der Nachricht.
+3. In **Änderungen in dieser Antwort** werden die Liste der Dateien überprüft. Jede Zeile zeigt den Pfad, einen Status von **Hinzugefügt**, **Gelöscht**, **Geändert** oder **Umbenannt**, sowie die Zeilenanzahl.
+4. Eine Zeile ausklappen, um die Änderungen zu lesen.
+
+Das Dialogfenster vergleicht die Vor- und Nachsicht für diese Antwort nur; Änderungen aus anderen Antworten oder aus deinen eigenen Bearbeitungen sind nicht enthalten. Wenn die Antwort unterbrochen wurde, notiert das Dialogfenster, dass der Nachzustand beim Öffnen des Fensters aufgenommen wurde.
+
+Eine Datei, die nach der Antwort erneut geändert wurde, sei es durch eine spätere Antwort, einen Terminal-Befehl oder Ihre Editor, zeigt einen **Später bearbeitet**-Badge an. Binärdateien werden ohne Differenzliste angezeigt.
+
+## Dateien wiederherstellen
+
+1. Wählen Sie die Dateien aus, die Sie wiederherstellen möchten. Dateien, die keine spätere Bearbeitung erhalten, werden standardmäßig ausgewählt; verwenden Sie **Alle auswählen**, um jede Datei einzuschließen.
+2. Klicken Sie auf **Wiederherstellen**. Die Schaltfläche zeigt, wie viele Dateien ausgewählt sind.
+3. Überprüfen Sie die Zeilen mit **Wiederhergestellt**, dann klicken Sie auf **Schließen**.
+
+Wiederherstellen reversiert die Änderungen der Antwort in den ausgewählten Dateien, während unverwandte Bearbeitungen, die danach in derselben Datei vorgenommen wurden, beibehalten werden. Eine Datei, die von der Antwort erstellt wurde, wird gelöscht, eine Datei, die gelöscht wurde, wird neu erstellt, und eine umgenannte Datei wird in ihren ursprünglichen Pfad zurückgebracht.
+
+Wenn spätere Bearbeitungen mit den Änderungen der Antwort überschneiden, lässt Dream die Datei unverändert und warnt Sie. Wählen Sie **Trotzdem überschreiben**, um die Datei mit ihrem vollständigen Inhalt vor der Antwort zu ersetzen und die späten Bearbeitungen zu verwerfen.
+
+<Warning>
+  Wiederherstellen kann nicht aus dem Dialog rückgängig gemacht werden. Kopiere alle späteren Arbeiten, die du aus den betroffenen Dateien brauchst, bevor du die Dateien wiederherstellst. Das Wiederherstellen von Dateien entfernt die Nachrichten aus dem Gespräch nicht; erkläre dem Agenten, was du wiederhergestellt hast, bevor du ihn darum bitte, fortzufahren.
+</Warning>
+
+Restore ist eine Dateioperation, keine Git-Operation. Öffnen Sie [Änderungen](/docs/de/git-workflows) danach, um die Arbeitsstruktur zu überprüfen, und [speichern Sie alle Editor-Drafts](/docs/de/files), bevor Sie dieselben Dateien wiederherstellen.
+
+## Speicherung von Checkpoints
+
+Checkpoints bleiben solange verfügbar, wie ihr Chat existiert. Die permanente Löschung eines Chats aus **Einstellungen → Archivierte Chats** entfernt deren Checkpoints, und das Abschließen oder Entfernen eines [Worktree-Projekts](/docs/de/worktrees) entfernt die Checkpoints dieses Projekts. Die Archivierung eines Chats bewahrt sie.
+
+Um einen anderen Ansatz auszuprobieren, während die bisherige Konversation erhalten bleibt, kombinieren Sie eine Wiederherstellung mit [der Verzweigung aus einer früheren Nachricht](/docs/de/branching-chats). Die Verzweigung allein kopiert Nachrichten und ändert die Dateien nicht.

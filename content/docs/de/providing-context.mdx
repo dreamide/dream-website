@@ -1,0 +1,64 @@
+---
+title: "Kontext bereitstellen"
+description: "Projektdateien und Ordner referenzieren, Dateien beifügen und dem Agenten eine klare Aufgabe geben."
+---
+
+Gebe dem Agenten ein Ergebnis, den relevanten Kontext und eventuelle Beschränkungen, bevor er arbeitet. Eine Datei-Referenz hilft ihm, den Code zu lokalisieren; eine Anlage kann zusätzliche Materialien wie ein Screenshot bereitstellen.
+
+## Ein Projekt-Datei oder -Verzeichnis referenzieren
+
+1. In der Nachrichtenbox eines Chats geben Sie **@** und einen Teil der Datei- oder Verzeichnispfad ein.
+2. Wählen Sie ein Ergebnis aus der Liste. Verwenden Sie **Pfeil oben** und **Pfeil unten**, um durch die Ergebnisse zu navigieren, dann **Enter** oder **Tab**, um eines auszuwählen.
+3. Fügen Sie Ihre Anweisungen zum eingefügten Referenz hinzu.
+4. Die Nachricht senden.
+
+Zum Beispiel verweisen Sie auf das Einstellungs-Element und fragen:
+
+> Erklären Sie, wie dieses Formular Vorlieben lädt und speichert. Finden Sie aus, warum ein Aktualisierungsversuch den ausgewählten Wert verliert.
+
+Wählen Sie eine Datei aus, wenn Sie wissen, wo die Aufgabe gehört, oder ein Verzeichnis aus, wenn der Agent mehrere verwandte Dateien untersuchen muss. Die Ergebnisliste zeigt Elternpfade, um Dateien mit dem gleichen Namen zu unterscheiden. Drücken Sie **Escape**, um die Liste zu schließen.
+
+Referenzen identifizieren Standorte im aktuellen Projekt. Sie frieren Dateiinhalt nicht und befestigen eine Kopie eines gesamten Verzeichnisses an das Gespräch nicht.
+
+## Eine Datei hinzufügen
+
+1. Klicken Sie das **Datei anhängen**-Element neben dem Nachrichtenfeld.
+2. Wählen Sie die Aktionsart Anhang und wählen Sie eine Datei aus Ihrem Computer aus.
+3. Prüfen Sie, ob die Anlage im Composer erscheint.
+4. Erklären Sie, was der Agent damit tun soll, dann senden Sie die Nachricht.
+
+Für ein Screenshot beschreibe das erwartete Verhalten sowie das, was nicht funktioniert. Der ausgewählte Anbieter und die gewählte Modellvariante bestimmen, welche Anhangtypen sie verwenden können.
+
+<Frame caption="Nutzen Sie das +-Symbol neben dem Nachrichtenfeld, um eine Anlage hinzuzufügen.">
+  <img
+    src="/images/docs/chat-composer.png"
+    alt="Ein Plus-Anhängeschalter links neben der Chat-Nachrichtenbox."
+    width={600}
+    height={108}
+    loading="lazy"
+  />
+</Frame>
+
+## Eine Fähigkeit für wiederholbare Anweisungen verwenden
+
+Tippe **$** in der Komposition ein, um eine [Agent-Fähigkeit](/docs/de/skills) des ausgewählten Anbieters und Projekts zu finden. Wähl sie aus, beschreibe dann die Aufgabe. Fähigkeiten können Verfahren oder Projektkonventionen zusammen mit den Dateiverweisungen und Anhängen in deiner Nachricht bereitstellen.
+
+Für den einfachen Text, den Sie wiederholend senden möchten, verwenden Sie [wiederholbare Prompts](/docs/de/saved-prompts).
+
+## Bild anzeigen und kopieren
+
+Klicken Sie auf ein Bild im Gespräch, um seine größere Vorschau zu öffnen. Bewegen Sie den Mauszeiger über das Bild, um **Bild kopieren** in der oberen rechten Ecke zu sehen, klicken Sie dann darauf, um das Bild in die Zwischenablage zu kopieren.
+
+Um Dream selbst für einen Bericht oder einen anderen Chat zu erfassen, verwenden Sie das [Tastenkürzel für das Fensterscreenshot](/docs/de/workspace#das-dream-fenster-erfassen).
+
+## Kontext vor dem Senden entfernen
+
+Verwende die Entfernungskontrolle einer Anlage, um sie aus dem Composer zu entfernen. Für einen inline-Projekt-Referenz lösche ihre Erwähnung aus der Nachricht; die Referenz wird damit entfernt. Prüfe den verbleibenden Text, damit die Anfrage weiterhin sinnvoll ist.
+
+Wenn **@** keinen Pfad findet, überprüfen Sie das aktive Projekt und suchen Sie die Datei in [Dateien](/docs/de/files). Verwenden Sie ihren aktuellen Pfad, wenn sie verschoben oder umgenannt wurden.
+
+## Gebe dem Chat genügend Kontext
+
+Trennte Chats teilen ihre Nachrichten nicht automatisch. Wenn eine Überprüfung neben einem Implementierungschat begonnen wird, identifiziere, was sich geändert hat, welche Dateien relevant sind und was der Überprüfer prüfen sollte.
+
+Verwenden Sie [Branching](/docs/de/branching-chats), um frühere Nachrichten in ein anderes Gespräch zu übertragen, oder [Stash](/docs/de/stash), um einen Prompt mit Projektreferenzen für später zu speichern.

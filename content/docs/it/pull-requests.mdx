@@ -1,0 +1,49 @@
+---
+title: "Esaminare le pull request"
+description: "Leggi richieste di pull su GitHub, esamina i diff, pubblica commenti, modifica i dettagli e effettua il merge da Dream."
+---
+
+Il pulsante **Pull requests** nella barra degli strumenti a destra apre il pull request GitHub per la ramifica corrente. Installa e autentica prima il CLI di GitHub per il repository. Per pubblicare un nuovo pull request, segui [Flussi di lavoro Git](/docs/it/git-workflows#crea-una-pull-request).
+
+## Apri la richiesta di merge della ramifica corrente
+
+1. Seleziona il progetto e verifica la sua branca attuale.
+2. Fai clic su **Pull request** nella barra laterale destra.
+3. Revisti il titolo, lo stato, i rami di origine e di base e i controlli della richiesta di merge.
+4. Usa **Riepilogo** per la descrizione e la discussione, o **Codice** per i file modificati.
+
+<Frame caption="Il riassunto della PR mantiene la sua descrizione, i controlli e la discussione inerenti al tuo progetto. Questo esempio è già stato incorporato.">
+  <img
+    src="/images/docs/pull-request-panel.png"
+    alt="Panello di pull request che mostra un PR fusionato, scheda Riepilogo e scheda Codice, la sua descrizione e i controlli superati."
+    width={876}
+    height={600}
+    loading="lazy"
+  />
+</Frame>
+
+Se il ramo non ha nessun richiesta di pull, il pannello offre **Crea richiesta pull**. Usa **Azioni della pull request → Aggiorna** dopo le modifiche apportate su GitHub, o **Apri su GitHub** per visualizzare la richiesta di pull nel browser. Una richiesta di pull fusionata smette di apparire una volta che il ramo contenga commit più recenti rispetto alla testa della richiesta di pull.
+
+## Revisione del codice e pubblicazione dei commenti
+
+Nel **Riepilogo**, leggi il discorso e usa **Scrivi** e **Anteprima** per comporre un commento in Markdown. Seleziona **Pubblica commento** per pubblicarlo su GitHub.
+
+In **Codice**, espandi un file e seleziona le righe nel suo diff per pubblicare un **Pubblica commento sulla riga**. Puoi leggere i thread di revisione esistenti e utilizzare **Rispondi** per continuarli. Quando un patch testuale non è disponibile, apri la richiesta di merge su GitHub per esaminare quel file.
+
+Questi commenti vengono pubblicati su GitHub. Per chiedere al tuo agente di programmazione informazioni sulle modifiche locali, usa [diff feedback in Changes](/docs/it/feedback#commentare-le-righe-in-un-diff).
+
+## Modifica il titolo e la descrizione
+
+Quando il tuo account ha i permessi, usa **Modifica titolo** o **Modifica descrizione**. Salva il titolo dopo averlo modificato; per la descrizione, usa **Scrivi** e **Anteprima**, poi **Salva**. È anche possibile modificare i tuoi commenti personali dove è disponibile un controllo di modifica.
+
+## Unire una richiesta di pull
+
+1. Revisiona il codice, il discorso e le verifiche.
+2. Fai clic su **Unisci** nel header del panello.
+3. Conferma le rampe di origine e base in **Unisci PR**.
+4. Scegli un metodo disponibile: **Crea un commit di merge**, **Comprimi i commit e unisci**, o **Esegui rebase e unisci**.
+5. Invia il merge.
+
+Solo i PR aperti e non in versione bozza possono essere uniti. Marca la versione bozza pronta su GitHub prima. Il tuo account ha bisogno di permessi di unione, e il repository determina quali metodi di unione sono disponibili. GitHub può rifiutare un'operazione di unione quando i requisiti del repository non sono soddisfatti.
+
+Dream verifica che la commit di testa del pull request sia ancora visibile quando sono stati caricati i dettagli del merge. Se è cambiato su GitHub, aggiornalo e riprova dopo averly revisionati i nuovi cambiamenti.

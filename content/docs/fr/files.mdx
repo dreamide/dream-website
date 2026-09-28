@@ -1,0 +1,63 @@
+---
+title: "Fichiers et recherche"
+description: "Parcourir les fichiers du projet, rechercher des noms et du contenu de fichiers, éditer du code et gérer les modifications non enregistrées."
+---
+
+Cliquez sur **Fichiers** dans la barre latérale de droite pour parcourir le dossier du projet actif. Ouvrez un fichier dans l'arborescence pour l'examiner en parallèle avec votre conversation. Les onglets de fichiers vous permettent de passer entre plusieurs fichiers ouverts.
+
+## Rechercher un fichier
+
+1. Ouvrir **Fichiers**.
+2. Saisissez une partie du nom de fichier ou du chemin dans **Rechercher des fichiers** au-dessus de l'arborescence.
+3. Sélectionnez un résultat pour l'ouvrir.
+4. Effacer la recherche pour retourner à navigation de l'arborescence.
+
+Utilisez **Actualiser les fichiers** dans les actions de fichier lorsque les modifications effectuées en dehors de Dream ne sont pas reflétées dans l'arborescence. Rechercher un fichier permet de localiser son chemin ; utilisez la recherche dans l'éditeur pour trouver du texte à l'intérieur de ce fichier.
+
+<Frame caption="Rechercher ou parcourir l'arborescence de fichiers, puis ouvrir un fichier à côté de votre chat.">
+  <img
+    src="/images/docs/files-panel.png"
+    alt="Panneau des fichiers avec Rechercher des fichiers au-dessus de l'arborescence de dossier et app-error-boundary.tsx ouvert dans l'éditeur."
+    width={950}
+    height={610}
+    loading="lazy"
+  />
+</Frame>
+
+## Rechercher et remplacer dans un fichier
+
+1. Ouvrir le fichier et cliquer sur **Rechercher dans le fichier actuel** dans la barre d'outils de l'éditeur.
+2. Saisissez le texte dans **Rechercher**.
+3. Utilisez **Correspondance suivante** ou **Correspondance précédente** pour parcourir les résultats.
+4. Activer **Respecter la casse**, **Mots entiers uniquement**, ou **Utiliser une expression régulière** si nécessaire.
+
+Le panneau de recherche propose également des contrôles de remplacement. Vérifiez les correspondances avant d'utiliser **Tout remplacer**, puis enregistrez le fichier pour appliquer les modifications sur le disque. Le remplacement affecte le fichier actuel.
+
+## Éditer et enregistrer
+
+Éditer un fichier de texte modifiable dans l'éditeur de code. Les modifications non enregistrées sont marquées dans son onglet, et le panneau peut indiquer combien de fichiers contiennent des brouillons non enregistrés.
+
+Cliquez sur **Enregistrer** dans la barre d'outils de l'éditeur, ou appuyez sur **Commande+S** sur macOS ou **Ctrl+S** sur Windows/Linux lorsque l'éditeur est actif. Enregistrez chaque fichier modifié avant de demander à un agent ou à une commande terminale d'utiliser les nouveaux contenus ; ces outils lisent les fichiers sur le disque.
+
+Passer entre les onglets de fichier vous permet de garder des brouillons tout en inspectant d'autres fichiers. Utilisez **Annuler les modifications** pour abandonner un brouillon local. Cela est indépendant de l'annulation des modifications via Git.
+
+Fermer une onglet avec des modifications non enregistrées ouvre une boîte de dialogue **Enregistrer / Ne pas enregistrer / Annuler**. **Enregistrer** écrit le brouillon et ferme l'onglet, **Ne pas enregistrer** jette le brouillon et le ferme, et **Annuler** maintient l'onglet ouvert. Si l'enregistrement échoue ou en cas de conflit avec une modification externe, le fichier reste ouvert afin que vous puissiez résoudre le problème.
+
+## Gérer un fichier modifié en dehors de l'éditeur
+
+Un agent, une commande terminale ou un éditeur externe peut modifier le même fichier pendant que vous avez un brouillon. Dream vérifie le contenu du disque lors de l'enregistrement et signale un conflit au lieu de surécrire silencieusement cette version plus récente.
+
+1. Preservez tout texte de projet que vous souhaitez garder.
+2. Lisez le message de conflit.
+3. Utilisez **Recharger depuis le disque** pour charger le fichier actuel.
+4. Reappliquez les modifications que vous devez encore effectuer, puis enregistrez à nouveau.
+
+<Warning>
+  Recharger depuis le disque remplace votre draft local. Copiez tout travail non enregistré que vous avez besoin avant de l'utiliser.
+</Warning>
+
+## Modifier la vue
+
+Utilisez **Activer le retour à la ligne** pour les lignes longues. Redimensionnez les panneaux d'arborescence de fichier et d'édition pour donner plus d'espace au contenu. Utilisez les actions **Ouvrir dans** disponibles pour continuer dans un éditeur externe.
+
+Après avoir enregistré, ouvrez [Modifications](/docs/fr/git-workflows) pour consulter la différence Git. Pour demander à un agent de renseignements sur un fichier, [référez-y avec @](/docs/fr/providing-context) dans le composant de discussion.

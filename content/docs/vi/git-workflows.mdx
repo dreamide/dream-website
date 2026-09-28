@@ -1,0 +1,126 @@
+---
+title: "Quy trình làm việc với Git"
+description: "Xem lại các thay đổi, làm việc với nhánh và sử dụng worktree Git trong Dream."
+---
+
+Các công cụ Git của Dream được sử dụng khi thư mục dự án là một khoa học Git. Sử dụng **Thay đổi** trong thanh công cụ bên phải để kiểm tra các tệp và **Mở hành động Git** để thực hiện commit, đẩy hoặc tạo một pull request.
+
+## Trước khi bắt đầu
+
+Đối với các commit, khoa học của bạn cần có danh tính tác giả Git được cấu hình. Đối với việc đẩy, nó cần một remote và thông tin xác thực có thể truy cập vào nó. Việc tạo pull request sử dụng GitHub CLI, điều này yêu cầu phải cài đặt và xác thực cho khoa học đích.
+
+Bạn có thể tự nhập thông điệp commit và văn bản PR. Để tạo chúng, hãy bật một mô hình cung cấp và chọn **Cài đặt → Chung → Mô hình → Mô hình tạo văn bản**.
+
+## Xem lại các thay đổi
+
+1. Mở **Thay đổi** để kiểm tra các tệp đã được sửa đổi, thêm và xóa.
+2. Mở rộng tệp để xem xét sự thay đổi của nó.
+3. Chọn **Diff thống nhất** hoặc **Diff chia đôi** trong các hành động của thanh điều khiển, và bật chế độ cuộn từ nếu cần thiết.
+4. Sử dụng **Làm mới thay đổi** nếu các thay đổi được thực hiện ngoài Dream chưa được phản ánh.
+
+<Frame caption="Mở rộng các tệp để xem xét các thay đổi và xóa bỏ trước khi thực hiện commit.">
+  <img
+    src="/images/docs/changes-panel.png"
+    alt="Bảng thay đổi hiển thị đường dẫn tệp và một diff thống nhất với các phần bổ sung màu xanh lá cây và phần xóa màu đỏ."
+    width={950}
+    height={680}
+    loading="lazy"
+  />
+</Frame>
+
+Với các đoạn khác nhau rất lớn, Dream có thể hiển thị **Khác biệt quá lớn để hiển thị**. Sử dụng **Vẫn kết xuất** chỉ khi bạn muốn tải view lớn hơn đó, hoặc kiểm tra tệp trong trình soạn thảo hoặc terminal của mình.
+
+Sử dụng hành động **Hoàn nguyên các thay đổi của tệp** của tệp để bỏ qua các thay đổi làm việc không mong muốn. Hành động **Hoàn tác tất cả thay đổi** áp dụng rộng hơn; hãy kiểm tra phạm vi của nó trước khi xác nhận. Việc hoàn tác mã nguồn là độc lập với việc lưu trữ cuộc trò chuyện đã tạo ra nó. Để chỉ khôi phục lại những gì một phản hồi cụ thể đã thay đổi, hãy sử dụng [điểm kiểm tra](/docs/vi/checkpoints) của phản hồi đó.
+
+Để yêu cầu một agent về các dòng cụ thể, kéo qua các số dòng trong một diff hoặc nhấp vào nút **+** của một dòng, sau đó nhập một bình luận. Dream sẽ gửi bình luận này cùng với đường dẫn tệp và các dòng đã chọn. Xem [Gửi phản hồi đến cuộc trò chuyện](/docs/vi/feedback).
+
+## Gửi công việc của bạn
+
+1. Đang mở **Hành động Git → Commit**.
+2. Xem lại các thay đổi được bao gồm trong hộp thoại.
+3. Kiểm tra **Bao gồm thay đổi chưa được stage**. Nó được bật mặc định và bao gồm các thay đổi chưa được ghi lại trong thao tác ghi lại.
+4. Nhập thông điệp giao dịch hoặc sử dụng **Tự động tạo tin nhắn**, sau đó chỉnh sửa kết quả theo nhu cầu.
+5. Chọn **Commit**, hoặc **Commit và đẩy** nếu bạn đã sẵn sàng để xuất bản commit đến remote.
+
+<Frame caption="Xem lại các thay đổi và thông điệp được đưa vào trước khi chọn Commit hoặc Commit &amp; push.">
+  <img
+    src="/images/docs/commit-dialog.png"
+    alt="Thông báo xác nhận thay đổi với nhánh, số lượng thay đổi, bao gồm các thay đổi chưa được thêm vào, và một thông điệp ghi chú được tạo ra."
+    width={672}
+    height={439}
+    loading="lazy"
+  />
+</Frame>
+
+Chỉ thực hiện commit cho một tập hợp được chọn, sử dụng Git trong terminal hoặc trình biên tập bên ngoài để đánh dấu các tệp đó, và tắt **Bao gồm thay đổi chưa được stage**. Bảng thay đổi không cung cấp các tùy chọn đánh dấu riêng biệt cho từng tệp.
+
+Dream từ chối các commit khi có những thay đổi đã được chuẩn bị nằm ngoài thư mục dự án đang hoạt động. Thực hiện commit riêng biệt trước khi tiếp tục hành động này.
+
+<Warning>
+  Kiểm tra các tệp được cung cấp cũng như tin nhắn. Khi "Bao gồm các thay đổi chưa được ghi lại" được bật, một lần ghi lại có thể chứa các thay đổi từ nhiều cuộc trò chuyện chia sẻ bản kiểm tra này.
+</Warning>
+
+## Đẩy một nhánh
+
+Đang mở **Hành động Git → Đẩy**, kiểm tra các commit được gửi đi và nơi đích, rồi chọn **Đẩy**. Nơi đích phụ thuộc vào cấu hình upstream và remote kho của nhánh.
+
+<Frame caption="Kiểm tra các commit đích và commit đi trước khi đẩy.">
+  <img
+    src="/images/docs/push-dialog.png"
+    alt="Giao diện xác nhận đẩy thay đổi liệt kê nhánh, mục đích origin/main, số lượng tiến trước và sau, và các lần đẩy ra."
+    width={672}
+    height={364}
+    loading="lazy"
+  />
+</Frame>
+
+Nếu việc đẩy thất bại, hãy kiểm tra lỗi và xác nhận quyền truy cập xa. Một lần ghi lại thành công tại địa phương vẫn được duy trì ngay cả khi việc đẩy tiếp theo thất bại; hãy kiểm tra trạng thái nhánh trước khi lặp lại hành động kết hợp.
+
+## Tạo pull request
+
+1. Làm việc trên một nhánh tính năng mà tên của nó khác với nhánh cơ sở của PR.
+2. Đang mở **Hành động Git → Tạo PR**.
+3. Xem lại các nhánh nguồn và nhánh cơ sở cùng với các thay đổi đề xuất.
+4. Nhập tiêu đề và mô tả, hoặc sử dụng **Tự động tạo chi tiết PR** và xem nội dung đã được sinh ra.
+5. Dưới **Các bước tiếp theo**, chọn hành động phù hợp với trạng thái nhánh.
+6. Bật **Bản nháp** nếu PR chưa sẵn sàng để được xem xét, sau đó gửi.
+
+<Frame caption="Xem chi tiết PR và chọn bước tiếp theo. Chế độ Draft được tắt trong ví dụ này.">
+  <img
+    src="/images/docs/create-pr-dialog.png"
+    alt="Tạo hộp thoại đề xuất PR với các nhánh nguồn và nhánh cơ sở, tiêu đề, mô tả, các lựa chọn bước tiếp theo và nút Bắt đầu."
+    width={672}
+    height={680}
+    loading="lazy"
+  />
+</Frame>
+
+| Bước tiếp theo | Điều gì xảy ra |
+| --- | --- |
+| Tạo yêu cầu thay đổi | Tạo một PR cho công việc đã được đẩy lên |
+| Push và tạo PR | Đẩy các thay đổi trước khi tạo yêu cầu pull |
+| Gửi thay đổi, đẩy và tạo PR | Đóng góp các thay đổi đang làm việc, đẩy và tạo ra yêu cầu thay đổi |
+
+Hộp thoại bắt đầu với **Bản nháp** bị tắt. Bật nó để tạo một PR dự thảo. Việc tạo PR yêu cầu một nhánh thay vì một HEAD tách rời, và source và base không được là cùng một nhánh.
+
+Nếu một hành động kết hợp thất bại, các bước trước đó có thể đã được thực hiện. Kiểm tra việc commit, nhánh xa hoặc yêu cầu thay đổi trước khi thử lại.
+
+## Xem xét và hợp nhất một yêu cầu pull
+
+Mở **Pull requests** trong thanh công cụ bên phải để xem PR của nhánh hiện tại. Sử dụng **Tóm tắt** để xem mô tả, kiểm tra và thảo luận, hoặc **Mã** để kiểm tra các thay đổi và để lại bình luận trực tiếp. Bạn có thể chỉnh sửa tiêu đề và mô tả khi được phép và sử dụng **Hợp nhất** để chọn phương pháp hợp nhất. Xem [Đánh giá pull request](/docs/vi/pull-requests) để biết toàn bộ quy trình.
+
+## Chuyển sang hoặc tạo nhánh
+
+Mở thanh chuyển nhánh dưới cuộc trò chuyện, tìm kiếm các nhánh cục bộ và chọn một nhánh để xuất nó. Sử dụng **Tạo và chuyển nhánh mới…** để đặt tên và tạo một nhánh. Làm mới danh sách nếu một nhánh được tạo bên ngoài Dream bị thiếu.
+
+<Frame caption="Dấu chấm than xác định nhánh hiện tại. Tìm kiếm nhánh khác hoặc tạo nhánh mới từ cùng menu đó.">
+  <img
+    src="/images/docs/branch-switcher.png"
+    alt="Phần chuyển nhánh hiển thị Tìm kiếm nhánh, nhánh main được chọn, một nhánh cục bộ khác, Tạo và chuyển sang nhánh mới, và Worktree mới."
+    width={377}
+    height={256}
+    loading="lazy"
+  />
+</Frame>
+
+Việc thay đổi nhánh sẽ thay đổi các tệp được sử dụng bởi mọi cuộc trò chuyện trong dự án đó. Kiểm tra lại công việc chưa hoàn thành trước khi chuyển nhánh. Với các nhiệm vụ song song có kiểm xuất độc lập, hãy sử dụng [Git worktrees](/docs/vi/worktrees). Khi một worktree được hoàn thành, hộp thoại **Hoàn thành worktree** có thể hợp nhất nhánh vào cơ sở của nó hoặc mở một pull request rồi sau đó xóa kiểm xuất đó.

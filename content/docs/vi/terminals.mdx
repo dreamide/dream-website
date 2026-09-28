@@ -1,0 +1,55 @@
+---
+title: "Terminal"
+description: "Chạy các lệnh dự án, quản lý các phiên bản terminal và tiếp tục cuộc trò chuyện của Claude trong terminal."
+---
+
+Terminal tích hợp chạy các lệnh trong dự án mà không cần rời khỏi Dream. Nhấn **Terminal** trong thanh công cụ bên phải để mở nó. Một terminal dự án thông thường bắt đầu trong thư mục dự án.
+
+## Chạy lệnh cùng với cuộc trò chuyện
+
+Sử dụng terminal để kiểm tra dự án, chạy các bài kiểm thử hoặc khởi động ứng dụng cục bộ bằng các lệnh được tài liệu hóa bởi dự án đó. Terminal và chat agent hoạt động với cùng các tệp trong không gian làm việc này.
+
+Để xem trước trong trình duyệt, bắt đầu ứng dụng của dự án, ghi lại URL mà nó in ra, và mở URL đó trong [Trình duyệt](/docs/vi/browser) của Dream. Việc mở trình duyệt không tự động bắt đầu một máy chủ.
+
+<Frame caption="Các tab terminal lưu kết quả lệnh trong không gian làm việc; + mở phiên bản khác.">
+  <img
+    src="/images/docs/terminal-panel.png"
+    alt="Tab Terminal 1, một nút điều khiển bổ sung cho phiên bản khác, và kết quả lệnh dự án."
+    width={855}
+    height={350}
+    loading="lazy"
+  />
+</Frame>
+
+## Quản lý các phiên bản terminal
+
+1. Mở **Terminal**.
+2. Nhấn **Mở một thiết bị đầu cuối khác**, nút **+**, để tạo phiên bản khác.
+3. Chọn một tab terminal để chuyển session.
+4. Sử dụng kiểm soát đóng của một terminal khi bạn đã hoàn thành việc sử dụng nó.
+
+Sử dụng các phiên làm việc riêng biệt cho ứng dụng chạy lâu dài và các lệnh tạm thời như kiểm thử. Việc đóng một phiên terminal sẽ kết thúc quá trình của nó. Việc đóng panel sẽ giữ lại các phiên đã được sử dụng, nhưng Dream sẽ tự động làm sạch các phiên đã mở mà chưa nhận được bất kỳ đầu vào nào từ người dùng.
+
+Sử dụng **Mở rộng terminal** để cho panel thêm không gian và **Thu gọn terminal** để khôi phục kích cỡ thông thường. Việc mở rộng hoặc thu gọn thay đổi bố cục mà không đóng phiên làm việc.
+
+Khi sao chép văn bản, hãy chọn nó trước. **Command+C** trên macOS hoặc **Ctrl+C** trên Windows/Linux sẽ sao chép văn bản đã được chọn trong terminal. Không có lựa chọn nào, terminal có thể truyền **Ctrl+C** qua để ngắt lệnh đang chạy ở phía trước.
+
+## Chọn một shell
+
+1. Mở **Cài đặt → Chung**.
+2. Tìm **Terminal** và chọn một shell có sẵn từ danh sách lựa chọn của nó.
+3. Mở một phiên bản terminal mới để sử dụng shell đã chọn.
+
+Các phiên bản hiện tại sẽ giữ lại shell mà chúng được bắt đầu. Nếu một shell hoặc lệnh không khả dụng, hãy kiểm tra xem nó có được cài đặt và hoạt động trong terminal của hệ thống bạn hay không.
+
+## Tiếp tục cuộc trò chuyện Claude trong một terminal
+
+Đối với một cuộc trò chuyện với Claude có một phiên session đã được thiết lập:
+
+1. Đợi cho đến khi phản hồi hiện tại kết thúc.
+2. Mở menu **…** của tiêu đề chat.
+3. Chọn **Tiếp tục trong terminal**.
+
+Dream mở một terminal tên **Claude** trong thư mục làm việc của phiên bản đó và chạy lệnh resume của CLI. Hành động này chỉ áp dụng cho các phiên bản Claude; nó không phải là một hành động xuất khẩu chung cho mọi nhà cung cấp.
+
+Nếu tùy chọn bị thiếu, hãy kiểm tra xem cuộc trò chuyện có sử dụng Claude và đã bắt đầu một phiên session cung cấp hay không. Việc thay đổi mô hình hoặc tốc độ có thể làm xóa bỏ phiên session đó. Nếu quá trình tiếp tục thất bại, hãy xác minh xem thư mục làm việc ban đầu vẫn tồn tại hay không và công cụ CLI của Claude có sẵn hay không.

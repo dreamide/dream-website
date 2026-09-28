@@ -1,0 +1,67 @@
+---
+title: "Kỹ năng của tác nhân"
+description: "Tìm, gọi, xem trước và tạo kỹ năng cho các agent lập trình của bạn."
+---
+
+Một kỹ năng đóng gói các chỉ dẫn trong tệp `SKILL.md`. Dream phát hiện kỹ năng cho agent và dự án đã chọn bằng cách sử dụng vị trí kỹ năng của nhà cung cấp đó. Bộ chọn kỹ năng hỗ trợ **Claude Code**, **Codex**, **OpenCode** và **Cursor Agent**.
+
+## Sử dụng một kỹ năng trong cuộc trò chuyện
+
+1. Mở một cuộc trò chuyện và chọn mô hình bạn muốn sử dụng.
+2. Nhập **$** sau đó là một phần tên kỹ năng trong hộp thoại.
+3. Chọn một kỹ năng từ thanh lựa chọn và thêm hướng dẫn nhiệm vụ của bạn.
+4. Gửi tin nhắn.
+
+Ví dụ, chọn kỹ năng `release-checklist` và yêu cầu nó kiểm tra các thay đổi hiện tại trước khi phát hành. Dream hiển thị kỹ năng đã chọn dưới dạng nhắc nhở trực tiếp và ghi lại các kỹ năng đã sử dụng trong tin nhắn được gửi. Các kỹ năng có sẵn có thể thay đổi khi bạn chuyển đổi nhà cung cấp hoặc dự án của cuộc trò chuyện.
+
+Việc kích hoạt kỹ năng được xử lý bởi nhà cung cấp đã được chọn. Việc đề cập đến một kỹ năng cung cấp hướng dẫn; nó không thay đổi các [cài đặt quyền](/docs/vi/agent-modes) của cuộc trò chuyện.
+
+## Khám phá và xem trước kỹ năng
+
+1. Mở **Cài đặt → Kỹ năng**.
+2. Chọn thẻ nhà cung cấp và dự án cần kiểm tra.
+3. Chọn một kỹ năng để xem mô tả, nguồn, đường dẫn và bản xem trước của `SKILL.md`.
+4. Sử dụng **Mở thư mục** để chỉnh sửa các tệp của nó trong trình soạn thảo yêu thích của bạn.
+
+<Frame caption="Chọn một nhà cung cấp và dự án để xem các kỹ năng mà agent có thể tải, sau đó xem nội dung hướng dẫn của một kỹ năng.">
+  <img
+    src="/images/docs/skills-panel.png"
+    alt="Các cài đặt kỹ năng với các tab nhà cung cấp, một lựa chọn dự án, một danh sách kỹ năng cá nhân, và bản xem trước SKILL.md được chọn."
+    width={1016}
+    height={720}
+    loading="lazy"
+  />
+</Frame>
+
+Các kỹ năng được nhóm theo phạm vi, như **Dự án**, **Cá nhân**, **Plugin**, **Được quản lý**, và **Tích hợp**, khi các nguồn này có sẵn. Sử dụng **Làm mới** sau khi cài đặt hoặc sửa đổi một kỹ năng nếu nó chưa xuất hiện.
+
+## Bật hoặc tắt một kỹ năng
+
+Claude Code và Codex cung cấp công tắc bật/tắt cho từng kỹ năng. Các công tắc này cập nhật cấu hình riêng của nhà cung cấp, nên cũng ảnh hưởng đến khả năng sử dụng kỹ năng bên ngoài Dream. Claude Code lưu các thiết lập ghi đè trong `~/.claude/settings.json`; Codex lưu chúng qua app-server trong `~/.codex/config.toml`.
+
+OpenCode và Cursor không cung cấp tùy chọn bật/tắt theo kỹ năng trong Dream. Để dừng việc tải kỹ năng, hãy quản lý thư mục của kỹ năng trong vị trí kỹ năng của nhà cung cấp.
+
+## Tạo một kỹ năng
+
+1. Trong **Cài đặt → Kỹ năng**, chọn dự án nếu kỹ năng nên thuộc về một dự án.
+2. Nhấn **Kỹ năng mới**.
+3. Nhập một **Tên**, một **Mô tả** giải thích khi nên sử dụng nó, và **Hướng dẫn (SKILL.md)**.
+4. Chọn một hoặc nhiều lựa chọn **Vị trí**.
+5. Tùy chọn chọn **Chỉ chạy khi được nhắc đến**, sau đó nhấp vào **Tạo**.
+
+Tên sử dụng chữ cái viết thường, chữ số và dấu gạch ngang, với tối đa 64 ký tự. Dream tạo một thư mục với tên đó và một tệp `SKILL.md` tại mỗi vị trí được chọn.
+
+| Vị trí | Mục đích sử dụng |
+| --- | --- |
+| Dự án · `.agents/skills` | Kỹ năng dự án chung cho Codex, OpenCode và Cursor |
+| Dự án · `.claude/skills` | Kỹ năng dự án cho Claude Code |
+| Cá nhân · `~/.agents/skills` | Kỹ năng cá nhân chung cho Codex, OpenCode và Cursor |
+| Cá nhân · `~/.claude/skills` | Kỹ năng cá nhân cho Claude Code |
+
+Vị trí dự án yêu cầu một dự án mở. **Chỉ chạy khi được nhắc đến** ghi lại cài đặt `disable-model-invocation` của kỹ năng; cách cài đặt này được thực hiện phụ thuộc vào nhà cung cấp.
+
+Bạn cũng có thể bắt đầu từ **Lưu thành kỹ năng** trong [Cài đặt → Các mẫu](/docs/vi/saved-prompts).
+
+## Nếu một kỹ năng bị thiếu
+
+Kiểm tra nhà cung cấp và dự án đã chọn, cập nhật danh sách, và đọc bất kỳ lỗi phát hiện nào được hiển thị trong Cài đặt. Đảm bảo rằng kỹ năng nằm ở một vị trí mà nhà cung cấp có thể đọc và chưa bị vô hiệu hóa. Một kỹ năng có sẵn với một nhà cung cấp không nhất thiết có sẵn với nhà cung cấp khác.

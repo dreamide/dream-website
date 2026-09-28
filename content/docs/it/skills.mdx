@@ -1,0 +1,67 @@
+---
+title: "Skill degli agenti"
+description: "Cerca, invoca, visualizza e crea skill per i tuoi agenti di programmazione."
+---
+
+Un'abilità imballa istruzioni in un file `SKILL.md`. Dream scopre abilità per l'agente selezionato e il progetto utilizzando le posizioni delle abilità di quel provider. Il selettore di abilità supporta **Claude Code**, **Codex**, **OpenCode** e **Cursor Agent**.
+
+## Usare una competenza in un chat
+
+1. Apri un chat e seleziona il modello che vuoi utilizzare.
+2. Digitare **$** seguito da una parte del nome di una skill nel campo di testo.
+3. Scegli una competenza dal selettore e aggiungi le istruzioni relative al tuo compito.
+4. Invia il messaggio.
+
+Ad esempio, selezionate una skill `release-checklist` e chiedetele di esaminare le modifiche attuali prima di una release. Dream mostra la skill scelta come menzione inline e registra le skill utilizzate nel messaggio inviato. Le skill disponibili possono variare quando si cambia il provider o il progetto del chat.
+
+L'invocazione di una skill è gestita dal provider selezionato. Menzionare una skill fornisce istruzioni; non modifica le impostazioni di [autorizzazione](/docs/it/agent-modes) del chat.
+
+## Esplora e visualizza le competenze
+
+1. Apri **Impostazioni → Skill**.
+2. Scegli il tab Fornitore e il progetto da esaminare.
+3. Seleziona una competenza per vedere la sua descrizione, fonte, percorso e anteprima di `SKILL.md`.
+4. Usa **Apri cartella** per modificare i suoi file nel tuo editor preferito.
+
+<Frame caption="Seleziona un provider e un progetto per vedere le competenze che può caricare l'agente, poi visualizza le istruzioni di una competenza.">
+  <img
+    src="/images/docs/skills-panel.png"
+    alt="Impostazioni delle competenze con schede fornitori, un selettore di progetto, un elenco delle competenze personali e la antevisone del file SKILL.md selezionato."
+    width={1016}
+    height={720}
+    loading="lazy"
+  />
+</Frame>
+
+Le competenze sono raggruppate per ambito, come **Progetto**, **Personale**, **Plugin**, **Gestito** e **Integrato**, quando tali fonti sono disponibili. Usa **Aggiorna** dopo l'installazione o la modifica di una competenza se non è ancora apparso.
+
+## Abilita o disabilita una competenza
+
+Claude Code e Codex offrono interruttori per competenza. Questi aggiornano la configurazione del provider stesso, quindi influenzano anche la disponibilità delle competenze fuori Dream. Claude Code memorizza le sovrapposizioni in `~/.claude/settings.json`; Codex le memorizza attraverso il proprio server app in `~/.codex/config.toml`.
+
+OpenCode e Cursor non offrono un interruttore per competenza in Dream. Per fermare il caricamento di una competenza, gestisci la sua cartella nelle posizioni delle competenze del provider.
+
+## Crea una skill
+
+1. In **Impostazioni → Skill**, scegli il progetto se la competenza deve appartenere a uno.
+2. Fai clic su **Nuova skill**.
+3. Inserisci un **Nome**, una **Descrizione** che spiega in che situazioni usarlo, e **Istruzioni (SKILL.md)**.
+4. Seleziona uno o più **Posizione**.
+5. Selezionare opzionalmente **Esegui solo se menzionata**, quindi fare clic su **Crea**.
+
+I nomi usano lettere minuscole, cifre e trattini, con un massimo di 64 caratteri. Dream crea una cartella con quel nome e un file `SKILL.md` in ogni posizione scelta.
+
+| Posizione | Uso previsto |
+| --- | --- |
+| Progetto · `.agents/skills` | Competenze proiettuali condivise per Codex, OpenCode e Cursor |
+| Progetto · `.claude/skills` | Competenze progetto per Claude Code |
+| Personale · `~/.agents/skills` | Competenze personali condivise per Codex, OpenCode e Cursor |
+| Personale · `~/.claude/skills` | Competenze personali per Claude Code |
+
+I luoghi del progetto richiedono un progetto aperto. **Esegui solo se menzionata** scrive l'impostazione `disable-model-invocation` della skill; il modo in cui tale impostazione è enforzata dipende dal provider.
+
+Puoi anche iniziare da **Salva come skill** in [Impostazioni → Prompts](/docs/it/saved-prompts).
+
+## Se una competenza manca
+
+Verifica il provider e il progetto selezionati, aggiorna la lista e leggi eventuali errori di scoperta visualizzati nelle Impostazioni. Conferma che la skill si trovi in un'area letta dal provider e che non sia stata disabilitata. Una skill disponibile per un provider non è necessariamente disponibile per un altro.

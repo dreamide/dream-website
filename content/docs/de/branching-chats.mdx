@@ -1,0 +1,43 @@
+---
+title: "Gespräche verzweigen"
+description: "Fortsetzung einer früheren Nachricht in derselben Arbeitsumgebung oder in einem isolierten Git-Worktree."
+---
+
+Ein Chat verzweigen, wenn Sie eine andere Herangehensweise mit Hilfe der bisherigen Diskussion untersuchen möchten. Dream kopiert die Nachrichten über die ausgewählte Nachricht in einen neuen Chat und behält die ursprüngliche Diskussion bei. Nachrichten ab diesem Punkt sind nicht in den neuen Chat enthalten.
+
+## Fortsetzen Sie in demselben Arbeitsbereich
+
+1. Quelle der Gesprächsfolge öffnen und auf das Ende der Antwort warten.
+2. Das gewünschte Nachrichten suchen, aus der Sie eine Branching-Operation erstellen möchten.
+3. Verwende seine **Ab dieser Nachricht fortfahren…**-Aktion.
+4. Wählen Sie **Dieser Arbeitsbereich** unter **In einem neuen Chat fortfahren** aus.
+5. Senden Sie eine Folge in der neuen Konversation, in der Sie die Alternative beschreiben, die Sie ausprobieren möchten.
+
+Der neue Chat beginnt mit dem Modell und den Berechtigungs-Einstellungen des Quell-Chats. In multi-chat öffnet er sich neben dem Quell-Chat; in einer single-chat-Ausrichtung wird er der sichtbaren Konversation.
+
+Zum Beispiel erstellen Sie einen Branch nachdem der Agent einen Fehler erklärt hat und fragen Sie den neuen Chat, einen kleineren Fix zu vergleichen. Beide Gespräche können die aktuellen Projektdateien verwenden.
+
+<Note>
+  Branching kopiert die Konversationsgeschichte. Es wird die Dateisystemzustand nicht zurückgestellt, der er beim Auswahl der Nachricht gesendet wurde. Beide Chats in diesem Workspace teilen den gleichen Dateien.
+</Note>
+
+## Fortsetzen in einem neuen Worktree
+
+Für eine unabhängige Ausgabe verwenden Sie **Ab dieser Nachricht fortfahren… → Neuer Arbeitsbaum**. Diese Option erfordert ein Git-Repository. Dream erstellt ein Worktree-Projekt und einen neuen Chat, der die kopierte Geschichte enthält.
+
+Dieser Shortcut verwendet den aktuellen Branch als Basis und erzeugt einen Branch-Namen aus dem Chat-Titel. Es wird nicht gefragt, einen benutzerdefinierten Basis-Ref auszuwählen. Um Basis-Ref und Branch-Name selbst auszuwählen, [erstellen Sie einen Worktree über den Branch-Wechsler](/docs/de/worktrees#ein-worktree-erstellen).
+
+<Warning>
+  Ein neuer Worktree beginnt mit der kommitten Git-Geschichte. Er enthält keine uncommitted Änderungen und recreates nicht den genauen Datei-Zustand bei der ausgewählten Nachricht. Speichern und commiten Sie alle Änderungen, die Sie im neuen Checkout benötigen, bevor Sie in einen Worktree wechseln.
+</Warning>
+
+## Wählen Sie den richtigen Branch-Typ aus
+
+| Sie möchten… | Verwenden |
+| --- | --- |
+| Stellen Sie eine andere Frage zum aktuellen Code? | Dieser Arbeitsbereich |
+| Vergleiche die Argumentation, während die frühere Diskussion beibehalten wird. | Dieser Arbeitsbereich |
+| Lass einen anderen Agenten einen unabhängigen Checkout bearbeiten | Neuer Arbeitsbaum |
+| Starte eine Aufgabe ohne beliebige Nachrichten zu kopieren | Neuer Chat |
+
+Das Branching ist nicht verfügbar, während eine Antwort verarbeitet wird. Wenn die Option worktree nicht verfügbar ist, überprüfen Sie, ob das Projekt in einem Git-Repository liegt. Siehe [Worktrees](/docs/de/worktrees), um das resultierende Projekt zu öffnen und zu entfernen.

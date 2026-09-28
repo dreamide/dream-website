@@ -1,0 +1,89 @@
+---
+title: "Fehlerbehebung"
+description: "Beheben Sie fehlende Modelle und Chats, Probleme mit Terminal und Vorabseiten sowie häufige Git-Fehler."
+---
+
+Beginnen Sie mit dem Fehler, der in dem betroffenen Chat oder Werkzeug angezeigt wird. Überprüfen Sie vor der Änderung der Einstellungen, welches Projekt und welcher Anbieter ausgewählt ist, insbesondere wenn mehrere Chats offen sind.
+
+## Ein Provider-CLI wird nicht erkannt
+
+1. Öffnen Sie Ihren Systemterminal und überprüfen Sie, ob das Provider-CLI gestartet wird.
+2. Vollständige Registrierung oder erste Ausführungseinstellung.
+3. Offen **Einstellungen → Anbieter** in Dream und aktualisiere diesen Anbieter.
+4. Wenn Sie es während der Öffnung von Dream installiert haben und die Erkennung weiterhin fehlschlägt, starten Sie Dream erneut, damit es die veränderte Umgebung erkennen kann.
+
+Dream benötigt das Ausführbare, damit es der App zur Verfügung steht, nicht nur über einen Shortcut oder Alias in einem interaktiven Shell-Verlauf. Siehe [Anbieter verbinden](/docs/de/providers).
+
+## Ein Modell ist fehlend oder ich kann keinen Chat starten
+
+Prüfen Sie **Einstellungen → Anbieter** und aktivieren Sie mindestens ein erkanntes Modell. Ein erkannter CLI mit keinem aktivierten Modell ist nicht ausreichend, um eine Chat-Sitzung zu starten. Aktualisieren Sie nach Änderungen an der Authentifizierung oder der Modellkonfiguration des Anbieters. Für OpenCode müssen ihre Authentifizierung oder Konfiguration vollständig vor der Aktualisierung abgeschlossen sein.
+
+Dann prüfen Sie **Einstellungen → Allgemein → Modelle**. Wenn ein zuvor ausgewählter Standard nicht mehr verfügbar ist, wählen Sie ein anderes aktiviertes Modell erneut. Bestehende Chats verfügen über ihre eigenen Auswahlmöglichkeiten; eine Änderung des globalen Standards ersetzt diese Auswahl nicht.
+
+## Aufwand- oder Geschwindigkeitssteuerungen fehlen
+
+Diese Einstellungen hängen von den Fähigkeiten des ausgewählten Modells ab. Wählen Sie ein Modell, das die Option enthält, die Sie benötigen. Das Wechseln des Modells in einem Chat setzt seine Bemühungen und Geschwindigkeitsauswahl zurück, daher prüfen Sie beide danach. Siehe [Modelle und Standardeinstellungen](/docs/de/models).
+
+## Ich kann keinen Chat finden
+
+1. Wählen Sie das Projekt aus, in dem die Konversation stattfand.
+2. Offen **Chat-Verlauf** und leere das Suchfeld.
+3. Suche nach dem Titel des Chats, nicht nach Wörtern in seinen Nachrichten.
+4. Prüfen Sie **Einstellungen → Archivierte Chats** und stellen Sie das Chat-Verlauf wieder her, wenn er dort vorhanden ist.
+5. Wenn das Projekt geschlossen ist, öffnen Sie es über **Zuletzt geschlossen** auf der Startseite.
+
+Die Schließung einer mehrfach-chat-Spalte archiviert das Gespräch nicht. Leerere Chats ohne Nachrichten sind in der Geschichte nicht aufgelistet. Ein dauerhaft gelöschter Chat kann nicht über Dream wiederhergestellt werden.
+
+## Ein wiederhergestellter Chat wurde erneut archiviert
+
+Die Wiederherstellung eines Chats behält sein letztes Aktivitätsdatum bei. Wenn Sie **Jetzt archivieren** erneut ausführen und dieses Datum älter ist als der Schwellenwert, ist es erneut für die Archivierung geeignet. Überprüfen Sie den Schwellenwert und die Gespräche, die Sie behalten möchten, bevor Sie die Aktion ausführen.
+
+## Branching ist nicht verfügbar
+
+Warte auf das aktuelle Antwort vor der Verzweigung. **Neuer Arbeitsbaum** erfordert ebenfalls ein Git-Repository. Ein fehlendes oder ungültiges Basis-Ref kann die Erstellung eines Worktree verhindern; überprüfe, ob das Repository die beigefügte Branch oder Ref besitzt, die du verwenden möchtest.
+
+Wenn erwartete Änderungen in einem neuen Worktree fehlen, prüfen Sie, ob sie im ursprünglichen Projekt nicht commited waren. Worktrees kopieren diese Änderungen nicht. Siehe [Git worktrees](/docs/de/worktrees).
+
+## Eine Antwort verfügt über keine Kontrolle für Dateiänderungen im View-Datei.
+
+Das Kontrollkästchen erscheint nach Beendigung der Antwort in den Nachrichten des Assistenten und tritt nur dann auf, wenn für diese Antwort ein Checkpoint aufgenommen wurde. Stellen Sie sicher, dass **Änderungs-Checkpoints** in **Einstellungen → Allgemein → Chatnachrichten** aktiviert ist, und dass das `git`-Programm für Dream verfügbar ist. Sehr große Projekte können die Grenze der Aufnahmezeit überschreiten, wodurch die Antwort ohne Checkpoint ausgeführt wird. Siehe [Änderungen prüfen und wiederherstellen](/docs/de/checkpoints).
+
+## Ich kann keinen Diff oder Element-Feedback senden
+
+Die Sendekontrolle ist deaktiviert, während der Zielchat antwortet und zeigt **Chat ist beschäftigt**. Warten Sie, bis er beendet ist, oder aktivieren Sie im Popover **Neuer Chat**. Wenn der Popover berichtet, dass die Auswahl nicht mehr mit der Differenz übereinstimmt, aktualisieren Sie die Änderungen und wählen Sie die Zeilen erneut. Siehe [Feedback an einen Chat senden](/docs/de/feedback).
+
+## Fortsetzen im Terminal ist fehlend
+
+Die Aktion ist für Claude-Chats mit einem gültigen resumierbaren Provider-Sitzung verfügbar und wird deaktiviert, während eine Antwort verarbeitet wird. Ein neuer Chat, ein anderer Anbieter oder eine Sitzungsaufnahme nach Änderung des Modells oder der Geschwindigkeit kann sie nicht haben. Siehe [Terminals](/docs/de/terminals#eine-claude-chatsitzung-im-terminal-fortsetzen).
+
+## Ein Terminal öffnet sich nicht
+
+Prüfen Sie, ob das Projektverzeichnis noch existiert. Wählen Sie einen verfügbaren Shell in **Einstellungen → Allgemein → Terminal** aus, öffnen dann eine neue Sitzung. Für Claude-Weiterentwicklung muss das ursprüngliche Sitzungspfad ebenfalls vorhanden sein. Testen Sie den gleichen Shell in Ihrem Systemterminal, um Umgebungsprobleme zu identifizieren.
+
+## Ein Browser-Vorschau ist leer oder veraltet
+
+Stellen Sie sicher, dass die Anwendung läuft und verwenden Sie die genaue URL und Port, die im Terminal angezeigt werden. Prüfen Sie die Terminal-Fehler, dann versuchen Sie **Browser aktualisieren** oder **Neu laden erzwingen**. Vergleichen Sie die URL in Ihrem Systembrowser. Verwenden Sie DevTools für Seitenfehler; reservieren Sie das Löschen von Cookies oder Cache für das entsprechende Authentifizierungs- oder Caching-Problem. Siehe [Browser-Vorschau](/docs/de/browser).
+
+## Eine Datei kann nicht gespeichert werden
+
+Prüfen Sie, ob die Datei schreibbar ist, und lesen Sie den Fehler des Editors. Wenn die Datei während der Bearbeitung auf der Festplatte geändert wurde, speichern Sie Ihren Entwurf vor **Von Festplatte neu laden**, bevor Sie die beabsichtigten Änderungen erneut anwenden. Siehe [Dateien und Suche](/docs/de/files#eine-datei-außerhalb-des-editors-geändert-handeln).
+
+## Git-Aktionen scheitern
+
+Für Probleme mit PR-Bemerkungen, Bearbeitung oder Zusammenführung siehe [Pull Requests prüfen](/docs/de/pull-requests). Stellen Sie sicher, dass GitHub CLI authentifiziert ist und Ihr Konto die erforderlichen Repository-Rechte hat. Ein Draft-PR muss vor der Zusammenführung als bereit markiert sein.
+
+| Symptom | Was zu überprüfen |
+| --- | --- |
+| Keine Git-Tools für einen Ordner | Ein Verzeichnis innerhalb eines Git-Repositories öffnen |
+| Keine geplante Änderungen zum Commit | Überprüfen Sie die nicht gestellten Dateien oder stellene die beabsichtigten Dateien über Git ein |
+| Geplante Änderungen außerhalb des aktiven Projekts | Führen Sie sie einzeln durch, bevor Sie die Commit-Aktion von Dream verwenden |
+| Push hat keine Zieladresse | Eine Git-Remote-Konfiguration erstellen und den Zugriff darauf überprüfen |
+| Die Erstellung eines PR zeigt einen CLI-Fehler | Verifiziere, dass GitHub CLI installiert, authentifiziert und auf das Repository zugreifen kann |
+| Quelle und Basis des PR sind gleich | Wechseln Sie zu einem Feature-Branch, bevor Sie die PR erstellen |
+| Berichte über die Erstellung von PRs zeigen einen abgekoppelten HEAD anzeigen | Geben Sie einen Branch vor der Erstellung des PRs aus |
+| Die Entfernung eines Worktree scheitert | Überprüfen und unveröffentlichte Änderungen in dieser Ausgabe beibehalten |
+| Merge & entfernen ist nicht verfügbar | Das worktree verfügt über keine Commits vor seinem Basiszustand, oder das Hauptcheckout enthält uncommitted Änderungen oder befindet sich in einem Merge-Vorgang. |
+| Vollständige Worktree-Reports erzeugen Konflikte | Die Zusammenführung wurde abgebrochen und nichts änderte sich; füge die Basisbranch in das Worktree ein, löse Konflikte, committe und versuche es dann erneut |
+| Das Erstellen eines Pull Requests ist in vollständigen Worktree nicht verfügbar | Eine Git-Remote konfigurieren und GitHub CLI installieren |
+
+Nach einem gemeinsamen Fehler prüfen Sie den Branch-Zustand vor dem Wiederholen: Ein Commit oder eine Push-Vorlage könnte erfolgreich gewesen sein, bevor ein spätes Schritt fehlgeschlagen ist. Siehe [Git-Arbeitsabläufe](/docs/de/git-workflows).

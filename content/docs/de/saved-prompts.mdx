@@ -1,0 +1,55 @@
+---
+title: "Wiederverwendbare Prompts"
+description: "Speichern Sie Anweisungen einmalig und führen Sie sie in jedem Projektchat aus."
+---
+
+Verwenden Sie **Einstellungen → Prompts**, um Anweisungen zu speichern, die Sie über verschiedene Projekte hinweg wiederverwenden, wie z. B. Änderungen zu überprüfen oder Review-Kommentare zu beantworten. Ein gespeicherter Prompt hat einen Namen und Text; er wird im ausgewählten Gespräch ausgeführt und verwendet das Modell und die Einstellungen des jeweiligen Chats.
+
+## Ein Prompt erstellen
+
+1. Offen **Einstellungen → Prompts** und klicken Sie auf **Neuer Prompt**.
+2. Gib einen kurzen **Name** ein, den du im Chatmenü wiedererkennst.
+3. Schreibe die Anweisungen in **Prompt** und klicke **Erstellen**.
+
+Zum Beispiel einen Prompt namens „Änderungen überprüfen“ erstellen und speichern:
+
+> Prüfe die aktuellen Änderungen auf Fehler, nicht berücksichtigte Randfälle und unbeabsichtigtes Verhalten. Berichte die Ergebnisse mit Dateiverweisen. Bearbeite noch keine Dateien.
+
+Der Prompt ist über alle Projekte verfügbar. Halten Sie wiederverwendbare Anweisungen unabhängig von einem bestimmten Ordner, oder stellen Sie sicher, dass alle Pfade im Text auf das Projekt bezogen sind, in dem sie ausgeführt werden.
+
+## Ein Prompt in einem Chat ausführen
+
+1. Projekt und Gespräch öffnen, das Sie verwenden möchten.
+2. Überprüfen Sie das Modell dieses Chats und [Berechtigungen](/docs/de/agent-modes).
+3. Öffne das Menü mit dem **+** neben der Nachrichtenbox.
+4. Wählen Sie **Prompt ausführen**, dann wählen Sie den gespeicherten Prompt aus.
+
+Die Auswahl eines Prompts sendet dessen Text sofort an das Chat-Verfahren. Es wird zuerst kein bearbeitbarer Entwurf eingeblendet. Der bereits eingegebene Text im Composer wird beibehalten, und der gespeicherte Prompt bleibt für zukünftige Verwendung verfügbar. Wenn Sie die Texte vor dem Senden anpassen möchten, kopieren Sie ihn aus Einstellungen und fügen Sie ihn selbst in den Composer ein.
+
+**Prompt ausführen** ist nicht verfügbar, während das Chat-Verhalten aktiv ist. Warten Sie auf das Ende der Antwort, bevor Sie eine weitere Aufforderung ausführen. Falls die Einreichung fehlschlägt, prüfen Sie den Komponist für den Aufforderungstext.
+
+## Verwalten Sie die Liste
+
+<Frame caption="Wählen Sie einen wiederverwendbaren Prompt aus, um dessen Text zu lesen und zu kopieren. Die Zeile bietet Funktionen zum Umordnen, Umwandeln, Bearbeiten oder Löschen des Eintrags.">
+  <img
+    src="/images/docs/saved-prompts-panel.png"
+    alt="Einstellungen für Prompts mit vier gespeicherten Prompts, Zeilenaktionssymbolen und dem vollständigen Text eines ausgewählten Code-Review-Prompts."
+    width={1016}
+    height={782}
+    loading="lazy"
+  />
+</Frame>
+
+Wählen Sie einen Prompt in **Einstellungen → Prompts** aus, um seinen Text zu vorab anzuzeigen und zu kopieren. Verwenden Sie **Bearbeiten** oder klicken Sie einfach auf seinen Namen, um ihn zu ändern. **Nach oben** und **Nach unten** ändern seine Position in der Liste und im Chat-Menü. Um einen Prompt zu entfernen, klicken Sie auf das Löschen-Element und dann auf **Löschen bestätigen**.
+
+**Prompts verwalten…** im Menü „Ausführen prompt“ im Chat öffnet sich diese Einstellungsseite.
+
+## Eine Anweisung in eine Fähigkeit umwandeln
+
+Nutze **Als Skill speichern** neben einem gespeicherten Prompt, um das Dialogfenster für die Skill-Erstellung zu öffnen, wobei der Name und die Anweisungen bereits vorbelegt sind. Füge eine Beschreibung hinzu, wähle den Speicherort aus und klicke auf **Erstellen**. Siehe [Agent skills](/docs/de/skills) für Unterstützung der Anbieter und Speicherorte.
+
+| Sie möchten… | Verwenden |
+| --- | --- |
+| Senden Sie die gleichen Anweisungen wiederholt in verschiedenen Chats | Wiederverwendbare Prompts |
+| Eine einmalige Aufgabe mit ihren eigenen Modell-Einstellungen für spätere Nutzung vorbereiten | [Stash](/docs/de/stash) |
+| Ein Agent wiederholbare Anweisungen geben, die er für eine Aufgabe laden kann | [Fähigkeiten](/docs/de/skills) |

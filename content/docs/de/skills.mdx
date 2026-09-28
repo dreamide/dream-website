@@ -1,0 +1,67 @@
+---
+title: "Agenten-Skills"
+description: "Suchen, aufrufen, vorab ansehen und Fähigkeiten für Ihre Coding-Agente erstellen."
+---
+
+Eine Fähigkeit verpackt Anweisungen in einer `SKILL.md`-Datei. Dream entdeckt Fähigkeiten für den ausgewählten Agenten und Projekt mithilfe der entsprechenden Anbieter-Fähigkeitsorte. Der Fähigkeitsauswahler unterstützt **Claude Code**, **Codex**, **OpenCode** und **Cursor Agent**.
+
+## Eine Fähigkeit in einem Chat verwenden
+
+1. Ein Chat öffnen und das gewünschte Modell auswählen.
+2. Geben Sie **$** und einen Teil des Namens einer Fähigkeit in das Feld ein.
+3. Wählen Sie eine Fähigkeit aus dem Picker und fügen Sie Ihre Aufgabenanweisungen hinzu.
+4. Sende die Nachricht.
+
+Zum Beispiel wählen Sie eine `release-checklist`-Fähigkeit aus und lassen sie die aktuellen Änderungen vor der Release prüfen. Dream zeigt die ausgewählte Fähigkeit als inline-Mention an und protokolliert verwendete Fähigkeiten in der gesendeten Nachricht. Verfügbare Fähigkeiten können sich ändern, wenn Sie den Anbieter oder das Projekt des Chats wechseln.
+
+Die Aufruf von Fähigkeiten erfolgt über den ausgewählten Anbieter. Die Erwähnung einer Fähigkeit liefert Anweisungen; sie ändert die [Berechtigungs-Einstellungen](/docs/de/agent-modes) des Chats nicht.
+
+## Fahren und Vorschau von Fähigkeiten
+
+1. Offen **Einstellungen → Skills**.
+2. Wählen Sie die Provider-Option und das Projekt, das überprüft werden soll.
+3. Wählen Sie eine Fähigkeit aus, um ihre Beschreibung, Quelle, Pfad und Vorschau von `SKILL.md` zu sehen.
+4. Verwenden Sie **Ordner öffnen**, um seine Dateien in Ihrem bevorzugten Editor zu bearbeiten.
+
+<Frame caption="Wählen Sie einen Anbieter und ein Projekt aus, um die Fähigkeiten zu sehen, die von dem Agenten geladen werden können, und überprüfen Sie dann die Anweisungen einer Fähigkeit.">
+  <img
+    src="/images/docs/skills-panel.png"
+    alt="Einstellungen für Fähigkeiten mit Provider-Optionen, ein Projekt-Wähler, eine Liste persönlicher Fähigkeiten und die Vorschau des ausgewählten SKILL.md."
+    width={1016}
+    height={720}
+    loading="lazy"
+  />
+</Frame>
+
+Fähigkeiten werden nach ihrem Umfang gruppiert, wie beispielsweise **Projekt**, **Persönlich**, **Plugin**, **Verwaltet** und **Eingebaut**, wenn diese Quellen verfügbar sind. Verwenden Sie **Aktualisieren**, nachdem eine Fähigkeit installiert oder bearbeitet wurde, wenn sie noch nicht angezeigt wurde.
+
+## Eine Fähigkeit aktivieren oder deaktivieren
+
+Claude Code und Codex bieten pro-Fähigkeits-Switch. Diese aktualisieren die Konfiguration des Anbieters selbst, wodurch sie auch die Verfügbarkeit von Fähigkeiten außerhalb von Dream beeinflussen. Claude Code speichert Überschreitungen in `~/.claude/settings.json`; Codex speichert sie über seine App-Server in `~/.codex/config.toml`.
+
+OpenCode und Cursor bieten in Dream keine individuelle Schaltfunktion pro Fähigkeit. Um die Ladung einer Fähigkeit zu beenden, müssen deren Ordner in den Fähigkeitsorten des Anbieters verwaltet werden.
+
+## Eine Fähigkeit erstellen
+
+1. In **Einstellungen → Skills**, wählen Sie das Projekt aus, wenn die Fähigkeit zu einem gehören soll.
+2. Klicken Sie auf **Neuer Skill**.
+3. Geben Sie einen **Name**, eine **Beschreibung**, die angibt, wann es verwendet werden sollte, und **Anleitung (SKILL.md)** ein.
+4. Wählen Sie eine oder mehrere **Speicherort**-Auswahlen.
+5. Wählen Sie optional **Nur bei Erwähnung ausführen**, dann klicken Sie auf **Erstellen**.
+
+Namensbezeichnungen verwenden kleinbuchstaben, Ziffern und Bindestriche und haben eine maximale Länge von 64 Zeichen. Dream erstellt einen Ordner mit diesem Namen und eine Datei `SKILL.md` in jedem gewählten Ort.
+
+| Standort | Intended use case |
+| --- | --- |
+| Projekt · `.agents/skills` | Gemeinsame Projektfähigkeiten für Codex, OpenCode und Cursor |
+| Projekt · `.claude/skills` | Projektskills für Claude Code |
+| Persönlich · `~/.agents/skills` | Gemeinsame persönliche Fähigkeiten für Codex, OpenCode und Cursor |
+| Persönlich · `~/.claude/skills` | Persönliche Fähigkeiten für Claude Code |
+
+Projektstandorte erfordern ein offenes Projekt. **Nur bei Erwähnung ausführen** schreibt die Fähigkeit die Einstellung `disable-model-invocation`; wie diese Einstellung verifiziert wird, hängt von dem Anbieter ab.
+
+Sie können auch mit **Als Skill speichern** in [Einstellungen → Prompts](/docs/de/saved-prompts) beginnen.
+
+## Wenn eine Fähigkeit fehlt
+
+Prüfen Sie den ausgewählten Anbieter und das Projekt, aktualisieren Sie die Liste und lesen Sie alle in den Einstellungen angezeigten Entdeckungsfehler. Stellen Sie sicher, dass die Fähigkeit in einer Position liegt, die der Anbieter liest, und dass sie nicht deaktiviert ist. Eine Fähigkeit, die für einen Anbieter verfügbar ist, ist nicht unbedingt für einen anderen Anbieter verfügbar.

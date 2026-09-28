@@ -1,0 +1,71 @@
+---
+title: "Collegare un provider"
+description: "Configura gli agenti di programmazione CLI e i modelli che Dream può utilizzare."
+---
+
+Dream funziona con gli strumenti da riga di comando dei agenti di programmazione già installati sul tuo computer.
+
+## Fornitori supportati
+
+| Fornitore | CLI richiesto |
+| --- | --- |
+| OpenAI | Codex CLI |
+| Anthropic | Claude Code CLI |
+| OpenCode | OpenCode CLI |
+| Cursor | Cursor Agent CLI |
+| Grok Build | Grok Build CLI |
+
+Installa il CLI dal suo fornitore, poi completa il flusso normale di accesso o autenticazione di quel CLI fuori da Dream.
+
+## Abilita i modelli
+
+1. Apri **Impostazioni** in Dream.
+2. Seleziona **Provider**.
+3. Aggiorna il provider dopo l'installazione o l'autenticazione del suo CLI.
+4. Accendi lo switch di attivazione del provider, poi attiva uno o più dei suoi modelli rilevati.
+5. Apri **Generale → Modelli** e scegli i valori predefiniti per nuovi chat e per la stesura di commit e pull-request.
+
+È necessario abilitare almeno un modello prima di aprire il primo progetto. Un chat può utilizzare un modello abilitato diverso dal modello predefinito dopo che è stato avviato.
+
+<Frame caption="Aggiorna la carta del provider, poi abilita i modelli che desideri utilizzare.">
+  <img
+    src="/images/docs/provider-models.png"
+    alt="Carta fornitori di OpenAI che mostra la rilevazione del Codex CLI, un pulsante di aggiornamento e interruttori per modelli individuali."
+    width={1016}
+    height={440}
+    loading="lazy"
+  />
+</Frame>
+
+## Usa più di un provider
+
+Abilita i modelli forniti da ogni provider di cui desideri utilizzare. Nella composizione del chat vengono elencati i modelli abilitati, quindi puoi scegliere un altro provider per una conversazione successiva o modificare il modello in un chat esistente.
+
+Ad esempio, mantieni il tuo chat di implementazione su un unico provider e crea un chat di revisione utilizzando un altro. Non è necessario modificare il tuo default globale ogni volta. Segui [Modelli e impostazioni predefinite](/docs/it/models) per configurare i default del nuovo chat, l'effort di ragionamento, la velocità e il modello separato per la stesura di Git.
+
+## Capire le differenze tra i provider
+
+L'interfaccia della riga di comando installata gestisce l'autenticazione e esegue il lavoro degli agenti. Le elenchi dei modelli, le opzioni supportate per sforzo e velocità, il trattamento degli allegati, le informazioni sulle utilizzazioni e il comportamento relativamente alle autorizzazioni possono variare tra i provider.
+
+Dream offre **Chiedi**, **Accetta modifiche** e **Accesso completo** per chat. Leggi [Autorizzazioni degli agenti](/docs/it/agent-modes) prima di sceglierle. Claude chat con una sessione riprendibile offrono anche [Continua nel terminale](/docs/it/terminals#continuare-un-chat-claude-in-un-terminale).
+
+Le [competenze](/docs/it/skills) sono disponibili per Claude Code, Codex, OpenCode e Cursor. I [server MCP](/docs/it/mcp-servers) e gli strumenti del browser integrati di Dream sono disponibili per Claude Code, Codex, OpenCode e Grok Build; Cursor non supporta queste connessioni agli strumenti gestite da Dream.
+
+## Controlla aggiornamenti per CLI
+
+Le carte dei provider mostrano la versione CLI installata quando disponibile. Dream controlla anche la presenza di versioni più recenti e mostra un badge **Aggiornamento disponibile: …** quando ne viene trovata. Il badge segnala la disponibilità; non effettua l'aggiornamento. Aggiorna utilizzando il metodo normale di installazione del CLI, poi aggiorna la sua carta provider in Dream.
+
+Usare l'interruttore di attivazione del provider per nascondere i suoi modelli dalle selezioni disponibili senza rimuovere il CLI. Verifica nuovamente i tuoi valori predefiniti dopo aver modificato i provider abilitati o i modelli.
+
+## Risoluzione dei problemi della rilevazione
+
+Se un provider dice **CLI non rilevato**:
+
+1. Apri il terminale del sistema e verifica che il comando CLI venga avviato correttamente.
+2. Completa qualsiasi configurazione di accesso o primo avvio richiesta dal CLI.
+3. Torna a **Impostazioni → Provider** e riprova.
+4. Per OpenCode, esegui il flusso di autenticazione o configura `opencode.json` se non appaiono modelli.
+
+Se il CLI è stato installato mentre Dream era aperto, riavvia Dream se il rilevamento del rinnovo non riesce ancora a rilevarlo. Il comando deve essere disponibile nell'ambiente di Dream; un'alias del shell non è un CLI installato.
+
+Se viene rilevato un CLI ma il modello desiderato manca, verifica la configurazione dell'account del provider e aggiorna la lista. Se i modelli sono elencati ma non disponibili nei chat, abilita i modelli con i relativi interruttori e conferma che il provider stesso sia abilitato. Vedi [Risoluzione dei problemi](/docs/it/troubleshooting) per ulteriori verifiche.

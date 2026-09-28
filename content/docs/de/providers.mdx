@@ -1,0 +1,71 @@
+---
+title: "Anbieter verbinden"
+description: "Konfigurieren Sie die Coding-Agent-CLI-Tools und Modelle, die Dream verwenden kann."
+---
+
+Dream arbeitet mit coding-agent-Befehlszeilen-Tools, die bereits auf Ihrem Computer installiert sind.
+
+## Unterstützte Anbieter
+
+| Anbieter | Erforderliche CLI |
+| --- | --- |
+| OpenAI | Codex CLI |
+| Anthropic | Claude Code CLI |
+| OpenCode | OpenCode CLI |
+| Cursor | Cursor Agent CLI |
+| Grok Build | Grok Build CLI |
+
+Installen Sie das CLI von seinem Anbieter, dann beenden Sie den normalen Anmeldungs- oder Authentifizierungsprozess dieses CLIs außerhalb von Dream.
+
+## Modelle aktivieren
+
+1. Offene **Einstellungen** in Dream.
+2. Wählen Sie **Anbieter**.
+3. Aktualisieren Sie den Anbieter nach der Installation oder Authentifizierung seiner CLI.
+4. Schalten Sie den Provider-Enable-Schalter ein, dann aktivieren Sie ein oder mehrere der von ihm erkannten Modelle.
+5. Offen **Allgemein → Modelle** und wähle Standardwerte für neue Chats sowie für den Commit- und Pull-Request-Entwurf.
+
+Sie müssen mindestens ein Modell aktivieren, bevor Sie Ihr erstes Projekt öffnen. Ein Chat kann ein anderes aktiviertes Modell verwenden als das Standardmodell, nachdem er gestartet wurde.
+
+<Frame caption="Aktualisieren Sie die Provider-Karte, dann aktivieren Sie die Modelle, die Sie verwenden möchten.">
+  <img
+    src="/images/docs/provider-models.png"
+    alt="Karten des OpenAI-Anbieters mit der Erkennung des Codex CLI, einer Aktualisierungs- und einzelnen Modell-Überblendungsfunktion."
+    width={1016}
+    height={440}
+    loading="lazy"
+  />
+</Frame>
+
+## Mehr als einen Anbieter verwenden
+
+Aktivieren Sie die Modelle von jedem Anbieter, den Sie verwenden möchten. Im Chat-Composer werden die aktivierten Modelle aufgelistet, sodass Sie für eine andere Konversation einen anderen Anbieter wählen oder das Modell in einem bestehenden Chat ändern können.
+
+Zum Beispiel behalten Sie Ihr Implementierungschat auf einem Anbieter und erstellen einen Überprüfungschat mit einem anderen. Sie müssen Ihre globale Standard-Einstellung nicht jedes Mal ändern. Folgen Sie [Modelle und Standardeinstellungen](/docs/de/models), um die Standard-Einstellungen für neuen Chat, die Überlegungsintensität, die Geschwindigkeit und das separate Git-Draft-Modell zu konfigurieren.
+
+## Unterstützen Sie die Unterschiede der Anbieter
+
+Das installierte CLI behandelt die Authentifizierung und führt die Agent-Arbeit aus. Liste der Modelle, unterstützte Bemühungen und Geschwindigkeitsoptionen, die Verarbeitung von Anhängen, Nutzungsinformationen und das Verhalten bezüglich der Berechtigungen können zwischen Providern unterschiedlich sein.
+
+Dream bietet pro Chat die Berechtigungen **Nachfragen**, **Änderungen akzeptieren** und **Vollzugriff**. Lesen Sie zuvor [Agentenberechtigungen](/docs/de/agent-modes), bevor Sie sie wählen. Claude-Chats mit einer wiederaufzuführenden Sitzung bieten ebenfalls [Fortsetzung im Terminal](/docs/de/terminals#eine-claude-chatsitzung-im-terminal-fortsetzen).
+
+[Skills](/docs/de/skills) sind für Claude Code, Codex, OpenCode und Cursor verfügbar. [MCP-Server](/docs/de/mcp-servers) und die integrierten Browserwerkzeuge von Dream sind für Claude Code, Codex, OpenCode und Grok Build verfügbar; Cursor unterstützt diese von Dream verwalteten Werkzeugverbindungen nicht.
+
+## Prüfen Sie auf Aktualisierungen für die CLI
+
+Anbieterkarten zeigen die installierte CLI-Version, wenn verfügbar. Dream überprüft ebenfalls auf neuere Versionen und zeigt einen **Aktualisierung verfügbar: …**-Badge an, wenn eine gefunden wird. Der Badge gibt die Verfügbarkeit der Aktualisierung an; er installiert die Aktualisierung nicht. Aktualisieren Sie die CLI über ihre normale Installationsmethode, dann aktualisieren Sie deren Anbieterkarte in Dream.
+
+Verwenden Sie den Aktivierungs-Switch des Anbieters, um seine Modelle aus den verfügbaren Auswahlmöglichkeiten zu verstecken, ohne die CLI zu deinstallieren. Überprüfen Sie Ihre Standardwerte erneut, nachdem Sie Anbieter oder Modelle geändert haben.
+
+## Fehlerbehebung der Erkennung
+
+Wenn ein Anbieter sagt: **CLI nicht erkannt**:
+
+1. Öffnen Sie Ihren Systemterminal und überprüfen Sie, ob der CLI-Befehl erfolgreich gestartet wird.
+2. Beende jede Anmeldung oder erste Ausführungseinstellung, die vom CLI angefordert wird.
+3. Geben Sie **Einstellungen → Anbieter** wieder an und aktualisieren Sie es.
+4. Für OpenCode führen Sie den Authentifizierungsprozess aus oder konfigurieren Sie `opencode.json`, wenn keine Modelle angezeigt werden.
+
+Wenn der CLI beim Öffnen von Dream installiert wurde, muss Dream neu gestartet werden, wenn die Aktualisierung ihn weiterhin nicht erkennen kann. Befehl muss der Umgebung von Dream verfügbar sein; ein Shell-Alias allein ist kein installierter CLI.
+
+Wenn ein CLI erkannt wird, aber Ihr gewünschtes Modell fehlt, prüfen Sie die Account- oder Konfigurationseinstellungen des Anbieters und aktualisieren Sie die Liste. Wenn Modelle in der Liste angezeigt werden, aber in den Chats nicht verfügbar sind, aktivieren Sie sie über ihre Schaltflächen und stellen sicher, dass der Anbieter selbst aktiviert ist. Siehe [Fehlerbehebung](/docs/de/troubleshooting) für zusätzliche Prüfungen.

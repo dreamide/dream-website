@@ -1,0 +1,74 @@
+---
+title: "Aperçu dans le navigateur"
+description: "Aperçu d'une application locale, gestion des onglets du navigateur et inspection de pages dans Dream."
+---
+
+Le navigateur de Dream ouvre des pages web en parallèle avec votre projet et permet des échanges. Utilisez-le pour inspecter une application locale tout en même temps qu'un agent travaille sur son code.
+
+## Aperçu de votre application
+
+1. Démarrer l'application en utilisant sa commande projet normale dans un [terminal](/docs/fr/terminals).
+2. Copier l'URL locale affichée par l'application, y compris son port.
+3. Cliquez sur **Navigateur** dans la barre d'outils de droite.
+4. Saisissez l'URL dans la barre d'adresse et appuyez sur **Entrée**.
+
+La page s'ouvre dans l'espace de travail. Si l'application utilise un port différent lors de sa prochaine exécution, mettez à jour l'adresse en conséquence. Le navigateur de Dream ouvre l'URL ; il ne démarre pas l'application.
+
+<Frame caption="Saisissez une URL dans la barre d'adresse pour afficher une page dans Dream.">
+  <img
+    src="/images/docs/browser-panel.png"
+    alt="Navigateur Dream avec une onglet de page, une barre d'adresse, des contrôles de navigation et la page de téléchargement de Dream."
+    width={1099}
+    height={480}
+    loading="lazy"
+  />
+</Frame>
+
+## Utiliser des onglets du navigateur
+
+Cliquez sur **Nouvel onglet** pour ouvrir une autre page et sélectionnez un onglet pour le passer à ce dernier. Cela permet de garder deux routes visibles dans votre historique de navigation sans remplacer l'une par l'autre.
+
+Utilisez **Retour**, **Avancer** et **Actualiser le navigateur** pour naviguer. Fermez un onglet individuel en utilisant son contrôle de fermeture. Cacher le panneau du navigateur vous permet de revenir plus tard à ses onglets ouverts.
+
+## Inspectez et partagez ce que vous voyez
+
+Les actions du navigateur incluent :
+
+| Action | L’utilisez pour… |
+| --- | --- |
+| Ouvrir DevTools | Inspectez la console, les éléments et l'activité réseau de la page |
+| Prendre une capture d’écran | Capturer la page pour un rapport de bug ou une discussion supplémentaire |
+| Zoomer vers l'intérieur / Zoomer vers l'extérieur / Réinitialiser le zoom | Modifier l'échelle d'affichage de la prévisualisation |
+| Ouvrir dans le navigateur système | Voir l'URL actuelle dans votre navigateur habituel |
+
+Utilisez **Agrandir le navigateur** lorsque vous avez besoin d'espace supplémentaire et **Réduire le navigateur** pour revenir à la vue réduite. Pour fournir à un agent une capture d'écran de toute la page, utilisez le contrôle d'attache du chat [contrôle d'attache](/docs/fr/providing-context).
+
+## Envoyer un élément à un chat
+
+1. Cliquez sur **Sélectionner un élément à envoyer au chat** dans la barre d'outils du navigateur.
+2. Cliquez sur la page pour afficher les éléments, puis cliquez sur celui que vous souhaitez discuter. Appuyez sur **Escape** pour annuler.
+3. Type un commentaire dans le formulaire **Envoyer au chat**, activez **Nouveau chat** si vous souhaitez une conversation séparée, et envoyez-le.
+
+Dream envoie votre commentaire avec le sélecteur, la taille, le texte, les styles, le HTML et une capture d’écran de l’élément, afin que l’agent puisse le localiser dans le code. Voir [Envoyer des retours à une conversation](/docs/fr/feedback) pour les détails et les limitations.
+
+## Demandez à un agent d'utiliser le navigateur
+
+Claude Code, Codex, OpenCode et Grok génèrent automatiquement des outils pour le navigateur de Dream. Ils fonctionnent avec les onglets de projet identiques que vous voyez. Les discussions de Cursor n'ont pas accès à ces outils.
+
+Donnez à l'agent l'URL de la page et une tâche précise, par exemple :
+
+> Ouvre http://localhost:3000/settings dans le navigateur de Dream. Change le thème, actualise la page et vérifie si le choix est conservé. Sinon, inspecte la console et les requêtes réseau.
+
+Les outils peuvent ouvrir et naviguer dans des onglets, inspecter le contenu de la page, cliquer, taper, survoler, sélectionner des options, faire défiler, prendre des captures d'écran et inspecter les journaux de console et les réponses réseau. Ils peuvent également attacher des fichiers provenant du projet pour uploader des contrôles. Les téléchargements de fichiers doivent utiliser des chemins situés dans le projet.
+
+Démarrer l'application avant de demander à l'agent d'inspecter son URL local. Les actions de navigateur suivent les [permissions](/docs/fr/agent-modes) du chat ; répondez dans le chat si une approbation est demandée. Ces outils sont intégrés et ne nécessitent pas une définition manuelle d'un [serveur MCP](/docs/fr/mcp-servers).
+
+## Recharger et effacer les données du site
+
+Essayez une mise à jour normale après avoir modifié le code de l'application. Si la page reste obsolète, utilisez **Forcer le rechargement** depuis les actions du navigateur.
+
+**Vider le cache** supprime les données de navigateur en mémoire. **Effacer les cookies** efface les cookies et peut vous déconnecter des sites dans le navigateur intégré. Utilisez ces actions avec prudence lors de l'investigation du comportement de mise en cache ou d'authentification.
+
+## Si une page locale ne se charge pas
+
+Vérifiez que l'application est toujours en cours d'exécution, confirmez l'URL complète et le port dans son output terminal, et inspectez toute erreur serveur présente là-bas. Essayez l'adresse même dans votre navigateur système pour identifier si le problème relève de l'application ou du prévisualisation intégrée.

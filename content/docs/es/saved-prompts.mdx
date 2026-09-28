@@ -1,0 +1,55 @@
+---
+title: "Prompts reutilizables"
+description: "Guarda las instrucciones una vez y ejecútalas en cualquier chat de proyecto."
+---
+
+Use **Configuración → Prompts** para instrucciones que repites en proyectos, como revisar cambios o responder comentarios de revisión. Un prompt guardado tiene un nombre y texto; se ejecuta en el chat que elijas, utilizando el modelo y configuraciones de ese chat.
+
+## Crear un prompt
+
+1. Abrir **Configuración → Prompts** y hacer clic en **Nuevo prompt**.
+2. Introduce un **Nombre** breve que reconozcas en el menú del chat.
+3. Escriba las instrucciones en **Prompt** y haga clic en **Crear**.
+
+Por ejemplo, nombre un prompt “Revisar cambios” y guárdalo:
+
+> Revisa los cambios actuales en busca de errores, casos límite sin cubrir y comportamientos no deseados. Informa de los hallazgos con referencias a los archivos. No edites archivos todavía.
+
+El prompt está disponible en todos los proyectos. Mantén las instrucciones reutilizables independientes de un directorio específico, o asegúrate de que cualquier ruta en el texto se aplique al proyecto en el que lo ejecutes.
+
+## Ejecutar un prompt en un chat
+
+1. Abre el proyecto y la conversación que quieras usar.
+2. Revisar el modelo de ese chat y [permisos](/docs/es/agent-modes).
+3. Abre el menú **+** junto al cuadro de mensaje.
+4. Elige **Ejecutar prompt**, luego selecciona el prompt guardado.
+
+Seleccionar un prompt envía su texto inmediatamente a ese chat. No inserta primero un borrador editable. El texto que ya has escrito en el compositor se mantiene, y el prompt guardado sigue disponible para su reutilización. Si deseas adaptar el texto antes de enviarlo, cópialo de Configuración y pégalo tú mismo en el compositor.
+
+**Ejecutar prompt** no está disponible mientras el chat está ocupado. Espere a que la respuesta termine antes de ejecutar otro prompt. Si la entrega falla, revise el compositor para el texto del prompt.
+
+## Gestionar la lista
+
+<Frame caption="Selecciona un prompt reutilizable para leer y copiar su texto. Las filas de control permiten reordenar, convertir, editar o eliminarlo.">
+  <img
+    src="/images/docs/saved-prompts-panel.png"
+    alt="Ajustes de prompts con cuatro prompts guardados, iconos de acción en fila y el texto completo de un prompt de revisión de código seleccionado."
+    width={1016}
+    height={782}
+    loading="lazy"
+  />
+</Frame>
+
+Selecciona un prompt en **Configuración → Prompts** para previsualizar y copiar su texto. Utiliza **Editar** o haz doble clic en su nombre para cambiarlo. **Subir** y **Bajar** cambian su posición en la lista y en el menú de chat. Para eliminar un prompt, haz clic en su control de eliminación y luego en **Confirmar eliminación**.
+
+**Administrar prompts…** en el menú **Ejecutar prompt** del chat abre esta página de configuración.
+
+## Convertir un prompt en una habilidad
+
+Use **Guardar como skill** junto a un prompt guardado para abrir el diálogo de creación de habilidad con su nombre e instrucciones ya rellenados. Añada una descripción, elija dónde guardarlo y haga clic en **Crear**. Consulte [Habilidades de agente](/docs/es/skills) para soporte de proveedores y ubicaciones de almacenamiento.
+
+| Usted quiere... | Usar |
+| --- | --- |
+| Enviar las mismas instrucciones repetidamente en diferentes chats | Prompts reutilizables |
+| Preparar una tarea única con sus propios ajustes de modelo para más adelante | [Stash](/docs/es/stash) |
+| Proporcione una instrucción reusable para un agente que pueda cargarla para una tarea | [Habilidades](/docs/es/skills) |

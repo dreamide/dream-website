@@ -1,0 +1,58 @@
+---
+title: "Revisar e restaurar alterações"
+description: "Inspeccionar os arquivos, verificar a resposta alterada do agente e restaurar os arquivos selecionados de um ponto de verificação."
+---
+
+Quando o **Checkpoints de alterações** está habilitado, o Dream faz uma cópia de segurança dos arquivos do seu projeto antes de cada resposta do agente e novamente quando a resposta terminar. Use esses checkpoints para revisar exatamente quais arquivos foram alterados por uma resposta e para restaurar arquivos selecionados se você quiser adotar um caminho diferente.
+
+## Como os checkpoints funcionam
+
+- Um checkpoint registra a árvore de trabalho do projeto, incluindo arquivos não rastreados, em um armazenamento privado dentro dos dados da aplicação do Dream. Ele não cria commits, armazenamentos ou ramificações no seu repositório próprio e funciona em pastas que não são repositórios Git.
+- Caminhos ignorados pelo arquivo `.gitignore` do projeto e pastas comuns de build, como `node_modules`, `dist`, `build` e `coverage`, nunca são capturados.
+- O Dream registra um snapshot do estado **anterior** para cada mensagem que você envia e outro do estado **posterior** quando a resposta termina ou você a interrompe.
+- Os checkpoints exigem que o executável `git` esteja disponível para o Dream. Se a captura falhar ou levar muito tempo, a resposta prossegue sem checkpoint e o controle de revisão dele não é exibido.
+
+Os checkpoints estão ativados por padrão. Para desativá-los, abra **Configurações → Geral**, localize **Mensagens de chat** e desative **Checkpoints de alterações**.
+
+<Frame caption="Habilite Change checkpoints nas Configurações → Geral para capturar arquivos ao redor de cada resposta.">
+  <img
+    src="/images/docs/checkpoint-setting.png"
+    alt="Mude as configurações de checkpoints com o interruptor ativado."
+    width={1000}
+    height={68}
+    loading="lazy"
+  />
+</Frame>
+
+## Revise as alterações de uma resposta
+
+1. Aguarde a resposta terminar.
+2. Posicione o mouse sobre a mensagem do assistente e clique em **Ver alterações de arquivos desta resposta**, o ícone de relógio no rodapé da mensagem.
+3. Em **Alterações nesta resposta**, revise a lista de arquivos. Cada linha mostra o caminho, um status de **Adicionado**, **Excluído**, **Modificado** ou **Renomeado**, e o número de linhas.
+4. Expandir uma linha para ler a diferença.
+
+O diálogo compara apenas as capturas de tela anterior e posterior para aquela resposta; as alterações de outras respostas ou das suas próprias edições não são incluídas. Se a resposta foi interrompida, o diálogo indica que o estado posterior foi capturado quando você abriu o mesmo.
+
+Um arquivo que foi modificado novamente após a resposta, seja por uma resposta posterior, um comando no terminal ou seu editor, exibe uma marca **Editado depois**. Arquivos binários listam sem diff.
+
+## Restaurar arquivos
+
+1. Selecione os arquivos que deseja restaurar. Os arquivos sem edições posteriores são selecionados por padrão; use **Selecionar tudo** para incluir todos os arquivos.
+2. Clique em **Restaurar**. O botão mostra quantos arquivos estão selecionados.
+3. Revise as linhas marcadas **Restaurado**, depois clique em **Fechar**.
+
+Restaurar reverte as alterações do reply nos arquivos selecionados, mantendo as edições irrelevantes realizadas posteriormente no mesmo arquivo. Um arquivo criado pela resposta é excluído, um arquivo excluído é recriado e um arquivo renomeado é movido de volta para seu caminho anterior.
+
+Se edições futuras forem coincidentes com as alterações da resposta, o Dream deixa o arquivo inalterado e te avisa. Escolha **Sobrescrever mesmo assim** para substituir o arquivo pelo seu conteúdo completo antes da resposta, descartando essas edições posteriores.
+
+<Warning>
+  Restaurar não pode ser desfeito a partir do diálogo. Copie qualquer trabalho posterior que precisar dos arquivos afetados antes de restaurar. O restaurar de arquivos não remove mensagens da conversa; diga ao agente o que foi restaurado antes de pedir para ele continuar.
+</Warning>
+
+Restore é uma operação de arquivo, não uma operação do Git. Abra [Alterações](/docs/pt/git-workflows) em seguida para revisar a árvore de trabalho e [salve qualquer rascunho do editor](/docs/pt/files) antes de restaurar os mesmos arquivos.
+
+## Armazenamento de checkpoint
+
+Os checkpoints permanecem disponíveis enquanto o chat existir. Apagar permanentemente um chat das **Configurações → Chats arquivados** remove seus checkpoints, e finalizar ou remover um [projeto de árvore de trabalho](/docs/pt/worktrees) remove os checkpoints desse projeto. Arquivar um chat os mantém.
+
+Para tentar um novo caminho mantendo a conversa até o momento, combine uma restauração com [criação de ramo a partir de uma mensagem anterior](/docs/pt/branching-chats). Criar ramo sozinho copia mensagens e não altera arquivos.

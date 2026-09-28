@@ -1,0 +1,77 @@
+---
+title: "Progetti e spazio di lavoro"
+description: "Gestisci le schede dei progetti, organizza i pannelli e passa tra i chat e gli strumenti di sviluppo."
+---
+
+Ogni progetto di Dream ha il proprio spazio di lavoro. Le schede dei progetti ti permettono di passare tra i repository mantenendo insieme i chat e gli strumenti aperti per ogni progetto.
+
+## Aggiungi e passa ai progetti
+
+1. Fai clic sul **+** accanto ai pannelli progetto, o usa **Apri cartella** nella schermata di avvio.
+2. Scegli la cartella in cui vuoi lavorare.
+3. Selezionarne l'oggetto per renderlo il progetto attivo.
+
+Il progetto attivo determina quali chat, file, terminali, schede del browser e elementi stash vedi. Verifica il tab selezionato prima di inviare un compito o eseguire un comando. Trascina i tab dei progetti per riordinarli quando vuoi che progetti correlati siano vicini l'uno all'altro.
+
+<Frame caption="L'attivita evidenziata è il progetto attivo. Usa + per aprire un altro cartella.">
+  <img
+    src="/images/docs/project-tabs.png"
+    alt="Istanze progetto Dream con Dream selezionato e un pulsante più accanto ai progetti aperti."
+    width={1256}
+    height={48}
+    loading="lazy"
+  />
+</Frame>
+
+## Rinominare o aprire un progetto esternamente
+
+Apri il menu **…** del progetto e scegli **Modifica** per cambiare il nome visualizzato o l'icona. Clicca sull'icona per caricare un'immagine fino a 5 MB, poi **Salva**. Ripristina un'icona personalizzata per tornare al rilevamento automatico dal progetto. Cambiare il nome di un progetto in Dream non cambia il nome della cartella sul disco.
+
+Usa le opzioni **Apri in** del menu per aprire il progetto in un editor esterno disponibile.
+
+## Torna indietro a una conversazione precedente
+
+Usa **Indietro** e **Avanti** accanto ai pannelli dei progetti per tornare a progetti e chat che hai aperto. Su Windows e Linux, usa **Alt+Left** e **Alt+Right**; su macOS, usa **Command+[** e **Command+]**. I tasti di navigazione con il mouse funzionano anche.
+
+Questo history segue le selezioni di progetto e chat. Cambiare i pannelli degli strumenti non aggiunge voci, e il browser integrato ha la propria storia di navigazione. I tasti di scelta nell'editor terminale o nel codice sono lasciati a quelli strumenti.
+
+## Chiudi e riapri un progetto
+
+1. Apri il menu **…** del progetto e scegli **Chiudi**.
+2. Quando vuoi tornare, apri lo schermo di avvio attraverso il pulsante **+** del progetto.
+3. Cerca il progetto in **Chiusi di recente**, utilizzando il campo di ricerca se necessario.
+4. Seleziona il progetto per riprenderlo.
+
+Chiudere un progetto elimina il suo scheda aperta; non elimina la sua cartella. Dream ripristina il contesto del progetto salvato come chat e strumenti aperti quando possibile. Non utilizzare un progetto chiuso come modo per mantenere un processo terminale in esecuzione.
+
+## Cerca i controlli del workspace
+
+Barra sinistra contiene **Cronologia chat**, **Nuova chat** e **Attiva multichat**. Spostare il mouse su un'icona per visualizzare il suo etichetta. Il compositore della chat contiene il modello selezionato, l'effort e la velocità quando supportati, e i permessi.
+
+Barra laterale destra apre gli strumenti del progetto:
+
+| Strumento | Cosa puoi fare |
+| --- | --- |
+| [Modifiche](/docs/it/git-workflows) | Revisione differenze Git e annullamento dei cambiamenti ai file |
+| [File](/docs/it/files) | Esplora file, cerca percorsi e modifica il contenuto dei file |
+| [Browser](/docs/it/browser) | Anticipa URL e verifica pagine web |
+| [Terminale](/docs/it/terminals) | Eseguire i comandi del progetto in sessioni separate |
+| [Azioni Git](/docs/it/git-workflows) | Committa, spingi e crea richieste di pull |
+| [Pull request](/docs/it/pull-requests) | Leggi la richiesta di merge della ramifica corrente, pubblica commenti e effettua il merge |
+| [Stash](/docs/it/stash) | Salva i prompt e eseguili in seguito |
+
+**Azioni Git** si trova in alto nella barra laterale destra. I controlli Git si visualizzano per i progetti di repository. Il controllo della ramifica sotto il chat mostra la ramifica attiva; utilizzalo per passare a una ramifica o [creare un worktree](/docs/it/worktrees). In un progetto worktree, lo stesso posto mostra un pulsante **albero di lavoro** che apre il dialogo [Completare un worktree](/docs/it/worktrees#completa-un-worktree).
+
+## Organizza chat e paneli
+
+Fai clic su un tool per aprire il suo panel. Utilizza il controllo di chiusura o di riduzione del panel quando hai bisogno di più spazio per i chat, e trascina i separatori dei panel per riorganizzare l'interfaccia. Chiudere un panel di tool è diverso dal chiudere le sessioni terminal individuali o i browser tab associati.
+
+Abilita [multi-chat](/docs/it/multiple-chats) per organizzare le conversazioni in colonne ridimensionabili. Ogni chat ha il proprio storico delle conversazioni, mentre tutti i chat all'interno del progetto utilizzano lo stesso set di file. Usa worktrees per check-out indipendenti.
+
+## Cattura la finestra Dream
+
+Premere **Ctrl+Shift+S** su Windows/Linux o **Command+Shift+S** su macOS per catturare la finestra Dream. Dream copia lo screenshot nella clipboard, poi apre un dialogo per salvarlo come PNG. Annullando il dialogo di salvataggio si mantiene la copia nella clipboard. Una notifica segnala se l'immagine è stata copiata, salvata o non può essere catturata.
+
+Per un screenshot di una pagina web, usare l'azione di screenshot del browser [browser's screenshot action](/docs/it/browser).
+
+Per l'aspetto globale dell'app, il linguaggio e le preferenze del modello, apri [Impostazioni](/docs/it/settings). Per trovare conversazioni più vecchie, usa [Cronologia chat](/docs/it/chats) o [Chat archiviate](/docs/it/archived-chats).

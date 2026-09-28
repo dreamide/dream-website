@@ -1,0 +1,57 @@
+---
+title: "Utiliser plusieurs conversations"
+description: "Travailler avec des conversations simultanément, organiser des colonnes et comprendre leurs fichiers projet partagés."
+---
+
+Multi-chat affiche plusieurs conversations côte à côte dans le même projet. Chaque conversation conserve ses propres messages et son choix de modèle, afin que vous puissiez comparer différentes approches ou garder une revue visible tout en travaillant sur une implémentation.
+
+<Frame caption="Chaque colonne maintient sa propre conversation et ses propres contrôles de modèle tout en partageant les fichiers du projet.">
+  <img
+    src="/images/screen-multiple-chats.png"
+    alt="Trois conversations côte à côte dans Dream, chacune avec son propre modèle et ses permissions sous la boîte de message."
+    width={1920}
+    height={1080}
+    loading="lazy"
+  />
+</Frame>
+
+## Ouvrir des discussions en parallèle
+
+1. Ouvrir un projet et la conversation que vous souhaitez garder visible.
+2. Cliquez sur **Activer le multichat** dans la barre latérale. Positionnez le curseur sur les icônes de la barre d'outils pour voir leurs noms.
+3. Cliquez sur **Nouveau chat** pour ajouter une conversation à côté de celle déjà ouverte.
+4. Choisissez un modèle dans le composant de nouvelle conversation et envoyez un message.
+
+Pour réactiver une conversation existante, ouvrez **Historique des discussions** et sélectionnez-la. La sélection d'un chat déjà présent dans l'interface se concentre sur cette conversation plutôt que de créer une duplication.
+
+Multi-chat est un paramètre de projet. Vous pouvez garder plusieurs conversations visibles dans un même projet et utiliser une seule conversation dans un autre.
+
+## Organiser l'espace de travail
+
+- **Redimensionner :** Glissez le séparateur entre les colonnes de chat pour ajuster leurs largeurs.
+- **Reordonner :** Glissez un chat par sa zone de titre pour le déplacer à côté d'une autre conversation.
+- **Fermer une colonne :** Cliquez sur le **×** dans sa tête. La conversation reste dans l'historique des chats.
+- **Retourner à une seule conversation :** Sélectionnez la conversation que vous souhaitez garder en vue, puis cliquez sur **Désactiver le multichat** dans la barre latérale gauche.
+
+Le contrôle de fermeture est disponible lorsque quelqu'un d'autre est en chat ouvert et visible. Désactiver le multi-chat ne conserve pas les autres conversations ; il faut les ouvrir à nouveau dans l'historique quand nécessaire.
+
+## Exemple : implémenter, puis revue
+
+1. Commencez une conversation nommée « Implémenter la persistance des paramètres » et demandez-lui de corriger le formulaire des paramètres.
+2. Activer le multichat et créer un deuxième chat nommé « Revue des paramètres de persistance ».
+3. Choisissez un autre modèle activé dans la discussion d'analyse si vous souhaitez une évaluation d'un deuxième modèle.
+4. Une fois que l'implémentation est prête, demandez au chat d'analyse de vérifier les modifications actuelles et de signaler les problèmes sans modifier les fichiers.
+5. Maintenir la revue visible tout en demandant au chat de mise en œuvre de traiter ses observations.
+6. Fermer la colonne d'analyse lorsque vous avez besoin d'espace supplémentaire. La réouvrir à partir de l'historique pour relire les résultats.
+
+Le deuxième chat ne reçoit pas automatiquement les messages du premier chat. Attribuez-lui le contexte de tâche et [référez-vous aux fichiers pertinents](/docs/fr/providing-context), ou utilisez [l'arborescence des conversations](/docs/fr/branching-chats) lorsque vous souhaitez copier des messages antérieurs.
+
+## Comprendre ce qui est partagé
+
+Toutes les discussions dans le même projet fonctionnent sur le même dossier de projet. Les modifications de fichiers et les changements de branche Git sont visibles pour les autres discussions, même si leurs historiques de conversation sont séparés.
+
+<Warning>
+  Deux agents éditant les mêmes fichiers peuvent perturber l'œuvre de l'autre. Utilisez des [arbres de travail Git](/docs/fr/worktrees) séparés lorsque des tâches nécessitent des checkouts indépendants. Activer le multi-chat seul ne permet pas d'isoler les modifications de fichiers.
+</Warning>
+
+Pour les conversations terminées, utilisez [l'archivage](/docs/fr/archived-chats) pour garder l'historique sous contrôle.

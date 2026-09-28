@@ -1,0 +1,57 @@
+---
+title: "Enviar comentarios a un chat"
+description: "Comente en líneas específicas de diff o en un elemento del navegador de vista previa y envíelo a un agente."
+---
+
+Dream puede construir un mensaje para ti a partir de lo que estás observando. Selecciona líneas en un diff o elige un elemento en la vista previa del navegador, añade un comentario y Dream envía el comentario junto con una referencia a la que puede actuar el agente.
+
+## Comentar líneas en un diff
+
+1. Abrir **Cambios** en la barra de herramientas derecha y expandir un archivo.
+2. Arrastre a lo largo de los números de línea para seleccionar un rango, o posí el número de línea y haga clic en su control **+** para seleccionar una línea individual. Las líneas seleccionadas están resaltadas.
+3. Escribe tu comentario en la caja **Pregunta lo que quieras...** del popover.
+4. Habilite **Nuevo chat** si desea que el comentario inicie una conversación separada.
+5. Presione **Enter** o haga clic en **Enviar mensaje**.
+
+El agente recibe tu comentario seguido de un bloque **Diferencia referenciada** que contiene la ruta del archivo, el rango de líneas, si las líneas provienen de la versión anterior o de la nueva y las líneas seleccionadas. Puedes seleccionar líneas en cualquiera de los lados de un dif unificado o dividido, y una selección puede incluir ambos lados.
+
+La selección de líneas solo está disponible en el panel de Cambios. Las diferencias mostradas dentro de los mensajes de chat, en [Cambios en esta respuesta](/docs/es/checkpoints), y en el diálogo de completación del árbol de trabajo no las ofrecen.
+
+Por ejemplo, seleccione las líneas de una nueva condición y pregunte:
+
+> Este ramo nunca se ejecuta cuando la lista está vacía. Maneja ese caso y añade un test.
+
+## Enviar un elemento de la página desde el navegador
+
+1. Abrir **Navegador** y cargar la página que deseas discutir.
+2. Haga clic en **Seleccionar un elemento para enviarlo al chat** en la barra de herramientas del navegador. Acción idéntica disponible en el menú de acciones del navegador.
+3. Mueva el puntero por la página. Dream destaca el elemento bajo el puntero y muestra su nombre y tamaño.
+4. Haga clic en el elemento. Los clics en este modo seleccionan elementos en lugar de activar enlaces o botones. Presione **Escape** para salir del modo sin seleccionar nada.
+5. En el formulario **Enviar al chat**, verifica el recuadro y el nombre del elemento, escribe tu comentario, elige si habilitar **Nuevo chat**, y haz clic en **Enviar al chat**.
+
+El mensaje incluye la URL y el título de la página, el nombre y el selector CSS del elemento, sus padres, su tamaño y posición, el texto visible, los estilos computados clave y su HTML. Para aplicaciones de React y Vue, Dream añade la cadena de componentes y, en builds de desarrollo, la ubicación del archivo fuente. Se adjunta una captura de pantalla del elemento como `browser-element.png`.
+
+La selección de elementos funciona en la pestaña activa del navegador en Dream. Los elementos dentro de marcos anclados no pueden seleccionarse individualmente; al elegir uno se selecciona el marco. Navegar o recargar la página cancela la selección, y los valores largos, el texto y el HTML se truncan.
+
+<Frame caption="Comience la retroalimentación del elemento con el icono de selección junto a la barra de direcciones.">
+  <img
+    src="/images/docs/browser-toolbar.png"
+    alt="Barra de navegación con el icono de selección de elementos inmediatamente a la derecha de la barra de direcciones."
+    width={1099}
+    height={92}
+    loading="lazy"
+  />
+</Frame>
+
+## Dónde va el mensaje
+
+| Nuevo chat | Destino |
+| --- | --- |
+| Apagado | El primer chat abierto del proyecto, que se convierte en el chat activo |
+| En | Un nuevo chat, abierto al lado de los chats actuales cuando está habilitado el multi-chat |
+
+Si el chat de destino está ocupado, el control de envío está desactivado y muestra **Chat ocupado**. El mensaje no se coloca tras la respuesta actual; espere a que termine o active **Nuevo chat**.
+
+El texto que ya has escrito en el compositor de chat se mantiene. Si el mensaje no puede enviarse, la aplicación Dream agrega tu comentario al compositor para que puedas enviárselo tú mismo. Presiona **Escape** o haz clic fuera del popover para descartar un comentario antes de enviarlo.
+
+Utiliza [referencias de proyecto y archivos adjuntos](/docs/es/providing-context) cuando quieras hacer referencia a archivos sin seleccionar líneas específicas, y [Stash](/docs/es/stash) para guardar un prompt para más adelante.

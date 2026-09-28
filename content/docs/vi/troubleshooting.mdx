@@ -1,0 +1,89 @@
+---
+title: "Khắc phục sự cố"
+description: "Giải quyết các mô hình và cuộc trò chuyện bị thiếu, vấn đề terminal và preview, cũng như các lỗi Git phổ biến."
+---
+
+Bắt đầu với lỗi được hiển thị trong cuộc trò chuyện hoặc công cụ bị ảnh hưởng. Kiểm tra dự án và nhà cung cấp đang được chọn trước khi thay đổi cài đặt, đặc biệt khi có nhiều cuộc trò chuyện đang mở.
+
+## Không phát hiện được CLI nhà cung cấp
+
+1. Mở terminal hệ thống của bạn và xác minh rằng CLI nhà cung cấp bắt đầu.
+2. Hoàn thành quá trình đăng nhập hoặc thiết lập lần đầu.
+3. Mở **Cài đặt → Nhà cung cấp** trong Dream và cập nhật lại nhà cung cấp đó.
+4. Nếu bạn đã cài đặt nó khi Dream đang chạy và việc phát hiện vẫn thất bại, hãy khởi động lại Dream để nó có thể nhận diện môi trường đã thay đổi.
+
+Dream cần file thực thi phải được cung cấp cho ứng dụng, không chỉ qua một shortcut hoặc alias trong môi trường shell tương tác. Xem [Kết nối nhà cung cấp](/docs/vi/providers).
+
+## Một mô hình đang bị thiếu hoặc tôi không thể bắt đầu một cuộc trò chuyện
+
+Kiểm tra **Cài đặt → Nhà cung cấp** và bật ít nhất một mô hình được phát hiện. Một CLI được phát hiện nhưng không có mô hình nào được bật là chưa đủ để bắt đầu cuộc trò chuyện. Làm mới sau khi thay đổi xác thực hoặc cấu hình mô hình của nhà cung cấp. Đối với OpenCode, hoàn thành xác thực hoặc cấu hình của nó trước khi làm mới.
+
+Rồi hãy kiểm tra **Cài đặt → Chung → Mô hình**. Nếu mô hình mặc định đã chọn trước đó không còn khả dụng, hãy chọn lại một mô hình đã bật. Các cuộc trò chuyện hiện tại có những lựa chọn riêng của mình; việc thay đổi mô hình mặc định toàn cục không thay thế những lựa chọn đó.
+
+## Các điều khiển Mức suy luận hoặc tốc độ bị thiếu
+
+Các tùy chọn này phụ thuộc vào khả năng của mô hình đã chọn. Chọn một mô hình cung cấp tùy chọn bạn cần. Việc thay đổi mô hình trong cuộc trò chuyện sẽ làm đặt lại lựa chọn nỗ lực và tốc độ, do đó hãy kiểm tra cả hai sau đó. Xem [Mô hình và thiết lập mặc định](/docs/vi/models).
+
+## Tôi không thể tìm thấy một cuộc trò chuyện
+
+1. Chọn dự án nơi cuộc trò chuyện đã diễn ra.
+2. Mở **Lịch sử trò chuyện** và xóa trường tìm kiếm của nó.
+3. Tìm kiếm theo tiêu đề của cuộc trò chuyện, thay vì các từ trong nội dung tin nhắn.
+4. Kiểm tra **Cài đặt → Chat đã lưu trữ** và khôi phục cuộc trò chuyện nếu nó có ở đó.
+5. Nếu dự án của nó đã được đóng, hãy mở lại nó qua **Đã đóng gần đây** trên màn hình bắt đầu.
+
+Việc đóng một cột nhiều cuộc trò chuyện không lưu trữ cuộc trò chuyện. Các cuộc trò chuyện trống không có tin nhắn không được liệt kê trong lịch sử. Một cuộc trò chuyện đã được xóa vĩnh viễn không thể được khôi phục qua Dream.
+
+## Một cuộc trò chuyện đã được khôi phục lại được lưu trữ lại
+
+Việc khôi phục một cuộc trò chuyện giữ lại ngày hoạt động gần nhất. Nếu bạn thực hiện hành động **Lưu trữ ngay** lần nữa và ngày đó cũ hơn ngưỡng giới hạn, nó sẽ đủ điều kiện để được lưu trữ lại. Kiểm tra ngưỡng giới hạn và các cuộc trò chuyện bạn muốn giữ lại trước khi thực hiện hành động này.
+
+## Chuyển nhánh không khả dụng
+
+Chờ cho đến khi phản hồi hiện tại kết thúc trước khi nhánh. **Cây công việc mới** cũng cần một khoa học Git. Một tham chiếu cơ sở thiếu hoặc không hợp lệ có thể ngăn việc tạo worktree; hãy kiểm tra rằng khoa học có chứa nhánh hoặc tham chiếu đã được ghi lại mà bạn muốn sử dụng.
+
+Nếu các chỉnh sửa mong đợi bị thiếu trong một worktree mới, hãy kiểm tra xem chúng có bị bỏ qua trong dự án gốc hay không. Worktrees không sao chép những thay đổi đó. Xem [Git worktrees](/docs/vi/worktrees).
+
+## Một phản hồi không có chức năng kiểm soát thay đổi tệp View
+
+Phần điều khiển xuất hiện trên tin nhắn của trợ lý sau khi phản hồi hoàn thành, và chỉ xuất hiện khi đã ghi lại một điểm kiểm tra cho phản hồi đó. Kiểm tra rằng **Checkpoint thay đổi** được bật trong **Cài đặt → Chung → Tin nhắn chat**, và rằng thực thi `git` có sẵn cho Dream. Các dự án lớn có thể vượt quá giới hạn thời gian ghi lại, trong trường hợp đó phản hồi sẽ chạy mà không có điểm kiểm tra. Xem [Kiểm tra và khôi phục thay đổi](/docs/vi/checkpoints).
+
+## Tôi không thể gửi diff hoặc phản hồi phần tử
+
+Kiểm soát gửi bị vô hiệu hóa khi cuộc trò chuyện đích đang phản hồi và hiển thị **Cuộc trò chuyện đang bận**. Hãy chờ cho đến khi nó kết thúc hoặc bật **Cuộc trò chuyện mới** trong thanh bật lên. Nếu thanh bật lên báo rằng lựa chọn không còn khớp với sự thay đổi, hãy cập nhật lại Thay đổi và chọn lại các dòng. Xem [Gửi phản hồi đến cuộc trò chuyện](/docs/vi/feedback).
+
+## Tiếp tục trong terminal bị thiếu
+
+Hành động này có sẵn cho các cuộc trò chuyện Claude với một phiên bản cung cấp lại hợp lệ và bị vô hiệu hóa khi đang xử lý phản hồi. Một cuộc trò chuyện mới, nhà cung cấp khác hoặc việc thiết lập lại phiên sau khi thay đổi mô hình hoặc tốc độ có thể không có nó. Xem [Terminals](/docs/vi/terminals#tiếp-tục-cuộc-trò-chuyện-claude-trong-một-terminal).
+
+## Một terminal không thể mở được
+
+Kiểm tra xem thư mục dự án vẫn tồn tại không. Chọn một shell có sẵn trong **Cài đặt → Chung → Terminal**, sau đó mở một phiên bản mới. Với Claude continuation, thư mục phiên bản gốc cũng phải tồn tại. Thử sử dụng cùng shell trong terminal hệ thống để xác định các vấn đề về môi trường.
+
+## Xem trước trình duyệt là trống hoặc lỗi thời
+
+Xác nhận rằng ứng dụng đang chạy và sử dụng URL và cổng được hiển thị chính xác trong terminal. Kiểm tra lỗi terminal, sau đó thử **Làm mới trình duyệt** hoặc **Buộc tải lại**. So sánh URL trong trình duyệt hệ thống của bạn. Sử dụng DevTools để phát hiện lỗi trang; chỉ xóa cookie hoặc cache khi có vấn đề liên quan đến xác thực hoặc lưu trữ cache. Xem [Xem trước trong trình duyệt](/docs/vi/browser).
+
+## Một tệp không thể được lưu trữ
+
+Kiểm tra xem tệp có thể ghi được không và đọc lỗi của trình soạn thảo. Nếu tệp đã thay đổi trên đĩa trong khi bạn đang chỉnh sửa, hãy lưu bản nháp của bạn trước khi **Tải lại từ đĩa**, sau đó áp dụng lại các thay đổi mong muốn. Xem [Tệp và tìm kiếm](/docs/vi/files#xử-lý-tệp-đã-được-thay-đổi-bên-ngoài-trình-soạn-thảo).
+
+## Tác vụ Git thất bại
+
+Đối với các vấn đề liên quan đến bình luận, chỉnh sửa hoặc hợp nhất PR, xem [Đánh giá pull request](/docs/vi/pull-requests). Kiểm tra rằng GitHub CLI đã được xác thực và tài khoản của bạn có quyền truy cập vào kho lưu trữ cần thiết. Một PR bản thảo phải được đánh dấu là sẵn sàng trước khi hợp nhất.
+
+| Triệu chứng | Cái gì cần kiểm tra |
+| --- | --- |
+| Không có công cụ Git cho một thư mục | Mở một thư mục bên trong một khoa học Git |
+| Không có thay đổi được chuẩn bị để ghi lại | Kiểm tra gồm các tập tin chưa được đánh dấu, hoặc đánh dấu các tập tin mong muốn thông qua Git |
+| Các thay đổi được lưu trong trạng thái ngoài dự án đang hoạt động | Tiến hành commit riêng biệt trước khi sử dụng hành động commit của Dream |
+| Push không có nơi đến | Cấu hình một remote Git và xác minh quyền truy cập vào nó |
+| Báo cáo tạo PR ghi lỗi CLI | Xác minh rằng GitHub CLI đã được cài đặt, đã được xác thực và có thể truy cập vào kho lưu trữ |
+| Nguồn và cơ sở của PR là như nhau | Chuyển sang một nhánh tính năng trước khi tạo PR |
+| Báo cáo tạo PR có HEAD tách rời | Kiểm tra nhánh trước khi tạo PR |
+| Việc xóa worktree thất bại | Kiểm tra và giữ lại các thay đổi chưa được ghi lại trong bản sao đó |
+| Hợp nhất và xóa bỏ không khả dụng | Cây làm việc không có các lần commit nào nằm trước cơ sở của nó, hoặc bản sao chính có các thay đổi chưa được ghi lại hoặc đang tiến hành hợp nhất |
+| Báo cáo cây làm việc hoàn chỉnh có xung đột | Phép hợp nhất đã bị hủy bỏ và không có gì thay đổi; hợp nhất nhánh cơ sở vào worktree, giải quyết xung đột, thực hiện commit, rồi thử lại |
+| Tạo pull request không khả dụng trong worktree hoàn chỉnh | Cấu hình một remote Git và cài đặt GitHub CLI |
+
+Sau khi hành động kết hợp thất bại, hãy kiểm tra trạng thái nhánh trước khi thử lại: một commit hoặc push có thể đã thành công trước khi bước sau đó thất bại. Xem [Quy trình làm việc với Git](/docs/vi/git-workflows).

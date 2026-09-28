@@ -1,5 +1,5 @@
 import { ShisoApp } from "@umami/shiso/client";
-import { hydrateRoot } from "react-dom/client";
+import { createRoot, hydrateRoot } from "react-dom/client";
 import "./styles.css";
 
 const element = document.getElementById("root");
@@ -8,7 +8,11 @@ if (!element) {
   throw new Error("Shiso could not find the root element.");
 }
 
-hydrateRoot(element, <ShisoApp />);
+if (element.childElementCount > 0) {
+  hydrateRoot(element, <ShisoApp />);
+} else {
+  createRoot(element).render(<ShisoApp />);
+}
 
 const localHosts = new Set(["localhost", "127.0.0.1", "::1"]);
 

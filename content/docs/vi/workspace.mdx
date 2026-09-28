@@ -1,0 +1,77 @@
+---
+title: "Dự án và không gian làm việc"
+description: "Quản lý các tab dự án, sắp xếp các bảng điều khiển và chuyển đổi giữa các cuộc trò chuyện và công cụ phát triển."
+---
+
+Mỗi dự án Dream đều có không gian làm việc riêng. Các thẻ dự án cho phép bạn chuyển đổi giữa các kho lưu trữ mà vẫn giữ nguyên các cuộc trò chuyện và công cụ đang mở của từng dự án.
+
+## Thêm và chuyển đổi dự án
+
+1. Nhấn vào **+** bên cạnh các tab dự án, hoặc sử dụng **Mở thư mục** trên màn hình bắt đầu.
+2. Chọn thư mục bạn muốn làm việc.
+3. Chọn tab của nó để làm dự án đang hoạt động.
+
+Dự án đang hoạt động xác định các cuộc trò chuyện, tệp, terminal, tab trình duyệt và các mục lưu trữ mà bạn thấy. Kiểm tra tab đã chọn trước khi gửi một nhiệm vụ hoặc chạy một lệnh. Kéo các tab dự án để sắp xếp lại khi bạn muốn các dự án liên quan nằm cạnh nhau.
+
+<Frame caption="Tab được đánh dấu là dự án đang hoạt động. Sử dụng + để mở một thư mục khác.">
+  <img
+    src="/images/docs/project-tabs.png"
+    alt="Các tab dự án Dream với Dream được chọn và nút thêm bên cạnh các dự án đã mở."
+    width={1256}
+    height={48}
+    loading="lazy"
+  />
+</Frame>
+
+## Đổi tên hoặc mở dự án bên ngoài
+
+Mở menu **…** của dự án và chọn **Chỉnh sửa** để thay đổi tên hiển thị hoặc biểu tượng. Nhấp vào biểu tượng để tải lên một hình ảnh có dung lượng tối đa 5 MB, sau đó **Lưu**. Khôi phục biểu tượng tùy chỉnh để quay lại việc phát hiện tự động từ dự án. Việc thay đổi tên dự án trong Dream không làm thay đổi tên thư mục trên ổ đĩa.
+
+Sử dụng các lựa chọn **Mở trong** trong thanh menu để mở dự án vào một trình biên tập bên ngoài có sẵn.
+
+## Quay lại cuộc trò chuyện trước đó
+
+Dùng nút **Quay lại** và **Tiến tới** bên cạnh các tab dự án để quay lại các dự án và cuộc trò chuyện bạn đã mở. Trên Windows và Linux, dùng **Alt+Left** và **Alt+Right**; trên macOS, dùng **Command+[** và **Command+]**. Nút quay lại và tiến tới trên chuột cũng hoạt động.
+
+Lịch sử này theo dõi các lựa chọn dự án và cuộc trò chuyện. Việc chuyển đổi các bảng công cụ không làm thêm các mục, và trình duyệt được nhúng có lịch sử duyệt riêng. Phím tắt bàn phím trong terminal hoặc trình soạn thảo mã được để nguyên theo các công cụ đó.
+
+## Đóng và mở lại một dự án
+
+1. Mở menu **…** của dự án và chọn **Đóng**.
+2. Khi bạn muốn quay lại, hãy mở màn hình bắt đầu bằng nút **+** trong dự án.
+3. Tìm dự án trong **Đã đóng gần đây**, sử dụng ô tìm kiếm nếu cần.
+4. Chọn dự án để khôi phục nó.
+
+Việc đóng một dự án sẽ loại bỏ tab đang mở của nó; nó không xóa thư mục của nó. Dream sẽ khôi phục ngữ cảnh dự án đã lưu như các cuộc trò chuyện và các công cụ đang mở nếu có thể. Không nên sử dụng một dự án đã đóng để duy trì quá trình terminal.
+
+## Tìm các nút điều khiển không gian làm việc
+
+Thanh công cụ bên trái chứa **Lịch sử trò chuyện**, **Cuộc trò chuyện mới** và **Bật đa chat**. Di chuột qua biểu tượng để xem nhãn của nó. Bộ soạn thảo cuộc trò chuyện chứa mô hình đã chọn, nỗ lực và tốc độ khi được hỗ trợ, cùng các quyền hạn.
+
+Các công cụ dự án được mở ra bên phải thanh công cụ:
+
+| Công cụ | Bạn có thể làm những điều sau đây |
+| --- | --- |
+| [Thay đổi](/docs/vi/git-workflows) | Xem xét các thay đổi của Git và hủy bỏ các thay đổi của tệp |
+| [Tệp](/docs/vi/files) | Duyệt tệp, tìm kiếm đường dẫn và chỉnh sửa nội dung tệp |
+| [Trình duyệt](/docs/vi/browser) | Xem trước URL và kiểm tra trang web |
+| [Terminal](/docs/vi/terminals) | Chạy các lệnh dự án trong các phiên bản riêng biệt |
+| [Hành động Git](/docs/vi/git-workflows) | Gửi thay đổi, đẩy và tạo pull request |
+| [Pull request](/docs/vi/pull-requests) | Đọc yêu cầu PR của nhánh hiện tại, để lại bình luận và hợp nhất |
+| [Stash](/docs/vi/stash) | Lưu các prompt và chạy chúng sau này |
+
+**Hành động Git** nằm ở phía trên thanh công cụ bên phải. Các thao tác Git xuất hiện cho các dự án khoa học. Bộ điều khiển nhánh dưới phần trò chuyện hiển thị nhánh đang hoạt động; sử dụng nó để chuyển nhánh hoặc [tạo một worktree](/docs/vi/worktrees). Trong một dự án worktree, vị trí tương tự sẽ hiển thị nút **cây công việc** để mở hộp thoại [Hoàn thành worktree](/docs/vi/worktrees#hoàn-thành-một-worktree).
+
+## Sắp xếp các cuộc trò chuyện và các bảng điều khiển
+
+Nhấn vào một công cụ để mở bảng điều khiển của nó. Sử dụng nút đóng hoặc thu gọn của bảng điều khiển khi bạn cần thêm không gian cho các cuộc trò chuyện, và kéo thanh điều chỉnh bảng điều khiển để thay đổi kích thước bố cục. Việc đóng bảng điều khiển một công cụ khác với việc đóng các phiên terminal riêng lẻ hoặc các tab trình duyệt của công cụ đó.
+
+Bật [multi-chat](/docs/vi/multiple-chats) để sắp xếp các cuộc trò chuyện trong các cột có thể thay đổi kích thước. Mỗi cuộc trò chuyện có lịch sử cuộc trò chuyện riêng, trong khi tất cả các cuộc trò chuyện trong dự án sử dụng cùng các tệp. Sử dụng worktrees để kiểm xuất độc lập.
+
+## Lấy cửa sổ Dream
+
+Ấn **Ctrl+Shift+S** trên Windows/Linux hoặc **Command+Shift+S** trên macOS để chụp màn hình cửa sổ Dream. Dream sao chép hình ảnh chụp màn hình vào bộ nhớ đệm, sau đó mở hộp thoại để lưu nó dưới dạng PNG. Hủy hộp thoại lưu sẽ giữ hình ảnh trong bộ nhớ đệm. Một thông báo báo cáo việc hình ảnh đã được sao chép, đã được lưu, hoặc không thể chụp được.
+
+Để chụp hình màn hình một trang web, hãy sử dụng hành động chụp hình màn hình của [thiết bị duyệt web](/docs/vi/browser).
+
+Để thiết lập giao diện chung, ngôn ngữ và các lựa chọn mô hình, hãy mở [Cài đặt](/docs/vi/settings). Để tìm các cuộc trò chuyện cũ, hãy sử dụng [Lịch sử chat](/docs/vi/chats) hoặc [Chat đã lưu trữ](/docs/vi/archived-chats).

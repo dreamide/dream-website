@@ -1,0 +1,49 @@
+---
+title: "Examiner les pull requests"
+description: "Lisez les demandes de fusion sur GitHub, examinez les différences, postez des commentaires, éditez les détails et les fusionnez depuis Dream."
+---
+
+Le bouton **Pull requests** dans la barre d'outils de droite ouvre la demande de fusion GitHub pour la branche actuelle. Installez et authentifiez d'abord le CLI GitHub pour le dépôt. Pour publier une nouvelle demande de fusion, suivez [Git workflows](/docs/fr/git-workflows#créer-un-pull-request).
+
+## Ouvrir la demande de fusion de la branche actuelle
+
+1. Sélectionnez le projet et vérifiez sa branche actuelle.
+2. Cliquez sur **Pull requests** dans la barre latérale de droite.
+3. Revoir le titre, l'état, les branches source et de base, ainsi que les vérifications de la demande de modification.
+4. Utilisez **Résumé** pour la description et la discussion, ou **Code** pour les fichiers modifiés.
+
+<Frame caption="Le résumé de la PR conserve sa description, ses vérifications et son discussion accompagné de votre projet. Exemple déjà fusionné.">
+  <img
+    src="/images/docs/pull-request-panel.png"
+    alt="Panel de demande de fusion affichant une PR fusionnée, des onglets Résumé et Code, sa description et les vérifications passées."
+    width={876}
+    height={600}
+    loading="lazy"
+  />
+</Frame>
+
+Si la branche n'a pas de demande de fusion, le panneau propose **Créer une demande d'extraction**. Utilisez **Actions de la pull request → Actualiser** après des modifications effectuées sur GitHub, ou **Ouvrir sur GitHub** pour consulter la demande de fusion dans votre navigateur. Une demande de fusion fusionnée cesse d'apparaître dès que la branche contient des commits plus récents au-delà de la tête de cette demande de fusion.
+
+## Revoir du code et poster des commentaires
+
+Dans **Résumé**, lisez la discussion et utilisez **Écrire** et **Aperçu** pour composer un commentaire Markdown. Choisissez **Publier un commentaire** pour le publier sur GitHub.
+
+Dans **Code**, expandez un fichier et sélectionnez des lignes dans son diff pour publier un **Publier un commentaire sur la ligne**. Vous pouvez lire les threads de révision existants et utiliser **Répondre** pour les poursuivre. Lorsqu'un patch de texte n'est pas disponible, ouvrez la demande de modification sur GitHub pour inspecter ce fichier.
+
+Ces commentaires sont publiés sur GitHub. Pour demander à votre agent de codage de prendre en compte les modifications locales, utilisez [le feedback sur les différences dans les Modifications](/docs/fr/feedback#commenter-des-lignes-dans-un-diff).
+
+## Modifier le titre et la description
+
+Lorsque votre compte dispose d'autorisation, utilisez **Modifier le titre** ou **Modifier la description**. Enregistrez le titre après l'avoir modifié ; pour la description, utilisez **Écrire** et **Aperçu**, puis **Enregistrer**. Vous pouvez également modifier vos propres commentaires où un contrôle d'édition est disponible.
+
+## Fusionner une demande de fusion
+
+1. Revoir le code, la discussion et les vérifications.
+2. Cliquez sur **Fusionner** dans l'en-tête du panneau.
+3. Confirmer la branche source et la branche de base dans **Fusionner la PR**.
+4. Choisissez une méthode disponible : **Créer un commit de fusion**, **Fusionner en un seul commit**, ou **Rebaser et fusionner**.
+5. Soumettre le fusion.
+
+Seules les demandes de fusion ouvertes et non en brouillon peuvent être fusionnées. Marquez un brouillon prêt sur GitHub d'abord. Votre compte a besoin d'autorisation de fusion, et le référentiel détermine les méthodes de fusion disponibles. GitHub peut rejeter une fusion lorsque les exigences du référentiel ne sont pas satisfaites.
+
+Dream vérifie que la commit de tête du PR est encore affichée lors du chargement des détails de fusion. Si elle a changé sur GitHub, actualisez et réexaminez les nouveaux changements avant de réessayer.

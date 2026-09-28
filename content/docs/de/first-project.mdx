@@ -1,0 +1,47 @@
+---
+title: "Dein erstes Projekt öffnen"
+description: "Fügen Sie einen Projektfolder hinzu und beginnen Sie mit Ihrem ersten AI-Coding-Chat."
+---
+
+Sobald mindestens ein Provider-Modell aktiviert ist, können Sie einen lokalen Ordner zu Dream hinzufügen.
+
+<Steps>
+  <Step title="Ein Verzeichnis öffnen">
+    Von der Startseite wählen Sie **Ordner öffnen** und wählen den Projektpfad, den Dream verwenden soll.
+  </Step>
+  <Step title="Ein Modell auswählen">
+    Dream beginnt mit deinem Standardmodell. Nutze die Modellauswahl in der Chat-Editorium, um jedes andere aktivierte Provider- und Modell auszuwählen.
+  </Step>
+  <Step title="Berechtigungen auswählen">
+    Neue Chats übernehmen die **Standardberechtigungen** aus den Einstellungen. Öffne das Steuerelement mit dem Schildsymbol unter dem Nachrichtenfeld und wähle **Nachfragen**, **Änderungen akzeptieren** oder **Vollzugriff** für diese Aufgabe. Siehe [Agentenberechtigungen](/docs/de/agent-modes).
+  </Step>
+  <Step title="Ein Prompt senden">
+    Beschreibe das gewünschte Ergebnis und wie es überprüft werden soll. Zum Beispiel: „Erkläre, wie dieses Projekt startet, identifiziere seinen Test-Befehl und vorschlage, wo eine Einstellungsseite hinzugefügt werden sollte.“ Dream hält den Austausch und die Projekteinrichtungen in derselben Arbeitsumgebung zusammen.
+  </Step>
+</Steps>
+
+<Frame caption="Prüfen Sie die Kontrollmöglichkeiten unter Ihrer Nachricht, bevor Sie die erste Aufgabe senden.">
+  <img
+    src="/images/docs/chat-composer.png"
+    alt="Chat-Composer mit einer Anhangs-Option, Modell, Aufwand, Geschwindigkeit, Berechtigungen und Sendekontrolle."
+    width={600}
+    height={108}
+    loading="lazy"
+  />
+</Frame>
+
+## Inspektiere das Ergebnis
+
+Lesen Sie die Antwort und öffnen Sie die Tool-Details, wenn Sie prüfen wollen, was der Agent getan hat. Wenn er eine Frage stellt, beantworten Sie diese in derselben Konversation. Wenn Dateien geändert werden, öffnen Sie **Änderungen** in der rechten Werkzeugleiste, um die Diff-Änderungen zu überprüfen. Verwenden Sie **Dateien**, um den Code zu inspizieren, oder **Terminal**, um die Prüfungen des Projekts auszuführen.
+
+Für Aufgaben, die spezifisches Code oder ein Screenshot erfordern, [fügen Sie Kontext hinzu](/docs/de/providing-context), bevor Sie die Anfrage senden. Sie können das Chat-Modell über den Auswahlfeld unter der Nachrichtenbox ändern. Um das Standard-Modell für zukünftige Chats zu ändern, verwenden Sie **Einstellungen → Allgemein → Modelle → Standard-Chatmodell**.
+
+## Zurück zu einem Projekt
+
+Offene Projekte bleiben als Tabs verfügbar. Wenn Sie eines schließen, verwenden Sie **Zuletzt geschlossen** auf der Startseite, um es zu finden und wiederherzustellen. Dream stellt den Projektkontext wie Chats und offene Werkzeuge bei Bedarf wiederher.
+
+## Ein anderes Chat-Verzeichnis starten
+
+Nutzen Sie **Neuer Chat**, um eine separate Konversation für das gleiche Projekt zu beginnen. Aktivieren Sie [multi-chat](/docs/de/multiple-chats), wenn Sie Konversationen nebeneinander führen möchten. Jeder Chat hat seine eigenen Nachrichten, aber Chats innerhalb desselben Projekts teilen die Dateien.
+
+Open [Chatverlauf](/docs/de/chats), um an frühere Arbeit zurückzukehren. Wenn eine Aufgabe abgeschlossen ist, [archiviere das Gespräch](/docs/de/archived-chats), um es aus dem aktiven Verlauf zu entfernen, während es weiterhin zur Wiederherstellung verfügbar bleibt.

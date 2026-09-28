@@ -28,6 +28,126 @@
     {
       "path": "/hello",
       "page": "hello"
+    },
+    {
+      "path": "/es",
+      "page": "es/home"
+    },
+    {
+      "path": "/es/download",
+      "page": "es/download"
+    },
+    {
+      "path": "/es/hello",
+      "page": "es/hello"
+    },
+    {
+      "path": "/fr",
+      "page": "fr/home"
+    },
+    {
+      "path": "/fr/download",
+      "page": "fr/download"
+    },
+    {
+      "path": "/fr/hello",
+      "page": "fr/hello"
+    },
+    {
+      "path": "/de",
+      "page": "de/home"
+    },
+    {
+      "path": "/de/download",
+      "page": "de/download"
+    },
+    {
+      "path": "/de/hello",
+      "page": "de/hello"
+    },
+    {
+      "path": "/pt",
+      "page": "pt/home"
+    },
+    {
+      "path": "/pt/download",
+      "page": "pt/download"
+    },
+    {
+      "path": "/pt/hello",
+      "page": "pt/hello"
+    },
+    {
+      "path": "/it",
+      "page": "it/home"
+    },
+    {
+      "path": "/it/download",
+      "page": "it/download"
+    },
+    {
+      "path": "/it/hello",
+      "page": "it/hello"
+    },
+    {
+      "path": "/ja",
+      "page": "ja/home"
+    },
+    {
+      "path": "/ja/download",
+      "page": "ja/download"
+    },
+    {
+      "path": "/ja/hello",
+      "page": "ja/hello"
+    },
+    {
+      "path": "/ko",
+      "page": "ko/home"
+    },
+    {
+      "path": "/ko/download",
+      "page": "ko/download"
+    },
+    {
+      "path": "/ko/hello",
+      "page": "ko/hello"
+    },
+    {
+      "path": "/vi",
+      "page": "vi/home"
+    },
+    {
+      "path": "/vi/download",
+      "page": "vi/download"
+    },
+    {
+      "path": "/vi/hello",
+      "page": "vi/hello"
+    },
+    {
+      "path": "/zh-Hans",
+      "page": "zh-Hans/home"
+    },
+    {
+      "path": "/zh-Hans/download",
+      "page": "zh-Hans/download"
+    },
+    {
+      "path": "/zh-Hans/hello",
+      "page": "zh-Hans/hello"
+    },
+    {
+      "path": "/zh-Hant",
+      "page": "zh-Hant/home"
+    },
+    {
+      "path": "/zh-Hant/download",
+      "page": "zh-Hant/download"
+    },
+    {
+      "path": "/zh-Hant/hello",
+      "page": "zh-Hant/hello"
     }
   ],
   "navbar": {
@@ -72,55 +192,1451 @@
     "options": ["copy", "view"]
   },
   "navigation": {
-    "groups": [
+    "languages": [
       {
-        "group": "Getting started",
-        "collapsible": false,
-        "pages": [
+        "language": "en",
+        "default": true,
+        "groups": [
           {
-            "page": "index",
-            "title": "Introduction"
+            "group": "Getting started",
+            "collapsible": false,
+            "pages": [
+              {
+                "page": "index",
+                "title": "Introduction"
+              },
+              "installation",
+              "providers",
+              "first-project"
+            ]
           },
-          "installation",
-          "providers",
-          "first-project"
+          {
+            "group": "Chats",
+            "pages": [
+              "chats",
+              "multiple-chats",
+              "providing-context",
+              "feedback",
+              "agent-modes",
+              "branching-chats",
+              "checkpoints",
+              "stash",
+              "saved-prompts",
+              "skills",
+              "archived-chats",
+              "context-and-usage"
+            ]
+          },
+          {
+            "group": "Workspace tools",
+            "pages": ["workspace", "files", "terminals", "browser"]
+          },
+          {
+            "group": "Git",
+            "pages": ["git-workflows", "pull-requests", "worktrees"]
+          },
+          {
+            "group": "Configuration and help",
+            "pages": [
+              "models",
+              {
+                "page": "mcp-servers",
+                "title": "MCP servers"
+              },
+              "settings",
+              "troubleshooting"
+            ]
+          }
         ]
       },
       {
-        "group": "Chats",
-        "pages": [
-          "chats",
-          "multiple-chats",
-          "providing-context",
-          "feedback",
-          "agent-modes",
-          "branching-chats",
-          "checkpoints",
-          "stash",
-          "saved-prompts",
-          "skills",
-          "archived-chats",
-          "context-and-usage"
+        "language": "es",
+        "groups": [
+          {
+            "group": "Primeros pasos",
+            "collapsible": false,
+            "pages": [
+              {
+                "page": "es/index",
+                "title": "Introducción"
+              },
+              {
+                "page": "es/installation",
+                "title": "Instalación"
+              },
+              {
+                "page": "es/providers",
+                "title": "Conectar un proveedor"
+              },
+              {
+                "page": "es/first-project",
+                "title": "Abre tu primer proyecto"
+              }
+            ]
+          },
+          {
+            "group": "Chats",
+            "pages": [
+              {
+                "page": "es/chats",
+                "title": "Trabajar con chats"
+              },
+              {
+                "page": "es/multiple-chats",
+                "title": "Usar varios chats"
+              },
+              {
+                "page": "es/providing-context",
+                "title": "Proporcionar contexto"
+              },
+              {
+                "page": "es/feedback",
+                "title": "Enviar comentarios a un chat"
+              },
+              {
+                "page": "es/agent-modes",
+                "title": "Permisos del agente"
+              },
+              {
+                "page": "es/branching-chats",
+                "title": "Ramificar conversaciones"
+              },
+              {
+                "page": "es/checkpoints",
+                "title": "Revisar y restaurar cambios"
+              },
+              {
+                "page": "es/stash",
+                "title": "Guardar prompts con Stash"
+              },
+              {
+                "page": "es/saved-prompts",
+                "title": "Prompts reutilizables"
+              },
+              {
+                "page": "es/skills",
+                "title": "Skills de los agentes"
+              },
+              {
+                "page": "es/archived-chats",
+                "title": "Archivar y restaurar chats"
+              },
+              {
+                "page": "es/context-and-usage",
+                "title": "Contexto y uso"
+              }
+            ]
+          },
+          {
+            "group": "Herramientas del espacio de trabajo",
+            "pages": [
+              {
+                "page": "es/workspace",
+                "title": "Proyectos y espacio de trabajo"
+              },
+              {
+                "page": "es/files",
+                "title": "Archivos y búsqueda"
+              },
+              {
+                "page": "es/terminals",
+                "title": "Terminales"
+              },
+              {
+                "page": "es/browser",
+                "title": "Vista previa en el navegador"
+              }
+            ]
+          },
+          {
+            "group": "Git",
+            "pages": [
+              {
+                "page": "es/git-workflows",
+                "title": "Flujos de trabajo de Git"
+              },
+              {
+                "page": "es/pull-requests",
+                "title": "Revisar pull requests"
+              },
+              {
+                "page": "es/worktrees",
+                "title": "Worktrees de Git"
+              }
+            ]
+          },
+          {
+            "group": "Configuración y ayuda",
+            "pages": [
+              {
+                "page": "es/models",
+                "title": "Modelos y valores predeterminados"
+              },
+              {
+                "page": "es/mcp-servers",
+                "title": "Servidores MCP"
+              },
+              {
+                "page": "es/settings",
+                "title": "Referencia de ajustes"
+              },
+              {
+                "page": "es/troubleshooting",
+                "title": "Solución de problemas"
+              }
+            ]
+          }
         ]
       },
       {
-        "group": "Workspace tools",
-        "pages": ["workspace", "files", "terminals", "browser"]
-      },
-      {
-        "group": "Git",
-        "pages": ["git-workflows", "pull-requests", "worktrees"]
-      },
-      {
-        "group": "Configuration and help",
-        "pages": [
-          "models",
+        "language": "fr",
+        "groups": [
           {
-            "page": "mcp-servers",
-            "title": "MCP servers"
+            "group": "Premiers pas",
+            "collapsible": false,
+            "pages": [
+              {
+                "page": "fr/index",
+                "title": "Introduction"
+              },
+              {
+                "page": "fr/installation",
+                "title": "Installation"
+              },
+              {
+                "page": "fr/providers",
+                "title": "Connecter un fournisseur"
+              },
+              {
+                "page": "fr/first-project",
+                "title": "Ouvrir votre premier projet"
+              }
+            ]
           },
-          "settings",
-          "troubleshooting"
+          {
+            "group": "Conversations",
+            "pages": [
+              {
+                "page": "fr/chats",
+                "title": "Travailler avec les conversations"
+              },
+              {
+                "page": "fr/multiple-chats",
+                "title": "Utiliser plusieurs conversations"
+              },
+              {
+                "page": "fr/providing-context",
+                "title": "Fournir du contexte"
+              },
+              {
+                "page": "fr/feedback",
+                "title": "Envoyer des retours à une conversation"
+              },
+              {
+                "page": "fr/agent-modes",
+                "title": "Autorisations des agents"
+              },
+              {
+                "page": "fr/branching-chats",
+                "title": "Créer des branches de conversation"
+              },
+              {
+                "page": "fr/checkpoints",
+                "title": "Vérifier et restaurer les modifications"
+              },
+              {
+                "page": "fr/stash",
+                "title": "Enregistrer des prompts avec Stash"
+              },
+              {
+                "page": "fr/saved-prompts",
+                "title": "Prompts réutilisables"
+              },
+              {
+                "page": "fr/skills",
+                "title": "Skills des agents"
+              },
+              {
+                "page": "fr/archived-chats",
+                "title": "Archiver et restaurer des conversations"
+              },
+              {
+                "page": "fr/context-and-usage",
+                "title": "Contexte et utilisation"
+              }
+            ]
+          },
+          {
+            "group": "Outils de l’espace de travail",
+            "pages": [
+              {
+                "page": "fr/workspace",
+                "title": "Projets et espace de travail"
+              },
+              {
+                "page": "fr/files",
+                "title": "Fichiers et recherche"
+              },
+              {
+                "page": "fr/terminals",
+                "title": "Terminaux"
+              },
+              {
+                "page": "fr/browser",
+                "title": "Aperçu dans le navigateur"
+              }
+            ]
+          },
+          {
+            "group": "Git",
+            "pages": [
+              {
+                "page": "fr/git-workflows",
+                "title": "Flux de travail Git"
+              },
+              {
+                "page": "fr/pull-requests",
+                "title": "Examiner les pull requests"
+              },
+              {
+                "page": "fr/worktrees",
+                "title": "Worktrees Git"
+              }
+            ]
+          },
+          {
+            "group": "Configuration et aide",
+            "pages": [
+              {
+                "page": "fr/models",
+                "title": "Modèles et valeurs par défaut"
+              },
+              {
+                "page": "fr/mcp-servers",
+                "title": "Serveurs MCP"
+              },
+              {
+                "page": "fr/settings",
+                "title": "Référence des paramètres"
+              },
+              {
+                "page": "fr/troubleshooting",
+                "title": "Dépannage"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "de",
+        "groups": [
+          {
+            "group": "Erste Schritte",
+            "collapsible": false,
+            "pages": [
+              {
+                "page": "de/index",
+                "title": "Einführung"
+              },
+              {
+                "page": "de/installation",
+                "title": "Installation"
+              },
+              {
+                "page": "de/providers",
+                "title": "Anbieter verbinden"
+              },
+              {
+                "page": "de/first-project",
+                "title": "Dein erstes Projekt öffnen"
+              }
+            ]
+          },
+          {
+            "group": "Chats",
+            "pages": [
+              {
+                "page": "de/chats",
+                "title": "Mit Chats arbeiten"
+              },
+              {
+                "page": "de/multiple-chats",
+                "title": "Mehrere Chats verwenden"
+              },
+              {
+                "page": "de/providing-context",
+                "title": "Kontext bereitstellen"
+              },
+              {
+                "page": "de/feedback",
+                "title": "Feedback an einen Chat senden"
+              },
+              {
+                "page": "de/agent-modes",
+                "title": "Agentenberechtigungen"
+              },
+              {
+                "page": "de/branching-chats",
+                "title": "Gespräche verzweigen"
+              },
+              {
+                "page": "de/checkpoints",
+                "title": "Änderungen prüfen und wiederherstellen"
+              },
+              {
+                "page": "de/stash",
+                "title": "Prompts mit Stash speichern"
+              },
+              {
+                "page": "de/saved-prompts",
+                "title": "Wiederverwendbare Prompts"
+              },
+              {
+                "page": "de/skills",
+                "title": "Agenten-Skills"
+              },
+              {
+                "page": "de/archived-chats",
+                "title": "Chats archivieren und wiederherstellen"
+              },
+              {
+                "page": "de/context-and-usage",
+                "title": "Kontext und Nutzung"
+              }
+            ]
+          },
+          {
+            "group": "Werkzeuge im Arbeitsbereich",
+            "pages": [
+              {
+                "page": "de/workspace",
+                "title": "Projekte und Arbeitsbereich"
+              },
+              {
+                "page": "de/files",
+                "title": "Dateien und Suche"
+              },
+              {
+                "page": "de/terminals",
+                "title": "Terminals"
+              },
+              {
+                "page": "de/browser",
+                "title": "Browser-Vorschau"
+              }
+            ]
+          },
+          {
+            "group": "Git",
+            "pages": [
+              {
+                "page": "de/git-workflows",
+                "title": "Git-Arbeitsabläufe"
+              },
+              {
+                "page": "de/pull-requests",
+                "title": "Pull Requests prüfen"
+              },
+              {
+                "page": "de/worktrees",
+                "title": "Git-Worktrees"
+              }
+            ]
+          },
+          {
+            "group": "Konfiguration und Hilfe",
+            "pages": [
+              {
+                "page": "de/models",
+                "title": "Modelle und Standardeinstellungen"
+              },
+              {
+                "page": "de/mcp-servers",
+                "title": "MCP-Server"
+              },
+              {
+                "page": "de/settings",
+                "title": "Einstellungsreferenz"
+              },
+              {
+                "page": "de/troubleshooting",
+                "title": "Fehlerbehebung"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "pt",
+        "groups": [
+          {
+            "group": "Primeiros passos",
+            "collapsible": false,
+            "pages": [
+              {
+                "page": "pt/index",
+                "title": "Introdução"
+              },
+              {
+                "page": "pt/installation",
+                "title": "Instalação"
+              },
+              {
+                "page": "pt/providers",
+                "title": "Conectar um provedor"
+              },
+              {
+                "page": "pt/first-project",
+                "title": "Abra seu primeiro projeto"
+              }
+            ]
+          },
+          {
+            "group": "Chats",
+            "pages": [
+              {
+                "page": "pt/chats",
+                "title": "Trabalhar com chats"
+              },
+              {
+                "page": "pt/multiple-chats",
+                "title": "Usar vários chats"
+              },
+              {
+                "page": "pt/providing-context",
+                "title": "Fornecer contexto"
+              },
+              {
+                "page": "pt/feedback",
+                "title": "Enviar feedback para um chat"
+              },
+              {
+                "page": "pt/agent-modes",
+                "title": "Permissões dos agentes"
+              },
+              {
+                "page": "pt/branching-chats",
+                "title": "Ramificar conversas"
+              },
+              {
+                "page": "pt/checkpoints",
+                "title": "Revisar e restaurar alterações"
+              },
+              {
+                "page": "pt/stash",
+                "title": "Salvar prompts com o Stash"
+              },
+              {
+                "page": "pt/saved-prompts",
+                "title": "Prompts reutilizáveis"
+              },
+              {
+                "page": "pt/skills",
+                "title": "Skills dos agentes"
+              },
+              {
+                "page": "pt/archived-chats",
+                "title": "Arquivar e restaurar chats"
+              },
+              {
+                "page": "pt/context-and-usage",
+                "title": "Contexto e uso"
+              }
+            ]
+          },
+          {
+            "group": "Ferramentas do espaço de trabalho",
+            "pages": [
+              {
+                "page": "pt/workspace",
+                "title": "Projetos e espaço de trabalho"
+              },
+              {
+                "page": "pt/files",
+                "title": "Arquivos e busca"
+              },
+              {
+                "page": "pt/terminals",
+                "title": "Terminais"
+              },
+              {
+                "page": "pt/browser",
+                "title": "Prévia no navegador"
+              }
+            ]
+          },
+          {
+            "group": "Git",
+            "pages": [
+              {
+                "page": "pt/git-workflows",
+                "title": "Fluxos de trabalho do Git"
+              },
+              {
+                "page": "pt/pull-requests",
+                "title": "Revisar pull requests"
+              },
+              {
+                "page": "pt/worktrees",
+                "title": "Worktrees do Git"
+              }
+            ]
+          },
+          {
+            "group": "Configuração e ajuda",
+            "pages": [
+              {
+                "page": "pt/models",
+                "title": "Modelos e padrões"
+              },
+              {
+                "page": "pt/mcp-servers",
+                "title": "Servidores MCP"
+              },
+              {
+                "page": "pt/settings",
+                "title": "Referência de configurações"
+              },
+              {
+                "page": "pt/troubleshooting",
+                "title": "Solução de problemas"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "it",
+        "groups": [
+          {
+            "group": "Primi passi",
+            "collapsible": false,
+            "pages": [
+              {
+                "page": "it/index",
+                "title": "Introduzione"
+              },
+              {
+                "page": "it/installation",
+                "title": "Installazione"
+              },
+              {
+                "page": "it/providers",
+                "title": "Collegare un provider"
+              },
+              {
+                "page": "it/first-project",
+                "title": "Apri il tuo primo progetto"
+              }
+            ]
+          },
+          {
+            "group": "Chat",
+            "pages": [
+              {
+                "page": "it/chats",
+                "title": "Lavorare con le chat"
+              },
+              {
+                "page": "it/multiple-chats",
+                "title": "Usare più chat"
+              },
+              {
+                "page": "it/providing-context",
+                "title": "Fornire contesto"
+              },
+              {
+                "page": "it/feedback",
+                "title": "Inviare feedback a una chat"
+              },
+              {
+                "page": "it/agent-modes",
+                "title": "Autorizzazioni degli agenti"
+              },
+              {
+                "page": "it/branching-chats",
+                "title": "Ramificare le conversazioni"
+              },
+              {
+                "page": "it/checkpoints",
+                "title": "Controllare e ripristinare le modifiche"
+              },
+              {
+                "page": "it/stash",
+                "title": "Salvare prompt con Stash"
+              },
+              {
+                "page": "it/saved-prompts",
+                "title": "Prompt riutilizzabili"
+              },
+              {
+                "page": "it/skills",
+                "title": "Skill degli agenti"
+              },
+              {
+                "page": "it/archived-chats",
+                "title": "Archiviare e ripristinare le chat"
+              },
+              {
+                "page": "it/context-and-usage",
+                "title": "Contesto e utilizzo"
+              }
+            ]
+          },
+          {
+            "group": "Strumenti dello spazio di lavoro",
+            "pages": [
+              {
+                "page": "it/workspace",
+                "title": "Progetti e spazio di lavoro"
+              },
+              {
+                "page": "it/files",
+                "title": "File e ricerca"
+              },
+              {
+                "page": "it/terminals",
+                "title": "Terminali"
+              },
+              {
+                "page": "it/browser",
+                "title": "Anteprima nel browser"
+              }
+            ]
+          },
+          {
+            "group": "Git",
+            "pages": [
+              {
+                "page": "it/git-workflows",
+                "title": "Flussi di lavoro Git"
+              },
+              {
+                "page": "it/pull-requests",
+                "title": "Esaminare le pull request"
+              },
+              {
+                "page": "it/worktrees",
+                "title": "Worktree Git"
+              }
+            ]
+          },
+          {
+            "group": "Configurazione e assistenza",
+            "pages": [
+              {
+                "page": "it/models",
+                "title": "Modelli e impostazioni predefinite"
+              },
+              {
+                "page": "it/mcp-servers",
+                "title": "Server MCP"
+              },
+              {
+                "page": "it/settings",
+                "title": "Guida alle impostazioni"
+              },
+              {
+                "page": "it/troubleshooting",
+                "title": "Risoluzione dei problemi"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "ja",
+        "groups": [
+          {
+            "group": "はじめる",
+            "collapsible": false,
+            "pages": [
+              {
+                "page": "ja/index",
+                "title": "はじめに"
+              },
+              {
+                "page": "ja/installation",
+                "title": "インストール"
+              },
+              {
+                "page": "ja/providers",
+                "title": "プロバイダーの接続"
+              },
+              {
+                "page": "ja/first-project",
+                "title": "最初のプロジェクトを開く"
+              }
+            ]
+          },
+          {
+            "group": "チャット",
+            "pages": [
+              {
+                "page": "ja/chats",
+                "title": "チャットの使い方"
+              },
+              {
+                "page": "ja/multiple-chats",
+                "title": "複数のチャットを使う"
+              },
+              {
+                "page": "ja/providing-context",
+                "title": "コンテキストの提供"
+              },
+              {
+                "page": "ja/feedback",
+                "title": "チャットへのフィードバック"
+              },
+              {
+                "page": "ja/agent-modes",
+                "title": "エージェントの権限"
+              },
+              {
+                "page": "ja/branching-chats",
+                "title": "会話の分岐"
+              },
+              {
+                "page": "ja/checkpoints",
+                "title": "変更の確認と復元"
+              },
+              {
+                "page": "ja/stash",
+                "title": "スタッシュでプロンプトを保存"
+              },
+              {
+                "page": "ja/saved-prompts",
+                "title": "再利用可能なプロンプト"
+              },
+              {
+                "page": "ja/skills",
+                "title": "エージェントのスキル"
+              },
+              {
+                "page": "ja/archived-chats",
+                "title": "チャットのアーカイブと復元"
+              },
+              {
+                "page": "ja/context-and-usage",
+                "title": "コンテキストと使用量"
+              }
+            ]
+          },
+          {
+            "group": "ワークスペースのツール",
+            "pages": [
+              {
+                "page": "ja/workspace",
+                "title": "プロジェクトとワークスペース"
+              },
+              {
+                "page": "ja/files",
+                "title": "ファイルと検索"
+              },
+              {
+                "page": "ja/terminals",
+                "title": "ターミナル"
+              },
+              {
+                "page": "ja/browser",
+                "title": "ブラウザープレビュー"
+              }
+            ]
+          },
+          {
+            "group": "Git",
+            "pages": [
+              {
+                "page": "ja/git-workflows",
+                "title": "Gitのワークフロー"
+              },
+              {
+                "page": "ja/pull-requests",
+                "title": "プルリクエストのレビュー"
+              },
+              {
+                "page": "ja/worktrees",
+                "title": "Gitワークツリー"
+              }
+            ]
+          },
+          {
+            "group": "設定とヘルプ",
+            "pages": [
+              {
+                "page": "ja/models",
+                "title": "モデルと既定の設定"
+              },
+              {
+                "page": "ja/mcp-servers",
+                "title": "MCPサーバー"
+              },
+              {
+                "page": "ja/settings",
+                "title": "設定リファレンス"
+              },
+              {
+                "page": "ja/troubleshooting",
+                "title": "トラブルシューティング"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "ko",
+        "groups": [
+          {
+            "group": "시작하기",
+            "collapsible": false,
+            "pages": [
+              {
+                "page": "ko/index",
+                "title": "소개"
+              },
+              {
+                "page": "ko/installation",
+                "title": "설치"
+              },
+              {
+                "page": "ko/providers",
+                "title": "제공업체 연결"
+              },
+              {
+                "page": "ko/first-project",
+                "title": "첫 프로젝트 열기"
+              }
+            ]
+          },
+          {
+            "group": "채팅",
+            "pages": [
+              {
+                "page": "ko/chats",
+                "title": "채팅 사용하기"
+              },
+              {
+                "page": "ko/multiple-chats",
+                "title": "여러 채팅 사용하기"
+              },
+              {
+                "page": "ko/providing-context",
+                "title": "컨텍스트 제공"
+              },
+              {
+                "page": "ko/feedback",
+                "title": "채팅에 피드백 보내기"
+              },
+              {
+                "page": "ko/agent-modes",
+                "title": "에이전트 권한"
+              },
+              {
+                "page": "ko/branching-chats",
+                "title": "대화 분기"
+              },
+              {
+                "page": "ko/checkpoints",
+                "title": "변경 사항 검토 및 복원"
+              },
+              {
+                "page": "ko/stash",
+                "title": "스태시에 프롬프트 저장"
+              },
+              {
+                "page": "ko/saved-prompts",
+                "title": "재사용 가능한 프롬프트"
+              },
+              {
+                "page": "ko/skills",
+                "title": "에이전트 스킬"
+              },
+              {
+                "page": "ko/archived-chats",
+                "title": "채팅 보관 및 복원"
+              },
+              {
+                "page": "ko/context-and-usage",
+                "title": "컨텍스트와 사용량"
+              }
+            ]
+          },
+          {
+            "group": "작업 공간 도구",
+            "pages": [
+              {
+                "page": "ko/workspace",
+                "title": "프로젝트와 작업 공간"
+              },
+              {
+                "page": "ko/files",
+                "title": "파일과 검색"
+              },
+              {
+                "page": "ko/terminals",
+                "title": "터미널"
+              },
+              {
+                "page": "ko/browser",
+                "title": "브라우저 미리 보기"
+              }
+            ]
+          },
+          {
+            "group": "Git",
+            "pages": [
+              {
+                "page": "ko/git-workflows",
+                "title": "Git 작업 흐름"
+              },
+              {
+                "page": "ko/pull-requests",
+                "title": "풀 리퀘스트 검토"
+              },
+              {
+                "page": "ko/worktrees",
+                "title": "Git 워크트리"
+              }
+            ]
+          },
+          {
+            "group": "설정과 도움말",
+            "pages": [
+              {
+                "page": "ko/models",
+                "title": "모델과 기본 설정"
+              },
+              {
+                "page": "ko/mcp-servers",
+                "title": "MCP 서버"
+              },
+              {
+                "page": "ko/settings",
+                "title": "설정 안내"
+              },
+              {
+                "page": "ko/troubleshooting",
+                "title": "문제 해결"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "vi",
+        "groups": [
+          {
+            "group": "Bắt đầu",
+            "collapsible": false,
+            "pages": [
+              {
+                "page": "vi/index",
+                "title": "Giới thiệu"
+              },
+              {
+                "page": "vi/installation",
+                "title": "Cài đặt"
+              },
+              {
+                "page": "vi/providers",
+                "title": "Kết nối nhà cung cấp"
+              },
+              {
+                "page": "vi/first-project",
+                "title": "Mở dự án đầu tiên"
+              }
+            ]
+          },
+          {
+            "group": "Trò chuyện",
+            "pages": [
+              {
+                "page": "vi/chats",
+                "title": "Làm việc với cuộc trò chuyện"
+              },
+              {
+                "page": "vi/multiple-chats",
+                "title": "Sử dụng nhiều cuộc trò chuyện"
+              },
+              {
+                "page": "vi/providing-context",
+                "title": "Cung cấp ngữ cảnh"
+              },
+              {
+                "page": "vi/feedback",
+                "title": "Gửi phản hồi đến cuộc trò chuyện"
+              },
+              {
+                "page": "vi/agent-modes",
+                "title": "Quyền của tác nhân"
+              },
+              {
+                "page": "vi/branching-chats",
+                "title": "Phân nhánh cuộc trò chuyện"
+              },
+              {
+                "page": "vi/checkpoints",
+                "title": "Kiểm tra và khôi phục thay đổi"
+              },
+              {
+                "page": "vi/stash",
+                "title": "Lưu câu lệnh với Stash"
+              },
+              {
+                "page": "vi/saved-prompts",
+                "title": "Câu lệnh có thể tái sử dụng"
+              },
+              {
+                "page": "vi/skills",
+                "title": "Kỹ năng của tác nhân"
+              },
+              {
+                "page": "vi/archived-chats",
+                "title": "Lưu trữ và khôi phục cuộc trò chuyện"
+              },
+              {
+                "page": "vi/context-and-usage",
+                "title": "Ngữ cảnh và mức sử dụng"
+              }
+            ]
+          },
+          {
+            "group": "Công cụ làm việc",
+            "pages": [
+              {
+                "page": "vi/workspace",
+                "title": "Dự án và không gian làm việc"
+              },
+              {
+                "page": "vi/files",
+                "title": "Tệp và tìm kiếm"
+              },
+              {
+                "page": "vi/terminals",
+                "title": "Terminal"
+              },
+              {
+                "page": "vi/browser",
+                "title": "Xem trước trong trình duyệt"
+              }
+            ]
+          },
+          {
+            "group": "Git",
+            "pages": [
+              {
+                "page": "vi/git-workflows",
+                "title": "Quy trình làm việc với Git"
+              },
+              {
+                "page": "vi/pull-requests",
+                "title": "Đánh giá pull request"
+              },
+              {
+                "page": "vi/worktrees",
+                "title": "Worktree Git"
+              }
+            ]
+          },
+          {
+            "group": "Thiết lập và trợ giúp",
+            "pages": [
+              {
+                "page": "vi/models",
+                "title": "Mô hình và thiết lập mặc định"
+              },
+              {
+                "page": "vi/mcp-servers",
+                "title": "Máy chủ MCP"
+              },
+              {
+                "page": "vi/settings",
+                "title": "Hướng dẫn thiết lập"
+              },
+              {
+                "page": "vi/troubleshooting",
+                "title": "Khắc phục sự cố"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "zh-Hans",
+        "groups": [
+          {
+            "group": "入门",
+            "collapsible": false,
+            "pages": [
+              {
+                "page": "zh-Hans/index",
+                "title": "简介"
+              },
+              {
+                "page": "zh-Hans/installation",
+                "title": "安装"
+              },
+              {
+                "page": "zh-Hans/providers",
+                "title": "连接服务商"
+              },
+              {
+                "page": "zh-Hans/first-project",
+                "title": "打开你的第一个项目"
+              }
+            ]
+          },
+          {
+            "group": "聊天",
+            "pages": [
+              {
+                "page": "zh-Hans/chats",
+                "title": "使用聊天"
+              },
+              {
+                "page": "zh-Hans/multiple-chats",
+                "title": "使用多个聊天"
+              },
+              {
+                "page": "zh-Hans/providing-context",
+                "title": "提供上下文"
+              },
+              {
+                "page": "zh-Hans/feedback",
+                "title": "向聊天发送反馈"
+              },
+              {
+                "page": "zh-Hans/agent-modes",
+                "title": "智能体权限"
+              },
+              {
+                "page": "zh-Hans/branching-chats",
+                "title": "分支对话"
+              },
+              {
+                "page": "zh-Hans/checkpoints",
+                "title": "审查与恢复更改"
+              },
+              {
+                "page": "zh-Hans/stash",
+                "title": "使用暂存保存提示词"
+              },
+              {
+                "page": "zh-Hans/saved-prompts",
+                "title": "可复用的提示词"
+              },
+              {
+                "page": "zh-Hans/skills",
+                "title": "智能体技能"
+              },
+              {
+                "page": "zh-Hans/archived-chats",
+                "title": "归档与恢复聊天"
+              },
+              {
+                "page": "zh-Hans/context-and-usage",
+                "title": "上下文与用量"
+              }
+            ]
+          },
+          {
+            "group": "工作区工具",
+            "pages": [
+              {
+                "page": "zh-Hans/workspace",
+                "title": "项目与工作区"
+              },
+              {
+                "page": "zh-Hans/files",
+                "title": "文件与搜索"
+              },
+              {
+                "page": "zh-Hans/terminals",
+                "title": "终端"
+              },
+              {
+                "page": "zh-Hans/browser",
+                "title": "浏览器预览"
+              }
+            ]
+          },
+          {
+            "group": "Git",
+            "pages": [
+              {
+                "page": "zh-Hans/git-workflows",
+                "title": "Git 工作流程"
+              },
+              {
+                "page": "zh-Hans/pull-requests",
+                "title": "审查拉取请求"
+              },
+              {
+                "page": "zh-Hans/worktrees",
+                "title": "Git 工作树"
+              }
+            ]
+          },
+          {
+            "group": "配置与帮助",
+            "pages": [
+              {
+                "page": "zh-Hans/models",
+                "title": "模型与默认设置"
+              },
+              {
+                "page": "zh-Hans/mcp-servers",
+                "title": "MCP 服务器"
+              },
+              {
+                "page": "zh-Hans/settings",
+                "title": "设置参考"
+              },
+              {
+                "page": "zh-Hans/troubleshooting",
+                "title": "故障排查"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "language": "zh-Hant",
+        "groups": [
+          {
+            "group": "開始使用",
+            "collapsible": false,
+            "pages": [
+              {
+                "page": "zh-Hant/index",
+                "title": "簡介"
+              },
+              {
+                "page": "zh-Hant/installation",
+                "title": "安裝"
+              },
+              {
+                "page": "zh-Hant/providers",
+                "title": "連線至供應商"
+              },
+              {
+                "page": "zh-Hant/first-project",
+                "title": "開啟你的第一個專案"
+              }
+            ]
+          },
+          {
+            "group": "聊天",
+            "pages": [
+              {
+                "page": "zh-Hant/chats",
+                "title": "使用聊天"
+              },
+              {
+                "page": "zh-Hant/multiple-chats",
+                "title": "使用多個聊天"
+              },
+              {
+                "page": "zh-Hant/providing-context",
+                "title": "提供上下文"
+              },
+              {
+                "page": "zh-Hant/feedback",
+                "title": "向聊天傳送回饋"
+              },
+              {
+                "page": "zh-Hant/agent-modes",
+                "title": "代理權限"
+              },
+              {
+                "page": "zh-Hant/branching-chats",
+                "title": "分支對話"
+              },
+              {
+                "page": "zh-Hant/checkpoints",
+                "title": "檢視與還原變更"
+              },
+              {
+                "page": "zh-Hant/stash",
+                "title": "使用暫存儲存提示詞"
+              },
+              {
+                "page": "zh-Hant/saved-prompts",
+                "title": "可重複使用的提示詞"
+              },
+              {
+                "page": "zh-Hant/skills",
+                "title": "代理技能"
+              },
+              {
+                "page": "zh-Hant/archived-chats",
+                "title": "封存與還原聊天"
+              },
+              {
+                "page": "zh-Hant/context-and-usage",
+                "title": "上下文與用量"
+              }
+            ]
+          },
+          {
+            "group": "工作區工具",
+            "pages": [
+              {
+                "page": "zh-Hant/workspace",
+                "title": "專案與工作區"
+              },
+              {
+                "page": "zh-Hant/files",
+                "title": "檔案與搜尋"
+              },
+              {
+                "page": "zh-Hant/terminals",
+                "title": "終端機"
+              },
+              {
+                "page": "zh-Hant/browser",
+                "title": "瀏覽器預覽"
+              }
+            ]
+          },
+          {
+            "group": "Git",
+            "pages": [
+              {
+                "page": "zh-Hant/git-workflows",
+                "title": "Git 工作流程"
+              },
+              {
+                "page": "zh-Hant/pull-requests",
+                "title": "檢視提取要求"
+              },
+              {
+                "page": "zh-Hant/worktrees",
+                "title": "Git 工作樹"
+              }
+            ]
+          },
+          {
+            "group": "設定與說明",
+            "pages": [
+              {
+                "page": "zh-Hant/models",
+                "title": "模型與預設設定"
+              },
+              {
+                "page": "zh-Hant/mcp-servers",
+                "title": "MCP 伺服器"
+              },
+              {
+                "page": "zh-Hant/settings",
+                "title": "設定參考"
+              },
+              {
+                "page": "zh-Hant/troubleshooting",
+                "title": "疑難排解"
+              }
+            ]
+          }
         ]
       }
     ]

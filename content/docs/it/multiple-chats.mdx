@@ -1,0 +1,57 @@
+---
+title: "Usare più chat"
+description: "Lavora con conversazioni contemporaneamente, organizza colonne e capisci i file del progetto condivisi."
+---
+
+Multi-chat mostra diverse conversazioni side by side nello stesso progetto. Ogni conversazione mantiene i propri messaggi e la selezione del modello, quindi puoi confrontare diversi approcci o mantenere una revisione visibile mentre lavori sull'implementazione.
+
+<Frame caption="Ogni colonna mantiene il proprio dialogo e i propri controlli di modello, mentre condivide i file del progetto.">
+  <img
+    src="/images/screen-multiple-chats.png"
+    alt="Tre chat allineate nel Dream, ciascuna con il proprio modello e autorizzazioni sotto la casella dei messaggi."
+    width={1920}
+    height={1080}
+    loading="lazy"
+  />
+</Frame>
+
+## Aprire chat contemporaneamente
+
+1. Apri un progetto e la conversazione che vuoi mantenere visibile.
+2. Fai clic su **Attiva multichat** nell'area di sinistra del pannello. Sposta il mouse sopra gli iconi del pannello per visualizzare i loro nomi.
+3. Fai clic su **Nuova chat** per aggiungere una conversazione accanto a quella aperta.
+4. Scegli un modello nel compositore della nuova chat e invia un messaggio.
+
+Per riprendere una conversazione esistente, apri **Cronologia chat** e selezionala. Selezionare un chat già presente nell'interfaccia si concentra su quella conversazione piuttosto che crearne una duplicata.
+
+Multi-chat è un'impostazione di progetto. Puoi mantenere diverse conversazioni visibili in un solo progetto e utilizzare una singola conversazione in un altro.
+
+## Organizza lo spazio di lavoro
+
+- **Ridimensiona:** Trascina il separatore tra le colonne del chat per regolare le loro dimensioni.
+- **Riordina:** Trascina un chat attraverso la sua area di titolo per spostarlo accanto a un'altra conversazione.
+- **Chiudi una colonna:** Clicca il **×** nel suo intestazione. Il dialogo rimane nella cronologia chat.
+- **Torna a una singola conversazione:** Seleziona il chat che desideri mantenere visibile, quindi fai clic su **Disattiva multichat** nell'area di barra a sinistra.
+
+Il controllo vicino è disponibile quando è aperto un altro chat da tenere visibile. Disattivare il multi-chat non archivia le altre conversazioni; aprirle nuovamente dalla storia quando necessario.
+
+## Esempio: implementare, poi revisionare
+
+1. Inizia una chat chiamata “Implementare la persistenza delle impostazioni” e chiedi alla stessa di correggere il form delle impostazioni.
+2. Attiva multichat e crea un secondo chat chiamato “Review settings persistence”.
+3. Scegli un altro modello abilitato nel chat di revisione se si vuole una valutazione di un altro modello.
+4. Una volta che l'implementazione è pronta, chiedi al chat di revisione di esaminare le modifiche attuali e di segnalare i problemi senza modificare i file.
+5. Mantenere la revisione visibile mentre si chiede al chat di implementazione di affrontare i suoi risultati.
+6. Chiudi la colonna della revisione quando hai bisogno di più spazio. Riapirla dall'istorico per rivedere i risultati.
+
+Il secondo chat non riceve automaticamente i messaggi del primo chat. Assegna al secondo chat il contesto della task e [fai riferimento ai file pertinenti](/docs/it/providing-context), oppure usa [la ramificazione delle conversazioni](/docs/it/branching-chats) quando vuoi copiare i messaggi precedenti.
+
+## Capire cosa è condiviso
+
+Tutte le conversazioni nello stesso progetto lavorano sullo stesso cartella del progetto. Le modifiche ai file e i cambiamenti di ramo di Git sono visibili alle altre conversazioni, anche se le loro cronologie delle conversazioni sono separate.
+
+<Warning>
+  Due agenti che modificano lo stesso file possono interferire tra di loro. Usare [worktree Git](/docs/it/worktrees) separati quando i compiti richiedono check-out indipendenti. Abilitare il multi-chat da solo non isola le modifiche ai file.
+</Warning>
+
+Per conversazioni completate, utilizza [archiviazione](/docs/it/archived-chats) per mantenere l'history sotto controllo.

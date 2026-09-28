@@ -1,0 +1,76 @@
+---
+title: "Modelle und Standardeinstellungen"
+description: "Modelle aktivieren, Standardwerte für Chats und Git-Drafting wählen und das Modell eines Gesprächs ändern."
+---
+
+Dream trennt die verfügbaren Modelle für die Nutzung von dem für eine bestimmte Aufgabe ausgewählten Modell. **Einstellungen → Anbieter** steuert die Verfügbarkeit. **Einstellungen → Allgemein**, im Bereich **Modelle**, steuert die Standardwerte. Die Auswahl unter jeder Nachricht im Chat-Feld steuert diese Konversation.
+
+## Modelle aktivieren
+
+1. Installieren und eine Authentifizierung für einen [unterstützten Provider CLI](/docs/de/providers) durchführen.
+2. Offen **Einstellungen → Anbieter** und aktiviere den Anbieter.
+3. Aktualisieren Sie den Anbieter, um seine CLI und verfügbaren Modelle zu erkennen.
+4. Aktivieren Sie die Modelle, die in Dreams Selektoren angezeigt werden sollen.
+
+Sie können Modelle aus mehreren Anbietern aktivieren. Wenn ein Modell in einem Selector fehlt, überprüfen Sie zunächst, ob es hier aktiviert ist. Aktualisieren erkennt die Verfügbarkeit; es ist von der Auswahl Ihres Standards getrennt.
+
+## Die Standard-Einstellung für neue Chats festlegen
+
+1. Offen **Einstellungen → Allgemein → Modelle**.
+2. Unter **Standard-Chatmodell** wählen Sie ein aktiviertes Modell.
+3. Wählen Sie **Aufwand** und **Geschwindigkeit** aus, wenn das ausgewählte Modell diese Einstellungen bietet.
+4. Gehen Sie zu einem Projekt und starten Sie einen neuen Chat, um die Auswahl zu verwenden.
+
+Standardwert gilt für neu erstellte Chats in allen Projekten. Bestehende Gespräche behalten ihre eigenen Modell-Einstellungen. Wenn **Neuer Chat** einen bereits geöffneten leeren Entwurf zurückbringt, prüfen Sie den Composer und ändern Sie das Modell dort gegebenenfalls.
+
+<Frame caption="Die Chat-Standardwerte und das Textgenerationsmodell für Commit- und PR-Vorlagen verfügen über getrennte Steuerungselemente.">
+  <img
+    src="/images/docs/model-defaults.png"
+    alt="Modelle-Einstellungen mit Standard-Chatmodell, Standardberechtigungen und Textgenerierungsmodell."
+    width={1016}
+    height={246}
+    loading="lazy"
+  />
+</Frame>
+
+## Ein Modell für den Commit- und Pull-Request-Text erstellen setzen
+
+In der gleichen Gruppe **Modelle** wählen Sie das **Textgenerierungsmodell** sowie dessen Aufwand und Geschwindigkeit, wenn diese verfügbar sind. Dream verwendet diese Auswahl beim Erstellen von Commit-Botschaften und Pull-Request-Texten.
+
+Zum Beispiel können Sie ein Modell für Implementierungs-Chats und ein anderes für Git-Zusammenfassungen verwenden. Die Änderung des Git-Entwurfs-Modells hat keine Auswirkung auf Ihre Chat-Modelle. Siehe [Git-Arbeitsabläufe](/docs/de/git-workflows), um generierten Text vor der Veröffentlichung zu überprüfen und zu bearbeiten.
+
+## Ein Chat-Modell ändern
+
+1. Konversation öffnen und auf die aktuelle Antwort warten.
+2. Klicken Sie den Namen des Modells unter der Nachrichtenbox.
+3. Wählen Sie ein aktiviertes Modell aus, einschließlich eines Modells aus einem anderen Anbieter, wenn nötig.
+4. Prüfen Sie die Einstellungen für Aufwand und Geschwindigkeit vor dem Senden der nächsten Nachricht.
+
+Das Gespräch bleibt in Dream sichtbar. Wenn die Modellwahl geändert wird, wird die bisherige Leistung und die Geschwindigkeitsauswahl zurückgesetzt, daher müssen diese Werte erneut ausgewählt werden, wenn spezifische Werte benötigt werden. Eine Änderung des Modells startet eine neue Sitzung des Anbieters für zukünftige Arbeiten; sie ändert die bereits erzeugten Nachrichten nicht.
+
+<Frame caption="Der Chat-Composer zeigt seine eigene Modell-, Bemühungs- und Geschwindigkeitsauswahl.">
+  <img
+    src="/images/docs/chat-composer.png"
+    alt="Modell, Überlegungsanstrengung, Geschwindigkeit und Berechtigungsauswahl unter einer Chat-Feldbox."
+    width={600}
+    height={108}
+    loading="lazy"
+  />
+</Frame>
+
+## Aufwand und Geschwindigkeit
+
+| Steuerung | Zweck |
+| --- | --- |
+| Aufwand | Wählt das Niveau der Überlegungsintensität aus, das von diesem Modell angeboten wird |
+| Geschwindigkeit | Wählt eine unterstützte Geschwindigkeitsstufe aus, wie Standard oder Schnell |
+
+Diese Steuerungselemente erscheinen nur dann, wenn der ausgewählte Modell sie unterstützt. Die verfügbaren Bemühungsniveaus variieren je nach Modell. Geschwindigkeitsstufen können unterschiedliche Nutzungseffekte haben; verwenden Sie die Optionenbeschreibungen und die Nutzungsinformationen Ihres Anbieters, wenn Sie einen Stufen wählen.
+
+Standardaufwand und Geschwindigkeit gelten für neue Chats. Änderungen davon in einem Chat betreffen diese Konversation. Änderungen der Geschwindigkeit setzen auch die Session des Anbieters für zukünftige Arbeiten zurück.
+
+## Wenn ein Standard nicht mehr verfügbar ist
+
+Die Deaktivierung eines ausgewählten Standards oder das Aktualisieren einer geänderten Modellliste kann dazu führen, dass Dream ein anderes aktiviertes Modell auswählt. Prüfen Sie beide Standardauswahloptionen erneut, nachdem Sie Ihre aktivierten Modelle geändert haben. Wenn keine Modelle aktiviert sind, aktivieren Sie eines vor dem Start einer neuen Chat-Sitzung.
+
+Für fehlende Steuerelemente oder Erkennungsfehler siehe [Fehlerbehebung](/docs/de/troubleshooting).

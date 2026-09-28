@@ -1,0 +1,64 @@
+---
+title: "Salvare prompt con Stash"
+description: "Preparare compiti per il futuro, modificare prompt salvati e inviarli in nuove conversazioni."
+---
+
+Stash contiene i prompt che desideri eseguire in seguito nel progetto attuale. Ogni elemento salvato include il suo testo, riferimenti al progetto, modello, sforzo, velocità e autorizzazioni.
+
+Usalo per registrare un'attività successiva mentre un altro chat è in attesa. Ad esempio, salva "Verifica gli stati di errore nel form delle impostazioni" mentre si sta completando l'implementazione.
+
+<Frame caption="I compiti salvati rimangono nel progetto Stash fino a quando non li esegui o non li rimuovi.">
+  <img
+    src="/images/docs/stash-prompts.png"
+    alt="Panello Stash che contiene tre attività salvate, ciascuna con i propri controlli del modello e un pulsante di invio."
+    width={950}
+    height={389}
+    loading="lazy"
+  />
+</Frame>
+
+## Salva un compito per più tardi
+
+1. Seleziona il progetto a cui appartiene la task.
+2. Fai clic su **Stash**, l'icona dell'inbox nella parte inferiore della barra laterale destra.
+3. Scrivi la task nel nuovo composer dell'interfaccia al fondo del pannello.
+4. Aggiungi riferimenti progetto con **@** e scegli il modello e i permessi.
+5. Invia il nuovo prompt per aggiungerlo alla lista salvata.
+
+Invio da questo composer in basso salva la task; non avvia una risposta dell'agente. Un elemento salvato appare sopra di esso nel panello Stash. Passa ai progetti per vedere il panello Stash separato di quel progetto.
+
+<Frame caption="Il compositore in basso aggiunge un'attività salvata. Invia un elemento salvato sopra di esso per avviare una conversazione.">
+  <img
+    src="/images/docs/stash-composer.png"
+    alt="Il compositore vuoto nuovo-prompt all'infrastruttura inferiore del panello Stash."
+    width={716}
+    height={115}
+    loading="lazy"
+  />
+</Frame>
+
+## Modifica un prompt salvato
+
+Modifica il testo direttamente nel suo elemento salvato e regola i controlli che ne seguono. Verifica di nuovo il modello e i permessi prima di eseguirlo, soprattutto se hai modificato i tuoi modelli predefiniti dal momento in cui hai salvato l'attività. Gli elementi salvati mantengono le proprie selezioni.
+
+I riferimenti al progetto puntano a percorsi. Non conservano uno snapshot dei file riferiti. L'agente lavorerà con il progetto come esiste quando si esegue la task.
+
+<Note>
+  Usa le riferimenti progetto per il contesto che desideri mantenere in Stash. I file allegati selezionati attraverso il selezionatore allegati non vengono conservati negli elementi salvati; allega quei file in un chat normale.
+</Note>
+
+## Esegui un compito salvato
+
+1. Cerca l'elemento salvato che vuoi eseguire.
+2. Controlli il suo testo, le sue riferimenti, il modello e i permessi.
+3. Fai clic sul controllo di invio dell'elemento.
+
+Dream crea un nuovo chat con le impostazioni salvate e invia il prompt. Se abilitato il multi-chat, il dialogo si apre accanto ai chat attuali. Altrimenti diventa il chat visibile.
+
+L'elemento viene rimosso da Stash quando viene consegnato al nuovo chat. Se la risposta fallisce, verificare il nuovo dialogo per l'errore piuttosto che aspettare che l'elemento rimanga in Stash.
+
+## Elimina un compito salvato
+
+Usa **Elimina chat dallo stash** sull'elemento salvato per eliminarlo senza avviare una conversazione. Questo elimina il prompt salvato, non i file nel progetto.
+
+Stash memorizza le attività future per un progetto. Per istruzioni che vuoi utilizzare in diversi progetti, usa [prompts riutilizzabili](/docs/it/saved-prompts). Per mantenere una conversazione completata fuori dall'history attivo, usa [Chat archiviate](/docs/it/archived-chats). Per isolare i cambiamenti al codice, usa [Worktree Git](/docs/it/worktrees).

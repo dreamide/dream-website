@@ -30,6 +30,58 @@
   padding: 0;
 }
 
+/* Keep the language control available on the marketing pages on phones too. */
+@media (max-width: 63.999rem) {
+  header:has(.dream-language) {
+    height: auto;
+    min-height: var(--header-height);
+  }
+
+  header:has(.dream-language) > div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding-block: 0.75rem;
+  }
+
+  header .hidden:has(> .dream-language) {
+    display: flex;
+  }
+
+  header:has(.dream-language) > div > div:last-child {
+    margin-left: auto;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .dream-language select {
+    max-width: 8rem;
+  }
+}
+
+@media (max-width: 39.999rem) {
+  header button:has(kbd) {
+    width: 2rem;
+    min-height: 2rem;
+    padding: 0.5rem;
+  }
+
+  header button:has(kbd) > span {
+    position: absolute;
+    width: 1px;
+    min-width: 0;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  header button:has(kbd) > kbd {
+    display: none;
+  }
+}
+
 @supports not selector(::-webkit-scrollbar) {
   * {
     scrollbar-color: var(--muted-foreground) transparent;

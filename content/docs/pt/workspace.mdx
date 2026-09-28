@@ -1,0 +1,77 @@
+---
+title: "Projetos e espaço de trabalho"
+description: "Gerencie guias de projeto, organize painéis e navegue entre chats e ferramentas de desenvolvimento."
+---
+
+Cada projeto do Dream possui seu próprio espaço de trabalho. As abas de projetos permitem que você navegue entre repositórios, mantendo as conversas e ferramentas abertas de cada projeto juntos.
+
+## Adicionar e alternar projetos
+
+1. Clique no **+** ao lado das guias do projeto, ou use **Abrir pasta** na tela de início.
+2. Escolha a pasta em que deseja trabalhar.
+3. Selecione sua aba para torná-la o projeto ativo.
+
+O projeto ativo determina quais chats, arquivos, terminais, abas do navegador e itens de stash você vê. Verifique a aba selecionada antes de enviar uma tarefa ou executar um comando. Arraste as abas de projeto para reordená-las quando quiser projetos relacionados ao lado um do outro.
+
+<Frame caption="A aba destacada é o projeto ativo. Use + para abrir outro diretório.">
+  <img
+    src="/images/docs/project-tabs.png"
+    alt="Tabs do projeto Dream com Dream selecionado e um botão mais ao lado dos projetos abertos."
+    width={1256}
+    height={48}
+    loading="lazy"
+  />
+</Frame>
+
+## Renomeie ou abra um projeto externamente
+
+Abra o menu **…** do projeto e escolha **Editar** para alterar seu nome exibido ou ícone. Clique no ícone para upload de uma imagem de até 5 MB, em seguida, **Salvar**. Redefina um ícone personalizado para voltar ao reconhecimento automático a partir do projeto. Renomear um projeto no Dream não renomeia sua pasta no disco.
+
+Use as opções **Abrir em** do menu para abrir o projeto em um editor externo disponível.
+
+## Voltar para uma conversa anterior
+
+Use **Voltar** e **Avançar** ao lado das guias de projeto para revisitar projetos e conversas que você abriu. No Windows e Linux, use **Alt+Left** e **Alt+Right**; no macOS, use **Command+[** e **Command+]**. Os botões de navegação do mouse também funcionam.
+
+Este histórico segue as seleções de projeto e de chat. Alternar painéis de ferramentas não adiciona entradas, e o navegador embutido possui seu próprio histórico de navegação. Atalhos de teclado dentro do terminal ou editor de código são deixados para essas ferramentas.
+
+## Fechar e reabrir um projeto
+
+1. Abra o menu **…** do projeto e escolha **Fechar**.
+2. Quando você quiser retornar, abra a tela de começo rápido através do botão **+** do projeto.
+3. Localize o projeto em **Fechados recentemente**, usando o campo de busca, se necessário.
+4. Selecione o projeto para reabri-lo.
+
+Fechar um projeto remove sua aba aberta; não deleta seu diretório. O Dream restaura o contexto do projeto salvo, como conversas e ferramentas abertas, quando possível. Não use um projeto fechado como forma de manter um processo de terminal em execução.
+
+## Localize os controles do workspace
+
+A barra lateral esquerda contém **Histórico de bate-papo**, **Novo chat** e **Ativar multichat**. Posicione o ponteiro sobre um ícone para ver sua etiqueta. O compositor de chat contém o modelo selecionado, o esforço e a velocidade quando suportados, e as permissões.
+
+A barra lateral direita abre as ferramentas do projeto:
+
+| Ferramenta | O que você pode fazer |
+| --- | --- |
+| [Alterações](/docs/pt/git-workflows) | Revise diffs do Git e reverter alterações de arquivo |
+| [Arquivos](/docs/pt/files) | Navegue por arquivos, procure caminhos e edite o conteúdo de arquivos |
+| [Navegador](/docs/pt/browser) | Prévia de URLs e inspeção de páginas web |
+| [Terminal](/docs/pt/terminals) | Executar comandos de projeto em sessões separadas |
+| [Ações do Git](/docs/pt/git-workflows) | Commit, empurre e crie solicitações de pull |
+| [Solicitações de pull](/docs/pt/pull-requests) | Leia o pedido de alteração da ramificação atual, poste comentários e faça a fusão |
+| [Stash](/docs/pt/stash) | Salve prompts e execute-os mais tarde |
+
+**Ações do Git** está no topo da barra lateral direita. Os controles do Git aparecem para projetos de repositório. O controle de ramo abaixo da conversa mostra o ramo ativo; use-o para alternar entre ramos ou [criar uma árvore de trabalho](/docs/pt/worktrees). Em um projeto de árvore de trabalho, o mesmo local exibe um botão **árvore de trabalho** que abre o diálogo [Concluir árvore de trabalho](/docs/pt/worktrees#conclua-a-árvore-de-trabalho).
+
+## Organizar conversas e painéis
+
+Clique em uma ferramenta para abrir seu painel. Use o controle de fechar ou colapso do painel quando precisar de mais espaço para conversas, e arraste os divisores dos painéis para reorganizar a disposição. Fechar um painel de ferramenta é diferente de fechar suas sessões individuais de terminal ou suas guias de navegador.
+
+Habilite o [multi-chat](/docs/pt/multiple-chats) para organizar conversas em colunas reescaláveis. Cada chat possui seu próprio histórico de conversa, enquanto todos os chats no projeto usam os mesmos arquivos. Use árvores de trabalho para checkouts independentes.
+
+## Capturar a janela do Dream
+
+Press **Ctrl+Shift+S** no Windows/Linux ou **Command+Shift+S** no macOS para capturar a janela do Dream. O Dream copia a captura para a área de transferência, depois abre um diálogo para salvá-la como PNG. Cancelar o diálogo de salvamento mantém a cópia na área de transferência. Uma notificação informa se a imagem foi copiada, salva ou não foi possível capturá-la.
+
+Para uma captura de tela de uma página web, use a ação de captura de tela do [navegador](/docs/pt/browser).
+
+Para o aspecto geral do aplicativo, idioma e preferências de modelo, abra [Configurações](/docs/pt/settings). Para encontrar conversas antigas, use [Histórico de chats](/docs/pt/chats) ou [Chats arquivados](/docs/pt/archived-chats).

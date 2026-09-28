@@ -1,0 +1,94 @@
+---
+title: "Referência de configurações"
+description: "Localizar padrões de modelo, provedores, prompts, habilidades, servidores MCP e controles de chat arquivado."
+---
+
+Abra as **Configurações** com o ícone de engrenagem no topo do Dream. A barra lateral possui **Geral**, **Provedores**, **Prompts**, **Skills**, **Servidores MCP** e **Chats arquivados**. As preferências gerais são aplicadas conforme você as seleciona. Os formulários para promptos, habilidades e definições de servidor possuem suas próprias ações de Criar ou Salvar.
+
+## Geral
+
+| Configuração | O que controla |
+| --- | --- |
+| Idioma | A linguagem da interface |
+| Terminal | A shell utilizada para novas sessões de terminal |
+| Tema | Apresentação Sistema, Claro ou Escuro |
+| Cor base | As tonalidades cinzas da interface |
+| Cor de destaque | Ações principais e estados ativos |
+
+Mudar a shell do terminal afeta as novas sessões. Abra um novo terminal para usar a seleção; veja [Terminais](/docs/pt/terminals).
+
+<Frame caption="Escolha um tema, em seguida, ajuste as cores base e de destaque.">
+  <img
+    src="/images/docs/appearance-settings.png"
+    alt="Configurações de aparência com temas System, Light e Dark, além de amostras de cores base e de destaque."
+    width={1016}
+    height={255}
+    loading="lazy"
+  />
+</Frame>
+
+### Mensagens de chat
+
+| Configuração | Padrão | O que controla |
+| --- | --- | --- |
+| Mostrar resumos de raciocínio | Em | Exibição de resumos fornecidos pelo modelo |
+| Agrupar chamadas de ferramentas | Desligado | Agrupamento compacto de atividade de ferramentas |
+| Expandir chamadas de ferramentas | Desligado | Se os detalhes da chamada de ferramenta começam expandidos |
+| Mudar checkpoints | Em | Faça uma cópia de segurança dos arquivos do projeto antes de cada resposta para que você possa revisar e restaurar as alterações |
+
+As configurações de exibição afetam as conversas entre projetos. Elas não alteram o esforço de raciocínio do modelo nem concedem permissões adicionais para ferramentas. Desligar **Checkpoints de alterações** para para novas instantâneas; veja [Revisar e restaurar alterações](/docs/pt/checkpoints).
+
+### Modelos
+
+O grupo **Modelos** está no topo do Geral.
+
+| Configuração | Escopo |
+| --- | --- |
+| Modelo de chat padrão | Chats recém-criados em projetos |
+| Permissões padrão | Perguntar, Aceitar edições ou Acesso total para novas conversas |
+| Esforço | Esforço de raciocínio para novas conversas, quando suportado pelo modelo padrão |
+| Velocidade | Nível de velocidade para novas conversas, quando suportado pelo modelo padrão |
+| Modelo de geração de texto | Mensagens de commit e texto de solicitação de integração gerados com seu próprio esforço e velocidade |
+
+As conversas existentes mantêm suas próprias seleções. Ative um modelo nos Provedores antes de escolhê-lo como padrão. Siga o [Modelos e padrões](/docs/pt/models) para o fluxo completo de configuração.
+
+<Frame caption="Use o grupo Models para definir padrões para chats e redação de Git.">
+  <img
+    src="/images/docs/model-defaults.png"
+    alt="Configurações gerais com seletores separados para o modelo de chat padrão e o modelo de geração de texto."
+    width={1016}
+    height={246}
+    loading="lazy"
+  />
+</Frame>
+
+## Provedores
+
+Cada cartão de fornecedor exibe seu status de CLI detectado, a versão instalada, a ação de atualização e um interruptor de ativação. Ative o fornecedor e os modelos individuais para torná-los disponíveis em seletores. Um badge "Atualização disponível" indica uma versão mais recente do CLI quando detectada; atualize o CLI fora do Dream e refaça o cartão após isso.
+
+Instale e faça login pelo CLI do provedor fora do Dream, depois atualize seu cartão. As configurações do Dream não substituem o fluxo de autenticação do CLI. Veja [Conectar um provedor](/docs/pt/providers).
+
+## Prompts, Habilidades e Servidores MCP
+
+| Seção | O que você pode fazer |
+| --- | --- |
+| [Prompts](/docs/pt/saved-prompts) | Crie, antecipe, copie, reorganize e edite prompts reutilizáveis para qualquer projeto de chat |
+| [Habilidades](/docs/pt/skills) | Navegue por habilidades por fornecedor e projeto, visualize arquivos SKILL.md, e crie novas habilidades |
+| [Servidores MCP](/docs/pt/mcp-servers) | Adicione ou importe servidores de ferramentas e gerencie suas configurações de conexão |
+
+## Chats arquivados
+
+| Controle | O que faz |
+| --- | --- |
+| Caixas de seleção em linha | Selecione conversas arquivadas por projetos |
+| Caixa de seleção de cabeçalho | Selecione todas as conversas arquivadas |
+| Restaurar | Devolve os chats selecionados para a história ativa |
+| Excluir | Permanentemente remove conversas e mensagens selecionadas do Dream |
+| Arquivar chats após | Define o limite de inatividade em dias; padrão 30 |
+| Arquivar agora | Arquivar conversas que atendem a esse limite |
+
+O limite não agende um job automático. Consulte [Arquivar e restaurar chats](/docs/pt/archived-chats) antes de usar ações em lote ou exclusão permanente.
+
+## Controles fora das Configurações
+
+Algumas preferências pertencem a conversas individuais ou projetos. Defina o modelo, o esforço, a velocidade e as permissões de uma conversa em seu compositor. Ative o multi-conversa na barra de ferramentas da esquerda. Redimensione as colunas das conversas e os painéis de ferramentas diretamente no workspace.

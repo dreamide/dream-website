@@ -1,0 +1,55 @@
+---
+title: "Terminales"
+description: "Ejecutar comandos de proyecto, gestionar sesiones de terminal y continuar una conversación de Claude en la terminal."
+---
+
+El terminal integrado ejecuta comandos en tu proyecto sin dejar de estar en Dream. Haz clic en **Terminal** en la barra lateral derecha para abrirlo. Un terminal normal de proyecto comienza en el directorio del proyecto.
+
+## Ejecutar comandos junto a una conversación
+
+Use un terminal para inspeccionar el proyecto, ejecutar pruebas o iniciar su aplicación local utilizando los comandos documentados por ese proyecto. El terminal y los chats de agente trabajan con los mismos archivos en este entorno.
+
+Para una vista previa en navegador, inicie la aplicación del proyecto, observe la URL que imprime y abra esa URL en el [Navegador](/docs/es/browser) de Dream. Abrir el Navegador no inicia automáticamente un servidor.
+
+<Frame caption="La pestaña de terminal mantiene el historial de comandos en el espacio de trabajo; + abre otra sesión.">
+  <img
+    src="/images/docs/terminal-panel.png"
+    alt="Pestaña de Terminal 1, un control de más para otra sesión y salida de comando de proyecto."
+    width={855}
+    height={350}
+    loading="lazy"
+  />
+</Frame>
+
+## Gestionar sesiones de terminal
+
+1. Abrir **Terminal**.
+2. Haga clic en **Abrir otra terminal**, el control **+**, para crear otra sesión.
+3. Elige una pestaña de terminal para cambiar de sesión.
+4. Use el control de cierre de un terminal cuando ya no lo necesites.
+
+Use sesiones separadas para una aplicación de larga duración y comandos ocasionales como pruebas. Cerrar una sesión de terminal termina su proceso. Cerrar el panel conserva las sesiones que has usado, pero Dream limpia automáticamente las sesiones abiertas que no han recibido ninguna entrada del usuario.
+
+Use **Expandir terminal** para darle más espacio al panel y **Contraer terminal** para restaurar su tamaño habitual. Expandir o contraer cambia el diseño sin cerrar la sesión.
+
+Cuando se copia texto, selecciónelo primero. **Command+C** en macOS o **Ctrl+C** en Windows/Linux copia el texto seleccionado del terminal. Sin una selección, el terminal puede pasar Ctrl+C hasta interrumpir el comando en primer plano.
+
+## Elige una shell
+
+1. Abrir **Configuración → General**.
+2. Busca **Terminal** y elige una shell disponible desde su selector.
+3. Abrir una nueva sesión de terminal para usar la shell seleccionada.
+
+Las sesiones existentes mantienen la shell con la que fueron iniciadas. Si una shell o comando no está disponible, verifique que esté instalado y funcione en su terminal de sistema.
+
+## Continuar una conversación con Claude en un terminal
+
+Para una conversación con Claude con una sesión establecida y reutilizable:
+
+1. Espera hasta que la respuesta actual termine.
+2. Abre el menú **…** del encabezado de la conversación.
+3. Elige **Continuar en la terminal**.
+
+Dream abre un terminal llamado **Claude** en el directorio de trabajo de esa sesión y ejecuta el comando resume del CLI. Esta acción es específica de las sesiones de Claude; no es una acción general de exportación para cada proveedor.
+
+Si la opción está ausente, verifica que el chat use Claude y que haya iniciado una sesión de proveedor. Cambiar su modelo o velocidad puede reiniciar esa sesión. Si el continuación falla, verifica que el directorio de trabajo original siga existiendo y que el CLI de Claude esté disponible.

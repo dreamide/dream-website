@@ -1,0 +1,74 @@
+---
+title: "簡介"
+description: "開始使用 Dream，一款面向 AI 程式設計代理的開源桌面 IDE。"
+---
+
+Dream 將你的專案、AI 編碼代理、檔案、終端、瀏覽器預覽和 Git 工作流整合到一個桌面工作區中。連線一個受支援的代理 CLI，開啟一個資料夾，並在不切換工具的情況下與一個或多個聊天進行協作。
+
+<Frame caption="在一個專案工作區中將不同的對話分開管理。">
+  <img
+    src="/images/screen-multiple-chats.png"
+    alt="在 Dream 的活動專案標籤頁中，可以同時開啟三個對話方塊。"
+    width={1920}
+    height={1080}
+    loading="lazy"
+  />
+</Frame>
+
+<CardGroup cols={2}>
+  <Card title="安裝 Dream" icon="download" href="/docs/zh-Hant/installation">
+    選擇 macOS、Windows 或 Linux 的包。
+  </Card>
+  <Card title="連線至供應商" icon="plug" href="/docs/zh-Hant/providers">
+    啟用您已安裝的編碼代理 CLI 中的模型。
+  </Card>
+  <Card title="開啟你的第一個專案" icon="folder-open" href="/docs/zh-Hant/first-project">
+    新增一個資料夾並在其工作區中開始聊天。
+  </Card>
+  <Card title="探索工作區" icon="panels-top-left" href="/docs/zh-Hant/workspace">
+    瞭解專案、聊天記錄、檔案、終端和預覽是如何相互關聯的。
+  </Card>
+</CardGroup>
+
+## Dream 包含了什麼
+
+- 一個支援多專案的工作區，具有持久化的專案標籤頁
+- 多個並排聊天視窗和聊天分支
+- 專案間可複用的提示詞及供應商感知的代理技能
+- 每條回覆的檢查點用於審查和恢復代理更改的檔案
+- 支援 Codex CLI、Claude Code CLI、OpenCode CLI、Cursor Agent CLI 和 Grok Build CLI
+- 檔案資源管理器、檔案搜尋與編輯、整合終端和瀏覽器預覽
+- Git 狀態、分支、差異、提交、推送、拉取請求和工作樹工作流程，包括將完成的工作樹合併回其基礎分支
+- 逐行差異回饋和瀏覽器元素選擇，可向聊天傳送定向訊息
+- 一個用於審查程式碼、釋出評論、編輯詳情和合並的 GitHub 拉取請求面板
+- 可配置的 MCP 伺服器和內建的瀏覽器互動代理工具
+
+<Note>
+  Dream 透過其已安裝的 CLI 執行程式碼代理。在開始聊天之前，你需要至少一個支援的 CLI。
+</Note>
+
+## 常見工作流程
+
+| 我想…… | 閱讀 |
+| --- | --- |
+| 一起保持實現和審查對話的開放狀態 | [使用多個聊天](/docs/zh-Hant/multiple-chats) |
+| 查詢、歸檔或恢復舊對話 | [使用聊天](/docs/zh-Hant/chats) 和 [已歸檔聊天](/docs/zh-Hant/archived-chats) |
+| 選擇一個起始模型和推理努力 | [模型與預設設定](/docs/zh-Hant/models) |
+| 嘗試之前訊息中的另一種方法 | [分支對話](/docs/zh-Hant/branching-chats) |
+| 跟蹤代理的進度或回應問題 | [使用聊天](/docs/zh-Hant/chats#跟蹤正在進行的工作) |
+| 檢查回覆發生了什麼更改，並撤銷其中一部分內容 | [審查與恢復更改](/docs/zh-Hant/checkpoints) |
+| 在特定的差異行或頁面元素上評論 | [向聊天傳送回饋](/docs/zh-Hant/feedback) |
+| 準備一個稍後執行的任務 | [使用暫存儲存提示詞](/docs/zh-Hant/stash) |
+| 在多個專案中重用指令 | [可複用的提示詞](/docs/zh-Hant/saved-prompts) |
+| 瀏覽、呼叫或建立一個代理技能 | [智慧體技能](/docs/zh-Hant/skills) |
+| 將額外工具連線到代理 | [MCP 伺服器](/docs/zh-Hant/mcp-servers) |
+| 提供一個代理檔案或截圖 | [提供上下文](/docs/zh-Hant/providing-context) |
+| 在獨立檢出分支上工作，然後將其合並回去 | [Git 工作樹](/docs/zh-Hant/worktrees) |
+| 審查併發布程式碼變更 | [Git 工作流程](/docs/zh-Hant/git-workflows) |
+| 閱讀評論併合並一個 GitHub PR | [審查拉取請求](/docs/zh-Hant/pull-requests) |
+
+## 瞭解工作區
+
+一個**專案**是包含自己聊天記錄和工具的本地資料夾。一個**聊天**是與特定模型和設定的對話。同一個專案中的多個聊天共享其檔案；一個**工作樹**為任務提供獨立的 Git 檢出。
+
+使用 [智慧體許可權](/docs/zh-Hant/agent-modes) 來選擇智慧體的工作方式，並透過 [上下文與用量](/docs/zh-Hant/context-and-usage) 來了解 composer 以下的資訊。[設定參考](/docs/zh-Hant/settings) 列出了全域性應用偏好設定。如果某個功能缺失或無法執行，請先檢視 [故障排查](/docs/zh-Hant/troubleshooting)。

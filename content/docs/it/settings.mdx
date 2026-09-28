@@ -1,0 +1,94 @@
+---
+title: "Guida alle impostazioni"
+description: "Cerca i valori predefiniti del modello, i provider, i prompt, le competenze, i server MCP e i controlli per chat archiviate."
+---
+
+Apri **Impostazioni** con l'icona a forma di chiave alla sommità di Dream. Il lato sinistro ha **Generale**, **Provider**, **Prompt**, **Skill**, **Server MCP** e **Chat archiviate**. Le preferenze generali si applicano quando le selezioni vengono fatte. I moduli per i prompt, le competenze e le definizioni di server hanno ciascuno un'azione Create o Save.
+
+## Generale
+
+| Impostazione | Cosa controlla |
+| --- | --- |
+| Lingua | Il linguaggio dell'interfaccia |
+| Terminale | Lo shell utilizzato per le nuove sessioni di terminale |
+| Tema | Apparenza Sistema, Luminosa o Scura |
+| Colore base | I toni grigi dell'interfaccia |
+| Colore accento | Azioni principali e stati attivi |
+
+Cambiare lo shell del terminale influisce sulle nuove sessioni. Apri un nuovo terminale per utilizzare la selezione; vedi [Terminali](/docs/it/terminals).
+
+<Frame caption="Scegli un tema, poi regola i colori di base e quelli di accento.">
+  <img
+    src="/images/docs/appearance-settings.png"
+    alt="Impostazioni di aspetto con temi System, Light e Dark, oltre ai campioni di colore base e colore accentivo."
+    width={1016}
+    height={255}
+    loading="lazy"
+  />
+</Frame>
+
+### Messaggi chat
+
+| Impostazione | Predefinito | Cosa controlla |
+| --- | --- | --- |
+| Mostra riepiloghi di ragionamento | Su | Mostrare i riassunti forniti dal modello |
+| Raggruppa chiamate agli strumenti | Off | Gruppo compatto dell'attività degli strumenti |
+| Espandi chiamate agli strumenti | Off | Se i dettagli dell'invocazione degli strumenti iniziano espansi |
+| Cambia checkpoint | Su | Fai un'immagine dei file del progetto prima di ogni risposta in modo da poterli revisionare e ripristinare. |
+
+Le impostazioni di visualizzazione influiscono sulle conversazioni tra i progetti. Non modificano l'impegno del modello nel ragionamento né concedono autorizzazioni aggiuntive per gli strumenti. Disattivare **Checkpoint delle modifiche** interrompe la creazione di nuovi snapshot; vedi [Controllare e ripristinare le modifiche](/docs/it/checkpoints).
+
+### Modelli
+
+Il gruppo **Modelli** si trova in alto nel Generale.
+
+| Impostazione | Ambito |
+| --- | --- |
+| Modello di chat predefinito | Chat creati recentemente nei progetti |
+| Permessi predefiniti | Chiedi, Accetta modifiche o Accesso completo per nuovi chat |
+| Sforzo | Effort di ragionamento per nuovi chat, quando supportato dal modello predefinito |
+| Velocità | Livello di velocità per nuovi chat, quando supportato dal modello predefinito |
+| Modello di generazione del testo | Messaggi di commit e testo di pull request generati con il proprio sforzo e velocità |
+
+I chat esistenti mantengono le proprie selezioni. Abilita un modello sotto Provider prima di sceglierlo come predefinito. Segui [Modelli e impostazioni predefinite](/docs/it/models) per il flusso completo di configurazione.
+
+<Frame caption="Usare il gruppo Modelli per impostare i valori predefiniti per i chat e il drafting Git.">
+  <img
+    src="/images/docs/model-defaults.png"
+    alt="Impostazioni generali con selezioni separate per il modello di chat predefinito e il modello di generazione testuale."
+    width={1016}
+    height={246}
+    loading="lazy"
+  />
+</Frame>
+
+## Provider
+
+Ogni scheda del provider mostra lo stato del CLI rilevato, la versione installata, l'azione di aggiornamento e un interruttore di attivazione. Attiva il provider e i singoli modelli per renderli disponibili nei selettivi. Un'etichetta **Aggiornamento disponibile** mostra una versione più recente del CLI quando rilevata; aggiorna il CLI al di fuori di Dream e poi ripulisci la scheda.
+
+Installa e effettua l'accesso attraverso il CLI del provider esterno a Dream, poi aggiorna il suo cartello. Le impostazioni di Dream non sostituiscono il flusso di autenticazione del CLI. Vedere [Collegare un provider](/docs/it/providers).
+
+## Prompti, Competenze e server MCP
+
+| Sezione | Cosa puoi fare |
+| --- | --- |
+| [Prompts](/docs/it/saved-prompts) | Crea, anticipa, copia, riordina e modifica prompt riutilizzabili per qualsiasi progetto di chat |
+| [Competenze](/docs/it/skills) | Esplora competenze per fornitore e progetto, visualizza i file SKILL.md, e crea nuove competenze |
+| [Server MCP](/docs/it/mcp-servers) | Aggiungi o importa server strumenti e gestisci le loro impostazioni di connessione |
+
+## Chat archiviate
+
+| Controllo | Cosa fa |
+| --- | --- |
+| Caselle di controllo orizzontali | Seleziona conversazioni archiviate tra i progetti |
+| Casella di controllo intestino | Seleziona tutte le conversazioni archiviate |
+| Ripristina | Restituisce i chat selezionati alla storia attiva |
+| Elimina | Rimuove permanentemente i chat e i messaggi selezionati da Dream |
+| Archivia le chat dopo | Imposta il limite di inattività in giorni; predefinito 30 |
+| Archivia ora | Archivia i chat che rispettano quel limite |
+
+Il cutoff non programma un lavoro automatico. Vedere [Archiviare e ripristinare le chat](/docs/it/archived-chats) prima di utilizzare azioni di massa o eliminazione permanente.
+
+## Controlli esterni alle Impostazioni
+
+Alcune preferenze appartengono a singole chat o progetti. Imposta il modello, l'impegno, la velocità e i permessi di una chat nel suo composer. Attiva multi-chat nell'area di sinistra del toolbar. Modifica le dimensioni delle colonne delle chat e dei pannelli degli strumenti direttamente nell'ambiente di lavoro.

@@ -1,0 +1,49 @@
+---
+title: "Đánh giá pull request"
+description: "Đọc các yêu cầu pull trên GitHub, kiểm tra các thay đổi, để lại bình luận, sửa thông tin và hợp nhất từ Dream."
+---
+
+Nút **Pull requests** trong thanh công cụ bên phải mở pull request trên GitHub cho nhánh hiện tại. Cài đặt và xác thực GitHub CLI cho khoa học trước. Để xuất bản một pull request mới, vui lòng tham khảo [Quy trình làm việc với Git](/docs/vi/git-workflows#tạo-pull-request).
+
+## Mở yêu cầu thay đổi của nhánh hiện tại
+
+1. Chọn dự án và kiểm tra nhánh hiện tại của nó.
+2. Nhấn **Pull requests** trong thanh công cụ bên phải.
+3. Xem lại tiêu đề, trạng thái, nhánh nguồn và nhánh cơ sở của PR, cũng như các kiểm tra.
+4. Sử dụng **Tóm tắt** để mô tả và thảo luận, hoặc **Mã** để chỉ các tệp đã thay đổi.
+
+<Frame caption="Tổng hợp PR giữ nguyên mô tả, kiểm tra và thảo luận cùng dự án của bạn. Ví dụ này đã được tích hợp.">
+  <img
+    src="/images/docs/pull-request-panel.png"
+    alt="Panel yêu cầu lấy dữ liệu hiển thị một PR đã được hợp nhất, tab Tóm tắt và Code, mô tả của nó, và các kiểm tra đã được vượt qua."
+    width={876}
+    height={600}
+    loading="lazy"
+  />
+</Frame>
+
+Nếu nhánh không có pull request, thanh công cụ cung cấp **Tạo yêu cầu kéo**. Sử dụng **Thao tác pull request → Làm mới** sau khi đã thay đổi trên GitHub, hoặc **Mở trên GitHub** để xem pull request trong trình duyệt. Một pull request đã được hợp nhất sẽ không xuất hiện nữa khi nhánh chứa các commit mới hơn so với đầu của pull request đó.
+
+## Kiểm tra mã và để lại bình luận
+
+Trong **Tóm tắt**, đọc phần thảo luận và sử dụng **Viết** và **Xem trước** để soạn một bình luận dạng Markdown. Chọn **Đăng bình luận** để xuất bản nó lên GitHub.
+
+Trong **Mã**, mở rộng một tệp và chọn các dòng trong diff của nó để viết một **Đăng bình luận trên dòng**. Bạn có thể đọc các cuộc thảo luận đánh giá hiện có và sử dụng **Trả lời** để tiếp tục chúng. Khi không có patch văn bản, mở yêu cầu PR trên GitHub để kiểm tra tệp đó.
+
+Các bình luận này được đăng lên GitHub. Để yêu cầu agent lập trình về các thay đổi cục bộ, hãy sử dụng [phản hồi diff trong Changes](/docs/vi/feedback#bình-luận-các-dòng-trong-một-diff).
+
+## Chỉnh sửa tiêu đề và mô tả
+
+Khi tài khoản của bạn có quyền truy cập, sử dụng **Sửa tiêu đề** hoặc **Sửa mô tả**. Lưu tiêu đề sau khi đã sửa nó; đối với mô tả, sử dụng **Viết** và **Xem trước**, rồi **Lưu**. Bạn cũng có thể sửa các bình luận của chính mình nơi có nút chỉnh sửa.
+
+## Hợp nhất một yêu cầu pull
+
+1. Kiểm tra mã, thảo luận và kiểm tra.
+2. Nhấn nút **Hợp nhất** trong phần đầu bảng.
+3. Xác nhận nhánh nguồn và nhánh cơ sở trong **Hợp nhất PR**.
+4. Chọn một phương pháp có sẵn: **Tạo commit hợp nhất**, **Gộp commit và hợp nhất**, hoặc **Rebase và hợp nhất**.
+5. Gửi hợp nhất.
+
+Chỉ các PR mở và không phải bản nháp mới có thể được hợp nhất. Đánh dấu bản nháp sẵn sàng trên GitHub trước. Tài khoản của bạn cần quyền hợp nhất, và khoa học xác định các phương pháp hợp nhất có sẵn. GitHub có thể từ chối hợp nhất khi các yêu cầu của khoa học không được đáp ứng.
+
+Dream kiểm tra xem PR vẫn có commit đầu vào được hiển thị khi tải thông tin hợp nhất. Nếu nó thay đổi trên GitHub, hãy cập nhật và xem lại các thay đổi mới trước khi thử lại.

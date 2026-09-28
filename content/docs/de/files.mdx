@@ -1,0 +1,63 @@
+---
+title: "Dateien und Suche"
+description: "Projektdateien durchsuchen, Namen und Inhalt von Dateien suchen, Code bearbeiten und unbearbeitete Änderungen verwalten."
+---
+
+Klicken Sie im rechten Toolbar auf **Dateien**, um das Verzeichnis des aktiven Projekts zu durchsehen. Öffnen Sie eine Datei aus dem Baum, um sie zusammen mit Ihrem Chat zu inspizieren. Datei-Registerkarten ermöglichen es Ihnen, zwischen mehreren geöffneten Dateien zu wechseln.
+
+## Eine Datei finden
+
+1. Dateien öffnen.
+2. Geben Sie einen Teil eines Dateinamens oder -pfads in **Dateien durchsuchen** oberhalb des Baumes ein.
+3. Wählen Sie ein Ergebnis aus, um es zu öffnen.
+4. Suche löschen, um zur Durchsicht der Baumstruktur zurückzukehren.
+
+Verwenden Sie **Dateien aktualisieren** bei den Dateiaktionen, wenn Änderungen außerhalb von Dream nicht in der Struktur angezeigt werden. Suchen nach einer Datei findet ihren Pfad; verwenden Sie die Suche im Editor, um Text innerhalb dieser Datei zu finden.
+
+<Frame caption="Suchen oder die Dateistruktur durchstöbern, dann eine Datei neben Ihr Chat öffnen.">
+  <img
+    src="/images/docs/files-panel.png"
+    alt="Panel mit Dateien, bei dem „Dateien durchsuchen“ oberhalb der Ordnerstruktur angezeigt wird und die Datei app-error-boundary.tsx im Editor offen ist."
+    width={950}
+    height={610}
+    loading="lazy"
+  />
+</Frame>
+
+## Suchen und Ersetzen innerhalb einer Datei
+
+1. Datei öffnen und auf **Aktuelle Datei durchsuchen** in der Editor-Leiste klicken.
+2. Geben Sie den Text in **Suchen** ein.
+3. Verwenden Sie **Nächster Treffer** oder **Vorheriger Treffer**, um durch die Ergebnisse zu navigieren.
+4. Aktivieren Sie **Groß-/Kleinschreibung beachten**, **Nur ganze Wörter** oder **Regulären Ausdruck verwenden**, wenn nötig.
+
+Das Suchfeld bietet auch Ersatzkontrollen. Überprüfen Sie die Treffer vor dem Einsatz von **Alle ersetzen**, dann speichern Sie die Datei, um die Änderungen auf der Festplatte zu speichern. Der Ersatz wirkt auf die aktuelle Datei.
+
+## Bearbeiten und speichern
+
+Bearbeiten einer lesbaren Textdatei im Code-Editor. Ungespeicherte Änderungen werden in der Registerkarte markiert, und das Panel kann angeben, wie viele Dateien ungespeicherte Entwürfe haben.
+
+Klicken Sie im Editor-Funktionsbereich auf **Speichern**, oder drücken Sie **Command+S** unter macOS oder **Ctrl+S** unter Windows/Linux, während der Editor aktiv ist. Speichern Sie jede bearbeitete Datei vor dem Erstellen einer Anfrage an einen Agenten oder eine Befehlszeile, die die neuen Inhalte verwendet; diese Tools lesen Dateien aus dem Speicher.
+
+Das Wechseln zwischen Datei-Tabseiten ermöglicht es, Entwürfe zu speichern, während andere Dateien inspiziert werden. Verwenden Sie **Änderungen verwerfen**, um einen lokalen Entwurf zu verwerfen. Dies ist von der Wiederherstellung von Änderungen über Git getrennt.
+
+Das Schließen einer Registerkarte mit ungespeichneten Änderungen öffnet ein **Speichern / Nicht speichern / Abbrechen**-Fenster. **Speichern** schreibt den Entwurf und schließt die Registerkarte, **Nicht speichern** wirft den Entwurf weg und schließt die Registerkarte, und **Abbrechen** behält die Registerkarte offen. Wenn das Speichern fehlschlägt oder mit einer externen Bearbeitung kollidiert, bleibt die Datei offen, damit Sie das Problem beheben können.
+
+## Eine Datei außerhalb des Editors geändert handeln
+
+Ein Agent, ein Terminal-Befehl oder ein externer Editor kann die gleiche Datei während der Bearbeitung eines Entwurfs ändern. Dream überprüft den Inhalt des Festplattenspeichers beim Speichern und meldet einen Konflikt anstatt die neuere Version schweigend zu überschreiben.
+
+1. Behalte jeden Entwurfstext, den du behalten möchtest.
+2. Lesen Sie die Konfliktnachricht.
+3. Verwenden Sie **Von Festplatte neu laden**, um die aktuelle Datei zu laden.
+4. Wenden Sie die Änderungen erneut an, die Sie noch benötigen, dann speichern Sie erneut.
+
+<Warning>
+  Von Festplatte neu laden ersetzt deinen lokalen Entwurf. Kopiere alle nicht gespeichnete Arbeiten, die du brauchst, bevor du sie verwendest.
+</Warning>
+
+## Ansicht anpassen
+
+Nutzen Sie **Zeilenumbruch aktivieren**, um lange Zeilen zu verarbeiten. Vergrößern Sie die Datei- und Editor-Fächer, um dem Inhalt mehr Platz zu geben. Verwenden Sie die verfügbaren **Öffnen in**-Aktionen, um in einem externen Editor fortzufahren.
+
+Nach dem Speichern öffnen Sie [Änderungen](/docs/de/git-workflows), um die Git-Differenz zu überprüfen. Um einem Agenten über eine Datei zu fragen, [verweisen Sie darauf mit @](/docs/de/providing-context) im Chat-Editor.

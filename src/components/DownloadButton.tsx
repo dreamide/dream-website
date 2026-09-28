@@ -2,6 +2,8 @@
 
 import { Download } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useTranslation } from "../i18n/context";
+import { localizedPath } from "../i18n/locales";
 import { umamiEventName } from "../lib/analytics";
 import {
   detectArch,
@@ -20,6 +22,7 @@ export default function DownloadButton({
   sparkle?: boolean;
   eventName?: string;
 }) {
+  const { locale, t } = useTranslation();
   const [os, setOs] = useState<OS | null>(null);
   const [href, setHref] = useState<string | null>(null);
 
@@ -42,11 +45,11 @@ export default function DownloadButton({
     return (
       <Component
         variant="primary"
-        href="/download"
+        href={localizedPath("/download", locale)}
         data-umami-event={umamiEventName(eventName, "page")}
       >
         <Download className="size-4" />
-        Download
+        {t("Download")}
       </Component>
     );
   }
@@ -59,7 +62,7 @@ export default function DownloadButton({
       data-umami-event={umamiEventName(eventName, os)}
     >
       <Download className="size-4" />
-      Download for {os}
+      {t("Download for {os}").replace("{os}", os)}
     </Component>
   );
 }

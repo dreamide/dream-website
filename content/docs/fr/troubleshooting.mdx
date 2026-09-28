@@ -1,0 +1,89 @@
+---
+title: "Dépannage"
+description: "Résoudre les modèles manquants et les conversations, les problèmes de terminal et de prévisualisation, ainsi que les erreurs Git courantes."
+---
+
+Commencez par l'erreur affichée dans le chat ou l'outil affecté. Vérifiez quel projet et quel fournisseur sont sélectionnés avant de modifier les paramètres, surtout lorsque plusieurs chats sont ouverts.
+
+## Aucun CLI fourni n'est détecté
+
+1. Ouvrez le terminal de votre système et vérifiez que l'interface de ligne de commande du fournisseur s'active.
+2. Compléter son inscription ou sa configuration initiale.
+3. Ouvrir **Paramètres → Fournisseurs** dans Dream et rafraîchir ce fournisseur.
+4. Si vous l'avez installé lorsque Dream était ouvert et que la détection échoue toujours, redémarrez Dream afin qu'il puisse détecter l'environnement modifié.
+
+Dream a besoin de l'exécutable pour être disponible pour l'application, pas seulement via un raccourci ou un alias dans un shell interactif. Voir [Connecter un fournisseur](/docs/fr/providers).
+
+## Un modèle est manquant ou je ne peux pas démarrer une conversation
+
+Vérifiez **Paramètres → Fournisseurs** et activez au moins un modèle détecté. Un CLI détecté sans modèles activés n'est pas suffisant pour démarrer une conversation. Actualisez après avoir modifié l'authentification ou la configuration du modèle du fournisseur. Pour OpenCode, complétez son authentification ou sa configuration avant d'actualiser.
+
+Ensuite, vérifiez **Paramètres → Général → Modèles**. Si le modèle par défaut précédemment sélectionné n'est plus disponible, choisissez un modèle activé à nouveau. Les discussions existantes possèdent leurs propres sélecteurs ; modifier la définition globale n'annule pas ces sélections.
+
+## Les commandes de contrôle de l'effort ou de la vitesse manquent
+
+Ces paramètres dépendent des capacités du modèle sélectionné. Choisissez un modèle qui expose l'option dont vous avez besoin. Changer le modèle d'un chat réinitialise ses paramètres d'effort et de vitesse, vérifiez donc les deux après coup. Voir [Modèles et valeurs par défaut](/docs/fr/models).
+
+## Je ne peux pas trouver un chat
+
+1. Sélectionnez le projet où a eu lieu la conversation.
+2. Ouvrez l’**Historique des discussions** et videz son champ de recherche.
+3. Rechercher par le titre du chat, plutôt que par les mots présents dans ses messages.
+4. Vérifiez **Paramètres → Chats archivés** et restaurez la conversation si elle y figure.
+5. Si son projet est fermé, le réouvrir à travers **Fermés récemment** sur l'écran de démarrage.
+
+Fermer une colonne multichat ne sauvegarde pas la conversation. Les chats vides sans messages ne sont pas listés dans l'historique. Un chat supprimé de manière permanente ne peut pas être restauré via Dream.
+
+## Un échange restauré a été archivé à nouveau
+
+Le restauration d'un échange conserve sa date d'activité la plus récente. Si vous exécutez à nouveau **Archiver maintenant** et que cette date est antérieure à la limite, il est qualifié d'archivage à nouveau. Vérifiez la limite et les échanges que vous souhaitez conserver avant d'exécuter l'action.
+
+## Le branching n'est pas disponible
+
+Attendez que la réponse actuelle soit terminée avant de créer une branche. **Nouvel arbre de travail** nécessite également un dépôt Git. Une référence de base manquante ou invalide peut empêcher la création d'un arbre de travail ; vérifiez que le dépôt contient la branche ou la référence commitée que vous souhaitez utiliser.
+
+Si les modifications attendues sont manquantes dans un nouveau worktree, vérifiez si elles étaient non commitées dans le projet original. Les worktrees ne copient pas ces modifications. Voir [Git worktrees](/docs/fr/worktrees).
+
+## Une réponse n'a pas de contrôle sur les modifications du fichier View
+
+L'interface s'affiche après la réponse dans les messages de l'assistant, et uniquement lorsque l'un des points de contrôle a été enregistré pour cette réponse. Vérifiez que **Checkpoints de modifications** est activé dans **Paramètres → Général → Messages de chat**, et que l'exécutable `git` est disponible pour Dream. Projets très volumineux peuvent dépasser la limite de temps d'enregistrement, dans ce cas la réponse s'exécute sans point de contrôle. Voir [Vérifier et restaurer les modifications](/docs/fr/checkpoints).
+
+## Je ne peux pas envoyer de diff ou des retours sur l'élément
+
+Le contrôle d'envoi est désactivé lorsque le chat de destination répond et affiche **Chat occupé**. Attendez qu'il se termine ou activez **Nouveau chat** dans le pop-up. Si le pop-up indique que le choix ne correspond plus à la différence, actualisez les Modifications et sélectionnez à nouveau les lignes. Voir [Envoyer des retours à une conversation](/docs/fr/feedback).
+
+## Continue dans le terminal est manquant
+
+L'action est disponible pour les discussions avec Claude lors d'une session valide de fournisseur réutilisable et est désactivée pendant le traitement d'une réponse. Un nouveau chat, un autre fournisseur ou une réinitialisation de session après modification du modèle ou de la vitesse n'en ont pas. Voir [Terminaux](/docs/fr/terminals#continuer-une-conversation-avec-claude-dans-un-terminal).
+
+## Un terminal échoue à s'ouvrir
+
+Vérifiez que le répertoire du projet existe encore. Choisissez un shell disponible dans **Paramètres → Général → Terminal**, puis ouvrez une nouvelle session. Pour la continuation de Claude, le répertoire de session initial doit également exister. Essayez le même shell dans le terminal de votre système pour identifier les problèmes d'environnement.
+
+## Une prévisualisation de navigateur est vide ou obsolète
+
+Vérifiez que l'application est en cours d'exécution et utilisez l'URL et le port exacts indiqués dans son terminal. Vérifiez les erreurs dans le terminal, puis essayez **Actualiser le navigateur** ou **Forcer le rechargement**. Comparez l'URL dans votre navigateur système. Utilisez DevTools pour les erreurs de page ; réservez le nettoyage des cookies ou du cache aux problèmes spécifiques d'authentification ou de mise en cache. Voir [Aperçu dans le navigateur](/docs/fr/browser).
+
+## Un fichier ne peut pas être sauvé
+
+Vérifiez si le fichier est écriturable et lisez l'erreur de l'éditeur. Si le fichier a été modifié sur disque pendant que vous éditez, préservez votre brouillon avant **Recharger depuis le disque**, puis réappliquez les modifications souhaitées. Voir [Fichiers et recherche](/docs/fr/files#gérer-un-fichier-modifié-en-dehors-de-léditeur).
+
+## Les actions Git échouent
+
+Pour les problèmes liés aux commentaires, éditions ou fusion de PR, consultez [Examiner les pull requests](/docs/fr/pull-requests). Vérifiez que GitHub CLI est authentifié et que votre compte dispose des permissions nécessaires sur le dépôt. Un PR en brouillon doit être marqué prêt avant de pouvoir être fusionné.
+
+| Symptôme | Qu'est-ce à vérifier |
+| --- | --- |
+| Aucun outil Git pour un dossier | Ouvrir un dossier dans un dépôt Git |
+| Aucune modification en attente à commiter | Vérifier l'inclusion des fichiers non stagés, ou stagner les fichiers intentionnés via Git |
+| Changements en attente en dehors du projet actif | Les commiter séparément avant d'utiliser l'action de commit de Dream |
+| Push n'a pas de destination | Configurer un remote Git et vérifier l'accès à celui-ci |
+| La création d'un PR signale une erreur CLI | Vérifiez que GitHub CLI est installé, authentifié et peut accéder au dépôt |
+| La source et la base du PR sont les mêmes | Passer à une branche de fonctionnalité avant de créer la demande de modification |
+| Rapports de création de PR avec un HEAD détaché | Vérifiez une branche avant de créer la demande de modification |
+| La suppression du worktree échoue | Revoir et préserver les modifications non commit dans ce checkout |
+| Fusionner et supprimer n'est pas disponible | L'arbre de travail n'a pas de commits en avance par rapport à sa base, ou le checkout principal possède des modifications non commitées ou un fusion en cours |
+| Les rapports d'arbre de travail complètent les conflits | L'opération de fusion a été annulée et rien n'a changé ; fusionnez la branche de base dans l'arbre de travail, résolvez les conflits, commitez, puis réessayez. |
+| La création de demande de fusion n'est pas disponible dans l'arbre de travail complet | Configurer un remote Git et installer l'interface CLI de GitHub |
+
+Après qu'une action combinée échoue, vérifiez l'état du branche avant de la réessayer : un commit ou une poussée peut être réussi avant que la étape suivante ne échoue. Voir [Flux de travail Git](/docs/fr/git-workflows).

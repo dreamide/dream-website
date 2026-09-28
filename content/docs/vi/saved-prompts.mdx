@@ -1,0 +1,55 @@
+---
+title: "Câu lệnh có thể tái sử dụng"
+description: "Lưu hướng dẫn một lần và thực hiện chúng trong bất kỳ cuộc trò chuyện nào của dự án."
+---
+
+Sử dụng **Cài đặt → Prompt** để nhập các hướng dẫn bạn lặp lại trong nhiều dự án, chẳng hạn như kiểm tra thay đổi hoặc xử lý các bình luận đánh giá. Một lệnh được lưu có tên và nội dung; nó sẽ chạy trong cuộc trò chuyện bạn chọn, sử dụng mô hình và cài đặt của cuộc trò chuyện đó.
+
+## Tạo một prompt
+
+1. Mở **Cài đặt → Prompt** và nhấp vào **Prompt mới**.
+2. Nhập **Tên** ngắn mà bạn có thể nhận ra trong menu trò chuyện.
+3. Viết hướng dẫn trong **Prompt** rồi nhấn **Tạo**.
+
+Ví dụ, đặt tên cho một prompt là “Xem lại thay đổi” và lưu:
+
+> Rà soát các thay đổi hiện tại để tìm lỗi, trường hợp biên chưa được xử lý và hành vi ngoài ý muốn. Báo cáo kết quả kèm tham chiếu đến tệp. Chưa chỉnh sửa tệp.
+
+Câu nhắc này có sẵn trong tất cả các dự án. Giữ các hướng dẫn có thể tái sử dụng tách biệt khỏi một thư mục cụ thể, hoặc đảm bảo rằng các đường dẫn trong văn bản áp dụng cho dự án mà bạn thực hiện nó.
+
+## Chạy một prompt trong cuộc trò chuyện
+
+1. Mở dự án và cuộc trò chuyện mà bạn muốn sử dụng.
+2. Xem lại mô hình của cuộc trò chuyện và [quyền hạn](/docs/vi/agent-modes).
+3. Mở **+** menu bên cạnh hộp tin nhắn.
+4. Chọn **Chạy prompt**, sau đó chọn lệnh đã được lưu.
+
+Việc chọn một prompt sẽ gửi ngay nội dung của nó vào cuộc trò chuyện đó. Nó không phải trước tiên chèn một bản nháp có thể chỉnh sửa. Nội dung bạn đã nhập vào composer sẽ được giữ lại, và prompt đã lưu sẽ vẫn có thể được sử dụng lại. Nếu bạn muốn điều chỉnh nội dung trước khi gửi, hãy sao chép nó từ Cài đặt và dán vào composer một cách thủ công.
+
+**Chạy prompt** không khả dụng khi cuộc trò chuyện đang hoạt động. Hãy chờ cho đến khi phản hồi kết thúc trước khi chạy một lệnh khác. Nếu việc nộp không thành công, hãy kiểm tra phần soạn thảo để xem nội dung lệnh.
+
+## Quản lý danh sách
+
+<Frame caption="Chọn một mẫu có thể tái sử dụng để đọc và sao chép nội dung của nó. Dòng điều khiển cho phép sắp xếp, chuyển đổi, sửa đổi hoặc xóa nó.">
+  <img
+    src="/images/docs/saved-prompts-panel.png"
+    alt="Các cài đặt gợi ý với bốn gợi ý đã lưu, biểu tượng hành động hàng dòng và toàn bộ văn bản của một gợi ý kiểm tra mã được chọn."
+    width={1016}
+    height={782}
+    loading="lazy"
+  />
+</Frame>
+
+Chọn một prompt trong **Cài đặt → Prompt** để xem trước và sao chép nội dung của nó. Sử dụng **Chỉnh sửa**, hoặc nhấp đôi tên của nó, để thay đổi nó. Các nút **Chuyển lên** và **Chuyển xuống** thay đổi vị trí của nó trong danh sách và menu trò chuyện. Để xóa một prompt, nhấp vào nút xóa của nó rồi chọn **Xác nhận xóa**.
+
+**Quản lý prompt…** trong menu **Chạy prompt** của cuộc trò chuyện mở ra trang cài đặt này.
+
+## Chuyển một lời kêu gọi thành một kỹ năng
+
+Sử dụng **Lưu thành kỹ năng** bên cạnh một prompt đã lưu để mở hộp thoại tạo kỹ năng với tên và hướng dẫn đã được điền sẵn. Thêm mô tả, chọn nơi để lưu nó, rồi nhấn **Tạo**. Xem [Kỹ năng của tác nhân](/docs/vi/skills) để biết về sự hỗ trợ từ nhà cung cấp và các vị trí lưu trữ.
+
+| Bạn muốn… | Sử dụng |
+| --- | --- |
+| Gửi các chỉ dẫn giống nhau nhiều lần trong các cuộc trò chuyện khác nhau | Câu lệnh có thể tái sử dụng |
+| Chuẩn bị một nhiệm vụ một lần với các cài đặt mô hình riêng của nó để sau này | [Stash](/docs/vi/stash) |
+| Cho một agent các hướng dẫn có thể tái sử dụng để tải vào một nhiệm vụ | [Kỹ năng](/docs/vi/skills) |

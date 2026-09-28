@@ -1,0 +1,42 @@
+---
+title: "Agentenberechtigungen"
+description: "Wählen Sie Ask, Änderungen akzeptieren oder Vollzugriff und reagieren auf Anfragen von Agenten."
+---
+
+Jeder Chat verfügt über ein **Berechtigungen**-Feld unter seiner Nachrichtenbox. Neue Chats erben **Einstellungen → Allgemein → Modelle → Standardberechtigungen**, die standardmäßig **Vollzugriff** beginnen. Änderungen der Standardberechtigungen haben keine Auswirkung auf bestehende Chats.
+
+## Berechtigungen auswählen
+
+1. Öffne das Steuerelement mit dem Schildsymbol unter dem Nachrichtenfeld. Sein Tooltip lautet **Berechtigungen**.
+2. Wählen Sie **Nachfragen**, **Änderungen akzeptieren** oder **Vollzugriff**.
+3. Prüfe deine Aufgabe und sende sie ab.
+
+| Berechtigung | Intendedes Verhalten |
+| --- | --- |
+| Nachfragen | Fordern Sie die Zustimmung für Aktionen ein, die unter der Konfiguration des Anbieters Berechtigungen erfordern |
+| Änderungen akzeptieren | Lassen Sie Datei-Änderungen automatisch zu, während die Genehmigungsverarbeitung für andere Aktionen beibehalten wird. |
+| Vollzugriff | Erweitern Sie die Berechtigungen des Agents, um ohne Genehmigungaktionen durchzuführen |
+
+Der ausgewählte Anbieter bestimmt das genaue Verhalten der Berechtigungen. **Nachfragen** bedeutet nicht, dass jeder Lesezugriff oder Werkzeugaufruf eine Bestätigung verlangt. **Änderungen akzeptieren** genehmigt nicht automatisch jeden Befehl.
+
+<Note>
+  Dream hat keine getrennten Build- und Plan-Steuerelemente mehr. Wenn du zuerst planen möchtest, bitte den Agenten, die Aufgabe zu untersuchen und einen Ansatz vorzuschlagen, bevor er Änderungen vornimmt. Diese Anweisung erzwingt keinen schreibgeschützten Dateisystemzugriff; wähle zusätzlich passende Berechtigungen für die Aufgabe.
+</Note>
+
+<Frame caption="Das Schildsymbol und die Beschriftung Vollzugriff kennzeichnen die Berechtigungssteuerung dieses Chats.">
+  <img
+    src="/images/docs/chat-composer.png"
+    alt="Das Chat-Editor mit Vollzugriff neben dem Modell-, Aufwand- und Geschwindigkeitskontrollknopf."
+    width={600}
+    height={108}
+    loading="lazy"
+  />
+</Frame>
+
+## Antworten auf Fragen und Genehmigungen
+
+Ein Agent kann Sie bitten, eine Anforderung zu klären, eine Option auszuwählen oder eine Aktion zu bestätigen. Lesen Sie die Anfrage im Gespräch und reagieren Sie mit den angebotenen Kontrollen. Ein Projekt-Tab kann anzeigen, dass ein Agent auf Ihre Antwort wartet. Öffnen Sie das Projekt und kehren Sie zum Gespräch zurück, um die Anfrage zu lesen.
+
+Wenn die Anfrage eine Änderung der Aufgabe erfordert, gib dem Agenten die angepasste Anweisung in diesem Chat. Unterbrich eine Antwort bei Bedarf mit der Stopp-Schaltfläche. Das Stoppen macht bereits ausgeführte Änderungen oder Befehle nicht rückgängig. Prüfe anschließend die [Änderungen](/docs/de/git-workflows) oder verwende den [Checkpoint](/docs/de/checkpoints) der Antwort, um die von ihr geänderten Dateien wiederherzustellen.
+
+Für parallelle Aufgaben, die separate Dateien benötigen, verwenden Sie [Worktrees](/docs/de/worktrees). Rechtschreibungs-Einstellungen geben zwei Chats in derselben Ordner keine unabhängigen Checkouts.

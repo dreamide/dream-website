@@ -1,0 +1,74 @@
+---
+title: "Introduction"
+description: "Commencez avec Dream, un IDE de bureau open-source pour les agents de codage basés sur l'intelligence artificielle."
+---
+
+Dream regroupe dans un espace de bureau sur ordinateur vos projets, vos agents de codage par intelligence artificielle, vos fichiers, vos terminaux, vos prévisualisations de navigateur et votre workflow Git. Connectez un CLI d'agent pris en charge, ouvrez un dossier et travaillez avec une ou plusieurs discussions sans changer d'outil.
+
+<Frame caption="Maintenez des conversations distinctes ensemble dans un espace de travail projet.">
+  <img
+    src="/images/screen-multiple-chats.png"
+    alt="Trois conversations s'ouvrent côte à côté sous l'onglet projet actif dans Dream."
+    width={1920}
+    height={1080}
+    loading="lazy"
+  />
+</Frame>
+
+<CardGroup cols={2}>
+  <Card title="Installer Dream" icon="download" href="/docs/fr/installation">
+    Choisissez le package pour macOS, Windows ou Linux.
+  </Card>
+  <Card title="Connecter un fournisseur" icon="plug" href="/docs/fr/providers">
+    Activer les modèles depuis vos interfaces CLI de agents de programmation installés.
+  </Card>
+  <Card title="Ouvrir votre premier projet" icon="folder-open" href="/docs/fr/first-project">
+    Ajouter un dossier et commencer une conversation dans son espace de travail.
+  </Card>
+  <Card title="Explorer l'espace de travail" icon="panels-top-left" href="/docs/fr/workspace">
+    Apprenez comment les projets, les discussions, les fichiers, les terminaux et les prévisualisations s'organisent ensemble.
+  </Card>
+</CardGroup>
+
+## Ce que Dream inclut
+
+- Un espace de travail multi-projet avec des onglets de projet persistants
+- Plusieurs conversations côte à côte et branching de conversation
+- Prompts réutilisables entre projets et compétences d'agents conscientes du fournisseur
+- Points de contrôle par réponse pour revue et restauration des fichiers modifiés par un agent
+- Support pour Codex CLI, Claude Code CLI, OpenCode CLI, Cursor Agent CLI et Grok Build CLI
+- Un explorateur de fichiers, une recherche et édition de fichiers, des terminaux intégrés et des prévisualisations de navigateur
+- État de Git, branche, diff, commit, poussée, demande de fusion, et workflows d'arbre de travail, y compris la fusion d'un arbre de travail terminé dans sa branche de base
+- Feedback de diff au niveau de la ligne et sélection d'éléments de navigateur qui envoient des messages ciblés à un chat
+- Un panneau de demande de fusion sur GitHub pour examiner du code, poster des commentaires, modifier les détails et fusionner
+- Serveurs MCP configurables et outils d'agent intégrés pour l'interaction avec le navigateur
+
+<Note>
+  Dream exécute des agents de programmation à travers leurs CLIs installés. Vous devez disposer d'au moins un CLI pris en charge avant de pouvoir commencer une conversation.
+</Note>
+
+## Workflow courants
+
+| Je voudrais… | Lisez |
+| --- | --- |
+| Maintenir les conversations sur l'implémentation et la révision ouvertes ensemble | [Utiliser plusieurs conversations](/docs/fr/multiple-chats) |
+| Rechercher, archiver ou récupérer une conversation ancienne | [Travailler avec les conversations](/docs/fr/chats) et [Conversations archivées](/docs/fr/archived-chats) |
+| Choisir un modèle de départ et un niveau de raisonnement | [Modèles et valeurs par défaut](/docs/fr/models) |
+| Essayez une autre approche mentionnée dans un message précédent | [Création de branches de conversation](/docs/fr/branching-chats) |
+| Suivre l'avancement d'un agent ou répondre à une question | [Travailler avec les conversations](/docs/fr/chats#suivre-le-travail-en-cours) |
+| Vérifiez ce qui a changé dans une réponse et annulez une partie d'elle | [Vérifier et restaurer les modifications](/docs/fr/checkpoints) |
+| Commenter des lignes spécifiques d'un diff ou un élément de page | [Envoyer des retours à une conversation](/docs/fr/feedback) |
+| Préparer une tâche à exécuter plus tard | [Enregistrer des prompts avec Stash](/docs/fr/stash) |
+| Réutiliser des instructions dans plusieurs projets | [Prompts réutilisables](/docs/fr/saved-prompts) |
+| Parcourir, appeler ou créer une compétence d'agent | [Skills des agents](/docs/fr/skills) |
+| Connectez des outils supplémentaires à un agent | [Serveurs MCP](/docs/fr/mcp-servers) |
+| Donner un agent fichiers ou une capture d'écran | [Fournir du contexte](/docs/fr/providing-context) |
+| Travailler dans un checkout indépendant, puis le fusionner à nouveau | [Worktrees Git](/docs/fr/worktrees) |
+| Revoir et publier des modifications de code | [Flux de travail Git](/docs/fr/git-workflows) |
+| Lire les commentaires de revue et fusionner une demande de pull sur GitHub | [Examiner les pull requests](/docs/fr/pull-requests) |
+
+## Comprendre l'espace de travail
+
+Un **projet** est un dossier local avec ses propres conversations et outils. Une **conversation** est un échange avec un modèle et des paramètres spécifiques. Plusieurs conversations dans un projet partagent ses fichiers ; un **arbre de travail** donne à une tâche un checkout Git séparé.
+
+Utilisez [Autorisations des agents](/docs/fr/agent-modes) pour choisir la manière dont un agent fonctionne, et [Contexte et utilisation](/docs/fr/context-and-usage) pour comprendre les informations situées sous le composant. La [référence des paramètres](/docs/fr/settings) liste les préférences globales de l'application. Si quelque chose manque ou ne fonctionne pas, commencez par [Dépannage](/docs/fr/troubleshooting).

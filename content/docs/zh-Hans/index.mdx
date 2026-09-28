@@ -1,0 +1,74 @@
+---
+title: "简介"
+description: "开始使用 Dream，一款面向 AI 编程代理的开源桌面 IDE。"
+---
+
+Dream 将你的项目、AI 编码代理、文件、终端、浏览器预览和 Git 工作流整合到一个桌面工作区中。连接一个受支持的代理 CLI，打开一个文件夹，并在不切换工具的情况下与一个或多个聊天进行协作。
+
+<Frame caption="在一个项目工作区中将不同的对话分开管理。">
+  <img
+    src="/images/screen-multiple-chats.png"
+    alt="在 Dream 的活动项目标签页中，可以同时打开三个对话框。"
+    width={1920}
+    height={1080}
+    loading="lazy"
+  />
+</Frame>
+
+<CardGroup cols={2}>
+  <Card title="安装 Dream" icon="download" href="/docs/zh-Hans/installation">
+    选择 macOS、Windows 或 Linux 的包。
+  </Card>
+  <Card title="连接服务商" icon="plug" href="/docs/zh-Hans/providers">
+    启用您已安装的编码代理 CLI 中的模型。
+  </Card>
+  <Card title="打开你的第一个项目" icon="folder-open" href="/docs/zh-Hans/first-project">
+    添加一个文件夹并在其工作区中开始聊天。
+  </Card>
+  <Card title="探索工作区" icon="panels-top-left" href="/docs/zh-Hans/workspace">
+    了解项目、聊天记录、文件、终端和预览是如何相互关联的。
+  </Card>
+</CardGroup>
+
+## Dream 包含了什么
+
+- 一个支持多项目的工作区，具有持久化的项目标签页
+- 多个并排聊天窗口和聊天分支
+- 项目间可复用的提示词及提供商感知的代理技能
+- 每条回复的检查点用于审查和恢复代理更改的文件
+- 支持 Codex CLI、Claude Code CLI、OpenCode CLI、Cursor Agent CLI 和 Grok Build CLI
+- 文件资源管理器、文件搜索与编辑、集成终端和浏览器预览
+- Git 状态、分支、差异、提交、推送、拉取请求和工作树工作流程，包括将完成的工作树合并回其基础分支
+- 逐行差异反馈和浏览器元素选择，可向聊天发送定向消息
+- 一个用于审查代码、发布评论、编辑详情和合并的 GitHub 拉取请求面板
+- 可配置的 MCP 服务器和内置的浏览器交互代理工具
+
+<Note>
+  Dream 通过其已安装的 CLI 运行代码代理。在开始聊天之前，你需要至少一个支持的 CLI。
+</Note>
+
+## 常见工作流程
+
+| 我想…… | 阅读 |
+| --- | --- |
+| 一起保持实现和审查对话的开放状态 | [使用多个聊天](/docs/zh-Hans/multiple-chats) |
+| 查找、归档或恢复旧对话 | [使用聊天](/docs/zh-Hans/chats) 和 [已归档聊天](/docs/zh-Hans/archived-chats) |
+| 选择一个起始模型和推理努力 | [模型与默认设置](/docs/zh-Hans/models) |
+| 尝试之前消息中的另一种方法 | [分支对话](/docs/zh-Hans/branching-chats) |
+| 跟踪代理的进度或回应问题 | [使用聊天](/docs/zh-Hans/chats#跟踪正在进行的工作) |
+| 检查回复发生了什么更改，并撤销其中一部分内容 | [审查与恢复更改](/docs/zh-Hans/checkpoints) |
+| 在特定的差异行或页面元素上评论 | [向聊天发送反馈](/docs/zh-Hans/feedback) |
+| 准备一个稍后运行的任务 | [使用暂存保存提示词](/docs/zh-Hans/stash) |
+| 在多个项目中重用指令 | [可复用的提示词](/docs/zh-Hans/saved-prompts) |
+| 浏览、调用或创建一个代理技能 | [智能体技能](/docs/zh-Hans/skills) |
+| 将额外工具连接到代理 | [MCP 服务器](/docs/zh-Hans/mcp-servers) |
+| 提供一个代理文件或截图 | [提供上下文](/docs/zh-Hans/providing-context) |
+| 在独立检出分支上工作，然后将其合并回去 | [Git 工作树](/docs/zh-Hans/worktrees) |
+| 审查并发布代码变更 | [Git 工作流程](/docs/zh-Hans/git-workflows) |
+| 阅读评论并合并一个 GitHub PR | [审查拉取请求](/docs/zh-Hans/pull-requests) |
+
+## 了解工作区
+
+一个**项目**是包含自己聊天记录和工具的本地文件夹。一个**聊天**是与特定模型和设置的对话。同一个项目中的多个聊天共享其文件；一个**工作树**为任务提供独立的 Git 检出。
+
+使用 [智能体权限](/docs/zh-Hans/agent-modes) 来选择智能体的工作方式，并通过 [上下文与用量](/docs/zh-Hans/context-and-usage) 来了解 composer 以下的信息。[设置参考](/docs/zh-Hans/settings) 列出了全局应用偏好设置。如果某个功能缺失或无法运行，请先查看 [故障排查](/docs/zh-Hans/troubleshooting)。

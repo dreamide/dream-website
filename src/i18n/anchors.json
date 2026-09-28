@@ -1,0 +1,2022 @@
+{
+  "agent-modes": {
+    "en": ["choose-permissions", "respond-to-questions-and-approvals"],
+    "es": ["elige-permisos", "responder-preguntas-y-aprobaciones"],
+    "fr": [
+      "choisir-les-permissions",
+      "répondre-aux-questions-et-aux-approbations"
+    ],
+    "de": [
+      "berechtigungen-auswählen",
+      "antworten-auf-fragen-und-genehmigungen"
+    ],
+    "pt": ["escolher-permissões", "responder-a-perguntas-e-aprovações"],
+    "it": ["scegli-i-permessi", "rispondere-a-domande-e-approvazioni"],
+    "ja": ["権限を選択", "質問への回答と承認の処理"],
+    "ko": ["권한-선택", "질문에-응답하고-승인을-처리합니다"],
+    "vi": ["chọn-quyền-hạn", "trả-lời-câu-hỏi-và-phê-duyệt"],
+    "zh-Hans": ["选择权限", "响应问题和审批"],
+    "zh-Hant": ["選擇許可權", "響應問題和審批"]
+  },
+  "archived-chats": {
+    "en": [
+      "archive-a-conversation",
+      "find-and-restore-archived-chats",
+      "archive-older-conversations-together",
+      "permanently-delete-archived-chats"
+    ],
+    "es": [
+      "archivar-una-conversación",
+      "buscar-y-restaurar-conversaciones-archivadas",
+      "archivar-conversaciones-antiguas-juntas",
+      "eliminar-permanentemente-los-chats-archivados"
+    ],
+    "fr": [
+      "archiver-une-conversation",
+      "rechercher-et-restaurer-des-discussions-archivées",
+      "archiver-des-conversations-plus-anciennes-ensemble",
+      "supprimer-définitivement-les-conversations-archivées"
+    ],
+    "de": [
+      "eine-konversation-archivieren",
+      "suchen-und-archivierte-chats-wiederherstellen",
+      "ältere-gespräche-zusammen-archivieren",
+      "archivierte-chats-dauerhaft-löschen"
+    ],
+    "pt": [
+      "arquivar-uma-conversa",
+      "localize-e-recupere-conversas-arquivadas",
+      "arquivar-conversas-antigas-juntas",
+      "excluir-permanentemente-conversas-arquivadas"
+    ],
+    "it": [
+      "archiviare-una-conversazione",
+      "cerca-e-ripristina-chat-archiviate",
+      "archiviare-conversazioni-più-vecchie-insieme",
+      "elimina-per-sempre-i-chat-archiviati"
+    ],
+    "ja": [
+      "会話をアーカイブする",
+      "検索およびアーカイブされたチャットを復元する",
+      "古い会話を集めてアーカイブする",
+      "アーカイブされたチャットを永続的に削除する"
+    ],
+    "ko": [
+      "대화를-아카이브합니다",
+      "아카이브된-채팅을-찾고-복구하세요",
+      "older한-대화를-함께-아카이브합니다",
+      "아رشив된-채팅을-영구적으로-삭제합니다"
+    ],
+    "vi": [
+      "lưu-trữ-cuộc-trò-chuyện",
+      "tìm-và-khôi-phục-các-cuộc-trò-chuyện-đã-lưu-trữ",
+      "lưu-trữ-các-cuộc-trò-chuyện-cũ-cùng-nhau",
+      "xóa-vĩnh-viễn-các-cuộc-trò-chuyện-đã-được-lưu-trữ"
+    ],
+    "zh-Hans": [
+      "归档一次对话",
+      "查找并恢复归档的聊天记录",
+      "将旧的对话归档在一起",
+      "永久删除已归档的聊天记录"
+    ],
+    "zh-Hant": [
+      "歸檔一次對話",
+      "查詢並恢復歸檔的聊天記錄",
+      "將舊的對話歸檔在一起",
+      "永久刪除已歸檔的聊天記錄"
+    ]
+  },
+  "branching-chats": {
+    "en": [
+      "continue-in-the-same-workspace",
+      "continue-in-a-new-worktree",
+      "choose-the-right-kind-of-branch"
+    ],
+    "es": [
+      "continuar-en-el-mismo-espacio-de-trabajo",
+      "continuar-en-un-nuevo-árbol-de-trabajo",
+      "elige-el-tipo-de-rama-adecuado"
+    ],
+    "fr": [
+      "continuer-dans-le-même-espace-de-travail",
+      "continuer-dans-un-nouvel-arbre-de-travail",
+      "choisir-le-bon-type-de-branche"
+    ],
+    "de": [
+      "fortsetzen-sie-in-demselben-arbeitsbereich",
+      "fortsetzen-in-einem-neuen-worktree",
+      "wählen-sie-den-richtigen-branch-typ-aus"
+    ],
+    "pt": [
+      "continuar-no-mesmo-workspace",
+      "continue-em-uma-nova-árvore-de-trabalho",
+      "escolha-o-tipo-certo-de-ramo"
+    ],
+    "it": [
+      "continua-nello-stesso-workspace",
+      "continua-in-un-nuovo-worktree",
+      "scegli-il-tipo-giusto-di-ramo"
+    ],
+    "ja": [
+      "同じワークスペースで続ける",
+      "新しいワークツリーで継続する",
+      "適切な種類のブランチを選択する"
+    ],
+    "ko": [
+      "동일한-작업-공간에서-계속하기",
+      "새로운-워크트리에서-계속하기",
+      "적절한-브랜치-유형을-선택하세요"
+    ],
+    "vi": [
+      "tiếp-tục-trong-không-gian-làm-việc-cùng-một-cách",
+      "tiếp-tục-trong-một-worktree-mới",
+      "chọn-loại-nhánh-phù-hợp"
+    ],
+    "zh-Hans": [
+      "在同一个工作区继续",
+      "在新的工作树中继续",
+      "选择正确的分支类型"
+    ],
+    "zh-Hant": [
+      "在同一個工作區繼續",
+      "在新的工作樹中繼續",
+      "選擇正確的分支型別"
+    ]
+  },
+  "browser": {
+    "en": [
+      "preview-your-application",
+      "use-browser-tabs",
+      "inspect-and-share-what-you-see",
+      "send-an-element-to-a-chat",
+      "ask-an-agent-to-use-the-browser",
+      "reload-and-clear-site-data",
+      "if-a-local-page-does-not-load"
+    ],
+    "es": [
+      "revisa-tu-aplicación",
+      "use-pestañas-del-navegador",
+      "inspeccione-y-comparta-lo-que-vea",
+      "enviar-un-elemento-a-un-chat",
+      "pide-a-un-agente-que-use-el-navegador",
+      "recargar-y-borrar-los-datos-del-sitio",
+      "si-una-página-local-no-se-carga"
+    ],
+    "fr": [
+      "aperçu-de-votre-application",
+      "utiliser-des-onglets-du-navigateur",
+      "inspectez-et-partagez-ce-que-vous-voyez",
+      "envoyer-un-élément-à-un-chat",
+      "demandez-à-un-agent-dutiliser-le-navigateur",
+      "recharger-et-effacer-les-données-du-site",
+      "si-une-page-locale-ne-se-charge-pas"
+    ],
+    "de": [
+      "vorabsehen-sie-ihre-anwendung",
+      "browser-register-verwenden",
+      "inspektieren-und-teilen-was-sie-sehen",
+      "ein-element-an-ein-chat-verfahren-senden",
+      "befehle-einem-agenten-den-browser-zu-verwenden",
+      "seiten-daten-neu-laden-und-löschen",
+      "wenn-eine-lokale-seite-nicht-geladen-wird"
+    ],
+    "pt": [
+      "antecipe-seu-aplicativo",
+      "use-guias-do-navegador",
+      "inspeccionar-e-compartilhar-o-que-você-vê",
+      "enviar-um-elemento-para-um-chat",
+      "pergunte-a-um-agente-para-usar-o-navegador",
+      "recarregar-e-limpar-os-dados-do-site",
+      "se-uma-página-local-não-carregar"
+    ],
+    "it": [
+      "prevedi-la-tua-applicazione",
+      "usa-le-schede-del-browser",
+      "controlla-e-condividi-ciò-che-vedi",
+      "invia-un-elemento-a-un-chat",
+      "chiedi-a-un-agente-di-utilizzare-il-browser",
+      "ricarica-e-cancella-i-dati-del-sito",
+      "se-una-pagina-locale-non-si-carica"
+    ],
+    "ja": [
+      "アプリケーションをプレビューする",
+      "ブラウザのタブを使用する",
+      "確認し見ている内容を共有してください",
+      "チャットに要素を送信する",
+      "エージェントにブラウザを使用してもらう",
+      "サイトデータを再読み込みしクリアする",
+      "ローカルページが読み込まれない場合"
+    ],
+    "ko": [
+      "애플리케이션을-미리보기",
+      "브라우저-탭-사용",
+      "검사하고-보는-것을-공유하세요",
+      "채팅에-요소를-전송합니다",
+      "애그نت에게-브라우저를-사용하도록-요청하세요",
+      "사이트-데이터를-다시-로드하고-클리어합니다",
+      "로컬-페이지가-로드되지-않는-경우"
+    ],
+    "vi": [
+      "xem-trước-ứng-dụng-của-bạn",
+      "sử-dụng-các-tab-trình-duyệt",
+      "kiểm-tra-và-chia-sẻ-những-gì-bạn-thấy",
+      "gửi-một-phần-tử-vào-cuộc-trò-chuyện",
+      "yêu-cầu-một-người-dùng-sử-dụng-trình-duyệt",
+      "tải-lại-và-xóa-dữ-liệu-trang",
+      "nếu-một-trang-cục-bộ-không-tải-được"
+    ],
+    "zh-Hans": [
+      "预览你的应用程序",
+      "使用浏览器选项卡",
+      "检查并分享你所看到的内容",
+      "将元素发送到聊天中",
+      "要求代理使用浏览器",
+      "重新加载并清除站点数据",
+      "如果本地页面无法加载"
+    ],
+    "zh-Hant": [
+      "預覽你的應用程式",
+      "使用瀏覽器分頁",
+      "檢查並分享你所看到的內容",
+      "將元素傳送到聊天中",
+      "要求代理使用瀏覽器",
+      "重新載入並清除網站資料",
+      "如果本地頁面無法載入"
+    ]
+  },
+  "chats": {
+    "en": [
+      "start-a-conversation",
+      "return-to-a-conversation",
+      "rename-a-chat",
+      "follow-work-in-progress",
+      "close-archive-or-delete"
+    ],
+    "es": [
+      "comenzar-una-conversación",
+      "volver-a-una-conversación",
+      "renombrar-un-chat",
+      "sigue-el-trabajo-en-progreso",
+      "cerrar-archivar-o-borrar"
+    ],
+    "fr": [
+      "commencer-une-conversation",
+      "retourner-à-une-conversation",
+      "renommer-un-chat",
+      "suivre-le-travail-en-cours",
+      "fermer-archiver-ou-supprimer-"
+    ],
+    "de": [
+      "eine-konversation-starten",
+      "zurück-zu-einem-gespräch",
+      "ein-chat-umbenennen",
+      "fortschritt-verfolgen",
+      "schließen-archivieren-oder-löschen"
+    ],
+    "pt": [
+      "comece-uma-conversa",
+      "voltar-para-uma-conversa",
+      "renomear-um-chat",
+      "seguir-o-trabalho-em-andamento",
+      "fechar-arquivar-ou-excluir"
+    ],
+    "it": [
+      "inizia-una-conversazione",
+      "torna-a-una-conversazione",
+      "rinomina-un-chat",
+      "seguire-il-lavoro-in-corso",
+      "chiudi-archivia-o-elimina"
+    ],
+    "ja": [
+      "会話を開始する",
+      "会話に戻る",
+      "チャットを再命名する",
+      "進行中の作業をフォローする",
+      "閉じるアーカイブまたは削除"
+    ],
+    "ko": [
+      "대화를-시작하세요",
+      "대화로-돌아가기",
+      "채팅-이름-변경",
+      "진행-중인-작업을-추적하세요",
+      "닫기-아카이브-또는-삭제"
+    ],
+    "vi": [
+      "bắt-đầu-một-cuộc-trò-chuyện",
+      "trở-về-cuộc-trò-chuyện",
+      "đổi-tên-cuộc-trò-chuyện",
+      "theo-dõi-công-việc-đang-tiến-hành",
+      "đóng-lưu-trữ-hoặc-xóa"
+    ],
+    "zh-Hans": [
+      "开始对话",
+      "返回到对话中",
+      "重命名一个聊天记录",
+      "跟踪正在进行的工作",
+      "关闭归档还是删除"
+    ],
+    "zh-Hant": [
+      "開始對話",
+      "返回到對話中",
+      "重新命名一個聊天記錄",
+      "跟蹤正在進行的工作",
+      "關閉歸檔還是刪除"
+    ]
+  },
+  "checkpoints": {
+    "en": [
+      "how-checkpoints-work",
+      "review-a-replys-changes",
+      "restore-files",
+      "checkpoint-storage"
+    ],
+    "es": [
+      "cómo-funcionan-los-puntos-de-control",
+      "revisar-los-cambios-en-una-respuesta",
+      "restaurar-archivos",
+      "almacenamiento-de-puntos-de-control"
+    ],
+    "fr": [
+      "comment-fonctionnent-les-checkpoints",
+      "revoir-les-modifications-dune-réponse",
+      "restaurer-des-fichiers",
+      "stockage-des-points-de-contrôle"
+    ],
+    "de": [
+      "wie-checkpoints-funktionieren",
+      "änderungen-einer-antwort-überprüfen",
+      "dateien-wiederherstellen",
+      "speicherung-von-checkpoints"
+    ],
+    "pt": [
+      "como-os-checkpoints-funcionam",
+      "revise-as-alterações-de-uma-resposta",
+      "restaurar-arquivos",
+      "armazenamento-de-checkpoint"
+    ],
+    "it": [
+      "come-funzionano-i-checkpoint",
+      "controlla-le-modifiche-a-una-risposta",
+      "ripristina-file",
+      "archivio-dei-checkpoint"
+    ],
+    "ja": [
+      "チェックポイントがどのように機能するか",
+      "返信の変更を確認する",
+      "ファイルを復元する",
+      "チェックポイントのストレージ"
+    ],
+    "ko": [
+      "검증점이-어떻게-작동하는지",
+      "반응의-변경-사항을-검토합니다",
+      "파일-복원",
+      "체크포인트-저장소"
+    ],
+    "vi": [
+      "cách-thức-hoạt-động-của-các-điểm-kiểm-tra-checkpoints",
+      "xem-lại-các-thay-đổi-của-câu-trả-lời",
+      "khôi-phục-tệp",
+      "lưu-trữ-điểm-kiểm-tra"
+    ],
+    "zh-Hans": [
+      "检查点是如何工作的",
+      "审查回复的更改",
+      "恢复文件",
+      "检查点存储"
+    ],
+    "zh-Hant": [
+      "檢查點是如何工作的",
+      "審查回覆的更改",
+      "恢復檔案",
+      "檢查點儲存"
+    ]
+  },
+  "context-and-usage": {
+    "en": [
+      "check-conversation-context",
+      "understand-compaction",
+      "check-provider-usage",
+      "make-tool-activity-easier-to-read"
+    ],
+    "es": [
+      "ver-el-contexto-de-la-conversación",
+      "entender-la-compactación",
+      "ver-uso-del-proveedor",
+      "hacer-que-la-actividad-de-las-herramientas-sea-más-fácil-de-leer"
+    ],
+    "fr": [
+      "vérifier-le-contexte-de-la-conversation",
+      "comprendre-la-compactation",
+      "vérifier-lutilisation-du-fournisseur",
+      "faire-que-lactivité-des-outils-soit-plus-facile-à-lire"
+    ],
+    "de": [
+      "konversationskontext-überprüfen",
+      "verstehe-kompression",
+      "provider-nutzung-prüfen",
+      "machen-sie-die-aktivität-von-tools-lesbarer"
+    ],
+    "pt": [
+      "verificar-o-contexto-da-conversa",
+      "entender-a-compactação",
+      "verificar-o-uso-do-provedor",
+      "fazer-a-atividade-das-ferramentas-mais-fácil-de-ser-lida"
+    ],
+    "it": [
+      "controlla-il-contesto-della-conversazione",
+      "capire-la-compattazione",
+      "verifica-luso-del-provider",
+      "fare-che-lattività-degli-strumenti-sia-più-facile-da-leggere"
+    ],
+    "ja": [
+      "会話のコンテキストを確認する",
+      "コンパクションを理解する",
+      "プロバイダーの使用状況を確認する",
+      "dreamのツール活動を読みやすくする"
+    ],
+    "ko": [
+      "대화-맥락-확인",
+      "압축을-이해하세요",
+      "제공자-사용량-확인",
+      "dream-ide-도구-활동을-더-쉽게-읽을-수-있도록-만드세요"
+    ],
+    "vi": [
+      "kiểm-tra-bối-cảnh-cuộc-trò-chuyện",
+      "hiểu-về-việc-nén",
+      "kiểm-tra-việc-sử-dụng-dịch-vụ-cung-cấp",
+      "giảm-độ-phức-tạp-của-hoạt-động-công-cụ-để-dễ-đọc-hơn"
+    ],
+    "zh-Hans": [
+      "检查对话上下文",
+      "理解压缩",
+      "检查提供商使用情况",
+      "让工具活动更易于阅读"
+    ],
+    "zh-Hant": [
+      "檢查對話上下文",
+      "理解壓縮",
+      "檢查供應商使用情況",
+      "讓工具活動更易於閱讀"
+    ]
+  },
+  "feedback": {
+    "en": [
+      "comment-on-lines-in-a-diff",
+      "send-a-page-element-from-the-browser",
+      "where-the-message-goes"
+    ],
+    "es": [
+      "comentar-líneas-en-un-diff",
+      "enviar-un-elemento-de-la-página-desde-el-navegador",
+      "dónde-va-el-mensaje"
+    ],
+    "fr": [
+      "commenter-des-lignes-dans-un-diff",
+      "envoyer-un-élément-de-page-du-navigateur",
+      "où-va-le-message"
+    ],
+    "de": [
+      "kommentare-in-einer-diff-zeile-hinzufügen",
+      "ein-seitenelement-aus-dem-browser-senden",
+      "wohin-die-nachricht-geht"
+    ],
+    "pt": [
+      "comentar-em-linhas-de-um-diff",
+      "enviar-um-elemento-da-página-do-navegador",
+      "onde-a-mensagem-vai"
+    ],
+    "it": [
+      "commentare-le-righe-in-un-diff",
+      "invia-un-elemento-della-pagina-dal-browser",
+      "dove-va-il-messaggio"
+    ],
+    "ja": [
+      "diffの行にコメントを付ける",
+      "ブラウザからページ要素を送信する",
+      "メッセージが行く場所"
+    ],
+    "ko": [
+      "차이를-가진-줄에-주석을-달기",
+      "브라우저에서-페이지-요소를-전송합니다",
+      "메시지가-가는-곳"
+    ],
+    "vi": [
+      "bình-luận-các-dòng-trong-một-diff",
+      "gửi-một-phần-tử-trang-từ-trình-duyệt",
+      "nơi-tin-nhắn-được-gửi-đi"
+    ],
+    "zh-Hans": ["在差异中注释行", "从浏览器发送一个页面元素", "消息的去向"],
+    "zh-Hant": ["在差異中註釋行", "從瀏覽器傳送一個頁面元素", "訊息的去向"]
+  },
+  "files": {
+    "en": [
+      "find-a-file",
+      "search-and-replace-within-a-file",
+      "edit-and-save",
+      "handle-a-file-changed-outside-the-editor",
+      "adjust-the-view"
+    ],
+    "es": [
+      "buscar-un-archivo",
+      "buscar-y-reemplazar-dentro-de-un-archivo",
+      "editar-y-guardar",
+      "manejar-un-archivo-cambiado-fuera-del-editor",
+      "ajustar-la-vista"
+    ],
+    "fr": [
+      "rechercher-un-fichier",
+      "rechercher-et-remplacer-dans-un-fichier",
+      "éditer-et-enregistrer",
+      "gérer-un-fichier-modifié-en-dehors-de-léditeur",
+      "modifier-la-vue"
+    ],
+    "de": [
+      "eine-datei-finden",
+      "suchen-und-ersetzen-innerhalb-einer-datei",
+      "bearbeiten-und-speichern",
+      "eine-datei-außerhalb-des-editors-geändert-handeln",
+      "ansicht-anpassen"
+    ],
+    "pt": [
+      "localizar-um-arquivo",
+      "buscar-e-substituir-dentro-de-um-arquivo",
+      "editar-e-salvar",
+      "tratar-um-arquivo-modificado-fora-do-editor",
+      "ajuste-a-visualização"
+    ],
+    "it": [
+      "cerca-un-file",
+      "cerca-e-sostituisci-allinterno-di-un-file",
+      "modifica-e-salva",
+      "gestire-un-file-modificato-esternamente-alleditor",
+      "regola-la-vista"
+    ],
+    "ja": [
+      "ファイルを検索する",
+      "ファイル内の検索と置換",
+      "編集し保存する",
+      "編集器の外でファイルが変更された場合に処理する",
+      "ビューを調整する"
+    ],
+    "ko": [
+      "파일-찾기",
+      "파일-내에서-검색-및-대체",
+      "편집하고-저장",
+      "편집기-외부에서-파일을-변경하는-경우-처리하기",
+      "시각을-조정하세요"
+    ],
+    "vi": [
+      "tìm-một-tệp",
+      "tìm-kiếm-và-thay-thế-trong-một-tệp",
+      "chỉnh-sửa-và-lưu-trữ",
+      "xử-lý-tệp-đã-được-thay-đổi-bên-ngoài-trình-soạn-thảo",
+      "điều-chỉnh-chế-độ-xem"
+    ],
+    "zh-Hans": [
+      "查找文件",
+      "在文件中搜索和替换",
+      "编辑并保存",
+      "处理编辑器外部更改的文件",
+      "调整视图"
+    ],
+    "zh-Hant": [
+      "查詢檔案",
+      "在檔案中搜尋和替換",
+      "編輯並儲存",
+      "處理編輯器外部更改的檔案",
+      "調整檢視"
+    ]
+  },
+  "first-project": {
+    "en": ["inspect-the-result", "return-to-a-project", "start-another-chat"],
+    "es": [
+      "inspeccione-el-resultado",
+      "volver-a-un-proyecto",
+      "comience-otra-conversación"
+    ],
+    "fr": [
+      "inspectez-le-résultat",
+      "retourner-vers-un-projet",
+      "commencez-une-autre-conversation"
+    ],
+    "de": [
+      "inspektiere-das-ergebnis",
+      "zurück-zu-einem-projekt",
+      "ein-anderes-chat-verzeichnis-starten"
+    ],
+    "pt": [
+      "inspeccionar-o-resultado",
+      "voltar-para-um-projeto",
+      "comece-outro-chat"
+    ],
+    "it": [
+      "controlla-il-risultato",
+      "torna-a-un-progetto",
+      "inizia-un-altro-chat"
+    ],
+    "ja": [
+      "結果を確認してください",
+      "プロジェクトに戻る",
+      "別のチャットを開始する"
+    ],
+    "ko": [
+      "결과를-검토하세요",
+      "프로젝트로-돌아가기",
+      "다른-채팅을-시작하세요"
+    ],
+    "vi": ["kiểm-tra-kết-quả", "quay-về-dự-án", "bắt-đầu-cuộc-trò-chuyện-khác"],
+    "zh-Hans": ["检查结果", "返回项目", "开始另一个聊天"],
+    "zh-Hant": ["檢查結果", "返回專案", "開始另一個聊天"]
+  },
+  "git-workflows": {
+    "en": [
+      "before-you-start",
+      "review-changes",
+      "commit-your-work",
+      "push-a-branch",
+      "create-a-pull-request",
+      "review-and-merge-a-pull-request",
+      "switch-or-create-branches"
+    ],
+    "es": [
+      "antes-de-comenzar",
+      "revisar-cambios",
+      "comitea-tu-trabajo",
+      "empujar-una-rama",
+      "crea-un-pull-request",
+      "revisar-y-fusionar-una-solicitud-de-incorporación",
+      "cambiar-o-crear-ramas"
+    ],
+    "fr": [
+      "avant-de-commencer",
+      "revoir-les-modifications",
+      "commitez-votre-travail",
+      "pousser-une-branche",
+      "créer-un-pull-request",
+      "revoir-et-fusionner-une-demande-de-pull",
+      "passer-ou-créer-des-branches"
+    ],
+    "de": [
+      "bevor-sie-beginnen",
+      "änderungen-überprüfen",
+      "ihre-arbeit-einreichen",
+      "eine-branch-pushen",
+      "pull-request-erstellen",
+      "überprüfen-und-einen-pull-request-vereinigen",
+      "branch-erstellen-oder-wechseln"
+    ],
+    "pt": [
+      "antes-de-começar",
+      "revise-as-alterações",
+      "commitar-seu-trabalho",
+      "empurrar-uma-ramificação",
+      "criar-um-pull-request",
+      "revise-e融e-um-pedido-de-pull",
+      "alternar-ou-criar-ramificações"
+    ],
+    "it": [
+      "prima-di-iniziare",
+      "revisione-dei-cambiamenti",
+      "committare-il-tuo-lavoro",
+      "spingi-un-ramo",
+      "crea-una-pull-request",
+      "revisione-e-fusione-di-una-richiesta-di-pull",
+      "passare-o-creare-ramificazioni"
+    ],
+    "ja": [
+      "開始する前に",
+      "変更を確認する",
+      "作業をコミットしてください",
+      "ブランチをプッシュする",
+      "プルリクエストを作成",
+      "プルリクエストのレビューとマージ",
+      "ブランチを切り替えたり作成したり"
+    ],
+    "ko": [
+      "시작하기-전에",
+      "변경-사항-검토",
+      "작업을-커밋하세요",
+      "브랜치를-푸시합니다",
+      "풀-리퀘스트-만들기",
+      "프로젝트를-검토하고-풀리퀘스트를-병합합니다",
+      "브랜치를-전환하거나-생성하기"
+    ],
+    "vi": [
+      "trước-khi-bắt-đầu",
+      "xem-lại-các-thay-đổi",
+      "gửi-công-việc-của-bạn",
+      "đẩy-một-nhánh",
+      "tạo-pull-request",
+      "xem-xét-và-hợp-nhất-một-yêu-cầu-pull",
+      "chuyển-sang-hoặc-tạo-nhánh"
+    ],
+    "zh-Hans": [
+      "开始之前",
+      "审查更改",
+      "提交你的工作",
+      "推送一个分支",
+      "创建拉取请求",
+      "审查并合并一个拉取请求",
+      "切换或创建分支"
+    ],
+    "zh-Hant": [
+      "開始之前",
+      "審查更改",
+      "提交你的工作",
+      "推送一個分支",
+      "建立提取要求",
+      "審查併合並一個拉取請求",
+      "切換或建立分支"
+    ]
+  },
+  "index": {
+    "en": [
+      "what-dream-includes",
+      "common-workflows",
+      "understand-the-workspace"
+    ],
+    "es": [
+      "qué-incluye-dream",
+      "flujos-de-trabajo-comunes",
+      "entender-el-entorno-de-trabajo"
+    ],
+    "fr": [
+      "ce-que-dream-inclut",
+      "workflow-courants",
+      "comprendre-lespace-de-travail"
+    ],
+    "de": [
+      "was-dream-enthält",
+      "gängige-workflows",
+      "verstehe-den-arbeitsbereich"
+    ],
+    "pt": ["o-que-o-dream-inclui", "workflows-comuns", "entender-o-workspace"],
+    "it": [
+      "cosa-include-dream",
+      "flussi-di-lavoro-comuni",
+      "capisci-lo-spazio-di-lavoro"
+    ],
+    "ja": [
+      "dream-には何が含まれていますか",
+      "一般的なワークフロー",
+      "ワークスペースを理解する"
+    ],
+    "ko": [
+      "dream이-포함하는-내용은-무엇인가",
+      "일반적인-워크플로우",
+      "작업-공간을-이해하세요"
+    ],
+    "vi": [
+      "dream-bao-gồm-những-gì",
+      "các-luồng-làm-việc-phổ-biến",
+      "hiểu-không-gian-làm-việc"
+    ],
+    "zh-Hans": ["dream-包含了什么", "常见工作流程", "了解工作区"],
+    "zh-Hant": ["dream-包含了什麼", "常見工作流程", "瞭解工作區"]
+  },
+  "installation": {
+    "en": [
+      "available-packages",
+      "before-opening-dream",
+      "updates",
+      "next-steps"
+    ],
+    "es": [
+      "paquetes-disponibles",
+      "antes-de-abrir-dream",
+      "actualizaciones",
+      "pasos-siguientes"
+    ],
+    "fr": [
+      "packages-disponibles",
+      "avant-douvrir-dream",
+      "mises-à-jour",
+      "étapes-suivantes"
+    ],
+    "de": [
+      "verfügbare-pakete",
+      "bevor-dream-geöffnet-wird",
+      "aktualisierungen",
+      "nächste-schritte"
+    ],
+    "pt": [
+      "pacotes-disponíveis",
+      "antes-de-abrir-o-dream",
+      "atualizações",
+      "próximos-passos"
+    ],
+    "it": [
+      "pacchetti-disponibili",
+      "prima-di-aprire-dream",
+      "aggiornamenti",
+      "passi-successivi"
+    ],
+    "ja": ["利用可能なパッケージ", "dreamを開く前に", "更新内容", "次へ"],
+    "ko": ["사용-가능한-패키지", "드림을-열기-전에", "업데이트", "다음-단계"],
+    "vi": [
+      "các-gói-có-sẵn",
+      "trước-khi-mở-dream",
+      "cập-nhật",
+      "bước-tiếp-theo"
+    ],
+    "zh-Hans": ["可用的包", "在打开-dream-之前", "更新", "下一步"],
+    "zh-Hant": ["可用的包", "在開啟-dream-之前", "更新", "下一步"]
+  },
+  "mcp-servers": {
+    "en": [
+      "add-a-server",
+      "import-existing-configuration",
+      "edit-disable-or-remove-a-server"
+    ],
+    "es": [
+      "agregar-un-servidor",
+      "importar-configuración-existente",
+      "editar-deshabilitar-o-eliminar-un-servidor"
+    ],
+    "fr": [
+      "ajouter-un-serveur",
+      "importer-une-configuration-existante",
+      "éditer-désactiver-ou-supprimer-un-serveur"
+    ],
+    "de": [
+      "ein-server-hinzufügen",
+      "bestehende-konfiguration-importieren",
+      "bearbeiten-deaktivieren-oder-entfernen-eines-servers"
+    ],
+    "pt": [
+      "adicionar-um-servidor",
+      "importar-configuração-existente",
+      "editar-desativar-ou-remover-um-servidor"
+    ],
+    "it": [
+      "aggiungi-un-server",
+      "importare-la-configurazione-esistente",
+      "modifica-disattiva-o-rimuovi-un-server"
+    ],
+    "ja": [
+      "サーバーを追加する",
+      "既存の設定をインポート",
+      "サーバーを編集無効化または削除する"
+    ],
+    "ko": [
+      "서버-추가",
+      "기존-구성-가져오기",
+      "서버를-편집-비활성화-또는-제거합니다"
+    ],
+    "vi": [
+      "thêm-một-máy-chủ",
+      "đưa-vào-cấu-hình-hiện-có",
+      "chỉnh-sửa-vô-hiệu-hóa-hoặc-xóa-một-máy-chủ"
+    ],
+    "zh-Hans": ["添加一个服务器", "导入现有配置", "编辑禁用或删除一个服务器"],
+    "zh-Hant": ["新增一個伺服器", "匯入現有配置", "編輯禁用或刪除一個伺服器"]
+  },
+  "models": {
+    "en": [
+      "enable-models",
+      "set-the-default-for-new-chats",
+      "set-a-model-for-commit-and-pr-drafting",
+      "change-a-chats-model",
+      "effort-and-speed",
+      "if-a-default-becomes-unavailable"
+    ],
+    "es": [
+      "habilitar-modelos",
+      "establecer-el-valor-predeterminado-para-nuevos-chats",
+      "establecer-un-modelo-para-el-redactado-de-comits-y-solicitudes-de-incorporación-de-código",
+      "cambiar-el-modelo-de-un-chat",
+      "esfuerzo-y-velocidad",
+      "si-un-valor-predeterminado-se-vuelve-inaccesible"
+    ],
+    "fr": [
+      "activer-les-modèles",
+      "définir-la-valeur-par-défaut-pour-les-nouveaux-échanges",
+      "définir-un-modèle-pour-la-rédaction-de-commits-et-de-demandes-de-fusion",
+      "changer-le-modèle-dun-chat",
+      "effort-et-vitesse",
+      "si-une-valeur-par-défaut-devient-indisponible"
+    ],
+    "de": [
+      "modelle-aktivieren",
+      "die-standard-einstellung-für-neue-chats-festlegen",
+      "ein-modell-für-den-commit--und-pull-request-text-erstellen-setzen",
+      "ein-chat-modell-ändern",
+      "aufwand-und-geschwindigkeit",
+      "wenn-ein-standard-nicht-mehr-verfügbar-ist"
+    ],
+    "pt": [
+      "habilitar-modelos",
+      "defina-o-padrão-para-novas-conversas",
+      "defina-um-modelo-para-redação-de-commits-e-solicitações-de-alteração",
+      "mudar-o-modelo-de-um-chat",
+      "esforço-e-velocidade",
+      "se-um-padrão-padrão-ficar-indisponível"
+    ],
+    "it": [
+      "abilita-i-modelli",
+      "imposta-il-valore-predefinito-per-i-nuovi-chat",
+      "imposta-un-modello-per-la-stesura-di-commit-e-richieste-di-pull",
+      "cambiare-il-modello-di-un-chat",
+      "sforzo-e-velocità",
+      "se-una-configurazione-predefinita-diventa-non-disponibile"
+    ],
+    "ja": [
+      "モデルを有効にする",
+      "新しいチャットのデフォルトを設定する",
+      "コミットとprの作成にモデルを設定する",
+      "チャットのモデルを変更する",
+      "推論強度と速度",
+      "デフォルトが利用できない場合"
+    ],
+    "ko": [
+      "모델-활성화",
+      "새로운-채팅의-기본-설정을-설정합니다",
+      "커밋과-pr-작성에-모델을-설정하세요",
+      "채팅의-모델을-변경합니다",
+      "추론-강도와-속도",
+      "기본값이-사용할-수-없을-경우"
+    ],
+    "vi": [
+      "kích-hoạt-các-mô-hình",
+      "đặt-mặc-định-cho-các-cuộc-trò-chuyện-mới",
+      "đặt-một-mô-hình-cho-việc-soạn-thảo-commit-và-yêu-cầu-thay-đổi",
+      "thay-đổi-mô-hình-của-một-cuộc-trò-chuyện",
+      "mức-suy-luận-và-tốc-độ",
+      "nếu-một-mặc-định-trở-nên-không-khả-dụng"
+    ],
+    "zh-Hans": [
+      "启用模型",
+      "为新聊天设置默认值",
+      "为提交和拉取请求草稿设置一个模型",
+      "更改聊天的模型",
+      "推理强度和速度",
+      "如果默认选项不可用"
+    ],
+    "zh-Hant": [
+      "啟用模型",
+      "為新聊天設定預設值",
+      "為提交和拉取請求草稿設定一個模型",
+      "更改聊天的模型",
+      "推理強度和速度",
+      "如果預設選項不可用"
+    ]
+  },
+  "multiple-chats": {
+    "en": [
+      "open-chats-side-by-side",
+      "arrange-the-workspace",
+      "example-implement-then-review",
+      "understand-what-is-shared"
+    ],
+    "es": [
+      "chats-abiertos-al-mismo-tiempo",
+      "organice-el-espacio-de-trabajo",
+      "ejemplo-implementar-luego-revisar",
+      "entender-qué-es-compartido"
+    ],
+    "fr": [
+      "ouvrir-des-discussions-en-parallèle",
+      "organiser-lespace-de-travail",
+      "exemple--implémenter-puis-revue",
+      "comprendre-ce-qui-est-partagé"
+    ],
+    "de": [
+      "offene-chats-nebeneinander-anzeigen",
+      "arbeiten-im-workspace-organisieren",
+      "beispiel-implementieren-dann-überprüfen",
+      "verstehe-was-geteilt-wird"
+    ],
+    "pt": [
+      "abrir-chats-ao-lado-um-do-outro",
+      "organizar-o-workspace",
+      "exemplo-implementar-em-seguida-revisar",
+      "entenda-o-que-é-compartilhado"
+    ],
+    "it": [
+      "aprire-chat-contemporaneamente",
+      "organizza-lo-spazio-di-lavoro",
+      "esempio-implementare-poi-revisionare",
+      "capire-cosa-è-condiviso"
+    ],
+    "ja": [
+      "オープンチャットを並列で開く",
+      "ワークスペースを配置する",
+      "例-実装した後レビューを行う",
+      "共有されているものについて理解する"
+    ],
+    "ko": [
+      "다른-채팅을-열림",
+      "작업-공간을-정리하세요",
+      "예시-구현한-후-검토하기",
+      "공유되는-것을-이해하세요"
+    ],
+    "vi": [
+      "mở-các-cuộc-trò-chuyện-bên-cạnh-nhau",
+      "sắp-xếp-không-gian-làm-việc",
+      "ví-dụ-triển-khai-sau-đó-kiểm-tra-lại",
+      "hiểu-được-điều-gì-được-chia-sẻ"
+    ],
+    "zh-Hans": [
+      "同时打开聊天记录",
+      "整理工作区",
+      "示例实现然后审查",
+      "了解什么是共享"
+    ],
+    "zh-Hant": [
+      "同時開啟聊天記錄",
+      "整理工作區",
+      "示例實現然後審查",
+      "瞭解什麼是共享"
+    ]
+  },
+  "providers": {
+    "en": [
+      "supported-providers",
+      "enable-models",
+      "use-more-than-one-provider",
+      "understand-provider-differences",
+      "check-for-cli-updates",
+      "troubleshooting-detection"
+    ],
+    "es": [
+      "proveedores-compatibles",
+      "habilitar-modelos",
+      "usar-más-de-un-proveedor",
+      "entender-las-diferencias-entre-proveedores",
+      "verificar-actualizaciones-del-cli",
+      "solución-de-problemas-de-detección"
+    ],
+    "fr": [
+      "fournisseurs-pris-en-charge",
+      "activer-les-modèles",
+      "utiliser-plus-dun-fournisseur",
+      "comprendre-les-différences-entre-les-fournisseurs",
+      "vérifier-les-mises-à-jour-de-linterface-en-ligne-de-commande",
+      "dépannage-de-la-détection"
+    ],
+    "de": [
+      "unterstützte-anbieter",
+      "modelle-aktivieren",
+      "mehr-als-einen-anbieter-verwenden",
+      "unterstützen-sie-die-unterschiede-der-anbieter",
+      "prüfen-sie-auf-aktualisierungen-für-die-cli",
+      "fehlerbehebung-der-erkennung"
+    ],
+    "pt": [
+      "fornecedores-suportados",
+      "habilitar-modelos",
+      "use-mais-de-um-provedor",
+      "entender-as-diferenças-entre-provedores",
+      "verificar-atualizações-do-cli",
+      "solução-de-problemas-de-detecção"
+    ],
+    "it": [
+      "fornitori-supportati",
+      "abilita-i-modelli",
+      "usa-più-di-un-provider",
+      "capire-le-differenze-tra-i-provider",
+      "controlla-aggiornamenti-per-cli",
+      "risoluzione-dei-problemi-della-rilevazione"
+    ],
+    "ja": [
+      "サポートされているプロバイダー",
+      "モデルを有効にする",
+      "複数のプロバイダーを使用する",
+      "プロバイダーの違いを理解する",
+      "cliの更新を確認する",
+      "検出のトラブルシューティング"
+    ],
+    "ko": [
+      "지원되는-제공업체",
+      "모델-활성화",
+      "다른-제공자를-사용하세요",
+      "제공자-차이를-이해하세요",
+      "cli-업데이트를-확인하세요",
+      "문제-해결-탐지"
+    ],
+    "vi": [
+      "các-nhà-cung-cấp-được-hỗ-trợ",
+      "kích-hoạt-các-mô-hình",
+      "sử-dụng-nhiều-nhà-cung-cấp-hơn-một-nhà-cung-cấp",
+      "hiểu-sự-khác-biệt-giữa-các-nhà-cung-cấp",
+      "kiểm-tra-cập-nhật-cli",
+      "khắc-phục-sự-cố-phát-hiện"
+    ],
+    "zh-Hans": [
+      "支持的提供商",
+      "启用模型",
+      "使用多个提供商",
+      "了解不同提供商之间的差异",
+      "检查-cli-更新",
+      "故障排查检测"
+    ],
+    "zh-Hant": [
+      "支援的供應商",
+      "啟用模型",
+      "使用多個供應商",
+      "瞭解不同供應商之間的差異",
+      "檢查-cli-更新",
+      "故障排查檢測"
+    ]
+  },
+  "providing-context": {
+    "en": [
+      "reference-a-project-file-or-folder",
+      "attach-a-file",
+      "use-a-skill-for-repeatable-instructions",
+      "view-and-copy-an-image",
+      "remove-context-before-sending",
+      "give-another-chat-enough-context"
+    ],
+    "es": [
+      "referencie-un-archivo-o-carpeta-de-proyecto",
+      "adjunta-un-archivo",
+      "use-una-habilidad-para-instrucciones-reutilizables",
+      "ver-e-copiar-una-imagen",
+      "eliminar-contexto-antes-de-enviarlo",
+      "proporcione-otro-chat-con-suficiente-contexto"
+    ],
+    "fr": [
+      "référencer-un-fichier-ou-un-dossier-de-projet",
+      "joindre-un-fichier",
+      "utilisez-une-compétence-pour-des-instructions-répétables",
+      "voir-et-copier-une-image",
+      "supprimer-le-contexte-avant-denvoyer",
+      "donnez-à-un-autre-chat-un-contexte-suffisant"
+    ],
+    "de": [
+      "ein-projekt-datei-oder--verzeichnis-referenzieren",
+      "eine-datei-hinzufügen",
+      "eine-fähigkeit-für-wiederholbare-anweisungen-verwenden",
+      "bild-anzeigen-und-kopieren",
+      "kontext-vor-dem-senden-entfernen",
+      "gebe-dem-chat-genügend-kontext"
+    ],
+    "pt": [
+      "referencie-um-arquivo-ou-pasta-de-projeto",
+      "anexar-um-arquivo",
+      "use-uma-habilidade-para-instruções-reutilizáveis",
+      "visualizar-e-copiar-uma-imagem",
+      "remover-contexto-antes-de-enviar",
+      "dê-mais-contexto-para-outro-chat"
+    ],
+    "it": [
+      "riferimento-a-un-file-o-una-cartella-di-progetto",
+      "aggiungi-un-file",
+      "usa-una-competenza-per-istruzioni-ripetitive",
+      "visualizza-e-copia-unimmagine",
+      "elimina-il-contesto-prima-di-inviarlo",
+      "dai-un-altro-chat-abbastanza-contesto"
+    ],
+    "ja": [
+      "プロジェクトファイルまたはフォルダを参照する",
+      "ファイルを添付する",
+      "繰り返し実行可能な指示のためにスキルを使用する",
+      "画像を表示およびコピーする",
+      "送信前にコンテキストを削除する",
+      "別のチャットに足够的な文脈を提供してください"
+    ],
+    "ko": [
+      "프로젝트-파일이나-폴더를-참조하세요",
+      "파일을-첨부하세요",
+      "반복-가능한-지시를-위해-기술을-사용하세요",
+      "이미지를-확인하고-복사하기",
+      "컨텍스트-제거-후-전송",
+      "다른-채팅에-충분한-맥락을-제공하세요"
+    ],
+    "vi": [
+      "tham-chiếu-tệp-hoặc-thư-mục-dự-án",
+      "kèm-một-tệp",
+      "sử-dụng-kỹ-năng-để-thực-hiện-các-chỉ-dẫn-lặp-lại",
+      "xem-và-sao-chép-một-hình-ảnh",
+      "xóa-bối-cảnh-trước-khi-gửi",
+      "cung-cấp-thêm-bối-cảnh-cho-cuộc-trò-chuyện-này"
+    ],
+    "zh-Hans": [
+      "引用项目文件或文件夹",
+      "附加一个文件",
+      "使用技能执行可重复的指令",
+      "查看和复制图像",
+      "在发送之前移除上下文",
+      "为另一个聊天提供足够的上下文"
+    ],
+    "zh-Hant": [
+      "引用專案檔案或資料夾",
+      "附加一個檔案",
+      "使用技能執行可重複的指令",
+      "檢視和複製影象",
+      "在傳送之前移除上下文",
+      "為另一個聊天提供足夠的上下文"
+    ]
+  },
+  "pull-requests": {
+    "en": [
+      "open-the-current-branchs-pr",
+      "review-code-and-post-comments",
+      "edit-the-title-and-description",
+      "merge-a-pull-request"
+    ],
+    "es": [
+      "abrir-el-pedido-de-cambios-de-la-rama-actual",
+      "revisar-el-código-y-publicar-comentarios",
+      "editar-el-título-y-la-descripción",
+      "derecha-un-pedido-de-incorporación"
+    ],
+    "fr": [
+      "ouvrir-la-demande-de-fusion-de-la-branche-actuelle",
+      "revoir-du-code-et-poster-des-commentaires",
+      "modifier-le-titre-et-la-description",
+      "fusionner-une-demande-de-fusion"
+    ],
+    "de": [
+      "aktuelle-branch-pr-öffnen",
+      "code-überprüfen-und-kommentare-posten",
+      "bearbeite-den-titel-und-die-beschreibung",
+      "ein-pull-angebot-zusammenführen"
+    ],
+    "pt": [
+      "abrir-o-pedido-de-alteração-da-ramificação-atual",
+      "revise-o-código-e-poste-comentários",
+      "editar-o-título-e-a-descrição",
+      "mesclar-uma-solicitação-de-pull"
+    ],
+    "it": [
+      "apri-la-richiesta-di-merge-della-ramifica-corrente",
+      "revisione-del-codice-e-pubblicazione-dei-commenti",
+      "modifica-il-titolo-e-la-descrizione",
+      "unire-una-richiesta-di-pull"
+    ],
+    "ja": [
+      "現在のブランチのprを開く",
+      "コードをレビューしコメントを投稿する",
+      "タイトルと説明を編集する",
+      "プルリクエストをマージする"
+    ],
+    "ko": [
+      "현재-브랜치의-pr-열기",
+      "코드를-검토하고-댓글을-작성합니다",
+      "디렉토리-이름과-설명을-편집합니다",
+      "풀리퀘스트를-병합합니다"
+    ],
+    "vi": [
+      "mở-yêu-cầu-thay-đổi-của-nhánh-hiện-tại",
+      "kiểm-tra-mã-và-để-lại-bình-luận",
+      "chỉnh-sửa-tiêu-đề-và-mô-tả",
+      "hợp-nhất-một-yêu-cầu-pull"
+    ],
+    "zh-Hans": [
+      "打开当前分支的-pr",
+      "审查代码并发布评论",
+      "编辑标题和描述",
+      "合并一个拉取请求"
+    ],
+    "zh-Hant": [
+      "開啟當前分支的-pr",
+      "審查程式碼併發布評論",
+      "編輯標題和描述",
+      "合併一個拉取請求"
+    ]
+  },
+  "saved-prompts": {
+    "en": [
+      "create-a-prompt",
+      "run-a-prompt-in-a-chat",
+      "manage-the-list",
+      "turn-a-prompt-into-a-skill"
+    ],
+    "es": [
+      "crear-un-prompt",
+      "ejecutar-un-prompt-en-un-chat",
+      "gestionar-la-lista",
+      "convertir-un-prompt-en-una-habilidad"
+    ],
+    "fr": [
+      "créer-un-prompt",
+      "exécuter-un-prompt-dans-un-chat",
+      "gérer-la-liste",
+      "transformer-un-prompt-en-compétence"
+    ],
+    "de": [
+      "ein-prompt-erstellen",
+      "ein-prompt-in-einem-chat-ausführen",
+      "verwalten-sie-die-liste",
+      "eine-anweisung-in-eine-fähigkeit-umwandeln"
+    ],
+    "pt": [
+      "crie-um-prompt",
+      "executar-um-prompt-em-uma-conversa",
+      "gerenciar-a-lista",
+      "transforme-um-prompt-em-uma-habilidade"
+    ],
+    "it": [
+      "crea-un-prompt",
+      "esegui-un-prompt-in-un-chat",
+      "gestisci-lelenco",
+      "converti-un-prompt-in-una-skill"
+    ],
+    "ja": [
+      "dream-でプロンプトを作成する",
+      "チャットでプロンプトを実行する",
+      "リストを管理する",
+      "プロンプトをスキルに変換する"
+    ],
+    "ko": [
+      "드림-ide를-사용하여-프롬프트를-생성하세요",
+      "채팅에서-프롬프트를-실행합니다",
+      "목록을-관리하세요",
+      "프롬프트를-기술로-변환하기"
+    ],
+    "vi": [
+      "tạo-một-prompt",
+      "chạy-một-prompt-trong-cuộc-trò-chuyện",
+      "quản-lý-danh-sách",
+      "chuyển-một-lời-kêu-gọi-thành-một-kỹ-năng"
+    ],
+    "zh-Hans": [
+      "创建一个提示",
+      "在聊天中运行一个提示",
+      "管理列表",
+      "将一个提示词转化为一个技能"
+    ],
+    "zh-Hant": [
+      "建立一個提示",
+      "在聊天中執行一個提示",
+      "管理列表",
+      "將一個提示詞轉化為一個技能"
+    ]
+  },
+  "settings": {
+    "en": [
+      "general",
+      "chat-messages",
+      "models",
+      "providers",
+      "prompts-skills-and-mcp-servers",
+      "archived-chats",
+      "controls-outside-settings"
+    ],
+    "es": [
+      "general",
+      "mensajes-de-chat",
+      "modelos",
+      "proveedores",
+      "prompts-habilidades-y-servidores-mcp",
+      "chats-archivados",
+      "controles-fuera-de-configuración"
+    ],
+    "fr": [
+      "général",
+      "messages-de-chat",
+      "modèles",
+      "fournisseurs",
+      "prompts-compétences-et-serveurs-mcp",
+      "chats-archivés",
+      "contrôles-en-dehors-des-paramètres"
+    ],
+    "de": [
+      "allgemein",
+      "chatnachrichten",
+      "modelle",
+      "anbieter",
+      "prompts-fähigkeiten-und-mcp-server",
+      "archivierte-chats",
+      "steuerung-außerhalb-von-einstellungen"
+    ],
+    "pt": [
+      "geral",
+      "mensagens-de-chat",
+      "modelos",
+      "provedores",
+      "prompts-habilidades-e-servidores-mcp",
+      "chats-arquivados",
+      "controles-fora-das-configurações"
+    ],
+    "it": [
+      "generale",
+      "messaggi-chat",
+      "modelli",
+      "provider",
+      "prompti-competenze-e-server-mcp",
+      "chat-archiviate",
+      "controlli-esterni-alle-impostazioni"
+    ],
+    "ja": [
+      "一般",
+      "チャットメッセージ",
+      "モデル",
+      "プロバイダー",
+      "プロンプトスキルおよびmcpサーバー",
+      "アーカイブ済みチャット",
+      "settings以外のコントロール"
+    ],
+    "ko": [
+      "일반",
+      "채팅-메시지",
+      "모델",
+      "제공자",
+      "프롬프트-기술-및-mcp-서버",
+      "보관된-채팅",
+      "설정-외의-제어-기능"
+    ],
+    "vi": [
+      "chung",
+      "tin-nhắn-chat",
+      "mô-hình",
+      "nhà-cung-cấp",
+      "các-gợi-ý-kỹ-năng-và-máy-chủ-mcp",
+      "chat-đã-lưu-trữ",
+      "điều-khiển-bên-ngoài-cài-đặt"
+    ],
+    "zh-Hans": [
+      "通用",
+      "聊天消息",
+      "模型",
+      "提供商",
+      "提示词技能和-mcp-服务器",
+      "已归档聊天",
+      "设置之外的控件"
+    ],
+    "zh-Hant": [
+      "一般",
+      "聊天訊息",
+      "模型",
+      "提供者",
+      "提示詞技能和-mcp-伺服器",
+      "已封存聊天",
+      "設定之外的控制元件"
+    ]
+  },
+  "skills": {
+    "en": [
+      "use-a-skill-in-a-chat",
+      "browse-and-preview-skills",
+      "enable-or-disable-a-skill",
+      "create-a-skill",
+      "if-a-skill-is-missing"
+    ],
+    "es": [
+      "usar-una-habilidad-en-un-chat",
+      "explorar-y-previsualizar-habilidades",
+      "habilitar-o-deshabilitar-una-habilidad",
+      "crear-una-habilidad",
+      "si-una-habilidad-está-faltando"
+    ],
+    "fr": [
+      "utiliser-une-compétence-dans-un-chat",
+      "parcourir-et-prévisualiser-les-compétences",
+      "activer-ou-désactiver-une-compétence",
+      "créer-une-compétence",
+      "si-une-compétence-est-manquante"
+    ],
+    "de": [
+      "eine-fähigkeit-in-einem-chat-verwenden",
+      "fahren-und-vorschau-von-fähigkeiten",
+      "eine-fähigkeit-aktivieren-oder-deaktivieren",
+      "eine-fähigkeit-erstellen",
+      "wenn-eine-fähigkeit-fehlt"
+    ],
+    "pt": [
+      "use-uma-habilidade-em-um-chat",
+      "navegue-e-visualize-habilidades",
+      "habilitar-ou-desabilitar-uma-habilidade",
+      "criar-uma-habilidade",
+      "se-uma-habilidade-estiver-faltando"
+    ],
+    "it": [
+      "usare-una-competenza-in-un-chat",
+      "esplora-e-visualizza-le-competenze",
+      "abilita-o-disabilita-una-competenza",
+      "crea-una-skill",
+      "se-una-competenza-manca"
+    ],
+    "ja": [
+      "チャットでスキルを使用する",
+      "スキルを検索およびプレビュー",
+      "スキルを有効にするか無効にする",
+      "スキルを作成する",
+      "スキルが不足している場合"
+    ],
+    "ko": [
+      "채팅에서-기술을-사용하기",
+      "스킬을-탐색하고-미리보기",
+      "스킬을-활성화하거나-비활성화합니다",
+      "스킬을-만드세요",
+      "기술이-누락된-경우"
+    ],
+    "vi": [
+      "sử-dụng-một-kỹ-năng-trong-cuộc-trò-chuyện",
+      "khám-phá-và-xem-trước-kỹ-năng",
+      "bật-hoặc-tắt-một-kỹ-năng",
+      "tạo-một-kỹ-năng",
+      "nếu-một-kỹ-năng-bị-thiếu"
+    ],
+    "zh-Hans": [
+      "在聊天中使用一个技能",
+      "浏览和预览技能",
+      "启用或禁用一个技能",
+      "创建一个技能",
+      "如果某个技能缺失"
+    ],
+    "zh-Hant": [
+      "在聊天中使用一個技能",
+      "瀏覽和預覽技能",
+      "啟用或禁用一個技能",
+      "建立一個技能",
+      "如果某個技能缺失"
+    ]
+  },
+  "stash": {
+    "en": [
+      "save-a-task-for-later",
+      "edit-a-saved-prompt",
+      "run-a-saved-task",
+      "remove-a-saved-task"
+    ],
+    "es": [
+      "guardar-una-tarea-para-más-tarde",
+      "editar-un-prompt-guardado",
+      "ejecutar-una-tarea-guardada",
+      "eliminar-una-tarea-guardada"
+    ],
+    "fr": [
+      "enregistrer-une-tâche-pour-plus-tard",
+      "modifier-un-prompt-enregistré",
+      "exécuter-une-tâche-enregistrée",
+      "supprimer-une-tâche-enregistrée"
+    ],
+    "de": [
+      "eine-aufgabe-für-später-speichern",
+      "ein-gespeichertes-prompt-bearbeiten",
+      "eine-gespeicherte-aufgabe-ausführen",
+      "eine-gespeicherte-aufgabe-entfernen"
+    ],
+    "pt": [
+      "salvar-uma-tarefa-para-depois",
+      "editar-um-prompt-salvo",
+      "executar-uma-tarefa-salva",
+      "remover-uma-tarefa-salva"
+    ],
+    "it": [
+      "salva-un-compito-per-più-tardi",
+      "modifica-un-prompt-salvato",
+      "esegui-un-compito-salvato",
+      "elimina-un-compito-salvato"
+    ],
+    "ja": [
+      "後でタスクを保存する",
+      "保存されたプロンプトを編集する",
+      "保存されたタスクを実行する",
+      "保存されたタスクを削除する"
+    ],
+    "ko": [
+      "후에-작업을-저장하기",
+      "저장된-프롬프트를-편집하세요",
+      "저장된-작업-실행",
+      "저장된-작업-제거"
+    ],
+    "vi": [
+      "lưu-một-nhiệm-vụ-để-sau-này",
+      "chỉnh-sửa-một-mẫu-câu-đã-lưu",
+      "chạy-một-nhiệm-vụ-đã-lưu-trữ",
+      "xóa-một-nhiệm-vụ-đã-lưu"
+    ],
+    "zh-Hans": [
+      "为以后保存一个任务",
+      "编辑已保存的提示",
+      "运行已保存的任务",
+      "删除已保存的任务"
+    ],
+    "zh-Hant": [
+      "為以後儲存一個任務",
+      "編輯已儲存的提示",
+      "執行已儲存的任務",
+      "刪除已儲存的任務"
+    ]
+  },
+  "terminals": {
+    "en": [
+      "run-commands-alongside-a-chat",
+      "manage-terminal-sessions",
+      "choose-a-shell",
+      "continue-a-claude-chat-in-a-terminal"
+    ],
+    "es": [
+      "ejecutar-comandos-junto-a-una-conversación",
+      "gestionar-sesiones-de-terminal",
+      "elige-una-shell",
+      "continuar-una-conversación-con-claude-en-un-terminal"
+    ],
+    "fr": [
+      "exécuter-des-commandes-en-parallèle-avec-un-chat",
+      "gérer-des-sessions-de-terminal",
+      "choisir-un-shell",
+      "continuer-une-conversation-avec-claude-dans-un-terminal"
+    ],
+    "de": [
+      "befehle-neben-einem-chat-ausführen",
+      "terminal-sessions-verwalten",
+      "ein-shell-wählen",
+      "eine-claude-chatsitzung-im-terminal-fortsetzen"
+    ],
+    "pt": [
+      "execute-comandos-ao-lado-de-uma-conversa",
+      "gerenciar-sessões-de-terminal",
+      "escolha-uma-shell",
+      "continuar-uma-conversa-com-o-claude-em-um-terminal"
+    ],
+    "it": [
+      "eseguire-comandi-in-parallelo-a-una-chat",
+      "gestisci-le-sessioni-del-terminale",
+      "scegli-una-shell",
+      "continuare-un-chat-claude-in-un-terminale"
+    ],
+    "ja": [
+      "チャットを実行しながらコマンドを実行する",
+      "ターミナルセッションを管理する",
+      "シェルを選択する",
+      "dream-ide-で-claude-チャットをターミナルで継続する"
+    ],
+    "ko": [
+      "채팅을-함께-실행할-수-있는-명령어-실행",
+      "터미널-세션을-관리하세요",
+      "셸을-선택하세요",
+      "터미널에서-클라우드-채팅을-계속하기"
+    ],
+    "vi": [
+      "chạy-lệnh-cùng-với-cuộc-trò-chuyện",
+      "quản-lý-các-phiên-bản-terminal",
+      "chọn-một-shell",
+      "tiếp-tục-cuộc-trò-chuyện-claude-trong-một-terminal"
+    ],
+    "zh-Hans": [
+      "在聊天的同时运行命令",
+      "管理终端会话",
+      "选择一个-shell",
+      "在终端中继续一个-claude-聊天记录"
+    ],
+    "zh-Hant": [
+      "在聊天的同時執行命令",
+      "管理終端會話",
+      "選擇一個-shell",
+      "在終端中繼續一個-claude-聊天記錄"
+    ]
+  },
+  "troubleshooting": {
+    "en": [
+      "a-provider-cli-is-not-detected",
+      "a-model-is-missing-or-i-cannot-start-a-chat",
+      "effort-or-speed-controls-are-missing",
+      "i-cannot-find-a-chat",
+      "a-restored-chat-was-archived-again",
+      "branching-is-unavailable",
+      "a-reply-has-no-view-file-changes-control",
+      "i-cannot-send-diff-or-element-feedback",
+      "continue-in-terminal-is-missing",
+      "a-terminal-fails-to-open",
+      "a-browser-preview-is-blank-or-stale",
+      "a-file-cannot-be-saved",
+      "git-actions-fail"
+    ],
+    "es": [
+      "no-se-detectó-un-cli-de-proveedor",
+      "un-modelo-está-faltando-o-no-puedo-iniciar-una-conversación",
+      "faltan-controles-de-esfuerzo-o-velocidad",
+      "no-puedo-encontrar-un-chat",
+      "un-chat-restaurado-fue-archivado-nuevamente",
+      "el-ramificación-no-está-disponible",
+      "una-respuesta-no-tiene-control-de-cambios-de-archivo-de-vista",
+      "no-puedo-enviar-dif-o-retroalimentación-de-elemento",
+      "continuar-en-terminal-está-faltando",
+      "un-terminal-falla-al-abrirse",
+      "una-vista-previa-de-navegador-está-en-blanco-o-desactualizada",
+      "un-archivo-no-puede-guardarse",
+      "los-acciones-de-git-fallan"
+    ],
+    "fr": [
+      "aucun-cli-fourni-nest-détecté",
+      "un-modèle-est-manquant-ou-je-ne-peux-pas-démarrer-une-conversation",
+      "les-commandes-de-contrôle-de-leffort-ou-de-la-vitesse-manquent",
+      "je-ne-peux-pas-trouver-un-chat",
+      "un-échange-restauré-a-été-archivé-à-nouveau",
+      "le-branching-nest-pas-disponible",
+      "une-réponse-na-pas-de-contrôle-sur-les-modifications-du-fichier-view",
+      "je-ne-peux-pas-envoyer-de-diff-ou-des-retours-sur-lélément",
+      "continue-dans-le-terminal-est-manquant",
+      "un-terminal-échoue-à-souvrir",
+      "une-prévisualisation-de-navigateur-est-vide-ou-obsolète",
+      "un-fichier-ne-peut-pas-être-sauvé",
+      "les-actions-git-échouent"
+    ],
+    "de": [
+      "ein-provider-cli-wird-nicht-erkannt",
+      "ein-modell-ist-fehlend-oder-ich-kann-keinen-chat-starten",
+      "aufwand--oder-geschwindigkeitssteuerungen-fehlen",
+      "ich-kann-keinen-chat-finden",
+      "ein-wiederhergestellter-chat-wurde-erneut-archiviert",
+      "branching-ist-nicht-verfügbar",
+      "eine-antwort-verfügt-über-keine-kontrolle-für-dateiänderungen-im-view-datei",
+      "ich-kann-keinen-diff-oder-element-feedback-senden",
+      "fortsetzen-im-terminal-ist-fehlend",
+      "ein-terminal-öffnet-sich-nicht",
+      "ein-browser-vorschau-ist-leer-oder-veraltet",
+      "eine-datei-kann-nicht-gespeichert-werden",
+      "git-aktionen-scheitern"
+    ],
+    "pt": [
+      "um-cli-de-fornecedor-não-foi-detectado",
+      "um-modelo-está-faltando-ou-eu-não-consigo-iniciar-uma-conversa",
+      "controles-de-esforço-ou-velocidade-estão-faltando",
+      "eu-não-consigo-encontrar-uma-conversa",
+      "um-chat-restaurado-foi-arquivado-novamente",
+      "branching-não-está-disponível",
+      "uma-resposta-não-possui-controle-de-alterações-no-arquivo-view",
+      "eu-não-consigo-enviar-diff-ou-feedback-de-elemento",
+      "continuar-no-terminal-está-faltando",
+      "um-terminal-falha-ao-abrir",
+      "a-prévia-no-navegador-está-em-branco-ou-desatualizada",
+      "um-arquivo-não-pode-ser-salvo",
+      "ações-do-git-falham"
+    ],
+    "it": [
+      "non-è-stato-rilevato-un-provider-cli",
+      "un-modello-manca-o-non-posso-avviare-una-chat",
+      "manca-il-controllo-sforzo-o-velocità",
+      "non-riesco-a-trovare-un-chat",
+      "un-chat-ripristinato-è-stato-nuovamente-archiviato",
+      "il-branching-non-è-disponibile",
+      "una-risposta-non-ha-il-controllo-delle-modifiche-del-file-view",
+      "non-posso-inviare-differenziali-o-feedback-sullelemento",
+      "continuare-nel-terminale-è-mancante",
+      "un-terminale-non-riesce-ad-aprire",
+      "una-anteprima-nel-browser-è-vuota-o-fuori-data",
+      "un-file-non-può-essere-salvato",
+      "i-operazioni-di-git-falliscono"
+    ],
+    "ja": [
+      "provider-cli-が検出されませんでした",
+      "モデルが存在しないかチャットを開始できません",
+      "推論強度またはスピードコントロールがありません",
+      "チャットを見つけることができません",
+      "復元されたチャットが再びアーカイブされた",
+      "ブランチの作成は利用できません",
+      "返信にはviewファイル変更の制御機能がありません",
+      "差分や要素のフィードバックを送信できません",
+      "terminalでの継続は欠けている",
+      "ターミナルが開けない",
+      "ブラウザプレビューは空か古くなっている",
+      "ファイルを保存できません",
+      "gitアクションが失敗します"
+    ],
+    "ko": [
+      "프로바이더-cli가-감지되지-않았습니다",
+      "모델이-없거나-대화를-시작할-수-없습니다",
+      "추론-강도-또는-속도-제어-기능이-누락되었습니다",
+      "채팅을-찾을-수-없습니다",
+      "복원된-채팅이-다시-아카이브됨",
+      "브랜치는-사용할-수-없습니다",
+      "반응에는-view-파일-변경-제어가-없습니다",
+      "다이프나-요소-피드백을-보낼-수-없습니다",
+      "터미널에서-계속하기는-누락됨",
+      "터미널이-열리지-않는다",
+      "브라우저-미리보기는-빈-상태이거나-오래된-상태입니다",
+      "파일을-저장할-수-없습니다",
+      "git-작업이-실패합니다"
+    ],
+    "vi": [
+      "không-phát-hiện-được-cli-nhà-cung-cấp",
+      "một-mô-hình-đang-bị-thiếu-hoặc-tôi-không-thể-bắt-đầu-một-cuộc-trò-chuyện",
+      "các-điều-khiển-mức-suy-luận-hoặc-tốc-độ-bị-thiếu",
+      "tôi-không-thể-tìm-thấy-một-cuộc-trò-chuyện",
+      "một-cuộc-trò-chuyện-đã-được-khôi-phục-lại-được-lưu-trữ-lại",
+      "chuyển-nhánh-không-khả-dụng",
+      "một-phản-hồi-không-có-chức-năng-kiểm-soát-thay-đổi-tệp-view",
+      "tôi-không-thể-gửi-diff-hoặc-phản-hồi-phần-tử",
+      "tiếp-tục-trong-terminal-bị-thiếu",
+      "một-terminal-không-thể-mở-được",
+      "xem-trước-trình-duyệt-là-trống-hoặc-lỗi-thời",
+      "một-tệp-không-thể-được-lưu-trữ",
+      "tác-vụ-git-thất-bại"
+    ],
+    "zh-Hans": [
+      "未检测到提供商-cli",
+      "模型缺失或我无法开始聊天",
+      "推理强度或速度控制缺失",
+      "我找不到聊天功能",
+      "一个已恢复的聊天记录又被归档了",
+      "分支功能不可用",
+      "一个回复没有查看文件更改控制功能",
+      "我无法发送差异或元素反馈",
+      "在终端中继续缺失",
+      "终端无法打开",
+      "浏览器预览为空或过时",
+      "无法保存文件",
+      "git-操作失败"
+    ],
+    "zh-Hant": [
+      "未檢測到供應商-cli",
+      "模型缺失或我無法開始聊天",
+      "推理強度或速度控制缺失",
+      "我找不到聊天功能",
+      "一個已恢復的聊天記錄又被歸檔了",
+      "分支功能不可用",
+      "一個回覆沒有檢視檔案更改控制功能",
+      "我無法傳送差異或元素回饋",
+      "在終端中繼續缺失",
+      "終端無法開啟",
+      "瀏覽器預覽為空或過時",
+      "無法儲存檔案",
+      "git-操作失敗"
+    ]
+  },
+  "workspace": {
+    "en": [
+      "add-and-switch-projects",
+      "rename-or-open-a-project-externally",
+      "go-back-to-a-previous-chat",
+      "close-and-reopen-a-project",
+      "find-the-workspace-controls",
+      "arrange-chats-and-panels",
+      "capture-the-dream-window"
+    ],
+    "es": [
+      "agregar-y-cambiar-de-proyecto",
+      "renombrar-o-abrir-un-proyecto-externamente",
+      "vuelve-a-una-conversación-anterior",
+      "cerrar-y-volver-a-abrir-un-proyecto",
+      "buscar-los-controles-del-espacio-de-trabajo",
+      "organice-conversaciones-y-paneles",
+      "capturar-la-ventana-de-dream"
+    ],
+    "fr": [
+      "ajouter-et-changer-de-projet",
+      "renommer-ou-ouvrir-un-projet-externement",
+      "retourner-à-un-échange-antérieur",
+      "fermer-et-réouvrir-un-projet",
+      "rechercher-les-contrôles-du-workspace",
+      "organiser-les-discussions-et-les-panneaux",
+      "capturer-la-fenêtre-dream"
+    ],
+    "de": [
+      "projekte-hinzufügen-und-wechseln",
+      "projekt-außerhalb-neu-benennen-oder-öffnen",
+      "zurück-zu-einem-früheren-chat",
+      "ein-projekt-schließen-und-erneut-öffnen",
+      "das-workspace-steuerungselemente-suchen",
+      "verwalten-von-chats-und-panels",
+      "das-dream-fenster-erfassen"
+    ],
+    "pt": [
+      "adicionar-e-alternar-projetos",
+      "renomeie-ou-abra-um-projeto-externamente",
+      "voltar-para-uma-conversa-anterior",
+      "fechar-e-reabrir-um-projeto",
+      "localize-os-controles-do-workspace",
+      "organizar-conversas-e-painéis",
+      "capturar-a-janela-do-dream"
+    ],
+    "it": [
+      "aggiungi-e-passa-ai-progetti",
+      "rinominare-o-aprire-un-progetto-esternamente",
+      "torna-indietro-a-una-conversazione-precedente",
+      "chiudi-e-riapri-un-progetto",
+      "cerca-i-controlli-del-workspace",
+      "organizza-chat-e-paneli",
+      "cattura-la-finestra-dream"
+    ],
+    "ja": [
+      "プロジェクトを追加し切り替えます",
+      "外部からプロジェクトを再命名または開く",
+      "前のチャットに戻る",
+      "プロジェクトを閉じて再開する",
+      "ワークスペースコントロールを検索する",
+      "チャットとパネルを整理する",
+      "dreamウィンドウをキャプチャする"
+    ],
+    "ko": [
+      "프로젝트-추가-및-전환",
+      "외부에서-프로젝트를-다시-이름을-지정하거나-열기",
+      "이전-채팅으로-돌아가기",
+      "프로젝트를-닫고-다시-열기",
+      "워크스페이스-컨트롤을-찾으세요",
+      "채팅과-패널을-정리하세요",
+      "dream-창을-포착합니다"
+    ],
+    "vi": [
+      "thêm-và-chuyển-đổi-dự-án",
+      "đổi-tên-hoặc-mở-dự-án-bên-ngoài",
+      "quay-lại-cuộc-trò-chuyện-trước-đó",
+      "đóng-và-mở-lại-một-dự-án",
+      "tìm-các-nút-điều-khiển-không-gian-làm-việc",
+      "sắp-xếp-các-cuộc-trò-chuyện-và-các-bảng-điều-khiển",
+      "lấy-cửa-sổ-dream"
+    ],
+    "zh-Hans": [
+      "添加和切换项目",
+      "在外部重命名或打开项目",
+      "后退到之前的聊天",
+      "关闭并重新打开项目",
+      "查找工作区控件",
+      "整理聊天记录和面板",
+      "捕获-dream-窗口"
+    ],
+    "zh-Hant": [
+      "新增和切換專案",
+      "在外部重新命名或開啟專案",
+      "後退到之前的聊天",
+      "關閉並重新開啟專案",
+      "查詢工作區控制元件",
+      "整理聊天記錄和麵板",
+      "捕獲-dream-視窗"
+    ]
+  },
+  "worktrees": {
+    "en": [
+      "create-a-worktree",
+      "carry-a-conversation-into-a-worktree",
+      "move-between-checkouts",
+      "complete-a-worktree",
+      "when-an-option-is-unavailable",
+      "remove-a-worktree-from-the-parent-project"
+    ],
+    "es": [
+      "crear-un-árbol-de-trabajo",
+      "llevar-una-conversación-a-un-árbol-de-trabajo",
+      "moverse-entre-checkouts",
+      "completear-un-árbol-de-trabajo",
+      "cuando-una-opción-no-está-disponible",
+      "eliminar-un-árbol-de-trabajo-del-proyecto-padre"
+    ],
+    "fr": [
+      "créer-un-arbre-de-travail",
+      "apporter-une-conversation-dans-un-arbre-de-travail",
+      "passer-dun-checkout-à-un-autre",
+      "compléter-un-arbre-de-travail",
+      "lorsquune-option-nest-pas-disponible",
+      "supprimer-un-arbre-de-travail-du-projet-parent"
+    ],
+    "de": [
+      "ein-worktree-erstellen",
+      "eine-konversation-in-ein-worktree-übertragen",
+      "zwischen-checkouts-wechseln",
+      "ein-worktree-abschließen",
+      "wenn-eine-option-nicht-verfügbar-ist",
+      "ein-worktree-aus-dem-elternprojekt-entfernen"
+    ],
+    "pt": [
+      "crie-uma-árvore-de-trabalho",
+      "leve-a-conversa-para-uma-árvore-de-trabalho",
+      "mover-entre-checkouts",
+      "conclua-a-árvore-de-trabalho",
+      "quando-uma-opção-não-estiver-disponível",
+      "remova-uma-árvore-de-trabalho-do-projeto-pai"
+    ],
+    "it": [
+      "crea-un-worktree",
+      "portare-una-conversazione-in-un-worktree",
+      "passare-tra-i-checkouts",
+      "completa-un-worktree",
+      "quando-unopzione-non-è-disponibile",
+      "elimina-un-worktree-dal-progetto-padre"
+    ],
+    "ja": [
+      "ワークツリーを作成する",
+      "会話をワークツリーに持ち込む",
+      "チェックアウト間を移動する",
+      "ワークツリーを完了する",
+      "オプションが利用できない場合",
+      "親プロジェクトからワークツリーを削除する"
+    ],
+    "ko": [
+      "워크트리-생성",
+      "대화를-워크트리로-이어가기",
+      "체크아웃-간-이동",
+      "워크트리를-완료합니다",
+      "옵션을-사용할-수-없을-때",
+      "부모-프로젝트에서-워크트리를-제거합니다"
+    ],
+    "vi": [
+      "tạo-một-worktree",
+      "đưa-một-cuộc-trò-chuyện-vào-một-worktree",
+      "chuyển-đổi-giữa-các-bản-sao",
+      "hoàn-thành-một-worktree",
+      "khi-một-tùy-chọn-không-khả-dụng",
+      "xóa-một-worktree-khỏi-dự-án-cha"
+    ],
+    "zh-Hans": [
+      "创建一个工作树",
+      "将对话携带进一个工作树",
+      "在不同检出版本之间切换",
+      "完成一个工作树",
+      "当某个选项不可用时",
+      "从父项目中移除一个工作树"
+    ],
+    "zh-Hant": [
+      "建立一個工作樹",
+      "將對話攜帶進一個工作樹",
+      "在不同檢出版本之間切換",
+      "完成一個工作樹",
+      "當某個選項不可用時",
+      "從父專案中移除一個工作樹"
+    ]
+  }
+}

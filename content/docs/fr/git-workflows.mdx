@@ -1,0 +1,126 @@
+---
+title: "Flux de travail Git"
+description: "Revoir les modifications, travailler avec des branches et utiliser les Worktrees Git dans Dream."
+---
+
+Les outils Git de Dream sont disponibles lorsque le dossier du projet est un dépôt Git. Utilisez **Modifications** dans la barre d'outils de droite pour inspecter les fichiers et **Ouvrir les actions Git** pour commiter, pousser ou créer une demande de fusion.
+
+## Avant de commencer
+
+Pour les commits, votre référentiel a besoin d'une identité Git author configurée. Pour les pushes, il faut un remote et des identifiants permettant d'y accéder. La création de pull request utilise GitHub CLI, qui doit être installé et authentifié pour le référentiel de destination.
+
+Vous pouvez taper vous-mêmes les messages de commit et le texte de demande de modification. Pour les générer, activez un modèle fourni et choisissez **Paramètres → Général → Modèles → Modèle de génération de texte**.
+
+## Revoir les modifications
+
+1. Ouvrir **Modifications** pour inspecter les fichiers modifiés, ajoutés et supprimés.
+2. Développer un fichier pour examiner sa différence.
+3. Choisissez **Diff unifié** ou **Diff côte à côte** dans les actions du panneau, et activez le wrap du mot s'il est utile.
+4. Utilisez **Actualiser les modifications** si les modifications effectuées en dehors de Dream n'ont pas encore été reflétées.
+
+<Frame caption="Développer les fichiers pour examiner les ajouts et suppressions avant le commit.">
+  <img
+    src="/images/docs/changes-panel.png"
+    alt="Panneau des modifications affichant les chemins des fichiers et une diff unifiée avec des ajouts en vert et des suppressions en rouge."
+    width={950}
+    height={680}
+    loading="lazy"
+  />
+</Frame>
+
+Pour des différences très grandes, Dream peut afficher **Diff trop grand pour être rendu**. Utilisez **Rendre quand même** uniquement lorsque vous souhaitez charger cette vue plus large, ou inspecter le fichier dans votre éditeur ou terminal.
+
+Utilisez l'action **Annuler les modifications du fichier** pour abandonner des modifications de travail inutiles. L'action **Annuler toutes les modifications** s'applique plus largement ; vérifiez son portée avant de confirmer. Annuler du code est indépendant de l'archivage du chat qui l'a produit. Pour annuler uniquement ce que a modifié une réponse particulière, utilisez le [point d'arrêt](/docs/fr/checkpoints) de cette réponse.
+
+Pour demander à un agent de commenter des lignes spécifiques, glissez sur les numéros de ligne dans une diff ou cliquez sur le contrôle **+** d'une ligne, puis saisissez un commentaire. Dream l'envoie avec le chemin du fichier et les lignes sélectionnées. Voir [Envoyer des retours à une conversation](/docs/fr/feedback).
+
+## Commitez votre travail
+
+1. Ouverte **Actions Git → Valider**.
+2. Revoir les modifications incluses dans le dialogue.
+3. Vérifiez **Inclure les fichiers non préparés**. Elle est activée par défaut et inclut les modifications non indexées dans le commit.
+4. Saisissez un message de commit ou utilisez **Générer automatiquement un message**, puis éditez le résultat selon vos besoins.
+5. Choisissez **Valider**, ou **Valider et pousser** si vous êtes prêt à publier le commit sur le distant.
+
+<Frame caption="Vérifiez les modifications incluses et le message avant de choisir Commit ou Commit et pousser.">
+  <img
+    src="/images/docs/commit-dialog.png"
+    alt="Dialogue de validation des modifications avec branche, comptage des modifications, inclure les modifications non indexées, et un message de commit généré."
+    width={672}
+    height={439}
+    loading="lazy"
+  />
+</Frame>
+
+Pour commiter uniquement un sous-ensemble sélectionné, stagez ces fichiers en utilisant Git dans un terminal ou un éditeur externe et désactivez **Inclure les fichiers non préparés**. Le panneau des modifications ne fournit pas de contrôles individuels de staging.
+
+Dream refuse les commits lorsque des modifications stagées se trouvent en dehors du dossier projet actif. Commitez ces modifications séparément avant de continuer avec cette action.
+
+<Warning>
+  Vérifiez les fichiers inclus ainsi que le message. Avec Include unstaged activé, un commit peut contenir du travail provenant de plusieurs conversations partageant ce checkout.
+</Warning>
+
+## Pousser une branche
+
+Ouverte **Actions Git → Pousser**, examine les commits sortants et la destination, et choisissez **Pousser**. La destination dépend de la configuration d'upstream et de remote du dépôt de la branche.
+
+<Frame caption="Vérifiez les commits de destination et les commits sortants avant de pousser.">
+  <img
+    src="/images/docs/push-dialog.png"
+    alt="Dialogue de poussée des modifications listant la branche, la destination origin/main, les comptes de dépassement et de retard, et les commits sortants."
+    width={672}
+    height={364}
+    loading="lazy"
+  />
+</Frame>
+
+Si l'envoi échoue, vérifiez l'erreur et confirmez votre accès au serveur distant. Un commit local réussi reste enregistré même si une mise à jour suivante échoue ; vérifiez l'état du branche avant de répéter une action combinée.
+
+## Créer un pull request
+
+1. Travailler sur une branche de fonctionnalité dont le nom diffère de la branche de base de la demande de modification.
+2. Ouverte **Actions Git → Créer un PR**.
+3. Examine les branches source et de base ainsi que les modifications proposées.
+4. Saisissez un titre et une description, ou utilisez **Générer automatiquement les détails du PR** et vérifiez le texte généré.
+5. Sous **Étapes suivantes**, sélectionnez l'action qui correspond à l'état du branche.
+6. Activez **Brouillon** si la demande de modification n'est pas prête pour la révision, puis soumettez-la.
+
+<Frame caption="Revoir les détails de la demande de modification et choisir l'étape suivante. Le mode « Brouillon » est désactivé dans cet exemple.">
+  <img
+    src="/images/docs/create-pr-dialog.png"
+    alt="Dialogue de création de PR avec branches source et de base, titre, description, choix de prochain pas et interrupteur Draft."
+    width={672}
+    height={680}
+    loading="lazy"
+  />
+</Frame>
+
+| Étape suivante | Qu'est-ce qui se passe |
+| --- | --- |
+| Créer une demande de fusion | Crée une demande de pull pour du travail déjà poussé |
+| Pousser et créer une demande de modification | Pousse des commits avant de créer la demande de modification |
+| Commit, pousser et créer une demande de modification | Commite les modifications en cours, effectue les pushes et crée la demande de modification |
+
+L'interface commence avec **Brouillon** désactivé. Activez-le pour créer une demande de fusion en brouillon. La création d'une demande de fusion nécessite une branche au lieu d'une pointe détachée, et source et base ne peuvent pas être la même branche.
+
+Si une action combinée échoue, certaines étapes peuvent déjà avoir été exécutées. Vérifiez la commit, la branche distante ou la demande de modification avant de réessayer.
+
+## Revoir et fusionner une demande de pull
+
+Ouvrir les **pull requests** dans la barre latérale de droite pour consulter les PR de la branche actuelle. Utilisez le **Résumé** pour afficher sa description, les vérifications et le débat, ou le **Code** pour inspecter les différences et poster des commentaires en ligne. Vous pouvez modifier le titre et la description lorsque cela est autorisé et utiliser **Fusionner** pour choisir une méthode de fusion. Consultez [Examiner les pull requests](/docs/fr/pull-requests) pour le workflow complet.
+
+## Passer ou créer des branches
+
+Ouvrir le commutateur de branche sous le chat, rechercher les branches locales et sélectionner une d'entre elles pour la sortir. Utiliser **Créer et basculer vers une nouvelle branche…** pour nommer et créer une branche. Actualiser la liste si une branche créée en dehors de Dream est manquante.
+
+<Frame caption="Le signe de vérification identifie la branche actuelle. Rechercher une autre branche ou créer une nouvelle depuis ce même menu.">
+  <img
+    src="/images/docs/branch-switcher.png"
+    alt="Afficheur de basculement de branche montrant Rechercher des branches, branche principale sélectionnée, une autre branche locale, Créer et basculer vers une nouvelle branche, et Nouvel arbre de travail."
+    width={377}
+    height={256}
+    loading="lazy"
+  />
+</Frame>
+
+Changer de branche modifie les fichiers utilisés par chaque conversation dans ce projet. Vérifiez les travaux non terminés avant de les changer. Pour des tâches parallèles avec des checkouts indépendants, utilisez [Git worktrees](/docs/fr/worktrees). Lorsqu'un worktree est terminé, son dialogue **Compléter le worktree** peut fusionner la branche dans sa base ou ouvrir une demande de fusion, puis supprimer le checkout.

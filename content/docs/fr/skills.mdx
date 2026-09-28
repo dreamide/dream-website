@@ -1,0 +1,67 @@
+---
+title: "Skills des agents"
+description: "Rechercher, appeler, apercevoir et créer des compétences pour vos agents de programmation."
+---
+
+Un compétence empaquète des instructions dans un fichier `SKILL.md`. Dream découvre des compétences pour l'agent et le projet sélectionnés en utilisant les emplacements de compétences de ce fournisseur. Le sélecteur de compétence prend en charge **Claude Code**, **Codex**, **OpenCode** et **Cursor Agent**.
+
+## Utiliser une compétence dans un chat
+
+1. Ouvrir un chat et sélectionner le modèle que vous souhaitez utiliser.
+2. Type **$** suivi d'une partie du nom d'une compétence dans la boîte de message.
+3. Choisissez une compétence dans le sélecteur et ajoutez vos instructions de tâche.
+4. Envoyer le message.
+
+Par exemple, sélectionnez une compétence `release-checklist` et demandez-lui d'examiner les modifications actuelles avant une publication. Dream affiche la compétence choisie comme mention en ligne et enregistre les compétences utilisées dans le message envoyé. Les compétences disponibles peuvent changer lorsque vous passez le fournisseur ou le projet du chat.
+
+L'appel de compétence est géré par le fournisseur sélectionné. Mentionner une compétence fournit des instructions ; elle ne modifie pas les [paramètres de permission](/docs/fr/agent-modes) du chat.
+
+## Parcourir et prévisualiser les compétences
+
+1. Ouvrir **Paramètres → Skills**.
+2. Choisir l'onglet fournisseur et le projet à inspecter.
+3. Sélectionnez une compétence pour voir sa description, sa source, son chemin et l'aide de `SKILL.md`.
+4. Utilisez **Ouvrir le dossier** pour éditer ses fichiers dans votre éditeur préféré.
+
+<Frame caption="Sélectionnez un fournisseur et un projet pour voir les compétences que l'agent peut charger, puis consultez les instructions d'une compétence.">
+  <img
+    src="/images/docs/skills-panel.png"
+    alt="Paramètres des compétences avec des onglets fournisseurs, un sélecteur de projet, une liste de compétences personnelles et l'aperçu du fichier SKILL.md sélectionné."
+    width={1016}
+    height={720}
+    loading="lazy"
+  />
+</Frame>
+
+Les compétences sont regroupées par portée, telles que **Projet**, **Personnel**, **Plugin**, **Géré** et **Intégré**, lorsque ces sources sont disponibles. Utilisez **Actualiser** après l'installation ou la modification d'une compétence si elle n'apparaît pas encore.
+
+## Activer ou désactiver une compétence
+
+Claude Code et Codex offrent des commutateurs par compétence. Ces commutateurs mettent à jour la configuration propre du fournisseur, ce qui signifie qu'ils affectent également la disponibilité des compétences en dehors de Dream. Claude Code stocke les overrides dans `~/.claude/settings.json` ; Codex les stocke via son serveur d'applications dans `~/.codex/config.toml`.
+
+OpenCode et Cursor ne proposent pas un commutateur par compétence dans Dream. Pour arrêter de charger une compétence, gérez son dossier dans les emplacements des compétences du fournisseur.
+
+## Créer une compétence
+
+1. Dans **Paramètres → Skills**, sélectionnez le projet si la compétence appartient à un.
+2. Cliquez sur **Nouveau skill**.
+3. Entrez un **Nom**, une **Description** expliquant quand l'utiliser, et des **Instructions (SKILL.md)**.
+4. Sélectionnez une ou plusieurs options **Emplacement**.
+5. Sélectionnez facultativement **Exécuter uniquement sur mention**, puis cliquez sur **Créer**.
+
+Les noms utilisent des lettres minuscules, des chiffres et des tirets, avec un maximum de 64 caractères. Dream crée un dossier avec ce nom et un fichier `SKILL.md` dans chaque emplacement choisi.
+
+| Emplacement | Utilisation prévue |
+| --- | --- |
+| Projet · `.agents/skills` | Compétences projet partagées pour Codex, OpenCode et Cursor |
+| Projet · `.claude/skills` | Compétences de projet pour Claude Code |
+| Personnel · `~/.agents/skills` | Compétences personnelles partagées pour Codex, OpenCode et Cursor |
+| Personnel · `~/.claude/skills` | Compétences personnelles pour Claude Code |
+
+Les emplacements de projet nécessitent un projet ouvert. **Exécuter uniquement sur mention** écrit la configuration `disable-model-invocation` de la compétence ; la manière dont cette configuration est appliquée dépend du fournisseur.
+
+Vous pouvez également commencer par **Enregistrer comme skill** dans [Paramètres → Prompts](/docs/fr/saved-prompts).
+
+## Si une compétence est manquante
+
+Vérifiez le fournisseur et le projet sélectionnés, actualisez la liste et lisez toute erreur de découverte affichée dans Paramètres. Assurez-vous que la compétence se trouve dans un emplacement lu par le fournisseur et qu'elle n'a pas été désactivée. Une compétence disponible pour un fournisseur n'est pas nécessairement disponible pour un autre.

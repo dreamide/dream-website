@@ -1,0 +1,63 @@
+---
+title: "File e ricerca"
+description: "Esplora i file del progetto, cerca nomi e contenuti dei file, modifica il codice e gestisci i cambiamenti non salvati."
+---
+
+Fai clic su **File** nella barra laterale destra per esplorare la cartella del progetto attivo. Apri un file dall'albero per esaminarlo insieme al tuo chat. I pannelli dei file ti permettono di passare tra diversi file aperti.
+
+## Cerca un file
+
+1. Apri **File**.
+2. Inserisci parte del nome o del percorso di un file in **Cerca file** sopra l'albero.
+3. Seleziona un risultato per aprirlo.
+4. Elimina la ricerca per tornare alla navigazione dell'albero.
+
+Usa **Aggiorna file** negli azioni dei file quando le modifiche apportate fuori da Dream non sono riflesse nell'albero. Cerca un file per localizzarne il percorso; usa la ricerca nell'editor per trovare del testo all'interno di quel file.
+
+<Frame caption="Cerca o esplora l'albero dei file, poi apri un file accanto al tuo chat.">
+  <img
+    src="/images/docs/files-panel.png"
+    alt="Panello dei File con Cerca file sopra l'albero cartelle e app-error-boundary.tsx aperto nell'editor."
+    width={950}
+    height={610}
+    loading="lazy"
+  />
+</Frame>
+
+## Cerca e sostituisci all'interno di un file
+
+1. Apri il file e clicca **Cerca nel file corrente** nell'area di editing.
+2. Inserisci il testo in **Cerca**.
+3. Usa **Corrispondenza successiva** o **Corrispondenza precedente** per spostarti tra i risultati.
+4. Abilita **Distingui maiuscole e minuscole**, **Solo parole intere**, o **Usa espressione regolare** se necessario.
+
+Il pannello di ricerca offre anche controlli di sostituzione. Verifica le corrispondenze prima di utilizzare **Sostituisci tutto**, quindi salva il file per scrivere le modifiche sul disco. La sostituzione riguarda il file corrente.
+
+## Modifica e salva
+
+Modifica un file di testo scrivibile nell'editor di codice. I cambiamenti non salvati sono segnalati nel suo scheda, e il pannello può indicare quante file hanno bozze non salvate.
+
+Fai clic su **Salva** nel pannello degli strumenti dell'editor, oppure premi **Command+S** su macOS o **Ctrl+S** su Windows/Linux quando l'editor è in focus. Salva ogni file modificato prima di chiedere a un agente o a un comando terminale di utilizzare i nuovi contenuti; questi strumenti leggono i file sul disco.
+
+Passare tra le schede dei file ti permette di mantenere bozze mentre esplori altri file. Usa **Abbandona modifiche** per abbandonare una bozza locale. Questo è separato dal ripristino delle modifiche attraverso Git.
+
+Chiudere un'anteprima con modifiche non salvate apre un prompt **Salva / Non salvare / Annulla**. **Salva** scrive il testo in bozza e chiude l'anteprima, **Non salvare** getta via il testo in bozza e la chiude, mentre **Annulla** mantiene l'anteprima aperta. Se il salvataggio fallisce o si verifica un conflitto con una modifica esterna, il file rimane aperto in modo da poter risolvere il problema.
+
+## Gestire un file modificato esternamente all'editor
+
+Un agente, un comando terminale o un editor esterno può modificare lo stesso file mentre hai un bozzolo. Dream controlla il contenuto del disco durante il salvataggio e segnala un conflitto piuttosto che sovrascrivere silenziosamente quella versione più recente.
+
+1. Preserva qualsiasi testo in fase di stesura che vuoi mantenere.
+2. Leggi il messaggio di conflitto.
+3. Usa **Ricarica dal disco** per caricare il file corrente.
+4. Ripropri le modifiche che ancora devi applicare, poi salva di nuovo.
+
+<Warning>
+  Ricarica dal disco sostituisce il tuo draft locale. Copia qualsiasi lavoro non salvato che necessiti prima di usarlo.
+</Warning>
+
+## Regola la vista
+
+Usa **Abilita ritorno a capo** per linee lunghe. Ridimensiona il pannello albero file e i pannelli editor per dare più spazio al contenuto. Usa le azioni disponibili **Apri in** per continuare in un editor esterno.
+
+Dopo aver salvato, apri [Modifiche](/docs/it/git-workflows) per visualizzare il diff di Git. Per chiedere a un agente riguardo a un file, [riferiscine con @](/docs/it/providing-context) nel compositore della chat.

@@ -1,0 +1,74 @@
+---
+title: "Xem trước trong trình duyệt"
+description: "Xem trước một ứng dụng cục bộ, quản lý các tab trình duyệt và kiểm tra các trang trong Dream."
+---
+
+Chrome của Dream mở các trang web bên cạnh dự án và trò chuyện. Sử dụng nó để kiểm tra một ứng dụng cục bộ trong khi một agent đang làm việc với mã nguồn của nó.
+
+## Xem trước ứng dụng của bạn
+
+1. Bắt đầu ứng dụng bằng lệnh dự án thông thường của nó trong một [terminal](/docs/vi/terminals).
+2. Sao chép URL cục bộ được in ra bởi ứng dụng, bao gồm cổng của nó.
+3. Nhấn vào **Trình duyệt** trong thanh công cụ bên phải.
+4. Nhập URL vào thanh địa chỉ và nhấn **Enter**.
+
+Trang được mở trong không gian làm việc. Nếu ứng dụng sử dụng cổng khác trong lần chạy tiếp theo, hãy cập nhật địa chỉ tương ứng. Browser của Dream mở URL này; nó không khởi động ứng dụng.
+
+<Frame caption="Nhập một URL vào thanh địa chỉ để xem trang trong Dream.">
+  <img
+    src="/images/docs/browser-panel.png"
+    alt="Trình duyệt của Dream với tab trang, thanh địa chỉ, các nút điều hướng và trang tải xuống của Dream."
+    width={1099}
+    height={480}
+    loading="lazy"
+  />
+</Frame>
+
+## Sử dụng các tab trình duyệt
+
+Nhấn **Tab mới** để mở trang khác và chọn tab để chuyển đến nó. Điều này hữu ích khi muốn giữ hai đường dẫn hiện tại trong lịch sử duyệt web mà không thay thế một đường dẫn bằng đường dẫn kia.
+
+Sử dụng **Quay lại**, **Tiến** và **Làm mới trình duyệt** để di chuyển. Đóng một tab riêng biệt bằng nút đóng của nó. Ẩn thanh trình duyệt sẽ giúp bạn quay lại các tab đang mở sau này.
+
+## Kiểm tra và chia sẻ những gì bạn thấy
+
+Các hành động trình duyệt bao gồm:
+
+| Hành động | Sử dụng nó để… |
+| --- | --- |
+| Mở DevTools | Kiểm tra console, các thành phần và hoạt động mạng của trang web |
+| Chụp màn hình | Lấy trang web để báo lỗi hoặc thảo luận thêm |
+| Kéo gần / Kéo ra / Đặt lại mức phóng to | Điều chỉnh tỷ lệ hiển thị của bản xem trước |
+| Mở trong trình duyệt hệ thống | Xem URL hiện tại trong trình duyệt thông thường của bạn |
+
+Sử dụng **Mở rộng trình duyệt** khi bạn cần không gian hơn và **Thu gọn trình duyệt** để quay lại chế độ nhỏ. Để cho agent một hình ảnh chụp màn hình toàn trang, hãy sử dụng điều khiển [phụ lục](/docs/vi/providing-context) trong cuộc trò chuyện.
+
+## Gửi một phần tử vào cuộc trò chuyện
+
+1. Nhấn vào **Chọn một phần tử để gửi tới cuộc trò chuyện** trong thanh công cụ trình duyệt.
+2. Chạm vào trang để xác định các phần tử, sau đó nhấp vào phần bạn muốn thảo luận. Nhấn **Escape** để hủy bỏ.
+3. Viết một bình luận trong dạng **Gửi tới cuộc trò chuyện**, bật **Cuộc trò chuyện mới** nếu bạn muốn một cuộc trò chuyện riêng biệt, rồi gửi nó.
+
+Dream gửi bình luận của bạn cùng với lựa chọn phần tử, kích thước, nội dung, phong cách, HTML và một hình ảnh màn hình của phần tử, để agent có thể tìm thấy nó trong mã. Xem [Gửi phản hồi đến cuộc trò chuyện](/docs/vi/feedback) để biết chi tiết và giới hạn.
+
+## Yêu cầu một người dùng sử dụng trình duyệt
+
+Claude Code, Codex, OpenCode và Grok Build các cuộc trò chuyện nhận công cụ cho trình duyệt của Dream tự động. Chúng hoạt động cùng với các tab trình duyệt dự án mà bạn thấy. Các cuộc trò chuyện của Cursor không nhận được các công cụ này.
+
+Cho agent địa chỉ trang web và một nhiệm vụ cụ thể, ví dụ:
+
+> Mở http://localhost:3000/settings trong trình duyệt của Dream. Đổi giao diện, tải lại trang và kiểm tra xem lựa chọn có được giữ lại không. Nếu không, hãy kiểm tra bảng điều khiển và các yêu cầu mạng.
+
+Các công cụ có thể mở và duyệt các tab, kiểm tra nội dung trang, nhấp, nhập văn bản, di chuột, chọn các tùy chọn, cuộn, chụp màn hình và kiểm tra log console và phản hồi mạng. Chúng cũng có thể gắn các tệp từ dự án để tải lên các bộ điều khiển. Việc tải tệp phải sử dụng các đường dẫn nằm trong dự án.
+
+Bắt đầu ứng dụng trước khi yêu cầu agent kiểm tra URL cục bộ. Các hành động trình duyệt tuân theo [quyền hạn](/docs/vi/agent-modes) của cuộc trò chuyện; trả lời trong cuộc trò chuyện nếu yêu cầu phê duyệt. Các công cụ này được tích hợp sẵn và không cần định nghĩa tay [một máy chủ MCP](/docs/vi/mcp-servers).
+
+## Tải lại và xóa dữ liệu trang
+
+Thử cập nhật bình thường sau khi thay đổi mã ứng dụng. Nếu trang vẫn hiển thị lỗi thời, sử dụng **Buộc tải lại** từ các hành động trình duyệt.
+
+**Xóa bộ nhớ đệm** loại bỏ dữ liệu lưu trữ trong trình duyệt. **Xóa cookie** xóa các cookie và có thể đăng xuất bạn khỏi các trang web trong trình duyệt được nhúng. Sử dụng các hành động này một cách cẩn trọng khi điều tra hành vi lưu trữ hoặc xác thực.
+
+## Nếu một trang cục bộ không tải được
+
+Kiểm tra xem ứng dụng có đang chạy không, xác nhận URL đầy đủ và cổng trong thông tin xuất ra từ terminal, và kiểm tra bất kỳ lỗi máy chủ nào ở đó. Thử địa chỉ tương tự trong trình duyệt hệ thống của bạn để xác định xem vấn đề thuộc về ứng dụng hay phần xem trước được nhúng.

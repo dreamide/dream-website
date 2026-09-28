@@ -1,0 +1,74 @@
+---
+title: "Browser-Vorschau"
+description: "Vorabsehen einer lokalen Anwendung, Browser-Registerkarten verwalten und Seiten innerhalb von Dream inspizieren."
+---
+
+Dreams Browser öffnet Webseiten neben deinem Projekt und chatet. Verwende ihn, um eine lokale Anwendung zu inspektieren, während ein Agent an deren Code arbeitet.
+
+## Vorabsehen Sie Ihre Anwendung
+
+1. Starte die Anwendung mithilfe ihres normalen Projekttasks in einem [Terminal](/docs/de/terminals).
+2. Kopiere die lokale URL, die von der Anwendung ausgegeben wird, einschließlich ihres Ports.
+3. Klicken Sie im rechten Toolbar auf **Browser**.
+4. Geben Sie die URL in die Adressleiste ein und drücken Sie **Enter**.
+
+Die Seite öffnet sich im Arbeitsbereich. Wenn die Anwendung beim nächsten Start eine andere Portnummer verwendet, aktualisieren Sie die Adresse entsprechend. Das Browserfenster von Dream öffnet die URL; es startet die Anwendung nicht.
+
+<Frame caption="Geben Sie eine URL in die Adressleiste ein, um eine Seite innerhalb von Dream zu vorab ansehen.">
+  <img
+    src="/images/docs/browser-panel.png"
+    alt="Dreams Browser mit einer Seiten-Tab, Adressleiste, Navigationselementen und der Dream-Download-Seite."
+    width={1099}
+    height={480}
+    loading="lazy"
+  />
+</Frame>
+
+## Browser-Register verwenden
+
+Klicken Sie auf **Neuer Tab**, um eine weitere Seite zu öffnen und einen Tab auszuwählen, um zu wechseln. Damit können Sie zwei Routen in Ihrer Browsergeschichte gleichzeitig sichtbar halten, ohne eine der beiden zu ersetzen.
+
+Verwenden Sie **Zurück**, **Vorwärts** und **Browser aktualisieren**, um zu navigieren. Schließen Sie einen einzelnen Tab über das Schließen-Element. Das Verstecken des Browser-Fensters ermöglicht es Ihnen, später wieder zu den geöffneten Tabs zurückzukehren.
+
+## Inspektieren und teilen, was Sie sehen
+
+Die Browser-Aktionen umfassen:
+
+| Aktion | Verwenden Sie es, um… |
+| --- | --- |
+| DevTools öffnen | Inspektieren Sie die Konsole, Elemente und Netzwerkaktivität der Seite |
+| Screenshot aufnehmen | Seite erfassen, um einen Bugbericht oder weitere Diskussionen zu erstellen |
+| Zoom ein / Zoom aus / Zoom zurücksetzen | Die Anzeigegröße des Vorschau-Displays anpassen |
+| Im Systembrowser öffnen | Sehen Sie die aktuelle URL in Ihrem regulären Browser |
+
+Verwenden Sie **Browser erweitern**, wenn Sie mehr Platz benötigen, und **Browser einklappen**, um zur kleineren Ansicht zurückzukehren. Um einem Agenten ein Screenshot der gesamten Seite zu geben, verwenden Sie das [Anhangselement](/docs/de/providing-context) im Chat.
+
+## Ein Element an ein Chat-Verfahren senden
+
+1. Klicken Sie im Browser-Funktionsbereich auf **Element auswählen und an Chat senden**.
+2. Fahren Sie mit der Maus über die Seite, um Elemente zu markieren, klicken Sie dann auf das Element, das Sie besprechen möchten. Drücken Sie **Escape**, um abzubrechen.
+3. Geben Sie einen Kommentar im Feld **An Chat senden** ein, aktivieren Sie **Neuer Chat**, wenn Sie eine separate Konversation haben möchten, und senden Sie es.
+
+Dream sendet Ihren Kommentar zusammen mit dem Selektor, der Größe, dem Text, den Stilen, dem HTML und einem Screenshot des Elements, damit der Agent es in den Quellcode finden kann. Weitere Details und Einschränkungen finden Sie unter [Feedback an einen Chat senden](/docs/de/feedback).
+
+## Befehle einem Agenten, den Browser zu verwenden
+
+Claude Code, Codex, OpenCode und Grok erhalten bei Chats für Dream den Browserautomatisierungstool automatisch. Sie arbeiten mit dem gleichen Projektbrowser-Tab wie Sie ihn sehen. Cursor-Chats erhalten diese Tools nicht.
+
+Geben Sie dem Agenten die URL der Seite und eine konkrete Aufgabe, beispielsweise:
+
+> Öffne http://localhost:3000/settings im Browser von Dream. Ändere das Design, lade die Seite neu und prüfe, ob die Auswahl erhalten bleibt. Falls nicht, untersuche die Konsole und die Netzwerkanfragen.
+
+Die Tools können Tabs öffnen und durchlaufen, die Seiteninhalte untersuchen, klicken, eingeben, hover, Optionen auswählen, scrollen, Screenshots erstellen und Konsole-Logs sowie Netzwerkausgaben untersuchen. Sie können auch Dateien aus dem Projekt anhängen, um Upload-Steuerungen zu erstellen. Dateiuploads müssen Wege innerhalb des Projekts verwenden.
+
+Starte die Anwendung vor dem Erstellen einer Anfrage, um die lokale URL des Agents zu inspizieren. Browseraktionen folgen den [Berechtigungen](/docs/de/agent-modes) des Chats; antworte im Chat, wenn eine Zustimmung erforderlich ist. Diese Tools sind eingebaut und erfordern keine manuelle [MCP-Serverdefinition](/docs/de/mcp-servers).
+
+## Seiten-Daten neu laden und löschen
+
+Versuchen Sie einen normalen Aktualisierungsprozess nach einer Änderung des Anwendungscodes. Wenn die Seite weiterhin veraltet erscheint, verwenden Sie **Neu laden erzwingen** aus den Browser-Aktionen.
+
+**Cache leeren** entfernt die im Browser gespeicherten Daten. **Cookies löschen** löscht die Cookies und kann dazu führen, dass Sie aus den eingebetteten Browsern abgemeldet werden. Verwenden Sie diese Aktionen gezielt, wenn Sie das Verhalten von Caching oder Authentifizierung untersuchen.
+
+## Wenn eine lokale Seite nicht geladen wird
+
+Prüfen Sie, ob die Anwendung noch läuft, bestätigen Sie die vollständige URL und Port in deren Terminalausgabe und untersuchen Sie dort eventuelle Serverfehler. Probieren Sie die gleiche Adresse in Ihrem Systembrowser, um festzustellen, ob das Problem auf die Anwendung oder die eingebettete Vorschau zurückzuführen ist.

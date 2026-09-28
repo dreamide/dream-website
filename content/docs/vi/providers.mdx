@@ -1,0 +1,71 @@
+---
+title: "Kết nối nhà cung cấp"
+description: "Cấu hình các công cụ và mô hình của agent lập trình CLIs mà Dream có thể sử dụng."
+---
+
+Dream hoạt động cùng các công cụ dòng lệnh của coding-agent đã được cài đặt trên máy tính của bạn.
+
+## Các nhà cung cấp được hỗ trợ
+
+| Provider | Các lệnh dòng lệnh cần thiết |
+| --- | --- |
+| OpenAI | Codex CLI |
+| Anthropic | Claude Code CLI |
+| OpenCode | OpenCode CLI |
+| Cursor | Cursor Agent CLI |
+| Xây dựng Grok | Grok Build CLI |
+
+Cài đặt CLI từ nhà cung cấp của nó, sau đó hoàn thành luồng đăng nhập hoặc xác thực thông thường của CLI đó ngoài Dream.
+
+## Kích hoạt các mô hình
+
+1. Mở **Cài đặt** trong Dream.
+2. Chọn **Nhà cung cấp**.
+3. Làm mới provider sau khi cài đặt hoặc xác thực CLI của nó.
+4. Bật công tắc kích hoạt của nhà cung cấp, sau đó kích hoạt một hoặc nhiều mô hình được phát hiện.
+5. Mở **Chung → Mô hình** và chọn mặc định cho các cuộc trò chuyện mới và cho việc tạo commit và pull request.
+
+Bạn phải bật ít nhất một mô hình trước khi mở dự án đầu tiên. Một cuộc trò chuyện có thể sử dụng mô hình đã bật khác với mô hình mặc định sau khi bắt đầu.
+
+<Frame caption="Làm mới thẻ nhà cung cấp, sau đó bật các mô hình mà bạn muốn sử dụng.">
+  <img
+    src="/images/docs/provider-models.png"
+    alt="Card cung cấp OpenAI hiển thị phát hiện giao diện lệnh Codex, nút cập nhật và các tùy chọn bật/tắt từng mô hình."
+    width={1016}
+    height={440}
+    loading="lazy"
+  />
+</Frame>
+
+## Sử dụng nhiều nhà cung cấp hơn một nhà cung cấp
+
+Kích hoạt các mô hình từ mỗi nhà cung cấp mà bạn muốn sử dụng. Danh sách tạo chat hiển thị các mô hình đã được kích hoạt, do đó bạn có thể chọn nhà cung cấp khác cho cuộc trò chuyện tiếp theo hoặc thay đổi mô hình trong một cuộc trò chuyện hiện tại.
+
+Ví dụ, hãy giữ chat triển khai của bạn trên một nhà cung cấp và tạo chat đánh giá bằng nhà cung cấp khác. Bạn không cần thay đổi thiết lập mặc định toàn cầu mỗi lần. Tham khảo [Mô hình và thiết lập mặc định](/docs/vi/models) để cấu hình thiết lập mặc định cho chat mới, mức độ suy luận, tốc độ và mô hình soạn thảo Git riêng biệt.
+
+## Hiểu sự khác biệt giữa các nhà cung cấp
+
+CLI đã cài đặt xử lý xác thực và thực hiện công việc của agent. Danh sách các mô hình, các tùy chọn về mức độ hỗ trợ và tốc độ, xử lý tệp đính kèm, thông tin sử dụng và hành vi về quyền có thể khác nhau giữa các nhà cung cấp.
+
+Dream cung cấp các quyền **Hỏi**, **Chấp nhận chỉnh sửa**, và **Toàn quyền truy cập** cho mỗi cuộc trò chuyện. Hãy đọc [Quyền của tác nhân](/docs/vi/agent-modes) trước khi chọn chúng. Cuộc trò chuyện của Claude với chế độ phiên bản có thể tạm dừng cũng cung cấp [Tiếp tục trong terminal](/docs/vi/terminals#tiếp-tục-cuộc-trò-chuyện-claude-trong-một-terminal).
+
+[Kỹ năng](/docs/vi/skills) có sẵn cho Claude Code, Codex, OpenCode và Cursor. [Máy chủ MCP](/docs/vi/mcp-servers) và các công cụ trình duyệt tích hợp của Dream có sẵn cho Claude Code, Codex, OpenCode và Grok Build; Cursor không hỗ trợ các kết nối công cụ này do Dream quản lý.
+
+## Kiểm tra cập nhật CLI
+
+Các thẻ cung cấp hiển thị phiên bản CLI đã cài đặt khi có sẵn. Dream cũng kiểm tra phiên bản mới và hiển thị nhãn **Có cập nhật sẵn sàng: …** khi phát hiện phiên bản mới. Nhãn này báo cáo sự sẵn sàng; nó không cài đặt bản cập nhật. Cập nhật bằng phương pháp cài đặt thông thường của CLI đó, sau đó làm mới thẻ cung cấp trong Dream.
+
+Sử dụng nút bật/tắt của nhà cung cấp để ẩn các mô hình của nó khỏi các lựa chọn có sẵn mà không cần unistall CLI. Kiểm tra lại các thiết lập mặc định của bạn sau khi thay đổi các nhà cung cấp hoặc mô hình đã bật.
+
+## Khắc phục sự cố phát hiện
+
+Nếu một nhà cung cấp nói **không phát hiện được CLI**:
+
+1. Mở terminal hệ thống của bạn và xác minh rằng lệnh dòng lệnh bắt đầu thành công.
+2. Hoàn thành bất kỳ bước đăng nhập hoặc cấu hình lần đầu được yêu cầu bởi CLI.
+3. Quay lại **Cài đặt → Nhà cung cấp** và cập nhật nó.
+4. Đối với OpenCode, thực hiện luồng xác thực của nó hoặc cấu hình `opencode.json` nếu không có mô hình nào xuất hiện.
+
+Nếu đã cài đặt CLI khi Dream đang mở, hãy khởi động lại Dream nếu việc cập nhật vẫn không phát hiện được nó. Lệnh phải có sẵn trong môi trường của Dream; một biệt danh shell đơn thuần không phải là một CLI đã được cài đặt.
+
+Nếu phát hiện một CLI nhưng mô hình mong muốn bị thiếu, hãy kiểm tra tài khoản/cấu hình của nhà cung cấp và cập nhật danh sách. Nếu các mô hình được liệt kê nhưng không khả dụng trong các cuộc trò chuyện, hãy bật chúng bằng các nút bật/tắt và xác nhận nhà cung cấp được bật. Xem [Khắc phục sự cố](/docs/vi/troubleshooting) để thực hiện các kiểm tra bổ sung.

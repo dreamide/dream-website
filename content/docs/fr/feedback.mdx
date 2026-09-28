@@ -1,0 +1,57 @@
+---
+title: "Envoyer des retours à une conversation"
+description: "Commenter des lignes spécifiques dans un diff ou un élément dans la prévisualisation du navigateur et l'envoyer à un agent."
+---
+
+Dream peut construire un message pour vous à partir de ce que vous regardez. Sélectionnez des lignes dans un diff ou choisissez un élément dans la prévisualisation du navigateur, ajoutez un commentaire, et Dream envoie le commentaire accompagné d'une référence que l'agent peut agir.
+
+## Commenter des lignes dans un diff
+
+1. Ouvrir **Modifications** dans la barre d'outils de droite et développer un fichier.
+2. Glissez sur les numéros de ligne pour sélectionner une plage, ou survolez un numéro de ligne et cliquez sur son contrôle **+** pour sélectionner une ligne unique. Les lignes sélectionnées sont soulignées.
+3. Typez votre commentaire dans la boîte **Demandez n’importe quoi...**.
+4. Activer **Nouveau chat** si vous souhaitez que le commentaire commence une conversation séparée.
+5. Appuyez sur **Entrée** ou cliquez sur **Envoyer le message**.
+
+L'agent reçoit votre commentaire suivi d'un bloc **Diff référencé** contenant le chemin du fichier, la plage de lignes, si les lignes proviennent de la version ancienne ou de la version nouvelle, et les lignes sélectionnées elles-mêmes. Vous pouvez sélectionner des lignes à gauche ou à droite d'un diff unifié ou divisé, et une sélection peut couvrir les deux côtés.
+
+Le mode de sélection de ligne est disponible uniquement dans le Panneau des modifications. Les différences affichées dans les messages de chat, dans [Modifications de ce message](/docs/fr/checkpoints), et dans le dialogue de complétion de l'arbre de travail ne le proposent pas.
+
+Par exemple, sélectionnez les lignes d'une nouvelle condition et demandez :
+
+> Ce branche ne s'exécute jamais lorsque la liste est vide. Gérez ce cas et ajoutez un test.
+
+## Envoyer un élément de page du navigateur
+
+1. Ouvrir le **Navigateur** et charger la page que vous souhaitez discuter.
+2. Cliquez sur **Sélectionner un élément à envoyer au chat** dans la barre d'outils du navigateur. L'action est également disponible dans le menu des actions du navigateur.
+3. Déplacez le pointeur sur la page. Dream souligne l'élément sous le pointeur et affiche son nom et sa taille.
+4. Cliquez sur l'élément. Dans ce mode, les clics sélectionnent les éléments plutôt que d'activer des liens ou des boutons. Appuyez sur **Escape** pour quitter le mode sans sélectionner rien.
+5. Dans le formulaire **Envoyer au chat**, vérifiez la miniature et le nom de l'élément, saisissez votre commentaire, choisissez si vous souhaitez activer le **Nouveau chat**, puis cliquez sur **Envoyer au chat**.
+
+Le message inclut l'URL et le titre de la page, le nom et le sélecteur CSS de l'élément, ses parents, sa taille et sa position, le texte visible, les styles calculés, ainsi que son HTML. Pour les applications React et Vue, Dream ajoute la chaîne de composants et, dans les builds de développement, l'emplacement du fichier source. Une capture d'écran de l'élément est jointe sous forme de `browser-element.png`.
+
+Le sélection d'éléments fonctionne sur l'onglet navigateur actif dans Dream. Les éléments situés dans des cadres imbriqués ne peuvent pas être sélectionnés individuellement ; en sélectionnant un élément, on sélectionne le cadre lui-même. La navigation ou le rechargement de la page annulent la sélection, et les valeurs longues, le texte et l'HTML sont tronqués.
+
+<Frame caption="Commencer à fournir des retours sur l'élément avec l'icône de sélection à côté de la barre d'adresse.">
+  <img
+    src="/images/docs/browser-toolbar.png"
+    alt="Barre d'outils du navigateur avec l'icône de sélection d'élément situé immédiatement à droite de la barre d'adresse."
+    width={1099}
+    height={92}
+    loading="lazy"
+  />
+</Frame>
+
+## Où va le message
+
+| Nouveau chat | Destination |
+| --- | --- |
+| Désactivé | Le premier échange ouvert du projet, qui devient l'échange actif |
+| On | Un nouveau chat ouvert à côté des chats actuels lorsque la fonction multi-chat est activée |
+
+Si le chat de destination est occupé, le contrôle d'envoi est désactivé et affiche **Chat occupé**. Le message n'est pas placé en file derrière la réponse actuelle ; attendre qu'il se termine ou activer **Nouveau chat**.
+
+Le texte que vous avez déjà saisi dans le composateur de message est conservé. Si le message ne peut pas être envoyé, l'application Dream ajoute votre commentaire à ce composateur afin que vous puissiez l'envoyer vous-même. Appuyez sur **Échapper** ou cliquez en dehors du pop-up pour annuler un commentaire avant de l'envoyer.
+
+Utilisez [les références et les pièces jointes de projet](/docs/fr/providing-context) lorsque vous souhaitez faire référence à des fichiers sans sélectionner des lignes spécifiques, et [Stash](/docs/fr/stash) pour enregistrer un prompt afin de le réutiliser plus tard.

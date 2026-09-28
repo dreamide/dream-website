@@ -1,0 +1,58 @@
+---
+title: "Revisar y restaurar cambios"
+description: "Inspeccione los archivos, revise el cambio en la respuesta del agente y restablezca los archivos seleccionados desde un punto de control."
+---
+
+Cuando **Checkpoints de cambios** está habilitado, Dream toma instantáneas de tus archivos de proyecto antes de cada respuesta del agente y nuevamente cuando finaliza la respuesta. Utiliza estos puntos de control para revisar exactamente qué archivos modificó una respuesta y para restaurar archivos seleccionados si deseas tomar un enfoque diferente.
+
+## ¿Cómo funcionan los puntos de control?
+
+- Un punto de control registra el árbol de trabajo del proyecto, incluyendo archivos no trazados, en un almacén privado dentro de los datos de la aplicación de Dream. No crea commits, estashes ni ramas en tu propio repositorio, y funciona en carpetas que no son repositorios de Git.
+- Los paths ignorados por el archivo de ignorancia del proyecto `.gitignore` y los directorios comunes de compilación como `node_modules`, `dist`, `build` y `coverage` nunca son capturados.
+- Dream toma una instantánea del estado **anterior** por cada mensaje que envías, y otra del estado **posterior** cuando termina la respuesta o cuando la detienes.
+- Los puntos de control requieren que el ejecutable `git` esté disponible para Dream. Si la captura falla o tarda demasiado, la respuesta prosigue sin un punto de control y su control de revisión no se muestra.
+
+Los puntos de control están activados por defecto. Para desactivarlos, abre **Configuración → General**, busca **Mensajes de chat** y desactiva **Checkpoints de cambios**.
+
+<Frame caption="Habilite los puntos de control de cambio en Configuración → General para capturar archivos alrededor de cada respuesta.">
+  <img
+    src="/images/docs/checkpoint-setting.png"
+    alt="Cambiar la configuración de puntos de control con su interruptor activado."
+    width={1000}
+    height={68}
+    loading="lazy"
+  />
+</Frame>
+
+## Revisar los cambios en una respuesta
+
+1. Espera a que la respuesta termine.
+2. Pase el cursor sobre el mensaje del asistente y haga clic en **Ver cambios de archivos de esta respuesta**, el icono de reloj en el pie del mensaje.
+3. En **Cambios en esta respuesta**, revisa la lista de archivos. Cada fila muestra la ruta, un estado de **Añadido**, **Eliminado**, **Modificado** o **Renombrado**, y su cuenta de líneas.
+4. Expandir una fila para leer el diff.
+
+El diálogo compara solo las instantáneas antes y después de esa respuesta; los cambios de otras respuestas o de tus propias ediciones no se incluyen. Si la respuesta fue interrumpida, el diálogo indica que el estado después fue capturado cuando lo abriste.
+
+Un archivo que cambió nuevamente después de la respuesta, ya sea por una respuesta posterior, un comando en terminal o tu editor, muestra una etiqueta **Editado después**. Los archivos binarios se listan sin dif.
+
+## Restaurar archivos
+
+1. Elige los archivos que deseas restaurar. Los archivos sin ediciones posteriores se seleccionan por defecto; utiliza **Seleccionar todo** para incluir todos los archivos.
+2. Haga clic en **Restaurar**. El botón muestra cuántos archivos se han seleccionado.
+3. Revise las filas marcadas **Restaurado**, luego haga clic en **Cerrar**.
+
+Restaurar revierte los cambios del comentario en los archivos seleccionados mientras mantiene los editores no relacionados realizados después en el mismo archivo. Un archivo creado por la respuesta se elimina, un archivo eliminado se vuelve a crear y un archivo renombrado se mueve de regreso a su ruta anterior.
+
+Si después de las ediciones se superponen con los cambios del comentario, Dream deja ese archivo sin modificar y te advierte. Elige **Sobrescribir de todos modos** para reemplazar el archivo con su contenido completo antes de la respuesta, descartando esas ediciones posteriores.
+
+<Warning>
+  Restaurar no puede deshacerse desde el diálogo. Copia cualquier trabajo posterior que necesites de los archivos afectados antes de restaurar. Restaurar archivos no elimina los mensajes de la conversación; indica al agente qué restauraste antes de pedirle que continúe.
+</Warning>
+
+Restaurar es una operación de archivo, no una operación de Git. Abre [Cambios](/docs/es/git-workflows) después para revisar el árbol de trabajo, y [guarda cualquier borrador de editor](/docs/es/files) antes de restaurar los mismos archivos.
+
+## Almacenamiento de puntos de control
+
+Los puntos de control permanecen disponibles mientras que el chat exista. Borrar permanentemente un chat desde **Configuración → Chats archivados** elimina sus puntos de control, y completar o eliminar un [proyecto de árbol de trabajo](/docs/es/worktrees) elimina los puntos de control de ese proyecto. Archivar un chat los mantiene.
+
+Para probar un enfoque diferente mientras se mantiene la conversación hasta ahora, combina un restablecimiento con [crear una rama a partir de un mensaje anterior](/docs/es/branching-chats). Crear una rama por sí solo copia los mensajes y no cambia los archivos.

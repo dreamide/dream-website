@@ -10,7 +10,11 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "paths": {
+      "@/*": ["./node_modules/@umami/shiso/src/*"]
+    },
+    "types": ["vite/client"]
   },
   "include": [
     "declarations.d.ts",

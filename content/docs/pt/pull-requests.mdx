@@ -1,0 +1,49 @@
+---
+title: "Revisar pull requests"
+description: "Leia solicitações de pull no GitHub, revise diffs, poste comentários, edite detalhes e integre a partir do Dream."
+---
+
+O botão **Solicitações de pull** na barra de ferramentas da direita abre a solicitação de pull do GitHub para a branch atual. Instale e autentique o GitHub CLI para o repositório primeiro. Para publicar uma nova solicitação de pull, siga os [Fluxos de trabalho do Git](/docs/pt/git-workflows#criar-um-pull-request).
+
+## Abrir o pedido de alteração da ramificação atual
+
+1. Selecione o projeto e verifique sua branch atual.
+2. Clique em **Solicitações de pull** na barra lateral direita.
+3. Revise o título, estado, ramo de origem e ramo base do pedido de alteração e os checks.
+4. Use **Resumo** para a descrição e discussão, ou **Código** para arquivos modificados.
+
+<Frame caption="A resumo da solicitação de alteração mantém sua descrição, verificações e discussão ao lado do seu projeto. Este exemplo já foi mesclado.">
+  <img
+    src="/images/docs/pull-request-panel.png"
+    alt="Panel de solicitação de pull mostrando um PR consolidado, guia de Resumo e Código, sua descrição e verificações concluídas."
+    width={876}
+    height={600}
+    loading="lazy"
+  />
+</Frame>
+
+Se a ramificação não tiver solicitação de pull request, o painel oferece **Criar solicitação pull**. Use **Ações do pull request → Atualizar** após alterações feitas no GitHub, ou **Abrir no GitHub** para visualizar o PR no navegador. Uma solicitação de pull request consolidada deixa de aparecer assim que a ramificação contém commits mais recentes além da cabeça desse PR.
+
+## Revise o código e poste comentários
+
+No **Resumo**, leia o debate e use **Escreva** e **Visualização** para compor um comentário em Markdown. Escolha **Publicar comentário** para publicá-lo no GitHub.
+
+Em **Code**, expanda um arquivo e selecione linhas em sua diferença para publicar um comentário na linha. Você pode ler os fios de revisão existentes e usar **Responder** para continuá-los. Quando um patch de texto estiver indisponível, abra o pedido de revisão no GitHub para inspecionar esse arquivo.
+
+Esses comentários são publicados no GitHub. Para pedir ao seu agente de codificação sobre alterações locais, use [feedback de diff em Alterações](/docs/pt/feedback#comentar-em-linhas-de-um-diff).
+
+## Editar o título e a descrição
+
+Quando seu account tiver permissão, use **Editar título** ou **Editar descrição**. Salve o título após editá-lo; para a descrição, use **Escreva** e **Visualização**, em seguida **Salvar**. Você também pode editar seus próprios comentários onde estiver disponível o controle de edição.
+
+## Mesclar uma solicitação de pull
+
+1. Revise o código, a discussão e as verificações.
+2. Clique em **Mesclar** no cabeçalho do painel.
+3. Confirme a branch de origem e a branch base no **Mesclar PR**.
+4. Escolha um método disponível: **Criar um commit de merge**, **Combinar commits e mesclar** ou **Fazer rebase e mesclar**.
+5. Enviar a fusão.
+
+Apenas PRs abertos e não em rascunho podem ser mesclados. Marque o rascunho como pronto no GitHub primeiro. Sua conta precisa de permissão para mesclar, e o repositório determina quais métodos de mesclagem estão disponíveis. O GitHub pode rejeitar a mesclagem quando os requisitos do repositório não forem atendidos.
+
+O Dream verifica se o commit de cabeça do pedido de alteração ainda está presente quando os detalhes de fusão foram carregados. Se mudou no GitHub, refaça e revise as novas alterações antes de tentar novamente.

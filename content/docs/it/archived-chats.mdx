@@ -1,0 +1,62 @@
+---
+title: "Archiviare e ripristinare le chat"
+description: "Archiviere le conversazioni completate, ripristinare il lavoro precedente e pulire la cronologia chat vecchia."
+---
+
+Archivia una conversazione quando si vuole eliminarla dalla storia attiva ma si desidera mantenere l'opzione di tornarvi. Le conversazioni archiviate sono gestite centralmente in **Impostazioni → Chat archiviate**.
+
+## Archiviare una conversazione
+
+1. Apri il chat che vuoi archiviare.
+2. Apri il suo **…** menu nell'intestazione della chat.
+3. Seleziona **Archivia**.
+
+È anche possibile utilizzare l'azione archivio accanto a una conversazione in **Cronologia chat**. La conversazione scompare dalla cronologia attiva e dall'layout aperto. I messaggi rimangono disponibili per il ripristino.
+
+L'archiviazione non annulla i cambiamenti al codice, non elimina la cartella del progetto, né crea un stash di Git. Per eliminare solo una colonna dalla visualizzazione, [chiudi la colonna](/docs/it/multiple-chats) invece.
+
+## Cerca e ripristina chat archiviate
+
+1. Apri **Impostazioni** utilizzando l'icona a forma di girarrota all'alto di Dream.
+2. Seleziona **Chat archiviate**.
+3. Cerca la conversazione nella tabella. Ogni riga ne mostra il titolo, il progetto e la data dell'archivio.
+4. Seleziona la casella accanto al chat, poi fai clic su **Ripristina**.
+5. Torna al suo progetto e apri **Cronologia chat** per selezionare la conversazione ripristinata.
+
+È possibile selezionare più righe e ripristinarle insieme. La casella di controllo nella testa della tabella seleziona tutti i chat archiviati, inclusi i chat di progetti diversi. Verificare il campo **Progetto** prima di applicare un'azione in bulk.
+
+<Frame caption="Seleziona conversazioni archiviate per riprenderle o eliminarle. La colonna Progetto identifica dove ogni chat appartiene.">
+  <img
+    src="/images/docs/archived-chats-panel.png"
+    alt="Impostazioni delle Chat archiviate che mostrano quattro conversazioni con nomi di progetto e date, pulsanti Ripristina e Elimina, e il controllo Archivia ora."
+    width={1016}
+    height={386}
+    loading="lazy"
+  />
+</Frame>
+
+L'operazione di ripristino rende una chat disponibile nella storia; non la apre automaticamente né il suo progetto. Se il progetto è chiuso, riprova a aprirlo dal menu **Chiusi di recente** sulla schermata di avvio.
+
+## Archiviare conversazioni più vecchie insieme
+
+1. In **Impostazioni → Chat archiviate**, trova **Archivia le chat dopo**.
+2. Inserisci un numero positivo di giorni. Predefinito è **30**.
+3. Fai clic su **Archivia ora**.
+
+Dream archivia i chat i cui ultimo evento è almeno tanti giorni di età. I chat che stanno rispondendo o generando un titolo vengono saltati. Azione applicata a tutti i progetti.
+
+Il valore giornaliero è un limite per **Archivia ora**. Cambiarlo da solo non programma l'archiviazione automatica. Ripristinare un chat non modifica la data dell'ultima attività, quindi un chat vecchio ripristinato può essere nuovamente idoneo all'indomani di un'ulteriore esecuzione di **Archivia ora**.
+
+## Elimina per sempre i chat archiviati
+
+1. Apri **Impostazioni → Chat archiviate**.
+2. Seleziona le conversazioni che non necessiti più.
+3. Verifica le righe selezionate e clicca **Elimina**.
+
+<Warning>
+  Elimina rimuove permanentemente i chat selezionati e i loro messaggi da Dream. L'azione si verifica senza un altro dialogo di conferma, e quei chat non possono essere ripristinati attraverso Dream.
+</Warning>
+
+L'eliminazione influisce sulla storia del chat di Dream. Non annulla le modifiche al progetto né elimina i file del progetto.
+
+Se un'interazione manca sia nell'istorico attivo che nell'istorico archiviato, vedi [risoluzione dei problemi relativi ai messaggi mancanti](/docs/it/troubleshooting#non-riesco-a-trovare-un-chat).

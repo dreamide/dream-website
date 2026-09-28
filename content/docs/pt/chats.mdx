@@ -1,0 +1,78 @@
+---
+title: "Trabalhar com chats"
+description: "Comece conversas, encontre trabalhos anteriores, renomeie chats e gerencie seu histórico de conversas."
+---
+
+Um chat mantém uma conversa com um agente de código. Cada chat pertence a um projeto e possui seu próprio modelo, permissões e histórico de conversa. Use chats separados para tarefas que deseja retornar independentemente, como corrigir um bug e revisar uma funcionalidade.
+
+## Comece uma conversa
+
+1. Selecione a guia de projeto em que você quer trabalhar.
+2. Clique em **Novo chat** na barra lateral esquerda.
+3. Verifique o modelo e as permissões abaixo da caixa de mensagem.
+4. Descreva a tarefa e envie sua mensagem.
+
+Novos chats utilizam suas [configurações padrão do modelo](/docs/pt/models). Um rascunho vazio pode ser reutilizado quando você clicar novamente em **Novo chat** antes de enviar uma mensagem. Uma vez que você enviar uma mensagem, a conversa aparece na história do projeto.
+
+Para uma mensagem inicial útil, dê ao agente um resultado e um modo de verificá-lo. Por exemplo:
+
+> Descubra por que o formulário de configurações perde seus valores após atualizar a página. Corrija a causa e explique como verificou a correção.
+
+Use [referências de arquivo e anexos](/docs/pt/providing-context) para apontar para código relevante ou uma imagem.
+
+<Frame caption="Escreva a tarefa no caixa de mensagem e revise as configurações desta conversa abaixo dela.">
+  <img
+    src="/images/docs/chat-composer.png"
+    alt="Uma caixa de mensagem em branco acima do modelo selecionado e dos controles de permissão."
+    width={600}
+    height={108}
+    loading="lazy"
+  />
+</Frame>
+
+## Voltar para uma conversa
+
+1. Clique em **Histórico de bate-papo** na barra lateral esquerda.
+2. Navegue pelos chats do projeto atual, com as conversas recentemente atualizadas no início.
+3. Entre parte do título de um chat no **Buscar histórico** para reduzir a lista.
+4. Selecione a conversa para abri-la.
+
+<Frame caption="Busque pelos títulos das conversas do projeto atual, então selecione uma conversa para retornar a ela.">
+  <img
+    src="/images/docs/chat-history-panel.png"
+    alt="Panel de histórico de chats com um campo de Busca no histórico e conversas recentes listadas por título e hora relativa."
+    width={416}
+    height={396}
+    loading="lazy"
+  />
+</Frame>
+
+Buscas de histórico correspondem aos títulos, então um nome descritivo facilita a localização. Não busca o conteúdo de cada mensagem. Se um chat estiver ausente, verifique o projeto selecionado e depois [Chats arquivados](/docs/pt/archived-chats).
+
+Quando o [multi-chat](/docs/pt/multiple-chats) está habilitado, selecionar uma conversa pode trazê-la para o layout lado a lado. Com o multi-chat desabilitado, você visualiza uma conversa de cada vez.
+
+## Renomear um chat
+
+O Dream pode gerar um título após o início de uma conversa. Para dar a ele um nome mais específico, abra o menu **…** do chat e escolha **Editar**, ou clique duas vezes no título. Em **Editar bate-papo**, insira o nome e clique em **Salvar**. Use **Cancelar** para manter o nome atual.
+
+Nomes como “Corrigir a persistência das configurações” e “Revistar os testes das configurações” são mais fáceis de distinguir do que várias conversas com o mesmo nome de projeto.
+
+## Seguir o trabalho em andamento
+
+Enquanto um agente responde, o chat exibe seu progresso e a atividade das ferramentas. Abra os detalhes da ferramenta para inspecionar comandos, leituras de arquivos ou alterações. Quando o agente fornece uma lista de tarefas, o controle de tarefas ao lado da caixa de mensagem mostra seu progresso.
+
+Histórico e guias de projeto incluem indicadores de status para trabalhos em processamento ou concluídos; os guias de projeto também podem indicar que um agente está aguardando sua resposta. Selecione o projeto e abra a conversa para ler a última mensagem. Use o controle de parada no compositor para interromper uma resposta. Parar uma resposta não desfaz as alterações de arquivo já realizadas.
+
+Após uma resposta terminar, use **Ver alterações de arquivos desta resposta** no seu rodapé para ver os arquivos que foram modificados e [restaurar qualquer um deles](/docs/pt/checkpoints).
+
+## Fechar, arquivar ou excluir?
+
+| Ação | Resultado | Como retornar |
+| --- | --- | --- |
+| Fechar uma coluna de chat | Remove-o do layout multi-chat | Abri-lo a partir do histórico de chats |
+| Arquivar uma conversa | Remove-o da história ativa do chat | Restaurar em Configurações → Chats arquivados |
+| Excluir um chat arquivado | Permanecemente remove a conversa e suas mensagens do Dream | Não pode ser restaurado através do Dream |
+
+Fechar uma coluna é útil quando você precisa de mais espaço. Arquivar é útil quando uma tarefa está concluída. Nenhuma dessas ações reverterá as alterações do agente nos arquivos do projeto.
+
+Para tentar um novo caminho mantendo a conversa até o momento, [crie uma ramificação a partir de uma mensagem](/docs/pt/branching-chats). Para preparar uma tarefa para mais tarde, [salve um prompt no Stash](/docs/pt/stash). Para instruções que deseja reutilizar em projetos, crie um [prompt reutilizável](/docs/pt/saved-prompts) e execute a partir do menu **+ → Executar prompt** do compositor. Digite **$** para invocar uma [habilidade de agente](/docs/pt/skills).

@@ -1,0 +1,43 @@
+---
+title: "Phân nhánh cuộc trò chuyện"
+description: "Tiếp tục từ một tin nhắn trước đó trong cùng một không gian làm việc hoặc một cây làm việc Git tách biệt."
+---
+
+Chia nhánh một cuộc trò chuyện khi bạn muốn khám phá một cách tiếp cận khác bằng cách sử dụng cuộc trò chuyện hiện tại. Dream sao chép các tin nhắn qua tin nhắn được chọn vào một cuộc trò chuyện mới và giữ nguyên cuộc trò chuyện ban đầu. Các tin nhắn sau thời điểm đó không được bao gồm trong cuộc trò chuyện mới.
+
+## Tiếp tục trong không gian làm việc cùng một cách
+
+1. Mở cuộc trò chuyện nguồn và chờ phản hồi của nó kết thúc.
+2. Tìm tin nhắn mà bạn muốn tạo nhánh từ đó.
+3. Sử dụng hành động **Tiếp tục từ tin nhắn này…** của nó.
+4. Chọn **Không gian làm việc này** dưới **Tiếp tục trong cuộc trò chuyện mới**.
+5. Gửi một thông báo theo dõi trong cuộc trò chuyện mới mô tả lựa chọn thay thế mà bạn muốn thử.
+
+Chat mới bắt đầu với mô hình và cài đặt quyền của chat nguồn. Trong chế độ multi-chat, nó mở bên cạnh chat nguồn; trong chế độ single-chat, nó trở thành cuộc trò chuyện được hiển thị.
+
+Ví dụ, nhánh sau khi agent giải thích một lỗi và yêu cầu cuộc trò chuyện mới so sánh một sửa đổi nhỏ. Cả hai cuộc trò chuyện đều có thể sử dụng các tệp dự án hiện tại.
+
+<Note>
+  Phân nhánh sao chép lịch sử cuộc trò chuyện. Nó không phục hồi hệ thống tệp về trạng thái khi tin nhắn được chọn được gửi. Cả hai cuộc trò chuyện trong không gian làm việc này vẫn chia sẻ cùng các tệp.
+</Note>
+
+## Tiếp tục trong một worktree mới
+
+Để thực hiện một kiểm tra độc lập, sử dụng **Tiếp tục từ tin nhắn này… → Cây công việc mới**. Tính năng này yêu cầu một kho lưu trữ Git. Dream tạo ra một dự án worktree và một cuộc trò chuyện mới chứa lịch sử đã được sao chép.
+
+Tắt nhanh này sử dụng nhánh hiện tại làm cơ sở và tạo tên nhánh từ tiêu đề cuộc trò chuyện. Nó không yêu cầu bạn chọn cơ sở tham chiếu tùy chỉnh. Để chọn cơ sở tham chiếu và tên nhánh theo cách riêng, [tạo một worktree từ nút chuyển nhánh](/docs/vi/worktrees#tạo-một-worktree).
+
+<Warning>
+  Một worktree mới bắt đầu từ lịch sử Git đã được ghi lại. Nó không bao gồm các thay đổi chưa được ghi lại và không tái tạo trạng thái tệp chính xác tại thông điệp đã chọn. Lưu và ghi lại các thay đổi bạn cần trong phiên bản mới trước khi nhánh vào một worktree.
+</Warning>
+
+## Chọn loại nhánh phù hợp
+
+| Bạn muốn… | Sử dụng |
+| --- | --- |
+| Hãy đặt một câu hỏi khác về cùng một mã nguồn hiện tại này | Không gian làm việc này |
+| So sánh lý luận trong khi giữ nguyên cuộc thảo luận trước đó | Không gian làm việc này |
+| Cho một agent khác chỉnh sửa một bản sao lưu độc lập | Worktree mới |
+| Bắt đầu một nhiệm vụ mà không sao chép bất kỳ thông điệp nào | Cuộc trò chuyện mới |
+
+Việc nhánh không khả dụng khi đang xử lý một phản hồi. Nếu tùy chọn worktree không khả dụng, hãy kiểm tra xem dự án có nằm trong một khoa học Git hay không. Xem [Worktrees](/docs/vi/worktrees) để mở và loại bỏ dự án kết quả.

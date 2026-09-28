@@ -1,0 +1,62 @@
+---
+title: "Archiver et restaurer des conversations"
+description: "Archiver les conversations terminées, restaurer le travail précédent et nettoyer l'historique de chat ancien."
+---
+
+Archiver une conversation lorsque vous souhaitez la supprimer de l'historique actif tout en conservant la possibilité de la retrouver. Les conversations archivées sont gérées centralisément dans **Paramètres → Chats archivés**.
+
+## Archiver une conversation
+
+1. Ouvrir le chat que vous voulez archiver.
+2. Ouvrir son **…** menu dans l'en-tête de la discussion.
+3. Sélectionnez **Archiver**.
+
+Vous pouvez également utiliser l'action archive située à côté d'un échange dans **Historique des discussions**. L'échange disparaît de l'historique actif et de l'interface ouverte. Ses messages restent disponibles pour une restauration.
+
+L'archivage ne rétablit pas les modifications de code, ne supprime pas le dossier du projet, ni ne crée un stash Git. Pour supprimer une seule colonne de la vue, [fermez la colonne](/docs/fr/multiple-chats) au lieu.
+
+## Rechercher et restaurer des discussions archivées
+
+1. Ouvrir **Paramètres** en utilisant l'icône à moitié tournante en haut de Dream.
+2. Sélectionnez **Chats archivés**.
+3. Rechercher la conversation dans le tableau. Chaque ligne affiche son titre, son projet et sa date d'archivage.
+4. Sélectionnez la case à côté du chat, puis cliquez sur **Restaurer**.
+5. Retournez dans son projet et ouvrez **Historique des discussions** pour sélectionner la conversation restaurée.
+
+Vous pouvez sélectionner plusieurs lignes et les restaurer ensemble. La case située dans l'en-tête du tableau sélectionne tous les dialogues archivés, y compris les dialogues provenant d'autres projets. Vérifiez la colonne **Projet** avant d'appliquer une action en masse.
+
+<Frame caption="Sélectionnez des conversations archivées pour les restaurer ou les supprimer. La colonne Projet identifie où chaque échange se situe.">
+  <img
+    src="/images/docs/archived-chats-panel.png"
+    alt="Affichage des paramètres des conversations archivées montrant quatre conversations avec des noms de projets et des dates, des boutons Restaurer et Supprimer, ainsi que le contrôle Archiver maintenant."
+    width={1016}
+    height={386}
+    loading="lazy"
+  />
+</Frame>
+
+Le restauration rend un chat disponible dans l'historique ; elle ne l'ouvre pas automatiquement ni son projet. Si son projet est fermé, le réouvrir depuis **Fermés récemment** sur l'écran de démarrage.
+
+## Archiver des conversations plus anciennes ensemble
+
+1. Dans **Paramètres → Chats archivés**, trouvez **Archiver les chats après**.
+2. Saisir un nombre positif de jours. La valeur par défaut est **30**.
+3. Cliquez sur **Archiver maintenant**.
+
+Dream archive les conversations dont la dernière activité date d'au moins autant de jours. Les conversations qui répondent actuellement ou génèrent un titre sont sautées. Cette action s'applique à travers les projets.
+
+La valeur jour est un seuil pour **Archiver maintenant**. Modifier cette valeur seule ne planifie pas l'archivage automatique. Le restauration d'un échange n'ajuste pas sa date d'activité la plus récente, donc un échange ancien restauré peut de nouveau être concerné la prochaine fois que vous exécutez **Archiver maintenant**.
+
+## Supprimer définitivement les conversations archivées
+
+1. Ouvrir **Paramètres → Chats archivés**.
+2. Sélectionnez les conversations que vous n'avez plus besoin.
+3. Vérifiez les lignes sélectionnées et cliquez sur **Supprimer**.
+
+<Warning>
+  Supprimer supprime définitivement les conversations sélectionnées et leurs messages de Dream. L'action s'applique sans autre dialogue de confirmation, et ces conversations ne peuvent pas être restaurées via Dream.
+</Warning>
+
+La suppression affecte l'historique de conversation de Dream. Elle ne rétablit pas les modifications dans le projet ni ne supprime les fichiers du projet.
+
+Si une conversation est absente à la fois de l'historique actif et archivé, consultez [la résolution des problèmes liés aux messages manquants](/docs/fr/troubleshooting#je-ne-peux-pas-trouver-un-chat).

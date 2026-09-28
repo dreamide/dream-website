@@ -1,0 +1,52 @@
+---
+title: "Máy chủ MCP"
+description: "Thêm hoặc nhập công cụ bên ngoài cho các agent lập trình được hỗ trợ."
+---
+
+Các máy chủ Model Context Protocol (MCP) cung cấp các công cụ bổ sung cho các agent. Cấu hình chúng tại **Cài đặt → Máy chủ MCP**. Dream hỗ trợ các kết nối này cho **Claude Code**, **Codex**, **OpenCode** và **Grok Build**. Cursor không hỗ trợ các kết nối MCP được quản lý bởi Dream.
+
+## Thêm một máy chủ
+
+1. Mở **Cài đặt → Máy chủ MCP** và nhấp vào **Thêm máy chủ**.
+2. Chọn **Tên** duy nhất gồm chữ cái, chữ số, dấu gạch nối và dấu gạch dưới, bắt đầu bằng chữ cái hoặc chữ số.
+3. Chọn **Phương thức** và nhập các chi tiết kết nối được cung cấp bởi máy chủ.
+4. Giữ **Bật** ở trạng thái để làm server trở nên khả dụng, sau đó nhấn **Lưu**.
+
+| Giao thông | Các trường |
+| --- | --- |
+| Lệnh (stdio) | Tệp thực thi trong **Lệnh**, mỗi dòng một đối số trong **Tham số**, và **Biến môi trường** tùy chọn |
+| HTTP | Một **URL** HTTP hoặc HTTPS và **Header** tùy chọn |
+| SSE | Một **URL** HTTP hoặc HTTPS và **Header** tùy chọn |
+
+Nhập các biến môi trường và tiêu đề dưới dạng một cặp `KEY=VALUE` mỗi dòng. Giữ lệnh thực thi tách biệt với các đối số. Ví dụ, một máy chủ cục bộ có thể sử dụng `node` làm lệnh và đường dẫn tuyệt đối đến tệp nhập đầu vào làm đối số.
+
+Các định nghĩa máy chủ được lưu trong cơ sở dữ liệu cục bộ của Dream, bao gồm các thông tin xác thực mà bạn nhập. Những giá trị này được lưu mà không được mã hóa.
+
+## Đưa vào cấu hình hiện có
+
+1. Chọn dự án mà bạn muốn bao gồm cấu hình của nó.
+2. Mở **Cài đặt → Máy chủ MCP → Nhập…**.
+3. Xem lại các máy chủ được phát hiện, các tệp nguồn của chúng và bất kỳ cảnh báo nào.
+4. Chọn các máy chủ cần thêm và nhấp vào **Import**.
+
+Dream quét cấu hình người dùng và dự án của Claude, cấu hình người dùng của Codex, và cấu hình MCP người dùng và dự án của Cursor. Các mục đã có tên cấu hình trước đó được đánh dấu **Đã tồn tại** và không được nhập lại.
+
+Đưa các định nghĩa bản sao vào Dream. Những thay đổi sau này đến các tệp gốc sẽ không được đồng bộ hóa tự động. Việc nhập cấu hình Cursor sẽ làm cho máy chủ của nó trở thành tài nguyên được hỗ trợ bởi các nhà cung cấp của Dream; nó không thêm hỗ trợ MCP vào các cuộc trò chuyện trong Cursor tại Dream.
+
+## Chỉnh sửa, vô hiệu hóa hoặc xóa một máy chủ
+
+<Frame caption="Quản lý trạng thái bật/tắt và định nghĩa kết nối của từng máy chủ từ danh sách máy chủ MCP.">
+  <img
+    src="/images/docs/mcp-servers-panel.png"
+    alt="Các cài đặt máy chủ MCP với chế độ bật stdio và máy chủ HTTP, các nút chỉnh sửa và xóa, cùng nút nhập và thêm máy chủ."
+    width={1016}
+    height={216}
+    loading="lazy"
+  />
+</Frame>
+
+Sử dụng **Chỉnh sửa** để thay đổi một định nghĩa và **Lưu** để áp dụng nó. Chuyển **Bật** sang trạng thái vô hiệu để giữ cấu hình của nó mà không làm nó trở nên khả dụng cho các yêu cầu tiếp theo của agent. Để xóa nó, sử dụng **Xóa**, sau đó **Xác nhận xóa**. Việc xóa định nghĩa không làm dỡ cài đặt phần mềm thực thi của nó.
+
+Sau khi thay đổi một server, gửi một yêu cầu mới trong một cuộc trò chuyện được hỗ trợ. Nếu nhà cung cấp vẫn sử dụng kết nối cũ, bắt đầu một cuộc trò chuyện mới. Kiểm tra thực thi, URL, thông tin đăng nhập và lỗi trò chuyện nếu các công cụ không trở nên có sẵn.
+
+Các [công cụ trình duyệt tích hợp](/docs/vi/browser#yêu-cầu-một-người-dùng-sử-dụng-trình-duyệt) của Dream được kết nối tự động cho các nhà cung cấp được hỗ trợ; bạn không cần thêm máy chủ cho chúng ở đây.

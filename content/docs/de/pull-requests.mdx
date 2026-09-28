@@ -1,0 +1,49 @@
+---
+title: "Pull Requests prüfen"
+description: "Lesen von GitHub-Pull-Anfragen, überprüfen von Diffs, veröffentlichen von Kommentaren, bearbeiten von Details und fügen von Dream hinzu."
+---
+
+Die Schaltfläche **Pull requests** in der rechten Werkzeugleiste öffnet die GitHub-PR für den aktuellen Branch. Installieren und authentifizieren Sie zuerst den GitHub CLI für das Repository. Um eine neue PR zu veröffentlichen, folgen Sie [Git-Arbeitsabläufen](/docs/de/git-workflows#pull-request-erstellen).
+
+## Aktuelle Branch-PR öffnen
+
+1. Wählen Sie das Projekt und überprüfen Sie seinen aktuellen Branch.
+2. Klicken Sie im rechten Toolbar auf **Pull Requests**.
+3. Überprüfen Sie den Titel, den Status, die Quell- und Basisbranches sowie die Prüfungen des PRs.
+4. Verwende **Zusammenfassung** für die Beschreibung und Diskussion, oder **Code** für geänderte Dateien.
+
+<Frame caption="Die Zusammenfassung des PR behält ihre Beschreibung, Prüfungen und Diskussion neben deinem Projekt. Dieses Beispiel ist bereits eingezogen.">
+  <img
+    src="/images/docs/pull-request-panel.png"
+    alt="Panel für Pull Request zeigt einen zusammengeführten PR, Zusammenfassung- und Code-Tab, seine Beschreibung und bestandene Prüfungen."
+    width={876}
+    height={600}
+    loading="lazy"
+  />
+</Frame>
+
+Wenn der Branch kein Pull Request hat, bietet das Panel **Pull-Anfrage erstellen** an. Verwenden Sie **Pull-Request-Aktionen → Aktualisieren**, nachdem Änderungen auf GitHub vorgenommen wurden, oder **Auf GitHub öffnen**, um das PR in Ihrem Browser anzuzeigen. Ein gefundenes PR verschwindet, sobald der Branch commits enthält, die jenseits des Heads des PRs liegen.
+
+## Code überprüfen und Kommentare posten
+
+In **Zusammenfassung** lesen Sie die Diskussion und verwenden **Schreiben** und **Vorschau**, um einen Markdown-Kommentar zu komponieren. Wählen Sie **Kommentar senden**, um ihn an GitHub zu veröffentlichen.
+
+In **Code** können Sie eine Datei ausdehnen und Zeilen in deren Diff auswählen, um einen **Zeilenkommentar senden**. Sie können bestehende Überprüfungsthreads lesen und mit **Antworten** weiterführen. Wenn ein Text-Patch nicht verfügbar ist, öffnen Sie den Pull Request auf GitHub, um die Datei zu inspizieren.
+
+Diese Kommentare werden auf GitHub veröffentlicht. Um Ihrem Coding-Agenten über lokale Änderungen zu berichten, verwenden Sie [Diff-Feedback in Änderungen](/docs/de/feedback#kommentare-in-einer-diff-zeile-hinzufügen).
+
+## Bearbeite den Titel und die Beschreibung
+
+Wenn Ihr Konto Berechtigungen hat, verwenden Sie **Titel bearbeiten** oder **Beschreibung bearbeiten**. Speichern Sie den Titel nach der Bearbeitung; für die Beschreibung verwenden Sie **Schreiben** und **Vorschau**, dann **Speichern**. Sie können auch Ihre eigenen Kommentare bearbeiten, wo ein Bearbeitungscontrol verfügbar ist.
+
+## Ein Pull-Angebot zusammenführen
+
+1. Überprüfen Sie den Code, die Diskussion und die Prüfungen.
+2. Klicken Sie im Panelheader auf **Zusammenführen**.
+3. Bestätigen Sie die Quell- und Basisverzweigung im **PR zusammenführen**.
+4. Wählen Sie eine verfügbare Methode: **Merge-Commit erstellen**, **Zusammenfassen und mergen** oder **Rebasen und mergen**.
+5. Die Merge-Vorgang einreichen.
+
+Nur offene, nicht-vorläufige PRs können zusammengeführt werden. Markieren Sie einen vorläufigen Stand als bereit auf GitHub zuerst. Ihr Konto benötigt die Berechtigung zum Zusammenführen, und das Repository bestimmt, welche Zusammenführungsmethoden verfügbar sind. GitHub kann eine Zusammenführung ablehnen, wenn die Anforderungen des Repositories nicht erfüllt sind.
+
+Dream überprüft, ob der PR immer noch den Head-Commit besitzt, der beim Laden der Merge-Details angezeigt wurde. Wenn er auf GitHub geändert wurde, aktualisieren Sie und überprüfen Sie die neuen Änderungen, bevor Sie erneut versuchen.

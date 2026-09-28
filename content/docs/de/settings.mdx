@@ -1,0 +1,94 @@
+---
+title: "Einstellungsreferenz"
+description: "Model-Standardwerte, Anbieter, Anweisungen, Fähigkeiten, MCP-Server und Steuerungen für archivierte Chats finden."
+---
+
+Öffne die **Einstellungen** mit dem Zahnradsymbol oben in Dream. Die Seitenleiste enthält **Allgemein**, **Anbieter**, **Prompts**, **Skills**, **MCP-Server** und **Archivierte Chats**. Allgemeine Einstellungen gelten, sobald sie ausgewählt werden. Formulare für Prompte, Fähigkeiten und Serverdefinitionen verfügen über ihre eigenen Aktionen „Erstellen“ oder „Speichern“.
+
+## Allgemein
+
+| Einstellen | Was es steuert |
+| --- | --- |
+| Sprache | Die Schnittstellen-Sprache |
+| Terminal | Das Shell-Verwendungsprogramm für neue Terminal-Sitzungen |
+| Theme | System, hell oder dunkel aussehen |
+| Basisfarbe | Die Farbton der Schnittstelle sind grau |
+| Akzentfarbe | Hauptaktionen und aktive Zustände |
+
+Die Änderung des Terminal-Schells wirkt sich auf neue Sitzungen aus. Öffnen Sie ein neues Terminal, um die Auswahl zu verwenden; siehe [Terminal](/docs/de/terminals).
+
+<Frame caption="Wählen Sie ein Thema, dann passen Sie die Basis- und Akzentfarben an.">
+  <img
+    src="/images/docs/appearance-settings.png"
+    alt="Einstellungen für das Aussehen mit System-, Licht- und Dunkelthemen sowie Grund- und Akzentfarbschaltungen."
+    width={1016}
+    height={255}
+    loading="lazy"
+  />
+</Frame>
+
+### Chatnachrichten
+
+| Einstellen | Standard | Was es steuert |
+| --- | --- | --- |
+| Reasoning-Zusammenfassungen anzeigen | Auf | Anzeige der von dem Modell bereitgestellten Zusammenfassungen |
+| Tool-Aufrufe gruppieren | Aus | Kompakte Gruppierung von Werkzeugaktivitäten |
+| Tool-Aufrufe erweitern | Aus | Ob Details zu Tool-Aufrufen beim Start ausgeweitet sind |
+| Checkpoint ändern | Auf | Projektdateien vor jeder Antwort sperren, damit Sie Änderungen überprüfen und wiederherstellen können |
+
+Die Anzeigestellungen beeinflussen die Gespräche innerhalb von Projekten. Sie ändern die Rechenleistung des Modells nicht und verleihen zusätzliche Werkzeugrechte nicht. Die Deaktivierung von **Änderungs-Checkpoints** beendet die Erstellung neuer Snapshots; siehe [Änderungen prüfen und wiederherstellen](/docs/de/checkpoints).
+
+### Modelle
+
+Die Gruppe **Modelle** steht oben im Allgemeinen.
+
+| Einstellen | Gebiet |
+| --- | --- |
+| Standard-Chatmodell | Neu erstellte Chats innerhalb von Projekten |
+| Standardberechtigungen | Frage stellen, Änderungen akzeptieren oder Vollzugriff für neue Chats |
+| Aufwand | Aufwand für die Erstellung neuer Chats, wenn durch das Standardmodell unterstützt |
+| Geschwindigkeit | Geschwindigkeitsstufe für neue Chats, wenn diese durch das Standardmodell unterstützt werden |
+| Textgenerierungsmodell | Erzeugte Commit- und Pull-Request-Texte mit eigener Bemühung und Geschwindigkeit |
+
+Bestehende Chats behalten ihre eigenen Auswahl. Aktivieren Sie ein Modell unter Anbieter, bevor Sie es als Standard auswählen. Folgen Sie [Modellen und Standardeinstellungen](/docs/de/models), um den vollständigen Einrichtungsworkflow zu erhalten.
+
+<Frame caption="Verwenden Sie die Gruppe Modelle, um Standardwerte für Chats und Git-Drafting festzulegen.">
+  <img
+    src="/images/docs/model-defaults.png"
+    alt="Allgemeine Einstellungen mit separaten Selektoren für das Standard-Chat-Modell und das Textgenerierungsmodell."
+    width={1016}
+    height={246}
+    loading="lazy"
+  />
+</Frame>
+
+## Anbieter
+
+Jede Karten-Instanz des Anbieters zeigt ihren erkannten CLI-Status, die installierte Version, die Aktion zum Aktualisieren und einen Schalter zum Aktivieren. Aktivieren Sie den Anbieter und die einzelnen Modelle, damit sie in den Auswahlmöglichkeiten verfügbar sind. Ein **Aktualisierung verfügbar**-Badge zeigt eine neuere CLI-Version bei Erkennung; aktualisieren Sie die CLI außerhalb von Dream und aktualisieren Sie die Karte danach.
+
+Installieren und sich über die CLI des Anbieters außerhalb von Dream anmelden, dann aktualisieren Sie seine Karte. Die Dream-Einstellungen ersetzen den Authentifizierungsprozess der CLI nicht. Siehe [Anbieter verbinden](/docs/de/providers).
+
+## Prompts, Fähigkeiten und MCP-Server
+
+| Abschnitt | Was Sie tun können |
+| --- | --- |
+| [Prompts](/docs/de/saved-prompts) | Erstellen, Vorschau, Kopieren, Umordnen und Bearbeiten von wiederverwendbaren Prompten für jeden Projektchat |
+| [Fähigkeiten](/docs/de/skills) | Führen Sie Fähigkeiten nach Anbieter und Projekt aus, zeigen Sie SKILL.md-Dateien vorab und erstellen Sie neue Fähigkeiten |
+| [MCP-Server](/docs/de/mcp-servers) | Tool-Server hinzufügen oder importieren und ihre Verbindungs-Einstellungen verwalten |
+
+## Archivierte Chats
+
+| Steuerung | Was es tut |
+| --- | --- |
+| Felder mit Kontrollkästchen | Archivierte Gespräche über mehrere Projekte auswählen |
+| Header-Auswahloption | Alle archivierte Gespräche auswählen |
+| Wiederherstellen | Gibt ausgewählte Chats der aktiven Geschichte zurück |
+| Löschen | Entfernt die ausgewählten Chats und Nachrichten aus Dream permanent |
+| Chats archivieren nach | Legt die Schwellwertgrenze für Inaktivität in Tagen fest; Standardwert 30 |
+| Jetzt archivieren | Archiviert Chats, die dem Zeitrahmen entsprechen |
+
+Das Cut-off plant kein automatisches Job-Verfahren. Siehe [Chats archivieren und wiederherstellen](/docs/de/archived-chats), bevor bulk-Aktionen oder permanente Löschung verwendet werden.
+
+## Steuerung außerhalb von Einstellungen
+
+Einige Einstellungen gehören zu einzelnen Chats oder Projekten. Legen Sie das Modell, die Bemühung, die Geschwindigkeit und die Berechtigungen eines Chats in seinem Composer fest. Schalten Sie Multi-Chat in der linken Toolbar ein. Verändern Sie die Spaltenbreite von Chats und die Werkzeugleisten direkt im Arbeitsbereich.

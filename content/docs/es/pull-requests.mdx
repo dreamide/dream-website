@@ -1,0 +1,49 @@
+---
+title: "Revisar pull requests"
+description: "Lee solicitudes de pull en GitHub, revisa diferencias, deja comentarios, edita detalles y los integra desde Dream."
+---
+
+El botón **Solicitudes de extracción** en la barra de herramientas derecha abre la solicitud de extracción de GitHub para la rama actual. Instale y autentique el CLI de GitHub para el repositorio primero. Para publicar una nueva solicitud de extracción, siga [Flujos de Git](/docs/es/git-workflows#crea-un-pull-request).
+
+## Abrir el pedido de cambios de la rama actual
+
+1. Elige el proyecto y verifica su rama actual.
+2. Haga clic en **Solicitudes de extracción** en la barra de herramientas de la derecha.
+3. Revisa el título, estado, rama de origen y rama base del pedido de incorporación y los controles.
+4. Use **Resumen** para la descripción y discusión, o **Código** para los archivos modificados.
+
+<Frame caption="El resumen de la PR mantiene su descripción, comprobaciones y discusión junto a tu proyecto. Este ejemplo ya ha sido fusionado.">
+  <img
+    src="/images/docs/pull-request-panel.png"
+    alt="Panel de solicitud de incorporación mostrando un PR fusionado, pestañas Resumen y Código, su descripción y controles pasados."
+    width={876}
+    height={600}
+    loading="lazy"
+  />
+</Frame>
+
+Si el ramo no tiene ninguna solicitud de incorporación, el panel ofrece **Crear solicitud de extracción**. Utiliza **Acciones de la solicitud de extracción → Actualizar** después de realizar cambios en GitHub, o **Abrir en GitHub** para ver la solicitud de incorporación en tu navegador. Una solicitud de incorporación fusionada deja de aparecer una vez que el ramo contenga comits más recientes que la cabeza de esa solicitud de incorporación.
+
+## Revisar el código y publicar comentarios
+
+En **Resumen**, lee el debate y utiliza **Escribir** y **Vista previa** para componer un comentario en Markdown. Elige **Publicar comentario** para publicarlo en GitHub.
+
+En **Código**, despliega un archivo y selecciona líneas en su vista de diferencias para **Publicar comentario en línea**. Puedes leer los hilos de revisión existentes y usar **Responder** para continuarlos. Si no hay un parche de texto disponible, abre la PR en GitHub para inspeccionar el archivo.
+
+Estos comentarios se publican en GitHub. Para pedir a tu agente de programación sobre cambios locales, utiliza [feedback de diff en Cambios](/docs/es/feedback#comentar-líneas-en-un-diff).
+
+## Editar el título y la descripción
+
+Cuando tu cuenta tenga permisos, utiliza **Editar título** o **Editar descripción**. Guarda el título después de editarlo; para la descripción, utiliza **Escribir** y **Vista previa**, luego **Guardar**. También puedes editar tus propios comentarios donde esté disponible un control de edición.
+
+## Derecha un pedido de incorporación
+
+1. Revisar el código, el debate y las verificaciones.
+2. Haga clic en **Fusionar** en el encabezado del panel.
+3. Confirme las ramas origen y base en **Fusionar PR**.
+4. Elige un método disponible: **Crear un commit de fusión**, **Combinar commits y fusionar**, o **Rebasar y fusionar**.
+5. Enviar el merge.
+
+Solo los PRs abiertos y no en borrador pueden ser fusionados. Marca el borrador listo en GitHub primero. Tu cuenta necesita permiso de fusión, y el repositorio determina qué métodos de fusión están disponibles. GitHub puede rechazar una fusión cuando no se cumplan los requisitos del repositorio.
+
+Dream verifica que el commit de cabeza del PR siga mostrándose cuando se cargaron los detalles de fusión. Si cambió en GitHub, actualízalo y revisa los nuevos cambios antes de reintentarlo.

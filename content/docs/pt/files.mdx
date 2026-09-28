@@ -1,0 +1,63 @@
+---
+title: "Arquivos e busca"
+description: "Navegue por arquivos do projeto, procure nomes e conteúdo de arquivos, edite o código e gerencie alterações não salvas."
+---
+
+Clique em **Arquivos** na barra lateral direita para navegar pela pasta do projeto ativo. Abra um arquivo na árvore para examiná-lo ao lado da sua conversa. As guias de arquivo permitem que você navegue entre vários arquivos abertos.
+
+## Localizar um arquivo
+
+1. Abrir **Arquivos**.
+2. Entre parte do nome de arquivo ou caminho em **Pesquisar arquivos** acima da árvore.
+3. Selecione um resultado para abri-lo.
+4. Limpar a busca para voltar a navegar na árvore.
+
+Use **Atualizar arquivos** nas ações de arquivo quando as alterações feitas fora do Dream não são refletidas na árvore. Buscar por um arquivo localiza seu caminho; use a busca do editor para encontrar texto dentro desse arquivo.
+
+<Frame caption="Busque ou navegue na árvore de arquivos, depois abra um arquivo ao lado de sua conversa.">
+  <img
+    src="/images/docs/files-panel.png"
+    alt="Panel de arquivos com Pesquisar arquivos acima da árvore de pastas e app-error-boundary.tsx aberto no editor."
+    width={950}
+    height={610}
+    loading="lazy"
+  />
+</Frame>
+
+## Buscar e substituir dentro de um arquivo
+
+1. Abra o arquivo e clique em **Pesquisar no arquivo atual** na barra de ferramentas do editor.
+2. Entre com o texto no **Localizar**.
+3. Use **Próxima correspondência** ou **Correspondência anterior** para navegar pelos resultados.
+4. Habilite **Diferenciar maiúsculas de minúsculas**, **Somente palavras inteiras** ou **Usar expressão regular** se necessário.
+
+A barra de pesquisa também oferece controles de substituição. Revise os matches antes de usar **Substituir tudo**, em seguida, salve o arquivo para gravar as alterações no disco. A substituição afeta o arquivo atual.
+
+## Editar e salvar
+
+Edite um arquivo de texto gravável no editor de código. Alterações não salvas são marcadas em sua aba, e o painel pode mostrar quantos arquivos têm rascunhos não salvos.
+
+Clique em **Salvar** na barra de ferramentas do editor, ou pressione **Command+S** no macOS ou **Ctrl+S** no Windows/Linux enquanto o editor estiver focado. Salve cada arquivo editado antes de pedir a um agente ou comando terminal para usar o novo conteúdo; essas ferramentas lerão os arquivos no disco.
+
+Alternar entre as guias de arquivo te permite manter rascunhos enquanto inspeciona outros arquivos. Use **Descartar alterações** para abandonar um rascunho local. Isso é distinto do reverter alterações por meio do Git.
+
+Fechar uma aba com alterações não salvas abre um prompt **Salvar / Não salvar / Cancelar**. **Salvar** grava o rascunho e fecha a aba, **Não salvar** descarta o rascunho e fecha a aba, e **Cancelar** mantém a aba aberta. Se a gravação falhar ou houver conflito com uma edição externa, o arquivo permanece aberto para que você resolva o problema.
+
+## Tratar um arquivo modificado fora do editor
+
+Um agente, um comando terminal ou um editor externo pode modificar o mesmo arquivo enquanto você tiver um rascunho. O Dream verifica o conteúdo do disco ao salvar e informa um conflito em vez de sobrescrever silenciosamente essa versão mais recente.
+
+1. Preserve qualquer texto em desenvolvimento que você quer manter.
+2. Leia a mensagem de conflito.
+3. Use **Recarregar do disco** para carregar o arquivo atual.
+4. Reaplique as mudanças que ainda precisam ser feitas, depois salve novamente.
+
+<Warning>
+  Recarregar do disco substitui seu rascunho local. Copie qualquer trabalho não salvo que precisar antes de usá-lo.
+</Warning>
+
+## Ajuste a visualização
+
+Use **Ativar quebra de linha** para linhas longas. Redimensione as áreas da árvore de arquivos e do editor para dar mais espaço ao conteúdo. Use as ações disponíveis **Abrir em** para continuar em um editor externo.
+
+Após salvar, abra [Alterações](/docs/pt/git-workflows) para revisar o diff do Git. Para pedir a um agente sobre um arquivo, [cite-o com @](/docs/pt/providing-context) no compositor de chat.

@@ -1,0 +1,57 @@
+---
+title: "Gửi phản hồi đến cuộc trò chuyện"
+description: "Bình luận về các dòng diff cụ thể hoặc về một phần trong bản xem trước trình duyệt và gửi nó đến một người đại diện."
+---
+
+Dream có thể tạo một tin nhắn cho bạn từ những gì bạn đang xem. Chọn các dòng trong một diff hoặc chọn một phần tử trong bản xem trình duyệt, thêm một bình luận, và Dream sẽ gửi bình luận cùng với một tham chiếu mà agent có thể hành động.
+
+## Bình luận các dòng trong một diff
+
+1. Mở **Thay đổi** trong thanh công cụ bên phải và mở một tệp.
+2. Kéo sang các số dòng để chọn một khoảng, hoặc di chuột đến số dòng và nhấp vào nút **+** để chọn một dòng duy nhất. Các dòng đã chọn sẽ được đánh dấu.
+3. Nhập bình luận của bạn vào hộp **Hỏi bất cứ điều gì...**.
+4. Bật **Cuộc trò chuyện mới** nếu bạn muốn bình luận bắt đầu một cuộc trò chuyện riêng biệt.
+5. Nhấn **Enter** hoặc nhấn **Gửi tin nhắn**.
+
+Agent nhận được bình luận của bạn kèm theo một khối **Referenced diff** chứa đường dẫn tệp, khoảng dòng, việc các dòng đến từ phiên bản cũ hay mới, và các dòng được chọn. Bạn có thể chọn các dòng ở cả hai bên của một diff thống nhất hoặc diff chia, và một lựa chọn có thể bao gồm cả hai bên.
+
+Chọn dòng chỉ có sẵn trong bảng thay đổi. Các sự khác biệt hiển thị trong tin nhắn chat, trong [Các thay đổi trong tin nhắn này](/docs/vi/checkpoints), và trong hộp thoại hoàn thành worktree không cung cấp tính năng này.
+
+Ví dụ, chọn các dòng của điều kiện mới và hỏi:
+
+> Nhánh này không bao giờ được thực thi khi danh sách rỗng. Xử lý trường hợp này và thêm một test.
+
+## Gửi một phần tử trang từ trình duyệt
+
+1. Mở **Trình duyệt** và tải trang bạn muốn thảo luận.
+2. Nhấn **Chọn một phần tử để gửi tới cuộc trò chuyện** trong thanh công cụ trình duyệt. Hành động tương tự cũng có thể được truy cập trong menu hành động trình duyệt.
+3. Di chuyển con trỏ qua trang. Dream liệt kê phần tử dưới con trỏ và hiển thị tên và kích thước của nó.
+4. Nhấn vào phần tử. Khi ở chế độ này, việc nhấp sẽ chọn phần tử thay vì kích hoạt liên kết hoặc nút. Nhấn phím **Escape** để rời khỏi chế độ mà không chọn bất kỳ phần tử nào.
+5. Trong dạng **Gửi tới cuộc trò chuyện**, kiểm tra hình ảnh nhỏ và tên phần tử, nhập bình luận của bạn, chọn việc có bật **Cuộc trò chuyện mới** hay không, rồi nhấn **Gửi tới cuộc trò chuyện**.
+
+Thông điệp bao gồm URL và tiêu đề trang, tên và lựa chọn CSS của phần tử, các cha của nó, kích thước và vị trí, văn bản hiển thị, các phong cách tính toán được xác định, và HTML của nó. Với các ứng dụng React và Vue, Dream thêm chuỗi thành phần, và trong các phiên bản phát triển, vị trí tệp nguồn. Một hình ảnh chụp màn hình của phần tử được đính kèm dưới dạng `browser-element.png`.
+
+Việc chọn phần tử hoạt động trên tab trình duyệt đang được sử dụng trong Dream. Các phần tử bên trong khung nhúng không thể được chọn riêng lẻ; việc chọn một phần tử sẽ chọn khung đó. Việc di chuyển hoặc tải lại trang sẽ hủy bỏ lựa chọn, và các giá trị thuộc tính dài, văn bản và HTML sẽ bị cắt ngắn.
+
+<Frame caption="Bắt đầu phản hồi phần tử với biểu tượng chọn bên cạnh thanh địa chỉ.">
+  <img
+    src="/images/docs/browser-toolbar.png"
+    alt="Các công cụ thanh công cụ trình duyệt với biểu tượng chọn phần tử ngay bên phải thanh địa chỉ."
+    width={1099}
+    height={92}
+    loading="lazy"
+  />
+</Frame>
+
+## Nơi tin nhắn được gửi đi
+
+| Cuộc trò chuyện mới | Điểm đến |
+| --- | --- |
+| Tắt | Chat đầu tiên của dự án, trở thành chat đang hoạt động |
+| Trên | Một cuộc trò chuyện mới, được mở bên cạnh các cuộc trò chuyện hiện tại khi chức năng nhiều cuộc trò chuyện được bật |
+
+Nếu cuộc trò chuyện đích đang bận, nút gửi sẽ bị vô hiệu hóa và hiển thị **Cuộc trò chuyện đang bận**. Tin nhắn sẽ không được xếp hàng sau phản hồi hiện tại; hãy chờ nó kết thúc hoặc bật **Cuộc trò chuyện mới**.
+
+Nội dung bạn đã nhập vào composer chat được giữ lại. Nếu tin nhắn không thể được gửi, ứng dụng Dream sẽ thêm bình luận của bạn vào composer đó để bạn có thể gửi nó tự mình. Nhấn **Escape** hoặc nhấp vào bên ngoài popover để hủy bỏ bình luận trước khi gửi.
+
+Sử dụng [tham chiếu dự án và tệp đính kèm](/docs/vi/providing-context) khi bạn muốn chỉ đến các tệp mà không chọn các dòng cụ thể, và [Stash](/docs/vi/stash) để lưu một prompt để sau này.

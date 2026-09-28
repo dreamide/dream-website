@@ -1,0 +1,78 @@
+---
+title: "Làm việc với cuộc trò chuyện"
+description: "Bắt đầu cuộc trò chuyện, tìm kiếm công việc trước đó, thay đổi tên cuộc trò chuyện và quản lý lịch sử cuộc trò chuyện của bạn."
+---
+
+Một cuộc trò chuyện chứa một cuộc trò chuyện với một agent lập trình. Mỗi cuộc trò chuyện thuộc về một dự án và có mô hình, quyền hạn và lịch sử cuộc trò chuyện riêng. Sử dụng các cuộc trò chuyện riêng biệt cho các nhiệm vụ mà bạn muốn quay lại độc lập, chẳng hạn như sửa lỗi và kiểm tra tính năng.
+
+## Bắt đầu một cuộc trò chuyện
+
+1. Chọn thẻ dự án mà bạn muốn làm việc.
+2. Nhấn **Cuộc trò chuyện mới** trong thanh công cụ bên trái.
+3. Kiểm tra mô hình và quyền hạn dưới hộp thông báo này.
+4. Mô tả nhiệm vụ và gửi tin nhắn của bạn.
+
+Các cuộc trò chuyện mới sử dụng các cài đặt mô hình [mặc định](/docs/vi/models). Một bản nháp rỗng có thể được tái sử dụng khi bạn nhấp vào **Cuộc trò chuyện mới** lần nữa trước khi gửi tin nhắn. Sau khi bạn gửi tin nhắn, cuộc trò chuyện sẽ xuất hiện trong lịch sử của dự án.
+
+Để có một tin nhắn đầu tiên hữu ích, hãy cung cấp cho agent một kết quả và một cách để kiểm tra nó. Ví dụ:
+
+> Tìm nguyên nhân khiến biểu mẫu cài đặt mất giá trị sau khi tải lại trang. Sửa nguyên nhân đó và giải thích cách bạn xác minh bản sửa.
+
+Sử dụng [tham chiếu tệp và file đính kèm](/docs/vi/providing-context) để chỉ đến mã nguồn hoặc hình ảnh liên quan.
+
+<Frame caption="Viết nhiệm vụ vào hộp thông báo và xem cấu hình cuộc trò chuyện này dưới nó.">
+  <img
+    src="/images/docs/chat-composer.png"
+    alt="Một hộp thông điệp trống nằm trên mô hình đã chọn và các kiểm soát quyền hạn."
+    width={600}
+    height={108}
+    loading="lazy"
+  />
+</Frame>
+
+## Trở về cuộc trò chuyện
+
+1. Nhấn vào **Lịch sử trò chuyện** trong thanh công cụ bên trái.
+2. Khám phá các cuộc trò chuyện hiện tại của dự án, với các cuộc trò chuyện được cập nhật gần đây nhất.
+3. Nhập một phần tiêu đề của cuộc trò chuyện vào **Tìm kiếm lịch sử** để thu hẹp danh sách.
+4. Chọn cuộc trò chuyện để mở nó.
+
+<Frame caption="Tìm kiếm các tiêu đề cuộc trò chuyện hiện tại của dự án, sau đó chọn một cuộc trò chuyện để quay lại.">
+  <img
+    src="/images/docs/chat-history-panel.png"
+    alt="Panel lịch sử chat với ô Tìm kiếm lịch sử và các cuộc trò chuyện gần đây được liệt kê theo tiêu đề và thời gian tương đối."
+    width={416}
+    height={396}
+    loading="lazy"
+  />
+</Frame>
+
+Tìm kiếm lịch sử sẽ khớp với tiêu đề, vì vậy một tên mô tả sẽ giúp việc tìm kiếm dễ dàng hơn. Nó không tìm kiếm nội dung của từng tin nhắn. Nếu một cuộc trò chuyện bị thiếu, hãy kiểm tra dự án đã chọn, sau đó [Chat đã lưu trữ](/docs/vi/archived-chats).
+
+Khi [multi-chat](/docs/vi/multiple-chats) được bật, việc chọn một cuộc trò chuyện có thể đưa nó vào bố cục song song. Khi multi-chat bị tắt, bạn chỉ xem một cuộc trò chuyện tại một thời điểm.
+
+## Đổi tên cuộc trò chuyện
+
+Dream có thể tạo một tiêu đề sau khi bắt đầu cuộc trò chuyện. Để cho nó một tên cụ thể hơn, hãy mở menu **…** của cuộc trò chuyện và chọn **Chỉnh sửa**, hoặc nhấp đôi vào tiêu đề. Trong **Chỉnh sửa trò chuyện**, nhập tên và nhấp **Lưu**. Sử dụng **Hủy** để giữ tên hiện tại.
+
+Các tên như “Sửa tính năng lưu cài đặt” và “Kiểm tra các thử nghiệm cài đặt” dễ phân biệt hơn so với nhiều cuộc trò chuyện mang tên cùng một dự án.
+
+## Theo dõi công việc đang tiến hành
+
+Trong khi một agent trả lời, chat hiển thị tiến trình và hoạt động công cụ. Mở chi tiết công cụ để kiểm tra các lệnh, việc đọc tệp hoặc thay đổi. Khi agent cung cấp danh sách nhiệm vụ, thanh kiểm soát nhiệm vụ bên cạnh hộp tin nhắn sẽ hiển thị tiến trình của nó.
+
+Các tab Lịch sử và dự án bao gồm các chỉ báo trạng thái cho công việc đang được xử lý hoặc đã hoàn thành; các tab dự án cũng có thể chỉ ra rằng một agent đang chờ bạn trả lời. Chọn dự án và mở cuộc trò chuyện để đọc tin nhắn mới nhất. Sử dụng nút dừng trong composer để ngắt một phản hồi. Việc dừng một phản hồi không làm hủy bỏ các thay đổi tệp đã được thực hiện trước đó.
+
+Sau khi một phản hồi kết thúc, hãy sử dụng **Xem các tệp thay đổi trong phản hồi này** ở phần chân để xem các tệp đã được thay đổi và [khôi phục một trong số chúng](/docs/vi/checkpoints).
+
+## Đóng, lưu trữ hoặc xóa?
+
+| Hành động | Kết quả | Cách trở về |
+| --- | --- | --- |
+| Đóng một cột trò chuyện | Xóa nó khỏi bố cục multi-chat | Mở nó từ Lịch sử chat |
+| Lưu trữ cuộc trò chuyện | Xóa nó khỏi lịch sử cuộc trò chuyện đang hoạt động | Khôi phục nó trong Cài đặt → Chat đã lưu trữ |
+| Xóa cuộc trò chuyện đã được lưu trữ | Xóa vĩnh viễn cuộc trò chuyện và các tin nhắn của Dream | Không thể khôi phục qua Dream |
+
+Việc đóng một cột hữu ích khi bạn cần thêm không gian. Việc lưu trữ hữu ích khi một nhiệm vụ đã hoàn thành. Cả hai hành động này đều không làm ngược lại các thay đổi của agent đối với các tệp dự án.
+
+Để thử một cách tiếp cận khác trong khi vẫn giữ nguyên cuộc trò chuyện hiện tại, [tạo nhánh từ một tin nhắn](/docs/vi/branching-chats). Để chuẩn bị một nhiệm vụ cho sau này, [lưu một prompt vào Stash](/docs/vi/stash). Với các hướng dẫn mà bạn muốn sử dụng lại trong nhiều dự án, hãy tạo một [prompt có thể tái sử dụng](/docs/vi/saved-prompts) và thực hiện nó từ menu **+ → Chạy prompt** của composer. Nhập **$** để kích hoạt một [kỹ năng agent](/docs/vi/skills).

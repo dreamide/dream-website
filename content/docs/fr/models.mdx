@@ -1,0 +1,76 @@
+---
+title: "Modèles et valeurs par défaut"
+description: "Activer les modèles, choisir les paramètres par défaut pour les discussions et le dépôt Git, et modifier le modèle d'une conversation."
+---
+
+Dream sépare les modèles disponibles pour utilisation des modèles sélectionnés pour une tâche particulière. **Paramètres → Fournisseurs** contrôle la disponibilité. **Paramètres → Général**, dans le groupe **Modèles**, contrôle les valeurs par défaut. Le sélecteur situé sous chaque boîte de message de chat contrôle cette conversation.
+
+## Activer les modèles
+
+1. Installez et authentifiez un [CLI de fournisseur pris en charge](/docs/fr/providers).
+2. Ouvrir **Paramètres → Fournisseurs** et activer le fournisseur.
+3. Actualisez le fournisseur pour détecter son CLI et ses modèles disponibles.
+4. Activer les modèles que vous souhaitez afficher dans les sélecteurs de Dream.
+
+Vous pouvez activer des modèles provenant de plusieurs fournisseurs. Si un modèle n'apparaît pas dans un sélecteur, vérifiez d'abord qu'il est activé ici. L'actualisation détecte la disponibilité ; elle est indépendante du choix de votre modèle par défaut.
+
+## Définir la valeur par défaut pour les nouveaux échanges
+
+1. Ouvrir **Paramètres → Général → Modèles**.
+2. Sous **Modèle de chat par défaut**, sélectionnez un modèle activé.
+3. Choisissez **Effort** et **Vitesse** si le modèle sélectionné offre ces paramètres.
+4. Retournez dans un projet et commencez une nouvelle conversation pour utiliser la sélection.
+
+La configuration par défaut s'applique aux nouveaux chats dans tous les projets. Les conversations existantes conservent leurs propres paramètres de modèle. Si le chat **Nouveau chat** réouvre un brouillon vide que vous avez déjà ouvert, vérifiez son composant et modifiez le modèle là-bas si nécessaire.
+
+<Frame caption="Les paramètres par défaut et le modèle de génération de texte pour les propositions de commit et de demande de modification sont séparés.">
+  <img
+    src="/images/docs/model-defaults.png"
+    alt="Paramètres des modèles affichant le modèle de chat par défaut, les autorisations par défaut et le modèle de génération de texte."
+    width={1016}
+    height={246}
+    loading="lazy"
+  />
+</Frame>
+
+## Définir un modèle pour la rédaction de commits et de demandes de fusion
+
+Dans le même groupe **Modèles**, choisissez le **Modèle de génération de texte** et son effort et sa vitesse lorsque disponibles. Dream utilise ces choix lors de la rédaction des messages de commit et du texte des demandes de fusion.
+
+Par exemple, vous pouvez utiliser un modèle pour les discussions de mise en œuvre et un autre pour les résumés Git. Modifier le modèle de rédaction Git ne change pas vos modèles de discussion. Consultez [Flux de travail Git](/docs/fr/git-workflows) pour examiner et éditer le texte généré avant de le publier.
+
+## Changer le modèle d'un chat
+
+1. Ouvrir la conversation et attendre que la réponse actuelle soit terminée.
+2. Cliquez sur le nom du modèle sous la boîte de message.
+3. Sélectionnez un modèle activé, y compris un modèle provenant d'un autre fournisseur si nécessaire.
+4. Vérifiez les contrôles de l'effort et de la vitesse avant d'envoyer le prochain message.
+
+La conversation reste visible dans Dream. Changer le modèle réinitialise ses choix de puissance et de vitesse, donc choisis-les à nouveau si tu as besoin de valeurs spécifiques. Un changement de modèle déclenche une nouvelle session du fournisseur pour les tâches suivantes ; il ne modifie pas les messages déjà générés.
+
+<Frame caption="Le composant d'un chat affiche son propre modèle, ses efforts et ses choix de vitesse.">
+  <img
+    src="/images/docs/chat-composer.png"
+    alt="Modèle, effort de raisonnement, vitesse et choix de permission situés sous une boîte de dialogue de chat."
+    width={600}
+    height={108}
+    loading="lazy"
+  />
+</Frame>
+
+## Effort et vitesse
+
+| Contrôle | Objectif |
+| --- | --- |
+| Effort | Sélectionne un niveau de difficulté de raisonnement offert par ce modèle |
+| Vitesse | Sélectionne un niveau de vitesse pris en charge, comme Standard ou Rapide |
+
+Ces contrôles apparaissent uniquement lorsque le modèle sélectionné les supporte. Les niveaux de puissance disponibles varient selon le modèle. Les niveaux de vitesse peuvent avoir des implications différentes en matière d'utilisation ; utilisez les descriptions des options et les informations d'utilisation fournies par votre fournisseur lors du choix d'un niveau.
+
+L'effort par défaut et la vitesse s'appliquent aux nouveaux échanges. Modifier l'un d'eux dans un échange affecte cette conversation. Modifier la vitesse réinitialise également la session du fournisseur pour les travaux suivants.
+
+## Si une valeur par défaut devient indisponible
+
+Désactiver un modèle par défaut sélectionné ou actualiser une liste de modèles modifiée peut faire choisir à Dream un autre modèle activé. Vérifiez à nouveau les deux sélecteurs par défaut après avoir modifié vos modèles activés. Si aucun modèle n'est activé, activez-en un avant de commencer une nouvelle conversation.
+
+Pour les contrôles manquants ou les échecs de détection, consultez [Dépannage](/docs/fr/troubleshooting).

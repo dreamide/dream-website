@@ -1,0 +1,76 @@
+---
+title: "Mô hình và thiết lập mặc định"
+description: "Kích hoạt các mô hình, chọn các giá trị mặc định cho các cuộc trò chuyện và tạo bản nháp Git, và thay đổi mô hình của một cuộc trò chuyện."
+---
+
+Dream tách biệt các mô hình có thể sử dụng khỏi mô hình được chọn cho một nhiệm vụ cụ thể. **Cài đặt → Nhà cung cấp** kiểm soát khả năng sử dụng. **Cài đặt → Chung**, trong nhóm **Mô hình**, kiểm soát các giá trị mặc định. Bộ chọn nằm dưới mỗi hộp tin nhắn của cuộc trò chuyện kiểm soát cuộc trò chuyện đó.
+
+## Kích hoạt các mô hình
+
+1. Cài đặt và xác thực một [CLI nhà cung cấp được hỗ trợ](/docs/vi/providers).
+2. Mở **Cài đặt → Nhà cung cấp** và kích hoạt nhà cung cấp.
+3. Làm mới provider để phát hiện CLI và các mô hình có sẵn của nó.
+4. Bật các mô hình bạn muốn xuất hiện trong các lựa chọn của Dream.
+
+Bạn có thể kích hoạt các mô hình từ nhiều nhà cung cấp. Nếu một mô hình không xuất hiện trong danh sách chọn, hãy kiểm tra rằng nó đã được bật ở đây trước. Việc làm mới phát hiện tính khả dụng; nó là độc lập với việc chọn mô hình mặc định.
+
+## Đặt mặc định cho các cuộc trò chuyện mới
+
+1. Mở **Cài đặt → Chung → Mô hình**.
+2. Under **Mô hình chat mặc định**, chọn một mô hình đã được bật.
+3. Chọn **Mức suy luận** và **Tốc độ** nếu mô hình đã chọn cung cấp những tùy chọn đó.
+4. Trở về dự án và bắt đầu một cuộc trò chuyện mới để sử dụng lựa chọn đó.
+
+Cài đặt mặc định áp dụng cho các cuộc trò chuyện mới được tạo trong các dự án. Các cuộc trò chuyện hiện tại vẫn giữ nguyên các cài đặt mô hình của riêng mình. Nếu **Cuộc trò chuyện mới** làm xuất hiện lại một bản nháp rỗng mà bạn đã mở trước đó, hãy kiểm tra phần soạn thảo và thay đổi mô hình ở đó nếu cần thiết.
+
+<Frame caption="Các thiết lập mặc định cho cuộc trò chuyện và mô hình tạo văn bản cho bản ghi và bản đề xuất PR có những điều khiển riêng biệt.">
+  <img
+    src="/images/docs/model-defaults.png"
+    alt="Các cài đặt Mô hình hiển thị Mô hình chat mặc định, Quyền mặc định và Mô hình tạo văn bản."
+    width={1016}
+    height={246}
+    loading="lazy"
+  />
+</Frame>
+
+## Đặt một mô hình cho việc soạn thảo commit và yêu cầu thay đổi
+
+Trong nhóm **Mô hình** tương tự, chọn **Mô hình tạo văn bản** và tốc độ, hiệu suất khi được hỗ trợ. Dream sử dụng các lựa chọn này khi soạn thảo thông điệp commit và văn bản yêu cầu pull.
+
+Ví dụ, bạn có thể sử dụng một mô hình để thảo luận về triển khai và một mô hình khác để tổng hợp Git. Việc thay đổi mô hình soạn thảo Git không ảnh hưởng đến các mô hình chat của bạn. Xem [Quy trình làm việc với Git](/docs/vi/git-workflows) để xem xét và chỉnh sửa văn bản được tạo ra trước khi xuất bản nó.
+
+## Thay đổi mô hình của một cuộc trò chuyện
+
+1. Mở cuộc trò chuyện và chờ phản hồi hiện tại của nó kết thúc.
+2. Nhấn tên mô hình nằm dưới hộp tin nhắn.
+3. Chọn một mô hình đã được kích hoạt, bao gồm mô hình từ nhà cung cấp khác nếu cần.
+4. Kiểm tra các điều khiển về mức độ nỗ lực và tốc độ trước khi gửi tin nhắn tiếp theo.
+
+Các cuộc trò chuyện vẫn được hiển thị trong Dream. Khi thay đổi mô hình, các lựa chọn về nỗ lực và tốc độ sẽ bị đặt lại, do đó nếu bạn cần các giá trị cụ thể, hãy chọn lại chúng. Việc thay đổi mô hình cũng khởi động một phiên làm việc mới cho các tác vụ tiếp theo; nó không làm thay đổi các tin nhắn đã được tạo trước đó.
+
+<Frame caption="Một người dùng chat hiển thị mô hình, nỗ lực và lựa chọn tốc độ của chính nó.">
+  <img
+    src="/images/docs/chat-composer.png"
+    alt="Mô hình, nỗ lực suy luận, tốc độ và lựa chọn quyền hạn nằm dưới hộp tin nhắn trò chuyện."
+    width={600}
+    height={108}
+    loading="lazy"
+  />
+</Frame>
+
+## Mức suy luận và tốc độ
+
+| Kiểm soát | Mục đích |
+| --- | --- |
+| Mức suy luận | Chọn mức độ nỗ lực suy luận được cung cấp bởi mô hình đó |
+| Tốc độ | Chọn một cấp độ tốc độ được hỗ trợ, chẳng hạn như Standard hoặc Fast |
+
+Các tùy chọn này chỉ xuất hiện khi mô hình được chọn hỗ trợ chúng. Các mức nỗ lực có sẵn thay đổi tùy theo mô hình. Các cấp tốc độ có thể có những hệ quả sử dụng khác nhau; hãy sử dụng mô tả các tùy chọn và thông tin sử dụng từ nhà cung cấp khi chọn một cấp.
+
+Cố gắng và tốc độ mặc định áp dụng cho các cuộc trò chuyện mới. Việc thay đổi bất kỳ yếu tố nào trong một cuộc trò chuyện sẽ ảnh hưởng đến cuộc trò chuyện đó. Việc thay đổi tốc độ cũng sẽ làm mới phiên làm việc của nhà cung cấp cho các công việc tiếp theo.
+
+## Nếu một mặc định trở nên không khả dụng
+
+Việc vô hiệu hóa một mô hình mặc định đã chọn hoặc làm mới danh sách mô hình đã được thay đổi có thể khiến Dream chọn một mô hình khác. Kiểm tra lại cả hai lựa chọn mặc định sau khi thay đổi các mô hình đã được kích hoạt. Nếu không có mô hình nào được kích hoạt, hãy kích hoạt một mô hình trước khi bắt đầu cuộc trò chuyện mới.
+
+Để khắc phục các sự cố về việc thiếu control hoặc thất bại trong phát hiện, xem [Khắc phục sự cố](/docs/vi/troubleshooting).

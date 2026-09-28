@@ -1,0 +1,94 @@
+---
+title: "Hướng dẫn thiết lập"
+description: "Tìm các giá trị mặc định của mô hình, nhà cung cấp, câu hỏi, kỹ năng, máy chủ MCP và các thiết lập điều khiển cuộc trò chuyện đã lưu trữ."
+---
+
+Mở **Cài đặt** bằng biểu tượng bánh xe ở phía trên Dream. Bên trái có **Chung**, **Nhà cung cấp**, **Prompt**, **Kỹ năng**, **Máy chủ MCP** và **Chat đã lưu trữ**. Các thiết lập chung sẽ được áp dụng khi bạn chọn chúng. Các biểu mẫu cho đề xuất, kỹ năng và định nghĩa máy chủ có hành động Tạo mới hoặc Lưu riêng.
+
+## Chung
+
+| Cài đặt | Gì mà nó kiểm soát |
+| --- | --- |
+| Ngôn ngữ | Ngôn ngữ giao diện |
+| Terminal | Là shell được sử dụng cho các phiên bản terminal mới |
+| Chủ đề | Xuất hiện hệ thống, sáng, hoặc tối |
+| Màu nền | Các sắc độ xám của giao diện |
+| Màu nhấn | Hành động chính và trạng thái hoạt động |
+
+Việc thay đổi shell của terminal ảnh hưởng đến các phiên bản mới. Mở một terminal mới để sử dụng lựa chọn; xem [Terminals](/docs/vi/terminals).
+
+<Frame caption="Chọn một chủ đề, sau đó điều chỉnh màu nền và màu nhấn.">
+  <img
+    src="/images/docs/appearance-settings.png"
+    alt="Các cài đặt ngoại hình với các chủ đề Hệ thống, Sáng và Tối cùng các mẫu màu nền và màu nhấn."
+    width={1016}
+    height={255}
+    loading="lazy"
+  />
+</Frame>
+
+### Tin nhắn chat
+
+| Cài đặt | Mặc định | Gì mà nó kiểm soát |
+| --- | --- | --- |
+| Hiển thị tóm tắt suy luận | Trên | Hiển thị các tóm tắt được cung cấp bởi mô hình |
+| Nhóm lệnh gọi công cụ | Tắt | Nhóm gọn hoạt động công cụ một cách gọn gàng |
+| Mở rộng lệnh gọi công cụ | Tắt | Có mở rộng chi tiết gọi công cụ hay không |
+| Thay đổi điểm kiểm tra | Trên | Lưu dự án tệp trước mỗi phản hồi để bạn có thể xem lại và khôi phục các thay đổi |
+
+Các cài đặt hiển thị ảnh hưởng đến các cuộc trò chuyện trong các dự án. Chúng không thay đổi nỗ lực suy luận của mô hình hay cấp thêm quyền truy cập công cụ. Việc tắt **Checkpoint thay đổi** sẽ ngừng tạo các bản sao mới; xem [Kiểm tra và khôi phục thay đổi](/docs/vi/checkpoints).
+
+### Mô hình
+
+Nhóm **Mô hình** nằm ở đầu của Chung.
+
+| Cài đặt | Khu vực |
+| --- | --- |
+| Mô hình chat mặc định | Các cuộc trò chuyện mới được tạo trong các dự án |
+| Quyền mặc định | Đặt câu hỏi, chấp nhận chỉnh sửa hoặc toàn quyền truy cập cho các cuộc trò chuyện mới |
+| Mức suy luận | Sức mạnh suy luận cho các cuộc trò chuyện mới, khi được hỗ trợ bởi mô hình mặc định |
+| Tốc độ | Mức tốc độ cho các cuộc trò chuyện mới, khi được hỗ trợ bởi mô hình mặc định |
+| Mô hình tạo văn bản | Tạo thông điệp giao dịch và văn bản yêu cầu cập nhật, với tốc độ và hiệu suất riêng của mình |
+
+Các cuộc trò chuyện hiện tại vẫn giữ nguyên các lựa chọn của chúng. Kích hoạt một mô hình dưới nhà cung cấp trước khi chọn nó làm mặc định. Tham khảo [Mô hình và thiết lập mặc định](/docs/vi/models) để tìm hiểu toàn bộ quy trình thiết lập.
+
+<Frame caption="Sử dụng nhóm Models để thiết lập mặc định cho các cuộc trò chuyện và việc soạn thảo Git.">
+  <img
+    src="/images/docs/model-defaults.png"
+    alt="Các cài đặt chung với các lựa chọn riêng biệt cho mô hình chat mặc định và mô hình sinh văn bản."
+    width={1016}
+    height={246}
+    loading="lazy"
+  />
+</Frame>
+
+## Nhà cung cấp
+
+Mỗi thẻ cung cấp hiển thị trạng thái CLI được phát hiện, phiên bản đã cài đặt, hành động cập nhật và nút bật. Bật cung cấp và các mô hình riêng lẻ để làm chúng có sẵn trong các lựa chọn. Một nhãn **Có phiên bản mới** hiển thị khi phát hiện phiên bản CLI mới; cập nhật CLI ngoài Dream và sau đó làm mới thẻ.
+
+Cài đặt và đăng nhập qua giao diện dòng lệnh (CLI) của nhà cung cấp ngoài Dream, sau đó cập nhật thẻ của nó. Cấu hình Dream không thay thế luồng đăng nhập của CLI. Xem [Kết nối nhà cung cấp](/docs/vi/providers).
+
+## Các gợi ý, kỹ năng và máy chủ MCP
+
+| Phần | Bạn có thể làm những điều sau đây |
+| --- | --- |
+| [Prompts](/docs/vi/saved-prompts) | Tạo, xem trước, sao chép, sắp xếp lại và chỉnh sửa các mẫu sử dụng lặp lại cho bất kỳ dự án nào của chat |
+| [Kỹ năng](/docs/vi/skills) | Khám phá kỹ năng theo nhà cung cấp và dự án, xem trước các tệp SKILL.md, và tạo kỹ năng mới |
+| [Máy chủ MCP](/docs/vi/mcp-servers) | Thêm hoặc nhập máy chủ công cụ và quản lý các thiết lập kết nối của chúng |
+
+## Chat đã lưu trữ
+
+| Kiểm soát | Điều gì mà nó làm |
+| --- | --- |
+| Checkbox dòng | Chọn các cuộc trò chuyện đã được lưu trữ trên các dự án |
+| Checkbox đầu dòng | Chọn tất cả các cuộc trò chuyện đã được lưu trữ |
+| Khôi phục | Trở lại các cuộc trò chuyện được chọn vào lịch sử hoạt động |
+| Xóa | Xóa vĩnh viễn các cuộc trò chuyện và tin nhắn đã chọn khỏi Dream |
+| Lưu trữ chat sau | Đặt ngưỡng thời gian không hoạt động tính bằng ngày; mặc định là 30 |
+| Lưu trữ ngay | Lưu trữ các cuộc trò chuyện đáp ứng điều kiện ngưỡng đó |
+
+Cutoff không lập kế hoạch một công việc tự động. Xem [Lưu trữ và khôi phục cuộc trò chuyện](/docs/vi/archived-chats) trước khi sử dụng các hành động nhóm hoặc xóa vĩnh viễn.
+
+## Điều khiển bên ngoài Cài đặt
+
+Một số tùy chọn thuộc về các cuộc trò chuyện hoặc dự án riêng biệt. Thiết lập mô hình, mức độ nỗ lực, tốc độ và quyền hạn của một cuộc trò chuyện trong composer của nó. Bật/tắt chế độ nhiều cuộc trò chuyện trong thanh công cụ bên trái. Thay đổi kích cỡ các cột cuộc trò chuyện và các bảng công cụ trực tiếp trong không gian làm việc.

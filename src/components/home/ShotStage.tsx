@@ -1,4 +1,6 @@
-"use client";
+import { useTranslation } from "../../i18n/context";
+
+("use client");
 
 import {
   type CSSProperties,
@@ -197,13 +199,14 @@ export default function ShotStage({
   imgClassName,
   children,
 }: ShotStageProps) {
+  const { t } = useTranslation();
   const [ref, size] = useSize<HTMLDivElement>();
 
   return (
     <div
       ref={ref}
       role="img"
-      aria-label={alt ?? SHOTS[shot].alt}
+      aria-label={t(alt ?? SHOTS[shot].alt)}
       className={cn("relative overflow-hidden bg-[var(--dh-900)]", className)}
       style={style}
     >
@@ -254,6 +257,7 @@ export function ShotReel({
   imgClassName,
   children,
 }: ShotReelProps) {
+  const { t } = useTranslation();
   const [ref, size] = useSize<HTMLDivElement>();
   const current = frames[index % frames.length];
 
@@ -268,7 +272,7 @@ export function ShotReel({
     <div
       ref={ref}
       role="img"
-      aria-label={current.label ?? SHOTS[current.shot].alt}
+      aria-label={t(current.label ?? SHOTS[current.shot].alt)}
       className={cn("relative overflow-hidden bg-[var(--dh-900)]", className)}
       style={style}
     >

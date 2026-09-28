@@ -1,0 +1,43 @@
+---
+title: "Ramificar conversas"
+description: "Continuar a partir de uma mensagem anterior no mesmo workspace ou em uma árvore de trabalho isolada do Git."
+---
+
+Branchar uma conversa quando você quiser explorar outro caminho usando a conversa até o momento atual. O Dream copia as mensagens a partir da mensagem selecionada para uma nova conversa e preserva a conversa original. As mensagens a partir desse ponto não são incluídas na nova conversa.
+
+## Continuar no mesmo workspace
+
+1. Abra a conversa de origem e aguarde que sua resposta termine.
+2. Localize a mensagem de que deseja derivar.
+3. Use sua ação **Continuar a partir desta mensagem…**.
+4. Selecione **Este espaço de trabalho** sob **Continuar em um novo chat**.
+5. Envie um seguimento na nova conversa descrevendo a alternativa que você quer testar.
+
+O novo chat inicia com o modelo e as configurações de permissão do chat de origem. No multi-chat, abre ao lado do chat de origem; no layout single-chat, torna-se a conversa visível.
+
+Por exemplo, criar uma ramificação após o agente explicar um erro e pedir para o novo chat comparar uma correção menor. Ambas as conversas podem usar os arquivos atuais do projeto.
+
+<Note>
+  Cópias de ramificação copiam o histórico da conversa. Elas não restauram o sistema de arquivos ao estado que tinha quando a mensagem selecionada foi enviada. Ambas as conversas neste workspace ainda compartilham os mesmos arquivos.
+</Note>
+
+## Continue em uma nova árvore de trabalho
+
+Para um checkout independente, use **Continuar a partir desta mensagem… → Nova árvore de trabalho**. Esta opção exige um repositório Git. O Dream cria um projeto de árvore de trabalho e um novo chat contendo a história copiada.
+
+Este atalho utiliza a branch atual como base e gera o nome da branch a partir do título da conversa. Não solicita que você escolha uma referência de base personalizada. Para escolher a referência de base e o nome da branch por si mesmo, [crie uma árvore de trabalho a partir do switcher de branch](/docs/pt/worktrees#crie-uma-árvore-de-trabalho).
+
+<Warning>
+  Uma nova árvore de trabalho começa a partir da história Git comitada. Ela não inclui mudanças não comitadas nem recrea o estado exato de arquivos na mensagem selecionada. Salve e comite quaisquer mudanças que precisar no novo checkout antes de criar uma árvore de trabalho.
+</Warning>
+
+## Escolha o tipo certo de ramo
+
+| Você quer… | Use |
+| --- | --- |
+| Pergunte uma pergunta diferente sobre o mesmo código atual | Este espaço de trabalho |
+| Compare a reasoning enquanto mantém a discussão anterior | Este espaço de trabalho |
+| Deixe outro agente editar uma checkout independente | Nova árvore de trabalho |
+| Comece uma tarefa sem copiar nenhum mensagem | Novo chat |
+
+O ramingamento está indisponível enquanto uma resposta está sendo processada. Se a opção de árvore de trabalho estiver indisponível, verifique se o projeto está dentro de um repositório Git. Consulte [Árvores de Trabalho](/docs/pt/worktrees) para abrir e remover o projeto resultante.

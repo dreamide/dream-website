@@ -1,0 +1,89 @@
+---
+title: "Solução de problemas"
+description: "Resolva modelos e conversas faltantes, problemas no terminal e no preview, e erros comuns do Git."
+---
+
+Comece com o erro exibido no chat ou ferramenta afetado. Verifique qual projeto e provedor estão selecionados antes de alterar as configurações, especialmente quando vários chats estão abertos.
+
+## Um CLI de fornecedor não foi detectado
+
+1. Abra o terminal do seu sistema e verifique se o CLI do provedor inicia.
+2. Conclua o login ou a configuração inicial.
+3. Abra as Configurações → Provedores no Dream e atualize esse provedor.
+4. Se você instalou enquanto o Dream estava aberto e a detecção ainda falhar, reinicie o Dream para que ele possa detectar o ambiente alterado.
+
+O Dream precisa do executável estar disponível para o app, não apenas por meio de um atalho ou alias em uma shell interativa. Veja [Conectar um provedor](/docs/pt/providers).
+
+## Um modelo está faltando ou eu não consigo iniciar uma conversa
+
+Verifique **Configurações → Provedores** e habilite pelo menos um modelo detectado. Um CLI detectado sem modelos habilitados não é suficiente para iniciar uma conversa. Atualize após alterar a autenticação ou configuração do provedor. Para OpenCode, complete sua autenticação ou configuração antes de atualizar.
+
+Então verifique **Configurações → Geral → Modelos**. Se o modelo padrão anterior selecionado estiver indisponível, escolha novamente um modelo habilitado. Os diálogos existentes têm seus próprios seletores; mudar o padrão global não substitui essas seleções.
+
+## Controles de esforço ou velocidade estão faltando
+
+Esses controles dependem das capacidades do modelo selecionado. Escolha um modelo que expose a opção que você precisa. Alternar o modelo de uma conversa reinicia as seleções de esforço e velocidade, portanto, verifique ambas após isso. Veja [Modelos e padrões](/docs/pt/models).
+
+## Eu não consigo encontrar uma conversa
+
+1. Selecione o projeto onde a conversa ocorreu.
+2. Aberto **Histórico de bate-papo** e apague seu campo de busca.
+3. Buscar pelo título da conversa, em vez de por palavras dentro de seus mensagens.
+4. Verifique **Configurações → Chats arquivados** e recupere o chat se estiver lá.
+5. Se seu projeto foi encerrado, reabri-lo através de **Fechados recentemente** na tela de começo.
+
+Fechar uma coluna de múltiplos chats não arquiva a conversa. Chats vazios sem mensagens não estão listados no histórico. Um chat permanentemente excluído não pode ser restaurado pelo Dream.
+
+## Um chat restaurado foi arquivado novamente
+
+Restaurar um chat preserva sua data de última atividade. Se você executar **Arquivar agora** novamente e essa data for anterior à cutoff, ele se qualifica para ser arquivado novamente. Revise a cutoff e as conversas que deseja manter antes de executar a ação.
+
+## Branching não está disponível
+
+Aguarde que a resposta atual termine antes de criar uma nova árvore de trabalho. A nova árvore de trabalho também exige um repositório Git. Uma referência base ausente ou inválida pode impedir a criação da árvore de trabalho; verifique se o repositão possui a ramificação ou referência commitada que deseja usar.
+
+Se as edições esperadas estiverem faltando em um novo worktree, verifique se elas não foram commitadas no projeto original. As árvores de trabalho não copiam essas alterações. Veja [Worktrees do Git](/docs/pt/worktrees).
+
+## Uma resposta não possui controle de alterações no arquivo View
+
+O controle aparece nas mensagens do assistente após a resposta ser finalizada, e apenas quando um checkpoint foi capturado para essa resposta. Verifique se o **Checkpoints de alterações** está habilitado em **Configurações → Geral → Mensagens de chat**, e que o executável `git` esteja disponível para o Dream. Projetos muito grandes podem ultrapassar o limite de tempo de captura, nesse caso a resposta é executada sem checkpoint. Veja [Revisar e restaurar alterações](/docs/pt/checkpoints).
+
+## Eu não consigo enviar diff ou feedback de elemento
+
+O controle de envio está desativado enquanto o chat de destino está respondendo e exibe **Chat ocupado**. Aguarde até que ele termine ou habilite **Novo chat** no pop-up. Se o pop-up informar que a seleção não corresponde mais com a diferença, atualize as Alterações e selecione as linhas novamente. Veja [Enviar feedback para um chat](/docs/pt/feedback).
+
+## Continuar no terminal está faltando
+
+A ação está disponível para chats do Claude com uma sessão válida de provedor reutilizável e está desativada enquanto uma resposta está sendo processada. Um novo chat, outro provedor ou uma reinicialização de sessão após alteração do modelo ou velocidade podem não ter essa funcionalidade. Veja [Terminais](/docs/pt/terminals#continuar-uma-conversa-com-o-claude-em-um-terminal).
+
+## Um terminal falha ao abrir
+
+Verifique se o diretório do projeto ainda existe. Escolha uma shell disponível em **Configurações → Geral → Terminal**, depois abra uma nova sessão. Para a continuação do Claude, o diretório da sessão original também deve existir. Tente a mesma shell no terminal do seu sistema para identificar problemas com o ambiente.
+
+## A prévia no navegador está em branco ou desatualizada
+
+Confirme que o aplicativo está em execução e use a URL e porta exatas mostradas no seu terminal. Verifique os erros no terminal, em seguida, tente **Atualizar navegador** ou **Forçar recarregamento**. Compare a URL no navegador do seu sistema. Use DevTools para erros de página; reserve a remoção de cookies ou cache para problemas específicos de autenticação ou armazenamento. Veja [Prévia no navegador](/docs/pt/browser).
+
+## Um arquivo não pode ser salvo
+
+Verifique se o arquivo é gravável e leia o erro do editor. Se ele foi modificado no disco enquanto você estava editando, preserve seu rascunho antes de **Recarregar do disco**, em seguida, reaplique as alterações intencionadas. Veja [Arquivos e busca](/docs/pt/files#tratar-um-arquivo-modificado-fora-do-editor).
+
+## Ações do Git falham
+
+Para problemas com comentários, edição ou fusão de PRs, veja [Revisar pull requests](/docs/pt/pull-requests). Verifique que o GitHub CLI está autenticado e que sua conta possui as permissões necessárias no repositório. Um PR em rascunho deve ser marcado como pronto antes de ser fusão.
+
+| Sintoma | O que verificar |
+| --- | --- |
+| Ferramentas Git para uma pasta | Abra uma pasta dentro de um repositório Git |
+| Sem alterações agendadas para commit | Revise incluindo arquivos não estagios, ou estagie os arquivos intencionados através do Git |
+| Mudanças agendadas fora do projeto ativo | Comitem separadamente antes de usar a ação de commit do Dream |
+| Push não possui destino | Configure um remoto Git e verifique o acesso a ele |
+| Relatório de criação de PR mostra um erro no CLI | Verifique se o GitHub CLI está instalado, autenticado e pode acessar o repositório |
+| A origem e a base do PR são iguais | Mude para uma ramificação de funcionalidade antes de criar o PR |
+| Relatórios de criação de PR com HEAD desconectado | Verifique um ramo antes de criar a solicitação de alteração |
+| Remoção de worktree falha | Revise e preserve as alterações não commitadas nesse checkout |
+| Mesclar e remover não está disponível | A árvore de trabalho não possui commits à frente de sua base, ou o checkout principal possui alterações não commitadas ou um merge em andamento |
+| Relatórios de árvore de trabalho completos apresentam conflitos | A fusão foi abortada e nada foi alterado; faça a fusão da branch base com a árvore de trabalho, resolva os conflitos, comita e então tente novamente |
+| Criar solicitação de pull está indisponível na árvore de trabalho completa | Configure um remoto Git e instale o CLI do GitHub |
+
+Após um falha em uma ação combinada, verifique o estado da ramificação antes de tentar novamente: um commit ou push pode ter sido bem-sucedido antes de um passo posterior falhar. Veja [Fluxos de trabalho do Git](/docs/pt/git-workflows).

@@ -1,0 +1,63 @@
+---
+title: "Tệp và tìm kiếm"
+description: "Duyệt các tệp dự án, tìm kiếm tên và nội dung tệp, chỉnh sửa mã nguồn và xử lý các thay đổi chưa lưu."
+---
+
+Nhấn **Tệp** trong thanh công cụ bên phải để duyệt thư mục của dự án đang hoạt động. Mở một tệp từ cây để kiểm tra nó cùng với cuộc trò chuyện của bạn. Các tab tệp cho phép bạn chuyển đổi giữa nhiều tệp đã được mở.
+
+## Tìm một tệp
+
+1. Mở **Tệp**.
+2. Nhập một phần tên tệp hoặc đường dẫn vào **Tìm kiếm tệp** ở trên cây.
+3. Chọn kết quả để mở nó.
+4. Xóa tìm kiếm để quay lại việc duyệt cây.
+
+Sử dụng **Làm mới tệp** trong các hành động tệp khi các thay đổi được thực hiện ngoài Dream không được phản ánh trong cây tệp. Tìm kiếm một tệp sẽ xác định đường dẫn của nó; sử dụng chức năng tìm kiếm trong trình soạn thảo để tìm văn bản bên trong tệp đó.
+
+<Frame caption="Tìm kiếm hoặc duyệt cây tệp, sau đó mở một tệp bên cạnh cuộc trò chuyện của bạn.">
+  <img
+    src="/images/docs/files-panel.png"
+    alt="Panel tệp với chức năng Tìm kiếm tệp nằm trên cây thư mục và tệp app-error-boundary.tsx được mở trong trình soạn thảo."
+    width={950}
+    height={610}
+    loading="lazy"
+  />
+</Frame>
+
+## Tìm kiếm và thay thế trong một tệp
+
+1. Mở tệp và nhấp vào **Tìm kiếm trong tệp hiện tại** trong thanh công cụ biên tập.
+2. Nhập văn bản vào **Tìm**.
+3. Sử dụng **Kết quả khớp tiếp theo** hoặc **Kết quả khớp trước** để di chuyển qua các kết quả.
+4. Kích hoạt **Phân biệt chữ hoa và chữ thường**, **Khớp toàn bộ từ**, hoặc **Dùng biểu thức chính quy** nếu cần.
+
+Panel tìm kiếm cũng cung cấp các kiểm soát thay thế. Kiểm tra các kết quả trước khi sử dụng **Thay thế tất cả**, sau đó lưu tệp để ghi các thay đổi vào đĩa. Thay thế ảnh hưởng đến tệp hiện tại.
+
+## Chỉnh sửa và lưu trữ
+
+Chỉnh sửa một tệp văn bản có thể ghi đè trong trình soạn thảo mã. Các thay đổi chưa được lưu sẽ được đánh dấu trong tab, và thanh công cụ có thể hiển thị số lượng tệp có bản nháp chưa được lưu.
+
+Nhấn nút **Lưu** trong thanh công cụ biên tập, hoặc nhấn **Command+S** trên macOS hoặc **Ctrl+S** trên Windows/Linux khi thanh công cụ biên tập đang được tập trung. Lưu từng tệp đã được chỉnh sửa trước khi yêu cầu một agent hoặc lệnh terminal sử dụng nội dung mới; các công cụ này đọc tệp từ ổ đĩa.
+
+Việc chuyển tab file cho phép bạn giữ các bản nháp trong khi kiểm tra các file khác. Sử dụng **Hủy thay đổi** để từ chối bản nháp cục bộ. Điều này là riêng biệt với việc khôi phục thay đổi qua Git.
+
+Đóng một tab có các thay đổi chưa được lưu sẽ mở hộp thoại **Lưu / Không lưu / Hủy**. Chọn **Lưu** sẽ ghi lại bản nháp và đóng tab, **Không lưu** sẽ bỏ qua bản nháp và đóng tab, còn **Hủy** sẽ giữ tab mở. Nếu quá trình lưu thất bại hoặc có xung đột với chỉnh sửa bên ngoài, tệp sẽ vẫn được giữ mở để bạn có thể giải quyết vấn đề.
+
+## Xử lý tệp đã được thay đổi bên ngoài trình soạn thảo
+
+Một agent, lệnh terminal hoặc trình biên tập bên ngoài có thể thay đổi cùng một tệp khi bạn đang có bản nháp. Dream kiểm tra nội dung ổ đĩa khi lưu và báo lỗi xung đột thay vì lặng lẽ ghi đè phiên bản mới đó.
+
+1. Lưu lại bất kỳ văn bản dự thảo nào bạn muốn giữ.
+2. Đọc tin nhắn xung đột.
+3. Sử dụng **Tải lại từ đĩa** để tải tệp hiện tại.
+4. Áp dụng lại các thay đổi bạn vẫn cần, sau đó lưu lại lần nữa.
+
+<Warning>
+  Tải lại từ đĩa thay thế bản nháp cục bộ của bạn. Sao chép bất kỳ công việc chưa được lưu lại nào mà bạn cần trước khi sử dụng nó.
+</Warning>
+
+## Điều chỉnh chế độ xem
+
+Sử dụng **Bật ngắt dòng** cho các dòng dài. Thay đổi kích thước cây tệp và các khu vực biên tập để cho nội dung thêm không gian. Sử dụng các hành động **Mở trong** có sẵn để tiếp tục trong một trình biên tập bên ngoài.
+
+Sau khi lưu, mở [Thay đổi](/docs/vi/git-workflows) để xem xét diff Git. Để hỏi một agent về một tệp, [tham chiếu nó bằng @](/docs/vi/providing-context) trong composer trò chuyện.

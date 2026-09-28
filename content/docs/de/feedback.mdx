@@ -1,0 +1,57 @@
+---
+title: "Feedback an einen Chat senden"
+description: "Kommentiere bestimmte Diff-Zeilen oder ein Element in der Browser-Vorschau und sende es an einen Agent."
+---
+
+Dream kann eine Nachricht für Sie aus dem, was Sie betrachten, erstellen. Wählen Sie Zeilen in einem Diff oder wählen Sie ein Element in der Browser-Vorschau, fügen Sie einen Kommentar hinzu und Dream sendet den Kommentar zusammen mit einer Referenz, auf die der Agent handeln kann.
+
+## Kommentare in einer Diff-Zeile hinzufügen
+
+1. Öffne **Änderungen** in der rechten Werkzeugleiste und erweitere eine Datei.
+2. Ziehen Sie über die Zeilennummern, um einen Bereich auszuwählen, oder halten Sie über eine Zeilennummer und klicken Sie auf die **+**-Steuerung, um eine einzelne Zeile auszuwählen. Ausgewählte Zeilen werden hervorgehoben.
+3. Tippen Sie Ihren Kommentar in das Feld **Alles fragen...** im Popover ein.
+4. Aktivieren Sie **Neuer Chat**, wenn Sie möchten, dass der Kommentar eine separate Konversation beginnt.
+5. Drücken Sie **Enter** oder klicken Sie auf **Nachricht senden**.
+
+Der Agent erhält Ihren Kommentar sowie einen **Referenzierten Diff**-Block, der die Dateipfad, die Zeilenanzahl, ob die Zeilen aus der alten oder neuen Version stammen und die ausgewählten Zeilen selbst enthält. Sie können Zeilen auf einer oder beiden Seiten eines unified oder split Diff auswählen, und eine Auswahl kann beide Seiten umfassen.
+
+Die Zeilenauswahl ist nur in der Änderungsübersicht verfügbar. Unterschiede, die in Chat-Nachrichten angezeigt werden, in [Änderungen in dieser Antwort](/docs/de/checkpoints) und im Dialog des Worktree-Vervollständigungsdialogs, bieten sie nicht.
+
+Zum Beispiel wählen Sie die Zeilen einer neuen Bedingung aus und fragen:
+
+> Dieser Branch läuft nie, wenn die Liste leer ist. Behandle diesen Fall und füge einen Test hinzu.
+
+## Ein Seitenelement aus dem Browser senden
+
+1. Offen **Browser** und laden Sie die Seite, die Sie besprechen möchten.
+2. Klicken Sie im Browser-Funktionsbereich auf **Element auswählen und an Chat senden**. Die gleiche Aktion ist im Menü der Browser-Aktionen verfügbar.
+3. Bewegen Sie den Zeiger über die Seite. Dream zeigt das Element unter dem Zeiger und gibt seinen Namen sowie seine Größe an.
+4. Klicken Sie auf das Element. Im aktuellen Modus werden Elemente ausgewählt, anstatt Links oder Schaltflächen zu aktivieren. Drücken Sie **Escape**, um den Modus ohne Auswahl von Elementen zu verlassen.
+5. Im Formular **An Chat senden** prüfen Sie das Thumbnail und den Elementnamen, geben Ihren Kommentar ein, wählen Sie, ob **Neuer Chat** aktiviert werden soll, und klicken Sie auf **An Chat senden**.
+
+Die Nachricht enthält die URL und den Titel der Seite, den Namen und den CSS-Selektor des Elements, seine Eltern, seine Größe und Position, den sichtbaren Text, die berechneten Stile und dessen HTML. Für React- und Vue-Anwendungen fügt Dream die Komponentenkette hinzu und in Entwicklungsbauvarianten die Quelldateiposition. Ein Screenshot des Elements ist als `browser-element.png` beigefügt.
+
+Die Auswahl von Elementen funktioniert auf dem aktiven Browser-Fenster in Dream. Elemente innerhalb eingebetteter Frames können nicht einzeln ausgewählt werden; die Auswahl eines Elements wählt den Frame aus. Die Navigation oder das Neuladen der Seite hebt die Auswahl auf, und lange Attributwerte, Texte und HTML werden abgeschnitten.
+
+<Frame caption="Start Element-Feedback mit dem Auswahl-Icon neben der Adressleiste.">
+  <img
+    src="/images/docs/browser-toolbar.png"
+    alt="Browserleiste mit dem Element-Wahl-Icon direkt rechts der Adressleiste."
+    width={1099}
+    height={92}
+    loading="lazy"
+  />
+</Frame>
+
+## Wohin die Nachricht geht
+
+| Neuer Chat | Zielort |
+| --- | --- |
+| Aus | Der erste offene Chat des Projekts, der sich zum aktiven Chat wird |
+| Auf | Ein neuer Chat, der neben den aktuellen Chats beim Aktivieren von multi-chat aufgeht |
+
+Wenn der Zielchat beschäftigt ist, ist der Sendeknopf deaktiviert und zeigt **Chat ist beschäftigt**. Die Nachricht wird nicht hinter der aktuellen Antwort abgelegt; warten Sie darauf, bis er beendet ist, oder aktivieren Sie **Neuer Chat**.
+
+Der in der Chat-Composer bereits eingegebene Text wird beibehalten. Wenn die Nachricht nicht gesendet werden kann, fügt das Dream-App- die Kommentar in den Composer ein, damit du ihn selbst senden kannst. Drücke **Escape** oder klicke außerhalb des Popovers, um einen Kommentar vor dem Senden zu verworfen.
+
+Verwenden Sie [Projektverweise und Anhänge](/docs/de/providing-context), wenn Sie auf Dateien verweisen möchten, ohne bestimmte Zeilen auszuwählen, und [Stash](/docs/de/stash), um einen Prompt für später zu speichern.

@@ -1,0 +1,62 @@
+---
+title: "Contesto e utilizzo"
+description: "Leggi il contesto d'uso, comprendi la compattazione e modifica come viene visualizzata l'attività dell'agente."
+---
+
+Dream mostra informazioni sull'attuale conversazione e, in caso di disponibilità, i limiti d'uso del provider selezionato. Queste risposte rispondono a domande diverse: quanti dati di contesto sta utilizzando un chat e quanto del limite del provider è stato utilizzato.
+
+## Controlla il contesto della conversazione
+
+Usare l'indicatore di contesto sotto il campo della messaggistica per esaminare l'uso del contesto della conversazione. La finestra di contesto è l'ammontare di materiale che il modello può considerare per una risposta, inclusi il contenuto della conversazione e i risultati degli strumenti.
+
+Dream utilizza le informazioni sulle prestazioni fornite dal provider quando disponibili e può stimare l'uso a partire dai messaggi in altri casi. Considera l'indicatore come una guida piuttosto che una misurazione esatta per il fatturato. Cambiare i modelli può modificare la finestra di contesto disponibile.
+
+## Capire la compattazione
+
+Alcuni provider riducono le conversazioni lunghe riassumendo il contesto più antico. Quando il provider segnala questa attività, Dream mostra **Compattazione del contesto…** o **Contesto compattato** nella conversazione.
+
+La compattazione aiuta l'agente a continuare un compito lungo, ma un riassunto potrebbe non conservare ogni dettaglio. Riassumi i requisiti critici e fa riferimento ai file attuali se il dialogo si è allontanato troppo dall'richiesta originale. Il testo visualizzato da Dream e il contesto utilizzato dal provider non sono necessariamente identici.
+
+Il comportamento di compattazione è controllato dall'integrazione fornita. Non è lo stesso di archiviare un chat e non libera l'uso previsto dell'account di un provider.
+
+## Verifica l'uso del provider
+
+1. Apri un chat utilizzando il provider che vuoi esaminare.
+2. Fai clic sul contatore di utilizzo sotto al box del messaggio.
+3. Controlla le informazioni disponibili sulle prestazioni e i tempi di ripristino.
+
+<Frame caption="Il contatore di utilizzo apre i dettagli sulle limitazioni del provider. Questo esempio di Anthropic mostra l'uso di cinque ore e settimanale con i tempi di ripristino.">
+  <img
+    src="/images/docs/provider-usage.png"
+    alt="Pop-up di utilizzo di Anthropic sopra il grafico del compositore, mostrando il 5% del limite di cinque ore e il 30% del limite settimanale utilizzato, con i tempi di ripristino."
+    width={336}
+    height={227}
+    loading="lazy"
+  />
+</Frame>
+
+Il pop-up è etichettato **Utilizzo del piano** per la maggior parte dei provider e **Statistiche di utilizzo** per OpenCode. La disponibilità e i dettagli variano a seconda del provider. Un valore non disponibile non significa per sé stesso che il chat non possa eseguirsi; verificare eventuali errori sulla risposta effettiva e le informazioni sul conto fornito dal provider.
+
+## Fare che l'attività degli strumenti sia più facile da leggere
+
+Apri **Impostazioni → Generale** e cerca **Messaggi chat**:
+
+| Impostazione | Effetto |
+| --- | --- |
+| Mostra riepiloghi di ragionamento | Mostra i riassunti di ragionamento forniti dal modello |
+| Raggruppa chiamate agli strumenti | Gruppa l'attività degli strumenti in chip di conteggio compatti |
+| Espandi chiamate agli strumenti | Mostra i dettagli dell'invocazione degli strumenti espansi per impostazione predefinita |
+
+Queste impostazioni modificano la presentazione. Non modificano l'impegno cognitivo richiesto dal modello; configuralo in [Modelli e impostazioni predefinite](/docs/it/models). Lo stesso gruppo contiene **Checkpoint delle modifiche**, che controlla se Dream salva snapshot dei file prima di ogni risposta; vedi [Controllare e ripristinare le modifiche](/docs/it/checkpoints).
+
+<Frame caption="L'attività del Strumento appare direttamente nel testo della risposta quindi puoi esaminare cosa ha utilizzato l'agente.">
+  <img
+    src="/images/docs/chat-tools.png"
+    alt="Chippe di lettura file e comandi all'interno di una risposta di un agente, inclusi i nomi dei file e i range delle righe."
+    width={600}
+    height={184}
+    loading="lazy"
+  />
+</Frame>
+
+Per un nuovo compito con un obiettivo diverso, inizia un [nuovo chat](/docs/it/chats). Per mantenere una parte specifica di una conversazione mentre esplori un'alternativa, [crea un ramo da un messaggio](/docs/it/branching-chats).

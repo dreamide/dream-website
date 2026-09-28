@@ -1,0 +1,77 @@
+---
+title: "Projekte und Arbeitsbereich"
+description: "Verwalten von Projekttabellen, Anordnen von Panels und Wechsel zwischen Chats und Entwicklungstools."
+---
+
+Jedes Dream-Projekt verfügt über seinen eigenen Arbeitsbereich. Projekt-Tabs ermöglichen es Ihnen, zwischen Repositorien zu wechseln, während die offenen Chats und Werkzeuge jedes Projekts erhalten bleiben.
+
+## Projekte hinzufügen und wechseln
+
+1. Klicken Sie neben den Projekttabellen auf das **+**, oder verwenden Sie **Ordner öffnen** auf der Einstiegsseite.
+2. Wählen Sie den Ordner aus, in dem Sie arbeiten möchten.
+3. Wählen Sie seine Registerkarte aus, um ihn zum aktiven Projekt zu machen.
+
+Das aktive Projekt bestimmt, welche Chats, Dateien, Terminals, Browser-Registerkarten und Stash-Elemente Sie sehen. Überprüfen Sie die ausgewählte Registerkarte, bevor Sie eine Aufgabe senden oder einen Befehl ausführen. Ziehen Sie Projektablagen, um sie zu ordnen, wenn Sie projektbezogene Projekte nebeneinander platzieren möchten.
+
+<Frame caption="Der hervorgehobene Tab ist das aktive Projekt. Nutzen Sie +, um einen weiteren Ordner zu öffnen.">
+  <img
+    src="/images/docs/project-tabs.png"
+    alt="Dream-Projekt-Registerkarten mit „Dream“ ausgewählt und einer Plus-Button neben den offenen Projekten."
+    width={1256}
+    height={48}
+    loading="lazy"
+  />
+</Frame>
+
+## Projekt außerhalb neu benennen oder öffnen
+
+Öffnen Sie das Menü von **…** des Projekts und wählen Sie **Bearbeiten**, um den Anzeigename oder das Icon zu ändern. Klicken Sie auf das Icon, um ein Bild bis zu 5 MB hochzuladen, dann **Speichern**. Setzen Sie ein benutzerdefiniertes Icon zurück, um zur automatischen Erkennung aus dem Projekt zurückzukehren. Das Umbenennen eines Projekts in Dream ändert den Ordner auf der Festplatte nicht.
+
+Nutzen Sie die Menüoptionen **Öffnen in**, um das Projekt in einem verfügbaren externen Editor zu öffnen.
+
+## Zurück zu einem früheren Chat
+
+Verwenden Sie **Zurück** und **Vorwärts** neben den Projekttabellen, um Projekte und Chats zu wiederholen, die Sie zuvor geöffnet haben. Auf Windows und Linux verwenden Sie **Alt+Left** und **Alt+Right**; auf macOS verwenden Sie **Command+[** und **Command+]**. Die Maus-Tasten für Zurück und Vorwärts funktionieren ebenfalls.
+
+Diese Geschichte folgt den Projekten und Chat-Auswahlen. Das Wechseln von Werkzeugpanelen führt keine Einträge hinzu, und der eingebundene Browser verfügt über seine eigene Navigationsgeschichte. Tastenkürzel innerhalb des Terminals oder des Code-Editors werden den jeweiligen Tools überlassen.
+
+## Ein Projekt schließen und erneut öffnen
+
+1. Öffne das Menü von **…** des Projekts und wähle **Schließen**.
+2. Wenn Sie zurückkehren möchten, öffnen Sie die Startseite über die Projekt-**+** Schaltfläche.
+3. Suche das Projekt in **Zuletzt geschlossen**, verwenden Sie das Suchfeld gegebenenfalls.
+4. Wählen Sie das Projekt aus, um es erneut zu öffnen.
+
+Das Schließen eines Projekts entfernt seine offene Registerkarte; es wird das Verzeichnis nicht gelöscht. Dream stellt den gespeicherten Projektzustand wie Chats und offene Werkzeuge bei Bedarf wiederher. Verwenden Sie ein geschlossenes Projekt nicht, um einen Terminalprozess laufen zu lassen.
+
+## Das Workspace-Steuerungselemente suchen
+
+Die linke Werkzeugleiste enthält **Chat-Verlauf**, **Neuer Chat** und **Multi-Chat aktivieren**. Beim Überführen über ein Icon wird dessen Bezeichnung angezeigt. Der Chat-Editor enthält das ausgewählte Modell, die Bemühung und die Geschwindigkeit, wenn diese unterstützt werden, sowie die Berechtigungen.
+
+Die rechte Leiste öffnet Werkzeuge für Projekte:
+
+| Werkzeug | Was Sie tun können |
+| --- | --- |
+| [Änderungen](/docs/de/git-workflows) | Git-Diffs überprüfen und Dateiänderungen zurücksetzen |
+| [Dateien](/docs/de/files) | Dateien durchsuchen, Pfade suchen und Inhalt von Dateien bearbeiten |
+| [Browser](/docs/de/browser) | Vorschau von URLs und Inspektion von Webseiten |
+| [Terminal](/docs/de/terminals) | Projektbefehle in separaten Sitzungen ausführen |
+| [Git-Aktionen](/docs/de/git-workflows) | Commit, pushen und Pull Requests erstellen |
+| [Pull Requests](/docs/de/pull-requests) | Lesen Sie den aktuellen Branch-PR, stellen Sie Kommentare und fügen Sie ihn ein |
+| [Stash](/docs/de/stash) | Prompts speichern und sie später ausführen |
+
+**Git-Aktionen** befinden sich oben in der rechten Werkzeugleiste. Für Repository-Projekte erscheinen Git-Steuerungselemente. Die Branch-Steuerung unter dem Chat zeigt den aktiven Branch an; verwenden Sie sie, um Branches zu wechseln oder [einen Worktree](/docs/de/worktrees) zu erstellen. In einem Worktree-Projekt zeigt der gleiche Bereich eine **Arbeitsbaum**-Schaltfläche, die das [Vollständige Worktree](/docs/de/worktrees#ein-worktree-abschließen)-Dialogfeld öffnet.
+
+## Verwalten von Chats und Panels
+
+Klicken Sie auf ein Werkzeug, um dessen Panel zu öffnen. Verwenden Sie das Schließen- oder Zusammenfalten-Element des Panels, wenn Sie mehr Platz für Chats benötigen, und ziehen Sie die Panel-Trennlinien, um die Anordnung zu verändern. Das Schließen eines Werkzeugpanels unterscheidet sich von der Schließung seiner einzelnen Terminal-Sessions oder Browser-Optionen.
+
+Aktiviere [multi-chat](/docs/de/multiple-chats), um Gespräche in veränderbaren Spalten anzuordnen. Jedes Chat-Verzeichnis verfügt über seine eigene Gesprächsgeschichte, während alle Chats im Projekt die gleichen Dateien verwenden. Verwende Worktree für unabhängige Checkouts.
+
+## Das Dream-Fenster erfassen
+
+Drücken Sie **Ctrl+Shift+S** unter Windows/Linux oder **Command+Shift+S** unter macOS, um das Dream-Fenster zu erfassen. Dream kopiert das Screenshot in die Zwischenablage und öffnet ein Fenster, um es als PNG zu speichern. Abbrechen des Speicher-Fensters behält die Kopie in der Zwischenablage. Eine Benachrichtigung gibt an, ob das Bild in die Zwischenablage kopiert, gespeichert oder nicht erfasst werden konnte.
+
+Um einen Screenshot einer Webseite zu erstellen, verwenden Sie die [Aktion des Browser-Screenshots](/docs/de/browser).
+
+Für das Aussehen der Anwendung, die Sprache und die Modellvorlieben öffnen Sie [Einstellungen](/docs/de/settings). Um ältere Gespräche zu finden, verwenden Sie [Chatverlauf](/docs/de/chats) oder [Archivierte Chats](/docs/de/archived-chats).

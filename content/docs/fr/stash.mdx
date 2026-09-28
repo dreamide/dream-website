@@ -1,0 +1,64 @@
+---
+title: "Enregistrer des prompts avec Stash"
+description: "Préparer des tâches pour plus tard, éditer des prompts enregistrés et les soumettre dans de nouvelles conversations."
+---
+
+Stash contient des prompts que vous souhaitez exécuter plus tard dans le projet actuel. Chaque élément enregistré inclut son texte, les références de projet, le modèle, l'effort, la vitesse et les permissions.
+
+Utilisez-le pour enregistrer une tâche de suivi lorsque l'autre chat est occupé. Par exemple, enregistrez « Vérifier les états d'erreur du formulaire de paramètres » pendant que vous finalisez l'implémentation.
+
+<Frame caption="Les tâches enregistrées restent dans le Stash du projet jusqu'à ce que vous les exécutiez ou les supprimiez.">
+  <img
+    src="/images/docs/stash-prompts.png"
+    alt="Panneau Stash contenant trois tâches enregistrées, chacune avec ses propres contrôles de modèle et un bouton d'envoi."
+    width={950}
+    height={389}
+    loading="lazy"
+  />
+</Frame>
+
+## Enregistrer une tâche pour plus tard
+
+1. Sélectionnez le projet auquel appartient la tâche.
+2. Cliquez sur **Stash**, l'icône de boîte de réception située en bas de la barre latérale droite.
+3. Écrivez la tâche dans le composant nouveau-prompt situé en bas du panneau.
+4. Ajouter des références de projet avec **@** et choisir le modèle et les permissions.
+5. Soumettez le nouveau prompt pour l'ajouter à la liste enregistrée.
+
+L'envoi depuis ce composant en bas enregistre la tâche ; il ne déclenche pas de réponse d'agent. Un élément enregistré apparaît au-dessus de celui-ci dans le panneau Stash. Passer d'un projet permet de voir le panneau Stash spécifique à ce projet.
+
+<Frame caption="Le composateur en bas ajoute une tâche enregistrée. Soumettez un élément enregistré au-dessus de lui pour commencer une conversation.">
+  <img
+    src="/images/docs/stash-composer.png"
+    alt="Le composateur de prompt vide situé en bas du panneau Stash."
+    width={716}
+    height={115}
+    loading="lazy"
+  />
+</Frame>
+
+## Modifier un prompt enregistré
+
+Editez le texte directement dans son élément enregistré et ajustez les contrôles situés en dessous. Vérifiez à nouveau le modèle et les permissions avant de le lancer, surtout si vous avez changé vos modèles par défaut depuis l'enregistrement de la tâche. Les éléments enregistrés conservent leurs propres sélections.
+
+Les références de projet font référence à des chemins. Elles ne conservent pas une snapshot des fichiers référencés. L'agent travaillera avec le projet tel qu'il existe lorsque vous exécutez la tâche.
+
+<Note>
+  Utilisez les références de projet pour le contexte que vous souhaitez conserver dans Stash. Les fichiers joints sélectionnés via le sélecteur de fichiers ne sont pas conservés dans les éléments enregistrés ; joignez ces fichiers dans une conversation normale.
+</Note>
+
+## Exécuter une tâche enregistrée
+
+1. Recherchez l'élément sauvegardé que vous souhaitez exécuter.
+2. Vérifiez son texte, ses références, son modèle et ses autorisations.
+3. Cliquez sur le contrôle d'envoi de cet élément.
+
+Dream crée un nouveau chat avec les paramètres enregistrés et envoie la demande. Si le multi-chat est activé, la conversation s'ouvre à côté des chats actuels. Sinon, elle devient le chat visible.
+
+L'élément est supprimé de Stash lorsqu'il est remis à la nouvelle conversation. Si la réponse échoue, vérifiez l'erreur dans la nouvelle conversation plutôt que d'attendre que l'élément reste dans Stash.
+
+## Supprimer une tâche enregistrée
+
+Utilisez **Supprimer le chat du stash** sur l'élément enregistré pour le supprimer sans démarrer une nouvelle conversation. Cela supprime le prompt enregistré, pas les fichiers du projet.
+
+Stash stocke des tâches futures pour un projet. Pour des instructions que vous souhaitez utiliser à travers plusieurs projets, utilisez [des prompts réutilisables](/docs/fr/saved-prompts). Pour garder une conversation terminée hors du historique actif, utilisez [les Chats archivés](/docs/fr/archived-chats). Pour isoler des modifications de code, utilisez [les Git worktrees](/docs/fr/worktrees).

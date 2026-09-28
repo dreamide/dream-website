@@ -2,6 +2,7 @@
 
 import { ArrowUpRight } from "lucide-react";
 import { type ReactNode, useRef } from "react";
+import { useTranslation } from "../../i18n/context";
 import { cn } from "../../lib/utils";
 import Button from "../Button";
 import DownloadButton from "../DownloadButton";
@@ -95,6 +96,7 @@ function MediaFrame({
 }
 
 function CTAs({ event }: { event: string }) {
+  const { t } = useTranslation();
   // Top margin leaves room for the download button's sparkles (~80px tall),
   // which rise above it and would otherwise overlap the text.
   return (
@@ -107,7 +109,7 @@ function CTAs({ event }: { event: string }) {
         data-umami-event={`${event}-github`}
       >
         <GitHubIcon className="size-4" />
-        Star on GitHub
+        {t("Star on GitHub")}
         <ArrowUpRight className="size-4 text-muted-foreground" />
       </Button>
     </div>
@@ -119,6 +121,7 @@ function CTAs({ event }: { event: string }) {
 /* ------------------------------------------------------------------ */
 
 function Hero() {
+  const { t } = useTranslation();
   const ref = useRef<HTMLDivElement>(null);
   const p = useScrollProgress(ref, "through");
   // Starts on the first two chats and settles on the whole window.
@@ -138,12 +141,12 @@ function Hero() {
         <div className="flex flex-col gap-8 lg:col-span-5">
           <div className="flex flex-col gap-4">
             <p className="text-2xl font-light tracking-tight sm:text-3xl">
-              Open-source IDE built for AI coding.
+              {t("Open-source IDE built for AI coding.")}
             </p>
             <p className="max-w-md text-[var(--dh-400)] sm:text-lg">
-              Our goal is to create the best experience for working with AI
-              agents. All your agents in a single workspace, organized as tabs,
-              under a clean, focused interface.
+              {t(
+                "Our goal is to create the best experience for working with AI agents. All your agents in a single workspace, organized as tabs, under a clean, focused interface.",
+              )}
             </p>
           </div>
           <CTAs event="minimal-hero" />
@@ -386,6 +389,7 @@ const GROUPS: Group[] = [
 const FRAME_MS = 4200;
 
 function StepRow({ step }: { step: Step }) {
+  const { t } = useTranslation();
   const [ref, inView] = useInView<HTMLDivElement>({ threshold: 0.4 });
   const [index, setIndex] = useCycle(step.items.length, FRAME_MS, inView);
   const frames = step.items.map((i) => i.frame);
@@ -399,15 +403,18 @@ function StepRow({ step }: { step: Step }) {
         <div className="flex flex-col gap-4">
           <Label>{step.id}</Label>
           <h3 className="text-2xl font-light tracking-tight sm:text-3xl">
-            {step.title}
+            {t(step.title)}
           </h3>
-          <p className="leading-relaxed text-[var(--dh-400)]">{step.body}</p>
+          <p className="leading-relaxed text-[var(--dh-400)]">{t(step.body)}</p>
           {step.extra && <div className="pt-2">{step.extra}</div>}
         </div>
 
         <ul className="flex flex-col border-t border-[var(--dh-line)]">
           {step.items.map((item, i) => (
-            <li key={item.label} className="border-b border-[var(--dh-line)]">
+            <li
+              key={t(item.label)}
+              className="border-b border-[var(--dh-line)]"
+            >
               <button
                 type="button"
                 onClick={() => setIndex(i)}
@@ -418,7 +425,7 @@ function StepRow({ step }: { step: Step }) {
                     : "text-[var(--dh-500)] hover:text-[var(--dh-400)]",
                 )}
               >
-                {item.label}
+                {t(item.label)}
                 <span className="dh-mono text-[10px] text-[var(--dh-500)]">
                   {String(i + 1).padStart(2, "0")}
                 </span>
@@ -455,15 +462,16 @@ function StepRow({ step }: { step: Step }) {
 }
 
 function GroupSection({ group }: { group: Group }) {
+  const { t } = useTranslation();
   return (
     <section className="flex flex-col gap-24 sm:gap-32">
       <Fade>
         <div className="flex flex-col gap-6 border-t border-[var(--dh-line)] pt-6 sm:flex-row sm:items-start sm:justify-between">
           <h2 className="text-3xl font-light tracking-tight sm:text-4xl">
-            {group.title}
+            {t(group.title)}
           </h2>
           <div className="flex gap-16">
-            <Label>{group.label}</Label>
+            <Label>{t(group.label)}</Label>
             <Label>{group.id}</Label>
           </div>
         </div>
@@ -480,17 +488,18 @@ function GroupSection({ group }: { group: Group }) {
 /* ------------------------------------------------------------------ */
 
 function Closing() {
+  const { t } = useTranslation();
   return (
     <section className="border-t border-[var(--dh-line)] pt-6">
       <div className="flex justify-end">
-        <Label>Download</Label>
+        <Label>{t("Download")}</Label>
       </div>
       <Fade className="flex flex-col gap-10 py-24 sm:py-32">
         <h2 className="text-[clamp(2.75rem,8vw,6rem)] font-bold leading-[0.9] tracking-[-0.03em]">
-          Dream your dream.
+          {t("Dream your dream.")}
         </h2>
         <p className="max-w-md text-[var(--dh-400)] sm:text-lg">
-          Available for macOS, Windows, and Linux.
+          {t("Available for macOS, Windows, and Linux.")}
         </p>
         <CTAs event="minimal-cta" />
       </Fade>

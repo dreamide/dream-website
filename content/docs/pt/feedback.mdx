@@ -1,0 +1,57 @@
+---
+title: "Enviar feedback para um chat"
+description: "Comente em linhas específicas de diff ou em um elemento no navegador de visualização e envie para um agente."
+---
+
+O Dream pode construir uma mensagem para você a partir do que você está observando. Selecione linhas em um diff ou escolha um elemento na prévia do navegador, adicione um comentário e o Dream envia o comentário juntamente com uma referência que o agente pode agir.
+
+## Comentar em linhas de um diff
+
+1. Abra as **Alterações** na barra de ferramentas da direita e expanda um arquivo.
+2. Arraste sobre os números de linha para selecionar um intervalo, ou posicione o ponteiro sobre um número de linha e clique no controle **+** para selecionar uma única linha. As linhas selecionadas são destacadas.
+3. Digite seu comentário no box **Pergunte qualquer coisa...**.
+4. Habilite **Novo chat** se você quiser que o comentário inicie uma conversa separada.
+5. Aperte **Enter** ou clique em **Enviar mensagem**.
+
+O agente recebe seu comentário seguido de um bloco **Referência de diff** contendo o caminho do arquivo, o intervalo de linhas, se as linhas provêm da versão antiga ou da versão nova e as linhas selecionadas. Você pode selecionar linhas em qualquer um dos lados de um diff unificado ou dividido, e uma seleção pode abranger ambos os lados.
+
+A seleção de linha está disponível apenas no Painel de Alterações. As diferenças exibidas dentro das mensagens de chat, em [Alterações nesta resposta](/docs/pt/checkpoints), e no diálogo de conclusão de árvore de trabalho não oferecem essa funcionalidade.
+
+Por exemplo, selecione as linhas de uma nova condição e pergunte:
+
+> Este ramo nunca é executado quando a lista está vazia. Trate esse caso e adicione um teste.
+
+## Enviar um elemento da página do navegador
+
+1. Abra o **Navegador** e carregue a página que deseja discutir.
+2. Clique em **Selecionar um elemento para enviar ao chat** na barra de ferramentas do navegador. A mesma ação está disponível no menu de ações do navegador.
+3. Mova o ponteiro sobre a página. O Dream destaca o elemento sob o ponteiro e exibe seu nome e tamanho.
+4. Clique no elemento. Cliques neste modo selecionam elementos em vez de ativar links ou botões. Pressione **Escape** para sair do modo sem selecionar nada.
+5. No formulário **Enviar para o chat**, verifique o thumbnail e o nome do elemento, digite seu comentário, escolha se habilitar **Novo chat** e clique em **Enviar para o chat**.
+
+A mensagem inclui a URL e o título da página, o nome e o seletor CSS do elemento, seus pais, tamanho e posição, o texto visível, as propriedades computadas principais e o HTML. Para aplicações React e Vue, o Dream adiciona a cadeia de componentes e, em builds de desenvolvimento, a localização do arquivo fonte. Uma captura de tela do elemento está anexada como `browser-element.png`.
+
+A seleção de elementos funciona na aba ativa do Dream. Elementos dentro de quadros embutidos não podem ser selecionados individualmente; escolher um seleciona o quadro. Navegar ou recarregar a página cancela a seleção, e valores longos de atributo, texto e HTML são truncados.
+
+<Frame caption="Inicie o feedback do elemento com o ícone de seleção ao lado da barra de endereço.">
+  <img
+    src="/images/docs/browser-toolbar.png"
+    alt="Barra de navegação com o ícone de seleção de elemento imediatamente à direita da barra de endereço."
+    width={1099}
+    height={92}
+    loading="lazy"
+  />
+</Frame>
+
+## Onde a mensagem vai
+
+| Novo chat | Destino |
+| --- | --- |
+| Desligado | O primeiro chat aberto do projeto, que se torna o chat ativo |
+| Em | Um novo chat, aberto ao lado dos chats atuais quando o multi-chat estiver habilitado |
+
+Se o chat de destino estiver ocupado, o controle de envio está desativado e exibe **Chat ocupado**. A mensagem não é colocada em fila atrás da resposta atual; aguarde até que termine ou ative **Novo chat**.
+
+O texto que você já digitou no compositor do chat é mantido. Se a mensagem não puder ser enviada, o aplicativo Dream anexa seu comentário ao compositor para que você possa enviá-lo por si mesmo. Pressione **Escape** ou clique fora do popover para descartar um comentário antes de enviá-lo.
+
+Use [referências de projeto e anexos](/docs/pt/providing-context) quando você quiser apontar para arquivos sem selecionar linhas específicas, e [Stash](/docs/pt/stash) para salvar um prompt para posterior.

@@ -1,0 +1,100 @@
+---
+title: "Worktree Git"
+description: "Tạo các bản sao độc lập để thực hiện các nhiệm vụ song song, sau đó hợp nhất, xuất bản hoặc xóa chúng khi công việc được hoàn thành."
+---
+
+Một Git worktree cung cấp một thư mục làm việc riêng biệt cho một nhiệm vụ trong cùng một khoa học. Dream mở nó như một dự án khác, với các cuộc trò chuyện và công cụ riêng. Sử dụng worktrees khi các agent cần sửa đổi độc lập mà không làm thay đổi việc checkout của nhau.
+
+## Tạo một worktree
+
+Bắt đầu từ một dự án là một kho lưu trữ Git có tham chiếu cơ bản đã được ghi lại.
+
+1. Mở thanh chuyển nhánh dưới cuộc trò chuyện.
+2. Chọn **Cây công việc mới**.
+3. Nhập tên cho nhánh mới, ví dụ `fix-settings-persistence`.
+4. Đặt **Tham chiếu cơ sở** thành commit hoặc nhánh mà bạn muốn bắt đầu, ví dụ như `main`.
+5. Nhấn **Tạo cây công việc**.
+
+<Frame caption="Chọn Worktree mới ở dưới cùng của trình chuyển nhánh để tạo một bản sao riêng biệt.">
+  <img
+    src="/images/docs/branch-switcher.png"
+    alt="Menu nhánh được mở ở phía trên thanh kiểm soát nhánh hiện tại, với Tạo worktree là hành động ở dưới cùng."
+    width={377}
+    height={256}
+    loading="lazy"
+  />
+</Frame>
+
+Dream tạo ra bản sao và mở dự án của nó. Kiểm tra nhánh worktree được hiển thị dưới cuộc trò chuyện trước khi gửi nhiệm vụ. Các lệnh và sửa đổi của agent trong dự án này sử dụng thư mục mới.
+
+Tham chiếu cơ bản phải tồn tại trong khoa học địa phương của bạn. Nếu bạn cần các phiên bản mới từ remote, hãy lấy chúng thông qua quy trình Git thông thường trước khi tạo worktree.
+
+## Đưa một cuộc trò chuyện vào một worktree
+
+Từ một tin nhắn, chọn **Tiếp tục từ tin nhắn này… → Cây công việc mới**. Dream sao chép cuộc trò chuyện qua tin nhắn đó, sử dụng nhánh hiện tại làm cơ sở, và tạo tên nhánh mới.
+
+Sử dụng shortcut này khi bạn muốn agent tiếp tục với cuộc thảo luận trước đó. Sử dụng workflow chuyển nhánh khi bạn cần chọn tên cơ sở và tên nhánh tùy chỉnh. Xem [Phân nhánh cuộc trò chuyện](/docs/vi/branching-chats) để biết sự khác biệt giữa việc sao chép tin nhắn và sao chép tệp.
+
+<Warning>
+  Worktrees bắt đầu từ lịch sử đã được ghi lại của Git. Các thay đổi chưa được ghi lại trong dự án gốc không được sao chép. Một cuộc trò chuyện được nhánh từ một tin nhắn trước không tái tạo hệ thống tệp tại thời điểm đó trong cuộc trò chuyện.
+</Warning>
+
+## Chuyển đổi giữa các bản sao
+
+Sử dụng các tab dự án để chuyển đổi giữa bản kiểm tra gốc và dự án worktree. Các worktree được quản lý bởi ứng dụng cũng xuất hiện trong phần **Lịch sử trò chuyện** của dự án cha, nơi bạn có thể mở chúng lại.
+
+Xem xét và thực hiện thay đổi từ dự án nơi chúng được tạo ra. Tạo một worktree không hợp nhất các thay đổi vào nhánh gốc; sử dụng **Hoàn thành worktree** khi công việc đã sẵn sàng.
+
+## Hoàn thành một worktree
+
+Thương lượng **cây làm việc đầy đủ** sẽ kiểm tra nhánh cây làm việc so với cơ sở của nó, sau đó hợp nhất nó, mở một yêu cầu pull, hoặc đơn giản là xóa việc chọn.
+
+1. Trong dự án worktree, nhấp vào nút **cây công việc** hiển thị tên nhánh dưới chat. Tooltip của nó là **Hoàn thành worktree** kèm theo nhánh.
+2. Xem tóm tắt: nhánh **Nhánh cơ sở**, số lượng **Commit** nhánh này đang dẫn trước và dẫn sau, các **Tệp** đã thay đổi, và nhánh hiện tại của **Checkout chính** cùng việc có sạch hay không.
+3. Đọc danh sách commit và mở rộng bất kỳ tệp nào để kiểm tra sự thay đổi của nó.
+4. Nếu danh sách đối thoại liệt kê các tệp chưa được ghi lại, hãy nhấp vào **Commit thay đổi...** để ghi lại chúng, hoặc chọn **Bỏ các thay đổi chưa commit** để cho chúng được xóa cùng với worktree.
+5. Dưới **Các bước tiếp theo**, chọn một lựa chọn.
+6. Nhấn **Hợp nhất và xóa**, **Tiếp tục yêu cầu pull**, hoặc **Xóa cây công việc**.
+
+| Bước tiếp theo | Điều gì xảy ra |
+| --- | --- |
+| Hợp nhất vào *base* và xóa worktree | Gộp nhánh vào cơ sở từ bản sao chính, xóa worktree và xóa nhánh |
+| Tạo pull request và xóa worktree | Mở hộp thoại yêu cầu pull, sau đó loại bỏ worktree và giữ lại nhánh |
+| Xóa worktree chỉ | Xóa worktree và giữ lại nhánh |
+
+Dream tự động chọn thao tác hợp nhất khi có thể, sau đó là yêu cầu pull, rồi xóa. Thao tác hợp nhất thực hiện lệnh `git merge` trong bản sao chính; nếu bản sao chính nằm trên một nhánh khác, Dream sẽ chuyển nó sang nhánh cơ sở trước và thông báo điều này trong tóm tắt. Một nhánh cơ sở chỉ tồn tại trên remote sẽ được tạo ra tại địa phương.
+
+Trang **Xong** báo cáo kết quả: cơ sở có được tiến hành forward nhanh hay nhận được một commit hợp nhất, whether main checkout đã chuyển nhánh, nút **Xem pull request** khi một PR được tạo ra, và cơ sở có bị xóa hay được giữ lại.
+
+<Warning>
+  Hoàn thành một worktree sẽ xóa thư mục của nó và đóng dự án của nó. Các cuộc trò chuyện của dự án worktree sẽ bị xóa cùng với nó và không xuất hiện trong Lịch sử chat hay Đã đóng gần đây. Nếu bạn muốn giữ lại một cuộc trò chuyện, hãy [chuyển nó sang workspace cha](/docs/vi/branching-chats) trước khi hoàn thành.
+</Warning>
+
+### Khi một tùy chọn không khả dụng
+
+| Tin nhắn | Cái gì cần làm |
+| --- | --- |
+| Phân nhánh này không có commit nào nằm trước *base* | Commit công việc bạn muốn giữ lại, hoặc chọn Xóa worktree chỉ |
+| Phiên bản chính có các tệp chưa được ghi lại | Gửi hoặc lưu thay đổi trong dự án cha trước khi hợp nhất |
+| Phiên bản chính có quá trình hợp nhất hoặc thao tác lại đang diễn ra | Hoàn thành hoặc hủy bỏ thao tác đó trong dự án cha |
+| Nhánh này không chia sẻ lịch sử nào với *base* | Hợp nhất qua quy trình Git của bạn riêng |
+| Không có remote Git nào được cấu hình | Thêm một remote trước khi tạo pull request |
+| GitHub CLI (gh) không khả dụng | Cài đặt và xác thực GitHub CLI |
+
+Nút chính vẫn bị vô hiệu hóa khi worktree có các thay đổi chưa được ghi lại và bạn chưa thực hiện việc ghi lại hay chọn bỏ chúng. Đường dẫn pull-request cho phép bạn thực hiện ghi lại trong hộp thoại PR.
+
+Nếu việc hợp nhất tạo ra xung đột, Dream sẽ hủy bỏ thao tác đó và báo lỗi **Hợp nhất vào *base* đã tạo ra xung đột. Hợp nhất đã bị hủy và không có gì thay đổi**, cùng với các tệp có xung đột. Đưa nhánh base vào worktree, giải quyết xung đột, thực hiện commit, rồi chạy lại **Hoàn thành worktree**.
+
+## Xóa một worktree khỏi dự án cha
+
+Bạn cũng có thể xóa một worktree mà không cần hộp thoại hoàn thành:
+
+1. Lưu lại công việc bạn cần bằng cách thực hiện commit, và nếu phù hợp thì đẩy nó hoặc mở một pull request.
+2. Dừng các quá trình sử dụng worktree, chẳng hạn như một ứng dụng cục bộ đang chạy trong terminal của nó.
+3. Mở panel **Lịch sử trò chuyện** của dự án cha và tìm worktree.
+4. Sử dụng hành động loại bỏ và xem xác nhận.
+5. Xác nhận **Xóa cây công việc** khi bạn không còn cần kiểm tra đó nữa.
+
+Việc xóa sẽ xóa thư mục worktree khỏi ổ cứng. Git từ chối việc xóa khi nó chứa các thay đổi chưa được ghi lại. Quay lại dự án đó và kiểm tra các thay đổi trước khi cố gắng lại.
+
+Chỉ đóng tab dự án sẽ làm nó bị loại khỏi không gian làm việc đang mở; việc xóa một worktree sẽ xóa bản checkout của nó. Xem [Quy trình làm việc với Git](/docs/vi/git-workflows) để biết thêm về các bước commit và yêu cầu PR.

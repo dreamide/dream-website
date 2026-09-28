@@ -1,0 +1,78 @@
+---
+title: "Mit Chats arbeiten"
+description: "Starte Gespräche, finde vorherige Arbeiten, umbenenne Chats und verwaltet deine Chat-Geschichte."
+---
+
+Ein Chat beinhaltet eine einzelne Konversation mit einem Coding-Agent. Jeder Chat gehört zu einem Projekt und verfügt über seine eigenen Modell, Berechtigungen und Konversationsgeschichte. Verwenden Sie separate Chats für Aufgaben, die Sie unabhängig wiederholen möchten, wie z. B. die Behebung eines Bugs und die Überprüfung einer Funktion.
+
+## Eine Konversation starten
+
+1. Wählen Sie die Projekttaste aus, in der Sie arbeiten möchten.
+2. Klicken Sie im linken Toolbar auf **Neuer Chat**.
+3. Prüfen Sie das Modell und die Berechtigungen unter der Nachrichtenbox.
+4. Beschreibe die Aufgabe und sende deine Nachricht.
+
+Neue Chats verwenden Ihre [Standardmodell-Einstellungen](/docs/de/models). Ein leeres Entwurf kann wieder verwendet werden, wenn Sie **Neuer Chat** erneut klicken, bevor eine Nachricht gesendet wird. Sobald eine Nachricht gesendet wird, erscheint das Gespräch in der Projektgeschichte.
+
+Um eine nützliche erste Nachricht zu generieren, geben Sie dem Agenten ein Ergebnis und eine Möglichkeit, es zu überprüfen. Zum Beispiel:
+
+> Finde heraus, warum das Einstellungsformular nach dem Neuladen seine Werte verliert. Behebe die Ursache und erkläre, wie du die Korrektur überprüft hast.
+
+Verwenden Sie [Dateireferenzen und Anhänge](/docs/de/providing-context), um auf relevante Code oder ein Bild hinzuweisen.
+
+<Frame caption="Schreibe die Aufgabe in das Nachrichtenfeld und überprüfe die Einstellungen dieses Chats unterhalb davon.">
+  <img
+    src="/images/docs/chat-composer.png"
+    alt="Ein leeres Chat-Feld oberhalb des ausgewählten Modells und der Berechtigungssteuerung."
+    width={600}
+    height={108}
+    loading="lazy"
+  />
+</Frame>
+
+## Zurück zu einem Gespräch
+
+1. Klicken Sie im linken Toolbar auf **Chat-Verlauf**.
+2. Durchsuchen Sie die Chats des aktuellen Projekts, wobei zuerst die recently aktualisierten Gespräche angezeigt werden.
+3. Geben Sie einen Teil des Chat-Titels in **Suche Geschichte** ein, um die Liste zu verfeinern.
+4. Wählen Sie das Gespräch aus, um es zu öffnen.
+
+<Frame caption="Suche die Titel der aktuellen Projekt-Chats und wähle ein Gespräch aus, um darauf zurückzukehren.">
+  <img
+    src="/images/docs/chat-history-panel.png"
+    alt="Panel mit Chatverlauf, der ein Suchfeld für den Chatverlauf und eine Liste der letzten Gespräche nach Titel und relativer Zeit enthält."
+    width={416}
+    height={396}
+    loading="lazy"
+  />
+</Frame>
+
+History search matches titles, daher macht ein beschreibender Name die Arbeit einfacher zu finden. Es sucht nicht den Text jeder Nachricht. Wenn ein Chat fehlt, prüfen Sie den ausgewählten Projekt und dann [Archivierte Chats](/docs/de/archived-chats).
+
+Wenn [multi-chat](/docs/de/multiple-chats) aktiviert ist, kann die Auswahl einer Konversation die Seitenbereitstellung aktivieren. Wenn multi-chat deaktiviert ist, wird eine Konversation zu einem Zeitpunkt angezeigt.
+
+## Ein Chat umbenennen
+
+Dream kann nach dem Beginn einer Konversation einen Titel erzeugen. Um einen konkreteren Namen zu vergeben, öffnen Sie das Menü **…** des Chats und wählen **Bearbeiten** aus, oder klicken Sie einfach doppelt auf den Titel. Im Menü **Chat bearbeiten** geben Sie den Namen ein und klicken auf **Speichern**. Wählen Sie **Abbrechen**, um den bestehenden Namen beizubehalten.
+
+Namensbeispiele wie „Einstellungen der Persistenz beheben“ und „Einstellungen der Tests überprüfen“ sind leichter zu unterscheiden als mehrere Chats, die sich auf das gleiche Projekt beziehen.
+
+## Fortschritt verfolgen
+
+Während ein Agent antwortet, wird der Chat seine Fortschritte und Tool-Aktivitäten anzeigen. Offene Tool-Details anzeigen, um Befehle, Datei-Lesungen oder Änderungen zu überprüfen. Wenn der Agent eine Aufgabenliste bereitstellt, zeigt die Aufgabensteuerung neben der Nachrichtenbox ihren Fortschritt an.
+
+Historie- und Projekt-Register zeigen Statusindikatoren für Arbeit, die verarbeitet oder abgeschlossen wird; Projekt-Register können außerdem anzeigen, dass ein Agent auf Ihre Antwort wartet. Wählen Sie das Projekt und öffnen Sie das Gespräch, um die letzte Nachricht zu lesen. Verwenden Sie die Stop-Funktion im Composer, um eine Antwort zu unterbrechen. Die Unterbrechung einer Antwort führt nicht dazu, dass bereits vorgenommene Dateiänderungen rückgängig gemacht werden.
+
+Nachdem eine Antwort abgeschlossen ist, verwenden Sie im Footer **Dateiänderungen dieser Antwort anzeigen**, um die Dateien zu sehen, die sie verändert hat, und [eine davon wiederherzustellen](/docs/de/checkpoints).
+
+## Schließen, archivieren oder löschen?
+
+| Aktion | Ergebnis | Wie Rückkehrung |
+| --- | --- | --- |
+| Eine Chat-Spalte schließen | Entfernt es aus der mehrfachen Chat-Ausrichtung | Aus dem Chatverlauf öffnen |
+| Eine Chat-Vorlage archivieren | Entfernt es aus der aktiven Chat-Geschichte | Wiederherstellen unter Einstellungen → Archivierte Chats |
+| Ein archiviertes Chat-Löschen | Entfernt die Chat-Session und ihre Nachrichten dauerhaft aus Dream | Es kann nicht über Dream wiederhergestellt werden. |
+
+Die Schließung einer Spalte ist nützlich, wenn mehr Platz benötigt wird. Die Archivierung ist nützlich, wenn eine Aufgabe abgeschlossen ist. Keine dieser Aktionen rückgängig macht die Änderungen des Agents an den Projektdateien.
+
+Um einen anderen Ansatz auszuprobieren, während die bisherige Konversation erhalten bleibt, [verzweilen Sie eine Nachricht](/docs/de/branching-chats). Um eine Aufgabe für später vorzubereiten, [speichern Sie einen Prompt in Stash](/docs/de/stash). Für Anweisungen, die Sie über verschiedene Projekte hinweg wiederverwenden möchten, erstellen Sie einen [wiederholbaren Prompt](/docs/de/saved-prompts) und führen ihn aus dem Composer-Menü **+ → Prompt ausführen** aus. Geben Sie **$** ein, um ein [Agenten-Fähigkeits](/docs/de/skills) zu aktivieren.

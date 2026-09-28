@@ -1,0 +1,126 @@
+---
+title: "Flussi di lavoro Git"
+description: "Revisione dei cambiamenti, lavorare con i rami e utilizzare i worktree Git in Dream."
+---
+
+I strumenti di Git di Dream sono disponibili quando la cartella del progetto è un repository Git. Usa **Modifiche** nella barra laterale destra per esaminare i file e **Apri azioni Git** per committare, spingere o creare una richiesta di pull.
+
+## Prima di iniziare
+
+Per i commit, il tuo repository ha bisogno di un'identità autore configurata con Git. Per il push, ha bisogno di un remoto e di credenziali che possano accedervi. La creazione di un pull request utilizza il GitHub CLI, che deve essere installato e autenticato per il repository di destinazione.
+
+Puoi digitare i messaggi di commit e il testo del PR tu stesso. Per generare tali testi, abilita un modello fornitore e scegli **Impostazioni → Generale → Modelli → Modello di generazione del testo**.
+
+## Revisione dei cambiamenti
+
+1. Apri **Modifiche** per esaminare i file modificati, aggiunti e eliminati.
+2. Espandi un file per esaminare la sua differenza.
+3. Scegli **Diff unificato** o **Diff diviso** nell'area azioni del pannello, e abilita il wrapping delle parole se utile.
+4. Usa **Aggiorna modifiche** se le modifiche effettuate fuori da Dream non sono ancora riflesse.
+
+<Frame caption="Espandi i file per esaminare le aggiunte e le cancellazioni prima del commit.">
+  <img
+    src="/images/docs/changes-panel.png"
+    alt="Pannello delle modifiche che mostra i percorsi dei file e una differenza unificata con aggiunte in verde e cancellazioni in rosso."
+    width={950}
+    height={680}
+    loading="lazy"
+  />
+</Frame>
+
+Per diff estremamente grandi, Dream potrebbe mostrare **Diff troppo grande per essere renderizzato**. Utilizza **Renderizza comunque** solo quando desideri caricare quella vista più ampia, o esaminare il file nel tuo editor o terminale.
+
+Usa l'azione **Annulla le modifiche apportate al file** per scartare modifiche di lavoro non desiderate. L'azione **Annulla tutte le modifiche** ha un ambito più ampio; verifica il suo raggio prima di confermarlo. Annullare il codice è separato dall'archiviazione della conversazione che lo ha generato. Per annullare soltanto ciò che una risposta specifica ha modificato, usa il relativo [punto di controllo](/docs/it/checkpoints).
+
+Per chiedere a un agente di informazioni su righe specifiche, trascina sulle righe di un diff o fai clic sul controllo **+** di una riga, poi scrivi un commento. Dream lo invia insieme al percorso del file e alle righe selezionate. Vedere [Inviare feedback a una chat](/docs/it/feedback).
+
+## Committare il tuo lavoro
+
+1. Aperta **Azioni Git → Esegui commit**.
+2. Controlla le modifiche incluse nel dialogo.
+3. Verifica **Includi le modifiche non aggiunte all’indice**. È abilitato per impostazione predefinita e include le modifiche non stage nel commit.
+4. Inserisci un messaggio di commit o usa **Genera automaticamente il messaggio**, poi modifica il risultato secondo necessità.
+5. Scegli **Esegui commit**, o **Effettua il commit e il push** se sei pronto a pubblicare il commit sul remoto.
+
+<Frame caption="Controlla le modifiche e il messaggio inclusi prima di scegliere Commit o Commit e push.">
+  <img
+    src="/images/docs/commit-dialog.png"
+    alt="Dialogo per il commit delle modifiche con ramo, conteggio dei cambiamenti, inclusione delle modifiche non stage, e un messaggio di commit generato."
+    width={672}
+    height={439}
+    loading="lazy"
+  />
+</Frame>
+
+Per committare solo un sottoinsieme selezionato, stage quei file utilizzando Git in un terminale o un editor esterno e disattiva **Includi le modifiche non aggiunte all’indice**. Il pannello delle modifiche non fornisce controlli individuali di staging.
+
+Dream rifiuta i commit in caso ci siano modifiche staged al di fuori della cartella progetto attiva. Committale separatamente prima di procedere con questa operazione.
+
+<Warning>
+  Revisti i file inclusi nonché il messaggio. Con Include unstaged abilitato, un commit può contenere lavori da diversi chat che condividono questo checkout.
+</Warning>
+
+## Spingi un ramo
+
+Aperta **Azioni Git → Esegui push**, verifica i commit in uscita e il destinazione, e scegli **Esegui push**. Il destinazione dipende dalla configurazione dell'upstream e del remoto del repository della ramifica.
+
+<Frame caption="Verifica i commit di destinazione e di uscita prima di spingere.">
+  <img
+    src="/images/docs/push-dialog.png"
+    alt="Finestra di dialogo per spostare i cambiamenti che elenca il ramo, il destinazione origin/main, il numero di commit in avanti e indietro, e i commit in uscita."
+    width={672}
+    height={364}
+    loading="lazy"
+  />
+</Frame>
+
+Se l'invio fallisce, verifica l'errore e conferma l'accesso remoto. Un commit locale riuscito rimane comunque commesso anche se un successivo push fallisce; verifica lo stato della ramifica prima di ripetere un'azione combinata.
+
+## Crea una pull request
+
+1. Lavora su un ramo caratterizzato da un nome diverso dal ramo base della richiesta di merge.
+2. Aperta **Azioni Git → Crea PR**.
+3. Controlla i rami source e base e le modifiche proposte.
+4. Inserisci un titolo e una descrizione, oppure usa **Genera automaticamente i dettagli PR** e verifica il testo generato.
+5. Sotto **Passaggi successivi**, seleziona l'azione che corrisponde allo stato della ramificazione.
+6. Accendi **Bozza** se la richiesta di merge non è pronta per il review, poi invia.
+
+<Frame caption="Revisti i dettagli della richiesta di merge e scegli il passo successivo. Il draft è disattivato in questo esempio.">
+  <img
+    src="/images/docs/create-pr-dialog.png"
+    alt="Crea dialogo PR con rami source e base, titolo, descrizione, opzioni per il passaggio successivo e opzione Draft."
+    width={672}
+    height={680}
+    loading="lazy"
+  />
+</Frame>
+
+| Passo successivo | Cosa succede |
+| --- | --- |
+| Crea PR | Crea una PR per lavoro già spostato |
+| Spingi e crea una richiesta di pull | Spinge i commit prima di creare la richiesta di merge |
+| Commit, push e crea PR | Committati i cambiamenti in corso, effettuano il push e creano la richiesta di merge |
+
+Il dialogo inizia con **Bozza** disattivato. Abilitalo per creare un PR in bozza. La creazione di un PR richiede un ramo piuttosto che un HEAD separato, e source e base non possono essere lo stesso ramo.
+
+Se un'azione combinata fallisce, passaggi precedenti potrebbero già essere stati completati. Verifica il commit, il ramo remoto o la richiesta di merge prima di riprovarci.
+
+## Revisione e fusione di una richiesta di pull
+
+Apri i **pull request** nella barra laterale destra per visualizzare il PR della ramifica corrente. Usa il **Riepilogo** per la sua descrizione, i controlli e il dibattito, o il **Codice** per esaminare i diff e pubblicare commenti inline. Puoi modificare il titolo e la descrizione quando è consentito e utilizza **Unisci** per scegliere il metodo di unione. Vedi [Esaminare i pull request](/docs/it/pull-requests) per il flusso completo.
+
+## Passare o creare ramificazioni
+
+Apri il selettore di ramificazioni sotto il chat, cerca le ramificazioni locali e seleziona una per verificarne l'uscita. Usa **Crea e verifica nuova ramificazione…** per nominare e creare una ramificazione. Aggiorna l'elenco se una ramificazione creata al di fuori di Dream manca.
+
+<Frame caption="Il segno di spunta identifica la ramifica corrente. Cerca un'altra ramifica o crea una nuova da quel menù.">
+  <img
+    src="/images/docs/branch-switcher.png"
+    alt="Switcher di ramification che mostra Cerca ramificazioni, main selezionato, un'altra ramificazione locale, Creare e passare a una nuova ramificazione, e Nuovo albero di lavoro."
+    width={377}
+    height={256}
+    loading="lazy"
+  />
+</Frame>
+
+Cambiare ramificazioni modifica i file utilizzati da ogni chat in quel progetto. Verifica il lavoro incompiuto prima di effettuare il cambio. Per compiti paralleli con check-out indipendenti, usa [Git worktrees](/docs/it/worktrees). Quando un worktree è completato, il suo dialogo **Completamento worktree** può unire il ramo alla sua base oppure aprire una richiesta di pull e poi rimuovere il check-out.

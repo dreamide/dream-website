@@ -1,0 +1,76 @@
+---
+title: "Modelos e padrões"
+description: "Habilite modelos, escolha os padrões para chats e redação de Git, e altere o modelo de uma conversa."
+---
+
+O Dream separa os modelos disponíveis para uso dos modelos selecionados para uma tarefa específica. **Configurações → Provedores** controla a disponibilidade. **Configurações → Geral**, no grupo **Modelos**, controla os padrões. O seletor abaixo de cada caixa de mensagem de chat controla aquela conversa.
+
+## Habilitar modelos
+
+1. Instale e autentique um CLI de [provedor compatível](/docs/pt/providers).
+2. Abra **Configurações → Provedores** e ative o provedor.
+3. Atualize o provedor para detectar seu CLI e os modelos disponíveis.
+4. Habilite os modelos que você deseja que apareçam nos seletores do Dream.
+
+Você pode habilitar modelos de vários provedores. Se um modelo estiver faltando em um selector, verifique primeiro se ele está habilitado aqui. Atualizar detecta a disponibilidade; é distinto de escolher seu padrão.
+
+## Defina o padrão para novas conversas
+
+1. Aberto **Configurações → Geral → Modelos**.
+2. Em **Modelo de chat padrão**, selecione um modelo habilitado.
+3. Escolha **Esforço** e **Velocidade** se o modelo selecionado oferecer esses controles.
+4. Retorne para um projeto e inicie um novo chat para usar a seleção.
+
+O padrão aplicado a chats recém-criados em todos os projetos. Conversas existentes mantêm suas próprias configurações de modelo. Se o **Novo chat** trazer de volta um rascunho vazio que você já abriu, verifique seu compositor e altere o modelo lá, se necessário.
+
+<Frame caption="As configurações do chat e o modelo de geração de texto para rascunhos de commit e solicitações de alteração são separados.">
+  <img
+    src="/images/docs/model-defaults.png"
+    alt="Configurações de modelos mostrando Modelo de chat padrão, Permissões padrão e Modelo de geração de texto."
+    width={1016}
+    height={246}
+    loading="lazy"
+  />
+</Frame>
+
+## Defina um modelo para redação de commits e solicitações de alteração
+
+No mesmo grupo **Modelos**, escolha o **Modelo de geração de texto** e sua eficácia e velocidade, quando disponíveis. O Dream utiliza essas seleções ao redigir mensagens de commit e texto de solicitação de integração.
+
+Por exemplo, você pode usar um modelo para conversas de implementação e outro para resumos do Git. Mudar o modelo de redação do Git não altera seus modelos de chat. Veja [Fluxos de trabalho do Git](/docs/pt/git-workflows) para revisar e editar o texto gerado antes de publicá-lo.
+
+## Mudar o modelo de um chat
+
+1. Abra a conversa e aguarde que a resposta atual seja finalizada.
+2. Clique no nome do modelo abaixo da caixa de mensagem.
+3. Selecione um modelo habilitado, incluindo um modelo de outro provedor, se necessário.
+4. Verifique os controles de esforço e velocidade antes de enviar a próxima mensagem.
+
+A conversa permanece visível no Dream. Mudar o modelo reinicia suas seleções de esforço e velocidade, então escolha novamente se precisar de valores específicos. Uma mudança de modelo também inicia uma nova sessão do provedor para o trabalho subsequente; não altera as mensagens já geradas.
+
+<Frame caption="O compositor de chat mostra seu próprio modelo, esforço e seleção de velocidade.">
+  <img
+    src="/images/docs/chat-composer.png"
+    alt="Modelo, esforço de raciocínio, velocidade e seleções de permissão abaixo de uma caixa de mensagem de chat."
+    width={600}
+    height={108}
+    loading="lazy"
+  />
+</Frame>
+
+## Esforço e velocidade
+
+| Controle | Finalidade |
+| --- | --- |
+| Esforço | Seleciona um nível de esforço de raciocínio oferecido por esse modelo |
+| Velocidade | Seleciona um nível de velocidade compatível, como Standard ou Fast |
+
+Esses controles aparecem apenas quando o modelo selecionado os suporta. Níveis de esforço disponíveis variam de acordo com o modelo. As faixas de velocidade podem ter implicações diferentes no uso; use as descrições das opções e as informações de uso fornecidas pelo provedor ao escolher um nível.
+
+O esforço e a velocidade padrão se aplicam a novas conversas. Mudar um deles em uma conversa afeta essa conversa. Mudar a velocidade também reinicia a sessão do provedor para trabalhos subsequentes.
+
+## Se um padrão padrão ficar indisponível
+
+Desativar um modelo padrão selecionado ou atualizar a lista de modelos modificados pode causar o Dream a selecionar outro modelo habilitado. Verifique novamente ambos os seletores de padrão após alterar seus modelos habilitados. Se nenhum modelo estiver habilitado, habilite um antes de iniciar uma nova conversa.
+
+Para controles faltantes ou falhas na detecção, consulte [Solução de problemas](/docs/pt/troubleshooting).

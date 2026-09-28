@@ -1,0 +1,74 @@
+---
+title: "Giới thiệu"
+description: "Bắt đầu với Dream, một IDE bàn phím mở nguồn cho các agent lập trình AI."
+---
+
+Dream mang lại không gian làm việc trên bàn phím tích hợp các dự án của bạn, các agent lập trình AI, các tệp, các terminal, các bản xem trình duyệt và luồng làm việc Git. Kết nối một lệnh dòng CLI được hỗ trợ, mở một thư mục và làm việc với một hoặc nhiều cuộc trò chuyện mà không cần chuyển đổi công cụ.
+
+<Frame caption="Giữ các cuộc trò chuyện riêng biệt trong một không gian làm việc dự án.">
+  <img
+    src="/images/screen-multiple-chats.png"
+    alt="Ba cuộc trò chuyện mở song song bên cạnh thẻ dự án đang hoạt động trong Dream."
+    width={1920}
+    height={1080}
+    loading="lazy"
+  />
+</Frame>
+
+<CardGroup cols={2}>
+  <Card title="Cài đặt Dream" icon="download" href="/docs/vi/installation">
+    Chọn gói phần mềm cho macOS, Windows hoặc Linux.
+  </Card>
+  <Card title="Kết nối nhà cung cấp" icon="plug" href="/docs/vi/providers">
+    Kích hoạt các mô hình từ các CLIs agent lập trình đã cài đặt của bạn.
+  </Card>
+  <Card title="Mở dự án đầu tiên" icon="folder-open" href="/docs/vi/first-project">
+    Thêm một thư mục và bắt đầu một cuộc trò chuyện trong không gian làm việc của nó.
+  </Card>
+  <Card title="Khám phá không gian làm việc" icon="panels-top-left" href="/docs/vi/workspace">
+    Học cách các dự án, cuộc trò chuyện, tệp, terminal và bản xem được kết nối với nhau.
+  </Card>
+</CardGroup>
+
+## Dream bao gồm những gì
+
+- Một không gian làm việc đa dự án với các tab dự án bền vững
+- Nhiều cuộc trò chuyện bên cạnh và phân nhánh cuộc trò chuyện
+- Câu lệnh có thể tái sử dụng trong các dự án và kỹ năng agent có nhận thức về nhà cung cấp
+- Các điểm kiểm tra theo phản hồi để xem xét và khôi phục các tệp mà người đại diện đã thay đổi
+- Hỗ trợ cho Codex CLI, Claude Code CLI, OpenCode CLI, Cursor Agent CLI và Grok Build CLI
+- Một trình duyệt tệp, tìm kiếm và chỉnh sửa tệp, các terminal tích hợp, và xem trước trình duyệt
+- Tình trạng, nhánh, khác biệt, ghi nhật ký, đẩy, yêu cầu lấy, và quy trình làm việc với worktree, bao gồm việc hợp nhất một worktree đã hoàn thành trở lại nhánh gốc
+- Phản hồi chi tiết theo dòng và chọn phần tử trình duyệt gửi các thông điệp mục tiêu đến một cuộc trò chuyện
+- Một bảng điều khiển yêu cầu pull từ GitHub để xem xét mã, để lại bình luận, chỉnh sửa chi tiết và hợp nhất
+- Máy chủ MCP điều chỉnh được và công cụ agent tích hợp để tương tác với trình duyệt
+
+<Note>
+  Dream chạy các agent lập trình thông qua các CLI đã cài đặt của họ. Bạn cần ít nhất một CLI được hỗ trợ trước khi có thể bắt đầu một cuộc trò chuyện.
+</Note>
+
+## Các luồng làm việc phổ biến
+
+| Tôi muốn… | Đọc |
+| --- | --- |
+| Giữ các cuộc thảo luận về triển khai và kiểm tra cùng nhau | [Sử dụng nhiều cuộc trò chuyện](/docs/vi/multiple-chats) |
+| Tìm, lưu trữ hoặc khôi phục một cuộc trò chuyện cũ | [Làm việc với cuộc trò chuyện](/docs/vi/chats) và [Cuộc trò chuyện đã lưu trữ](/docs/vi/archived-chats) |
+| Chọn một mô hình khởi đầu và nỗ lực suy luận | [Mô hình và thiết lập mặc định](/docs/vi/models) |
+| Thử cách tiếp cận khác từ một tin nhắn trước đó | [Phân nhánh cuộc trò chuyện](/docs/vi/branching-chats) |
+| Theo dõi tiến trình của một agent hoặc trả lời câu hỏi | [Làm việc với cuộc trò chuyện](/docs/vi/chats#theo-dõi-công-việc-đang-tiến-hành) |
+| Kiểm tra phần trả lời đã thay đổi và hủy bỏ một phần của nó | [Kiểm tra và khôi phục thay đổi](/docs/vi/checkpoints) |
+| Bình luận về các dòng diff cụ thể hoặc một phần tử trang | [Gửi phản hồi đến cuộc trò chuyện](/docs/vi/feedback) |
+| Chuẩn bị một nhiệm vụ để chạy sau này | [Lưu câu lệnh với Stash](/docs/vi/stash) |
+| Sử dụng các hướng dẫn chung trong nhiều dự án | [Câu lệnh có thể tái sử dụng](/docs/vi/saved-prompts) |
+| Duyệt, gọi hoặc tạo một kỹ năng của agent | [Kỹ năng của tác nhân](/docs/vi/skills) |
+| Kết nối các công cụ bổ sung với một agent | [Máy chủ MCP](/docs/vi/mcp-servers) |
+| Cho một agent tệp hoặc một hình ảnh chụp màn hình | [Cung cấp ngữ cảnh](/docs/vi/providing-context) |
+| Làm việc trong một bản sao độc lập, sau đó hợp nhất lại | [Worktree Git](/docs/vi/worktrees) |
+| Xem xét và công bố các thay đổi mã nguồn | [Quy trình làm việc với Git](/docs/vi/git-workflows) |
+| Đọc các bình luận đánh giá và hợp nhất một yêu cầu PR trên GitHub | [Đánh giá pull request](/docs/vi/pull-requests) |
+
+## Hiểu không gian làm việc
+
+Một **dự án** là một thư mục cục bộ có các cuộc trò chuyện và công cụ riêng. Một **cuộc trò chuyện** là một cuộc nói chuyện với mô hình và cài đặt riêng. Nhiều cuộc trò chuyện trong một dự án chia sẻ các tệp của nó; một **cây công việc** cho một nhiệm vụ một bản sao Git riêng.
+
+Sử dụng [Quyền của tác nhân](/docs/vi/agent-modes) để chọn cách một tác nhân hoạt động, và [Ngữ cảnh và mức sử dụng](/docs/vi/context-and-usage) để hiểu thông tin dưới composer. Tài liệu [tham số cài đặt](/docs/vi/settings) liệt kê các lựa chọn toàn bộ ứng dụng. Nếu điều gì đó bị thiếu hoặc không chạy, hãy bắt đầu với [Khắc phục sự cố](/docs/vi/troubleshooting).

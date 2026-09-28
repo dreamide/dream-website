@@ -1,0 +1,77 @@
+---
+title: "Projets et espace de travail"
+description: "Gérez les onglets de projet, organisez les panneaux et passez d'un chat à un outil de développement."
+---
+
+Chaque projet Dream possède son propre espace de travail. Les onglets de projets vous permettent de vous déplacer entre les répos tout en conservant les discussions et les outils ouverts de chaque projet.
+
+## Ajouter et changer de projet
+
+1. Cliquez sur le **+** situé à côté des onglets de projet, ou utilisez **Ouvrir un dossier** sur l'écran de démarrage.
+2. Choisissez le dossier dans lequel vous souhaitez travailler.
+3. Sélectionnez son onglet pour le rendre le projet actif.
+
+Le projet actif détermine les discussions, les fichiers, les terminaux, les onglets du navigateur et les éléments du stash que vous voyez. Vérifiez l'onglet sélectionné avant d'envoyer une tâche ou d'exécuter une commande. Glissez les onglets de projet pour les réorganiser lorsque vous souhaitez placer des projets liés les uns à côté des autres.
+
+<Frame caption="L'onglet souligné est le projet actif. Utilisez + pour ouvrir un autre dossier.">
+  <img
+    src="/images/docs/project-tabs.png"
+    alt="Onglets de projet Dream avec Dream sélectionné et un bouton plus à côté des projets ouverts."
+    width={1256}
+    height={48}
+    loading="lazy"
+  />
+</Frame>
+
+## Renommer ou ouvrir un projet externement
+
+Ouvrez le menu **…** du projet et choisissez **Modifier** pour changer son nom affiché ou son icône. Cliquez sur l'icône pour télécharger une image de jusqu'à 5 Mo, puis **Enregistrer**. Réinitialisez un icône personnalisé pour revenir à la détection automatique depuis le projet. Renommer un projet dans Dream ne renomme pas son dossier sur disque.
+
+Utilisez les options **Ouvrir dans** du menu pour ouvrir le projet dans un éditeur externe disponible.
+
+## Retourner à un échange antérieur
+
+Utilisez **Retour** et **Suivant** aux côtés des onglets de projet pour revenir sur des projets et des discussions que vous avez ouverts. Sur Windows et Linux, utilisez **Alt+Left** et **Alt+Right** ; sur macOS, utilisez **Command+[** et **Command+]**. Les boutons de navigation de la souris fonctionnent aussi.
+
+Cette histoire suit les sélections de projet et de chat. Passer d'un panneau d'outils ne génère pas d'entrées, et l'navigateur intégré possède son propre historique de navigation. Les raccourcis clavier dans le terminal ou l'éditeur de code sont laissés aux outils eux-mêmes.
+
+## Fermer et réouvrir un projet
+
+1. Ouvrir le menu **…** du projet et choisir **Fermer**.
+2. Lorsque vous souhaitez revenir, ouvrez l'écran de démarrage en cliquant sur le bouton **+** dans le projet.
+3. Recherchez le projet dans **Fermés récemment**, en utilisant son champ de recherche si nécessaire.
+4. Sélectionnez le projet pour le réouvrir.
+
+Fermer un projet supprime sa fenêtre ouverte ; il ne supprime pas son dossier. Dream restaure le contexte du projet sauvegardé tel que les discussions et les outils ouverts lorsqu'il est possible. Ne pas utiliser un projet fermé comme moyen de maintenir un processus terminal en cours.
+
+## Rechercher les contrôles du workspace
+
+La barre latérale contient **Historique des discussions**, **Nouveau chat** et **Activer le multichat**. Survoler un icône pour voir son étiquette. Le composant de chat contient le modèle sélectionné, l'effort et la vitesse lorsque disponibles, ainsi que les autorisations.
+
+La barre latérale droite ouvre les outils du projet :
+
+| Outil | Ce que vous pouvez faire |
+| --- | --- |
+| [Modifications](/docs/fr/git-workflows) | Revoir les différences Git et annuler les modifications de fichier |
+| [Fichiers](/docs/fr/files) | Parcourir des fichiers, rechercher des chemins et éditer le contenu des fichiers |
+| [Navigateur](/docs/fr/browser) | Aperçu des URLs et inspection des pages web |
+| [Terminal](/docs/fr/terminals) | Exécuter les commandes du projet dans des sessions séparées |
+| [Actions Git](/docs/fr/git-workflows) | Commit, pousser et créer des demandes de fusion |
+| [Demandes de fusion](/docs/fr/pull-requests) | Lisez la demande de fusion de la branche actuelle, postez des commentaires et fusionnez |
+| [Stash](/docs/fr/stash) | Enregistrer des prompts et les exécuter plus tard |
+
+**Actions Git** se trouve en haut de la barre latérale droite. Les contrôles Git apparaissent pour les projets de référentiel. Le contrôle de branche situé sous le chat indique la branche active ; utilisez-le pour changer de branche ou [créer un arbre de travail](/docs/fr/worktrees). Dans un projet d'arbre de travail, le même emplacement affiche un bouton **arbre de travail** qui ouvre la boîte de dialogue [Compléter un arbre de travail](/docs/fr/worktrees#compléter-un-arbre-de-travail).
+
+## Organiser les discussions et les panneaux
+
+Cliquez sur un outil pour ouvrir son panneau. Utilisez le contrôle de fermeture ou de repli du panneau lorsque vous avez besoin d'espace supplémentaire pour les discussions, et glissez les diviseurs de panneau pour réajuster l'arrangement. Fermer un panneau d'outil est différent de fermer ses sessions de terminal individuelles ou ses onglets de navigateur.
+
+Activer [multi-chat](/docs/fr/multiple-chats) pour organiser les conversations en colonnes redimensionnables. Chaque chat possède son propre historique de conversation, tandis que tous les chats du projet utilisent les mêmes fichiers. Utilisez des arborescences de travail pour des checkouts indépendants.
+
+## Capturer la fenêtre Dream
+
+Appuyez sur **Ctrl+Shift+S** sous Windows/Linux ou **Command+Shift+S** sous macOS pour capturer la fenêtre Dream. Dream copie l'image dans le presse-papier, puis ouvre un dialogue permettant de la sauver au format PNG. Annuler le dialogue de sauvegarde conserve la copie dans le presse-papier. Un message d'information indique si l'image a été copiée, sauvegardée ou ne peut pas être capturée.
+
+Pour une capture d'écran d'une page web, utilisez l'action de capture d'écran du [navigateur](/docs/fr/browser).
+
+Pour l'apparence globale, la langue et les préférences de modèle, ouvrez [Paramètres](/docs/fr/settings). Pour trouver des conversations plus anciennes, utilisez [Historique des chats](/docs/fr/chats) ou [Chats archivés](/docs/fr/archived-chats).
