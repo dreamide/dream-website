@@ -1,5 +1,13 @@
-import { Languages } from "lucide-react";
+import { ChevronDown, Languages } from "lucide-react";
 import { useLocation, useNavigate } from "react-router";
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { useTranslation } from "./context";
 import { isLocale, localeLabels, locales, localizedPath } from "./locales";
 
@@ -8,26 +16,33 @@ export function LanguageSwitcher() {
   const { pathname, search, hash } = useLocation();
   const navigate = useNavigate();
   return (
-    <label className="dream-language flex items-center gap-1.5 rounded-md border border-border bg-card px-2 py-1.5 text-sm">
-      <Languages className="size-4 shrink-0" aria-hidden="true" />
-      <span className="sr-only">{t("Language")}</span>
-      <select
-        value={locale}
-        className="min-w-0 cursor-pointer bg-card text-foreground outline-offset-2"
-        onChange={(event) => {
-          const next = event.target.value;
-          if (isLocale(next)) {
-            // URL is authoritative, so shared links and browser history are deterministic.
-            navigate(localizedPath(`${pathname}${search}${hash}`, next));
-          }
-        }}
+    <DropdownMenu>
+      <DropdownMenuTrigger
+        render={<Button variant="outline" />}
+        className="dream-language h-auto gap-1.5 bg-card px-2 py-1.5 text-sm"
+        aria-label={`${t("Language")}: ${localeLabels[locale]}`}
       >
-        {locales.map((code) => (
-          <option key={code} value={code} lang={code}>
-            {localeLabels[code]}
-          </option>
-        ))}
-      </select>
-    </label>
+        <Languages className="size-4 shrink-0" aria-hidden="true" />
+        <span lang={locale}>{localeLabels[locale]}</span>
+        <ChevronDown className="size-3.5 shrink-0" aria-hidden="true" />
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="start" className="min-w-36">
+        <DropdownMenuRadioGroup
+          value={locale}
+          onValueChange={(next) => {
+            if (isLocale(next) && next !== locale) {
+              // URL is authoritative, so shared links and browser history are deterministic.
+              navigate(localizedPath(`${pathname}${search}${hash}`, next));
+            }
+          }}
+        >
+          {locales.map((code) => (
+            <DropdownMenuRadioItem key={code} value={code} closeOnClick>
+              <span lang={code}>{localeLabels[code]}</span>
+            </DropdownMenuRadioItem>
+          ))}
+        </DropdownMenuRadioGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }

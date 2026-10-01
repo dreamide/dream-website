@@ -55,8 +55,10 @@
     justify-content: flex-end;
   }
 
-  .dream-language select {
+  .dream-language > span[lang] {
     max-width: 8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
