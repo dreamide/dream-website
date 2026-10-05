@@ -3,7 +3,7 @@ title: "Einstellungsreferenz"
 description: "Model-Standardwerte, Anbieter, Anweisungen, Fähigkeiten, MCP-Server und Steuerungen für archivierte Chats finden."
 ---
 
-Öffne die **Einstellungen** mit dem Zahnradsymbol oben in Dream. Die Seitenleiste enthält **Allgemein**, **Anbieter**, **Prompts**, **Skills**, **MCP-Server** und **Archivierte Chats**. Allgemeine Einstellungen gelten, sobald sie ausgewählt werden. Formulare für Prompte, Fähigkeiten und Serverdefinitionen verfügen über ihre eigenen Aktionen „Erstellen“ oder „Speichern“.
+Öffne die **Einstellungen** mit dem Zahnradsymbol oben in Dream. Die Seitenleiste enthält **Allgemein**, **Anbieter**, **SSH-Hosts**, **Prompts**, **Skills**, **MCP-Server** und **Archivierte Chats**. Allgemeine Einstellungen gelten, sobald sie ausgewählt werden. Formulare für Prompte, Fähigkeiten und Serverdefinitionen verfügen über ihre eigenen Aktionen „Erstellen“ oder „Speichern“.
 
 ## Allgemein
 
@@ -66,7 +66,13 @@ Bestehende Chats behalten ihre eigenen Auswahl. Aktivieren Sie ein Modell unter 
 
 Jede Karten-Instanz des Anbieters zeigt ihren erkannten CLI-Status, die installierte Version, die Aktion zum Aktualisieren und einen Schalter zum Aktivieren. Aktivieren Sie den Anbieter und die einzelnen Modelle, damit sie in den Auswahlmöglichkeiten verfügbar sind. Ein **Aktualisierung verfügbar**-Badge zeigt eine neuere CLI-Version bei Erkennung; aktualisieren Sie die CLI außerhalb von Dream und aktualisieren Sie die Karte danach.
 
+Dream überspringt CLI-Updateprüfungen für deaktivierte Anbieter. Aktiviere einen Anbieter, bevor du nach verfügbaren Updates suchst.
+
 Installieren und sich über die CLI des Anbieters außerhalb von Dream anmelden, dann aktualisieren Sie seine Karte. Die Dream-Einstellungen ersetzen den Authentifizierungsprozess der CLI nicht. Siehe [Anbieter verbinden](/docs/de/providers).
+
+## SSH-Hosts
+
+Unter **Einstellungen → SSH-Hosts** kannst du entfernte Rechner hinzufügen, bearbeiten, verbinden, trennen oder entfernen. Jeder Eintrag zeigt SSH-Ziel, Anzeigename, optionalen Host-Befehl, Verbindungsstatus und etwaige Fehler. Einrichtung und Wiederherstellung beschreibt [Remote-Arbeitsbereiche über SSH](/docs/de/remote-hosts).
 
 ## Prompts, Fähigkeiten und MCP-Server
 

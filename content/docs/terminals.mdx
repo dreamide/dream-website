@@ -6,6 +6,9 @@ description: Run project commands, manage terminal sessions, and continue a Clau
 The integrated terminal runs commands in your project without leaving Dream. Click **Terminal** in
 the right toolbar to open it. A normal project terminal starts in the project folder.
 
+In an [SSH project](/docs/remote-hosts), terminal commands run on the remote host. Install the
+commands and development tools you need on that machine.
+
 ## Run commands alongside a chat
 
 Use a terminal to inspect the project, run tests, or start its local application using the commands
@@ -37,6 +40,9 @@ but Dream cleans up automatically opened sessions that have received no user inp
 
 Use **Expand terminal** to give the panel more room and **Collapse terminal** to restore its usual
 size. Expanding or collapsing changes the layout without closing the session.
+
+Switching tool panels keeps terminal views mounted, so you can return to the same session and
+its output. Dream also attempts to recover the terminal renderer if its graphics context is lost.
 
 When copying text, select it first. **Command+C** on macOS or **Ctrl+C** on Windows/Linux copies
 selected terminal text. Without a selection, the terminal can pass Ctrl+C through to interrupt

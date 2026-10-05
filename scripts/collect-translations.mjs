@@ -2,6 +2,7 @@ import fs from "node:fs";
 import { createRequire } from "node:module";
 import { pathToFileURL } from "node:url";
 import ts from "typescript";
+import { shisoLabels } from "./shiso-labels.mjs";
 
 const require = createRequire(import.meta.resolve("@umami/shiso/package.json"));
 const { unified } = await import(pathToFileURL(require.resolve("unified")));
@@ -136,10 +137,7 @@ for (const file of [
   }
   visit(ast);
 }
-const theme = fs
-  .readFileSync("node_modules/@umami/shiso/src/lib/site-model.ts", "utf8")
-  .match(/const SHISO_THEME_LABELS[^=]*= \{([\s\S]+?)\n\};/)[1];
-for (const match of theme.matchAll(/: '([^']+)'/g)) add(match[1], ui);
+for (const value of Object.values(shisoLabels)) add(value, ui);
 for (const value of [
   "Powered by",
   "Language",

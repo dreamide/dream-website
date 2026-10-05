@@ -5,6 +5,8 @@ description: "Esegui i comandi del progetto, gestisci le sessioni terminale e co
 
 Il terminale integrato esegue comandi nel tuo progetto senza lasciare Dream. Clicca **Terminale** nella barra laterale destra per aprirlo. Un terminale normale di progetto si avvia nella cartella del progetto.
 
+In un [progetto SSH](/docs/it/remote-hosts), i comandi del terminale vengono eseguiti sull'host remoto. Installa i comandi e gli strumenti di sviluppo necessari su quella macchina.
+
 ## Eseguire comandi in parallelo a una chat
 
 Usare un terminale per esaminare il progetto, eseguire i test o avviare l'applicazione locale utilizzando i comandi documentati da quel progetto. Il terminale e i chat con l'agente lavorano con gli stessi file in questo workspace.
@@ -31,6 +33,8 @@ Per una anteprima nel browser, avvia l'applicazione del progetto, nota l'URL che
 Usa sessioni separate per un'applicazione a lungo termine e per comandi occasionali come i test. Chiudere una sessione terminale termina il suo processo. Chiudere il panel preserva le sessioni utilizzate, ma Dream pulisce automaticamente le sessioni aperte che non hanno ricevuto alcun input utente.
 
 Usa **Espandi terminale** per dare al pannello più spazio e **Comprimi terminale** per ripristinare la sua dimensione usuale. Espandere o comprimere modifica l'organizzazione senza chiudere la sessione.
+
+Cambiando pannello degli strumenti, le viste del terminale rimangono caricate, così puoi tornare alla stessa sessione e al suo output. Dream tenta anche di ripristinare il renderer del terminale se perde il contesto grafico.
 
 Quando si copia del testo, selezionarlo prima. **Command+C** su macOS o **Ctrl+C** su Windows/Linux copia il testo selezionato nel terminale. Senza una selezione, il terminale può passare Ctrl+C al comando in primo piano per interromperlo.
 

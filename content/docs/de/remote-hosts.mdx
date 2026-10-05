@@ -1,0 +1,78 @@
+---
+title: "Remote-Arbeitsbereiche über SSH"
+description: "Verbinde einen SSH-Host und arbeite mit entfernten Projekten, Agenten, Dateien, Git und Terminals."
+---
+
+Dream kann Projekte auf entfernten Rechnern über SSH neben lokalen Projekten öffnen. Dateien, Git-Befehle, Agentenprozesse und Terminals laufen auf dem Host des Projekts. Die Host-Anzeige des Projekts zeigt, wo du arbeitest.
+
+SSH-Arbeitsbereiche sind ab Dream v0.25.0 verfügbar. Diese Version enthält verwaltete Host-Laufzeitumgebungen für Linux x64, Linux ARM64 und macOS mit Apple silicon (ARM64). Dies sind die Plattformen des entfernten Hosts; die Dream-Desktop-App kann unter Windows, macOS oder Linux laufen.
+
+## Host hinzufügen und verbinden
+
+<Frame caption="Verwalte SSH-Hosts und prüfe ihren Verbindungsstatus in den Einstellungen.">
+  <img
+    src="/images/docs/ssh-hosts-panel.png"
+    alt="SSH-Host-Einstellungen mit zwei gespeicherten Hosts, Verbindungsstatus und den Steuerelementen Verbinden, Bearbeiten, Entfernen und SSH-Host hinzufügen."
+    width={1016}
+    height={208}
+    loading="lazy"
+  />
+</Frame>
+
+1. Prüfe in deinem Systemterminal, ob `ssh devbox` funktioniert. Ersetze `devbox` durch deinen SSH-Konfigurationsalias oder `user@host`. Dream verwendet den SSH-Client, die Konfiguration und die Schlüssel deines Systems.
+2. Öffne **Einstellungen → SSH-Hosts** und dann **SSH-Host hinzufügen**. Gib das **SSH-Ziel** und optional einen **Name** ein.
+3. Lass **Host-Befehl** für die automatische Installation der Laufzeitumgebung leer. Klicke auf **Speichern** und dann auf **Verbinden**.
+4. Beantworte Anfragen zu Host-Schlüsseln, Passwörtern, Passphrasen oder Zwei-Faktor-Authentifizierung in Dream. Das Ablehnen oder Abbrechen einer Anfrage beendet diesen Verbindungsversuch.
+
+<Frame caption="Gib ein SSH-Ziel ein und lass den Host-Befehl für die automatische Installation leer.">
+  <img
+    src="/images/docs/add-ssh-dialog.png"
+    alt="Dialog SSH-Host hinzufügen mit den Feldern SSH-Ziel, Name und Host-Befehl sowie den Schaltflächen Abbrechen und Speichern."
+    width={512}
+    height={388}
+    loading="lazy"
+  />
+</Frame>
+
+Verwaltete Laufzeitumgebungen werden pro Version unter `~/.dream/host/versions/` installiert. Kann der Host die Laufzeitumgebung nicht herunterladen, kann Dream sie lokal herunterladen und über SSH übertragen. Installiere die Agenten-CLIs auch auf dem entfernten Rechner und melde dich dort an; sie laufen in dessen Umgebung.
+
+Setze bei einer manuell installierten Laufzeitumgebung **Host-Befehl** auf den Befehl, der `dream-host` auf dem entfernten Rechner startet.
+
+## Entferntes Projekt öffnen
+
+Wenn du noch keinen Host hinzugefügt hast, führt **Auf SSH-Host öffnen** direkt zu **Einstellungen → SSH-Hosts**. Füge dort einen Host hinzu und kehre zum Startbildschirm zurück, um seinen Ordner zu öffnen.
+
+1. Wähle auf dem Startbildschirm **Auf SSH-Host öffnen**. Mit der Schaltfläche **+** bei den Projekten kehrst du zu diesem Bildschirm zurück.
+2. Wähle einen **Host** und verbinde ihn bei Bedarf. Durchsuche seine Ordner mit **Persönlicher Ordner**, **Einen Ordner nach oben** oder **Versteckte anzeigen**, oder gib einen **Ordnerpfad** direkt ein.
+3. Klicke auf **Öffnen**. Der entfernte Ordner wird als Projekt-Tab mit eigenen Chats und Werkzeugen geöffnet.
+
+<Frame caption="Die Host-Anzeige kennzeichnet das entfernte Projekt; Terminalbefehle laufen auf diesem Host.">
+  <img
+    src="/images/docs/ssh-project-tab.png"
+    alt="Remote-Projekt-Tab mit der Beschriftung devops · dev-01."
+    width={280}
+    height={48}
+    loading="lazy"
+  />
+  <img
+    src="/images/docs/ssh-terminal-panel.png"
+    alt="Terminal 1 mit dem Inhalt eines entfernten Verzeichnisses."
+    width={813}
+    height={480}
+    loading="lazy"
+  />
+</Frame>
+
+Geschlossene entfernte Projekte erscheinen unter **Zuletzt geschlossen** mit Host und Pfad. Beim erneuten Öffnen wird die Verbindung zu diesem Host hergestellt. Entfernte Pfade gehören zum entfernten Rechner; verwende zum Öffnen außerhalb von Dream einen dort verbundenen Editor.
+
+## Host erneut verbinden oder entfernen
+
+Dream versucht unterbrochene Verbindungen wiederherzustellen. Projekt-Tabs bleiben sichtbar, wenn ein Host nicht verfügbar ist; Nachrichten können erst nach der Wiederverbindung gesendet werden. Wenn die Wiederverbindung stoppt, lies den angezeigten Fehler und verwende **Erneut verbinden** oder **Verbinden** unter **Einstellungen → SSH-Hosts**.
+
+Mit **Bearbeiten** änderst du Name, Ziel oder Befehl eines Hosts. Änderungen an Ziel oder Befehl stellen eine aktive Verbindung neu her. **Trennen** behält die Projekt-Tabs bei. **Entfernen** entfernt den Host und seine Projekte aus diesem Dream-Arbeitsbereich, ohne entfernte Dateien oder den Host-Katalog zu löschen.
+
+## Verbindungsprobleme
+
+Prüfe zuerst dasselbe SSH-Ziel in deinem Systemterminal. Behebe Authentifizierungs- oder Host-Schlüsselprobleme vor dem erneuten Verbinden. Startet die Host-Laufzeitumgebung nicht, lies den Fehler unter **Einstellungen → SSH-Hosts** und prüfe den **Host-Befehl** oder die Verfügbarkeit einer Laufzeitumgebung für deine Plattform.
+
+Für Entwicklungsbuilds gibt es keine veröffentlichte Laufzeitumgebung zum Herunterladen. Führe im Repository der Dream-App `pnpm host:install-dev devbox` aus und verbinde dich erneut mit leerem **Host-Befehl**. Der entfernte Build benötigt Node.js 22 oder neuer, pnpm oder Corepack, make, Python 3 und eine C++-Toolchain (g++ 10 oder neuer). Der Installer stoppt den vorhandenen Entwicklungshost-Daemon, bevor er dessen Laufzeitumgebung ersetzt.

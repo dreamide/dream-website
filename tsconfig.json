@@ -11,9 +11,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
-    "paths": {
-      "@/*": ["./node_modules/@umami/shiso/src/*"]
-    },
     "types": ["vite/client"]
   },
   "include": [

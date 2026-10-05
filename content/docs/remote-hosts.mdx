@@ -1,0 +1,103 @@
+---
+title: SSH remote workspaces
+description: Connect an SSH host and work with remote projects, agents, files, Git, and terminals.
+---
+
+Dream can open projects on remote machines over SSH alongside your local projects. Files, Git
+commands, agent processes, and terminals run on the project's host. The project host label shows
+where you are working.
+
+SSH workspaces are available from Dream v0.25.0. This release includes managed host runtimes for
+Linux x64, Linux ARM64, and macOS Apple silicon (ARM64). These are the remote host platforms;
+the Dream desktop app can run on Windows, macOS, or Linux.
+
+## Add and connect a host
+
+<Frame caption="Manage SSH hosts and check their connection status in Settings.">
+  <img
+    src="/images/docs/ssh-hosts-panel.png"
+    alt="SSH hosts settings with two saved hosts, connection status, and Connect, Edit, Remove, and Add SSH host controls."
+    width={1016}
+    height={208}
+    loading="lazy"
+  />
+</Frame>
+
+1. Verify that `ssh devbox` works in your system terminal, replacing `devbox` with your SSH config
+   alias or `user@host`. Dream uses your system SSH client, configuration, and keys.
+2. Open **Settings → SSH hosts**, then **Add SSH host**. Enter the **SSH target** and an optional
+   **Name**.
+3. Leave **Host command** empty for automatic runtime installation. Click **Save**, then **Connect**.
+4. Answer any host-key, password, passphrase, or two-factor prompts in Dream. Declining or canceling
+   a prompt stops that connection attempt.
+
+<Frame caption="Enter an SSH target and leave Host command empty for automatic installation.">
+  <img
+    src="/images/docs/add-ssh-dialog.png"
+    alt="Add SSH host dialog with SSH target, Name, and Host command fields, plus Cancel and Save buttons."
+    width={512}
+    height={388}
+    loading="lazy"
+  />
+</Frame>
+
+Managed runtimes are installed per version under `~/.dream/host/versions/`. If the host cannot
+download the runtime, Dream can download it locally and upload it over SSH. Install and sign in
+to the agent CLIs on the remote machine too; they run in that machine's environment.
+
+For a manually installed runtime, set **Host command** to the command that runs `dream-host` on
+the remote machine.
+
+## Open a remote project
+
+If you have not added a host yet, **Open on SSH Host** takes you directly to **Settings → SSH hosts**.
+Add a host there, then return to the getting-started screen to open its folder.
+
+1. On the getting-started screen, choose **Open on SSH Host**. Use the project **+** button to return
+   to that screen.
+2. Select a **Host** and connect if needed. Browse its folders, using **Home folder**,
+   **Up one folder**, or **Show hidden**, or enter a **Folder path** directly.
+3. Click **Open**. The remote folder opens as a project tab with its own chats and tools.
+
+<Frame caption="The host label identifies the remote project; terminal commands run on that host.">
+  <img
+    src="/images/docs/ssh-project-tab.png"
+    alt="Remote project tab labeled devops · dev-01."
+    width={280}
+    height={48}
+    loading="lazy"
+  />
+  <img
+    src="/images/docs/ssh-terminal-panel.png"
+    alt="Terminal 1 showing a remote directory listing."
+    width={813}
+    height={480}
+    loading="lazy"
+  />
+</Frame>
+
+Closed remote projects appear in **Recently closed** with their host and path. Reopening one
+connects to that host. Remote paths belong to the remote machine; use an editor connected there
+when opening files outside Dream.
+
+## Reconnect or remove a host
+
+Dream retries interrupted connections. Project tabs remain visible while a host is unavailable,
+and sending a message is disabled until it reconnects. If reconnection stops, read the displayed
+error and use **Reconnect**, or **Connect** in **Settings → SSH hosts**.
+
+Use **Edit** to change a host's name, target, or command. Changing the target or command reconnects
+an active connection. **Disconnect** leaves its project tabs in place. **Remove** removes the host
+and its projects from this Dream workspace without deleting the remote files or host catalog.
+
+## Connection problems
+
+Check the same SSH target in your system terminal first. Correct authentication or host-key
+problems before reconnecting. If the host runtime cannot start, read the error in
+**Settings → SSH hosts** and check the configured **Host command** or availability of a runtime for
+your platform.
+
+Development builds have no published runtime to download. From the Dream app repository, run
+`pnpm host:install-dev devbox`, then connect again with **Host command** empty. The remote build
+requires Node.js 22 or newer, pnpm or Corepack, make, Python 3, and a C++ toolchain (g++ 10 or newer).
+The installer stops the existing development host daemon before replacing its runtime.

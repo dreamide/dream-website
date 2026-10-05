@@ -3,7 +3,7 @@ title: "Référence des paramètres"
 description: "Rechercher les paramètres par défaut des modèles, les fournisseurs, les prompts, les compétences, les serveurs MCP et les contrôles des échanges archivés."
 ---
 
-Ouvrez les **Paramètres** avec l’icône d’engrenage en haut de Dream. La barre latérale contient **Général**, **Fournisseurs**, **Prompts**, **Skills**, **Serveurs MCP** et **Chats archivés**. Les préférences générales s’appliquent dès que vous les sélectionnez. Les formulaires de prompts, de skills et de définition des serveurs disposent de leur propre action Créer ou Enregistrer.
+Ouvrez les **Paramètres** avec l’icône d’engrenage en haut de Dream. La barre latérale contient **Général**, **Fournisseurs**, **Hôtes SSH**, **Prompts**, **Skills**, **Serveurs MCP** et **Chats archivés**. Les préférences générales s’appliquent dès que vous les sélectionnez. Les formulaires de prompts, de skills et de définition des serveurs disposent de leur propre action Créer ou Enregistrer.
 
 ## Général
 
@@ -66,7 +66,13 @@ Les discussions existantes conservent leurs propres choix. Activez un modèle so
 
 Chaque carte de fournisseur affiche l’état de détection de son CLI, la version installée, une action d’actualisation et un interrupteur d’activation. Activez le fournisseur et les modèles souhaités pour les rendre disponibles dans les sélecteurs. Un badge **Mise à jour disponible** signale une version plus récente du CLI lorsqu’elle est détectée ; mettez le CLI à jour en dehors de Dream, puis actualisez la carte.
 
+Dream ignore les vérifications de mise à jour des CLI pour les fournisseurs désactivés. Activez un fournisseur avant de vérifier ses mises à jour disponibles.
+
 Installez et connectez-vous via le CLI du fournisseur en dehors de Dream, puis rafraîchissez sa carte. Les paramètres de Dream ne remplacent pas le flux d'authentification du CLI. Voir [Connecter un fournisseur](/docs/fr/providers).
+
+## Hôtes SSH
+
+Ajoutez, modifiez, connectez, déconnectez ou supprimez des machines distantes dans **Paramètres → Hôtes SSH**. Chaque entrée présente une cible SSH, un nom, une commande d'hôte facultative, l'état de connexion et les éventuelles erreurs. Consultez [Espaces de travail distants SSH](/docs/fr/remote-hosts) pour la configuration et le rétablissement de la connexion.
 
 ## Prompts, compétences et serveurs MCP
 

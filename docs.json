@@ -19,135 +19,168 @@
   "pages": [
     {
       "path": "/",
-      "page": "home"
+      "page": "home",
+      "language": "en"
     },
     {
       "path": "/download",
-      "page": "download"
+      "page": "download",
+      "language": "en"
     },
     {
       "path": "/hello",
-      "page": "hello"
+      "page": "hello",
+      "language": "en"
     },
     {
       "path": "/es",
-      "page": "es/home"
+      "page": "es/home",
+      "language": "es"
     },
     {
       "path": "/es/download",
-      "page": "es/download"
+      "page": "es/download",
+      "language": "es"
     },
     {
       "path": "/es/hello",
-      "page": "es/hello"
+      "page": "es/hello",
+      "language": "es"
     },
     {
       "path": "/fr",
-      "page": "fr/home"
+      "page": "fr/home",
+      "language": "fr"
     },
     {
       "path": "/fr/download",
-      "page": "fr/download"
+      "page": "fr/download",
+      "language": "fr"
     },
     {
       "path": "/fr/hello",
-      "page": "fr/hello"
+      "page": "fr/hello",
+      "language": "fr"
     },
     {
       "path": "/de",
-      "page": "de/home"
+      "page": "de/home",
+      "language": "de"
     },
     {
       "path": "/de/download",
-      "page": "de/download"
+      "page": "de/download",
+      "language": "de"
     },
     {
       "path": "/de/hello",
-      "page": "de/hello"
+      "page": "de/hello",
+      "language": "de"
     },
     {
       "path": "/pt",
-      "page": "pt/home"
+      "page": "pt/home",
+      "language": "pt"
     },
     {
       "path": "/pt/download",
-      "page": "pt/download"
+      "page": "pt/download",
+      "language": "pt"
     },
     {
       "path": "/pt/hello",
-      "page": "pt/hello"
+      "page": "pt/hello",
+      "language": "pt"
     },
     {
       "path": "/it",
-      "page": "it/home"
+      "page": "it/home",
+      "language": "it"
     },
     {
       "path": "/it/download",
-      "page": "it/download"
+      "page": "it/download",
+      "language": "it"
     },
     {
       "path": "/it/hello",
-      "page": "it/hello"
+      "page": "it/hello",
+      "language": "it"
     },
     {
       "path": "/ja",
-      "page": "ja/home"
+      "page": "ja/home",
+      "language": "ja"
     },
     {
       "path": "/ja/download",
-      "page": "ja/download"
+      "page": "ja/download",
+      "language": "ja"
     },
     {
       "path": "/ja/hello",
-      "page": "ja/hello"
+      "page": "ja/hello",
+      "language": "ja"
     },
     {
       "path": "/ko",
-      "page": "ko/home"
+      "page": "ko/home",
+      "language": "ko"
     },
     {
       "path": "/ko/download",
-      "page": "ko/download"
+      "page": "ko/download",
+      "language": "ko"
     },
     {
       "path": "/ko/hello",
-      "page": "ko/hello"
+      "page": "ko/hello",
+      "language": "ko"
     },
     {
       "path": "/vi",
-      "page": "vi/home"
+      "page": "vi/home",
+      "language": "vi"
     },
     {
       "path": "/vi/download",
-      "page": "vi/download"
+      "page": "vi/download",
+      "language": "vi"
     },
     {
       "path": "/vi/hello",
-      "page": "vi/hello"
+      "page": "vi/hello",
+      "language": "vi"
     },
     {
       "path": "/zh-Hans",
-      "page": "zh-Hans/home"
+      "page": "zh-Hans/home",
+      "language": "zh-Hans"
     },
     {
       "path": "/zh-Hans/download",
-      "page": "zh-Hans/download"
+      "page": "zh-Hans/download",
+      "language": "zh-Hans"
     },
     {
       "path": "/zh-Hans/hello",
-      "page": "zh-Hans/hello"
+      "page": "zh-Hans/hello",
+      "language": "zh-Hans"
     },
     {
       "path": "/zh-Hant",
-      "page": "zh-Hant/home"
+      "page": "zh-Hant/home",
+      "language": "zh-Hant"
     },
     {
       "path": "/zh-Hant/download",
-      "page": "zh-Hant/download"
+      "page": "zh-Hant/download",
+      "language": "zh-Hant"
     },
     {
       "path": "/zh-Hant/hello",
-      "page": "zh-Hant/hello"
+      "page": "zh-Hant/hello",
+      "language": "zh-Hant"
     }
   ],
   "navbar": {
@@ -229,7 +262,16 @@
           },
           {
             "group": "Workspace tools",
-            "pages": ["workspace", "files", "terminals", "browser"]
+            "pages": [
+              "workspace",
+              {
+                "page": "remote-hosts",
+                "title": "SSH remote workspaces"
+              },
+              "files",
+              "terminals",
+              "browser"
+            ]
           },
           {
             "group": "Git",
@@ -333,6 +375,10 @@
               {
                 "page": "es/workspace",
                 "title": "Proyectos y espacio de trabajo"
+              },
+              {
+                "page": "es/remote-hosts",
+                "title": "Espacios de trabajo remotos por SSH"
               },
               {
                 "page": "es/files",
@@ -474,6 +520,10 @@
                 "title": "Projets et espace de travail"
               },
               {
+                "page": "fr/remote-hosts",
+                "title": "Espaces de travail distants SSH"
+              },
+              {
                 "page": "fr/files",
                 "title": "Fichiers et recherche"
               },
@@ -611,6 +661,10 @@
               {
                 "page": "de/workspace",
                 "title": "Projekte und Arbeitsbereich"
+              },
+              {
+                "page": "de/remote-hosts",
+                "title": "Remote-Arbeitsbereiche über SSH"
               },
               {
                 "page": "de/files",
@@ -752,6 +806,10 @@
                 "title": "Projetos e espaço de trabalho"
               },
               {
+                "page": "pt/remote-hosts",
+                "title": "Espaços de trabalho remotos por SSH"
+              },
+              {
                 "page": "pt/files",
                 "title": "Arquivos e busca"
               },
@@ -889,6 +947,10 @@
               {
                 "page": "it/workspace",
                 "title": "Progetti e spazio di lavoro"
+              },
+              {
+                "page": "it/remote-hosts",
+                "title": "Spazi di lavoro remoti SSH"
               },
               {
                 "page": "it/files",
@@ -1030,6 +1092,10 @@
                 "title": "プロジェクトとワークスペース"
               },
               {
+                "page": "ja/remote-hosts",
+                "title": "SSH リモートワークスペース"
+              },
+              {
                 "page": "ja/files",
                 "title": "ファイルと検索"
               },
@@ -1167,6 +1233,10 @@
               {
                 "page": "ko/workspace",
                 "title": "프로젝트와 작업 공간"
+              },
+              {
+                "page": "ko/remote-hosts",
+                "title": "SSH 원격 작업 공간"
               },
               {
                 "page": "ko/files",
@@ -1308,6 +1378,10 @@
                 "title": "Dự án và không gian làm việc"
               },
               {
+                "page": "vi/remote-hosts",
+                "title": "Không gian làm việc từ xa qua SSH"
+              },
+              {
                 "page": "vi/files",
                 "title": "Tệp và tìm kiếm"
               },
@@ -1447,6 +1521,10 @@
                 "title": "项目与工作区"
               },
               {
+                "page": "zh-Hans/remote-hosts",
+                "title": "SSH 远程工作区"
+              },
+              {
                 "page": "zh-Hans/files",
                 "title": "文件与搜索"
               },
@@ -1584,6 +1662,10 @@
               {
                 "page": "zh-Hant/workspace",
                 "title": "專案與工作區"
+              },
+              {
+                "page": "zh-Hant/remote-hosts",
+                "title": "SSH 遠端工作區"
               },
               {
                 "page": "zh-Hant/files",

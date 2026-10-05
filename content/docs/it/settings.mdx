@@ -3,7 +3,7 @@ title: "Guida alle impostazioni"
 description: "Cerca i valori predefiniti del modello, i provider, i prompt, le competenze, i server MCP e i controlli per chat archiviate."
 ---
 
-Apri **Impostazioni** con l'icona a forma di chiave alla sommità di Dream. Il lato sinistro ha **Generale**, **Provider**, **Prompt**, **Skill**, **Server MCP** e **Chat archiviate**. Le preferenze generali si applicano quando le selezioni vengono fatte. I moduli per i prompt, le competenze e le definizioni di server hanno ciascuno un'azione Create o Save.
+Apri **Impostazioni** con l'icona a forma di chiave alla sommità di Dream. Il lato sinistro ha **Generale**, **Provider**, **Host SSH**, **Prompt**, **Skill**, **Server MCP** e **Chat archiviate**. Le preferenze generali si applicano quando le selezioni vengono fatte. I moduli per i prompt, le competenze e le definizioni di server hanno ciascuno un'azione Create o Save.
 
 ## Generale
 
@@ -66,7 +66,13 @@ I chat esistenti mantengono le proprie selezioni. Abilita un modello sotto Provi
 
 Ogni scheda del provider mostra lo stato del CLI rilevato, la versione installata, l'azione di aggiornamento e un interruttore di attivazione. Attiva il provider e i singoli modelli per renderli disponibili nei selettivi. Un'etichetta **Aggiornamento disponibile** mostra una versione più recente del CLI quando rilevata; aggiorna il CLI al di fuori di Dream e poi ripulisci la scheda.
 
+Dream salta i controlli degli aggiornamenti delle CLI per i provider disabilitati. Abilita un provider prima di controllare gli aggiornamenti disponibili.
+
 Installa e effettua l'accesso attraverso il CLI del provider esterno a Dream, poi aggiorna il suo cartello. Le impostazioni di Dream non sostituiscono il flusso di autenticazione del CLI. Vedere [Collegare un provider](/docs/it/providers).
+
+## Host SSH
+
+Aggiungi, modifica, connetti, disconnetti o rimuovi macchine remote in **Impostazioni → Host SSH**. Ogni voce mostra destinazione SSH, nome, comando host facoltativo, stato della connessione ed eventuali errori. Consulta [Spazi di lavoro remoti SSH](/docs/it/remote-hosts) per configurazione e ripristino.
 
 ## Prompti, Competenze e server MCP
 

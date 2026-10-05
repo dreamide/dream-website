@@ -3,7 +3,7 @@ title: "Referencia de ajustes"
 description: "Buscar modelos predeterminados, proveedores, prompts, habilidades, servidores MCP y controles de chat archivado."
 ---
 
-Abre **Configuración** con el icono de engranaje en la parte superior de Dream. El panel lateral tiene **General**, **Proveedores**, **Prompts**, **Skills**, **Servidores MCP** y **Chats archivados**. Las preferencias generales se aplican al seleccionarlas. Los formularios para prompts, habilidades y definiciones de servidor tienen sus propios botones de Crear o Guardar.
+Abre **Configuración** con el icono de engranaje en la parte superior de Dream. El panel lateral tiene **General**, **Proveedores**, **Hosts SSH**, **Prompts**, **Skills**, **Servidores MCP** y **Chats archivados**. Las preferencias generales se aplican al seleccionarlas. Los formularios para prompts, habilidades y definiciones de servidor tienen sus propios botones de Crear o Guardar.
 
 ## General
 
@@ -66,7 +66,13 @@ Los chats existentes mantienen sus propias selecciones. Actível un modelo bajo 
 
 Cada tarjeta de proveedor muestra el estado de detección de su CLI, la versión instalada, una acción para actualizar la información y un interruptor de activación. Activa el proveedor y los modelos que quieras usar para que aparezcan en los selectores. La etiqueta **Actualización disponible** indica que se ha detectado una versión más reciente del CLI; actualízalo fuera de Dream y luego actualiza la información de la tarjeta.
 
+Dream omite las comprobaciones de actualizaciones de CLI para proveedores desactivados. Activa un proveedor antes de comprobar sus actualizaciones disponibles.
+
 Instale y inicie sesión a través de la CLI del proveedor fuera de Dream, luego actualice su tarjeta. Las configuraciones de Dream no reemplazan el flujo de autenticación de la CLI. Consulte [Conectar un proveedor](/docs/es/providers).
+
+## Hosts SSH
+
+Añade, edita, conecta, desconecta o elimina máquinas remotas en **Configuración → Hosts SSH**. Cada entrada muestra un destino SSH, nombre, comando del host opcional, estado de conexión y posibles errores. Consulta [Espacios de trabajo remotos por SSH](/docs/es/remote-hosts) para la configuración y recuperación.
 
 ## Prompts, habilidades y servidores MCP
 

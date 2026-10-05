@@ -41,9 +41,9 @@ The static output is written to `dist/client`.
 The site uses the app's locale codes and names: `en`, `es`, `fr`, `de`, `pt`,
 `it`, `ja`, `ko`, `vi`, `zh-Hans`, and `zh-Hant`. English keeps `/`, `/download`,
 and `/docs`. Other languages use paths such as `/es`, `/es/download`, and
-`/docs/es/installation`. The selector preserves the page and corresponding
-documentation section. Language is determined by the URL on both server and
-client; it does not depend on browser settings.
+`/docs/es/installation`. Shiso's native selector switches between corresponding
+standalone pages and opens the selected language's introduction in the docs.
+Language comes from `navigation.languages` and `pages[].language` in `docs.json`.
 
 - English documentation in `content/docs/*.mdx` is the source.
 - `src/i18n/catalogs/` contains the documentation translation drafts.
@@ -51,8 +51,8 @@ client; it does not depend on browser settings.
   corrections, and matching terms from the app. These override the drafts.
 - `src/i18n/app-terms/` records the app's translated control labels. The
   generator uses these for bold control names and menu paths in the docs.
-- `src/i18n/messages.json`, `anchors.json`, localized MDX, localized page
-  wrappers, and language navigation are generated. Edit the catalogs and
+- `src/i18n/messages.json`, `shiso-translations.json`, localized MDX, localized
+  page wrappers, and language navigation are generated. Edit the catalogs and
   reviewed overrides, then run `pnpm locales` to regenerate them.
 
 The generator preserves MDX structure, screenshots, code, and external links,
@@ -71,14 +71,14 @@ after `node scripts/collect-translations.mjs`; it requires Python, PyTorch with
 CUDA, Transformers, Accelerate, and bitsandbytes. Normal builds use the checked-in
 translations and require neither Python nor a translation service.
 
-`vite.config.ts` extends Shiso's configuration. The adapters in `src/site/`
-localize the shared layout, metadata, search controls, and accessible labels.
-Documentation bodies load on demand in the browser; the server still renders
-complete HTML for every page. A Vite plugin extracts navigation metadata using
-Shiso's heading parser so section links match the rendered documents.
-Shiso is pinned because these adapters use its shipped source. Review them when
-upgrading Shiso. A dev server started before this configuration was introduced
-needs one restart using `pnpm dev`.
+The site uses Shiso's public runtime and default build configuration, including
+its layout, language selector, search, metadata, and documentation components.
+Shiso supplies UI translations for English, Spanish, French, German, Japanese,
+and both Chinese scripts. The generated `shiso-translations.json` supplies the
+existing Portuguese, Italian, Korean, and Vietnamese labels through the public
+`translations` option in `shiso.config.ts`. Dream's home and download page copy
+uses a locale provider inside each generated standalone page; it does not
+replace Shiso's layout or translation system.
 
 ## Writing documentation
 

@@ -4,8 +4,8 @@ description: Find model defaults, providers, prompts, skills, MCP servers, and a
 ---
 
 Open **Settings** with the gear icon at the top of Dream. The sidebar has **General**, **Providers**,
-**Prompts**, **Skills**, **MCP servers**, and **Archived Chats**. General preferences apply as you
-select them. Forms for prompts, skills, and server definitions have their own Create or Save action.
+**SSH hosts**, **Prompts**, **Skills**, **MCP servers**, and **Archived chats**. General preferences apply
+as you select them. Forms for prompts, skills, and server definitions have their own Create or Save action.
 
 ## General
 
@@ -75,8 +75,17 @@ switch. Enable the provider and individual models to make them available in sele
 **Update available** badge shows a newer CLI version when detected; update the CLI outside Dream
 and refresh the card afterward.
 
+Dream skips CLI update checks for disabled providers. Enable a provider before checking its
+available updates.
+
 Install and sign in through the provider's CLI outside Dream, then refresh its card. Dream settings
 do not replace the CLI's authentication flow. See [Connect a provider](/docs/providers).
+
+## SSH hosts
+
+Add, edit, connect, disconnect, or remove remote machines in **Settings → SSH hosts**. Each entry
+has an SSH target, display name, optional host command, connection status, and any connection error.
+See [SSH remote workspaces](/docs/remote-hosts) for setup and recovery steps.
 
 ## Prompts, Skills, and MCP servers
 
@@ -86,7 +95,7 @@ do not replace the CLI's authentication flow. See [Connect a provider](/docs/pro
 | [Skills](/docs/skills) | Browse skills by provider and project, preview SKILL.md files, and create new skills |
 | [MCP servers](/docs/mcp-servers) | Add or import tool servers and manage their connection settings |
 
-## Archived Chats
+## Archived chats
 
 | Control | What it does |
 | --- | --- |

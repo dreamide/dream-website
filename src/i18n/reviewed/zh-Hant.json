@@ -258,5 +258,21 @@
   "Search results": "搜尋結果",
   "New chats inherit **Default permissions** from Settings. Open the shield control below the message box and choose **Ask**, **Accept edits**, or **Full access** for this task. See [Agent permissions](/docs/agent-modes).": "新聊天會繼承設定中的**預設權限**。開啟訊息框下方的盾牌圖示控制項，為此任務選擇**詢問**、**接受編輯**或**完整存取**。請參閱[代理權限](/docs/agent-modes)。",
   "Dream takes the **before** snapshot once per message you send, and the **after** snapshot when the response finishes or when you stop it.": "你每傳送一則訊息，Dream 都會記錄一次**修改前**的快照，並在回應完成或你停止回應時記錄**修改後**的快照。",
-  "Restore is a file operation, not a Git operation. Open [Changes](/docs/git-workflows) afterward to review the working tree, and [save any editor drafts](/docs/files) before restoring the same files.": "還原屬於檔案操作，而非 Git 操作。還原後請開啟[變更](/docs/git-workflows)檢查工作樹，並在還原同一檔案之前[儲存編輯器中的草稿](/docs/files)。"
+  "Restore is a file operation, not a Git operation. Open [Changes](/docs/git-workflows) afterward to review the working tree, and [save any editor drafts](/docs/files) before restoring the same files.": "還原屬於檔案操作，而非 Git 操作。還原後請開啟[變更](/docs/git-workflows)檢查工作樹，並在還原同一檔案之前[儲存編輯器中的草稿](/docs/files)。",
+  "Select **Archived chats**.": "選擇 **已歸檔聊天**。",
+  "Open **Settings → Archived chats**.": "開啟 **設定 → 已歸檔聊天**。",
+  "Restore it in Settings → Archived chats": "在設定 → 已歸檔聊天中恢復它",
+  "In **Settings → Archived chats**, find **Archive chats after**.": "在 **設定 → 已歸檔聊天** 中找到 **在以下天數後歸檔聊天**。",
+  "Check **Settings → Archived chats** and restore the chat if it is there.": "檢查 **設定 → 已歸檔聊天**，如果聊天記錄在那裡，請恢復該聊天。",
+  "[Working with chats](/docs/chats) and [Archived chats](/docs/archived-chats)": "[使用聊天](/docs/chats) 和 [已歸檔聊天](/docs/archived-chats)",
+  "Archived chats settings showing four conversations with project names and dates, Restore and Delete buttons, and the Archive now controls.": "已歸檔聊天設定顯示四個帶有專案名稱和日期的對話，包含恢復和刪除按鈕，以及立即歸檔控制元件。",
+  "Archive a conversation when you want to remove it from active history while keeping the option to return to it. Archived chats are managed centrally in **Settings → Archived chats**.": "當您希望從當前聊天記錄中移除某個對話，同時保留返回該對話的選項時，可以將其歸檔。歸檔的聊天記錄在 **設定 → 歸檔聊天** 中集中管理。",
+  "For app-wide appearance, language, and model preferences, open [Settings](/docs/settings). To find older conversations, use [Chat history](/docs/chats) or [Archived chats](/docs/archived-chats).": "對於應用程式的整體外觀、語言和模型偏好，開啟 [設定](/docs/settings)。要查詢舊的對話，請使用 [聊天記錄](/docs/chats) 或 [已歸檔聊天](/docs/archived-chats)。",
+  "History search matches titles, so a descriptive name makes work easier to find. It does not search the text of every message. If a chat is missing, check the selected project and then [Archived chats](/docs/archived-chats).": "歷史搜尋只匹配標題，因此一個描述性的名稱會使查詢工作更輕鬆。它不會搜尋每條訊息的正文內容。如果某個聊天缺失，請檢查所選專案，然後檢視[已歸檔聊天](/docs/archived-chats)。",
+  "Checkpoints remain available as long as their chat exists. Permanently deleting a chat from **Settings → Archived chats** removes its checkpoints, and completing or removing a [worktree project](/docs/worktrees) removes that project's checkpoints. Archiving a chat keeps them.": "只要其聊天仍然存在，檢查點就會持續可用。從 **設定 → 已歸檔聊天** 中永久刪除一個聊天會移除其檢查點，完成或刪除一個 [工作樹專案](/docs/worktrees) 會移除該專案的檢查點。歸檔一個聊天會保留這些檢查點。",
+  "Open **Settings** with the gear icon at the top of Dream. The sidebar has **General**, **Providers**, **Prompts**, **Skills**, **MCP servers**, and **Archived chats**. General preferences apply as you select them. Forms for prompts, skills, and server definitions have their own Create or Save action.": "在 Dream 頂部的齒輪圖示處開啟 **設定**。側邊欄包含 **通用**、**供應商**、**提示詞**、**技能**、**MCP 伺服器** 和 **已歸檔聊天**。通用偏好設定在選擇時即生效。提示詞、技能和伺服器定義的表單各自擁有建立或儲存的操作。",
+  "Stash stores future tasks for one project. For instructions you want to keep using across projects, use [reusable prompts](/docs/saved-prompts). To keep a completed conversation out of active history, use [Archived chats](/docs/archived-chats). To isolate code changes, use [Git worktrees](/docs/worktrees).": "Stash 為一個專案儲存未來的任務。如果您希望在多個專案中持續使用某項指令，請使用 [可重用提示](/docs/saved-prompts)。為了將已完成的對話從活躍歷史中移除，請使用 [已歸檔聊天](/docs/archived-chats)。為了隔離程式碼變更，請使用 [Git 工作樹](/docs/worktrees)。",
+  "Archived chats": "已封存聊天",
+  "Remote project tab labeled devops · dev-01.": "標有 devops · dev-01 的遠端專案分頁。",
+  "Terminal 1 showing a remote directory listing.": "Terminal 1 顯示遠端目錄清單。"
 }

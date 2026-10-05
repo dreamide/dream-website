@@ -1,0 +1,78 @@
+---
+title: "Không gian làm việc từ xa qua SSH"
+description: "Kết nối máy chủ SSH để làm việc với dự án, tác nhân, tệp, Git và terminal từ xa."
+---
+
+Dream có thể mở dự án trên máy từ xa qua SSH bên cạnh các dự án cục bộ. Tệp, lệnh Git, tiến trình tác nhân và terminal chạy trên máy chủ của dự án. Nhãn máy chủ cho biết bạn đang làm việc ở đâu.
+
+Không gian làm việc SSH có từ Dream v0.25.0. Bản phát hành này có môi trường chạy máy chủ được quản lý cho Linux x64, Linux ARM64 và macOS Apple silicon (ARM64). Đây là các nền tảng máy chủ từ xa; ứng dụng Dream trên máy tính có thể chạy trên Windows, macOS hoặc Linux.
+
+## Thêm và kết nối máy chủ
+
+<Frame caption="Quản lý máy chủ SSH và kiểm tra trạng thái kết nối trong Cài đặt.">
+  <img
+    src="/images/docs/ssh-hosts-panel.png"
+    alt="Cài đặt máy chủ SSH với hai máy chủ đã lưu, trạng thái kết nối và các nút Kết nối, Chỉnh sửa, Xóa và Thêm máy chủ SSH."
+    width={1016}
+    height={208}
+    loading="lazy"
+  />
+</Frame>
+
+1. Kiểm tra rằng `ssh devbox` hoạt động trong terminal hệ thống, thay `devbox` bằng bí danh cấu hình SSH hoặc `user@host`. Dream dùng trình khách SSH, cấu hình và khóa của hệ thống.
+2. Mở **Cài đặt → Máy chủ SSH**, rồi chọn **Thêm máy chủ SSH**. Nhập **Đích SSH** và **Tên** nếu muốn.
+3. Để trống **Lệnh host** để tự động cài môi trường chạy. Nhấp **Lưu**, rồi **Kết nối**.
+4. Trả lời các yêu cầu về khóa máy chủ, mật khẩu, cụm mật khẩu hoặc xác thực hai yếu tố trong Dream. Từ chối hoặc hủy yêu cầu sẽ dừng lần kết nối đó.
+
+<Frame caption="Nhập đích SSH và để trống Lệnh máy chủ để cài đặt tự động.">
+  <img
+    src="/images/docs/add-ssh-dialog.png"
+    alt="Hộp thoại Thêm máy chủ SSH với các trường Đích SSH, Tên, Lệnh máy chủ cùng các nút Hủy và Lưu."
+    width={512}
+    height={388}
+    loading="lazy"
+  />
+</Frame>
+
+Môi trường chạy được quản lý được cài theo phiên bản trong `~/.dream/host/versions/`. Nếu máy chủ không tải được môi trường chạy, Dream có thể tải cục bộ rồi gửi lên qua SSH. Hãy cài và đăng nhập các CLI tác nhân trên máy từ xa; chúng chạy trong môi trường của máy đó.
+
+Với môi trường chạy được cài thủ công, đặt **Lệnh host** thành lệnh chạy `dream-host` trên máy từ xa.
+
+## Mở dự án từ xa
+
+Nếu bạn chưa thêm máy chủ, **Mở trên máy chủ SSH** sẽ đưa bạn thẳng đến **Cài đặt → Máy chủ SSH**. Thêm máy chủ tại đó, rồi quay lại màn hình bắt đầu để mở thư mục của nó.
+
+1. Trên màn hình bắt đầu, chọn **Mở trên máy chủ SSH**. Dùng nút **+** của dự án để quay lại màn hình đó.
+2. Chọn **Máy chủ** và kết nối nếu cần. Duyệt thư mục bằng **Thư mục chính**, **Lên một thư mục** hoặc **Hiện thư mục ẩn**, hoặc nhập trực tiếp **Đường dẫn thư mục**.
+3. Nhấp **Mở**. Thư mục từ xa mở thành một thẻ dự án với các cuộc trò chuyện và công cụ riêng.
+
+<Frame caption="Nhãn máy chủ xác định dự án từ xa; lệnh terminal chạy trên máy chủ đó.">
+  <img
+    src="/images/docs/ssh-project-tab.png"
+    alt="Thẻ dự án từ xa có nhãn devops · dev-01."
+    width={280}
+    height={48}
+    loading="lazy"
+  />
+  <img
+    src="/images/docs/ssh-terminal-panel.png"
+    alt="Terminal 1 hiển thị danh sách nội dung thư mục từ xa."
+    width={813}
+    height={480}
+    loading="lazy"
+  />
+</Frame>
+
+Dự án từ xa đã đóng xuất hiện trong **Đã đóng gần đây** cùng máy chủ và đường dẫn. Mở lại sẽ kết nối với máy chủ đó. Đường dẫn từ xa thuộc về máy từ xa; hãy dùng trình soạn thảo kết nối với máy đó khi mở tệp bên ngoài Dream.
+
+## Kết nối lại hoặc xóa máy chủ
+
+Dream thử lại các kết nối bị gián đoạn. Thẻ dự án vẫn hiển thị khi máy chủ không khả dụng và việc gửi tin nhắn bị vô hiệu hóa cho đến khi kết nối lại. Nếu quá trình kết nối lại dừng, hãy đọc lỗi và dùng **Kết nối lại**, hoặc **Kết nối** trong **Cài đặt → Máy chủ SSH**.
+
+Dùng **Chỉnh sửa** để đổi tên, đích hoặc lệnh máy chủ. Thay đổi đích hoặc lệnh sẽ thiết lập lại kết nối đang hoạt động. **Ngắt kết nối** giữ nguyên các thẻ dự án. **Xóa** loại máy chủ và dự án của nó khỏi không gian Dream này mà không xóa tệp từ xa hoặc danh mục của máy chủ.
+
+## Sự cố kết nối
+
+Trước tiên, kiểm tra cùng đích SSH trong terminal hệ thống. Sửa lỗi xác thực hoặc khóa máy chủ trước khi kết nối lại. Nếu môi trường chạy của máy chủ không khởi động, đọc lỗi trong **Cài đặt → Máy chủ SSH** và kiểm tra **Lệnh host** đã cấu hình hoặc môi trường chạy có sẵn cho nền tảng của bạn.
+
+Bản dựng phát triển không có môi trường chạy đã phát hành để tải xuống. Từ kho mã ứng dụng Dream, chạy `pnpm host:install-dev devbox`, rồi kết nối lại với **Lệnh host** để trống. Việc dựng trên máy từ xa cần Node.js 22 trở lên, pnpm hoặc Corepack, make, Python 3 và bộ công cụ C++ (g++ 10 trở lên). Trình cài đặt dừng daemon máy chủ phát triển hiện có trước khi thay môi trường chạy.

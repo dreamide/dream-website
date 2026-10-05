@@ -35,6 +35,7 @@ chats without switching tools.
 ## What Dream includes
 
 - A multi-project workspace with persistent project tabs
+- [SSH remote workspaces](/docs/remote-hosts) with remote agents, files, Git, and terminals
 - Multiple side-by-side chats and chat branching
 - Reusable prompts across projects and provider-aware agent skills
 - Per-reply checkpoints for reviewing and restoring the files an agent changed
@@ -56,7 +57,7 @@ chats without switching tools.
 | I want to… | Read |
 | --- | --- |
 | Keep implementation and review conversations open together | [Using multiple chats](/docs/multiple-chats) |
-| Find, archive, or recover an old conversation | [Working with chats](/docs/chats) and [Archived Chats](/docs/archived-chats) |
+| Find, archive, or recover an old conversation | [Working with chats](/docs/chats) and [Archived chats](/docs/archived-chats) |
 | Choose a starting model and reasoning effort | [Models and defaults](/docs/models) |
 | Try another approach from an earlier message | [Branching conversations](/docs/branching-chats) |
 | Follow an agent's progress or respond to a question | [Working with chats](/docs/chats#follow-work-in-progress) |
@@ -73,9 +74,9 @@ chats without switching tools.
 
 ## Understand the workspace
 
-A **project** is a local folder with its own chats and tools. A **chat** is a conversation with its
-own model and settings. Multiple chats in one project share its files; a **worktree** gives a task a
-separate Git checkout.
+A **project** is a folder on your computer or an SSH host with its own chats and tools. A **chat** is
+a conversation with its own model and settings. Multiple chats in one project share its files; a
+**worktree** gives a task a separate Git checkout.
 
 Use [Agent permissions](/docs/agent-modes) to choose how an agent works, and
 [Context and usage](/docs/context-and-usage) to understand the information below the composer.

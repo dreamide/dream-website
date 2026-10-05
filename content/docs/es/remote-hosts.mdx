@@ -1,0 +1,78 @@
+---
+title: "Espacios de trabajo remotos por SSH"
+description: "Conecta un host SSH y trabaja con proyectos, agentes, archivos, Git y terminales remotos."
+---
+
+Dream permite abrir proyectos en máquinas remotas por SSH junto a tus proyectos locales. Los archivos, comandos de Git, procesos de agentes y terminales se ejecutan en el host del proyecto. La etiqueta del host indica dónde estás trabajando.
+
+Los espacios de trabajo SSH están disponibles desde Dream v0.25.0. Esta versión incluye entornos de host administrados para Linux x64, Linux ARM64 y macOS con Apple silicon (ARM64). Estas son las plataformas del host remoto; la aplicación de escritorio Dream puede ejecutarse en Windows, macOS o Linux.
+
+## Añadir y conectar un host
+
+<Frame caption="Gestiona los hosts SSH y comprueba su estado de conexión en Configuración.">
+  <img
+    src="/images/docs/ssh-hosts-panel.png"
+    alt="Configuración de hosts SSH con dos hosts guardados, estado de conexión y controles Conectar, Editar, Eliminar y Añadir host SSH."
+    width={1016}
+    height={208}
+    loading="lazy"
+  />
+</Frame>
+
+1. Comprueba que `ssh devbox` funciona en tu terminal del sistema, sustituyendo `devbox` por tu alias de configuración SSH o `user@host`. Dream usa el cliente SSH, la configuración y las claves de tu sistema.
+2. Abre **Configuración → Hosts SSH** y luego **Añadir host SSH**. Introduce el **Destino SSH** y, opcionalmente, un **Nombre**.
+3. Deja **Comando del host** vacío para instalar el entorno de ejecución automáticamente. Haz clic en **Guardar** y luego en **Conectar**.
+4. Responde en Dream a las solicitudes de clave del host, contraseña, frase de contraseña o autenticación de dos factores. Rechazar o cancelar una solicitud detiene ese intento de conexión.
+
+<Frame caption="Introduce un destino SSH y deja Comando del host vacío para la instalación automática.">
+  <img
+    src="/images/docs/add-ssh-dialog.png"
+    alt="Diálogo Añadir host SSH con los campos Destino SSH, Nombre y Comando del host, y los botones Cancelar y Guardar."
+    width={512}
+    height={388}
+    loading="lazy"
+  />
+</Frame>
+
+Los entornos de ejecución administrados se instalan por versión en `~/.dream/host/versions/`. Si el host no puede descargar el entorno, Dream puede descargarlo localmente y subirlo por SSH. Instala e inicia sesión también en las CLI de los agentes en la máquina remota; se ejecutan en el entorno de esa máquina.
+
+Si instalaste el entorno manualmente, establece **Comando del host** con el comando que ejecuta `dream-host` en la máquina remota.
+
+## Abrir un proyecto remoto
+
+Si aún no has añadido un host, **Abrir en un host SSH** te lleva directamente a **Configuración → Hosts SSH**. Añade uno allí y vuelve a la pantalla de inicio para abrir su carpeta.
+
+1. En la pantalla de inicio, elige **Abrir en un host SSH**. Usa el botón **+** de los proyectos para volver a esa pantalla.
+2. Selecciona un **Host** y conéctate si es necesario. Explora sus carpetas con **Carpeta personal**, **Subir una carpeta** o **Mostrar ocultas**, o introduce una **Ruta de la carpeta** directamente.
+3. Haz clic en **Abrir**. La carpeta remota se abre como una pestaña de proyecto con sus propios chats y herramientas.
+
+<Frame caption="La etiqueta del host identifica el proyecto remoto; los comandos del terminal se ejecutan en ese host.">
+  <img
+    src="/images/docs/ssh-project-tab.png"
+    alt="Pestaña del proyecto remoto con la etiqueta devops · dev-01."
+    width={280}
+    height={48}
+    loading="lazy"
+  />
+  <img
+    src="/images/docs/ssh-terminal-panel.png"
+    alt="Terminal 1 mostrando el contenido de un directorio remoto."
+    width={813}
+    height={480}
+    loading="lazy"
+  />
+</Frame>
+
+Los proyectos remotos cerrados aparecen en **Cerrados recientemente** con su host y ruta. Al volver a abrirlos, Dream se conecta a ese host. Las rutas remotas pertenecen a la máquina remota; usa un editor conectado a ella para abrir archivos fuera de Dream.
+
+## Reconectar o eliminar un host
+
+Dream reintenta las conexiones interrumpidas. Las pestañas de proyecto siguen visibles cuando un host no está disponible y el envío de mensajes se desactiva hasta que se reconecta. Si la reconexión se detiene, lee el error y usa **Reconectar**, o **Conectar** en **Configuración → Hosts SSH**.
+
+Usa **Editar** para cambiar el nombre, destino o comando del host. Cambiar el destino o comando vuelve a establecer una conexión activa. **Desconectar** conserva sus pestañas de proyecto. **Quitar** quita el host y sus proyectos de este espacio de trabajo de Dream sin borrar los archivos remotos ni el catálogo del host.
+
+## Problemas de conexión
+
+Primero comprueba el mismo destino SSH en tu terminal del sistema. Corrige los problemas de autenticación o clave del host antes de reconectar. Si el entorno del host no se inicia, lee el error en **Configuración → Hosts SSH** y comprueba el **Comando del host** configurado o la disponibilidad de un entorno para tu plataforma.
+
+Las compilaciones de desarrollo no tienen un entorno publicado para descargar. Desde el repositorio de la aplicación Dream, ejecuta `pnpm host:install-dev devbox` y vuelve a conectar con **Comando del host** vacío. La compilación remota requiere Node.js 22 o posterior, pnpm o Corepack, make, Python 3 y herramientas de C++ (g++ 10 o posterior). El instalador detiene el demonio del host de desarrollo existente antes de sustituir su entorno.
