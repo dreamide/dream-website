@@ -30,6 +30,23 @@
   padding: 0;
 }
 
+/* Frame fills the article by default; screenshots should only scale down. */
+.docs-markdown [data-slot="frame-content"] {
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.docs-markdown [data-slot="frame-content"] [data-slot="zoomable-image"] {
+  width: fit-content;
+}
+
+.docs-markdown [data-slot="frame-content"] img {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+}
+
 @supports not selector(::-webkit-scrollbar) {
   * {
     scrollbar-color: var(--muted-foreground) transparent;
