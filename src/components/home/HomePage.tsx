@@ -145,7 +145,7 @@ function Hero() {
             </p>
             <p className="max-w-md text-[var(--dh-400)] sm:text-lg">
               {t(
-                "Our goal is to create the best experience for working with AI agents. All your agents in a single workspace, organized as tabs, under a clean, focused interface.",
+                "The best experience for working with AI agents. All your agents in a single workspace, organized as tabs, under a clean, focused interface.",
               )}
             </p>
           </div>
