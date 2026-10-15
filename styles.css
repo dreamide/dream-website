@@ -65,3 +65,9 @@
     transparent
   );
 }
+
+/* Full-bleed design sections use 100vw; clip the scrollbar-width overflow at
+   the root so the page never scrolls sideways (and sticky still works). */
+html:has(.designs-root) {
+  overflow-x: clip;
+}

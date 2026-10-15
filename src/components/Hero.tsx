@@ -4,7 +4,7 @@ import DownloadButton from "./DownloadButton";
 import GitHubIcon from "./icons/GitHubIcon";
 import Screenshot from "./Screenshot";
 
-export default function Hero() {
+export default function Hero({ screenshot = true }: { screenshot?: boolean }) {
   return (
     <div className="text-center">
       <div className="pointer-events-none select-none flex items-center justify-center text-[clamp(5rem,25vw,28rem)] font-bold leading-none my-18">
@@ -26,7 +26,7 @@ export default function Hero() {
           <ArrowUpRight className="size-4 text-muted-foreground" />
         </Button>
       </div>
-      <Screenshot />
+      {screenshot ? <Screenshot /> : null}
     </div>
   );
 }

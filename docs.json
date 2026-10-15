@@ -28,6 +28,14 @@
     {
       "path": "/hello",
       "page": "hello"
+    },
+    {
+      "path": "/preview",
+      "page": "preview"
+    },
+    {
+      "path": "/designs",
+      "page": "designs"
     }
   ],
   "navbar": {
