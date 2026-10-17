@@ -47,7 +47,19 @@ Use [referencias de archivo y adjuntos](/docs/es/providing-context) para apuntar
   />
 </Frame>
 
-Las búsquedas de historial coinciden con los títulos, por lo que un nombre descriptivo facilita encontrar el trabajo. No busca el texto de cada mensaje. Si un chat está ausente, compruebe el proyecto seleccionado y luego [Chats archivados](/docs/es/archived-chats).
+Filtrar el historial busca los títulos de este proyecto. Para buscar títulos y texto de mensajes entre proyectos, haga clic en **Buscar chats** en la barra superior (por defecto **Command+Shift+F** en macOS o **Ctrl+Shift+F** en Windows/Linux). Los resultados incluyen proyectos locales y hosts conectados por SSH. Seleccionar un resultado archivado lo restaura; seleccionar el chat de un proyecto cerrado lo vuelve a abrir.
+
+Si un anfitrión no puede ser buscado, reconéctalo y vuelve a intentarlo. Reduce la consulta cuando los resultados se truncan. También puedes gestionar conversaciones antiguas en [Chats archivados](/docs/es/archived-chats).
+
+<Frame caption="Volver a una conversación">
+  <img
+    src="/images/docs/chat-search-dialog.png"
+    alt="Resultados de búsqueda de chats de varios proyectos con el texto coincidente de los mensajes resaltado."
+    width={672}
+    height={694}
+    loading="lazy"
+  />
+</Frame>
 
 Cuando [multi-chat](/docs/es/multiple-chats) está habilitado, seleccionar una conversación puede llevarla al diseño lado a lado. Cuando multi-chat está deshabilitado, se ve una conversación a la vez.
 
@@ -58,6 +70,8 @@ Dream puede generar un título después de que comience una conversación. Para 
 Nombres como “Fijar la persistencia de configuraciones” y “Revisar los tests de configuraciones” son más fáciles de distinguir que varias conversaciones nombradas con el mismo proyecto.
 
 ## Sigue el trabajo en progreso
+
+Activa **Notificaciones de escritorio** en **Configuración → General → Mensajes de chat** para recibir un aviso cuando un chat termine, falle o necesite tu respuesta mientras Dream está en segundo plano. Haz clic en una notificación para abrir su chat. **Sonido de notificación** es una opción independiente y puede sonar incluso cuando Dream tiene el foco.
 
 Un indicador de carga identifica los chats que están recibiendo una respuesta. Cuando envías un mensaje, Dream lo desplaza hasta que queda visible.
 

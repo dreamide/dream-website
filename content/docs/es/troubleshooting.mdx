@@ -84,8 +84,8 @@ Para problemas con comentarios, edición o fusión de solicitudes de pull, consu
 | La fuente y la base del PR son iguales | Cambia a una rama de características antes de crear el PR |
 | Los informes de creación de PR indican un HEAD desconectado | Revisa un ramo antes de crear el PR |
 | La eliminación del worktree falla | Revisar y preservar los cambios no commiteados en esa copia |
-| Merge & remove no está disponible | El árbol de trabajo no tiene commits adelantados respecto a su base, o el checkout principal tiene cambios no commiteados o un merge en progreso |
-| Los informes del árbol de trabajo completan conflictos | El merge fue abortado y no se hicieron cambios; fusiona la rama base en el árbol de trabajo, resuelve los conflictos, comitea, luego vuelve a intentarlo |
-| Crear solicitud de incorporación no está disponible en el árbol de trabajo completo | Configura un repositorio Git remoto e instala el CLI de GitHub |
+| La opción de fusionar con la rama base no está disponible | El árbol de trabajo no tiene commits adelantados respecto a su base, o el checkout principal tiene cambios no commiteados o un merge en progreso |
+| La fusión del árbol de trabajo informa de conflictos | El merge fue abortado y no se hicieron cambios; fusiona la rama base en el árbol de trabajo, resuelve los conflictos, comitea, luego vuelve a intentarlo |
+| Crear solicitud de incorporación no está disponible en Git Actions | Configura un repositorio Git remoto e instala el CLI de GitHub |
 
 Después de que una acción combinada fallure, revise el estado del ramo antes de reintentar: un commit o un push puede haber tenido éxito antes de que un paso posterior fallara. Vea [Flujos de Git](/docs/es/git-workflows).

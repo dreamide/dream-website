@@ -7,6 +7,16 @@ Cada proyecto de Dream tiene su propio espacio de trabajo. Las pestañas de proy
 
 Los proyectos también pueden estar en [hosts SSH](/docs/es/remote-hosts). Comprueba la etiqueta del host antes de ejecutar comandos; las herramientas del proyecto remoto trabajan en esa máquina.
 
+<Frame caption="Proyectos y espacio de trabajo">
+  <img
+    src="/images/screen-main.png"
+    alt="Espacio de trabajo de Dream con una pestaña de proyecto, un cuadro de chat vacío, barras de herramientas y la rama en el pie."
+    width={1920}
+    height={1080}
+    loading="lazy"
+  />
+</Frame>
+
 ## Agregar y cambiar de proyecto
 
 1. Haga clic en el **+** junto a las pestañas del proyecto, o use **Abrir carpeta** en la pantalla de inicio.
@@ -54,15 +64,13 @@ La barra lateral derecha abre las herramientas del proyecto:
 
 | Herramienta | Lo que puedes hacer |
 | --- | --- |
-| [Cambios](/docs/es/git-workflows) | Revisar diferencias de Git y revertir cambios de archivo |
+| [Git](/docs/es/git-workflows) | Revisar cambios, crear commits, consultar el historial y gestionar la solicitud de incorporación de la rama |
 | [Archivos](/docs/es/files) | Explorar archivos, buscar rutas y editar el contenido de los archivos |
 | [Navegador](/docs/es/browser) | Ver URLs y inspeccionar páginas web |
 | [Terminal](/docs/es/terminals) | Ejecutar comandos de proyecto en sesiones separadas |
-| [Acciones de Git](/docs/es/git-workflows) | Comitear, empujar y crear solicitudes de extracción |
-| [Solicitudes de incorporación](/docs/es/pull-requests) | Lee el PR de la rama actual, publique comentarios y realice la fusión |
 | [Stash](/docs/es/stash) | Guardar prompts y ejecútalos más tarde |
 
-**Acciones de Git** se encuentra en la parte superior de la barra lateral derecha. Los controles de Git aparecen para los proyectos de repositorio. El control de ramas debajo del chat muestra la rama activa; use este para cambiar de rama o [crear un árbol de trabajo](/docs/es/worktrees). En un proyecto de árbol de trabajo, el mismo lugar muestra un botón de **árbol de trabajo** que abre el diálogo [Completar árbol de trabajo](/docs/es/worktrees#completear-un-árbol-de-trabajo).
+Los controles de Git aparecen para los proyectos de repositorio. Debajo del chat, use el control de ramas para cambiar de rama o [crear un árbol de trabajo](/docs/es/worktrees). El menú adjacente **Acciones de Git** ofrece acciones de commit, publicación, solicitudes de incorporación y acciones de árbol de trabajo según el estado de la rama.
 
 ## Organice conversaciones y paneles
 

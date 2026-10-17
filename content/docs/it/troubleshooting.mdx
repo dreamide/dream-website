@@ -84,8 +84,8 @@ Per problemi relativi ai commenti, all'editing o all'aggiunta di PR, vedi [Esami
 | PR source e base sono lo stesso | Passa a una ramifica caratteristica prima di creare il PR |
 | I reporti della creazione di PR indicano un HEAD separato | Esegui un checkout di un ramo prima di creare la richiesta di merge |
 | L'eliminazione del worktree fallisce | Controlla e preserva le modifiche non ancora committate in quella checkout |
-| Merge & remove è non disponibile | Il worktree non ha commit in avanti rispetto alla sua base, o il checkout principale ha modifiche non ancora committate o un merge in corso |
-| I reporte del lavoro completo rilevano conflitti | L'unione è stata annullata e nulla è cambiato; unisci il ramo principale nel worktree, risolvi i conflitti, effettua il commit, poi riprova |
-| La creazione di un pull request è non disponibile nel worktree completo | Configura un remoto Git e installa GitHub CLI |
+| L'unione con la base non è disponibile | Il worktree non ha commit in avanti rispetto alla sua base, o il checkout principale ha modifiche non ancora committate o un merge in corso |
+| L'unione del worktree segnala i conflitti | L'unione è stata annullata e nulla è cambiato; unisci il ramo principale nel worktree, risolvi i conflitti, effettua il commit, poi riprova |
+| La creazione di un pull request non è disponibile in Git Actions | Configura un remoto Git e installa GitHub CLI |
 
 Dopo che un'azione combinata ha fallito, esamina lo stato del ramo prima di riprovarci: un commit o un push potrebbe essere riuscito prima che un passaggio successivo fallisse. Vedere [Flussi di lavoro Git](/docs/it/git-workflows).

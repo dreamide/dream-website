@@ -3,7 +3,7 @@ title: "Fluxos de trabalho do Git"
 description: "Revise alterações, trabalhe com ramificações e use Worktrees do Git no Dream."
 ---
 
-As ferramentas de Git do Dream estão disponíveis quando o diretório do projeto for um repositório Git. Use **Alterações** na barra de ferramentas direita para inspecionar arquivos e **Abrir ações do Git** para commitar, pushar ou criar uma solicitação de pull.
+Abra o **Git** na barra lateral direita para as guias **Alterações**, **Histórico** e **Pull request**. O menu de **Ações do Git** abaixo da conversa oferece os próximos passos para a branch atual.
 
 ## Antes de começar
 
@@ -13,22 +13,10 @@ Você pode digitar os mensagens de commit e o texto do PR por si. Para gerá-los
 
 ## Revise as alterações
 
-Você também pode abrir **Alterações** pelo menu **Ações do Git**, logo abaixo de **Ver histórico**.
-
-1. Aberto **Alterações** para inspecionar arquivos modificados, adicionados e excluídos.
+1. Aberto **Git → Alterações** para inspecionar arquivos modificados, adicionados e excluídos.
 2. Expandir um arquivo para revisar sua diferença.
-3. Escolha **Diff unificado** ou **Diff dividido** no painel de ações, e habilite o wrap de palavras se necessário.
-4. Use **Atualizar alterações** se as alterações realizadas fora do Dream ainda não foram refletidas.
-
-<Frame caption="Expandir arquivos para revisar adições e exclusões antes de commitar.">
-  <img
-    src="/images/docs/changes-panel.png"
-    alt="Painel de alterações exibindo caminhos de arquivos e uma diferença unificada com adições em verde e exclusões em vermelho."
-    width={950}
-    height={680}
-    loading="lazy"
-  />
-</Frame>
+3. Escolha **Diff unificado** ou **Diff dividido** no cabeçalho, e habilite o wrap de palavras na seção **Alterações** se necessário.
+4. Use **Ações de Alterações → Atualizar** se as alterações realizadas fora do Dream ainda não foram refletidas.
 
 Para diffs muito grandes, o Dream pode exibir **Diferença muito grande para renderizar**. Use **Renderizar mesmo assim** apenas quando quiser carregar essa visualização maior ou inspecionar o arquivo no seu editor ou terminal.
 
@@ -38,21 +26,21 @@ Para pedir a um agente sobre linhas específicas, arraste entre os números de l
 
 ## Commitar seu trabalho
 
-1. Aberto **Ações do Git → Confirmar**.
-2. Revise as alterações incluídas no diálogo.
-3. Verifique **Incluir não preparado**. Ela está habilitada por padrão e inclui mudanças não marcadas no commit.
-4. Entre uma mensagem de commit ou use **Gerar mensagem automaticamente**, depois edite o resultado conforme necessário.
-5. Escolha **Confirmar**, ou **Confirmar e enviar** se você estiver pronto para publicar o commit no remoto.
-
-<Frame caption="Revise as mudanças incluídas e a mensagem antes de escolher Commit ou Commit e push.">
+<Frame caption="Commitar seu trabalho">
   <img
-    src="/images/docs/commit-dialog.png"
-    alt="Diálogo para commitar alterações com ramos, contagem de mudanças, incluir não estagios e uma mensagem de commit gerada."
-    width={672}
-    height={439}
+    src="/images/docs/changes-panel.png"
+    alt="Aba Alterações do Git com mensagem de commit, controles de commit e um diff expandido."
+    width={1070}
+    height={1016}
     loading="lazy"
   />
 </Frame>
+
+1. Abra **Git → Alterações**, ou escolha **Confirmar** no menu **Ações do Git** do rodapé.
+2. Revise as diferenças de arquivo abaixo do commit composer.
+3. Verifique **Incluir não preparado**. Ela está habilitada por padrão e inclui mudanças não marcadas no commit.
+4. Revise **Gerar mensagem automaticamente**, que está ativada por padrão. Para escrever sua própria mensagem, desative-a e insira o texto; desativá-la apaga a mensagem gerada.
+5. Escolha **Confirmar**, ou **Confirmar e enviar** se você estiver pronto para publicar o commit no remoto.
 
 Para commitar apenas um subconjunto selecionado, estagie esses arquivos usando Git em um terminal ou em um editor externo e desative **Incluir não preparado**. O Painel de alterações não fornece controles individuais de estagio.
 
@@ -64,24 +52,24 @@ O Dream rejeita commits quando há mudanças staged fora do diretório ativo do 
 
 ## Empurrar uma ramificação
 
-Aberto **Ações do Git → Enviar**, revise os commits de saída e o destino, e escolha **Enviar**. O destino depende da configuração de upstream e remoto do repositório da branch.
-
-<Frame caption="Verifique os commits de destino e de saída antes de empurrar.">
+<Frame caption="Fluxos de trabalho do Git">
   <img
-    src="/images/docs/push-dialog.png"
-    alt="Dialogo de push de alterações listando a ramificação, o destino origin/main, os números de commits à frente e atrás, e os commits enviados."
-    width={672}
-    height={364}
+    src="/images/docs/git-actions-menu.png"
+    alt="Menu de ações do Git aberto acima da branch atual no rodapé do chat."
+    width={226}
+    height={259}
     loading="lazy"
   />
 </Frame>
+
+Use **Publicar branch** para uma branch sem upstream, ou **Enviar** para enviar commits pendentes. Essas ações no rodapé fazem o envio imediatamente. Confira primeiro a branch, o remoto e os commits em **Histórico**; quando há um upstream, o rodapé mostra quantos commits estão à frente e atrás.
 
 Se o empurrar falhar, verifique o erro e confirme o acesso remoto. Um commit local bem-sucedido permanece comitado mesmo se um empurrar posterior falhe; verifique o estado da ramificação antes de repetir a ação combinada.
 
 ## Criar um pull request
 
 1. Trabalhe em uma ramificação de recurso cujo nome difere do nome da base da solicitação de alteração.
-2. Aberto **Ações do Git → Criar PR**.
+2. Escolha **Criar PR** no rodapé, ou **Ações do Git → Criar solicitação pull**.
 3. Revise as branches de origem e base e as mudanças propostas.
 4. Insira um título e uma descrição, ou use **Gerar automaticamente detalhes de PR** e revise o texto gerado.
 5. Em **Próximas etapas**, selecione a ação que corresponde ao estado da ramificação.
@@ -109,7 +97,7 @@ Se uma ação combinada falhar, etapas anteriores podem ter sido concluídas já
 
 ## Revise e融e um pedido de pull
 
-Abra **pedidos de pull** na barra lateral direita para visualizar o PR da branch atual. Use **Resumo** para sua descrição, verificações e discussão, ou **Código** para inspecionar as diferenças e deixar comentários inline. Pode editar o título e a descrição quando permitido e use **Mesclar** para escolher um método de mesclagem. Veja [Revisar pedidos de pull](/docs/pt/pull-requests) para o fluxo completo.
+Abra **Git → Pull request** para ver a solicitação de pull da atual branch. Use **Resumo** para sua descrição, verificações e discussão, ou **Código** para inspecionar as diferenças e deixar comentários inline. Pode editar o título e a descrição quando permitido e use **Mesclar** para escolher um método de mesclagem. Veja [Revisar solicitações de pull](/docs/pt/pull-requests) para o fluxo completo.
 
 ## Alternar ou criar ramificações
 
@@ -125,4 +113,20 @@ Abra o switcher de ramo abaixo do chat, procure ramos locais e selecione um para
   />
 </Frame>
 
-Mudar de ramo altera os arquivos usados por cada chat nesse projeto. Revise o trabalho não finalizado antes de fazer a mudança. Para tarefas paralelas com checkouts independentes, use [Worktrees do Git](/docs/pt/worktrees). Quando um worktree está concluído, seu diálogo **Concluir worktree** pode mesclar a ramificação em sua base ou abrir um pull request e, em seguida, remover o checkout.
+Mudar de ramo altera os arquivos usados por cada chat nesse projeto. Revise o trabalho não finalizado antes de fazer a mudança. Para tarefas paralelas com checkouts independentes, use [Worktrees do Git](/docs/pt/worktrees). Quando um worktree for concluído, use seu rodapé para mesclar no ramo principal, criar um pull request ou remover o checkout. Veja [Conclua um worktree](/docs/pt/worktrees#conclua-a-árvore-de-trabalho).
+
+## Navegar pelo histórico de commits
+
+<Frame caption="Navegar pelo histórico de commits">
+  <img
+    src="/images/docs/git-history-panel.png"
+    alt="Aba Histórico do Git com busca de commits, rótulos de branches e um gráfico colorido de commits e merges."
+    width={933}
+    height={1016}
+    loading="lazy"
+  />
+</Frame>
+
+Abra **Git → Histórico** ou **Ações do Git → Ver histórico** para acompanhar commits e mesclagens no gráfico colorido. Use **Pesquisar commits** para filtrar os commits carregados por mensagem, autor, prefixo de hash ou referência. **Carregar mais** inclui commits anteriores; apague a busca para exibir novamente o gráfico.
+
+Posicione o ponteiro do mouse sobre um commit ou foque nele com o teclado para usar **Copiar hash do commit**.

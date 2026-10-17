@@ -1,5 +1,5 @@
 ---
-title: Files and search
+title: Files
 description: Browse project files, search names and file contents, edit code, and handle unsaved changes.
 ---
 
@@ -14,14 +14,33 @@ tree to inspect it alongside your chat. File tabs let you move between several o
 4. Clear the search to return to browsing the tree.
 
 Use **Refresh files** in the file actions when changes made outside Dream are not reflected in the
-tree. Searching for a file locates its path; use the editor's search to find text inside that file.
+tree. Searching for a file locates its path; use **Find in files** to search project contents.
 
 <Frame caption="Search or browse the file tree, then open a file beside your chat.">
   <img
     src="/images/docs/files-panel.png"
-    alt="Files panel with Search files above the folder tree and app-error-boundary.tsx open in the editor."
-    width={950}
-    height={610}
+    alt="Files panel filtering paths by .ts, with http.ts selected in the tree and open in the editor."
+    width={1064}
+    height={1016}
+    loading="lazy"
+  />
+</Frame>
+
+## Find in files
+
+To search the whole project, select **Find in files** in the Files panel. Enter your query and use
+**Match case**, **Match whole word**, or **Use regular expression** as needed. Under **File filters**,
+set **Files to include** (for example, `src, *.ts`) or **Files to exclude** (for example, `*.test.ts`).
+Select a result to open the matching line. If results are truncated, narrow your query or filters.
+
+Project search finds text on disk. Save editor drafts first; replacement is available within a file.
+
+<Frame caption="Find in files">
+  <img
+    src="/images/docs/find-in-files-panel.png"
+    alt="Project-wide search for function, with results grouped by file and a selected match open in errors.ts."
+    width={1064}
+    height={1016}
     loading="lazy"
   />
 </Frame>
@@ -36,6 +55,16 @@ tree. Searching for a file locates its path; use the editor's search to find tex
 The search panel also offers replacement controls. Review the matches before using **Replace all**,
 then save the file to write the changes to disk. Replacement affects the current file.
 
+<Frame caption="Search and replace within a file">
+  <img
+    src="/images/docs/file-find-panel.png"
+    alt="Search and replace in messages.ts with the query add, highlighted matches, and replacement controls."
+    width={943}
+    height={1016}
+    loading="lazy"
+  />
+</Frame>
+
 ## Edit and save
 
 Edit a writable text file in the code editor. Unsaved changes are marked in its tab, and the panel
@@ -47,6 +76,8 @@ use the new contents; those tools read files on disk.
 
 Switching file tabs lets you keep drafts while inspecting other files. Use **Discard changes** to
 abandon a local draft. This is separate from reverting changes through Git.
+
+Double-click a file tab to pin it so opening another preview does not replace it.
 
 Closing a tab with unsaved changes opens a **Save / Don't Save / Cancel** prompt. **Save** writes
 the draft and closes the tab, **Don't Save** discards the draft and closes it, and **Cancel** keeps

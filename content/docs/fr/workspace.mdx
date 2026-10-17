@@ -7,6 +7,16 @@ Chaque projet Dream possède son propre espace de travail. Les onglets de projet
 
 Les projets peuvent aussi résider sur des [hôtes SSH](/docs/fr/remote-hosts). Vérifiez le libellé de l'hôte avant d'exécuter des commandes ; les outils du projet distant travaillent sur cette machine.
 
+<Frame caption="Projets et espace de travail">
+  <img
+    src="/images/screen-main.png"
+    alt="Espace de travail Dream avec un onglet de projet, une zone de saisie de chat vide, les barres d’outils et la branche en bas de la fenêtre."
+    width={1920}
+    height={1080}
+    loading="lazy"
+  />
+</Frame>
+
 ## Ajouter et changer de projet
 
 1. Cliquez sur le **+** situé à côté des onglets de projet, ou utilisez **Ouvrir un dossier** sur l'écran de démarrage.
@@ -54,15 +64,13 @@ La barre latérale droite ouvre les outils du projet :
 
 | Outil | Ce que vous pouvez faire |
 | --- | --- |
-| [Modifications](/docs/fr/git-workflows) | Revoir les différences Git et annuler les modifications de fichier |
+| [Git](/docs/fr/git-workflows) | Revoir les modifications, commiter, parcourir l'historique et gérer la demande de fusion du branche |
 | [Fichiers](/docs/fr/files) | Parcourir des fichiers, rechercher des chemins et éditer le contenu des fichiers |
 | [Navigateur](/docs/fr/browser) | Aperçu des URLs et inspection des pages web |
 | [Terminal](/docs/fr/terminals) | Exécuter les commandes du projet dans des sessions séparées |
-| [Actions Git](/docs/fr/git-workflows) | Commit, pousser et créer des demandes de fusion |
-| [Demandes de fusion](/docs/fr/pull-requests) | Lisez la demande de fusion de la branche actuelle, postez des commentaires et fusionnez |
 | [Stash](/docs/fr/stash) | Enregistrer des prompts et les exécuter plus tard |
 
-**Actions Git** se trouve en haut de la barre latérale droite. Les contrôles Git apparaissent pour les projets de référentiel. Le contrôle de branche situé sous le chat indique la branche active ; utilisez-le pour changer de branche ou [créer un arbre de travail](/docs/fr/worktrees). Dans un projet d'arbre de travail, le même emplacement affiche un bouton **arbre de travail** qui ouvre la boîte de dialogue [Compléter un arbre de travail](/docs/fr/worktrees#compléter-un-arbre-de-travail).
+Les contrôles Git s'affichent pour les projets de dépôt. Sous la discussion, utilisez le contrôle de branche pour passer d'une branche ou [créer un arbre de travail](/docs/fr/worktrees). Le menu adjacent **Actions Git** propose des opérations de commit, de publication, de pull request et d'arbre de travail selon l'état de la branche.
 
 ## Organiser les discussions et les panneaux
 

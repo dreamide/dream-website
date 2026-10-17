@@ -3,21 +3,23 @@ title: "Revisar pull requests"
 description: "Leia solicitações de pull no GitHub, revise diffs, poste comentários, edite detalhes e integre a partir do Dream."
 ---
 
-O botão **Solicitações de pull** na barra de ferramentas da direita abre a solicitação de pull do GitHub para a branch atual. Instale e autentique o GitHub CLI para o repositório primeiro. Para publicar uma nova solicitação de pull, siga os [Fluxos de trabalho do Git](/docs/pt/git-workflows#criar-um-pull-request).
+A aba **Git → Pull request** abre a solicitação de pull do GitHub para a branch atual. Instale e autentique o CLI do GitHub para o repositório primeiro. Para publicar uma nova solicitação de pull, siga os [fluxos de trabalho do Git](/docs/pt/git-workflows#criar-um-pull-request).
 
 ## Abrir o pedido de alteração da ramificação atual
 
 1. Selecione o projeto e verifique sua branch atual.
-2. Clique em **Solicitações de pull** na barra lateral direita.
+2. Abra o **Git** na barra de ferramentas da direita e selecione **Pull request**.
 3. Revise o título, estado, ramo de origem e ramo base do pedido de alteração e os checks.
 4. Use **Resumo** para a descrição e discussão, ou **Código** para arquivos modificados.
 
-<Frame caption="A resumo da solicitação de alteração mantém sua descrição, verificações e discussão ao lado do seu projeto. Este exemplo já foi mesclado.">
+O resumo das verificações mostra o número de verificações falhas. Selecione uma verificação para abrir seus detalhes quando um link estiver disponível.
+
+<Frame caption="Abrir o pedido de alteração da ramificação atual">
   <img
     src="/images/docs/pull-request-panel.png"
-    alt="Panel de solicitação de pull mostrando um PR consolidado, guia de Resumo e Código, sua descrição e verificações concluídas."
-    width={876}
-    height={600}
+    alt="Aba Resumo do pull request no Git com uma PR aberta, descrição, links das verificações e botão de merge."
+    width={943}
+    height={1016}
     loading="lazy"
   />
 </Frame>
@@ -31,6 +33,16 @@ No **Resumo**, leia o debate e use **Escreva** e **Visualização** para compor 
 Em **Code**, expanda um arquivo e selecione linhas em sua diferença para publicar um comentário na linha. Você pode ler os fios de revisão existentes e usar **Responder** para continuá-los. Quando um patch de texto estiver indisponível, abra o pedido de revisão no GitHub para inspecionar esse arquivo.
 
 Esses comentários são publicados no GitHub. Para pedir ao seu agente de codificação sobre alterações locais, use [feedback de diff em Alterações](/docs/pt/feedback#comentar-em-linhas-de-um-diff).
+
+<Frame caption="Revise o código e poste comentários">
+  <img
+    src="/images/docs/pull-request-code-panel.png"
+    alt="Aba Código do pull request com arquivos alterados, contagens de linhas e indicadores de arquivos adicionados e removidos."
+    width={943}
+    height={1016}
+    loading="lazy"
+  />
+</Frame>
 
 ## Editar o título e a descrição
 

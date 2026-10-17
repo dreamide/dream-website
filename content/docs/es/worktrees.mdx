@@ -43,47 +43,69 @@ Use este atajo cuando quieras que el agente continúe con la discusión anterior
 
 Use los paneles de proyecto para alternar entre el checkout original y el proyecto del árbol de trabajo. Los árboles de trabajo gestionados por la aplicación también aparecen en el panel **Historial de chat** del proyecto principal, donde puedes abrirlos nuevamente.
 
-Revisar y commitear los cambios del proyecto donde fueron realizados. Crear un árbol de trabajo no integra sus cambios en la rama original; use **Completar árbol de trabajo** cuando el trabajo esté listo.
+Revisa y confirma los cambios desde el proyecto donde se hicieron. Crear un árbol de trabajo no fusiona sus cambios con la rama original; usa **Acciones de Git** debajo del chat cuando el trabajo esté listo.
 
 ## Completear un árbol de trabajo
 
-El diálogo **Completo árbol de trabajo** revisa la rama del árbol de trabajo contra su base, luego la fusiona, abre una solicitud de incorporación o simplemente elimina el check-out.
+La fusión, la creación de una solicitud de incorporación y la eliminación de un árbol de trabajo son acciones separadas en el menú **Acciones de Git** del pie de página. Comite los cambios que deseas incluir antes de fusionarlos.
 
-1. En el proyecto árbol de trabajo, haz clic en el botón **árbol de trabajo** que muestra el nombre de la rama debajo del chat. Su tooltip es **Completar árbol de trabajo** seguido del nombre de la rama.
+<Frame caption="Completear un árbol de trabajo">
+  <img
+    src="/images/docs/worktree-git-actions-menu.png"
+    alt="Menú de acciones de Git del árbol de trabajo con Publicar rama, Crear solicitud de incorporación, Fusionar con dev y Eliminar árbol de trabajo."
+    width={236}
+    height={324}
+    loading="lazy"
+  />
+</Frame>
+
+1. En el proyecto árbol de trabajo, elige **Fusión en *base*** desde **Acciones de Git** bajo el chat.
 2. Revisar el resumen: la **Rama base**, cuántos **Confirmaciones** está adelantada y retrasada la rama, los **Archivos** modificados y la rama actual en el **Checkout principal**, así como si está limpia.
 3. Lee la lista de commits y expande cualquier archivo para inspeccionar su diff.
-4. Si el diálogo lista archivos no commitados, haz clic en **Confirmar cambios...** para commitearlos, o selecciona **Descartar cambios sin confirmar** para que sean eliminados con el árbol de trabajo.
-5. Bajo **Próximos pasos**, elige una opción.
-6. Haga clic en **Combinar y eliminar**, **Continuar con la solicitud de extracción** o **Eliminar árbol de trabajo**.
+4. Use **Confirmar cambios...** si es necesario. Los cambios no cometidos permanecen en el árbol de trabajo y no se integran.
+5. Elige **Fusión en *base***. Dream fusiona el trabajo commitado en el checkout principal, cambiando a la rama base si es necesario.
+6. Revise el resultado, luego elija **Conservar worktree** o **Eliminar worktree y rama**. La eliminación después de la fusión solo está disponible cuando el árbol de trabajo está limpio.
 
-| Paso siguiente | ¿Qué sucede? |
-| --- | --- |
-| Mezclar en *base* y eliminar árbol de trabajo | Une el ramo en la base desde el checkout principal, elimina el árbol de trabajo y borra el ramo |
-| Crear solicitud de incorporación y eliminar árbol de trabajo | Abre el diálogo de solicitud de incorporación, luego elimina el árbol de trabajo y mantiene el ramo |
-| Eliminar solo el árbol de trabajo | Elimina el árbol de trabajo y mantiene el ramo |
+<Frame caption="Revisar cambios">
+  <img
+    src="/images/docs/worktree-merge-dialog.png"
+    alt="Diálogo de fusión con dev que muestra la rama base, el número de commits, el archivo modificado y el checkout principal limpio."
+    width={672}
+    height={442}
+    loading="lazy"
+  />
+</Frame>
 
-Dream selecciona por defecto la fusión cuando es posible, luego la solicitud de fusión, luego la eliminación. La fusión ejecuta `git merge` en el checkout principal; si este checkout está en otro ramo, Dream lo cambia al ramo base primero y te lo indica en el resumen. Un ramo base que solo existe en el remoto se crea localmente.
+<Frame caption="Completear un árbol de trabajo">
+  <img
+    src="/images/docs/worktree-merge-success-dialog.png"
+    alt="Fusión del árbol de trabajo con dev completada, con los botones Mantener árbol de trabajo y Eliminar árbol de trabajo y rama."
+    width={672}
+    height={268}
+    loading="lazy"
+  />
+</Frame>
 
-La pantalla **Listo** muestra el resultado: si la base fue avanzada o recibió un commit de fusión, si el checkout principal cambió de rama, un botón **Ver solicitud de fusión** cuando se creó una solicitud, y si la rama fue eliminada o mantuvo.
+Para publicar para revisión en su lugar, use **Acciones de Git → Crear solicitud de extracción** y siga [Flujos de trabajo de Git](/docs/es/git-workflows#crea-un-pull-request). Crear una solicitud de incorporación mantiene el árbol de trabajo.
+
+Use **Acciones de Git → Eliminar árbol de trabajo** para eliminar el checkout mientras se mantiene su rama. Si tiene cambios no commitados, commitéelos primero o selecciona explícitamente **Descartar cambios sin confirmar**.
 
 <Warning>
-  Completar un árbol de trabajo elimina su directorio y cierra su proyecto. Los chats del proyecto de árbol de trabajo se descartan junto con él y no aparecen en el Historial de chats ni en Cerrados recientemente. Si deseas conservar una conversación, [divírgala en el entorno principal](/docs/es/branching-chats) antes de completar.
+  Eliminar un árbol de trabajo elimina su directorio y cierra su proyecto. Los chats del proyecto de árbol de trabajo se eliminan junto con él y no aparecen en el Historial de chats ni en Cerrados recientemente. Si deseas conservar una conversación, [divídelo en el entorno principal](/docs/es/branching-chats) antes de completarlo.
 </Warning>
 
 ### Cuando una opción no está disponible
 
 | Mensaje | ¿Qué hacer? |
 | --- | --- |
-| Este ramo no tiene commits adelantados respecto a *base* | Comite el trabajo que deseas mantener, o elige Eliminar árbol de trabajo solo |
+| Este ramo no tiene commits adelantados respecto a *base* | Confirma el trabajo que quieras conservar o elige Eliminar árbol de trabajo |
 | El checkout principal tiene archivos no commiteados | Comitear o guardar los cambios en el proyecto padre antes de fusionarlos |
 | El checkout principal tiene un merge o rebase en progreso | Finalizar o abortar esa operación en el proyecto padre |
 | Este ramo no comparte historia con *base* | Integración a través de tu propio flujo de Git |
 | No se ha configurado un repositorio Git remoto | Agrega un remoto antes de crear una solicitud de incorporación |
 | GitHub CLI (gh) no está disponible | Instalar y autenticar el CLI de GitHub |
 
-El botón principal permanece desactivado mientras el árbol de trabajo tenga cambios no commiteados y usted ni ha cometido ni elegido eliminarlos. La ruta de solicitud de incorporación le permite commitear dentro del diálogo de la solicitud de incorporación.
-
-Si el merge produce conflictos, Dream lo aborta y muestra **El merge en *base* produjo conflictos. El merge fue abortado y nada fue cambiado**, junto con los archivos en conflicto. Trae la rama base al árbol de trabajo, resuelve los conflictos, realiza el commit y luego ejecuta nuevamente **Completar árbol de trabajo**.
+Si el merge produce conflictos, Dream lo aborta y muestra **El merge en *base* produjo conflictos. El merge fue abortado y nada fue cambiado**, junto con los archivos en conflicto. Trae la rama base al árbol de trabajo, resuelve los conflictos, realiza el commit y luego ejecuta nuevamente **Merge en *base***.
 
 ## Eliminar un árbol de trabajo del proyecto padre
 

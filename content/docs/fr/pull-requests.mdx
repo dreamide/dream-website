@@ -3,21 +3,23 @@ title: "Examiner les pull requests"
 description: "Lisez les demandes de fusion sur GitHub, examinez les différences, postez des commentaires, éditez les détails et les fusionnez depuis Dream."
 ---
 
-Le bouton **Pull requests** dans la barre d'outils de droite ouvre la demande de fusion GitHub pour la branche actuelle. Installez et authentifiez d'abord le CLI GitHub pour le dépôt. Pour publier une nouvelle demande de fusion, suivez [Git workflows](/docs/fr/git-workflows#créer-un-pull-request).
+L'onglet **Git → Pull request** ouvre la demande de pull GitHub pour la branche actuelle. Installez et authentifiez d'abord le CLI GitHub pour le dépôt. Pour publier une nouvelle demande de pull, suivez [Git workflows](/docs/fr/git-workflows#créer-un-pull-request).
 
 ## Ouvrir la demande de fusion de la branche actuelle
 
 1. Sélectionnez le projet et vérifiez sa branche actuelle.
-2. Cliquez sur **Pull requests** dans la barre latérale de droite.
+2. Ouvrir **Git** dans la barre d'outils de droite et sélectionner **Pull request**.
 3. Revoir le titre, l'état, les branches source et de base, ainsi que les vérifications de la demande de modification.
 4. Utilisez **Résumé** pour la description et la discussion, ou **Code** pour les fichiers modifiés.
 
-<Frame caption="Le résumé de la PR conserve sa description, ses vérifications et son discussion accompagné de votre projet. Exemple déjà fusionné.">
+Le résumé des vérifications affiche le nombre de vérifications échouées. Sélectionnez une vérification pour ouvrir ses détails lorsque un lien est disponible.
+
+<Frame caption="Ouvrir la demande de fusion de la branche actuelle">
   <img
     src="/images/docs/pull-request-panel.png"
-    alt="Panel de demande de fusion affichant une PR fusionnée, des onglets Résumé et Code, sa description et les vérifications passées."
-    width={876}
-    height={600}
+    alt="Onglet Résumé de la pull request dans Git avec une PR ouverte, sa description, les liens des vérifications et le bouton Fusionner."
+    width={943}
+    height={1016}
     loading="lazy"
   />
 </Frame>
@@ -31,6 +33,16 @@ Dans **Résumé**, lisez la discussion et utilisez **Écrire** et **Aperçu** po
 Dans **Code**, expandez un fichier et sélectionnez des lignes dans son diff pour publier un **Publier un commentaire sur la ligne**. Vous pouvez lire les threads de révision existants et utiliser **Répondre** pour les poursuivre. Lorsqu'un patch de texte n'est pas disponible, ouvrez la demande de modification sur GitHub pour inspecter ce fichier.
 
 Ces commentaires sont publiés sur GitHub. Pour demander à votre agent de codage de prendre en compte les modifications locales, utilisez [le feedback sur les différences dans les Modifications](/docs/fr/feedback#commenter-des-lignes-dans-un-diff).
+
+<Frame caption="Revoir du code et poster des commentaires">
+  <img
+    src="/images/docs/pull-request-code-panel.png"
+    alt="Onglet Code de la pull request avec les fichiers modifiés, le nombre de lignes et les badges des fichiers ajoutés et supprimés."
+    width={943}
+    height={1016}
+    loading="lazy"
+  />
+</Frame>
 
 ## Modifier le titre et la description
 

@@ -3,7 +3,7 @@ title: "Einstellungsreferenz"
 description: "Model-Standardwerte, Anbieter, Anweisungen, Fähigkeiten, MCP-Server und Steuerungen für archivierte Chats finden."
 ---
 
-Öffne die **Einstellungen** mit dem Zahnradsymbol oben in Dream. Die Seitenleiste enthält **Allgemein**, **Anbieter**, **SSH-Hosts**, **Prompts**, **Skills**, **MCP-Server** und **Archivierte Chats**. Allgemeine Einstellungen gelten, sobald sie ausgewählt werden. Formulare für Prompte, Fähigkeiten und Serverdefinitionen verfügen über ihre eigenen Aktionen „Erstellen“ oder „Speichern“.
+Öffne die **Einstellungen** mit dem Zahnradsymbol oben in Dream. Die Seitenleiste enthält **Allgemein**, **Anbieter**, **SSH-Hosts**, **Prompts**, **Skills**, **MCP-Server**, **Tastenkürzel** und **Archivierte Chats**. Allgemeine Einstellungen gelten, sobald sie ausgewählt werden. Formulare für Prompts, Fähigkeiten und Serverdefinitionen verfügen über ihre eigenen Aktionen „Erstellen“ oder „Speichern“.
 
 ## Allgemein
 
@@ -37,6 +37,18 @@ Die Änderung des Terminal-Schells wirkt sich auf neue Sitzungen aus. Öffnen Si
 | Checkpoint ändern | Auf | Projektdateien vor jeder Antwort sperren, damit Sie Änderungen überprüfen und wiederherstellen können |
 
 Die Anzeigestellungen beeinflussen die Gespräche innerhalb von Projekten. Sie ändern die Rechenleistung des Modells nicht und verleihen zusätzliche Werkzeugrechte nicht. Die Deaktivierung von **Änderungs-Checkpoints** beendet die Erstellung neuer Snapshots; siehe [Änderungen prüfen und wiederherstellen](/docs/de/checkpoints).
+
+Desktop-Alerte und optionaler Sounds werden hier mit **Desktop-Benachrichtigungen** und **Benachrichtigungston** konfiguriert. Siehe [Arbeit im Fortschritt verfolgen](/docs/de/chats#fortschritt-verfolgen).
+
+<Frame caption="Chatnachrichten">
+  <img
+    src="/images/docs/chat-notifications-panel.png"
+    alt="Allgemeine Einstellungen mit aktivierten Desktop-Benachrichtigungen und Benachrichtigungston unter Chatnachrichten."
+    width={1016}
+    height={443}
+    loading="lazy"
+  />
+</Frame>
 
 ### Modelle
 
@@ -81,6 +93,22 @@ Unter **Einstellungen → SSH-Hosts** kannst du entfernte Rechner hinzufügen, b
 | [Prompts](/docs/de/saved-prompts) | Erstellen, Vorschau, Kopieren, Umordnen und Bearbeiten von wiederverwendbaren Prompten für jeden Projektchat |
 | [Fähigkeiten](/docs/de/skills) | Führen Sie Fähigkeiten nach Anbieter und Projekt aus, zeigen Sie SKILL.md-Dateien vorab und erstellen Sie neue Fähigkeiten |
 | [MCP-Server](/docs/de/mcp-servers) | Tool-Server hinzufügen oder importieren und ihre Verbindungs-Einstellungen verwalten |
+
+## Tastenkürzel
+
+<Frame caption="Tastenkürzel">
+  <img
+    src="/images/docs/keyboard-shortcuts-panel.png"
+    alt="Tastenkürzel-Einstellungen mit Aktionsnamen, Tastenkombinationen, Bearbeitungsoptionen und Alle zurücksetzen."
+    width={1016}
+    height={786}
+    loading="lazy"
+  />
+</Frame>
+
+Offen **Einstellungen → Tastenkürzel**, suchen Sie nach einer Aktion und klicken Sie auf deren Tastenkombination, um eine neue Tastenkombination zu speichern. Drücken Sie **Enter** oder klicken Sie auf **Speichern**, um sie anzuwenden, oder **Escape**, um abzubrechen.
+
+Wenn eine andere konfigurierbare Aktion die Kombination verwendet, wird die Zuweisung dieser Kombination dieser Aktion zugewiesen. Vorbehaltenen Tastenkombinationen können nicht neu zugewiesen werden. Verwenden Sie **Tastenkürzel zurücksetzen** für eine einzelne Aktion oder **Alle zurücksetzen**, um die Standardwerte wiederherzustellen. Der Abschnitt **Integriert** enthält festgelegte Tastenkombinationen.
 
 ## Archivierte Chats
 

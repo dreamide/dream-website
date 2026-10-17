@@ -7,6 +7,16 @@ description: "管理專案分頁，調整面板佈局，並在聊天記錄和開
 
 專案也可以位於 [SSH 主機](/docs/zh-Hant/remote-hosts)上。執行指令前請檢查主機標籤；遠端專案的工具在該機器上運作。
 
+<Frame caption="專案與工作區">
+  <img
+    src="/images/screen-main.png"
+    alt="Dream 工作區，顯示專案分頁、空白聊天輸入框、工具列及底部的分支資訊。"
+    width={1920}
+    height={1080}
+    loading="lazy"
+  />
+</Frame>
+
 ## 新增和切換專案
 
 1. 點選專案分頁旁邊的 **+**，或在入門螢幕使用 **開啟資料夾**。
@@ -54,15 +64,13 @@ description: "管理專案分頁，調整面板佈局，並在聊天記錄和開
 
 | 工具 | 你可以做什麼 |
 | --- | --- |
-| [更改](/docs/zh-Hant/git-workflows) | 審查 Git 差分並還原檔案更改 |
+| [Git](/docs/zh-Hant/git-workflows) | 檢視變更、提交、瀏覽歷史，並管理分支的拉取請求 |
 | [檔案](/docs/zh-Hant/files) | 瀏覽檔案、搜尋路徑和編輯檔案內容 |
 | [瀏覽器](/docs/zh-Hant/browser) | 預覽 URL 並檢查網頁 |
 | [終端](/docs/zh-Hant/terminals) | 在單獨會話中執行專案命令 |
-| [Git 操作](/docs/zh-Hant/git-workflows) | 提交、推送並建立拉取請求 |
-| [拉取請求](/docs/zh-Hant/pull-requests) | 閱讀當前分支的拉取請求，釋出評論，併合並 |
 | [暫存](/docs/zh-Hant/stash) | 儲存提示詞並稍後執行它們 |
 
-**Git 操作**位於右側工具欄的頂部。倉庫專案會顯示 Git 控制選項。聊天區域下方的分支控制項顯示當前活動分支；可使用該功能切換分支或[建立一個工作樹](/docs/zh-Hant/worktrees)。在工作樹專案中，相同位置會顯示一個**工作樹**按鈕，用於開啟[完整工作樹](/docs/zh-Hant/worktrees#完成一個工作樹)對話方塊。
+針對倉庫專案會出現 Git 控制項。在對話框下方，可使用分支控制來切換分支或 [建立工作樹](/docs/zh-Hant/worktrees)。鄰近的 **Git 動作** 菜單會根據分支狀態提供提交、發布、拉取請求以及工作樹相關操作。
 
 ## 整理聊天記錄和麵板
 

@@ -7,6 +7,16 @@ Jedes Dream-Projekt verfügt über seinen eigenen Arbeitsbereich. Projekt-Tabs e
 
 Projekte können auch auf [SSH-Hosts](/docs/de/remote-hosts) liegen. Prüfe die Host-Anzeige, bevor du Befehle ausführst; die Werkzeuge des entfernten Projekts arbeiten auf diesem Rechner.
 
+<Frame caption="Projekte und Arbeitsbereich">
+  <img
+    src="/images/screen-main.png"
+    alt="Dream-Arbeitsbereich mit einem Projekt-Tab, einem leeren Chat-Eingabefeld, Werkzeugleisten und der Branch-Anzeige in der Fußzeile."
+    width={1920}
+    height={1080}
+    loading="lazy"
+  />
+</Frame>
+
 ## Projekte hinzufügen und wechseln
 
 1. Klicken Sie neben den Projekttabellen auf das **+**, oder verwenden Sie **Ordner öffnen** auf der Einstiegsseite.
@@ -54,15 +64,13 @@ Die rechte Leiste öffnet Werkzeuge für Projekte:
 
 | Werkzeug | Was Sie tun können |
 | --- | --- |
-| [Änderungen](/docs/de/git-workflows) | Git-Diffs überprüfen und Dateiänderungen zurücksetzen |
+| [Git](/docs/de/git-workflows) | Änderungen überprüfen, commiten, die Geschichte durchsehen und den Branch-Pull Request verwalten |
 | [Dateien](/docs/de/files) | Dateien durchsuchen, Pfade suchen und Inhalt von Dateien bearbeiten |
 | [Browser](/docs/de/browser) | Vorschau von URLs und Inspektion von Webseiten |
 | [Terminal](/docs/de/terminals) | Projektbefehle in separaten Sitzungen ausführen |
-| [Git-Aktionen](/docs/de/git-workflows) | Commit, pushen und Pull Requests erstellen |
-| [Pull Requests](/docs/de/pull-requests) | Lesen Sie den aktuellen Branch-PR, stellen Sie Kommentare und fügen Sie ihn ein |
 | [Stash](/docs/de/stash) | Prompts speichern und sie später ausführen |
 
-**Git-Aktionen** befinden sich oben in der rechten Werkzeugleiste. Für Repository-Projekte erscheinen Git-Steuerungselemente. Die Branch-Steuerung unter dem Chat zeigt den aktiven Branch an; verwenden Sie sie, um Branches zu wechseln oder [einen Worktree](/docs/de/worktrees) zu erstellen. In einem Worktree-Projekt zeigt der gleiche Bereich eine **Arbeitsbaum**-Schaltfläche, die das [Vollständige Worktree](/docs/de/worktrees#ein-worktree-abschließen)-Dialogfeld öffnet.
+Für Repository-Projekte erscheinen Git-Steuerungselemente. Unten im Chat können Sie den Branch-Controller verwenden, um Branches zu wechseln oder [einen Worktree zu erstellen](/docs/de/worktrees). Das benachbarte Menü **Git-Aktionen** bietet je nach Branch-Zustand die Optionen zum Commitvorgang, zum Publizieren, zu Pull Requests und zu Worktree-Aktionen.
 
 ## Verwalten von Chats und Panels
 

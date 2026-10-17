@@ -4,7 +4,7 @@ description: Find model defaults, providers, prompts, skills, MCP servers, and a
 ---
 
 Open **Settings** with the gear icon at the top of Dream. The sidebar has **General**, **Providers**,
-**SSH hosts**, **Prompts**, **Skills**, **MCP servers**, and **Archived chats**. General preferences apply
+**SSH hosts**, **Prompts**, **Skills**, **MCP servers**, **Keyboard shortcuts**, and **Archived chats**. General preferences apply
 as you select them. Forms for prompts, skills, and server definitions have their own Create or Save action.
 
 ## General
@@ -42,6 +42,19 @@ Changing the terminal shell affects new sessions. Open a new terminal to use the
 The display settings affect conversations across projects. They do not change the model's
 reasoning effort or grant additional tool permissions. Turning off **Change checkpoints** stops new
 snapshots; see [Reviewing and restoring changes](/docs/checkpoints).
+
+Desktop alerts and optional sounds are configured here with **Desktop notifications** and
+**Notification sound**. See [Follow work in progress](/docs/chats#follow-work-in-progress).
+
+<Frame caption="Chat messages">
+  <img
+    src="/images/docs/chat-notifications-panel.png"
+    alt="General settings with Desktop notifications and Notification sound both enabled under Chat messages."
+    width={1016}
+    height={443}
+    loading="lazy"
+  />
+</Frame>
 
 ### Models
 
@@ -94,6 +107,25 @@ See [SSH remote workspaces](/docs/remote-hosts) for setup and recovery steps.
 | [Prompts](/docs/saved-prompts) | Create, preview, copy, reorder, and edit reusable prompts for any project's chat |
 | [Skills](/docs/skills) | Browse skills by provider and project, preview SKILL.md files, and create new skills |
 | [MCP servers](/docs/mcp-servers) | Add or import tool servers and manage their connection settings |
+
+## Keyboard shortcuts
+
+<Frame caption="Keyboard shortcuts">
+  <img
+    src="/images/docs/keyboard-shortcuts-panel.png"
+    alt="Keyboard shortcuts settings with action names, key combinations, edit controls, and Reset all."
+    width={1016}
+    height={786}
+    loading="lazy"
+  />
+</Frame>
+
+Open **Settings → Keyboard shortcuts**, search for an action, and click its shortcut to record a
+new key combination. Press **Enter** or click **Save** to apply it, or **Escape** to cancel.
+
+If another configurable action uses the combination, saving moves it to this action. Reserved
+shortcuts cannot be reassigned. Use **Reset shortcut** for one action or **Reset all** to restore
+defaults. The **Built in** section lists fixed shortcuts.
 
 ## Archived chats
 

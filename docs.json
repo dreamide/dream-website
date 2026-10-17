@@ -382,7 +382,7 @@
               },
               {
                 "page": "es/files",
-                "title": "Archivos y búsqueda"
+                "title": "Archivos"
               },
               {
                 "page": "es/terminals",
@@ -525,7 +525,7 @@
               },
               {
                 "page": "fr/files",
-                "title": "Fichiers et recherche"
+                "title": "Fichiers"
               },
               {
                 "page": "fr/terminals",
@@ -668,7 +668,7 @@
               },
               {
                 "page": "de/files",
-                "title": "Dateien und Suche"
+                "title": "Dateien"
               },
               {
                 "page": "de/terminals",
@@ -811,7 +811,7 @@
               },
               {
                 "page": "pt/files",
-                "title": "Arquivos e busca"
+                "title": "Arquivos"
               },
               {
                 "page": "pt/terminals",
@@ -954,7 +954,7 @@
               },
               {
                 "page": "it/files",
-                "title": "File e ricerca"
+                "title": "File"
               },
               {
                 "page": "it/terminals",
@@ -1097,7 +1097,7 @@
               },
               {
                 "page": "ja/files",
-                "title": "ファイルと検索"
+                "title": "ファイル"
               },
               {
                 "page": "ja/terminals",
@@ -1240,7 +1240,7 @@
               },
               {
                 "page": "ko/files",
-                "title": "파일과 검색"
+                "title": "파일"
               },
               {
                 "page": "ko/terminals",
@@ -1383,7 +1383,7 @@
               },
               {
                 "page": "vi/files",
-                "title": "Tệp và tìm kiếm"
+                "title": "Tệp"
               },
               {
                 "page": "vi/terminals",
@@ -1526,7 +1526,7 @@
               },
               {
                 "page": "zh-Hans/files",
-                "title": "文件与搜索"
+                "title": "文件"
               },
               {
                 "page": "zh-Hans/terminals",
@@ -1669,7 +1669,7 @@
               },
               {
                 "page": "zh-Hant/files",
-                "title": "檔案與搜尋"
+                "title": "檔案"
               },
               {
                 "page": "zh-Hant/terminals",

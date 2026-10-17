@@ -119,9 +119,9 @@ account has the required repository permissions. A draft PR must be marked ready
 | PR source and base are the same | Switch to a feature branch before creating the PR |
 | PR creation reports detached HEAD | Check out a branch before creating the PR |
 | Worktree removal fails | Review and preserve uncommitted changes in that checkout |
-| Merge & remove is unavailable | The worktree has no commits ahead of its base, or the main checkout has uncommitted changes or a merge in progress |
-| Complete worktree reports conflicts | The merge was aborted and nothing changed; merge the base branch into the worktree, resolve conflicts, commit, then retry |
-| Create pull request is unavailable in Complete worktree | Configure a Git remote and install GitHub CLI |
+| Merge into base is unavailable | The worktree has no commits ahead of its base, or the main checkout has uncommitted changes or a merge in progress |
+| Worktree merge reports conflicts | The merge was aborted and nothing changed; merge the base branch into the worktree, resolve conflicts, commit, then retry |
+| Create pull request is unavailable in Git actions | Configure a Git remote and install GitHub CLI |
 
 After a combined action fails, inspect the branch state before retrying: a commit or push may have
 succeeded before a later step failed. See [Git workflows](/docs/git-workflows).

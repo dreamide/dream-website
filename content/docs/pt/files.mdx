@@ -1,5 +1,5 @@
 ---
-title: "Arquivos e busca"
+title: "Arquivos"
 description: "Navegue por arquivos do projeto, procure nomes e conteúdo de arquivos, edite o código e gerencie alterações não salvas."
 ---
 
@@ -12,14 +12,30 @@ Clique em **Arquivos** na barra lateral direita para navegar pela pasta do proje
 3. Selecione um resultado para abri-lo.
 4. Limpar a busca para voltar a navegar na árvore.
 
-Use **Atualizar arquivos** nas ações de arquivo quando as alterações feitas fora do Dream não são refletidas na árvore. Buscar por um arquivo localiza seu caminho; use a busca do editor para encontrar texto dentro desse arquivo.
+Use **Atualizar arquivos** nas ações de arquivo quando as alterações feitas fora do Dream não são refletidas na árvore. Buscar por um arquivo localiza seu caminho; use **Localizar nos arquivos** para buscar o conteúdo do projeto.
 
 <Frame caption="Busque ou navegue na árvore de arquivos, depois abra um arquivo ao lado de sua conversa.">
   <img
     src="/images/docs/files-panel.png"
-    alt="Panel de arquivos com Pesquisar arquivos acima da árvore de pastas e app-error-boundary.tsx aberto no editor."
-    width={950}
-    height={610}
+    alt="Painel Arquivos filtrando caminhos por .ts, com http.ts selecionado na árvore e aberto no editor."
+    width={1064}
+    height={1016}
+    loading="lazy"
+  />
+</Frame>
+
+## Localizar em arquivos
+
+Para procurar por todo o projeto, selecione **Localizar nos arquivos** no painel Arquivos. Digite sua consulta e use **Diferenciar maiúsculas de minúsculas**, **Somente palavras inteiras** ou **Usar expressão regular** conforme necessário. Na seção **Filtros de arquivos**, defina **Arquivos a incluir** (por exemplo, `src, *.ts`) ou **Arquivos a excluir** (por exemplo, `*.test.ts`). Selecione um resultado para abrir a linha correspondente. Se os resultados forem truncados, restrinja sua consulta ou filtros.
+
+Busca por projeto encontra texto em disco. Salve os rascunhos do editor primeiro; a substituição está disponível dentro de um arquivo.
+
+<Frame caption="Localizar em arquivos">
+  <img
+    src="/images/docs/find-in-files-panel.png"
+    alt="Pesquisa por function em todo o projeto, com resultados agrupados por arquivo e uma correspondência selecionada aberta em errors.ts."
+    width={1064}
+    height={1016}
     loading="lazy"
   />
 </Frame>
@@ -33,6 +49,16 @@ Use **Atualizar arquivos** nas ações de arquivo quando as alterações feitas 
 
 A barra de pesquisa também oferece controles de substituição. Revise os matches antes de usar **Substituir tudo**, em seguida, salve o arquivo para gravar as alterações no disco. A substituição afeta o arquivo atual.
 
+<Frame caption="Buscar e substituir dentro de um arquivo">
+  <img
+    src="/images/docs/file-find-panel.png"
+    alt="Busca e substituição em messages.ts com a consulta add, correspondências destacadas e controles de substituição."
+    width={943}
+    height={1016}
+    loading="lazy"
+  />
+</Frame>
+
 ## Editar e salvar
 
 Edite um arquivo de texto gravável no editor de código. Alterações não salvas são marcadas em sua aba, e o painel pode mostrar quantos arquivos têm rascunhos não salvos.
@@ -40,6 +66,8 @@ Edite um arquivo de texto gravável no editor de código. Alterações não salv
 Clique em **Salvar** na barra de ferramentas do editor, ou pressione **Command+S** no macOS ou **Ctrl+S** no Windows/Linux enquanto o editor estiver focado. Salve cada arquivo editado antes de pedir a um agente ou comando terminal para usar o novo conteúdo; essas ferramentas lerão os arquivos no disco.
 
 Alternar entre as guias de arquivo te permite manter rascunhos enquanto inspeciona outros arquivos. Use **Descartar alterações** para abandonar um rascunho local. Isso é distinto do reverter alterações por meio do Git.
+
+Clique duas vezes em uma aba de arquivo para fixá-la, para que o abrimento de outro preview não a substitua.
 
 Fechar uma aba com alterações não salvas abre um prompt **Salvar / Não salvar / Cancelar**. **Salvar** grava o rascunho e fecha a aba, **Não salvar** descarta o rascunho e fecha a aba, e **Cancelar** mantém a aba aberta. Se a gravação falhar ou houver conflito com uma edição externa, o arquivo permanece aberto para que você resolva o problema.
 

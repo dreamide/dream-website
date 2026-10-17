@@ -1,5 +1,5 @@
 ---
-title: "Archivos y búsqueda"
+title: "Archivos"
 description: "Explora archivos del proyecto, busca nombres y contenido de archivos, edita código y maneja cambios no guardados."
 ---
 
@@ -12,14 +12,30 @@ Haga clic en **Archivos** en la barra lateral derecha para navegar por el direct
 3. Selecciona un resultado para abrirlo.
 4. Borrar la búsqueda para volver a navegar por el árbol.
 
-Usa **Actualizar archivos** en las acciones de archivo cuando los cambios realizados fuera de Dream no se reflejan en el árbol. Buscar un archivo localiza su ruta; utiliza la búsqueda del editor para encontrar texto dentro de ese archivo.
+Usa **Actualizar archivos** en las acciones de archivo cuando los cambios realizados fuera de Dream no se reflejan en el árbol. Buscar un archivo localiza su ruta; utiliza **Buscar en archivos** para buscar el contenido del proyecto.
 
 <Frame caption="Busca o navega por el árbol de archivos, luego abre un archivo junto a tu chat.">
   <img
     src="/images/docs/files-panel.png"
-    alt="Panel de archivos con Buscar archivos encima del árbol de carpetas y app-error-boundary.tsx abierto en el editor."
-    width={950}
-    height={610}
+    alt="Panel Archivos filtrando rutas por .ts, con http.ts seleccionado en el árbol y abierto en el editor."
+    width={1064}
+    height={1016}
+    loading="lazy"
+  />
+</Frame>
+
+## Buscar en archivos
+
+Para buscar en todo el proyecto, seleccione **Buscar en archivos** en el panel Archivos. Introduzca su consulta y use **Distinguir mayúsculas y minúsculas**, **Solo palabras completas** o **Usar expresión regular** según sea necesario. En **Filtros de archivos**, establezca **Archivos que incluir** (por ejemplo, `src, *.ts`) o **Archivos que excluir** (por ejemplo, `*.test.ts`). Seleccione un resultado para abrir la línea coincidente. Si los resultados están truncados, reduzca su consulta o filtros.
+
+Búsqueda de proyecto encuentra texto en el disco. Guarda los borradores del editor primero; el reemplazo está disponible dentro de un archivo.
+
+<Frame caption="Buscar en archivos">
+  <img
+    src="/images/docs/find-in-files-panel.png"
+    alt="Búsqueda de function en todo el proyecto, con resultados agrupados por archivo y una coincidencia seleccionada abierta en errors.ts."
+    width={1064}
+    height={1016}
     loading="lazy"
   />
 </Frame>
@@ -33,6 +49,16 @@ Usa **Actualizar archivos** en las acciones de archivo cuando los cambios realiz
 
 El panel de búsqueda también ofrece controles de reemplazo. Revise los coincididos antes de usar **Reemplazar todo**, luego guarde el archivo para escribir los cambios en el disco. El reemplazo afecta al archivo actual.
 
+<Frame caption="Buscar y reemplazar dentro de un archivo">
+  <img
+    src="/images/docs/file-find-panel.png"
+    alt="Búsqueda y reemplazo en messages.ts con la consulta add, coincidencias resaltadas y controles de reemplazo."
+    width={943}
+    height={1016}
+    loading="lazy"
+  />
+</Frame>
+
 ## Editar y guardar
 
 Edite un archivo de texto escribible en el editor de código. Los cambios no guardados se marcan en su pestaña, y el panel puede mostrar cuántos archivos tienen borradores no guardados.
@@ -40,6 +66,8 @@ Edite un archivo de texto escribible en el editor de código. Los cambios no gua
 Haga clic en **Guardar** en la barra de herramientas del editor, o presione **Command+S** en macOS o **Ctrl+S** en Windows/Linux mientras el editor esté enfocado. Guarde cada archivo editado antes de pedirle a un agente o a un comando terminal que use el nuevo contenido; esas herramientas leen los archivos en el disco.
 
 Cambiar entre pestañas de archivo te permite mantener bocetos mientras inspeccionas otros archivos. Utiliza **Descartar cambios** para abandonar un boceto local. Esto es distinto de revertir cambios a través de Git.
+
+Haz doble clic en una pestaña de archivo para fijarla de modo que al abrir otro previsualización no la reemplace.
 
 Cerrar una pestaña con cambios no guardados abre un **prompt de Guardar / No guardar / Cancelar**. **Guardar** escribe el borrador y cierra la pestaña, **No guardar** descarta el borrador y cierra la pestaña, y **Cancelar** mantiene la pestaña abierta. Si el guardado falla o hay conflicto con un cambio externo, el archivo permanece abierto para que puedas resolver el problema.
 

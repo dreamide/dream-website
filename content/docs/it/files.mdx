@@ -1,5 +1,5 @@
 ---
-title: "File e ricerca"
+title: "File"
 description: "Esplora i file del progetto, cerca nomi e contenuti dei file, modifica il codice e gestisci i cambiamenti non salvati."
 ---
 
@@ -12,14 +12,30 @@ Fai clic su **File** nella barra laterale destra per esplorare la cartella del p
 3. Seleziona un risultato per aprirlo.
 4. Elimina la ricerca per tornare alla navigazione dell'albero.
 
-Usa **Aggiorna file** negli azioni dei file quando le modifiche apportate fuori da Dream non sono riflesse nell'albero. Cerca un file per localizzarne il percorso; usa la ricerca nell'editor per trovare del testo all'interno di quel file.
+Usare **Aggiorna file** negli azioni dei file quando le modifiche apportate fuori da Dream non sono riflesse nell'albero. Cerchare un file ne individua il percorso; usare **Cerca nei file** per cercare i contenuti del progetto.
 
 <Frame caption="Cerca o esplora l'albero dei file, poi apri un file accanto al tuo chat.">
   <img
     src="/images/docs/files-panel.png"
-    alt="Panello dei File con Cerca file sopra l'albero cartelle e app-error-boundary.tsx aperto nell'editor."
-    width={950}
-    height={610}
+    alt="Pannello File con percorsi filtrati per .ts e http.ts selezionato nell’albero e aperto nell’editor."
+    width={1064}
+    height={1016}
+    loading="lazy"
+  />
+</Frame>
+
+## Cerca nei file
+
+Per cercare nel progetto intero, seleziona **Cerca nei file** nel pannello File. Inserisci la tua query e usa **Distingui maiuscole e minuscole**, **Solo parole intere** o **Usa espressione regolare** come necessario. Nel campo **Filtri file**, imposta **File da includere** (ad esempio, `src, *.ts`) o **File da escludere** (ad esempio, `*.test.ts`). Seleziona un risultato per aprire la riga corrispondente. Se i risultati sono troncati, ristretti la tua query o i filtri.
+
+La ricerca di progetti trova testi sul disco. Salva i bozzi dell'editor prima; la sostituzione è disponibile all'interno di un file.
+
+<Frame caption="Cerca nei file">
+  <img
+    src="/images/docs/find-in-files-panel.png"
+    alt="Ricerca di function in tutto il progetto, con risultati raggruppati per file e una corrispondenza selezionata aperta in errors.ts."
+    width={1064}
+    height={1016}
     loading="lazy"
   />
 </Frame>
@@ -33,6 +49,16 @@ Usa **Aggiorna file** negli azioni dei file quando le modifiche apportate fuori 
 
 Il pannello di ricerca offre anche controlli di sostituzione. Verifica le corrispondenze prima di utilizzare **Sostituisci tutto**, quindi salva il file per scrivere le modifiche sul disco. La sostituzione riguarda il file corrente.
 
+<Frame caption="Cerca e sostituisci all'interno di un file">
+  <img
+    src="/images/docs/file-find-panel.png"
+    alt="Ricerca e sostituzione in messages.ts con la query add, corrispondenze evidenziate e controlli di sostituzione."
+    width={943}
+    height={1016}
+    loading="lazy"
+  />
+</Frame>
+
 ## Modifica e salva
 
 Modifica un file di testo scrivibile nell'editor di codice. I cambiamenti non salvati sono segnalati nel suo scheda, e il pannello può indicare quante file hanno bozze non salvate.
@@ -40,6 +66,8 @@ Modifica un file di testo scrivibile nell'editor di codice. I cambiamenti non sa
 Fai clic su **Salva** nel pannello degli strumenti dell'editor, oppure premi **Command+S** su macOS o **Ctrl+S** su Windows/Linux quando l'editor è in focus. Salva ogni file modificato prima di chiedere a un agente o a un comando terminale di utilizzare i nuovi contenuti; questi strumenti leggono i file sul disco.
 
 Passare tra le schede dei file ti permette di mantenere bozze mentre esplori altri file. Usa **Abbandona modifiche** per abbandonare una bozza locale. Questo è separato dal ripristino delle modifiche attraverso Git.
+
+Doppio clic su un'icona di file per fissarlo in modo che l'apertura di un altro preview non lo sostituisca.
 
 Chiudere un'anteprima con modifiche non salvate apre un prompt **Salva / Non salvare / Annulla**. **Salva** scrive il testo in bozza e chiude l'anteprima, **Non salvare** getta via il testo in bozza e la chiude, mentre **Annulla** mantiene l'anteprima aperta. Se il salvataggio fallisce o si verifica un conflitto con una modifica esterna, il file rimane aperto in modo da poter risolvere il problema.
 

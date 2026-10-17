@@ -3,7 +3,7 @@ title: "Référence des paramètres"
 description: "Rechercher les paramètres par défaut des modèles, les fournisseurs, les prompts, les compétences, les serveurs MCP et les contrôles des échanges archivés."
 ---
 
-Ouvrez les **Paramètres** avec l’icône d’engrenage en haut de Dream. La barre latérale contient **Général**, **Fournisseurs**, **Hôtes SSH**, **Prompts**, **Skills**, **Serveurs MCP** et **Chats archivés**. Les préférences générales s’appliquent dès que vous les sélectionnez. Les formulaires de prompts, de skills et de définition des serveurs disposent de leur propre action Créer ou Enregistrer.
+Ouvrir **Paramètres** avec l'icône à moitié tourné en haut de Dream. Le panneau latéral contient **Général**, **Fournisseurs**, **Hôtes SSH**, **Prompts**, **Skills**, **Serveurs MCP**, **Raccourcis clavier** et **Chats archivés**. Les préférences générales s'appliquent dès que vous les sélectionnez. Les formulaires relatifs aux prompts, aux compétences et aux définitions de serveurs disposent chacun d'une action Créer ou Enregistrer.
 
 ## Général
 
@@ -37,6 +37,18 @@ Modifier le shell du terminal affecte les nouvelles sessions. Ouvrir un nouveau 
 | Modifier les points d'ancrage | On | Prendre des snapshots des fichiers du projet avant chaque réponse afin que vous puissiez les revue et les restaurer |
 
 Les paramètres d'affichage influencent les conversations au sein des projets. Ils n'ont pas d'effet sur l'effort de raisonnement du modèle ni sur les autorisations supplémentaires des outils. Désactiver **Checkpoints de modifications** arrête la création de nouveaux snapshots ; voir [Vérifier et restaurer les modifications](/docs/fr/checkpoints).
+
+Les alertes de bureau et les sons optionnels sont configurés ici avec **Notifications de bureau** et **Son de notification**. Voir [Suivre le travail en cours](/docs/fr/chats#suivre-le-travail-en-cours).
+
+<Frame caption="Messages de chat">
+  <img
+    src="/images/docs/chat-notifications-panel.png"
+    alt="Paramètres généraux avec Notifications de bureau et Son de notification activés dans Messages de chat."
+    width={1016}
+    height={443}
+    loading="lazy"
+  />
+</Frame>
 
 ### Modèles
 
@@ -81,6 +93,22 @@ Ajoutez, modifiez, connectez, déconnectez ou supprimez des machines distantes d
 | [Prompts](/docs/fr/saved-prompts) | Créer, prévisualiser, copier, réorganiser et modifier des prompts réutilisables pour n'importe quel projet de chat |
 | [Compétences](/docs/fr/skills) | Parcourir les compétences par fournisseur et projet, consulter les fichiers SKILL.md, et créer de nouvelles compétences |
 | [Serveurs MCP](/docs/fr/mcp-servers) | Ajouter ou importer des serveurs d'outils et gérer leurs paramètres de connexion |
+
+## Raccourcis clavier
+
+<Frame caption="Raccourcis clavier">
+  <img
+    src="/images/docs/keyboard-shortcuts-panel.png"
+    alt="Paramètres des raccourcis clavier avec les noms des actions, les combinaisons de touches, les commandes de modification et Tout réinitialiser."
+    width={1016}
+    height={786}
+    loading="lazy"
+  />
+</Frame>
+
+Ouvrir **Paramètres → Raccourcis clavier**, rechercher une action et cliquer sur son raccourci pour enregistrer une nouvelle combinaison de touches. Appuyer sur **Entrée** ou cliquer sur **Enregistrer** pour l'appliquer, ou **Échapper** pour l'annuler.
+
+Si une autre action configurable utilise cette combinaison, l’enregistrement la réaffecte à cette action. Les raccourcis réservés ne peuvent pas être réaffectés. Utilisez **Réinitialiser le raccourci** pour une action ou **Tout réinitialiser** pour rétablir les valeurs par défaut. La section **Intégrés** répertorie les raccourcis fixes.
 
 ## Chats archivés
 

@@ -9,6 +9,16 @@ keeping each project's open chats and tools together.
 Projects can also live on [SSH hosts](/docs/remote-hosts). Check the host label before running
 commands; remote project tools work on that machine.
 
+<Frame caption="Projects and workspace">
+  <img
+    src="/images/screen-main.png"
+    alt="Dream workspace with a project tab, an empty chat composer, toolbars, and the branch footer."
+    width={1920}
+    height={1080}
+    loading="lazy"
+  />
+</Frame>
+
 ## Add and switch projects
 
 1. Click the **+** beside the project tabs, or use **Open Folder** on the getting-started screen.
@@ -68,19 +78,15 @@ The right toolbar opens project tools:
 
 | Tool | What you can do |
 | --- | --- |
-| [Changes](/docs/git-workflows) | Review Git diffs and revert file changes |
+| [Git](/docs/git-workflows) | Review changes, commit, browse history, and manage the branch's pull request |
 | [Files](/docs/files) | Browse files, search paths, and edit file contents |
 | [Browser](/docs/browser) | Preview URLs and inspect web pages |
 | [Terminal](/docs/terminals) | Run project commands in separate sessions |
-| [Git actions](/docs/git-workflows) | Commit, push, and create pull requests |
-| [Pull requests](/docs/pull-requests) | Read the current branch's PR, post comments, and merge |
 | [Stash](/docs/stash) | Save prompts and run them later |
 
-**Git actions** is at the top of the right toolbar. Git controls appear for repository projects.
-The branch control beneath the chat shows the active
-branch; use it to switch branches or [create a worktree](/docs/worktrees). In a worktree project,
-the same spot shows a **worktree** button that opens the
-[Complete worktree](/docs/worktrees#complete-a-worktree) dialog.
+Git controls appear for repository projects. Beneath the chat, use the branch control to switch
+branches or [create a worktree](/docs/worktrees). The adjacent **Git actions** menu offers committing,
+publishing, pull requests, and worktree actions according to the branch's state.
 
 ## Arrange chats and panels
 

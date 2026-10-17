@@ -3,21 +3,23 @@ title: "Revisar pull requests"
 description: "Lee solicitudes de pull en GitHub, revisa diferencias, deja comentarios, edita detalles y los integra desde Dream."
 ---
 
-El botón **Solicitudes de extracción** en la barra de herramientas derecha abre la solicitud de extracción de GitHub para la rama actual. Instale y autentique el CLI de GitHub para el repositorio primero. Para publicar una nueva solicitud de extracción, siga [Flujos de Git](/docs/es/git-workflows#crea-un-pull-request).
+La pestaña **Git → Solicitud de extracción** abre la solicitud de extracción de GitHub para la rama actual. Instale y autentique el CLI de GitHub para el repositorio primero. Para publicar una nueva solicitud de extracción, siga [Flujos de trabajo de Git](/docs/es/git-workflows#crea-un-pull-request).
 
 ## Abrir el pedido de cambios de la rama actual
 
 1. Elige el proyecto y verifica su rama actual.
-2. Haga clic en **Solicitudes de extracción** en la barra de herramientas de la derecha.
+2. Abrir **Git** en la barra de herramientas derecha y seleccionar **Solicitud de extracción**.
 3. Revisa el título, estado, rama de origen y rama base del pedido de incorporación y los controles.
 4. Use **Resumen** para la descripción y discusión, o **Código** para los archivos modificados.
 
-<Frame caption="El resumen de la PR mantiene su descripción, comprobaciones y discusión junto a tu proyecto. Este ejemplo ya ha sido fusionado.">
+El resumen de comprobaciones muestra el número de comprobaciones fallidas. Selecciona una comprobación para abrir sus detalles cuando esté disponible un enlace.
+
+<Frame caption="Abrir el pedido de cambios de la rama actual">
   <img
     src="/images/docs/pull-request-panel.png"
-    alt="Panel de solicitud de incorporación mostrando un PR fusionado, pestañas Resumen y Código, su descripción y controles pasados."
-    width={876}
-    height={600}
+    alt="Pestaña Resumen de la solicitud de incorporación en Git con una PR abierta, su descripción, enlaces a comprobaciones y el botón de fusionar."
+    width={943}
+    height={1016}
     loading="lazy"
   />
 </Frame>
@@ -31,6 +33,16 @@ En **Resumen**, lee el debate y utiliza **Escribir** y **Vista previa** para com
 En **Código**, despliega un archivo y selecciona líneas en su vista de diferencias para **Publicar comentario en línea**. Puedes leer los hilos de revisión existentes y usar **Responder** para continuarlos. Si no hay un parche de texto disponible, abre la PR en GitHub para inspeccionar el archivo.
 
 Estos comentarios se publican en GitHub. Para pedir a tu agente de programación sobre cambios locales, utiliza [feedback de diff en Cambios](/docs/es/feedback#comentar-líneas-en-un-diff).
+
+<Frame caption="Revisar el código y publicar comentarios">
+  <img
+    src="/images/docs/pull-request-code-panel.png"
+    alt="Pestaña Código de la solicitud de incorporación con archivos modificados, recuentos de líneas e indicadores de archivos añadidos y eliminados."
+    width={943}
+    height={1016}
+    loading="lazy"
+  />
+</Frame>
 
 ## Editar el título y la descripción
 

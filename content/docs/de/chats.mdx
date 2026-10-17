@@ -47,7 +47,19 @@ Verwenden Sie [Dateireferenzen und Anhänge](/docs/de/providing-context), um auf
   />
 </Frame>
 
-History search matches titles, daher macht ein beschreibender Name die Arbeit einfacher zu finden. Es sucht nicht den Text jeder Nachricht. Wenn ein Chat fehlt, prüfen Sie den ausgewählten Projekt und dann [Archivierte Chats](/docs/de/archived-chats).
+Die Historie wird mit Filtern auf die Titel dieses Projekts eingeschränkt. Um Titel und Nachrichtentext über mehrere Projekte hinweg zu suchen, klicken Sie im oberen Bereich auf **Chats durchsuchen** (Standard: **Command+Shift+F** auf macOS oder **Ctrl+Shift+F** auf Windows/Linux). Die Suchergebnisse umfassen lokale Projekte und SSH-Hosts, die verbunden sind. Die Wiederherstellung eines archivierten Ergebnisses erfolgt durch Auswahl; die Wiederöffnung eines geschlossenen Projekts erfolgt durch Auswahl des Chats des geschlossenen Projekts.
+
+Wenn ein Host nicht gesucht werden kann, reconnecten Sie ihn und versuchen Sie es erneut. Beschränken Sie die Abfrage, wenn die Suchergebnisse abgeschnitten werden. Sie können auch ältere Gespräche in [Archivierte Chats](/docs/de/archived-chats) verwalten.
+
+<Frame caption="Zurück zu einem Gespräch">
+  <img
+    src="/images/docs/chat-search-dialog.png"
+    alt="Chat-Suchergebnisse aus mehreren Projekten mit hervorgehobenen Treffern im Nachrichtentext."
+    width={672}
+    height={694}
+    loading="lazy"
+  />
+</Frame>
 
 Wenn [multi-chat](/docs/de/multiple-chats) aktiviert ist, kann die Auswahl einer Konversation die Seitenbereitstellung aktivieren. Wenn multi-chat deaktiviert ist, wird eine Konversation zu einem Zeitpunkt angezeigt.
 
@@ -58,6 +70,8 @@ Dream kann nach dem Beginn einer Konversation einen Titel erzeugen. Um einen kon
 Namensbeispiele wie „Einstellungen der Persistenz beheben“ und „Einstellungen der Tests überprüfen“ sind leichter zu unterscheiden als mehrere Chats, die sich auf das gleiche Projekt beziehen.
 
 ## Fortschritt verfolgen
+
+Aktivieren Sie **Desktop-Benachrichtigungen** unter **Einstellungen → Allgemein → Chatnachrichten**, um benachrichtigt zu werden, wenn ein Chat abgeschlossen wird, fehlschlägt oder eine Eingabe benötigt, während Dream im Hintergrund ist. Klicken Sie auf eine Benachrichtigung, um den zugehörigen Chat zu öffnen. **Benachrichtigungston** ist eine separate Option und kann auch ertönen, wenn Dream den Fokus hat.
 
 Eine Ladeanzeige kennzeichnet Chats, die gerade eine Antwort empfangen. Wenn du eine Nachricht sendest, scrollt Dream sie in den sichtbaren Bereich.
 

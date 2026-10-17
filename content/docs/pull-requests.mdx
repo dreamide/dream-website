@@ -3,23 +3,25 @@ title: Reviewing pull requests
 description: Read GitHub pull requests, review diffs, post comments, edit details, and merge from Dream.
 ---
 
-The **Pull requests** button in the right toolbar opens the GitHub PR for the current branch.
+The **Git → Pull request** tab opens the GitHub PR for the current branch.
 Install and authenticate GitHub CLI for the repository first. To publish a new PR, follow
 [Git workflows](/docs/git-workflows#create-a-pull-request).
 
 ## Open the current branch's PR
 
 1. Select the project and check its current branch.
-2. Click **Pull requests** in the right toolbar.
+2. Open **Git** in the right toolbar and select **Pull request**.
 3. Review the PR's title, state, source and base branches, and checks.
 4. Use **Summary** for the description and discussion, or **Code** for changed files.
 
-<Frame caption="The PR summary keeps its description, checks, and discussion alongside your project. This example is already merged.">
+The checks summary shows failed check counts. Select a check to open its details when a link is available.
+
+<Frame caption="Open the current branch's PR">
   <img
     src="/images/docs/pull-request-panel.png"
-    alt="Pull request panel showing a merged PR, Summary and Code tabs, its description, and passed checks."
-    width={876}
-    height={600}
+    alt="Git Pull request Summary tab showing an open PR, its description, check links, and Merge button."
+    width={943}
+    height={1016}
     loading="lazy"
   />
 </Frame>
@@ -39,6 +41,16 @@ unavailable, open the PR on GitHub to inspect that file.
 
 These comments are posted to GitHub. To ask your coding agent about local changes, use
 [diff feedback in Changes](/docs/feedback#comment-on-lines-in-a-diff).
+
+<Frame caption="Review code and post comments">
+  <img
+    src="/images/docs/pull-request-code-panel.png"
+    alt="Pull request Code tab listing changed files, line counts, and added and removed file badges."
+    width={943}
+    height={1016}
+    loading="lazy"
+  />
+</Frame>
 
 ## Edit the title and description
 

@@ -3,21 +3,23 @@ title: "Pull Requests prüfen"
 description: "Lesen von GitHub-Pull-Anfragen, überprüfen von Diffs, veröffentlichen von Kommentaren, bearbeiten von Details und fügen von Dream hinzu."
 ---
 
-Die Schaltfläche **Pull requests** in der rechten Werkzeugleiste öffnet die GitHub-PR für den aktuellen Branch. Installieren und authentifizieren Sie zuerst den GitHub CLI für das Repository. Um eine neue PR zu veröffentlichen, folgen Sie [Git-Arbeitsabläufen](/docs/de/git-workflows#pull-request-erstellen).
+Das **Git → Pull Request**-Fenster öffnet die GitHub-PR für den aktuellen Branch. Installieren und authentifizieren Sie zuerst den GitHub CLI für das Repository. Um eine neue PR zu veröffentlichen, folgen Sie [Git-Arbeitsabläufen](/docs/de/git-workflows#pull-request-erstellen).
 
 ## Aktuelle Branch-PR öffnen
 
 1. Wählen Sie das Projekt und überprüfen Sie seinen aktuellen Branch.
-2. Klicken Sie im rechten Toolbar auf **Pull Requests**.
+2. Offenes **Git** im rechten Toolbar wählen und **Pull Request** auswählen.
 3. Überprüfen Sie den Titel, den Status, die Quell- und Basisbranches sowie die Prüfungen des PRs.
 4. Verwende **Zusammenfassung** für die Beschreibung und Diskussion, oder **Code** für geänderte Dateien.
 
-<Frame caption="Die Zusammenfassung des PR behält ihre Beschreibung, Prüfungen und Diskussion neben deinem Projekt. Dieses Beispiel ist bereits eingezogen.">
+Der Überblick über die Prüfungen zeigt die Anzahl der fehlgeschlagenen Prüfungen. Wählen Sie eine Prüfung aus, um deren Details zu öffnen, wenn ein Link verfügbar ist.
+
+<Frame caption="Aktuelle Branch-PR öffnen">
   <img
     src="/images/docs/pull-request-panel.png"
-    alt="Panel für Pull Request zeigt einen zusammengeführten PR, Zusammenfassung- und Code-Tab, seine Beschreibung und bestandene Prüfungen."
-    width={876}
-    height={600}
+    alt="Zusammenfassung im Git-Tab Pull Request mit einem offenen PR, seiner Beschreibung, Links zu Prüfungen und der Merge-Schaltfläche."
+    width={943}
+    height={1016}
     loading="lazy"
   />
 </Frame>
@@ -31,6 +33,16 @@ In **Zusammenfassung** lesen Sie die Diskussion und verwenden **Schreiben** und 
 In **Code** können Sie eine Datei ausdehnen und Zeilen in deren Diff auswählen, um einen **Zeilenkommentar senden**. Sie können bestehende Überprüfungsthreads lesen und mit **Antworten** weiterführen. Wenn ein Text-Patch nicht verfügbar ist, öffnen Sie den Pull Request auf GitHub, um die Datei zu inspizieren.
 
 Diese Kommentare werden auf GitHub veröffentlicht. Um Ihrem Coding-Agenten über lokale Änderungen zu berichten, verwenden Sie [Diff-Feedback in Änderungen](/docs/de/feedback#kommentare-in-einer-diff-zeile-hinzufügen).
+
+<Frame caption="Code überprüfen und Kommentare posten">
+  <img
+    src="/images/docs/pull-request-code-panel.png"
+    alt="Code-Tab des Pull Requests mit geänderten Dateien, Zeilenzahlen und Kennzeichnungen für hinzugefügte und entfernte Dateien."
+    width={943}
+    height={1016}
+    loading="lazy"
+  />
+</Frame>
 
 ## Bearbeite den Titel und die Beschreibung
 

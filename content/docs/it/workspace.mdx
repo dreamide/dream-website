@@ -7,6 +7,16 @@ Ogni progetto di Dream ha il proprio spazio di lavoro. Le schede dei progetti ti
 
 I progetti possono risiedere anche su [host SSH](/docs/it/remote-hosts). Controlla l'etichetta dell'host prima di eseguire comandi; gli strumenti del progetto remoto lavorano su quella macchina.
 
+<Frame caption="Progetti e spazio di lavoro">
+  <img
+    src="/images/screen-main.png"
+    alt="Area di lavoro di Dream con una scheda progetto, un campo chat vuoto, barre degli strumenti e il branch nel piè di pagina."
+    width={1920}
+    height={1080}
+    loading="lazy"
+  />
+</Frame>
+
 ## Aggiungi e passa ai progetti
 
 1. Fai clic sul **+** accanto ai pannelli progetto, o usa **Apri cartella** nella schermata di avvio.
@@ -54,15 +64,13 @@ Barra laterale destra apre gli strumenti del progetto:
 
 | Strumento | Cosa puoi fare |
 | --- | --- |
-| [Modifiche](/docs/it/git-workflows) | Revisione differenze Git e annullamento dei cambiamenti ai file |
+| [Git](/docs/it/git-workflows) | Revisione dei cambiamenti, commit, esplora la storia e gestisci la richiesta di pull del ramo |
 | [File](/docs/it/files) | Esplora file, cerca percorsi e modifica il contenuto dei file |
 | [Browser](/docs/it/browser) | Anticipa URL e verifica pagine web |
 | [Terminale](/docs/it/terminals) | Eseguire i comandi del progetto in sessioni separate |
-| [Azioni Git](/docs/it/git-workflows) | Committa, spingi e crea richieste di pull |
-| [Pull request](/docs/it/pull-requests) | Leggi la richiesta di merge della ramifica corrente, pubblica commenti e effettua il merge |
 | [Stash](/docs/it/stash) | Salva i prompt e eseguili in seguito |
 
-**Azioni Git** si trova in alto nella barra laterale destra. I controlli Git si visualizzano per i progetti di repository. Il controllo della ramifica sotto il chat mostra la ramifica attiva; utilizzalo per passare a una ramifica o [creare un worktree](/docs/it/worktrees). In un progetto worktree, lo stesso posto mostra un pulsante **albero di lavoro** che apre il dialogo [Completare un worktree](/docs/it/worktrees#completa-un-worktree).
+I controlli Git si visualizzano per i progetti di repository. Sotto il chat, utilizza il controllo ramification per passare a ramificazioni o [creare un worktree](/docs/it/worktrees). Il menu adiacente **Azioni Git** offre operazioni di commit, pubblicazione, pull request e azioni worktree in base allo stato della ramificazione.
 
 ## Organizza chat e paneli
 

@@ -55,40 +55,59 @@ Use the project tabs to switch between the original checkout and the worktree pr
 worktrees also appear in the parent project's **Chat history** panel, where you can open them again.
 
 Review and commit changes from the project where they were made. Creating a worktree does not
-merge its changes into the original branch; use **Complete worktree** when the work is ready.
+merge its changes into the original branch; use the footer's **Git actions** when the work is ready.
 
 ## Complete a worktree
 
-The **Complete worktree** dialog reviews the worktree branch against its base, then merges it,
-opens a pull request, or simply removes the checkout.
+Merging, creating a pull request, and removing a worktree are separate actions in the footer's
+**Git actions** menu. Commit the changes you want to include before merging.
 
-1. In the worktree project, click the **worktree** button showing the branch name beneath the chat.
-   Its tooltip is **Complete worktree** followed by the branch.
+<Frame caption="Complete a worktree">
+  <img
+    src="/images/docs/worktree-git-actions-menu.png"
+    alt="Worktree Git actions menu with Publish branch, Create pull request, Merge into dev, and Remove worktree."
+    width={236}
+    height={324}
+    loading="lazy"
+  />
+</Frame>
+
+1. In the worktree project, choose **Merge into *base*** from **Git actions** beneath the chat.
 2. Review the summary: the **Base branch**, how many **Commits** the branch is ahead and behind,
    the changed **Files**, and the **Main checkout**'s current branch and whether it is clean.
 3. Read the commit list and expand any file to inspect its diff.
-4. If the dialog lists uncommitted files, click **Commit changes...** to commit them, or select
-   **Discard uncommitted changes** to let them be deleted with the worktree.
-5. Under **Next steps**, choose one option.
-6. Click **Merge & remove**, **Continue to pull request**, or **Remove worktree**.
+4. Use **Commit changes...** if needed. Uncommitted changes stay in the worktree and are not merged.
+5. Choose **Merge into *base***. Dream merges committed work in the main checkout, switching it to the base branch if needed.
+6. Review the result, then choose **Keep worktree** or **Remove worktree and branch**. Removal after merging is offered only when the worktree is clean.
 
-| Next step | What happens |
-| --- | --- |
-| Merge into *base* and remove worktree | Merges the branch into the base from the main checkout, removes the worktree, and deletes the branch |
-| Create pull request and remove worktree | Opens the pull-request dialog, then removes the worktree and keeps the branch |
-| Remove worktree only | Removes the worktree and keeps the branch |
+<Frame caption="Review changes">
+  <img
+    src="/images/docs/worktree-merge-dialog.png"
+    alt="Merge into dev dialog showing the base branch, commit counts, changed file, and clean main checkout."
+    width={672}
+    height={442}
+    loading="lazy"
+  />
+</Frame>
 
-Dream preselects merge when it is possible, then pull request, then remove. The merge runs
-`git merge` in the main checkout; if that checkout is on another branch, Dream switches it to the
-base branch first and tells you so in the summary. A base branch that exists only on the remote is
-created locally.
+<Frame caption="Complete a worktree">
+  <img
+    src="/images/docs/worktree-merge-success-dialog.png"
+    alt="Successful worktree merge into dev with Keep worktree and Remove worktree and branch buttons."
+    width={672}
+    height={268}
+    loading="lazy"
+  />
+</Frame>
 
-The **Done** screen reports the result: whether the base was fast-forwarded or received a merge
-commit, whether the main checkout switched branches, a **View pull request** button when a PR was
-created, and whether the branch was deleted or kept.
+To publish for review instead, use **Git actions → Create pull request** and follow
+[Git workflows](/docs/git-workflows#create-a-pull-request). Creating a PR keeps the worktree.
+
+Use **Git actions → Remove worktree** to remove the checkout while keeping its branch. If it has
+uncommitted changes, commit them first or explicitly select **Discard uncommitted changes**.
 
 <Warning>
-  Completing a worktree deletes its directory and closes its project. The worktree project's chats
+  Removing a worktree deletes its directory and closes its project. The worktree project's chats
   are discarded with it and do not appear in Chat history or Recently closed. If you want to keep a
   conversation, [branch it into the parent workspace](/docs/branching-chats) before completing.
 </Warning>
@@ -97,19 +116,16 @@ created, and whether the branch was deleted or kept.
 
 | Message | What to do |
 | --- | --- |
-| This branch has no commits ahead of *base* | Commit the work you want to keep, or choose Remove worktree only |
+| This branch has no commits ahead of *base* | Commit the work you want to keep, or choose Remove worktree |
 | The main checkout has uncommitted files | Commit or stash changes in the parent project before merging |
 | The main checkout has a merge or rebase in progress | Finish or abort that operation in the parent project |
 | This branch shares no history with *base* | Merge through your own Git workflow |
 | No Git remote is configured | Add a remote before creating a pull request |
 | GitHub CLI (gh) is not available | Install and authenticate GitHub CLI |
 
-The primary button stays disabled while the worktree has uncommitted changes and you have neither
-committed nor chosen to discard them. The pull-request path lets you commit inside the PR dialog.
-
 If the merge produces conflicts, Dream aborts it and reports **Merging into *base* produced
 conflicts. The merge was aborted and nothing was changed**, with the conflicting files. Bring the
-base branch into the worktree, resolve the conflicts, commit, and then run **Complete worktree**
+base branch into the worktree, resolve the conflicts, commit, and then run **Merge into *base***
 again.
 
 ## Remove a worktree from the parent project

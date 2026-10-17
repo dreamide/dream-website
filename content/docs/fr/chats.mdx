@@ -47,7 +47,19 @@ Utilisez [les références de fichiers et les pièces jointes](/docs/fr/providin
   />
 </Frame>
 
-La recherche d'histoires matche les titres, donc un nom descriptif rend le travail plus facile à trouver. Elle ne recherche pas le texte de chaque message. Si un chat est manquant, vérifiez le projet sélectionné, puis [Conversations archivées](/docs/fr/archived-chats).
+La recherche historique filtre les titres de ce projet. Pour rechercher des titres et du texte de message dans plusieurs projets, cliquez sur **Rechercher dans les chats** dans la barre supérieure (par défaut **Command+Shift+F** sur macOS ou **Ctrl+Shift+F** sur Windows/Linux). Les résultats incluent les projets locaux et les hôtes SSH connectés. Le choix d'un résultat archivé le restaure ; le choix d'une discussion d'un projet fermé le réouvre.
+
+Si un hôte ne peut pas être recherché, reconnectez-le et réessayez. Affinez la requête lorsque les résultats sont tronqués. Vous pouvez également gérer des conversations plus anciennes dans [Chats archivés](/docs/fr/archived-chats).
+
+<Frame caption="Retourner à une conversation">
+  <img
+    src="/images/docs/chat-search-dialog.png"
+    alt="Résultats de recherche de chats de plusieurs projets avec le texte correspondant des messages surligné."
+    width={672}
+    height={694}
+    loading="lazy"
+  />
+</Frame>
 
 Lorsque [multi-chat](/docs/fr/multiple-chats) est activé, le choix d'une conversation peut l'afficher dans un layout côte à côte. Lorsque multi-chat est désactivé, vous visualisez une conversation à la fois.
 
@@ -58,6 +70,8 @@ Dream peut générer un titre après que la conversation ait commencé. Pour lui
 Des noms comme « Corriger la persistance des paramètres » et « Vérifier les tests des paramètres » sont plus faciles à distinguer que plusieurs discussions nommées après le même projet.
 
 ## Suivre le travail en cours
+
+Activez **Notifications de bureau** dans **Paramètres → Général → Messages de chat** pour recevoir une alerte lorsqu’un chat se termine, échoue ou attend votre réponse pendant que Dream est en arrière-plan. Cliquez sur une notification pour ouvrir le chat correspondant. **Son de notification** est une option distincte qui peut aussi retentir lorsque Dream est au premier plan.
 
 Un indicateur de chargement signale les conversations qui reçoivent une réponse en continu. Lorsque vous envoyez un message, Dream le fait défiler dans la zone visible.
 

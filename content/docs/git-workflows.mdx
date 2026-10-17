@@ -3,8 +3,8 @@ title: Git workflows
 description: Review changes, work with branches, and use Git worktrees in Dream.
 ---
 
-Dream's Git tools are available when the project folder is a Git repository. Use **Changes** in the
-right toolbar to inspect files and **Open Git actions** to commit, push, or create a pull request.
+Open **Git** in the right toolbar for the **Changes**, **History**, and **Pull request** tabs.
+The **Git actions** menu beneath the chat offers the next steps for the current branch.
 
 ## Before you start
 
@@ -17,22 +17,10 @@ choose **Settings → General → Models → Text generation model**.
 
 ## Review changes
 
-You can also open **Changes** from the **Git actions** menu, directly below **View log**.
-
-1. Open **Changes** to inspect modified, added, and deleted files.
+1. Open **Git → Changes** to inspect modified, added, and deleted files.
 2. Expand a file to review its diff.
-3. Choose **Unified diff** or **Split diff** in the panel's actions, and enable word wrap if useful.
-4. Use **Refresh changes** if work done outside Dream is not yet reflected.
-
-<Frame caption="Expand files to review additions and deletions before committing.">
-  <img
-    src="/images/docs/changes-panel.png"
-    alt="Changes panel showing file paths and a unified diff with green additions and red deletions."
-    width={950}
-    height={680}
-    loading="lazy"
-  />
-</Frame>
+3. Choose **Unified diff** or **Split diff** in the header, and enable word wrap in **Changes actions** if useful.
+4. Use **Changes actions → Refresh** if work done outside Dream is not yet reflected.
 
 For very large diffs, Dream may show **Diff too large to render**. Use **Render anyway** only when
 you want to load that larger view, or inspect the file in your editor or terminal.
@@ -48,21 +36,21 @@ To ask an agent about specific lines, drag across the line numbers in a diff or 
 
 ## Commit your work
 
-1. Open **Git actions → Commit**.
-2. Review the changes included in the dialog.
-3. Check **Include unstaged**. It is enabled by default and includes unstaged changes in the commit.
-4. Enter a commit message or use **Auto generate message**, then edit the result as needed.
-5. Choose **Commit**, or **Commit & push** if you are ready to publish the commit to the remote.
-
-<Frame caption="Review the included changes and message before choosing Commit or Commit & push.">
+<Frame caption="Commit your work">
   <img
-    src="/images/docs/commit-dialog.png"
-    alt="Commit your changes dialog with branch, change counts, Include unstaged, and a generated commit message."
-    width={672}
-    height={439}
+    src="/images/docs/changes-panel.png"
+    alt="Git Changes tab with a commit message, commit controls, and an expanded diff."
+    width={1070}
+    height={1016}
     loading="lazy"
   />
 </Frame>
+
+1. Open **Git → Changes**, or choose **Commit** from the footer's **Git actions** menu.
+2. Review the file diffs below the commit composer.
+3. Check **Include unstaged**. It is enabled by default and includes unstaged changes in the commit.
+4. Review **Auto generate message**, which is on by default. To write your own message, turn it off and enter the text; turning it off clears the generated message.
+5. Choose **Commit**, or **Commit & push** if you are ready to publish the commit to the remote.
 
 To commit only a selected subset, stage those files using Git in a terminal or external editor and
 turn **Include unstaged** off. The Changes panel does not provide individual staging controls.
@@ -77,18 +65,19 @@ those separately before continuing with this action.
 
 ## Push a branch
 
-Open **Git actions → Push**, review the outgoing commits and destination, and choose **Push**.
-The destination depends on the branch's upstream and repository remote configuration.
-
-<Frame caption="Check the destination and outgoing commits before pushing.">
+<Frame caption="Git workflows">
   <img
-    src="/images/docs/push-dialog.png"
-    alt="Push changes dialog listing the branch, origin/main destination, ahead and behind counts, and outgoing commits."
-    width={672}
-    height={364}
+    src="/images/docs/git-actions-menu.png"
+    alt="Git actions menu open above the current branch in the chat footer."
+    width={226}
+    height={259}
     loading="lazy"
   />
 </Frame>
+
+Use **Publish branch** for a branch without an upstream, or **Push** for outgoing commits.
+These footer actions push immediately. Check the branch, remote, and commits in **History** first;
+the footer shows ahead and behind counts when an upstream exists.
 
 If pushing fails, inspect the error and confirm your remote access. A successful local commit
 remains committed even if a following push fails; check the branch state before repeating a
@@ -97,7 +86,7 @@ combined action.
 ## Create a pull request
 
 1. Work on a feature branch whose name differs from the PR's base branch.
-2. Open **Git actions → Create PR**.
+2. Choose **Create PR** in the footer, or **Git actions → Create pull request**.
 3. Review the source and base branches and the proposed changes.
 4. Enter a title and description, or use **Auto generate PR details** and review the generated text.
 5. Under **Next steps**, select the action that matches the branch's state.
@@ -127,7 +116,7 @@ branch, or PR before retrying.
 
 ## Review and merge a pull request
 
-Open **Pull requests** in the right toolbar to view the current branch's PR. Use **Summary** for
+Open **Git → Pull request** to view the current branch's PR. Use **Summary** for
 its description, checks, and discussion, or **Code** to inspect diffs and post inline comments.
 You can edit the title and description when permitted and use **Merge** to choose a merge method.
 See [Reviewing pull requests](/docs/pull-requests) for the full workflow.
@@ -150,5 +139,23 @@ created outside Dream is missing.
 
 Changing branches changes the files used by every chat in that project. Review unfinished work
 before switching. For parallel tasks with independent checkouts, use [Git worktrees](/docs/worktrees).
-When a worktree is finished, its **Complete worktree** dialog can merge the branch into its base or
-open a pull request and then remove the checkout.
+When a worktree is finished, use its footer to merge into the base branch, create a pull request,
+or remove the checkout. See [Complete a worktree](/docs/worktrees#complete-a-worktree).
+
+## Browse commit history
+
+<Frame caption="Browse commit history">
+  <img
+    src="/images/docs/git-history-panel.png"
+    alt="Git History tab with Search commits, branch labels, and a colored graph of commits and merges."
+    width={933}
+    height={1016}
+    loading="lazy"
+  />
+</Frame>
+
+Open **Git → History**, or **Git actions → View history**, to follow commits and merges in the
+colored graph. Use **Search commits** to filter loaded commits by message, author, hash prefix,
+or ref. **Load more** includes older commits; clear the search to show the graph again.
+
+Hover over a commit or focus it with the keyboard to use **Copy commit hash**.

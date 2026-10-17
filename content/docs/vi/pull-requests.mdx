@@ -3,21 +3,23 @@ title: "Đánh giá pull request"
 description: "Đọc các yêu cầu pull trên GitHub, kiểm tra các thay đổi, để lại bình luận, sửa thông tin và hợp nhất từ Dream."
 ---
 
-Nút **Pull requests** trong thanh công cụ bên phải mở pull request trên GitHub cho nhánh hiện tại. Cài đặt và xác thực GitHub CLI cho khoa học trước. Để xuất bản một pull request mới, vui lòng tham khảo [Quy trình làm việc với Git](/docs/vi/git-workflows#tạo-pull-request).
+Tab **Git → Pull request** mở yêu cầu PR trên GitHub cho nhánh hiện tại. Cài đặt và xác thực GitHub CLI cho khoa học trước. Để xuất một PR mới, hãy tham khảo [Quy trình làm việc với Git](/docs/vi/git-workflows#tạo-pull-request).
 
 ## Mở yêu cầu thay đổi của nhánh hiện tại
 
 1. Chọn dự án và kiểm tra nhánh hiện tại của nó.
-2. Nhấn **Pull requests** trong thanh công cụ bên phải.
+2. Mở **Git** trong thanh công cụ bên phải và chọn **Pull request**.
 3. Xem lại tiêu đề, trạng thái, nhánh nguồn và nhánh cơ sở của PR, cũng như các kiểm tra.
 4. Sử dụng **Tóm tắt** để mô tả và thảo luận, hoặc **Mã** để chỉ các tệp đã thay đổi.
 
-<Frame caption="Tổng hợp PR giữ nguyên mô tả, kiểm tra và thảo luận cùng dự án của bạn. Ví dụ này đã được tích hợp.">
+Tổng hợp kiểm tra hiển thị số lượng kiểm tra đã thất bại. Chọn một kiểm tra để mở chi tiết của nó khi có liên kết.
+
+<Frame caption="Mở yêu cầu thay đổi của nhánh hiện tại">
   <img
     src="/images/docs/pull-request-panel.png"
-    alt="Panel yêu cầu lấy dữ liệu hiển thị một PR đã được hợp nhất, tab Tóm tắt và Code, mô tả của nó, và các kiểm tra đã được vượt qua."
-    width={876}
-    height={600}
+    alt="Tab Tóm tắt pull request trong Git hiển thị PR đang mở, mô tả, liên kết kiểm tra và nút hợp nhất."
+    width={943}
+    height={1016}
     loading="lazy"
   />
 </Frame>
@@ -31,6 +33,16 @@ Trong **Tóm tắt**, đọc phần thảo luận và sử dụng **Viết** và
 Trong **Mã**, mở rộng một tệp và chọn các dòng trong diff của nó để viết một **Đăng bình luận trên dòng**. Bạn có thể đọc các cuộc thảo luận đánh giá hiện có và sử dụng **Trả lời** để tiếp tục chúng. Khi không có patch văn bản, mở yêu cầu PR trên GitHub để kiểm tra tệp đó.
 
 Các bình luận này được đăng lên GitHub. Để yêu cầu agent lập trình về các thay đổi cục bộ, hãy sử dụng [phản hồi diff trong Changes](/docs/vi/feedback#bình-luận-các-dòng-trong-một-diff).
+
+<Frame caption="Kiểm tra mã và để lại bình luận">
+  <img
+    src="/images/docs/pull-request-code-panel.png"
+    alt="Tab Mã của pull request liệt kê các tệp đã thay đổi, số dòng và nhãn tệp được thêm hoặc xóa."
+    width={943}
+    height={1016}
+    loading="lazy"
+  />
+</Frame>
 
 ## Chỉnh sửa tiêu đề và mô tả
 

@@ -3,7 +3,7 @@ title: "Referência de configurações"
 description: "Localizar padrões de modelo, provedores, prompts, habilidades, servidores MCP e controles de chat arquivado."
 ---
 
-Abra as **Configurações** com o ícone de engrenagem no topo do Dream. A barra lateral possui **Geral**, **Provedores**, **Hosts SSH**, **Prompts**, **Skills**, **Servidores MCP** e **Chats arquivados**. As preferências gerais são aplicadas conforme você as seleciona. Os formulários para promptos, habilidades e definições de servidor possuem suas próprias ações de Criar ou Salvar.
+Abra as **Configurações** com o ícone de engrenagem no topo do Dream. A barra lateral possui **Geral**, **Provedores**, **Hosts SSH**, **Prompts**, **Skills**, **Servidores MCP**, **Atalhos de teclado** e **Chats arquivados**. As preferências gerais são aplicadas conforme você as seleciona. Os formulários para prompts, habilidades e definições de servidor possuem suas próprias ações de Criar ou Salvar.
 
 ## Geral
 
@@ -37,6 +37,18 @@ Mudar a shell do terminal afeta as novas sessões. Abra um novo terminal para us
 | Mudar checkpoints | Em | Faça uma cópia de segurança dos arquivos do projeto antes de cada resposta para que você possa revisar e restaurar as alterações |
 
 As configurações de exibição afetam as conversas entre projetos. Elas não alteram o esforço de raciocínio do modelo nem concedem permissões adicionais para ferramentas. Desligar **Checkpoints de alterações** para para novas instantâneas; veja [Revisar e restaurar alterações](/docs/pt/checkpoints).
+
+Alertas de desktop e sons opcionais são configurados aqui com **Notificações da área de trabalho** e **Som de notificação**. Veja [Seguir trabalho em andamento](/docs/pt/chats#seguir-o-trabalho-em-andamento).
+
+<Frame caption="Mensagens de chat">
+  <img
+    src="/images/docs/chat-notifications-panel.png"
+    alt="Configurações gerais com Notificações da área de trabalho e Som de notificação ativados em Mensagens de chat."
+    width={1016}
+    height={443}
+    loading="lazy"
+  />
+</Frame>
 
 ### Modelos
 
@@ -81,6 +93,22 @@ Adicione, edite, conecte, desconecte ou remova máquinas remotas em **Configura�
 | [Prompts](/docs/pt/saved-prompts) | Crie, antecipe, copie, reorganize e edite prompts reutilizáveis para qualquer projeto de chat |
 | [Habilidades](/docs/pt/skills) | Navegue por habilidades por fornecedor e projeto, visualize arquivos SKILL.md, e crie novas habilidades |
 | [Servidores MCP](/docs/pt/mcp-servers) | Adicione ou importe servidores de ferramentas e gerencie suas configurações de conexão |
+
+## Atalhos do teclado
+
+<Frame caption="Atalhos do teclado">
+  <img
+    src="/images/docs/keyboard-shortcuts-panel.png"
+    alt="Configurações de atalhos de teclado com nomes das ações, combinações de teclas, controles de edição e Redefinir tudo."
+    width={1016}
+    height={786}
+    loading="lazy"
+  />
+</Frame>
+
+Abra **Configurações → Atalhos de teclado**, procure por uma ação e clique no atalho dela para registrar uma nova combinação de teclas. Aperte **Enter** ou clique em **Salvar** para aplicá-la, ou **Escape** para cancelar.
+
+Se outra ação configurável utilizar a combinação, o salvamento move-a para esta ação. As combinações reservadas não podem ser reatribuídas. Use **Redefinir atalho** para uma ação ou **Redefinir tudo** para restaurar os valores padrão. A seção **Integrados** lista os atalhos fixos.
 
 ## Chats arquivados
 

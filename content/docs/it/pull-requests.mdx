@@ -3,21 +3,23 @@ title: "Esaminare le pull request"
 description: "Leggi richieste di pull su GitHub, esamina i diff, pubblica commenti, modifica i dettagli e effettua il merge da Dream."
 ---
 
-Il pulsante **Pull requests** nella barra degli strumenti a destra apre il pull request GitHub per la ramifica corrente. Installa e autentica prima il CLI di GitHub per il repository. Per pubblicare un nuovo pull request, segui [Flussi di lavoro Git](/docs/it/git-workflows#crea-una-pull-request).
+Il tab **Git → Pull request** apre la richiesta di pull di GitHub per la branca corrente. Installa e autentica prima il CLI di GitHub per il repository. Per pubblicare una nuova richiesta di pull, segui [Flussi di lavoro Git](/docs/it/git-workflows#crea-una-pull-request).
 
 ## Apri la richiesta di merge della ramifica corrente
 
 1. Seleziona il progetto e verifica la sua branca attuale.
-2. Fai clic su **Pull request** nella barra laterale destra.
+2. Apri **Git** nella barra degli strumenti a destra e seleziona **Pull request**.
 3. Revisti il titolo, lo stato, i rami di origine e di base e i controlli della richiesta di merge.
 4. Usa **Riepilogo** per la descrizione e la discussione, o **Codice** per i file modificati.
 
-<Frame caption="Il riassunto della PR mantiene la sua descrizione, i controlli e la discussione inerenti al tuo progetto. Questo esempio è già stato incorporato.">
+Il riassunto delle verifiche mostra il numero di verifiche fallite. Selezionare una verifica per aprire i suoi dettagli quando è disponibile un link.
+
+<Frame caption="Apri la richiesta di merge della ramifica corrente">
   <img
     src="/images/docs/pull-request-panel.png"
-    alt="Panello di pull request che mostra un PR fusionato, scheda Riepilogo e scheda Codice, la sua descrizione e i controlli superati."
-    width={876}
-    height={600}
+    alt="Scheda Riepilogo della pull request in Git con una PR aperta, descrizione, link ai controlli e pulsante di merge."
+    width={943}
+    height={1016}
     loading="lazy"
   />
 </Frame>
@@ -31,6 +33,16 @@ Nel **Riepilogo**, leggi il discorso e usa **Scrivi** e **Anteprima** per compor
 In **Codice**, espandi un file e seleziona le righe nel suo diff per pubblicare un **Pubblica commento sulla riga**. Puoi leggere i thread di revisione esistenti e utilizzare **Rispondi** per continuarli. Quando un patch testuale non è disponibile, apri la richiesta di merge su GitHub per esaminare quel file.
 
 Questi commenti vengono pubblicati su GitHub. Per chiedere al tuo agente di programmazione informazioni sulle modifiche locali, usa [diff feedback in Changes](/docs/it/feedback#commentare-le-righe-in-un-diff).
+
+<Frame caption="Revisione del codice e pubblicazione dei commenti">
+  <img
+    src="/images/docs/pull-request-code-panel.png"
+    alt="Scheda Codice della pull request con file modificati, conteggi delle righe e indicatori dei file aggiunti e rimossi."
+    width={943}
+    height={1016}
+    loading="lazy"
+  />
+</Frame>
 
 ## Modifica il titolo e la descrizione
 

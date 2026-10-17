@@ -52,9 +52,23 @@ Use [file references and attachments](/docs/providing-context) to point to relev
   />
 </Frame>
 
-History search matches titles, so a descriptive name makes work easier to find. It does not search
-the text of every message. If a chat is missing, check the selected project and then
-[Archived chats](/docs/archived-chats).
+History search filters this project's titles. To search titles and message text across projects,
+click **Search chats** in the top bar (default **Command+Shift+F** on macOS or **Ctrl+Shift+F** on
+Windows/Linux). Results include local projects and connected SSH hosts. Selecting an archived
+result restores it; selecting a closed project's chat reopens that project.
+
+If a host cannot be searched, reconnect it and try again. Narrow the query when results are truncated.
+You can also manage older conversations in [Archived chats](/docs/archived-chats).
+
+<Frame caption="Return to a conversation">
+  <img
+    src="/images/docs/chat-search-dialog.png"
+    alt="Chat search results from multiple projects with matching message text highlighted."
+    width={672}
+    height={694}
+    loading="lazy"
+  />
+</Frame>
 
 When [multi-chat](/docs/multiple-chats) is enabled, selecting a conversation can bring it into the
 side-by-side layout. With multi-chat disabled, you view one conversation at a time.
@@ -69,6 +83,10 @@ Names such as “Fix settings persistence” and “Review settings tests” are
 several chats named after the same project.
 
 ## Follow work in progress
+
+Enable **Desktop notifications** under **Settings → General → Chat messages** to get an alert when a chat
+finishes, fails, or needs input while Dream is in the background. Click a notification to open its
+chat. **Notification sound** is a separate option and can play even while Dream is focused.
 
 A loading spinner identifies chats that are streaming a response. When you send a message,
 Dream scrolls it into view.

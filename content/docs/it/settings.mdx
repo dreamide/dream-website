@@ -3,7 +3,7 @@ title: "Guida alle impostazioni"
 description: "Cerca i valori predefiniti del modello, i provider, i prompt, le competenze, i server MCP e i controlli per chat archiviate."
 ---
 
-Apri **Impostazioni** con l'icona a forma di chiave alla sommità di Dream. Il lato sinistro ha **Generale**, **Provider**, **Host SSH**, **Prompt**, **Skill**, **Server MCP** e **Chat archiviate**. Le preferenze generali si applicano quando le selezioni vengono fatte. I moduli per i prompt, le competenze e le definizioni di server hanno ciascuno un'azione Create o Save.
+Apri **Impostazioni** con l'icona a forma di chiave alla sommità di Dream. Il lato sinistro ha **Generale**, **Provider**, **Host SSH**, **Prompt**, **Skill**, **Server MCP**, **Scorciatoie da tastiera** e **Chat archiviate**. Le preferenze generali vengono applicate quando le selezioni vengono fatte. I formulari per i prompt, le competenze e le definizioni di server hanno ciascuno un'azione Create o Save.
 
 ## Generale
 
@@ -37,6 +37,18 @@ Cambiare lo shell del terminale influisce sulle nuove sessioni. Apri un nuovo te
 | Cambia checkpoint | Su | Fai un'immagine dei file del progetto prima di ogni risposta in modo da poterli revisionare e ripristinare. |
 
 Le impostazioni di visualizzazione influiscono sulle conversazioni tra i progetti. Non modificano l'impegno del modello nel ragionamento né concedono autorizzazioni aggiuntive per gli strumenti. Disattivare **Checkpoint delle modifiche** interrompe la creazione di nuovi snapshot; vedi [Controllare e ripristinare le modifiche](/docs/it/checkpoints).
+
+I avvisi desktop e suoni opzionali sono configurati qui con **Notifiche desktop** e **Suono di notifica**. Vedi [Seguire il lavoro in corso](/docs/it/chats#seguire-il-lavoro-in-corso).
+
+<Frame caption="Messaggi chat">
+  <img
+    src="/images/docs/chat-notifications-panel.png"
+    alt="Impostazioni generali con Notifiche desktop e Suono di notifica attivati in Messaggi della chat."
+    width={1016}
+    height={443}
+    loading="lazy"
+  />
+</Frame>
 
 ### Modelli
 
@@ -81,6 +93,22 @@ Aggiungi, modifica, connetti, disconnetti o rimuovi macchine remote in **Imposta
 | [Prompts](/docs/it/saved-prompts) | Crea, anticipa, copia, riordina e modifica prompt riutilizzabili per qualsiasi progetto di chat |
 | [Competenze](/docs/it/skills) | Esplora competenze per fornitore e progetto, visualizza i file SKILL.md, e crea nuove competenze |
 | [Server MCP](/docs/it/mcp-servers) | Aggiungi o importa server strumenti e gestisci le loro impostazioni di connessione |
+
+## Istruzioni rapide del tastierino
+
+<Frame caption="Istruzioni rapide del tastierino">
+  <img
+    src="/images/docs/keyboard-shortcuts-panel.png"
+    alt="Impostazioni delle scorciatoie da tastiera con nomi delle azioni, combinazioni di tasti, controlli di modifica e Ripristina tutto."
+    width={1016}
+    height={786}
+    loading="lazy"
+  />
+</Frame>
+
+Apri **Impostazioni → Scorciatoie da tastiera**, cerca un'azione e clicca il suo shortcut per registrare una nuova combinazione di tasti. Premi **Invio** o clicca **Salva** per applicarla, o **Esc** per annullarla.
+
+Se un'altra azione configurabile utilizza la combinazione, il salvataggio la sposta in questa azione. Le combinazioni riservate non possono essere riassegnate. Usa **Ripristina scorciatoia** per un'azione o **Ripristina tutto** per ripristinare i valori predefiniti. La sezione **Integrate** elenca le combinazioni fisse.
 
 ## Chat archiviate
 

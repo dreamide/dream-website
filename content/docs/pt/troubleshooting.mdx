@@ -84,8 +84,8 @@ Para problemas com comentários, edição ou fusão de PRs, veja [Revisar pull r
 | A origem e a base do PR são iguais | Mude para uma ramificação de funcionalidade antes de criar o PR |
 | Relatórios de criação de PR com HEAD desconectado | Verifique um ramo antes de criar a solicitação de alteração |
 | Remoção de worktree falha | Revise e preserve as alterações não commitadas nesse checkout |
-| Mesclar e remover não está disponível | A árvore de trabalho não possui commits à frente de sua base, ou o checkout principal possui alterações não commitadas ou um merge em andamento |
-| Relatórios de árvore de trabalho completos apresentam conflitos | A fusão foi abortada e nada foi alterado; faça a fusão da branch base com a árvore de trabalho, resolva os conflitos, comita e então tente novamente |
-| Criar solicitação de pull está indisponível na árvore de trabalho completa | Configure um remoto Git e instale o CLI do GitHub |
+| Mesclar com a base não está disponível | A árvore de trabalho não possui commits à frente de sua base, ou o checkout principal possui alterações não commitadas ou um merge em andamento |
+| Relatórios de fusão de worktree detectam conflitos | A fusão foi abortada e nada foi alterado; faça a fusão da branch base com a árvore de trabalho, resolva os conflitos, comita e então tente novamente |
+| Criar solicitação de pull não está disponível no Git Actions | Configure um remoto Git e instale o CLI do GitHub |
 
 Após um falha em uma ação combinada, verifique o estado da ramificação antes de tentar novamente: um commit ou push pode ter sido bem-sucedido antes de um passo posterior falhar. Veja [Fluxos de trabalho do Git](/docs/pt/git-workflows).

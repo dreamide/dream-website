@@ -1,5 +1,5 @@
 ---
-title: "Tệp và tìm kiếm"
+title: "Tệp"
 description: "Duyệt các tệp dự án, tìm kiếm tên và nội dung tệp, chỉnh sửa mã nguồn và xử lý các thay đổi chưa lưu."
 ---
 
@@ -12,14 +12,30 @@ Nhấn **Tệp** trong thanh công cụ bên phải để duyệt thư mục c�
 3. Chọn kết quả để mở nó.
 4. Xóa tìm kiếm để quay lại việc duyệt cây.
 
-Sử dụng **Làm mới tệp** trong các hành động tệp khi các thay đổi được thực hiện ngoài Dream không được phản ánh trong cây tệp. Tìm kiếm một tệp sẽ xác định đường dẫn của nó; sử dụng chức năng tìm kiếm trong trình soạn thảo để tìm văn bản bên trong tệp đó.
+Sử dụng **Làm mới tệp** trong các hành động tệp khi các thay đổi được thực hiện ngoài Dream không được phản ánh trong cây. Tìm kiếm một tệp sẽ xác định đường dẫn của nó; sử dụng **Tìm trong các tệp** để tìm nội dung dự án.
 
 <Frame caption="Tìm kiếm hoặc duyệt cây tệp, sau đó mở một tệp bên cạnh cuộc trò chuyện của bạn.">
   <img
     src="/images/docs/files-panel.png"
-    alt="Panel tệp với chức năng Tìm kiếm tệp nằm trên cây thư mục và tệp app-error-boundary.tsx được mở trong trình soạn thảo."
-    width={950}
-    height={610}
+    alt="Bảng Tệp lọc đường dẫn theo .ts, với http.ts được chọn trong cây và mở trong trình chỉnh sửa."
+    width={1064}
+    height={1016}
+    loading="lazy"
+  />
+</Frame>
+
+## Tìm trong tệp
+
+Để tìm kiếm toàn bộ dự án, chọn **Tìm trong các tệp** trong bảng điều khiển Tệp. Nhập truy vấn của bạn và sử dụng **Phân biệt chữ hoa và chữ thường**, **Khớp toàn bộ từ**, hoặc **Dùng biểu thức chính quy** nếu cần. Ở phần **Bộ lọc tệp**, thiết lập **Tệp cần bao gồm** (ví dụ: `src, *.ts`) hoặc **Tệp cần loại trừ** (ví dụ: `*.test.ts`). Chọn một kết quả để mở dòng khớp. Nếu kết quả bị cắt ngắn, hãy thu hẹp truy vấn hoặc các bộ lọc.
+
+Tìm kiếm Dự án tìm kiếm văn bản trên đĩa. Lưu bản nháp của trình soạn thảo trước; thay thế có sẵn trong một tệp.
+
+<Frame caption="Tìm trong tệp">
+  <img
+    src="/images/docs/find-in-files-panel.png"
+    alt="Tìm kiếm function trong toàn bộ dự án, với kết quả được nhóm theo tệp và một kết quả được chọn đang mở trong errors.ts."
+    width={1064}
+    height={1016}
     loading="lazy"
   />
 </Frame>
@@ -33,6 +49,16 @@ Sử dụng **Làm mới tệp** trong các hành động tệp khi các thay đ
 
 Panel tìm kiếm cũng cung cấp các kiểm soát thay thế. Kiểm tra các kết quả trước khi sử dụng **Thay thế tất cả**, sau đó lưu tệp để ghi các thay đổi vào đĩa. Thay thế ảnh hưởng đến tệp hiện tại.
 
+<Frame caption="Tìm kiếm và thay thế trong một tệp">
+  <img
+    src="/images/docs/file-find-panel.png"
+    alt="Tìm kiếm và thay thế trong messages.ts với truy vấn add, các kết quả khớp được tô sáng và các nút thay thế."
+    width={943}
+    height={1016}
+    loading="lazy"
+  />
+</Frame>
+
 ## Chỉnh sửa và lưu trữ
 
 Chỉnh sửa một tệp văn bản có thể ghi đè trong trình soạn thảo mã. Các thay đổi chưa được lưu sẽ được đánh dấu trong tab, và thanh công cụ có thể hiển thị số lượng tệp có bản nháp chưa được lưu.
@@ -40,6 +66,8 @@ Chỉnh sửa một tệp văn bản có thể ghi đè trong trình soạn th�
 Nhấn nút **Lưu** trong thanh công cụ biên tập, hoặc nhấn **Command+S** trên macOS hoặc **Ctrl+S** trên Windows/Linux khi thanh công cụ biên tập đang được tập trung. Lưu từng tệp đã được chỉnh sửa trước khi yêu cầu một agent hoặc lệnh terminal sử dụng nội dung mới; các công cụ này đọc tệp từ ổ đĩa.
 
 Việc chuyển tab file cho phép bạn giữ các bản nháp trong khi kiểm tra các file khác. Sử dụng **Hủy thay đổi** để từ chối bản nháp cục bộ. Điều này là riêng biệt với việc khôi phục thay đổi qua Git.
+
+Nhấp đôi vào tab file để cố định nó để khi mở một bản xem khác thì nó không bị thay thế.
 
 Đóng một tab có các thay đổi chưa được lưu sẽ mở hộp thoại **Lưu / Không lưu / Hủy**. Chọn **Lưu** sẽ ghi lại bản nháp và đóng tab, **Không lưu** sẽ bỏ qua bản nháp và đóng tab, còn **Hủy** sẽ giữ tab mở. Nếu quá trình lưu thất bại hoặc có xung đột với chỉnh sửa bên ngoài, tệp sẽ vẫn được giữ mở để bạn có thể giải quyết vấn đề.
 

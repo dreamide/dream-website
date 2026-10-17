@@ -84,8 +84,8 @@ Kiểm tra xem tệp có thể ghi được không và đọc lỗi của trình
 | Nguồn và cơ sở của PR là như nhau | Chuyển sang một nhánh tính năng trước khi tạo PR |
 | Báo cáo tạo PR có HEAD tách rời | Kiểm tra nhánh trước khi tạo PR |
 | Việc xóa worktree thất bại | Kiểm tra và giữ lại các thay đổi chưa được ghi lại trong bản sao đó |
-| Hợp nhất và xóa bỏ không khả dụng | Cây làm việc không có các lần commit nào nằm trước cơ sở của nó, hoặc bản sao chính có các thay đổi chưa được ghi lại hoặc đang tiến hành hợp nhất |
-| Báo cáo cây làm việc hoàn chỉnh có xung đột | Phép hợp nhất đã bị hủy bỏ và không có gì thay đổi; hợp nhất nhánh cơ sở vào worktree, giải quyết xung đột, thực hiện commit, rồi thử lại |
-| Tạo pull request không khả dụng trong worktree hoàn chỉnh | Cấu hình một remote Git và cài đặt GitHub CLI |
+| Hợp nhất vào cơ sở không khả dụng | Cây làm việc không có các lần commit nào nằm trước cơ sở của nó, hoặc bản sao chính có các thay đổi chưa được ghi lại hoặc đang tiến hành hợp nhất |
+| Báo cáo hợp nhất worktree phát sinh xung đột | Phép hợp nhất đã bị hủy bỏ và không có gì thay đổi; hợp nhất nhánh cơ sở vào worktree, giải quyết xung đột, thực hiện commit, rồi thử lại |
+| Tạo pull request không khả dụng trong Git actions | Cấu hình một remote Git và cài đặt GitHub CLI |
 
 Sau khi hành động kết hợp thất bại, hãy kiểm tra trạng thái nhánh trước khi thử lại: một commit hoặc push có thể đã thành công trước khi bước sau đó thất bại. Xem [Quy trình làm việc với Git](/docs/vi/git-workflows).
