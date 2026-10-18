@@ -6,6 +6,7 @@ import {
   motion,
   useTransform,
 } from "motion/react";
+import { useTranslation } from "../../i18n/context";
 import { cn } from "../../lib/utils";
 import DownloadButton from "../DownloadButton";
 import Hero from "../Hero";
@@ -61,6 +62,7 @@ function Wallpaper({
 }
 
 function ProvidersChapter({ progress }: ChapterProps) {
+  const { t } = useTranslation();
   const current = useChapterScene(progress, CHAPTER.providers);
   const step = current.provider;
 
@@ -69,7 +71,7 @@ function ProvidersChapter({ progress }: ChapterProps) {
       <Wallpaper src="/bg-01.jpg" progress={progress} dim={0.6} />
       <div className="relative mx-auto grid h-full max-w-7xl items-center gap-10 px-6 lg:px-16 lg:grid-cols-2">
         <div className="flex flex-col gap-1">
-          <Eyebrow className="mb-4">01. Bring your own provider</Eyebrow>
+          <Eyebrow className="mb-4">01. {t("Bring your own provider")}</Eyebrow>
           {PROVIDERS.map((item, index) => (
             <motion.div
               key={item.id}
@@ -99,6 +101,7 @@ function ProvidersChapter({ progress }: ChapterProps) {
 }
 
 function TabsChapter({ progress }: ChapterProps) {
+  const { t } = useTranslation();
   const current = useChapterScene(progress, CHAPTER.tabs);
   const headlineY = useTransform(progress, [0, 0.3], [60, 0]);
   const headlineOpacity = useTransform(progress, [0, 0.2], [0, 1]);
@@ -111,11 +114,11 @@ function TabsChapter({ progress }: ChapterProps) {
           style={{ y: headlineY, opacity: headlineOpacity }}
           className="text-center"
         >
-          <Eyebrow className="mb-4">02. Organize your projects</Eyebrow>
+          <Eyebrow className="mb-4">02. {t("Organize your projects")}</Eyebrow>
           <h2 className="text-[clamp(3rem,9vw,8rem)] leading-[0.95] font-semibold tracking-[-0.05em]">
-            One window.
+            {t("One window.")}
             <br />
-            <span className="text-white/45">Every project.</span>
+            <span className="text-white/45">{t("Every project.")}</span>
           </h2>
         </motion.div>
         <div className="w-[min(1000px,92vw)] rounded-[14px]">
@@ -133,6 +136,7 @@ function TabsChapter({ progress }: ChapterProps) {
 }
 
 function ChatsChapter({ progress }: ChapterProps) {
+  const { t } = useTranslation();
   const current = useChapterScene(progress, CHAPTER.chats);
   const step = current.columns - 1;
 
@@ -141,17 +145,19 @@ function ChatsChapter({ progress }: ChapterProps) {
       <Wallpaper src="/bg-04.jpg" progress={progress} />
       <div className="relative flex h-full flex-col items-center justify-center gap-8 px-6">
         <div className="text-center">
-          <Eyebrow className="mb-4">03. Run chats side by side</Eyebrow>
+          <Eyebrow className="mb-4">03. {t("Run chats side by side")}</Eyebrow>
           <h2 className="text-[clamp(2.5rem,6vw,5.5rem)] leading-none font-semibold tracking-[-0.05em]">
-            {["One chat.", "Two chats.", "Three chats."].map((label, index) => (
-              <motion.span
-                key={label}
-                animate={{ opacity: index === step ? 1 : 0.15 }}
-                className="mx-2 inline-block"
-              >
-                {label}
-              </motion.span>
-            ))}
+            {[t("One chat."), t("Two chats."), t("Three chats.")].map(
+              (label, index) => (
+                <motion.span
+                  key={label}
+                  animate={{ opacity: index === step ? 1 : 0.15 }}
+                  className="mx-2 inline-block"
+                >
+                  {label}
+                </motion.span>
+              ),
+            )}
           </h2>
         </div>
         <div className="w-[min(1200px,94vw)] rounded-[14px]">
@@ -175,16 +181,33 @@ const TOOLS: { id: PanelId; word: string }[] = [
 ];
 
 function ToolsChapter({ progress }: ChapterProps) {
+  const { locale, t } = useTranslation();
   const current = useChapterScene(progress, CHAPTER.tools);
   const step = TOOLS.findIndex((tool) => tool.id === current.panel);
+  // CJK glyphs take roughly twice the width of Latin characters.
+  const characterBudget = /^(ja|ko|zh)/.test(locale) ? 90 : 190;
+  const longestLabel = Math.max(
+    ...TOOLS.map((tool) => [...t(tool.word)].length),
+  );
+  const fontSize =
+    locale === "en" ? 21 : Math.min(21, characterBudget / longestLabel);
 
   return (
     <>
       <Wallpaper src="/bg-03.jpg" progress={progress} />
       <div className="relative mx-auto grid h-full max-w-[1500px] items-center gap-8 px-6 lg:px-16 lg:grid-cols-[minmax(0,5fr)_minmax(0,8fr)]">
         <div className="min-w-0 [container-type:inline-size]">
-          <Eyebrow className="mb-4">04. Work with built-in tools</Eyebrow>
-          <div className="flex flex-col gap-1 text-[clamp(2rem,21cqw,8rem)]">
+          <Eyebrow className="mb-4">
+            04. {t("Work with built-in tools")}
+          </Eyebrow>
+          <div
+            className="flex flex-col gap-1 text-[clamp(1.5rem,var(--tool-font-size),8rem)]"
+            style={
+              {
+                "--tool-font-size": `${fontSize}cqw`,
+              } as React.CSSProperties
+            }
+          >
             {TOOLS.map((tool, index) => (
               <motion.div
                 key={tool.id}
@@ -192,7 +215,7 @@ function ToolsChapter({ progress }: ChapterProps) {
                 transition={{ duration: 0.5, ease }}
                 className="whitespace-nowrap leading-[1.2] font-semibold tracking-[-0.05em]"
               >
-                {tool.word}
+                {t(tool.word)}
               </motion.div>
             ))}
           </div>
@@ -212,6 +235,7 @@ function ToolsChapter({ progress }: ChapterProps) {
 }
 
 function GitChapter({ progress }: ChapterProps) {
+  const { t } = useTranslation();
   const current = useChapterScene(progress, CHAPTER.git);
   const step = current.committed
     ? 3
@@ -226,7 +250,9 @@ function GitChapter({ progress }: ChapterProps) {
       <Wallpaper src="/bg-08.jpg" progress={progress} />
       <div className="relative flex h-full flex-col items-center justify-center gap-8 px-6">
         <div className="text-center">
-          <Eyebrow className="mb-4">05. Review and commit your changes</Eyebrow>
+          <Eyebrow className="mb-4">
+            05. {t("Review and commit your changes")}
+          </Eyebrow>
           <h2 className="text-center text-[clamp(2.5rem,7vw,6.5rem)] leading-[0.95] font-semibold tracking-[-0.05em]">
             <span
               className={cn(
@@ -234,7 +260,7 @@ function GitChapter({ progress }: ChapterProps) {
                 step === 0 ? "opacity-100" : "opacity-25",
               )}
             >
-              Diff.{" "}
+              {t("Diff.")}{" "}
             </span>
             <span
               className={cn(
@@ -242,7 +268,7 @@ function GitChapter({ progress }: ChapterProps) {
                 step === 1 || step === 2 ? "opacity-100" : "opacity-25",
               )}
             >
-              Commit.{" "}
+              {t("Commit.")}{" "}
             </span>
             <span
               className={cn(
@@ -250,7 +276,7 @@ function GitChapter({ progress }: ChapterProps) {
                 step === 3 ? "opacity-100" : "opacity-25",
               )}
             >
-              Push.
+              {t("Push.")}
             </span>
           </h2>
         </div>
@@ -263,10 +289,13 @@ function GitChapter({ progress }: ChapterProps) {
 }
 
 function Manifesto() {
+  const { t } = useTranslation();
   return (
     <section className="mx-auto max-w-5xl px-2 py-40 sm:py-60">
       <ScrollWords
-        text="Dream is an open-source desktop IDE built for AI coding. It keeps your agents, projects, files, terminals and Git in one unified workspace, so you can think about the work instead of the windows."
+        text={t(
+          "Dream is an open-source desktop IDE built for AI coding. It keeps your agents, projects, files, terminals and Git in one unified workspace, so you can think about the work instead of the windows.",
+        )}
         className="text-[clamp(2rem,4.6vw,4rem)] leading-[1.12] font-semibold tracking-[-0.035em]"
       />
     </section>
@@ -274,10 +303,11 @@ function Manifesto() {
 }
 
 function FeatureNote({ text }: { text: string }) {
+  const { t } = useTranslation();
   return (
     <section className="mx-auto w-full max-w-5xl px-2 py-32 sm:py-48">
       <ScrollWords
-        text={text}
+        text={t(text)}
         className="text-[clamp(1.75rem,4vw,3.5rem)] leading-[1.15] font-semibold tracking-[-0.035em]"
       />
     </section>
@@ -285,6 +315,7 @@ function FeatureNote({ text }: { text: string }) {
 }
 
 function Finale() {
+  const { locale, t } = useTranslation();
   return (
     <Bleed className="relative flex min-h-[90vh] flex-col items-center justify-center gap-16 overflow-hidden px-6 text-center sm:gap-24">
       <div
@@ -294,10 +325,16 @@ function Finale() {
       <div className="absolute inset-0 bg-black/50" />
       <div className="absolute inset-x-0 top-0 h-1/3 bg-gradient-to-b from-[#0a0a0a] to-transparent" />
       <Reveal className="relative">
-        <h2 className="text-[clamp(3.5rem,12vw,10rem)] leading-[0.9] font-bold tracking-[-0.06em]">
-          Dream your
-          <br />
-          dream.
+        <h2 className="mx-auto max-w-[min(12ch,90vw)] text-balance break-words text-[clamp(3.5rem,12vw,10rem)] leading-[0.9] font-bold tracking-[-0.06em]">
+          {locale === "en" ? (
+            <>
+              Dream your
+              <br />
+              dream.
+            </>
+          ) : (
+            t("Dream your dream.")
+          )}
         </h2>
       </Reveal>
       <Reveal
@@ -312,9 +349,10 @@ function Finale() {
 }
 
 export default function Studio() {
+  const { locale } = useTranslation();
   return (
     <MotionConfig reducedMotion="user">
-      <div className="landing-page flex flex-col">
+      <div lang={locale} className="landing-page flex flex-col">
         <Hero />
         <Manifesto />
         <Bleed>

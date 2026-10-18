@@ -18,6 +18,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { useTranslation } from "../../i18n/context";
 import { cn } from "../../lib/utils";
 import Button from "../Button";
 import GitHubIcon from "../icons/GitHubIcon";
@@ -161,7 +162,11 @@ export function ScrollWords({
     // biome-ignore lint/suspicious/noExplicitAny: motion's offset type is a template literal union
     offset: offset as any,
   });
-  const words = text.split(" ");
+  const { locale } = useTranslation();
+  const words = Array.from(
+    new Intl.Segmenter(locale, { granularity: "word" }).segment(text),
+    (item) => item.segment,
+  );
 
   return (
     <p ref={ref} className={className}>
@@ -189,11 +194,7 @@ function Word({
   range: [number, number];
 }) {
   const opacity = useTransform(progress, range, [0.16, 1]);
-  return (
-    <>
-      <motion.span style={{ opacity }}>{children}</motion.span>{" "}
-    </>
-  );
+  return <motion.span style={{ opacity }}>{children}</motion.span>;
 }
 
 /** Breaks out of the page's centred container to the full viewport width. */
@@ -242,16 +243,17 @@ export function GitHubButton({
   className?: string;
   eventName?: string;
 }) {
+  const { t } = useTranslation();
   return (
     <Button
-      href="https://github.com/umami-software/dream"
+      href="https://github.com/dreamide/dream"
       target="_blank"
       rel="noopener noreferrer"
       data-umami-event={eventName}
       className={className}
     >
       <GitHubIcon className="size-4" />
-      Star on GitHub
+      {t("Star on GitHub")}
       <ArrowUpRight className="size-4 opacity-60" />
     </Button>
   );
