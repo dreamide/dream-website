@@ -1,0 +1,42 @@
+---
+title: "Permisos del agente"
+description: "Elige Preguntar, Aceptar ediciones o Acceso completo y responde a los pedidos del agente."
+---
+
+Cada chat tiene un control de **Permisos** debajo de su cuadro de mensaje. Los nuevos chats heredan **Configuración → General → Modelos → Permisos predeterminados**, que comienza en **Acceso completo**. Cambiar el predeterminado no afecta a chats existentes.
+
+## Elige permisos
+
+1. Abre el control con el icono de escudo debajo del cuadro de mensaje. Su descripción es **Permisos**.
+2. Selecciona **Preguntar**, **Aceptar ediciones** o **Acceso completo**.
+3. Revisa la tarea y envíala.
+
+| Permiso | Comportamiento intencionado |
+| --- | --- |
+| Preguntar | Solicitar aprobación para acciones que requieran permiso según la configuración del proveedor |
+| Aceptar ediciones | Permitir ediciones de archivo automáticamente mientras se mantiene el manejo de aprobación para otras acciones |
+| Acceso completo | Proporcione al agente acceso más amplio para actuar sin prompts de aprobación |
+
+El proveedor seleccionado determina el comportamiento exacto de los permisos. **Preguntar** no implica que cada lectura o llamada a una herramienta solicite aprobación, y **Aceptar ediciones** no autoriza todos los comandos.
+
+<Note>
+  Dream ya no tiene controles separados de Build y Plan. Para planificar primero, pide al agente que investigue y proponga un enfoque antes de hacer cambios. Esa instrucción no impone un límite de solo lectura al sistema de archivos; elige también los permisos adecuados para la tarea.
+</Note>
+
+<Frame caption="El escudo y la etiqueta Acceso completo identifican el control de permisos de este chat.">
+  <img
+    src="/images/docs/chat-composer.png"
+    alt="El compositor de chat que muestra Acceso completo junto a los controles de modelo, esfuerzo y velocidad."
+    width={600}
+    height={108}
+    loading="lazy"
+  />
+</Frame>
+
+## Responder preguntas y aprobaciones
+
+Un agente puede pedirte que aclaras un requisito, elijas una opción o apruebes una acción. Lee la solicitud en la conversación y responde utilizando los controles que proporciona. Una pestaña de proyecto puede indicar que un agente está esperando tu respuesta. Abre esa pestaña y vuelve a la conversación para leer la solicitud.
+
+Si la solicitud requiere cambiar la tarea, da al agente las instrucciones revisadas en ese chat. Usa el control de detener para interrumpir una respuesta cuando sea necesario. Detener no revierte las ediciones ni los comandos que ya se completaron; revisa después [Cambios](/docs/es/git-workflows) o utiliza el [punto de control](/docs/es/checkpoints) de la respuesta para restaurar los archivos que modificó.
+
+Para tareas paralelas que necesitan archivos separados, use [árbol de trabajo](/docs/es/worktrees). Los ajustes de permisos no dan dos chats en la misma carpeta checkouts independientes.

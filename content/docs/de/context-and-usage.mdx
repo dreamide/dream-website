@@ -1,0 +1,62 @@
+---
+title: "Kontext und Nutzung"
+description: "Contextnutzen lesen, Kompression verstehen und die Darstellung der Agententätigkeit anpassen."
+---
+
+Dream zeigt Informationen über das aktuelle Gespräch und, wo verfügbar, die Nutzungsgrenzen des ausgewählten Anbieters. Diese Antworten beantworten unterschiedliche Fragen: wie viel Kontext ein Chat verwendet, und wie viel der Nutzungsgrenzen des Anbieters bereits verbraucht wurde.
+
+## Konversationskontext überprüfen
+
+Verwenden Sie den Kontext-Indikator unter der Nachrichtenbox, um die Nutzung des Gesprächs-Kontexts zu überprüfen. Das Kontextfenster ist die Menge an Inhalten, die das Modell für eine Antwort berücksichtigen kann, einschließlich des Gesprächsgehalts und der Ergebnisse von Werkzeugen.
+
+Dream verwendet die von dem Anbieter bereitgestellten Nutzungsinformationen, wenn diese verfügbar sind, und schätzt die Nutzung aus Nachrichten sonst. Achten Sie auf die Angabe als Empfehlung anstelle einer genauen Rechnungsgrundlage. Änderungen der Modelle können die verfügbare Kontextfenster verändern.
+
+## Verstehe Kompression
+
+Einige Anbieter komprimieren lange Gespräche durch Zusammenfassen des älteren Kontexts. Wenn der Anbieter diese Aktivität meldet, zeigt Dream im Gespräch **Kontext komprimiert…** oder **Kontext komprimiert** an.
+
+Die Kompression hilft dem Agenten, eine lange Aufgabe fortzusetzen, aber ein Zusammenfassung enthält nicht unbedingt alle Details. Stellen Sie kritische Anforderungen erneut auf und verweisen Sie auf die aktuellen Dateien, wenn das Gespräch weit von der ursprünglichen Anfrage entfernt ist. Das von Dream angezeigte Transkript und der Kontext, der vom Anbieter verwendet wird, sind nicht unbedingt identisch.
+
+Das Komprimierungsverhalten wird durch die Provider-Integration gesteuert. Es ist nicht das gleiche wie die Archivierung eines Chats und erfreit keine Nutzungslimits des Providers.
+
+## Provider-Nutzung prüfen
+
+1. Ein Chat mit dem Provider öffnen, den Sie untersuchen möchten.
+2. Klicken Sie auf den Verwendungswert im Bereich unter der Nachrichtenbox.
+3. Überprüfen Sie die verfügbare Nutzungsinformationen und Resetzeiten.
+
+<Frame caption="Die Verwendungskurve öffnet die Details zur Bereitstellungsgrenze des Anbieters. Dieses Beispiel von Anthropic zeigt fünf Stunden und wöchentliche Nutzung mit Wiederherstellungszeiten.">
+  <img
+    src="/images/docs/provider-usage.png"
+    alt="Pop-up von Anthropic über dem Komposer-Gauge, der 5 % des fünfstündigen Limits und 30 % des wöchentlichen Limits zeigt, mit Zurücksetzungszeiten."
+    width={336}
+    height={227}
+    loading="lazy"
+  />
+</Frame>
+
+Das Popover ist für die meisten Anbieter mit dem Label **Tarifnutzung** gekennet und für OpenCode mit **Nutzungsstatistiken**. Verfügbarkeit und Detailgrad variieren je nach Anbieter. Ein nicht verfügbares Ergebnis bedeutet allein nicht, dass das Chat-Verhalten nicht funktionieren kann; prüfen Sie alle Fehler auf der tatsächlichen Antwort sowie die entsprechenden Kontoinformationen des Anbieters.
+
+## Machen Sie die Aktivität von Tools lesbarer
+
+Offen **Einstellungen → Allgemein** und finde **Chatnachrichten**:
+
+| Einstellen | Effekt |
+| --- | --- |
+| Reasoning-Zusammenfassungen anzeigen | Zeigt Zusammenfassungen der Argumentationen an, die vom Modell bereitgestellt werden |
+| Tool-Aufrufe gruppieren | Gruppieren Sie die Tool-Aktivität in kompakte Zählschichten |
+| Tool-Aufrufe erweitern | Zeigt Tool-Call-Details standardmäßig erweitert |
+
+Diese Einstellungen ändern die Präsentation. Sie ändern die Anforderung an die Rechenleistung des Modells nicht; konfigurieren Sie dies in [Modelle und Standardeinstellungen](/docs/de/models). Die gleiche Gruppe enthält **Änderungs-Checkpoints**, die bestimmen, ob Dream Snapshots vor jeder Antwort erstellt; siehe [Änderungen prüfen und wiederherstellen](/docs/de/checkpoints).
+
+<Frame caption="Die Werkzeugtätigkeit erscheint direkt neben der Antwort, sodass du überprüfen kannst, was das Agent verwendet hat.">
+  <img
+    src="/images/docs/chat-tools.png"
+    alt="Datei-Lesung und Befehlschips in einer Agent-Antwort, einschließlich Datei-Namen und Zeilenbereiche."
+    width={600}
+    height={184}
+    loading="lazy"
+  />
+</Frame>
+
+Für eine neue Aufgabe mit einem anderen Ziel starten Sie einen [neuen Chat](/docs/de/chats). Um einen bestimmten Teil einer Konversation beizubehalten, während Sie eine Alternative erkunden, [verzweigen Sie eine Nachricht](/docs/de/branching-chats).

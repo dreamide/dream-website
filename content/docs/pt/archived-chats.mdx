@@ -1,0 +1,62 @@
+---
+title: "Arquivar e restaurar chats"
+description: "Arquivar conversas concluídas, restaurar o trabalho anterior e limpar o histórico de chat antigo."
+---
+
+Arqueie uma conversa quando quiser remá-la da história ativa, mantendo a opção de retornar a ela. As conversas arquivadas são gerenciadas centralmente em **Configurações → Chats arquivados**.
+
+## Arquivar uma conversa
+
+1. Abra o chat que deseja arquivar.
+2. Abra seu **…** no cabeçalho da conversa.
+3. Selecione **Arquivar**.
+
+Você também pode usar a ação arquivar ao lado de uma conversa no **Histórico de bate-papo**. A conversa desaparece do histórico ativo e da tela aberta. As mensagens permanecem disponíveis para restauração.
+
+Arquivar não desfaz alterações de código, não remove a pasta do projeto ou cria um stash do Git. Para remover apenas uma coluna da visualização, [feche a coluna](/docs/pt/multiple-chats) em vez disso.
+
+## Localize e recupere conversas arquivadas
+
+1. Abra as **Configurações** usando o ícone de engrenagem no topo do Dream.
+2. Selecione **Chats arquivados**.
+3. Localize a conversa no quadro. Cada linha mostra seu título, projeto e data de arquivamento.
+4. Selecione a caixa de verificação ao lado do chat, em seguida clique em **Restaurar**.
+5. Retorne ao seu projeto e abra **Histórico de bate-papo** para selecionar a conversa restaurada.
+
+Você pode selecionar várias linhas e restaurá-las juntas. A caixa de seleção na cabeçalho da tabela seleciona todos os chats arquivados, incluindo chats de outros projetos. Verifique a coluna **Projeto** antes de aplicar uma ação em lote.
+
+<Frame caption="Selecione conversas arquivadas para restaurar ou excluí-las. A coluna Projeto identifica onde cada chat se encontra.">
+  <img
+    src="/images/docs/archived-chats-panel.png"
+    alt="Configurações de Chats arquivados exibindo quatro conversas com nomes de projetos e datas, botões Restore e Delete, e o controle Archive now."
+    width={1016}
+    height={386}
+    loading="lazy"
+  />
+</Frame>
+
+Restaurar torna o chat disponível na história; ele não abre automaticamente esse chat ou seu projeto. Se o projeto estiver fechado, reabri-lo no **Fechados recentemente** na tela de início.
+
+## Arquivar conversas antigas juntas
+
+1. Em **Configurações → Chats arquivados**, localize **Arquivar chats após**.
+2. Entre com um número positivo de dias. O valor padrão é **30**.
+3. Clique em **Arquivar agora**.
+
+O Dream arquiva conversas cuja última atividade é pelo menos tão antiga quanto esse número de dias. Conversas que estão atualmente respondendo ou gerando um título são ignoradas. Esta ação se aplica a todos os projetos.
+
+O valor do dia é um limite para **Arquivar agora**. Mudar apenas esse valor não agende o arquivamento automático. Restaurar uma conversa também não altera sua data de última atividade, então uma conversa antiga restaurada pode se qualificar novamente na próxima execução de **Arquivar agora**.
+
+## Excluir permanentemente conversas arquivadas
+
+1. Aberto **Configurações → Chats arquivados**.
+2. Selecione as conversas que já não precisam.
+3. Verifique as linhas selecionadas e clique em **Excluir**.
+
+<Warning>
+  Excluir permanentemente remove os chats selecionados e suas mensagens do Dream. A ação se aplica sem outro diálogo de confirmação e esses chats não podem ser restaurados no Dream.
+</Warning>
+
+A exclusão afeta o histórico de conversa do Dream. Ela não reverte as alterações no projeto nem apaga os arquivos do projeto.
+
+Se uma conversa estiver ausente既 em história ativa e em história arquivada, veja [solução de problemas para conversas ausentes](/docs/pt/troubleshooting#eu-não-consigo-encontrar-uma-conversa).

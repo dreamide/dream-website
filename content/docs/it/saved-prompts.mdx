@@ -1,0 +1,55 @@
+---
+title: "Prompt riutilizzabili"
+description: "Salva le istruzioni una volta e eseguile in qualsiasi chat di progetto."
+---
+
+Usa **Impostazioni → Prompt** per istruzioni che ripeti in diversi progetti, come la revisione dei cambiamenti o la risposta ai commenti di revisione. Un prompt salvato ha un nome e del testo; viene eseguito nella conversazione che scegli, utilizzando il modello e le impostazioni di quel chat.
+
+## Crea un prompt
+
+1. Apri **Impostazioni → Prompt** e fai clic su **Nuovo prompt**.
+2. Inserisci un **Nome** breve che riconoscerai nel menu della chat.
+3. Scrivi istruzioni nel **Prompt** e clicca su **Crea**.
+
+Per esempio, nomina un prompt “Revisione dei cambiamenti” e salvalo:
+
+> Esamina le modifiche attuali per individuare bug, casi limite non gestiti e comportamenti indesiderati. Riporta i risultati con riferimenti ai file. Non modificare ancora i file.
+
+Il prompt è disponibile in tutti i progetti. Mantieni istruzioni riutilizzabili indipendenti da una cartella specifica, o assicurati che tutti i percorsi presenti nel testo si riferiscano al progetto in cui lo si esegue.
+
+## Esegui un prompt in un chat
+
+1. Apri il progetto e la conversazione che vuoi utilizzare.
+2. Controlla il modello del chat e [i permessi](/docs/it/agent-modes).
+3. Apri il menu **+** accanto alla casella del messaggio.
+4. Scegli **Esegui prompt**, poi seleziona il prompt salvato.
+
+Selezionare un prompt invia immediatamente il suo testo in quel chat. Non inserisce prima un bozzetto modificabile. Il testo già digitato nel composer viene mantenuto, e il prompt salvato rimane disponibile per l'uso successivo. Se desideri adattare il testo prima di inviarlo, copialo dalle Impostazioni e incollalo manualmente nel composer.
+
+**Esegui prompt** non è disponibile mentre il chat è in attesa. Attendi che la risposta termini prima di eseguire un altro prompt. Se l'invio fallisce, controlla il composer per il testo del prompt.
+
+## Gestisci l'elenco
+
+<Frame caption="Seleziona un prompt riutilizzabile per leggerne e copiarne il testo. Le righe di controllo permettono di riordinare, convertire, modificare o eliminare il prompt.">
+  <img
+    src="/images/docs/saved-prompts-panel.png"
+    alt="Impostazioni dei prompt con quattro prompt salvati, icone di azione per riga e il testo completo di un prompt di revisione del codice selezionato."
+    width={1016}
+    height={782}
+    loading="lazy"
+  />
+</Frame>
+
+Seleziona un prompt in **Impostazioni → Prompt** per anticipare e copiare il suo testo. Usa **Modifica** o fai doppio clic sul suo nome per modificarlo. **Sposta su** e **Sposta giù** cambiano la sua posizione nell'elenco e nel menu chat. Per rimuovere un prompt, fai clic sul controllo eliminazione e poi **Conferma eliminazione**.
+
+**Gestisci prompt…** nel menu **Esegui prompt** della chat apre questa pagina di impostazioni.
+
+## Converti un prompt in una skill
+
+Usa **Salva come skill** accanto a un prompt salvato per aprire il dialogo di creazione della skill con il suo nome e le istruzioni già compilati. Aggiungi una descrizione, scegli dove salvarla e clicca su **Crea**. Vedi [Skill degli agenti](/docs/it/skills) per il supporto dei provider e i punti di salvataggio.
+
+| Vuoi... | Usa |
+| --- | --- |
+| Invia le stesse istruzioni ripetutamente in diversi chat | Prompt riutilizzabili |
+| Preparare un compito singolo con le proprie impostazioni di modello per il futuro | [Stash](/docs/it/stash) |
+| Dai un agente istruzioni riutilizzabili che può caricare per un compito | [Competenze](/docs/it/skills) |

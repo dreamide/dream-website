@@ -1,0 +1,122 @@
+---
+title: "Worktrees Git"
+description: "Créez des checkouts indépendants pour des tâches parallèles, puis les fusionnez, les publiez ou les supprimez lorsque le travail est terminé."
+---
+
+Un arbre de travail Git donne à une tâche un répertoire de travail séparé dans le même dépôt. Dream l'ouvre comme un autre projet, avec ses propres discussions et outils. Utilisez les arbres de travail lorsque les agents doivent modifier indépendamment sans changer le checkout de l'autre.
+
+## Créer un arbre de travail
+
+Commencez à partir d'un projet qui est un dépôt Git avec une référence de base commitée.
+
+1. Ouvrir le commutateur de branche sous la discussion.
+2. Choisir **Nouvel arbre de travail**.
+3. Entrez un nom pour la nouvelle **Branche**, par exemple `fix-settings-persistence`.
+4. Définissez **Réf de base** sur le commit ou la branche depuis laquelle vous souhaitez commencer, par exemple `main`.
+5. Cliquez sur **Créer un arbre de travail**.
+
+<Frame caption="Choisissez Nouvel arbre de travail en bas du commutateur de branche pour créer une vérification indépendante.">
+  <img
+    src="/images/docs/branch-switcher.png"
+    alt="Le menu de branche s'ouvre au-dessus du contrôle de branche actuel, avec Nouvel arbre de travail comme action en bas."
+    width={377}
+    height={256}
+    loading="lazy"
+  />
+</Frame>
+
+Dream crée le checkout et ouvre son projet. Vérifiez la branche de l'arbre de travail affichée sous le chat avant d'envoyer la tâche. Les commandes et les modifications effectuées par l'agent dans ce projet utilisent le nouveau répertoire.
+
+La référence de base doit exister dans votre dépôt local. Si vous avez besoin de commits distants plus récents, récupérez-les via votre flux Git habituel avant de créer l'arbre de travail.
+
+## Apporter une conversation dans un arbre de travail
+
+À partir d'un message, choisir **Continuer à partir de ce message… → Nouvel arbre de travail**. Dream copie la conversation à partir de ce message, utilise la branche actuelle comme base et génère un nom de nouvelle branche.
+
+Utilisez ce raccourci lorsque vous souhaitez que l'agent poursuive la discussion précédente. Utilisez le workflow du commutateur de branche lorsque vous devez choisir un nom de base et de branche personnalisé. Voir [Création de branches de conversation](/docs/fr/branching-chats) pour la différence entre le copier des messages et le copier des fichiers.
+
+<Warning>
+  Les worktrees partent de l'historique Git commité. Les modifications non commitées dans le projet original ne sont pas copiées. Un échange de chat dérivé d'un message antérieur ne reconstruit pas le système de fichiers à ce moment de la conversation.
+</Warning>
+
+## Passer d'un checkout à un autre
+
+Utilisez les onglets projet pour passer d'un checkout original à un projet arbre de travail. Les arborescences de travail gérées par l'application apparaissent également dans le panneau **Historique des discussions** du projet parent, où vous pouvez les ouvrir à nouveau.
+
+Revoir et commiter les modifications effectuées dans le projet. Créer un arbre de travail ne fusionne pas ses modifications dans la branche d'origine ; utilisez les actions **Actions Git** du pied lorsque le travail est prêt.
+
+## Compléter un arbre de travail
+
+Fusionner, créer une demande de fusion et supprimer un arbre de travail sont des actions distinctes dans le menu **Actions Git** du pied de page. Commitez les modifications que vous souhaitez inclure avant de les fusionner.
+
+<Frame caption="Compléter un arbre de travail">
+  <img
+    src="/images/docs/worktree-git-actions-menu.png"
+    alt="Menu des actions Git du worktree avec Publier la branche, Créer une pull request, Fusionner dans dev et Supprimer le worktree."
+    width={236}
+    height={324}
+    loading="lazy"
+  />
+</Frame>
+
+1. Dans le projet arbre de travail, sélectionnez **Fusionner dans *base*** sous **Actions Git** du chat.
+2. Vérifiez le résumé : la **Branche de base**, le nombre de **Validations** de la branche en avance et en retard, les **Fichiers** modifiés, ainsi que la branche actuelle du **Checkout principal** et si elle est propre.
+3. Lisez la liste des commits et expandez un fichier pour inspecter sa différence.
+4. Utilisez **Valider les modifications...** si nécessaire. Les modifications non enregistrées restent dans l'arbre de travail et ne sont pas fusionnées.
+5. Choisissez **Fusionner dans *base***. Dream fusionne les travaux commités dans le checkout principal, en le passant à la branche base s'il le faut.
+6. Vérifiez le résultat, puis choisissez **Conserver le worktree** ou **Supprimer le worktree et la branche**. La suppression après fusion est proposée uniquement lorsque l'arbre de travail est propre.
+
+<Frame caption="Revoir les modifications">
+  <img
+    src="/images/docs/worktree-merge-dialog.png"
+    alt="Boîte de dialogue de fusion dans dev affichant la branche de base, le nombre de commits, le fichier modifié et le checkout principal propre."
+    width={672}
+    height={442}
+    loading="lazy"
+  />
+</Frame>
+
+<Frame caption="Compléter un arbre de travail">
+  <img
+    src="/images/docs/worktree-merge-success-dialog.png"
+    alt="Fusion du worktree dans dev réussie, avec les boutons Conserver le worktree et Supprimer le worktree et la branche."
+    width={672}
+    height={268}
+    loading="lazy"
+  />
+</Frame>
+
+Pour publier pour révision, utilisez **Actions Git → Créer une demande d'extraction** et suivez [Flux de travail Git](/docs/fr/git-workflows#créer-un-pull-request). Créer une demande de fusion conserve l'arbre de travail.
+
+Utilisez **Actions Git → Supprimer l'arbre de travail** pour supprimer le checkout tout en conservant sa branche. Si il contient des modifications non commitées, commit-les d'abord ou sélectionnez explicitement **Abandonner les modifications non validées**.
+
+<Warning>
+  Supprimer un arbre de travail supprime son répertoire et ferme son projet. Les échanges du projet d'arbre de travail sont éliminés avec lui et n'apparaissent ni dans l'Historique des chats ni dans Fermés récemment. Si vous souhaitez conserver une conversation, [divisez-la dans l'espace de travail parent](/docs/fr/branching-chats) avant de la terminer.
+</Warning>
+
+### Lorsqu'une option n'est pas disponible
+
+| Message | Que faire |
+| --- | --- |
+| Cette branche n'a pas de commits en avance sur *base* | Commitez le travail que vous souhaitez conserver, ou choisissez Supprimer l'arbre de travail |
+| Le principal checkout contient des fichiers non commités | Committer ou stash les modifications dans le projet parent avant de les fusionner |
+| Le principal checkout a un fusion ou une rebase en cours | Terminer ou annuler cette opération dans le projet parent |
+| Cette branche n'a pas d'histoire partagée avec *base* | Fusionnez selon votre propre workflow Git |
+| Aucun remote Git n'est configuré | Ajouter un remote avant de créer une demande de fusion |
+| gh n'est pas disponible | Installer et authentifier GitHub CLI |
+
+Si la fusion provoque des conflits, Dream l’annule et affiche **La fusion dans *base* a provoqué des conflits. La fusion a été annulée et rien n’a été modifié**, avec la liste des fichiers concernés. Intégrez la branche de base dans le worktree, résolvez les conflits, créez un commit, puis relancez **Fusionner dans *base***.
+
+## Supprimer un arbre de travail du projet parent
+
+Vous pouvez également supprimer un arbre de travail sans afficher la boîte de dialogue de confirmation :
+
+1. Conservez le travail que vous avez besoin en le commitant et, si nécessaire, en le poussant ou en ouvrant une demande de modification.
+2. Arrêter les processus utilisant l'arbre de travail, tels qu'une application locale exécutée dans son terminal.
+3. Ouvrir le panneau **Historique des discussions** du projet parent et trouver l'arbre de travail.
+4. Utilisez son action de suppression et vérifiez la confirmation.
+5. Confirmer **Supprimer l'arbre de travail** lorsque vous n'avez plus besoin de ce checkout.
+
+Le suppression supprime le répertoire arbre de travail du disque. Git refuse la suppression lorsque ce dernier contient des modifications non commitées. Retournez sur ce projet et vérifiez les modifications avant de réessayer.
+
+Fermer une onglet de projet ne le retire qu de l'espace de travail ouvert ; supprimer un arbre de travail efface son checkout. Pour les étapes de commit et de demande de modification, voir [Flux de travail Git](/docs/fr/git-workflows).

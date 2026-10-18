@@ -1,0 +1,62 @@
+---
+title: "Chats archivieren und wiederherstellen"
+description: "Archiviere abgeschlossene Gespräche, restore vorherige Arbeit und bereinige alte Chat-Geschichte."
+---
+
+Archivieren Sie ein Gespräch, wenn Sie es aus der aktiven Geschichte entfernen möchten, während Sie die Möglichkeit behalten, darauf zurückzukommen. Archivierte Chats werden zentral in **Einstellungen → Archivierte Chats** verwaltet.
+
+## Eine Konversation archivieren
+
+1. Öffnen Sie das Chat-Verzeichnis, das Sie archivieren möchten.
+2. Öffne das Menü **…** im Chatkopf.
+3. Wählen Sie **Archivieren**.
+
+Sie können auch die Aktion Archiv neben einem Gespräch in **Chat-Verlauf** verwenden. Das Gespräch verschwindet aus der aktiven Geschichte und aus der offenen Ansicht. Die Nachrichten bleiben für die Wiederherstellung verfügbar.
+
+Die Archivierung führt keine Code-Änderungen zurück, entfernt das Projektverzeichnis oder erstellt einen Git-Stash. Um nur eine Spalte aus der Ansicht zu entfernen, [schließen Sie die Spalte](/docs/de/multiple-chats) stattdessen.
+
+## Suchen und archivierte Chats wiederherstellen
+
+1. Offene **Einstellungen** mithilfe des Zahnrads-Symbols oben in Dream.
+2. Wählen Sie **Archivierte Chats**.
+3. Suche im Tabellenverzeichnis das Gespräch. Jede Zeile zeigt dessen Titel, Projekt und Archivdatum.
+4. Wählen Sie die Kontrollkästchen neben dem Chat aus, dann klicken Sie auf **Wiederherstellen**.
+5. Geben Sie zurück zu ihrem Projekt und öffnen **Chat-Verlauf**, um das wiederhergestellte Gespräch auszuwählen.
+
+Sie können mehrere Zeilen auswählen und sie gemeinsam wiederherstellen. Die Kontrollkästchen in der Spalte des Tabellenheaders wählen alle archivierte Chats aus, einschließlich Chats aus anderen Projekten. Überprüfen Sie die Spalte **Projekt** vor der Anwendung einer Massenaktion.
+
+<Frame caption="Archivierte Gespräche auswählen, um sie wiederherzustellen oder zu löschen. Die Spalte „Projekt“ zeigt an, wo jeder Chat sich befindet.">
+  <img
+    src="/images/docs/archived-chats-panel.png"
+    alt="Einstellungen für archivierte Chats zeigen vier Gespräche mit Projektbezeichnungen und Datumsangaben, Knöpfe für Wiederherstellen und Löschen sowie die Steuerung „Jetzt archivieren“."
+    width={1016}
+    height={386}
+    loading="lazy"
+  />
+</Frame>
+
+Das Wiederherstellen macht ein Chat in der Geschichte verfügbar; es öffnet das Chat- oder Projekt nicht automatisch. Wenn das Projekt geschlossen ist, öffnen Sie es aus **Zuletzt geschlossen** auf der Einstiegsseite.
+
+## Ältere Gespräche zusammen archivieren
+
+1. In **Einstellungen → Archivierte Chats**, finden Sie **Chats archivieren nach**.
+2. Geben Sie eine positive Anzahl von Tagen ein. Standardwert ist **30**.
+3. Klicken Sie auf **Jetzt archivieren**.
+
+Dream archiviert Gespräche, deren letzte Aktivität mindestens so viele Tage alt ist. Gespräche, die derzeit antworten oder einen Titel generieren, werden übersprungen. Diese Aktion gilt für alle Projekte.
+
+Der Tag-Wert dient als Schwellwert für **Jetzt archivieren**. Eine Änderung allein führt keine automatische Archivierung. Auch die Wiederherstellung eines Chats verändert seine Letzter-aktivitäts-Datum nicht, wodurch ein älterer wiederhergestellter Chat beim nächsten Aufruf von **Jetzt archivieren** erneut berechtigt sein kann.
+
+## Archivierte Chats dauerhaft löschen
+
+1. Offen **Einstellungen → Archivierte Chats**.
+2. Wählen Sie die Gespräche aus, die Sie nicht mehr benötigen.
+3. Prüfen Sie die ausgewählten Zeilen und klicken Sie auf **Löschen**.
+
+<Warning>
+  Löschen entfernt die ausgewählten Chats und ihre Nachrichten aus Dream vollständig. Die Aktion tritt sofort wirksam ein und diese Chats können nicht über Dream wiederhergestellt werden.
+</Warning>
+
+Löschen wirkt sich auf die Chat-Geschichte von Dream aus. Es führt keine Rückgabe von Änderungen im Projekt oder die Löschung der Projektdateien.
+
+Wenn ein Gespräch in der aktiven und archivierten Geschichte nicht vorhanden ist, siehe [Problembehebung für fehlende Chats](/docs/de/troubleshooting#ich-kann-keinen-chat-finden).

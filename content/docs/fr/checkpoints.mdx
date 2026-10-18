@@ -1,0 +1,58 @@
+---
+title: "Vérifier et restaurer les modifications"
+description: "Inspectez les fichiers, modifiez la réponse d'un agent et restaurez les fichiers sélectionnés à partir d'un point d'ancrage."
+---
+
+Lorsque **Checkpoints de modifications** est activé, Dream sauvegarde des snapshots de vos fichiers projet avant chaque réponse de l'agent et à nouveau lorsque la réponse est terminée. Utilisez ces checkpoints pour examiner exactement quels fichiers ont été modifiés par une réponse et pour restaurer des fichiers sélectionnés si vous souhaitez adopter une autre approche.
+
+## Comment fonctionnent les checkpoints
+
+- Un checkpoint enregistre l'arborescence de travail du projet, y compris les fichiers non suivis, dans un stockage privé situé dans les données de l'application de Dream. Il ne crée pas de commits, de stashes ou de branches dans votre propre dépôt, et il fonctionne dans des dossiers qui ne sont pas des dépôts Git.
+- Les chemins ignorés par le fichier `.gitignore` du projet ainsi que les dossiers de construction courants tels que `node_modules`, `dist`, `build` et `coverage` ne sont jamais capturés.
+- Dream prend un instantané de l’état **avant** pour chaque message que vous envoyez, puis un instantané de l’état **après** lorsque la réponse se termine ou que vous l’arrêtez.
+- Les checkpoints exigent que l'exécutable `git` soit disponible pour Dream. Si la capture échoue ou dure trop longtemps, la réponse poursuit sans checkpoint et le contrôle de revue associé n'est pas affiché.
+
+Les checkpoints sont activés par défaut. Pour les désactiver, ouvrez **Paramètres → Général**, trouvez **Messages de chat** et désactivez **Checkpoints de modifications**.
+
+<Frame caption="Activer les points de changement dans Paramètres → Général pour capturer les fichiers autour de chaque réponse.">
+  <img
+    src="/images/docs/checkpoint-setting.png"
+    alt="Modifier les paramètres des points d'ancrage avec son interrupteur activé."
+    width={1000}
+    height={68}
+    loading="lazy"
+  />
+</Frame>
+
+## Revoir les modifications d'une réponse
+
+1. Attendez que la réponse soit terminée.
+2. Cliquez sur l'assistant message et cliquez sur **Voir les fichiers modifiés par cette réponse**, l'icône de montre dans le pied de message.
+3. Dans **Modifications de cette réponse**, consultez la liste des fichiers. Chaque ligne indique le chemin, un état de **Ajouté**, **Supprimé**, **Modifié** ou **Renommé**, ainsi que le nombre de lignes.
+4. Développer une ligne pour lire la diff.
+
+Le dialogue compare les états avant et après pour cette réponse uniquement ; les modifications provenant d'autres réponses ou de vos propres éditions ne sont pas incluses. Si la réponse a été interrompue, le dialogue indique que l'état après a été enregistré lorsque vous l'avez ouvert.
+
+Un fichier qui a été modifié à nouveau après la réponse, qu'il s'agisse d'une réponse ultérieure, d'une commande terminale ou de votre éditeur, affiche un badge **Modifié ensuite**. Les fichiers binaires sont listés sans diff.
+
+## Restaurer des fichiers
+
+1. Sélectionnez les fichiers que vous souhaitez restaurer. Les fichiers sans modifications ultérieures sont sélectionnés par défaut ; utilisez **Tout sélectionner** pour inclure tous les fichiers.
+2. Cliquez sur **Restaurer**. Le bouton indique le nombre de fichiers sélectionnés.
+3. Vérifiez les lignes marquées **Restauré**, puis cliquez sur **Fermer**.
+
+Le restauration annule les modifications apportées par la réponse dans les fichiers sélectionnés tout en conservant les éditions inconnexes effectuées plus tard dans le même fichier. Un fichier créé par la réponse est supprimé, un fichier supprimé est recreé, et un fichier renommé est remis à son ancien chemin.
+
+Si des modifications ultérieures se superposent aux modifications du message, Dream laisse ce fichier intact et vous en informe. Choisissez **Écraser quand même** pour remplacer le fichier par son contenu complet avant la réponse, en annulant ainsi ces modifications ultérieures.
+
+<Warning>
+  Restore ne peut pas être annulé à partir du dialogue. Copiez tout travail ultérieur que vous avez besoin des fichiers affectés avant de les restaurer. Le restauration de fichiers ne supprime pas les messages de la conversation ; indiquez à l'agent ce que vous avez restauré avant de lui demander de continuer.
+</Warning>
+
+Restore est une opération de fichier, pas une opération Git. Ouvrir [Modifications](/docs/fr/git-workflows) ensuite pour consulter l'arborescence de travail, et [enregistrer les brouillons d'édition](/docs/fr/files) avant de restaurer les mêmes fichiers.
+
+## Stockage des points de contrôle
+
+Les checkpoints restent disponibles tant que leur conversation existe. Supprimer définitivement une conversation dans **Paramètres → Chats archivés** supprime ses checkpoints, et terminer ou supprimer un [projet d'arbre de travail](/docs/fr/worktrees) supprime les checkpoints de ce projet. Archiver une conversation les conserve.
+
+Pour essayer une approche différente tout en conservant la conversation jusqu'à présent, combinez un restore avec [le branching à partir d'un message antérieur](/docs/fr/branching-chats). Le branching seul copie les messages et ne modifie pas les fichiers.

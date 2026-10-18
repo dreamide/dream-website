@@ -1,0 +1,64 @@
+---
+title: "Cung cấp ngữ cảnh"
+description: "Tham khảo các tệp và thư mục dự án, đính kèm tệp, và giao một nhiệm vụ rõ ràng cho một agent."
+---
+
+Cho agent một kết quả, bối cảnh liên quan và bất kỳ ràng buộc nào trước khi nó bắt đầu làm việc. Một tham chiếu tệp giúp nó tìm kiếm mã; một tệp đính kèm có thể cung cấp thông tin bổ sung như một hình ảnh màn hình.
+
+## Tham chiếu tệp hoặc thư mục dự án
+
+1. Trong hộp tin nhắn của một cuộc trò chuyện, hãy gõ **@** sau đó là một phần của đường dẫn tệp hoặc thư mục.
+2. Chọn một kết quả từ danh sách. Sử dụng **Phím lên** và **Phím xuống** để di chuyển qua các kết quả, sau đó **Enter** hoặc **Tab** để chọn một kết quả.
+3. Thêm các chỉ dẫn của bạn xung quanh tham chiếu đã chèn.
+4. Gửi tin nhắn này.
+
+Ví dụ, tham chiếu đến thành phần cài đặt và hỏi:
+
+> Giải thích cách dạng này tải và lưu các thiết lập ưa thích. Tìm lý do tại sao việc cập nhật lại làm mất giá trị đã được chọn.
+
+Chọn một tệp khi bạn biết nhiệm vụ thuộc về đâu, hoặc một thư mục khi agent cần kiểm tra nhiều tệp liên quan. Danh sách kết quả hiển thị các đường dẫn cha để giúp phân biệt các tệp có cùng tên. Nhấn **Escape** để đóng danh sách.
+
+Các tham chiếu xác định vị trí trong dự án hiện tại. Chúng không làm cố định nội dung tệp hay gắn một bản sao toàn bộ thư mục vào cuộc trò chuyện.
+
+## Kèm một tệp
+
+1. Nhấn nút **Đính kèm tệp** bên cạnh hộp thông báo.
+2. Chọn hành động đính kèm và chọn một tệp từ máy tính của bạn.
+3. Kiểm tra xem tệp đính kèm có xuất hiện trong composer hay không.
+4. Giải thích điều mà agent nên làm với nó, sau đó gửi tin nhắn.
+
+Đối với một hình ảnh, mô tả hành vi mong đợi cũng như điều gì đang sai. Cung cấp viên và mô hình được chọn xác định các loại tệp đính kèm mà chúng có thể sử dụng.
+
+<Frame caption="Sử dụng nút + bên cạnh hộp tin nhắn để thêm một tệp đính kèm.">
+  <img
+    src="/images/docs/chat-composer.png"
+    alt="Một nút thêm phụ thuộc ở bên trái hộp tin nhắn cuộc trò chuyện."
+    width={600}
+    height={108}
+    loading="lazy"
+  />
+</Frame>
+
+## Sử dụng kỹ năng để thực hiện các chỉ dẫn lặp lại
+
+Nhập **$** vào composer để tìm một [kỹ năng agent](/docs/vi/skills) cho nhà cung cấp và dự án đã chọn. Chọn kỹ năng đó, sau đó mô tả nhiệm vụ. Các kỹ năng có thể cung cấp các quy trình hoặc quy ước dự án cùng với các tham chiếu tệp và file đính kèm trong tin nhắn của bạn.
+
+Để gửi văn bản plain text bạn muốn lặp lại, hãy sử dụng [các mẫu có thể tái sử dụng](/docs/vi/saved-prompts).
+
+## Xem và sao chép một hình ảnh
+
+Nhấn vào hình ảnh trong cuộc trò chuyện để mở bản xem trước lớn hơn. Di chuột đến hình ảnh để hiển thị **Sao chép hình ảnh** ở góc trên bên phải, sau đó nhấn vào nó để sao chép hình ảnh vào bộ nhớ tạm.
+
+Để chụp màn hình Dream để báo cáo hoặc cuộc trò chuyện khác, hãy sử dụng phím tắt chụp màn hình cửa sổ [window screenshot shortcut](/docs/vi/workspace#lấy-cửa-sổ-dream).
+
+## Xóa bối cảnh trước khi gửi
+
+Sử dụng nút loại bỏ của một tệp đính kèm để loại bỏ nó khỏi composer. Với tham chiếu dự án trong dòng, xóa phần nhắc đến trong tin nhắn; tham chiếu này sẽ bị loại bỏ cùng với nó. Kiểm tra văn bản còn lại để đảm bảo yêu cầu vẫn có ý nghĩa.
+
+Nếu **@** không tìm thấy một đường dẫn, hãy kiểm tra dự án đang hoạt động và tìm tệp trong [Tệp](/docs/vi/files). Sử dụng đường dẫn hiện tại nếu nó đã được di chuyển hoặc đổi tên.
+
+## Cung cấp thêm bối cảnh cho cuộc trò chuyện này
+
+Các cuộc trò chuyện riêng biệt không tự động chia sẻ thông điệp của chúng. Khi bắt đầu một cuộc thảo luận đánh giá bên cạnh một cuộc trò chuyện triển khai, hãy xác định những gì đã thay đổi, những tệp nào quan trọng, và những gì nhà kiểm tra nên kiểm tra.
+
+Sử dụng [phân nhánh](/docs/vi/branching-chats) để mang các tin nhắn trước vào cuộc trò chuyện khác, hoặc [Stash](/docs/vi/stash) để lưu một prompt với tham chiếu dự án để sau này.

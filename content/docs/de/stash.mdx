@@ -1,0 +1,64 @@
+---
+title: "Prompts mit Stash speichern"
+description: "Vorbereiten von Aufgaben für später, bearbeiten von gespeicherten Prompts und ihre Einreichung in neue Konversationen."
+---
+
+Stash speichert Prompts, die du später im aktuellen Projekt ausführen möchtest. Jedes gespeicherte Element enthält seinen Text, Referenzen zu Projekten, Modell, Aufwand, Geschwindigkeit und Berechtigungen.
+
+Verwenden Sie es, um eine Folgeaufgabe aufzunehmen, während ein anderer Chat beschäftigt ist. Zum Beispiel speichern Sie „Überprüfen Sie die Fehlerzustände im Einstellungsformular“, während die Implementierung abgeschlossen wird.
+
+<Frame caption="Gespeicherte Aufgaben bleiben im Projekt-Stash, bis Sie sie ausführen oder entfernen.">
+  <img
+    src="/images/docs/stash-prompts.png"
+    alt="Panel zum Speichern mit drei gespeicherten Aufgaben, jeder mit seinen eigenen Modellkontrollen und dem Absenden-Button."
+    width={950}
+    height={389}
+    loading="lazy"
+  />
+</Frame>
+
+## Eine Aufgabe für später speichern
+
+1. Wählen Sie das Projekt aus, zu dem die Aufgabe gehört.
+2. Klicken Sie auf **Stash**, das Eingabefeld-Icon unten in der rechten Werkzeugleiste.
+3. Schreibe die Aufgabe im neuen-Prompt-Composer unten im Panel.
+4. Projektverweise mit **@** hinzufügen und das Modell sowie die Berechtigungen auswählen.
+5. Geben Sie den neuen Prompt ein, um ihn der gespeicherten Liste hinzuzufügen.
+
+Das Absenden aus diesem unteren Composer speichert die Aufgabe; es startet keine Agent-Antwort. Ein gespeichertes Element erscheint darüber im Stash-Fenster. Projekte wechseln, um das getrennte Stash des jeweiligen Projekts anzuzeigen.
+
+<Frame caption="Der untere Komponist fügt eine gespeicherte Aufgabe hinzu. Ein gespeichertes Element oberhalb hinzufügen, um eine Chat-Sitzung zu starten.">
+  <img
+    src="/images/docs/stash-composer.png"
+    alt="Das leere Komponist-Editor-Feld unten im Stash-Bereich."
+    width={716}
+    height={115}
+    loading="lazy"
+  />
+</Frame>
+
+## Ein gespeichertes Prompt bearbeiten
+
+Bearbeite den Text direkt im gespeicherten Element und passe die Kontrollen darunter an. Überprüfe das Modell und die Berechtigungen erneut, bevor du es ausführt, insbesondere wenn du dein Standardmodell seit der Speicherung des Auftrags geändert hast. Gespeichelte Elemente behalten ihre eigenen Auswahlvorlagen.
+
+Projektverweise verweisen auf Pfade. Sie speichern keine Snapshot der referenzierten Dateien. Der Agent arbeitet mit dem Projekt wie es ist, wenn Sie die Aufgabe ausführen.
+
+<Note>
+  Verwenden Sie Projektverweise, um den Kontext zu speichern, den Sie in Stash behalten möchten. Dateianhänge, die über den Anhang-Selector ausgewählt wurden, werden nicht in den gespeicherten Elementen aufbewahrt; fügen Sie diese Dateien in einem normalen Chat hinzu.
+</Note>
+
+## Eine gespeicherte Aufgabe ausführen
+
+1. Das gespeicherte Element suchen, das ausgeführt werden soll.
+2. Überprüfen Sie seinen Text, seine Referenzen, das Modell und seine Berechtigungen.
+3. Klicken Sie auf die Absendekontrolle des Elements.
+
+Dream erstellt einen neuen Chat mit den gespeicherten Einstellungen und sendet die Anfrage. Wenn Multi-Chat aktiviert ist, öffnet sich das Gespräch neben den aktuellen Chats. Andernfalls wird es der sichtbare Chat.
+
+Das Element wird aus Stash entfernt, wenn es an das neue Chat-Verfahren übergeben wird. Wenn die Antwort fehlschlägt, prüfen Sie das neue Gespräch auf den Fehler anstelle davon, dass das Element in Stash bleibt.
+
+## Eine gespeicherte Aufgabe entfernen
+
+Verwenden Sie **Gespeicherten Chat löschen** auf dem gespeicherten Element, um es ohne eine neue Konversation zu starten zu entfernen. Dies entfernt den gespeicherten Prompt, nicht die Dateien im Projekt.
+
+Stash speichert zukünftige Aufgaben für ein Projekt. Für Anweisungen, die Sie über mehrere Projekte hinweg verwenden möchten, verwenden Sie [wiederholbare Prompts](/docs/de/saved-prompts). Um ein abgeschlossenes Gespräch aus der aktiven Geschichte zu entfernen, verwenden Sie [Archivierte Chats](/docs/de/archived-chats). Um Code-Änderungen zu isolieren, verwenden Sie [Git-Worktrees](/docs/de/worktrees).

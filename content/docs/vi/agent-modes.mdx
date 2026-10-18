@@ -1,0 +1,42 @@
+---
+title: "Quyền của tác nhân"
+description: "Chọn Ask, Chấp nhận chỉnh sửa hoặc Toàn quyền truy cập và trả lời các yêu cầu của agent."
+---
+
+Mỗi cuộc trò chuyện đều có một kiểm soát **Quyền** nằm dưới hộp tin nhắn của nó. Các cuộc trò chuyện mới thừa kế **Cài đặt → Chung → Mô hình → Quyền mặc định**, bắt đầu với **Toàn quyền truy cập**. Việc thay đổi quyền mặc định không ảnh hưởng đến các cuộc trò chuyện đã tồn tại.
+
+## Chọn quyền hạn
+
+1. Mở nút có biểu tượng chiếc khiên bên dưới ô nhập tin nhắn. Chú giải của nút là **Quyền**.
+2. Chọn **Hỏi**, **Chấp nhận chỉnh sửa**, hoặc **Toàn quyền truy cập**.
+3. Kiểm tra nội dung tác vụ rồi gửi.
+
+| Quyền hạn | Hành vi mong muốn |
+| --- | --- |
+| Hỏi | Yêu cầu phê duyệt các hành động cần quyền trong cấu hình của nhà cung cấp |
+| Chấp nhận chỉnh sửa | Cho phép sửa file tự động trong khi vẫn giữ việc phê duyệt cho các hành động khác |
+| Toàn quyền truy cập | Cho agent quyền truy cập rộng hơn để hành động mà không cần yêu cầu phê duyệt |
+
+Nhà cung cấp được chọn quyết định cách các quyền hoạt động cụ thể. **Hỏi** không có nghĩa là mọi thao tác đọc hoặc gọi công cụ đều yêu cầu phê duyệt, và **Chấp nhận chỉnh sửa** không phê duyệt mọi lệnh.
+
+<Note>
+  Dream không còn các nút điều khiển Build và Plan riêng biệt. Để lập kế hoạch trước, hãy yêu cầu tác nhân điều tra và đề xuất cách tiếp cận trước khi thực hiện thay đổi. Chỉ dẫn đó không áp đặt quyền truy cập chỉ đọc đối với hệ thống tệp; bạn cũng cần chọn quyền phù hợp với nhiệm vụ.
+</Note>
+
+<Frame caption="Biểu tượng chiếc khiên và nhãn Toàn quyền truy cập cho biết vị trí thiết lập quyền của cuộc trò chuyện này.">
+  <img
+    src="/images/docs/chat-composer.png"
+    alt="Giao diện soạn thảo cuộc trò chuyện hiển thị Toàn quyền truy cập bên cạnh các nút điều khiển mô hình, nỗ lực và tốc độ."
+    width={600}
+    height={108}
+    loading="lazy"
+  />
+</Frame>
+
+## Trả lời câu hỏi và phê duyệt
+
+Một agent có thể yêu cầu bạn làm rõ yêu cầu, chọn một lựa chọn hoặc phê duyệt một hành động. Đọc yêu cầu trong cuộc trò chuyện và phản hồi bằng các công cụ mà nó cung cấp. Một tab dự án có thể chỉ ra rằng một agent đang chờ câu trả lời của bạn. Mở tab dự án đó và quay lại cuộc trò chuyện để đọc yêu cầu.
+
+Nếu yêu cầu đòi hỏi thay đổi nhiệm vụ, hãy đưa chỉ dẫn đã sửa cho tác nhân trong cuộc trò chuyện đó. Dùng nút dừng để ngắt phản hồi khi cần. Việc dừng không hoàn tác các chỉnh sửa hoặc lệnh đã hoàn tất; hãy kiểm tra [Thay đổi](/docs/vi/git-workflows) sau đó, hoặc dùng [điểm kiểm tra](/docs/vi/checkpoints) của phản hồi để khôi phục các tệp mà nó đã thay đổi.
+
+Đối với các nhiệm vụ song song cần tệp riêng biệt, hãy sử dụng [worktrees](/docs/vi/worktrees). Cấu hình quyền không cho hai cuộc trò chuyện trong cùng một thư mục có kiểm tra độc lập.

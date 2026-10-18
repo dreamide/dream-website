@@ -1,0 +1,43 @@
+---
+title: "Ramificar conversaciones"
+description: "Continuar desde un mensaje anterior en el mismo espacio de trabajo o en un árbol de trabajo aislado de Git."
+---
+
+Brancha un chat cuando quieras explorar otro enfoque utilizando la conversación hasta el momento. Dream copia los mensajes a través del mensaje seleccionado a un nuevo chat y mantiene la conversación original. Los mensajes a partir de ese punto no se incluyen en el nuevo chat.
+
+## Continuar en el mismo espacio de trabajo
+
+1. Abre la conversación de origen y espera hasta que su respuesta termine.
+2. Busca el mensaje de which quieres derivar.
+3. Use su acción **Continuar desde este mensaje…**.
+4. Selecciona **Este espacio de trabajo** bajo **Continuar en un chat nuevo**.
+5. Envía un seguimiento en la nueva conversación describiendo la alternativa que deseas probar.
+
+El nuevo chat comienza con el modelo y los ajustes de permisos del chat original. En multi-chat, se abre al lado del chat original; en un diseño de single-chat, se convierte en la conversación visible.
+
+Por ejemplo, crear una rama después de que el agente explique un bug y pedir que el nuevo chat compare un parche más pequeño. Ambas conversaciones pueden usar los archivos actuales del proyecto.
+
+<Note>
+  Las ramas hacen una copia del historial de la conversación. No restaura el sistema de archivos al estado que tenía cuando se envió el mensaje seleccionado. Ambas conversaciones en este espacio de trabajo comparten los mismos archivos.
+</Note>
+
+## Continuar en un nuevo árbol de trabajo
+
+Para un checkout independiente, use **Continuar desde este mensaje… → Nuevo árbol de trabajo**. Opción que requiere un repositorio Git. Dream crea un proyecto de árbol de trabajo y un nuevo chat que contiene la historia copiada.
+
+Este atajo utiliza la rama actual como base y genera un nombre de rama a partir del título de la conversación. No te pide que elijas un ref base personalizado. Para elegir tu ref base y nombre de rama tú mismo, [crea un árbol de trabajo desde el interruptor de ramas](/docs/es/worktrees#crear-un-árbol-de-trabajo).
+
+<Warning>
+  Un nuevo árbol de trabajo comienza desde la historia Git comprometida. No incluye cambios no comprometidos ni recrea el estado exacto de los archivos en el mensaje seleccionado. Guarda y compromete cualquier cambio que necesites en el nuevo checkout antes de crear un árbol de trabajo.
+</Warning>
+
+## Elige el tipo de rama adecuado
+
+| Usted quiere... | Usar |
+| --- | --- |
+| Pregunta una pregunta diferente sobre el mismo código actual | Este espacio de trabajo |
+| Comparar el razonamiento mientras se mantiene la discusión anterior | Este espacio de trabajo |
+| Permita que otro agente edite un checkout independiente | Nuevo árbol de trabajo |
+| Comience una tarea sin copiar ningún mensaje | Nuevo chat |
+
+El branching no está disponible mientras se procesa una respuesta. Si la opción de árbol de trabajo no está disponible, verifique que el proyecto esté dentro de un repositorio Git. Consulte [Árboles de trabajo](/docs/es/worktrees) para abrir y eliminar el proyecto resultante.

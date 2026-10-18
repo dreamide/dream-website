@@ -1,0 +1,42 @@
+---
+title: "Autorizzazioni degli agenti"
+description: "Scegli Chiedi, Accetta modifiche o Accesso completo e rispondi alle richieste dell'agente."
+---
+
+Ogni chat ha un controllo **Permessi** sotto il suo campo messaggio. Le nuove chat ereditano **Impostazioni → Generale → Modelli → Permessi predefiniti**, che inizia con **Accesso completo**. Cambiare i permessi predefiniti non modifica le chat esistenti.
+
+## Scegli i permessi
+
+1. Apri il controllo con l’icona a forma di scudo sotto la casella del messaggio. Il suggerimento indica **Permessi**.
+2. Seleziona **Chiedi**, **Accetta modifiche** o **Accesso completo**.
+3. Controlla l’attività e inviala.
+
+| Permesso | Comportamento previsto |
+| --- | --- |
+| Chiedi | Richiedi l'approvazione per le azioni che richiedono autorizzazione secondo la configurazione del provider |
+| Accetta modifiche | Permette modifiche ai file in modo automatico mentre mantiene il processo di approvazione per altre azioni |
+| Accesso completo | Dai all'agente accesso più ampio per agire senza promemoria di approvazione |
+
+Il provider selezionato determina il comportamento esatto delle autorizzazioni. **Chiedi** non significa che ogni lettura o chiamata a uno strumento richieda approvazione, e **Accetta modifiche** non autorizza tutti i comandi.
+
+<Note>
+  Dream non dispone più di controlli Build e Plan separati. Per pianificare prima di agire, chiedi all’agente di esaminare il problema e proporre un approccio prima di apportare modifiche. Questa istruzione non impone un accesso in sola lettura al file system; scegli anche autorizzazioni adatte all’attività.
+</Note>
+
+<Frame caption="Lo scudo e l’etichetta Accesso completo identificano il controllo delle autorizzazioni di questa chat.">
+  <img
+    src="/images/docs/chat-composer.png"
+    alt="Il compositore del chat che mostra Accesso completo accanto ai controlli modello, sforzo e velocità."
+    width={600}
+    height={108}
+    loading="lazy"
+  />
+</Frame>
+
+## Rispondere a domande e approvazioni
+
+Un agente può chiederti di chiarire un requisito, scegliere un'opzione o approvare un'azione. Leggi la richiesta nel colloquio e rispondi utilizzando i controlli forniti. Un'opzione progetto può indicare che un agente sta aspettando la tua risposta. Apri quel progetto e torna al colloquio per leggere la richiesta.
+
+Se la richiesta comporta un cambiamento dell’attività, fornisci all’agente le istruzioni aggiornate nella stessa chat. Usa il controllo di arresto per interrompere una risposta quando necessario. L’arresto non annulla modifiche o comandi già completati; controlla poi le [Modifiche](/docs/it/git-workflows) oppure usa il [checkpoint](/docs/it/checkpoints) della risposta per ripristinare i file che ha modificato.
+
+Per compiti paralleli che richiedono file separati, usa [worktrees](/docs/it/worktrees). Impostazioni di permessi non danno a due chat nello stesso cartella check-out indipendenti.

@@ -1,0 +1,64 @@
+---
+title: "Guardar prompts con Stash"
+description: "Preparar tareas para más adelante, editar prompts guardados y enviarlos a nuevas conversaciones."
+---
+
+Stash guarda los prompts que deseas ejecutar más adelante en el proyecto actual. Cada elemento guardado incluye su texto, referencias al proyecto, modelo, esfuerzo, velocidad y permisos.
+
+Úsalo para capturar una tarea de seguimiento mientras otro chat está ocupado. Por ejemplo, guarda "Revisar los estados de error en el formulario de configuración" mientras se finaliza la implementación.
+
+<Frame caption="Las tareas guardadas permanecen en el Stash del proyecto hasta que las ejecute o las eliminen.">
+  <img
+    src="/images/docs/stash-prompts.png"
+    alt="Panel de almacenamiento que contiene tres tareas guardadas, cada una con sus propios controles de modelo y botón de envío."
+    width={950}
+    height={389}
+    loading="lazy"
+  />
+</Frame>
+
+## Guardar una tarea para más tarde
+
+1. Selecciona el proyecto al que pertenece la tarea.
+2. Haga clic en **Stash**, el icono de buzón en la parte inferior de la barra lateral derecha.
+3. Escribe la tarea en el compositor nuevo-prompt en la parte inferior del panel.
+4. Agrega referencias de proyecto con **@** y elige el modelo y los permisos.
+5. Envíe el nuevo prompt para añadirlo a la lista guardada.
+
+Enviar desde este compositor de abajo guarda la tarea; no inicia una respuesta de agente. Un elemento guardado aparece encima de él en el panel Stash. Cambiar de proyecto para ver el Stash separado de ese proyecto.
+
+<Frame caption="El compositor inferior añade una tarea guardada. Envía un elemento guardado encima de él para comenzar una conversación.">
+  <img
+    src="/images/docs/stash-composer.png"
+    alt="El compositor de prompt en blanco al fondo del panel Stash."
+    width={716}
+    height={115}
+    loading="lazy"
+  />
+</Frame>
+
+## Editar un prompt guardado
+
+Edite el texto directamente en su elemento guardado y ajuste los controles que está debajo de él. Revise nuevamente el modelo y los permisos antes de ejecutarlo, especialmente si ha cambiado sus modelos predeterminados desde que se guardó la tarea. Los elementos guardados mantienen sus propias selecciones.
+
+Las referencias de proyecto apuntan a rutas. No conservan un snapshot de los archivos referenciados. El agente trabajará con el proyecto tal como está cuando se ejecute la tarea.
+
+<Note>
+  Use referencias de proyecto para el contexto que deseas mantener en Stash. Los archivos adjuntos seleccionados a través del selector de adjuntos no se conservan en los elementos guardados; adjunta esos archivos en un chat normal.
+</Note>
+
+## Ejecutar una tarea guardada
+
+1. Busca el elemento guardado que quieras ejecutar.
+2. Revise su texto, referencias, modelo y permisos.
+3. Haga clic en el control de envío de ese elemento.
+
+Dream crea un nuevo chat con las configuraciones guardadas y envía el prompt. Si está habilitado el multi-chat, la conversación se abre al lado de los chats actuales. De lo contrario, se convierte en el chat visible.
+
+El elemento se elimina de Stash cuando se entrega al nuevo chat. Si la respuesta falla, revise la nueva conversación para identificar el error en lugar de esperar que el elemento permanezca en Stash.
+
+## Eliminar una tarea guardada
+
+Use **Eliminar chat del stash** en el elemento guardado para quitarlo sin iniciar una conversación. Esto elimina el prompt guardado, no los archivos del proyecto.
+
+Stash almacena tareas futuras para un proyecto. Para instrucciones que deseas usar continuamente entre proyectos, utiliza [prompts reutilizables](/docs/es/saved-prompts). Para mantener una conversación completada fuera del historial activo, utiliza [Chats archivados](/docs/es/archived-chats). Para aislar cambios de código, utiliza [árbol de trabajo de Git](/docs/es/worktrees).

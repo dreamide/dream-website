@@ -1,0 +1,64 @@
+---
+title: "Fornire contesto"
+description: "Riferimenti ai file e alle cartelle del progetto, allega file e assegna un compito chiaro all'agente."
+---
+
+Dai all'agente un risultato, il contesto rilevante e qualsiasi vincolo prima che inizi il lavoro. Una riferimento a un file gli aiuta a localizzare il codice; un'attacco può fornire materiale aggiuntivo come una schermata.
+
+## Riferimento a un file o una cartella di progetto
+
+1. Nella casella del messaggio di un chat, digita **@** seguito da una parte del percorso di un file o cartella.
+2. Scegli un risultato dalla lista. Usa **Flecha Su** e **Flecha Giù** per spostarti tra i risultati, poi **Invio** o **Tab** per selezionarne uno.
+3. Aggiungi le tue istruzioni intorno al riferimento inserito.
+4. Invia il messaggio.
+
+Per esempio, fare riferimento al componente impostazioni e chiedere:
+
+> Spiega come questo form carica e salva le preferenze. Cerca perché un aggiornamento perde il valore selezionato.
+
+Seleziona un file quando sai dove si trova la task, o una cartella quando l'agente deve esaminare diversi file correlati. Elenco dei risultati mostra i percorsi genitori per aiutare a distinguere i file con lo stesso nome. Premi **Escape** per chiudere l'elenco.
+
+I riferimenti identificano posizioni all'interno del progetto corrente. Non congelano il contenuto dei file né allegano una copia intera di una directory al colloquio.
+
+## Aggiungi un file
+
+1. Fai clic sul controllo **Allega file** accanto al campo messaggio.
+2. Scegli l'azione di allegato e seleziona un file dal tuo computer.
+3. Verifica che l'attachment appare nel composer.
+4. Spiega cosa deve fare l'agente con esso, poi invia il messaggio.
+
+Per una schermata, descrivi il comportamento atteso nonché ciò che è errato. Il provider e il modello selezionati determinano quali tipi di allegati possono essere utilizzati.
+
+<Frame caption="Usare il controllo + accanto al campo messaggio per aggiungere un allegato.">
+  <img
+    src="/images/docs/chat-composer.png"
+    alt="Un controllo di allegato in più a sinistra del campo della chat."
+    width={600}
+    height={108}
+    loading="lazy"
+  />
+</Frame>
+
+## Usa una competenza per istruzioni ripetitive
+
+Digitare **$** nel composer per trovare una [competenza dell'agente](/docs/it/skills) per il provider e il progetto selezionati. Sceglierla, poi descrivere il compito. Le competenze possono fornire procedure o convenzioni di progetto insieme ai riferimenti ai file e agli allegati presenti nel messaggio.
+
+Per testi semplici che vuoi inviare ripetutamente, usa [prompt riutilizzabili](/docs/it/saved-prompts).
+
+## Visualizza e copia un'immagine
+
+Clicca un'immagine nel dialogo per aprire la sua anteprima più grande. Sposta il mouse sull'immagine per visualizzare **Copia immagine** nell'angolo superiore destro, quindi cliccaci per copiare l'immagine nel clipboard.
+
+Per catturare Dream stesso per un rapporto o un altro chat, usa il [shortcut per schermata finestra](/docs/it/workspace#cattura-la-finestra-dream).
+
+## Elimina il contesto prima di inviarlo
+
+Usare il controllo rimuovi di un'attacco per eliminarlo dal composer. Per un riferimento progetto inline, eliminare la sua menzione nel messaggio; il riferimento viene rimosso insieme. Verificare il testo rimanente per assicurarsi che la richiesta sia ancora coerente.
+
+Se **@** non trova un percorso, verifica il progetto attivo e cerca il file in [File](/docs/it/files). Usa il suo percorso attuale se è stato spostato o rinominato.
+
+## Dai un altro chat abbastanza contesto
+
+I chat separati non condividono automaticamente i loro messaggi. Quando si inizia una revisione accanto a un chat di implementazione, identificare cosa è cambiato, quali file sono rilevanti e cosa dovrebbe verificare il revisore.
+
+Usa [branching](/docs/it/branching-chats) per portare messaggi precedenti in un'altra conversazione, o [Stash](/docs/it/stash) per salvare un prompt con riferimenti proiettuali per un'utilizzo successivo.

@@ -7,6 +7,16 @@ Dream brings your projects, AI coding agents, files, terminals, browser previews
 into one desktop workspace. Connect a supported agent CLI, open a folder, and work with one or more
 chats without switching tools.
 
+<Frame caption="Keep separate conversations together in one project workspace.">
+  <img
+    src="/images/screen-multiple-chats.png"
+    alt="Three conversations open side by side under the active project tab in Dream."
+    width={1920}
+    height={1080}
+    loading="lazy"
+  />
+</Frame>
+
 <CardGroup cols={2}>
   <Card title="Install Dream" icon="download" href="/docs/installation">
     Choose the package for macOS, Windows, or Linux.
@@ -25,10 +35,20 @@ chats without switching tools.
 ## What Dream includes
 
 - A multi-project workspace with persistent project tabs
+- [SSH remote workspaces](/docs/remote-hosts) with remote agents, files, Git, and terminals
 - Multiple side-by-side chats and chat branching
+- Reusable prompts across projects and provider-aware agent skills
+- Per-reply checkpoints for reviewing and restoring the files an agent changed
 - Support for Codex CLI, Claude Code CLI, OpenCode CLI, Cursor Agent CLI, and Grok Build CLI
 - A file explorer, file search and editing, integrated terminals, and browser previews
-- Git status, branch, diff, commit, push, pull request, and worktree workflows
+- Git status, branch, diff, commit, push, pull request, and worktree workflows, including merging
+  a finished worktree back into its base branch
+- Line-level diff feedback and browser element selection that send targeted messages to a chat
+- A unified Git panel with Changes, a colored History graph, and Pull request review
+- [Chat search and notifications](/docs/chats) across local projects and connected SSH hosts
+- [Find in files](/docs/files#find-in-files) with regular expressions and file filters
+- [Customizable keyboard shortcuts](/docs/settings#keyboard-shortcuts)
+- Configurable MCP servers and built-in agent tools for browser interaction
 
 <Note>
   Dream runs coding agents through their installed CLIs. You need at least one supported CLI before
@@ -40,21 +60,28 @@ chats without switching tools.
 | I want to… | Read |
 | --- | --- |
 | Keep implementation and review conversations open together | [Using multiple chats](/docs/multiple-chats) |
-| Find, archive, or recover an old conversation | [Working with chats](/docs/chats) and [Archived Chats](/docs/archived-chats) |
+| Find, archive, or recover an old conversation | [Working with chats](/docs/chats) and [Archived chats](/docs/archived-chats) |
 | Choose a starting model and reasoning effort | [Models and defaults](/docs/models) |
 | Try another approach from an earlier message | [Branching conversations](/docs/branching-chats) |
+| Follow an agent's progress or respond to a question | [Working with chats](/docs/chats#follow-work-in-progress) |
+| Check what a reply changed and undo part of it | [Reviewing and restoring changes](/docs/checkpoints) |
+| Comment on specific diff lines or a page element | [Sending feedback to a chat](/docs/feedback) |
 | Prepare a task to run later | [Saving prompts with Stash](/docs/stash) |
+| Reuse instructions across projects | [Reusable prompts](/docs/saved-prompts) |
+| Browse, invoke, or create an agent skill | [Agent skills](/docs/skills) |
+| Connect additional tools to an agent | [MCP servers](/docs/mcp-servers) |
 | Give an agent files or a screenshot | [Providing context](/docs/providing-context) |
-| Work in an independent checkout | [Git worktrees](/docs/worktrees) |
+| Work in an independent checkout, then merge it back | [Git worktrees](/docs/worktrees) |
 | Review and publish code changes | [Git workflows](/docs/git-workflows) |
+| Read review comments and merge a GitHub PR | [Reviewing pull requests](/docs/pull-requests) |
 
 ## Understand the workspace
 
-A **project** is a local folder with its own chats and tools. A **chat** is a conversation with its
-own model and settings. Multiple chats in one project share its files; a **worktree** gives a task a
-separate Git checkout.
+A **project** is a folder on your computer or an SSH host with its own chats and tools. A **chat** is
+a conversation with its own model and settings. Multiple chats in one project share its files; a
+**worktree** gives a task a separate Git checkout.
 
-Use [Agent modes and permissions](/docs/agent-modes) to choose how an agent works, and
+Use [Agent permissions](/docs/agent-modes) to choose how an agent works, and
 [Context and usage](/docs/context-and-usage) to understand the information below the composer.
 The [settings reference](/docs/settings) lists app-wide preferences. If something is missing or
 fails to run, start with [Troubleshooting](/docs/troubleshooting).

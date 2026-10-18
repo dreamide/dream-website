@@ -1,0 +1,57 @@
+---
+title: "Sử dụng nhiều cuộc trò chuyện"
+description: "Làm việc với các cuộc trò chuyện song song, sắp xếp các cột và hiểu các tệp dự án chung của chúng."
+---
+
+Multi-chat hiển thị nhiều cuộc trò chuyện bên cạnh nhau trong cùng một dự án. Mỗi cuộc trò chuyện giữ riêng mình các tin nhắn và lựa chọn mô hình, vì vậy bạn có thể so sánh các phương pháp hoặc giữ một bản xem xét hiện tại trong khi làm việc với việc triển khai.
+
+<Frame caption="Mỗi cột giữ riêng cuộc trò chuyện và các thiết đặt mô hình của mình trong khi chia sẻ các tệp của dự án.">
+  <img
+    src="/images/screen-multiple-chats.png"
+    alt="Ba cuộc trò chuyện bên cạnh nhau trong Dream, mỗi cuộc trò chuyện có mô hình và quyền hạn riêng dưới hộp tin nhắn."
+    width={1920}
+    height={1080}
+    loading="lazy"
+  />
+</Frame>
+
+## Mở các cuộc trò chuyện bên cạnh nhau
+
+1. Mở một dự án và cuộc trò chuyện mà bạn muốn giữ hiển thị.
+2. Nhấn vào **Bật đa chat** trong thanh công cụ bên trái. Di chuột qua các biểu tượng thanh công cụ để xem tên của chúng.
+3. Nhấn **Cuộc trò chuyện mới** để thêm một cuộc trò chuyện bên cạnh cuộc trò chuyện đang mở.
+4. Chọn một mô hình trong composer của cuộc trò chuyện mới và gửi tin nhắn.
+
+Để khôi phục một cuộc trò chuyện đã tồn tại, mở **Lịch sử trò chuyện** và chọn nó. Việc chọn một cuộc trò chuyện đã có trong bố cục sẽ tập trung vào cuộc trò chuyện đó thay vì tạo ra bản sao.
+
+Multi-chat là một cài đặt dự án. Bạn có thể giữ nhiều cuộc trò chuyện được hiển thị trong một dự án và sử dụng một cuộc trò chuyện duy nhất trong dự án khác.
+
+## Sắp xếp không gian làm việc
+
+- **Thay đổi kích thước:** Kéo thanh chia giữa các cột chat để điều chỉnh chiều rộng của chúng.
+- **Sắp xếp lại:** Kéo một cuộc trò chuyện bằng cách kéo vùng tiêu đề của nó để đưa nó bên cạnh một cuộc trò chuyện khác.
+- **Đóng một cột:** Nhấp vào **×** trong tiêu đề của nó. Cuộc trò chuyện vẫn được lưu trong Lịch sử chat.
+- **Quay lại một cuộc trò chuyện:** Chọn cuộc trò chuyện mà bạn muốn giữ trong tầm nhìn, sau đó nhấp vào **Tắt đa chat** trong thanh công cụ bên trái.
+
+Sự kiểm soát gần như được cung cấp khi có một cuộc trò chuyện khác đang mở để giữ trong tầm nhìn. Việc tắt chế độ nhiều cuộc trò chuyện không lưu lại các cuộc trò chuyện khác; hãy mở lại chúng từ lịch sử khi cần thiết.
+
+## Ví dụ: triển khai, sau đó kiểm tra lại
+
+1. Bắt đầu một cuộc trò chuyện tên “Thực hiện lưu trữ cài đặt” và yêu cầu nó sửa form cài đặt.
+2. Bật đa chat và tạo một cuộc trò chuyện thứ hai tên là “Review settings persistence.”
+3. Chọn một mô hình khác được bật trong cuộc trò chuyện đánh giá nếu bạn muốn nhận đánh giá từ mô hình thứ hai.
+4. Sau khi đã hoàn thành việc triển khai, hãy yêu cầu cuộc thảo luận kiểm tra các thay đổi hiện tại và báo cáo các lỗi mà không cần sửa đổi các tệp.
+5. Giữ bình luận luôn hiển thị khi yêu cầu cuộc trò chuyện về việc thực hiện khắc phục các phát hiện của nó.
+6. Đóng cột đánh giá khi cần thêm không gian. Mở lại từ lịch sử để xem lại kết quả.
+
+Chat thứ hai không tự động nhận các tin nhắn từ chat đầu tiên. Hãy cung cấp bối cảnh nhiệm vụ cho nó và [tham chiếu đến các tệp liên quan](/docs/vi/providing-context), hoặc sử dụng [phân nhánh cuộc trò chuyện](/docs/vi/branching-chats) khi bạn muốn sao chép các tin nhắn trước đó.
+
+## Hiểu được điều gì được chia sẻ
+
+Tất cả các cuộc trò chuyện trong cùng một dự án đều hoạt động với cùng một thư mục dự án. Các thay đổi tệp và thay đổi nhánh Git được hiển thị cho các cuộc trò chuyện khác, dù lịch sử cuộc trò chuyện của chúng là riêng biệt.
+
+<Warning>
+  Hai agent đang sửa cùng một tập tin có thể làm xáo trộn công việc của nhau. Sử dụng các [worktree Git](/docs/vi/worktrees) riêng biệt khi các nhiệm vụ cần các checkouts độc lập. Chỉ bật multi-chat là không đủ để tách biệt các thay đổi tập tin.
+</Warning>
+
+Đối với các cuộc trò chuyện đã hoàn thành, hãy sử dụng [tập hợp](/docs/vi/archived-chats) để giữ lịch sử một cách hợp lý.

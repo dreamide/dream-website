@@ -1,0 +1,58 @@
+---
+title: "Kiểm tra và khôi phục thay đổi"
+description: "Kiểm tra các tệp mà phản hồi của agent đã thay đổi và khôi phục các tệp đã chọn từ một điểm kiểm tra."
+---
+
+Khi **Checkpoint thay đổi** được bật, Dream sẽ lưu lại các tệp dự án của bạn trước mỗi lần phản hồi của agent và lại khi phản hồi kết thúc. Sử dụng các điểm kiểm tra này để xem xét chính xác các tệp nào đã được thay đổi bởi phản hồi và để khôi phục các tệp đã chọn nếu bạn muốn thay đổi cách tiếp cận.
+
+## Cách thức hoạt động của các điểm kiểm tra (checkpoints)
+
+- Một checkpoint ghi lại cây làm việc của dự án, bao gồm các tệp không được theo dõi, trong một kho lưu trữ riêng tư bên trong dữ liệu ứng dụng của Dream. Nó không tạo ra các commit, stash hay nhánh trong kho lưu trữ của bạn, và nó hoạt động trong các thư mục không phải là kho lưu trữ Git.
+- Các đường dẫn bị bỏ qua bởi tệp `.gitignore` của dự án và các thư mục xây dựng phổ biến như `node_modules`, `dist`, `build` và `coverage` sẽ không bao giờ được ghi lại.
+- Dream tạo một ảnh chụp trạng thái **trước** cho mỗi tin nhắn bạn gửi và một ảnh chụp trạng thái **sau** khi phản hồi kết thúc hoặc khi bạn dừng phản hồi.
+- Các điểm kiểm tra yêu cầu phần mềm `git` phải có sẵn để Dream sử dụng. Nếu việc bắt giữ thất bại hoặc mất quá lâu, phản hồi sẽ tiếp tục mà không có điểm kiểm tra và không hiển thị kiểm soát duyệt điểm kiểm tra đó.
+
+Các điểm kiểm tra được bật mặc định. Để tắt chúng, mở **Cài đặt → Chung**, tìm **Tin nhắn chat**, và tắt **Checkpoint thay đổi**.
+
+<Frame caption="Bật Chuyển đổi điểm kiểm tra trong Cài đặt → Chung để ghi lại các tệp xung quanh mỗi phản hồi.">
+  <img
+    src="/images/docs/checkpoint-setting.png"
+    alt="Thay đổi cài đặt checkpoint với nút bật/tắt được kích hoạt."
+    width={1000}
+    height={68}
+    loading="lazy"
+  />
+</Frame>
+
+## Xem lại các thay đổi của câu trả lời
+
+1. Đợi phản hồi kết thúc.
+2. Chạm vào thông điệp trợ lý và nhấp vào **Xem các tệp thay đổi trong phản hồi này**, biểu tượng đồng hồ ở phần chân thông điệp.
+3. Trong **Thay đổi trong phản hồi này**, hãy xem danh sách các tệp. Mỗi dòng hiển thị đường dẫn, trạng thái là **Đã thêm**, **Đã xóa**, **Đã sửa** hoặc **Đã đổi tên**, và số dòng tương ứng.
+4. Mở rộng một hàng để đọc sự thay đổi.
+
+Thương lượng so sánh bản sao trước và sau cho phản hồi đó chỉ; các thay đổi từ các phản hồi khác hoặc từ việc sửa đổi của bạn không được bao gồm. Nếu phản hồi bị ngắt, giao diện ghi chú rằng trạng thái sau đã được ghi lại khi bạn mở nó.
+
+Tệp đã thay đổi thêm sau khi trả lời, bất kể là từ lời trả lời sau này, lệnh terminal hay trình soạn thảo của bạn, sẽ hiển thị nhãn **Đã sửa sau đó**. Tệp nhị phân liệt kê mà không có phần so sánh.
+
+## Khôi phục tệp
+
+1. Chọn các tệp bạn muốn khôi phục. Các tệp không có sửa đổi sau này được chọn mặc định; sử dụng **Chọn tất cả** để bao gồm mọi tệp.
+2. Nhấn nút **Khôi phục**. Nút này hiển thị số lượng tệp đã được chọn.
+3. Kiểm tra các hàng được đánh dấu **Đã khôi phục**, rồi nhấp **Đóng**.
+
+Khôi phục đảo ngược các thay đổi trong các tệp được chọn trong phản hồi, đồng thời giữ lại các sửa đổi không liên quan được thực hiện sau đó trong cùng một tệp. Một tệp được phản hồi tạo ra sẽ bị xóa, một tệp bị xóa sẽ được tái tạo, và một tệp được đổi tên sẽ được di chuyển trở lại đường dẫn cũ.
+
+Nếu các chỉnh sửa sau này trùng với các thay đổi trong phản hồi, Dream sẽ để tệp đó nguyên trạng và cảnh báo bạn. Chọn **Vẫn ghi đè** để thay thế tệp bằng nội dung hoàn chỉnh trước khi phản hồi, bỏ qua các chỉnh sửa sau này.
+
+<Warning>
+  Khôi phục không thể được hủy bỏ từ hộp thoại. Sao chép bất kỳ công việc sau này bạn cần từ các tệp bị ảnh hưởng trước khi khôi phục. Việc khôi phục tệp không làm mất các tin nhắn trong cuộc trò chuyện; hãy cho agent biết bạn đã khôi phục gì trước khi yêu cầu nó tiếp tục.
+</Warning>
+
+Restore là một thao tác file, không phải là một thao tác Git. Mở [Thay đổi](/docs/vi/git-workflows) sau đó để xem xét cây làm việc, và [lưu các bản nháp của trình soạn thảo](/docs/vi/files) trước khi khôi phục các file cùng một lần.
+
+## Lưu trữ điểm kiểm tra
+
+Các điểm kiểm tra vẫn được bảo lưu trong khi trò chuyện đó vẫn tồn tại. Việc xóa vĩnh viễn một trò chuyện từ **Cài đặt → Chat đã lưu trữ** sẽ làm mất các điểm kiểm tra của nó, và việc hoàn thành hoặc xóa một [dự án worktree](/docs/vi/worktrees) sẽ làm mất các điểm kiểm tra của dự án đó. Việc lưu trữ một trò chuyện sẽ giữ lại các điểm kiểm tra đó.
+
+Để thử một cách tiếp cận khác trong khi vẫn giữ nguyên cuộc trò chuyện trước đó, kết hợp việc khôi phục với [tạo nhánh từ một tin nhắn trước đó](/docs/vi/branching-chats). Việc tạo nhánh riêng chỉ sao chép các tin nhắn và không thay đổi các tệp.

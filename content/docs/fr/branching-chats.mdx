@@ -1,0 +1,43 @@
+---
+title: "Créer des branches de conversation"
+description: "Continuer à partir d'un message antérieur dans le même espace de travail ou dans un arbre de travail Git isolé."
+---
+
+Brancher un chat lorsque vous souhaitez explorer une autre approche à partir de la conversation actuelle. Dream copie les messages à partir du message sélectionné dans un nouveau chat et conserve la conversation d'origine. Les messages à partir de ce point ne sont pas inclus dans le nouveau chat.
+
+## Continuer dans le même espace de travail
+
+1. Ouvrir la conversation source et attendre que sa réponse se termine.
+2. Rechercher le message dont vous voulez débrancher.
+3. Utilisez son action **Continuer à partir de ce message…**.
+4. Sélectionnez **Cet espace de travail** sous **Continuer dans un nouveau chat**.
+5. Envoyer un suivi dans la nouvelle conversation décrivant l'alternative que vous souhaitez essayer.
+
+Le nouveau chat commence avec le modèle et les paramètres de permission du chat source. Dans le mode multi-chat, il s'ouvre à côté du chat source ; dans un layout single-chat, il devient la conversation visible.
+
+Par exemple, créer une branche après que l'agent explique une erreur et demande à la nouvelle conversation de comparer une correction plus petite. Les deux conversations peuvent utiliser les fichiers du projet actuel.
+
+<Note>
+  Les copies de branche dupliquent l'historique de conversation. Elles ne restaurent pas le système de fichiers à l'état qu'il avait lorsque le message sélectionné a été envoyé. Les deux conversations de ce workspace partagent toujours les mêmes fichiers.
+</Note>
+
+## Continuer dans un nouvel arbre de travail
+
+Pour un checkout indépendant, utilisez **Continuer à partir de ce message… → Nouvel arbre de travail**. Cette option nécessite un dépôt Git. Dream crée un projet d'arbre de travail et un nouveau chat contenant l'historique copié.
+
+Ce raccourci utilise la branche actuelle comme base et génère un nom de branche à partir du titre du chat. Il ne vous demande pas de choisir un ref de base personnalisé. Pour choisir vous-même le ref de base et le nom de branche, [créez un arbre de travail à partir du commutateur de branche](/docs/fr/worktrees#créer-un-arbre-de-travail).
+
+<Warning>
+  Un nouvel arbre de travail part du historique Git committé. Il ne comprend pas les modifications non commitées ni ne récrée exactement l'état des fichiers au message sélectionné. Enregistrer et committer toutes les modifications nécessaires dans le nouveau checkout avant de créer un arbre de travail.
+</Warning>
+
+## Choisir le bon type de branche
+
+| Vous voulez… | Utilisez |
+| --- | --- |
+| Posez une autre question sur le même code actuel | Cet espace de travail |
+| Comparer les raisonnements tout en conservant l'discussion précédente | Cet espace de travail |
+| Laissez un autre agent éditer un checkout indépendant | Nouvel arbre de travail |
+| Commence une tâche sans copier aucun message | Nouveau chat |
+
+Le branching n'est pas disponible pendant le traitement d'une réponse. Si l'option arbre de travail n'est pas disponible, vérifiez que le projet se trouve dans un dépôt Git. Voir [Arbres de travail](/docs/fr/worktrees) pour ouvrir et supprimer le projet résultant.

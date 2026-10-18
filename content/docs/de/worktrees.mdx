@@ -1,0 +1,122 @@
+---
+title: "Git-Worktrees"
+description: "Erstelle unabhängige Checkouts für parallelle Aufgaben, dann füge sie bei Abschluss der Arbeit zusammen, veröffentliche sie oder entferne sie."
+---
+
+Ein Git Worktree gibt einer Aufgabe einen separaten Arbeitsverzeichnis im gleichen Repository. Dream öffnet es als ein weiteres Projekt mit eigenen Chats und Werkzeugen. Verwenden Sie Worktrees, wenn Agenten unabhängig editieren müssen, ohne dass sich ihre Checkouts gegenseitig beeinflussen.
+
+## Ein Worktree erstellen
+
+Beginnen Sie mit einem Projekt, das ein Git-Repository ist mit einem bereits committeten Basis-Referenz.
+
+1. Öffne den Branch-Wechsler unter dem Chat.
+2. Wählen Sie **Neuer Arbeitsbaum**.
+3. Geben Sie einen Namen für den neuen **Zweig** ein, z. B. `fix-settings-persistence`.
+4. Setnen **Basisreferenz** auf den Commit oder Branch, von dem Sie starten möchten, z. B. `main`.
+5. Klicken Sie auf **Arbeitsbaum erstellen**.
+
+<Frame caption="Wählen Sie „Neuer Arbeitsbaum“ unten im Branch-Wechsler aus, um eine unabhängige Checkout zu erstellen.">
+  <img
+    src="/images/docs/branch-switcher.png"
+    alt="Das Branch-Menü öffnete sich oberhalb der aktuellen Branch-Steuerung, wobei „Neuer Arbeitsbaum“ als letzte Aktion diente."
+    width={377}
+    height={256}
+    loading="lazy"
+  />
+</Frame>
+
+Dream erstellt die Checkout und öffnet das Projekt. Überprüfen Sie den Branch im Worktree unter dem Chat, bevor die Aufgabe gesendet wird. Befehle und Agenten-Änderungen in diesem Projekt verwenden den neuen Ordner.
+
+Der Basis-Ref muss im lokalen Repository existieren. Wenn Sie neuere Remote-Commits benötigen, holen Sie diese über Ihr normales Git-Workflow vor der Erstellung des Worktree.
+
+## Eine Konversation in ein Worktree übertragen
+
+Aus einer Nachricht wählen **Ab dieser Nachricht fortfahren… → Neuer Arbeitsbaum**. Dream kopiert das Gespräch ab dieser Nachricht, verwendet den aktuellen Branch als Basis und erzeugt einen neuen Branch-Namen.
+
+Verwenden Sie diesen Shortcut, wenn der Agent mit der früheren Diskussion fortsetzen soll. Verwenden Sie den Workflow für den Branch-Switcher, wenn Sie einen benutzerdefinierten Basis- und Branch-Namen auswählen müssen. Siehe [Gespräche verzweigen](/docs/de/branching-chats), um den Unterschied zwischen Nachrichtenkopieren und Dateikopieren zu erfahren.
+
+<Warning>
+  Worktrees starten von der kommitten Git-Geschichte. Unkommitted Änderungen im ursprünglichen Projekt werden nicht kopiert. Ein Chat, der von einer früheren Nachricht abgeleitet ist, erzeugt das Dateisystem nicht zu diesem Zeitpunkt im Gespräch.
+</Warning>
+
+## Zwischen Checkouts wechseln
+
+Nutzen Sie die Projekttabs, um zwischen dem ursprünglichen Checkout und dem Worktree-Projekt zu wechseln. App-verwaltete Worktree erscheinen auch im **Chat-Verlauf** des Elternprojekts, wo Sie sie erneut öffnen können.
+
+Überprüfen und Änderungen aus dem Projekt, wo sie vorgenommen wurden, commiten. Das Erstellen eines Worktree führt keine Fusion seiner Änderungen in den ursprünglichen Branch; verwenden Sie die Footer-Option **Git-Aktionen**, wenn die Arbeit fertig ist.
+
+## Ein Worktree abschließen
+
+Das Zusammenführen, die Erstellung eines Pull-Requests und die Entfernung eines Worktree sind separate Aktionen im Menü **Git-Aktionen** im Footer. Commit die Änderungen, die Sie einbeziehen möchten, bevor Sie zusammenführen.
+
+<Frame caption="Ein Worktree abschließen">
+  <img
+    src="/images/docs/worktree-git-actions-menu.png"
+    alt="Git-Aktionsmenü eines Worktrees mit Branch veröffentlichen, Pull Request erstellen, In dev zusammenführen und Worktree entfernen."
+    width={236}
+    height={324}
+    loading="lazy"
+  />
+</Frame>
+
+1. Im Worktree-Projekt wählen Sie unter dem Chat die Option **Vereinen in *base*** aus den **Git-Aktionen**.
+2. Überprüfen Sie den Überblick: den **Basis-Branch**, wie viele **Commits** der Branch vor- und hinterher ist, die geänderten **Dateien** und den aktuellen **Haupt-Checkout**-Branch sowie ob dieser sauber ist.
+3. Lesen Sie die Liste der Commits und erweitern Sie eine Datei, um deren Diff zu inspizieren.
+4. Verwenden Sie **Änderungen committen...**, wenn nötig. Ungecommittete Änderungen bleiben im Worktree und werden nicht zusammengefügt.
+5. Wählen Sie **Fügen Sie in *base* ein**. Dream fügt die in der Hauptarbeitssitzung committen Arbeit ein und wechselt gegebenenfalls auf den Base-Branch.
+6. Überprüfen Sie das Ergebnis, wählen dann **Worktree behalten** oder **Worktree und Branch entfernen**. Die Entfernung nach dem Zusammenführen wird nur angeboten, wenn der Worktree sauber ist.
+
+<Frame caption="Änderungen überprüfen">
+  <img
+    src="/images/docs/worktree-merge-dialog.png"
+    alt="Dialog zum Zusammenführen in dev mit Basisbranch, Commit-Anzahl, geänderter Datei und sauberem Haupt-Checkout."
+    width={672}
+    height={442}
+    loading="lazy"
+  />
+</Frame>
+
+<Frame caption="Ein Worktree abschließen">
+  <img
+    src="/images/docs/worktree-merge-success-dialog.png"
+    alt="Erfolgreiches Zusammenführen des Worktrees in dev mit den Schaltflächen Worktree behalten und Worktree und Branch entfernen."
+    width={672}
+    height={268}
+    loading="lazy"
+  />
+</Frame>
+
+Statt für die Prüfung zu veröffentlichen, verwenden Sie **Git-Aktionen → Pull-Anfrage erstellen** und folgen Sie [Git-Arbeitsabläufen](/docs/de/git-workflows#pull-request-erstellen). Die Erstellung einer PR behält das Worktree bei.
+
+Verwende **Git-Aktionen → Arbeitsbaum entfernen**, um die Checkout-Verzeichnis zu entfernen, während die Branch beibehalten wird. Wenn es uncommitted Änderungen gibt, committe diese zuerst oder wähle explizit **Nicht committete Änderungen verwerfen**.
+
+<Warning>
+  Die Löschung eines worktree löscht seinen Ordner und schließt dessen Projekt. Die Chats des worktree-Projects werden mit ihm verworfen und erscheinen weder in Chatverlauf noch in Zuletzt geschlossen. Wenn Sie eine Diskussion behalten möchten, [teilen Sie sie in den Elternspace auf](/docs/de/branching-chats), bevor Sie sie abschließen.
+</Warning>
+
+### Wenn eine Option nicht verfügbar ist
+
+| Nachricht | Was zu tun ist |
+| --- | --- |
+| Dieser Branch hat keine Commits vor *base* | Geben Sie den Commit ein, den Sie behalten möchten, oder wählen Sie Entfernen worktree |
+| Der Haupt-Checkout enthält ungecommittete Dateien | Verwenden Sie einen Commit oder Stash, um Änderungen im Elternprojekt vor dem Zusammenführen zu speichern |
+| Der Haupt-Checkout hat einen Merge oder Rebase im Gange | Das Operation in dem Elternprojekt beenden oder abbrechen |
+| Dieser Zweig teilt keine Geschichte mit *base* | Füge über deine eigene Git-Arbeitsschritte hinzu |
+| Kein Git-Remote ist konfiguriert | Ein Remote vor der Erstellung eines Pull Requests hinzufügen |
+| GitHub CLI (gh) ist nicht verfügbar | GitHub CLI installieren und authentifizieren |
+
+Wenn das Fügen Konflikte erzeugt, beendet Dream es und gibt **Das Fügen in *base* erzeugte Konflikte. Das Fügen wurde abgebrochen und nichts wurde geändert** aus, zusammen mit den konfliktbehafteten Dateien. Bringen Sie den Basisbranch in das Worktree, lösen Sie die Konflikte, commiten Sie und führen dann erneut **Fügen in *base*** aus.
+
+## Ein Worktree aus dem Elternprojekt entfernen
+
+Sie können ein Worktree auch ohne das Bestätigungsfenster entfernen:
+
+1. Sichern Sie die Arbeit, die Sie brauchen, durch einen Commit und, falls nötig, durch einen Push oder durch das Öffnen eines PR.
+2. Stoppe Prozesse im Worktree, wie eine lokale Anwendung, die in ihrem Terminal läuft.
+3. Öffnen Sie das **Chat-Verlauf**-Panel des Elternprojekts und suchen Sie das Worktree.
+4. Verwenden Sie seine Entfernungsfunktion und prüfen Sie die Bestätigung.
+5. Bestätigen Sie **Arbeitsbaum entfernen**, wenn Sie diesen Checkout nicht mehr benötigen.
+
+Die Löschung entfernt das Worktree-Verzeichnis aus dem Speicher. Git lehnt die Löschung ab, wenn es uncommitted Änderungen enthält. Gehe zurück zu diesem Projekt und überprüfe die Änderungen, bevor du erneut versuchst.
+
+Die Schließung eines Projekttabs entfernt ihn nur aus dem offenen Arbeitsbereich; die Löschung eines Worktree löscht seine Checkout. Für Commit- und PR-Schritte siehe [Git-Arbeitsabläufe](/docs/de/git-workflows).

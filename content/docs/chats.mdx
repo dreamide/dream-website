@@ -11,7 +11,7 @@ independently, such as fixing a bug and reviewing a feature.
 
 1. Select the project tab you want to work in.
 2. Click **New chat** in the left toolbar.
-3. Check the model, agent mode, and permissions below the message box.
+3. Check the model and permissions below the message box.
 4. Describe the task and submit your message.
 
 New chats use your [default model settings](/docs/models). An empty draft may be reused when you
@@ -25,6 +25,16 @@ For a useful first message, give the agent an outcome and a way to check it. For
 
 Use [file references and attachments](/docs/providing-context) to point to relevant code or an image.
 
+<Frame caption="Write the task in the message box and review this chat's settings below it.">
+  <img
+    src="/images/docs/chat-composer.png"
+    alt="An empty chat message box above the selected model and permission controls."
+    width={600}
+    height={108}
+    loading="lazy"
+  />
+</Frame>
+
 ## Return to a conversation
 
 1. Click **Chat history** in the left toolbar.
@@ -32,43 +42,79 @@ Use [file references and attachments](/docs/providing-context) to point to relev
 3. Enter part of a chat's title in **Search history** to narrow the list.
 4. Select the conversation to open it.
 
-History search matches titles, so a descriptive name makes work easier to find. It does not search
-the text of every message. If a chat is missing, check the selected project and then
-[Archived Chats](/docs/archived-chats).
+<Frame caption="Search the current project's chat titles, then select a conversation to return to it.">
+  <img
+    src="/images/docs/chat-history-panel.png"
+    alt="Chat history panel with a Search history field and recent conversations listed by title and relative time."
+    width={416}
+    height={396}
+    loading="lazy"
+  />
+</Frame>
+
+History search filters this project's titles. To search titles and message text across projects,
+click **Search chats** in the top bar (default **Command+Shift+F** on macOS or **Ctrl+Shift+F** on
+Windows/Linux). Results include local projects and connected SSH hosts. Selecting an archived
+result restores it; selecting a closed project's chat reopens that project.
+
+If a host cannot be searched, reconnect it and try again. Narrow the query when results are truncated.
+You can also manage older conversations in [Archived chats](/docs/archived-chats).
+
+<Frame caption="Return to a conversation">
+  <img
+    src="/images/docs/chat-search-dialog.png"
+    alt="Chat search results from multiple projects with matching message text highlighted."
+    width={672}
+    height={694}
+    loading="lazy"
+  />
+</Frame>
 
 When [multi-chat](/docs/multiple-chats) is enabled, selecting a conversation can bring it into the
 side-by-side layout. With multi-chat disabled, you view one conversation at a time.
 
 ## Rename a chat
 
-Dream can generate a title after a conversation starts. To give it a more specific name, double-click
-the title at the top of the chat, type a name, and press **Enter**. Press **Escape** to cancel.
-You can also open the chat's **…** menu and choose **Edit**.
+Dream can generate a title after a conversation starts. To give it a more specific name, open the
+chat's **…** menu and choose **Edit**, or double-click the title. In **Edit chat**, enter the name
+and click **Save**. Use **Cancel** to keep the existing name.
 
 Names such as “Fix settings persistence” and “Review settings tests” are easier to distinguish than
 several chats named after the same project.
 
 ## Follow work in progress
 
+Enable **Desktop notifications** under **Settings → General → Chat messages** to get an alert when a chat
+finishes, fails, or needs input while Dream is in the background. Click a notification to open its
+chat. **Notification sound** is a separate option and can play even while Dream is focused.
+
+A loading spinner identifies chats that are streaming a response. When you send a message,
+Dream scrolls it into view.
+
 While an agent responds, the chat shows its progress and tool activity. Open tool details to inspect
 commands, file reads, or changes. When the agent supplies a task list, the task control beside the
 message box shows its progress.
 
 History and project tabs include status indicators for work that is processing or has finished;
-project tabs can also indicate that an agent is waiting for your answer. Return to the relevant chat
-to respond. Use the stop control in the composer to interrupt a response. Stopping a response does
-not undo file changes already made.
+project tabs can also indicate that an agent is waiting for your answer. Select the project and
+open the conversation to read its latest message. Use the stop control in the composer to interrupt
+a response. Stopping a response does not undo file changes already made.
+
+After a reply finishes, use **View file changes from this reply** in its footer to see the files it
+changed and [restore any of them](/docs/checkpoints).
 
 ## Close, archive, or delete?
 
 | Action | Result | How to return |
 | --- | --- | --- |
 | Close a chat column | Removes it from the multi-chat layout | Open it from Chat history |
-| Archive a chat | Removes it from active chat history | Restore it in Settings → Archived Chats |
+| Archive a chat | Removes it from active chat history | Restore it in Settings → Archived chats |
 | Delete an archived chat | Permanently removes the chat and its messages from Dream | It cannot be restored through Dream |
 
 Closing a column is useful when you need more space. Archiving is useful when a task is finished.
 Neither action reverts the agent's changes to project files.
 
 To try a different approach while keeping the conversation so far, [branch from a message](/docs/branching-chats).
-To prepare a task for later, [save a prompt in Stash](/docs/stash).
+To prepare a task for later, [save a prompt in Stash](/docs/stash). For instructions you want to
+reuse across projects, create a [reusable prompt](/docs/saved-prompts) and run it from the composer's
+**+ → Run prompt** menu. Type **$** to invoke an [agent skill](/docs/skills).

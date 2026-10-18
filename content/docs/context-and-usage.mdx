@@ -36,6 +36,16 @@ chat, and it does not free up a provider's account usage allowance.
 2. Click the usage gauge beneath the message box.
 3. Review the available usage information and reset times.
 
+<Frame caption="The usage gauge opens the provider's allowance details. This Anthropic example shows five-hour and weekly usage with reset times.">
+  <img
+    src="/images/docs/provider-usage.png"
+    alt="Anthropic usage popover above the composer gauge, showing 5% of the five-hour limit and 30% of the weekly limit used, with reset times."
+    width={336}
+    height={227}
+    loading="lazy"
+  />
+</Frame>
+
 The popover is labeled **Plan usage** for most providers and **Usage stats** for OpenCode.
 Availability and detail vary by provider. An unavailable reading does not by itself mean the chat
 cannot run; check any error on the actual response and the provider's own account information.
@@ -51,7 +61,19 @@ Open **Settings → General** and find **Chat messages**:
 | Expand tool calls | Shows tool-call details expanded by default |
 
 These settings change presentation. They do not change the reasoning effort requested from the
-model; configure that in [Models and defaults](/docs/models).
+model; configure that in [Models and defaults](/docs/models). The same group holds
+**Change checkpoints**, which controls whether Dream snapshots files before each reply; see
+[Reviewing and restoring changes](/docs/checkpoints).
+
+<Frame caption="Tool activity appears inline with the response so you can inspect what the agent used.">
+  <img
+    src="/images/docs/chat-tools.png"
+    alt="File-read and command chips within an agent response, including file names and line ranges."
+    width={600}
+    height={184}
+    loading="lazy"
+  />
+</Frame>
 
 For a new task with a different goal, start a [new chat](/docs/chats). To retain a specific portion
 of a conversation while exploring an alternative, [branch from a message](/docs/branching-chats).

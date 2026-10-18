@@ -1,0 +1,42 @@
+---
+title: "Autorisations des agents"
+description: "Choisissez Ask, Accepter les modifications ou Accès complet et répondez aux demandes de l'agent."
+---
+
+Chaque chat dispose d'un contrôle **Autorisations** sous sa boîte de message. Les nouveaux chats héritent de **Paramètres → Général → Modèles → Autorisations par défaut**, qui commence par **Accès complet**. Modifier les autorisations par défaut n'affecte pas les chats existants.
+
+## Choisir les permissions
+
+1. Ouvrez le contrôle avec l’icône de bouclier sous la zone de message. Son infobulle indique **Autorisations**.
+2. Sélectionnez **Demander**, **Accepter les modifications** ou **Accès complet**.
+3. Vérifiez votre tâche, puis envoyez-la.
+
+| Permission | Comportement prévu |
+| --- | --- |
+| Demander | Demander une approbation pour les actions nécessitant une autorisation selon la configuration du fournisseur |
+| Accepter les modifications | Autorise les modifications de fichier automatiquement tout en conservant le traitement d'approbation pour les autres actions |
+| Accès complet | Donnez à l'agent un accès plus large pour agir sans prompts d'approbation |
+
+Le fournisseur sélectionné détermine le comportement exact des autorisations. **Demander** ne signifie pas que chaque lecture ou appel d’outil demande une approbation, et **Accepter les modifications** n’autorise pas toutes les commandes.
+
+<Note>
+  Dream n’a plus de contrôles Build et Plan distincts. Pour commencer par un plan, demandez à l’agent d’examiner le problème et de proposer une approche avant toute modification. Cette consigne n’impose pas un accès en lecture seule au système de fichiers ; choisissez aussi les autorisations adaptées à la tâche.
+</Note>
+
+<Frame caption="Le bouclier et le libellé Accès complet identifient le contrôle des autorisations de cette conversation.">
+  <img
+    src="/images/docs/chat-composer.png"
+    alt="Le composant de discussion affichant Accès complet à côté du modèle, des contrôles de performance et de vitesse."
+    width={600}
+    height={108}
+    loading="lazy"
+  />
+</Frame>
+
+## Répondre aux questions et aux approbations
+
+Un agent peut vous demander de préciser une exigence, de choisir une option ou d'approuver une action. Lisez la demande dans la conversation et répondez en utilisant les contrôles qu'elle vous fournit. Un onglet projet peut indiquer qu'un agent attend votre réponse. Ouvrez ce projet et retournez dans la conversation pour lire la demande.
+
+Si la demande nécessite de modifier la tâche, donnez les nouvelles instructions à l’agent dans cette conversation. Utilisez le bouton d’arrêt pour interrompre une réponse si nécessaire. L’arrêt n’annule pas les modifications ni les commandes déjà exécutées ; consultez ensuite les [Modifications](/docs/fr/git-workflows), ou utilisez le [checkpoint](/docs/fr/checkpoints) de la réponse pour restaurer les fichiers qu’elle a modifiés.
+
+Pour des tâches parallèles nécessitant des fichiers séparés, utilisez [arbre de travail](/docs/fr/worktrees). Les paramètres de permission ne permettent pas deux discussions dans le même dossier d'indépendants checkouts.

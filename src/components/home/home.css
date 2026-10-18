@@ -1,0 +1,56 @@
+/* Home page. Colors come from the theme variables set by <DreamTheme>
+   (see theme.tsx). */
+
+.dh-root {
+  --dh-line: color-mix(in srgb, var(--dh-700) 55%, transparent);
+  --dh-mono-font:
+    "JetBrains Mono Variable", "JetBrains Mono", var(--font-mono), ui-monospace,
+    monospace;
+
+  color: #fafafa;
+  max-width: none;
+}
+
+.dh-root a {
+  text-decoration: none;
+}
+
+.dh-root ::selection {
+  background: var(--dh-accent);
+  color: var(--dh-accent-fg);
+}
+
+/* In the components layer so Tailwind utilities can still override them. */
+@layer components {
+  .dh-mono {
+    font-family: var(--dh-mono-font);
+    font-variant-ligatures: none;
+  }
+
+  /* A bar that fills left to right over --dh-fill-ms. */
+  .dh-fill {
+    width: 100%;
+    transform-origin: left;
+    animation: dh-fill var(--dh-fill-ms, 4000ms) linear both;
+  }
+}
+
+@keyframes dh-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dh-root *,
+  .dh-root *::before,
+  .dh-root *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    transition-delay: 0ms !important;
+  }
+}

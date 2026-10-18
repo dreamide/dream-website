@@ -1,0 +1,122 @@
+---
+title: "Worktree Git"
+description: "Crea checkout indipendenti per compiti paralleli, poi li unisci, pubblica o elimina quando il lavoro è completato."
+---
+
+Un worktree Git fornisce a un'attività un'area di lavoro separata nello stesso repository. Dream lo apre come un altro progetto, con i propri chat e strumenti. Utilizzare worktrees quando gli agenti devono modificare indipendentemente senza alterare il checkout degli altri.
+
+## Crea un worktree
+
+Inizia da un progetto che è un repository Git con una riferimento base committato.
+
+1. Apri il selettore di ramificazioni sotto il chat.
+2. Scegli **Nuovo albero di lavoro**.
+3. Inserisci un nome per il nuovo **Ramo**, ad esempio `fix-settings-persistence`.
+4. Imposta il **Rif. base** al commit o alla ramifica da cui vuoi partire, ad esempio `main`.
+5. Fai clic su **Crea albero di lavoro**.
+
+<Frame caption="Scegli Nuovo albero di lavoro alla fine del switcher di ramificazione per creare un checkout indipendente.">
+  <img
+    src="/images/docs/branch-switcher.png"
+    alt="Il menu ramo si apre sopra il controllo del ramo attuale, con Nuovo albero di lavoro come azione finale."
+    width={377}
+    height={256}
+    loading="lazy"
+  />
+</Frame>
+
+Dream crea il checkout e apre il suo progetto. Verificare il ramo worktree visualizzato sotto il chat prima di inviare il compito. I comandi e le modifiche dell'agente in questo progetto utilizzano la nuova directory.
+
+La riferimento base deve esistere nel vostro repository locale. Se necessitate di commit remoti più recenti, recuperateli attraverso il vostro normale flusso di Git prima di creare il worktree.
+
+## Portare una conversazione in un worktree
+
+Da un messaggio, scegli **Continua da questo messaggio… → Nuovo albero di lavoro**. Dream copia la conversazione fino a quel messaggio, utilizza la ramifica attuale come base e genera un nuovo nome di ramifica.
+
+Utilizza questo shortcut quando vuoi che l'agente prosegua con la discussione precedente. Utilizza il workflow del ramificatore quando hai bisogno di scegliere un nome di base e ramo personalizzati. Vedi [Ramificare le conversazioni](/docs/it/branching-chats) per la differenza tra copiare messaggi e copiare file.
+
+<Warning>
+  I worktrees partono dalla storia Git committata. I cambiamenti non commessi nel progetto originale non vengono copiati. Un chat derivato da un messaggio precedente non ricrea il filesystem in quel punto della conversazione.
+</Warning>
+
+## Passare tra i checkouts
+
+Usa le schede progetto per passare tra il checkout originale e il progetto worktree. I worktree gestiti dal sistema appaiono anche nel panel **Cronologia chat** del progetto padre, dove possono essere riaperti.
+
+Rivedi e crea i commit delle modifiche nel progetto in cui sono state apportate. Creare un worktree non unisce le sue modifiche al branch originale; usa **Azioni Git** nel piè di pagina quando il lavoro è pronto.
+
+## Completa un worktree
+
+L'unione, la creazione di un pull request e la rimozione di un worktree sono azioni separate nel menu **Azioni Git** del footer. Committate i cambiamenti che desiderate includere prima di unire.
+
+<Frame caption="Completa un worktree">
+  <img
+    src="/images/docs/worktree-git-actions-menu.png"
+    alt="Menu delle azioni Git del worktree con Pubblica branch, Crea pull request, Unisci in dev e Rimuovi worktree."
+    width={236}
+    height={324}
+    loading="lazy"
+  />
+</Frame>
+
+1. Nel progetto worktree, scegli **Fusione in *base*** dalle **Azioni Git** sotto il chat.
+2. Controlla il riassunto: il **ramo base**, quante **committ** sono in avanti e indietro rispetto al ramo, i **file** modificati, e il ramo attuale del principale e se è pulito.
+3. Leggi l'elenco dei commit e espandi qualsiasi file per esaminare il suo diff.
+4. Usa **Esegui il commit delle modifiche...** se necessario. I cambiamenti non commessi rimangono nel worktree e non vengono integrati.
+5. Scegli **Unisci in *base***. Dream unisce il lavoro commesso nel checkout principale, passando alla ramifica base se necessario.
+6. Verifica il risultato, poi scegli **Mantieni il worktree** o **Rimuovi worktree e branch**. La rimozione dopo il merge è offerta solo quando il worktree è pulito.
+
+<Frame caption="Revisione dei cambiamenti">
+  <img
+    src="/images/docs/worktree-merge-dialog.png"
+    alt="Finestra di merge in dev con branch di base, conteggio dei commit, file modificato e checkout principale pulito."
+    width={672}
+    height={442}
+    loading="lazy"
+  />
+</Frame>
+
+<Frame caption="Completa un worktree">
+  <img
+    src="/images/docs/worktree-merge-success-dialog.png"
+    alt="Merge del worktree in dev riuscito, con i pulsanti Mantieni worktree e Rimuovi worktree e branch."
+    width={672}
+    height={268}
+    loading="lazy"
+  />
+</Frame>
+
+Per pubblicare per la revisione, usa **Azioni Git → Crea richiesta pull** e segui [Flussi di lavoro Git](/docs/it/git-workflows#crea-una-pull-request). Creare una richiesta di pull mantiene il worktree.
+
+Usa **Azioni Git → Rimuovi l'albero di lavoro** per rimuovere il checkout mantenendo il suo ramo. Se contiene modifiche non ancora commesse, commettile prima o seleziona esplicitamente **Scarta le modifiche senza commit**.
+
+<Warning>
+  Eliminare un worktree elimina il suo directory e chiude il suo progetto. I chat del progetto worktree vengono eliminati insieme e non appaiono nella Cronologia chat o nei Chiusi di recente. Se desideri conservare una conversazione, [dividerla nel workspace padre](/docs/it/branching-chats) prima di completarla.
+</Warning>
+
+### Quando un'opzione non è disponibile
+
+| Messaggio | Cosa fare |
+| --- | --- |
+| Questo ramo non ha commit in avanti rispetto a *base* | Committa il lavoro che vuoi mantenere, o scegli Elimina worktree |
+| Il principale checkout ha file non ancora commessi | Committa o memorizza le modifiche nel progetto padre prima di unire |
+| Il principale checkout ha un merge o un rebase in corso | Completa o annulla quell'operazione nel progetto padre |
+| Questo ramo non condivide nessuna storia con *base* | Fusiona attraverso il proprio flusso di Git |
+| Nessun remoto Git è configurato | Aggiungi un remoto prima di creare una richiesta di pull |
+| Il CLI GitHub (gh) non è disponibile | Installa e autentica il CLI di GitHub |
+
+Se l'unione genera conflitti, Dream li annulla e segnala **L'unione in *base* ha generato conflitti. L'unione è stata annullata e nulla è stato modificato**, insieme ai file in conflitto. Porta il ramo *base* nel worktree, risolve i conflitti, effettua il commit e poi esegui nuovamente **Unione in *base***.
+
+## Elimina un worktree dal progetto padre
+
+È anche possibile rimuovere un worktree senza il dialogo di conferma:
+
+1. Preserva il lavoro che necessiti effettuandone un commit e, se appropriato, spostandolo o aprirne una richiesta di integrazione.
+2. Ferma i processi utilizzando il worktree, ad esempio un'applicazione locale in esecuzione nel suo terminale.
+3. Apri il panello **Cronologia chat** del progetto padre e cerca il worktree.
+4. Usi l'azione rimuovi e verifica la conferma.
+5. Conferma **Rimuovi l'albero di lavoro** quando non hai più bisogno di quel checkout.
+
+L'eliminazione elimina il cartella worktree dal disco. Git rifiuta l'eliminazione quando contiene modifiche non ancora commesse. Tornare a quel progetto e verificare le modifiche prima di riprovare.
+
+Chiudere un'asta progetto la rimuove solo dal workspace aperto; rimuovere un worktree elimina il suo checkout. Per i passaggi di commit e PR, vedi [Flussi di lavoro Git](/docs/it/git-workflows).

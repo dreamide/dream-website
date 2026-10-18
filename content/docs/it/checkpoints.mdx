@@ -1,0 +1,58 @@
+---
+title: "Controllare e ripristinare le modifiche"
+description: "Controlla i file, risponde al cambiamento del testo dell'agente e ripristina i file selezionati da un punto di controllo."
+---
+
+Quando è abilitato il **Checkpoint delle modifiche**, Dream fa un'immagine dei tuoi file progetto prima che l'agente risponda e nuovamente quando la risposta è completata. Usa questi checkpoint per esaminare esattamente quali file sono stati modificati dalla risposta e per ripristinare file selezionati se desideri adottare un approccio diverso.
+
+## Come funzionano i checkpoint
+
+- Un checkpoint registra lo stato del progetto nel working tree, inclusi i file non tracciati, in un archivio privato all'interno dei dati dell'applicazione di Dream. Non crea commit, stash o ramificazioni nel vostro repository, e funziona nelle cartelle che non sono repository Git.
+- I percorsi ignorati dal file `.gitignore` del progetto e le cartelle comuni di compilazione come `node_modules`, `dist`, `build` e `coverage` non vengono mai captati.
+- Dream acquisisce un’istantanea dello stato **precedente** per ogni messaggio che invii e una dello stato **successivo** quando la risposta termina o la interrompi.
+- I checkpoint richiedono l'executable `git` per essere disponibile per Dream. Se il processo di capture fallisce o dura troppo a lungo, la risposta procede senza un checkpoint e il suo controllo di revisione non viene mostrato.
+
+I checkpoint sono abilitati per impostazione predefinita. Per disattivarli, apri **Impostazioni → Generale**, trova **Messaggi chat** e disattiva **Checkpoint delle modifiche**.
+
+<Frame caption="Abilita i checkpoint di modifica nelle Impostazioni → Generale per memorizzare i file intorno a ogni risposta.">
+  <img
+    src="/images/docs/checkpoint-setting.png"
+    alt="Cambia le impostazioni dei checkpoint con il suo interruttore abilitato."
+    width={1000}
+    height={68}
+    loading="lazy"
+  />
+</Frame>
+
+## Controlla le modifiche a una risposta
+
+1. Attendi che la risposta termini.
+2. Sfiora il messaggio dell'assistente e clicca **Mostra i file modificati da questa risposta**, l'icona orologio nel piede del messaggio.
+3. Nel **Modifiche in questa risposta**, verifica la lista dei file. Ogni riga mostra il percorso, uno stato di **Aggiunto**, **Eliminato**, **Modificato** o **Rinominato**, e il numero di righe.
+4. Espandi una riga per leggere la differenza.
+
+Il dialogo confronta lo stato precedente e quello successivo per quella risposta solo; le modifiche da altre risposte o da tue stesse modifiche non sono incluse. Se la risposta è stata interrotta, il dialogo segnala che lo stato successivo è stato registrato quando hai aperto il dialogo.
+
+Un file che è stato modificato di nuovo dopo la risposta, indipendentemente dal fatto che provenga da una risposta successiva, da un comando terminale o dal tuo editor, mostra un badge **Modificato dopo**. I file binari elencati senza differenza.
+
+## Ripristina file
+
+1. Seleziona i file che desideri ripristinare. I file senza modifiche successive sono selezionati per impostazione predefinita; usa **Seleziona tutto** per includere ogni file.
+2. Fai clic su **Ripristina**. Il pulsante mostra quante file sono selezionate.
+3. Controlla le righe marcate **Ripristinato**, poi fai clic su **Chiudi**.
+
+L'operazione di ripristino annulla le modifiche del risposta nei file selezionati, mantenendo invece le modifiche non correlate apportate successivamente allo stesso file. Un file creato dalla risposta viene eliminato, un file eliminato viene ricreato e un file rinominato viene riportato alla sua precedente posizione.
+
+Se le modifiche successive si sovrappongono alle modifiche del risposta, Dream lascia il file inalterato e ti avvisa. Seleziona **Sovrascrivi comunque** per sostituire il file con il suo contenuto completo prima della risposta, eliminando quelle modifiche successive.
+
+<Warning>
+  Ripristina non può essere annullato dal dialogo. Copia qualsiasi lavoro successivo che necessiti dai file interessati prima di ripristinare. Ripristinare i file non elimina i messaggi dalla conversazione; indica all'agente cosa hai ripristinato prima di chiedergli di continuare.
+</Warning>
+
+Restore è un'operazione su file, non un'operazione su Git. Apri [Modifiche](/docs/it/git-workflows) successivamente per esaminare l'albero di lavoro, e [salva qualsiasi bozza dell'editor](/docs/it/files) prima di ripristinare gli stessi file.
+
+## Archivio dei checkpoint
+
+I checkpoint rimangono disponibili finché il loro chat esiste. Eliminare permanentemente una chat da **Impostazioni → Chat archiviate** elimina i loro checkpoint, e completare o rimuovere un progetto [worktree](/docs/it/worktrees) elimina i checkpoint di quel progetto. Archiviare una chat li mantiene.
+
+Per provare un approccio diverso mantenendo la conversazione finora, combina un restore con [il branching da un messaggio precedente](/docs/it/branching-chats). Il branching solo copia i messaggi e non modifica i file.

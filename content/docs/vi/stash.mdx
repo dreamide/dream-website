@@ -1,0 +1,64 @@
+---
+title: "Lưu câu lệnh với Stash"
+description: "Chuẩn bị nhiệm vụ để sau này, chỉnh sửa các gợi ý đã lưu, và gửi chúng vào các cuộc trò chuyện mới."
+---
+
+Stash lưu các prompt mà bạn muốn chạy sau này trong dự án hiện tại. Mỗi mục được lưu bao gồm văn bản của nó, tham chiếu đến dự án, mô hình, nỗ lực, tốc độ và quyền hạn.
+
+Sử dụng nó để lưu lại một nhiệm vụ theo dõi khi một cuộc trò chuyện khác đang bận. Ví dụ: lưu “Kiểm tra các trạng thái lỗi trong form cài đặt” khi đang hoàn thành việc triển khai.
+
+<Frame caption="Các nhiệm vụ được lưu sẽ vẫn nằm trong kho của dự án cho đến khi bạn chạy hoặc xóa chúng.">
+  <img
+    src="/images/docs/stash-prompts.png"
+    alt="Panel lưu trữ chứa ba nhiệm vụ đã lưu, mỗi nhiệm vụ có các tùy chọn mô hình riêng và nút gửi."
+    width={950}
+    height={389}
+    loading="lazy"
+  />
+</Frame>
+
+## Lưu một nhiệm vụ để sau này
+
+1. Chọn dự án mà nhiệm vụ thuộc về.
+2. Nhấn **Stash**, biểu tượng hộp thư ở phía dưới thanh công cụ bên phải.
+3. Viết nhiệm vụ vào composer mới ở phía dưới khung panel.
+4. Thêm tham chiếu dự án với **@** và chọn mô hình và quyền hạn.
+5. Gửi prompt mới để thêm vào danh sách đã lưu.
+
+Việc gửi từ composer ở phía dưới sẽ lưu nhiệm vụ; nó không bắt đầu phản hồi của agent. Một mục đã lưu sẽ xuất hiện phía trên nó trong panel Stash. Chuyển dự án để xem panel Stash riêng của dự án đó.
+
+<Frame caption="Compositor ở dưới thêm một nhiệm vụ đã lưu. Gửi một mục đã lưu ở trên nó để bắt đầu cuộc trò chuyện.">
+  <img
+    src="/images/docs/stash-composer.png"
+    alt="Bảng điều khiển tạo prompt rỗng ở phía dưới phần Stash."
+    width={716}
+    height={115}
+    loading="lazy"
+  />
+</Frame>
+
+## Chỉnh sửa một mẫu câu đã lưu
+
+Chỉnh sửa văn bản trực tiếp trong mục đã lưu và điều chỉnh các điều khiển nằm dưới nó. Kiểm tra lại mô hình và quyền hạn trước khi chạy nó, đặc biệt nếu bạn đã thay đổi các mô hình mặc định từ khi lưu nhiệm vụ. Các mục đã lưu giữ các lựa chọn riêng của chúng.
+
+Danh sách dự án chỉ đến các đường dẫn. Chúng không lưu trữ bản sao của các tệp được tham chiếu. Agent sẽ làm việc với dự án như nó hiện tại khi bạn thực hiện nhiệm vụ.
+
+<Note>
+  Sử dụng tham chiếu dự án để giữ các ngữ cảnh bạn muốn lưu trong Stash. Các tệp đính kèm được chọn thông qua trình chọn đính kèm không được giữ lại trong các mục đã lưu; hãy đính kèm những tệp này trong cuộc trò chuyện thông thường.
+</Note>
+
+## Chạy một nhiệm vụ đã lưu trữ
+
+1. Tìm mục đã lưu mà bạn muốn chạy.
+2. Kiểm tra văn bản, tài liệu tham khảo, mô hình và quyền hạn của nó.
+3. Nhấn nút gửi của mục đó.
+
+Dream tạo ra một cuộc trò chuyện mới với các cài đặt đã lưu và gửi prompt. Nếu chức năng multi-chat được bật, cuộc trò chuyện sẽ mở bên cạnh các cuộc trò chuyện hiện tại. Ngược lại, nó sẽ trở thành cuộc trò chuyện hiện tại.
+
+Sản phẩm được loại khỏi Stash khi được chuyển giao cho cuộc trò chuyện mới. Nếu phản hồi thất bại, hãy kiểm tra cuộc trò chuyện mới để tìm lỗi thay vì mong đợi sản phẩm vẫn còn trong Stash.
+
+## Xóa một nhiệm vụ đã lưu
+
+Sử dụng **Xóa chat khỏi stash** trên mục đã lưu để loại bỏ nó mà không cần bắt đầu một cuộc trò chuyện. Điều này loại bỏ prompt đã lưu, không phải các tệp trong dự án.
+
+Stash lưu các nhiệm vụ tương lai cho một dự án. Để sử dụng các hướng dẫn bạn muốn dùng xuyên suốt các dự án, hãy sử dụng [các prompt có thể tái sử dụng](/docs/vi/saved-prompts). Để loại bỏ một cuộc trò chuyện đã hoàn thành khỏi lịch sử hoạt động, hãy sử dụng [Chat đã lưu trữ](/docs/vi/archived-chats). Để tách biệt các thay đổi mã nguồn, hãy sử dụng [Git worktrees](/docs/vi/worktrees).

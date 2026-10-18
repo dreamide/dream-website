@@ -1,0 +1,62 @@
+---
+title: "Lưu trữ và khôi phục cuộc trò chuyện"
+description: "Lưu trữ cuộc trò chuyện đã kết thúc, khôi phục công việc trước đó và làm sạch lịch sử chat cũ."
+---
+
+Lưu trữ một cuộc trò chuyện khi bạn muốn loại bỏ nó khỏi lịch sử hoạt động nhưng vẫn giữ lựa chọn quay lại. Các cuộc trò chuyện đã lưu trữ được quản lý trung tâm tại **Cài đặt → Chat đã lưu trữ**.
+
+## Lưu trữ cuộc trò chuyện
+
+1. Mở cuộc trò chuyện bạn muốn lưu trữ.
+2. Mở menu **…** của chat trong phần đầu chat.
+3. Chọn **Lưu trữ**.
+
+Bạn cũng có thể sử dụng hành động lưu trữ bên cạnh một cuộc trò chuyện trong **Lịch sử trò chuyện**. Cuộc trò chuyện biến mất khỏi lịch sử hoạt động và khỏi giao diện đang mở. Các tin nhắn của nó vẫn được bảo lưu để phục hồi.
+
+Việc lưu trữ không làm ngược lại các thay đổi mã nguồn, không xóa thư mục dự án, cũng không tạo ra một stash Git. Để chỉ xóa một cột khỏi giao diện, vui lòng [đóng cột](/docs/vi/multiple-chats) thay vào đó.
+
+## Tìm và khôi phục các cuộc trò chuyện đã lưu trữ
+
+1. Mở **Cài đặt** bằng biểu tượng bánh xe ở đầu Dream.
+2. Chọn **Chat đã lưu trữ**.
+3. Tìm cuộc trò chuyện trong bảng. Mỗi dòng hiển thị tiêu đề, dự án và ngày lưu trữ của nó.
+4. Chọn ô kiểm tra bên cạnh cuộc trò chuyện, rồi nhấp vào **Khôi phục**.
+5. Trở về dự án của nó và mở **Lịch sử trò chuyện** để chọn cuộc trò chuyện đã được khôi phục.
+
+Bạn có thể chọn nhiều hàng và khôi phục chúng cùng nhau. Ô kiểm duyệt ở tiêu đề bảng chọn tất cả các cuộc trò chuyện đã được lưu trữ, bao gồm các cuộc trò chuyện từ các dự án khác. Kiểm tra cột **Dự án** trước khi áp dụng hành động nhóm.
+
+<Frame caption="Chọn các cuộc trò chuyện đã được lưu trữ để khôi phục hoặc xóa chúng. Cột Dự án xác định nơi mỗi cuộc trò chuyện thuộc về.">
+  <img
+    src="/images/docs/archived-chats-panel.png"
+    alt="Các cài đặt Chat đã lưu trữ hiển thị bốn cuộc trò chuyện với tên dự án và ngày tháng, nút Khôi phục và Xóa, cùng các nút kiểm soát Lưu trữ ngay."
+    width={1016}
+    height={386}
+    loading="lazy"
+  />
+</Frame>
+
+Việc khôi phục làm cho cuộc trò chuyện trở thành lịch sử; nó không tự động mở cuộc trò chuyện đó hoặc dự án của nó. Nếu dự án của nó đã được đóng, hãy mở lại từ **Đã đóng gần đây** trên màn hình bắt đầu.
+
+## Lưu trữ các cuộc trò chuyện cũ cùng nhau
+
+1. Trong **Cài đặt → Chat đã lưu trữ**, tìm **Lưu trữ chat sau**.
+2. Nhập một số ngày dương. Mặc định là **30**.
+3. Nhấn **Lưu trữ ngay**.
+
+Dream lưu trữ các cuộc trò chuyện mà hoạt động cuối cùng cách đây ít nhất là số ngày này. Các cuộc trò chuyện đang được phản hồi hoặc tạo tiêu đề sẽ bị bỏ qua. Hành động này áp dụng trên tất cả các dự án.
+
+Giá trị ngày là một ngưỡng giới hạn cho **Lưu trữ ngay**. Việc thay đổi giá trị này một mình không lập kế hoạch lưu trữ tự động. Việc khôi phục một cuộc trò chuyện cũng không làm thay đổi ngày hoạt động gần nhất, vì vậy một cuộc trò chuyện đã khôi phục từ lâu có thể đủ điều kiện lại khi bạn chạy **Lưu trữ ngay** lần tiếp theo.
+
+## Xóa vĩnh viễn các cuộc trò chuyện đã được lưu trữ
+
+1. Mở **Cài đặt → Chat đã lưu trữ**.
+2. Chọn các cuộc trò chuyện mà bạn không còn cần thiết.
+3. Kiểm tra các hàng đã chọn và nhấp vào **Xóa**.
+
+<Warning>
+  Xóa vĩnh viễn sẽ xóa các cuộc trò chuyện đã chọn và tin nhắn của chúng khỏi Dream. Hành động này có hiệu lực ngay lập tức mà không yêu cầu hộp thoại xác nhận nào khác, và những cuộc trò chuyện này không thể được khôi phục qua Dream.
+</Warning>
+
+Việc xóa ảnh hưởng đến lịch sử trò chuyện của Dream. Nó không làm khôi phục lại các thay đổi trong dự án cũng như không xóa các tệp của dự án.
+
+Nếu một cuộc trò chuyện không xuất hiện cả trong lịch sử hoạt động và lịch sử đã lưu, xem [giải quyết lỗi không tìm thấy cuộc trò chuyện](/docs/vi/troubleshooting#tôi-không-thể-tìm-thấy-một-cuộc-trò-chuyện).

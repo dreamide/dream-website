@@ -1,0 +1,74 @@
+---
+title: "Vista previa en el navegador"
+description: "Revisa una aplicación local, gestiona pestañas del navegador y inspecciona páginas dentro de Dream."
+---
+
+El navegador de Dream abre páginas web junto a tu proyecto y chat. Úsalo para inspeccionar una aplicación local mientras un agente trabaja en su código.
+
+## Revisa tu aplicación
+
+1. Inicie la aplicación usando su comando normal de proyecto en un [terminal](/docs/es/terminals).
+2. Copia la URL local impresa por la aplicación, incluyendo su puerto.
+3. Haga clic en **Navegador** en la barra de herramientas de la derecha.
+4. Introduzca la URL en la barra de direcciones y presione **Enter**.
+
+La página se abre dentro del entorno de trabajo. Si la aplicación utiliza un puerto diferente en su siguiente ejecución, actualiza la dirección según corresponda. El navegador de Dream abre la URL; no inicia la aplicación.
+
+<Frame caption="Introduzca una URL en la barra de direcciones para previsualizar una página dentro de Dream.">
+  <img
+    src="/images/docs/browser-panel.png"
+    alt="El navegador de Dream con una pestaña de página, barra de direcciones, controles de navegación y la página de descarga de Dream."
+    width={1099}
+    height={480}
+    loading="lazy"
+  />
+</Frame>
+
+## Use pestañas del navegador
+
+Haga clic en **Nueva pestaña** para abrir otra página y elija una pestaña para cambiar a ella. Esto es útil para mantener dos rutas visibles en su historial de navegación sin reemplazar una por la otra.
+
+Use **Atrás**, **Adelante** y **Actualizar navegador** para navegar. Cerrar un tablero individual usando su control de cierre. Ocultar el panel del navegador te permite regresar a sus pestañas abiertas más tarde.
+
+## Inspeccione y comparta lo que vea
+
+Las acciones del navegador incluyen:
+
+| Acción | Úsalo para… |
+| --- | --- |
+| Abrir DevTools | Inspeccione el consola, elementos y actividad de red de la página |
+| Tomar captura | Captura la página para un informe de errores o para una discusión adicional |
+| Acercar / Alejar / Restablecer el zoom | Ajuste la escala de visualización del previsualizador |
+| Abrir en el navegador del sistema | Ver la URL actual en tu navegador normal |
+
+Use **Expandir navegador** cuando necesites más espacio y **Contraer navegador** para volver a la vista más pequeña. Para dar a un agente una captura de pantalla de toda la página, utiliza el control de [adjuntos](/docs/es/providing-context) del chat.
+
+## Enviar un elemento a un chat
+
+1. Haga clic en **Seleccionar un elemento para enviarlo al chat** en la barra de herramientas del navegador.
+2. Pase el mouse por la página para resaltar los elementos, luego haga clic en el que desea discutir. Presione **Escape** para cancelar.
+3. Escribe un comentario en el formulario **Enviar al chat**, activa **Nuevo chat** si deseas una conversación separada, y envíalo.
+
+Dream envía tu comentario junto con el selector del elemento, su tamaño, su texto, sus estilos, el HTML y una captura de pantalla del elemento, para que el agente pueda ubicarlo en el código. Consulta [Enviar retroalimentación a un chat](/docs/es/feedback) para más detalles y limitaciones.
+
+## Pide a un agente que use el navegador
+
+Claude Code, Codex, OpenCode y Grok generan chats con herramientas para el navegador de Dream de forma automática. Funcionan con las mismas pestañas de explorador de proyecto que ves. Los chats de Cursor no reciben estas herramientas.
+
+Da al agente la URL de la página y una tarea concreta, por ejemplo:
+
+> Abre http://localhost:3000/settings en el navegador de Dream. Cambia el tema, actualiza la página y comprueba si se conserva la selección. Si no es así, inspecciona la consola y las solicitudes de red.
+
+Las herramientas pueden abrir y navegar por pestañas, inspeccionar el contenido de la página, hacer clic, escribir, posicionar el cursor, seleccionar opciones, desplazarse, tomar capturas de pantalla y inspeccionar registros del consola y respuestas de red. También pueden adjuntar archivos desde el proyecto para controles de subida. Las subidas de archivos deben utilizar rutas dentro del proyecto.
+
+Inicie la aplicación antes de pedirle al agente que inspeccione su URL local. Las acciones del navegador siguen los [permisos](/docs/es/agent-modes) del chat; responda en el chat si se solicita aprobación. Estas herramientas están integradas y no requieren una definición manual de un [servidor MCP](/docs/es/mcp-servers).
+
+## Recargar y borrar los datos del sitio
+
+Intente una actualización normal después de haber modificado el código de la aplicación. Si la página aún aparece anticuada, use **Forzar recarga** desde las acciones del navegador.
+
+**Borrar caché** elimina los datos almacenados en el navegador. **Borrar cookies** borra las cookies y puede desconectarte de sitios en el navegador integrado. Utiliza estas acciones deliberadamente cuando investigas el comportamiento de caché o autenticación.
+
+## Si una página local no se carga
+
+Verifique que la aplicación still esté en ejecución, confirme la URL completa y el puerto en su salida por terminal, y revise cualquier error del servidor allí. Intente la misma dirección en el navegador de su sistema para determinar si el problema pertenece a la aplicación o al preview integrado.

@@ -1,0 +1,43 @@
+---
+title: "Ramificare le conversazioni"
+description: "Continuare da un messaggio precedente nello stesso workspace o in un worktree Git isolato."
+---
+
+Spostare un chat quando si vuole esplorare un altro approccio utilizzando la conversazione finora. Dream copia i messaggi attraverso il messaggio selezionato in un nuovo chat e preserva la conversazione originale. I messaggi successivi a quel punto non sono inclusi nel nuovo chat.
+
+## Continua nello stesso workspace
+
+1. Apri la conversazione di origine e aspetta che la risposta venga elaborata.
+2. Cerca il messaggio da cui desideri creare un ramo.
+3. Usa la sua azione **Continua da questo messaggio…**.
+4. Seleziona **Questo spazio di lavoro** sotto **Continua in una nuova chat**.
+5. Invia un follow-up nella nuova conversazione descrivendo l'alternativa che vuoi provare.
+
+Il nuovo chat inizia con il modello e le impostazioni di permesso del chat originale. In multi-chat, si apre accanto al chat originale; in un layout single-chat, diventa la conversazione visibile.
+
+Ad esempio, creare un ramo dopo che l'agente spiega un bug e chiede al nuovo chat di confrontare una correzione più piccola. Entrambe le conversazioni possono utilizzare i file del progetto attuali.
+
+<Note>
+  I branchi copiano la storia della conversazione. Non ripristinano il filesystem nello stato in cui si trovava quando è stato inviato il messaggio selezionato. Entrambi i chat in questo workspace condividono ancora gli stessi file.
+</Note>
+
+## Continua in un nuovo worktree
+
+Per un checkout indipendente, usa **Continua da questo messaggio… → Nuovo albero di lavoro**. Questa opzione richiede un repository Git. Dream crea un progetto worktree e un nuovo chat contenente la storia copiata.
+
+Questo shortcut utilizza la ramifica corrente come base e genera un nome di ramifica dal titolo del chat. Non ti chiede di scegliere un riferimento base personalizzato. Per scegliere tu stesso il riferimento base e il nome della ramifica, [crea un worktree dal ramificatore](/docs/it/worktrees#crea-un-worktree).
+
+<Warning>
+  Un nuovo worktree inizia dalla storia Git committata. Non include modifiche non committate né ricrea lo stato esatto dei file al messaggio selezionato. Salva e committati qualsiasi modifica che necessiti nel nuovo checkout prima di creare un worktree.
+</Warning>
+
+## Scegli il tipo giusto di ramo
+
+| Vuoi... | Usa |
+| --- | --- |
+| Chiedi una domanda diversa riguardo al codice attuale | Questo spazio di lavoro |
+| Confronta il ragionamento mantenendo il precedente discorso | Questo spazio di lavoro |
+| Lascia un altro agente modificare un checkout indipendente | Nuovo albero di lavoro |
+| Avvia un compito senza copiare nessun messaggio | Nuova chat |
+
+Il branching non è disponibile mentre un'operazione di risposta viene elaborata. Se l'opzione worktree non è disponibile, verificare che il progetto sia all'interno di un repository Git. Vedere [Worktrees](/docs/it/worktrees) per l'apertura e la rimozione del progetto risultante.

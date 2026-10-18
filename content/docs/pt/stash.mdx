@@ -1,0 +1,64 @@
+---
+title: "Salvar prompts com o Stash"
+description: "Prepare tarefas para depois, edite prompts salvos e insira-os em conversas novas."
+---
+
+Stash armazena prompts que você deseja executar mais tarde no projeto atual. Cada item salvo inclui seu texto, referências ao projeto, modelo, esforço, velocidade e permissões.
+
+Use-o para capturar uma tarefa de seguimento enquanto outro chat estiver ocupado. Por exemplo, salve "Revise os estados de erro no formulário de configurações" enquanto finaliza a implementação.
+
+<Frame caption="As tarefas salvas permanecem no Stash do projeto até que você as execute ou as remova.">
+  <img
+    src="/images/docs/stash-prompts.png"
+    alt="Panel de armazenamento contendo três tarefas salvas, cada uma com seus próprios controles de modelo e botão de envio."
+    width={950}
+    height={389}
+    loading="lazy"
+  />
+</Frame>
+
+## Salvar uma tarefa para depois
+
+1. Selecione o projeto a que a tarefa pertence.
+2. Clique em **Stash**, o ícone da caixa de entrada no lado direito da barra de ferramentas inferior.
+3. Escreva a tarefa no compositor novo-prompt no final do painel.
+4. Adicione referências de projeto com **@** e escolha o modelo e as permissões.
+5. Envie o novo prompt para adicioná-lo à lista salva.
+
+Enviar deste compositor de baixo salva a tarefa; não inicia uma resposta do agente. Um item salvo aparece acima dele no painel Stash. Mude de projeto para ver o painel Stash separado desse projeto.
+
+<Frame caption="O compositor inferior adiciona uma tarefa salva. Envie um item salvo acima dele para iniciar uma conversa.">
+  <img
+    src="/images/docs/stash-composer.png"
+    alt="O compositor de prompt vazio no fundo da panela Stash."
+    width={716}
+    height={115}
+    loading="lazy"
+  />
+</Frame>
+
+## Editar um prompt salvo
+
+Edite o texto diretamente no seu item salvo e ajuste os controles abaixo dele. Verifique novamente o modelo e as permissões antes de executá-lo, especialmente se você alterou seus modelos padrão desde a salvação da tarefa. Itens salvos mantêm suas próprias seleções.
+
+As referências de projeto apontam para caminhos. Elas não preservam um snapshot dos arquivos referenciados. O agente trabalhará com o projeto como está quando você executar a tarefa.
+
+<Note>
+  Use referências de projeto para o contexto que você deseja manter no Stash. Arquivos anexados selecionados pelo picker de anexos não são preservados nos itens salvos; anexe esses arquivos em uma conversa normal.
+</Note>
+
+## Executar uma tarefa salva
+
+1. Localize o item salvo que você quer executar.
+2. Revise seu texto, referências, modelo e permissões.
+3. Clique no controle de envio desse item.
+
+O Dream cria um novo chat com as configurações salvadas e envia o prompt. Se o multi-chat estiver habilitado, a conversa abre ao lado dos chats atuais. Caso contrário, torna-se o chat visível.
+
+O item é removido do Stash quando é entregue ao novo chat. Se a resposta falhar, verifique o novo convite para o erro, em vez de esperar que o item permaneça no Stash.
+
+## Remover uma tarefa salva
+
+Use **Excluir chat do stash** no item salvo para removê-lo sem iniciar uma conversa. Isso remove o prompt salvo, não os arquivos do projeto.
+
+Stash armazena tarefas futuras para um projeto. Para instruções que você quer usar em projetos diferentes, use [prompts reutilizáveis](/docs/pt/saved-prompts). Para manter uma conversa concluída fora do histórico ativo, use [Chats arquivados](/docs/pt/archived-chats). Para isolar mudanças de código, use [worktrees do Git](/docs/pt/worktrees).

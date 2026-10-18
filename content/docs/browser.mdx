@@ -16,6 +16,16 @@ application while an agent works on its code.
 The page opens inside the workspace. If the application uses a different port on its next run,
 update the address accordingly. Dream's browser opens the URL; it does not start the application.
 
+<Frame caption="Enter a URL in the address bar to preview a page inside Dream.">
+  <img
+    src="/images/docs/browser-panel.png"
+    alt="Dream's browser with a page tab, address bar, navigation controls, and the Dream download page."
+    width={1099}
+    height={480}
+    loading="lazy"
+  />
+</Frame>
+
 ## Use browser tabs
 
 Click **New tab** to open another page and select a tab to switch to it. This is useful for keeping
@@ -36,7 +46,38 @@ The browser actions include:
 | Open in system browser | View the current URL in your regular browser |
 
 Use **Expand browser** when you need more room and **Collapse browser** to return to the smaller
-view. To give an agent a screenshot, use the chat's [attachment control](/docs/providing-context).
+view. To give an agent a screenshot of the whole page, use the chat's
+[attachment control](/docs/providing-context).
+
+## Send an element to a chat
+
+1. Click **Select an element to send to chat** in the browser toolbar.
+2. Hover over the page to outline elements, then click the one you want to discuss. Press
+   **Escape** to cancel.
+3. Type a comment in the **Send to chat** form, enable **New chat** if you want a separate
+   conversation, and send it.
+
+Dream sends your comment with the element's selector, size, text, styles, HTML, and a screenshot of
+the element, so the agent can locate it in the code. See
+[Sending feedback to a chat](/docs/feedback) for details and limitations.
+
+## Ask an agent to use the browser
+
+Claude Code, Codex, OpenCode, and Grok Build chats receive tools for Dream's browser automatically.
+They work with the same project browser tabs you see. Cursor chats do not receive these tools.
+
+Give the agent the page URL and a concrete task, for example:
+
+> Open http://localhost:3000/settings in Dream's browser. Change the theme, refresh the page, and
+> check whether the selection persists. Inspect the console and network requests if it fails.
+
+The tools can open and navigate tabs, inspect page content, click, type, hover, select options,
+scroll, take screenshots, and inspect console logs and network responses. They can also attach
+files from the project to upload controls. File uploads must use paths inside the project.
+
+Start the application before asking the agent to inspect its local URL. Browser actions follow the
+chat's [permissions](/docs/agent-modes); respond in the chat if approval is requested. These tools
+are built in and do not require a manual [MCP server definition](/docs/mcp-servers).
 
 ## Reload and clear site data
 

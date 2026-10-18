@@ -1,0 +1,64 @@
+---
+title: "Fournir du contexte"
+description: "Référencer des fichiers et dossiers de projet, joindre des fichiers et donner à un agent une tâche claire."
+---
+
+Donnez à l'agent un résultat, le contexte pertinent et toute contrainte avant qu'il ne commence son travail. Une référence de fichier lui aide à localiser du code ; un fichier joint peut fournir un matériel supplémentaire tel qu'une capture d'écran.
+
+## Référencer un fichier ou un dossier de projet
+
+1. Dans la boîte de message d'un chat, saisissez **@** suivi d'une partie du chemin d'un fichier ou d'un dossier.
+2. Choisissez un résultat parmi la liste. Utilisez **Flèche Haut** et **Flèche Bas** pour naviguer parmi les résultats, puis **Entrée** ou **Tab** pour le sélectionner.
+3. Ajoutez vos instructions autour de la référence insérée.
+4. Envoyer le message.
+
+Par exemple, faites référence au composant des paramètres et demandez :
+
+> Expliquez comment ce formulaire charge et enregistre les préférences. Recherchez pourquoi un rafraîchissement perd la valeur sélectionnée.
+
+Sélectionnez un fichier lorsque vous savez où se trouve la tâche, ou un dossier lorsque l'agent doit inspecter plusieurs fichiers liés. La liste des résultats affiche les chemins parents afin d'identifier les fichiers ayant le même nom. Appuyez sur **Échappement** pour fermer la liste.
+
+Les références identifient des emplacements dans le projet actuel. Elles ne figent pas le contenu des fichiers ni n'attachent une copie d'un répertoire entier à la conversation.
+
+## Joindre un fichier
+
+1. Cliquez sur le contrôle **Joindre un fichier** situé à côté du champ de message.
+2. Choisissez l'action de téléchargement et sélectionnez un fichier sur votre ordinateur.
+3. Vérifiez que l'attachment apparaisse dans le composant.
+4. Expliquez ce que l'agent doit faire avec cela, puis envoyez le message.
+
+Pour une capture d'écran, décrivez le comportement attendu ainsi que ce qui ne fonctionne pas. Le fournisseur et le modèle sélectionnés déterminent les types d'annexes qu'ils peuvent utiliser.
+
+<Frame caption="Utilisez le contrôle + situé à côté du champ de message pour ajouter un fichier joint.">
+  <img
+    src="/images/docs/chat-composer.png"
+    alt="Un contrôle de pièce jointe supplémentaire à gauche de la boîte de message de discussion."
+    width={600}
+    height={108}
+    loading="lazy"
+  />
+</Frame>
+
+## Utilisez une compétence pour des instructions répétables
+
+Tapez **$** dans le composant pour trouver une [compétence agent](/docs/fr/skills) pour le fournisseur et le projet sélectionnés. Choisissez-la, puis décrivez la tâche. Les compétences peuvent fournir des procédures ou des conventions de projet accompagnées des références de fichiers et des pièces jointes dans votre message.
+
+Pour envoyer du texte brut que vous voulez répéter, utilisez [des prompts réutilisables](/docs/fr/saved-prompts).
+
+## Voir et copier une image
+
+Cliquez sur une image dans la conversation pour ouvrir sa prévisualisation plus grande. Positionnez le curseur sur l'image pour afficher **Copier l'image** en haut à droite, puis cliquez dessus pour copier l'image dans le presse-papier.
+
+Pour capturer Dream lui-même dans un rapport ou un autre chat, utilisez le raccourci de capture d'écran de la fenêtre [ici](/docs/fr/workspace#capturer-la-fenêtre-dream)).
+
+## Supprimer le contexte avant d'envoyer
+
+Utilisez le contrôle de suppression d'un attachment pour le supprimer du composant. Pour une référence de projet en ligne, supprimez son mention dans le message ; la référence est supprimée avec elle. Vérifiez le texte restant afin que la demande reste cohérente.
+
+Si **@** ne trouve pas un chemin, vérifiez le projet actif et recherchez le fichier dans [Fichiers](/docs/fr/files). Utilisez son chemin actuel s'il a été déplacé ou renommé.
+
+## Donnez à un autre chat un contexte suffisant
+
+Les échanges séparés ne partagent pas automatiquement leurs messages. Lorsque vous commencez une révision à côté d'un échange de mise en œuvre, identifiez ce qui a changé, quels fichiers sont concernés et ce que le reviseur doit vérifier.
+
+Utilisez [le branching](/docs/fr/branching-chats) pour transporter des messages antérieurs dans une autre conversation, ou [Stash](/docs/fr/stash) pour enregistrer un prompt avec des références de projet pour plus tard.

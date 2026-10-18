@@ -1,0 +1,64 @@
+---
+title: "Fornecer contexto"
+description: "Referencie arquivos e pastas de projeto, anexe arquivos e dê a um agente uma tarefa clara."
+---
+
+Dê ao agente um resultado, o contexto relevante e quaisquer restrições antes de começar o trabalho. Uma referência a um arquivo ajuda-o a localizar o código; um anexo pode fornecer material adicional, como uma captura de tela.
+
+## Referencie um arquivo ou pasta de projeto
+
+1. No caixa de mensagem de uma conversa, digite **@** seguido de parte do caminho de um arquivo ou pasta.
+2. Escolha um resultado da lista. Use **Flecha Para Cima** e **Flecha Para Baixo** para navegar pelos resultados, depois **Enter** ou **Tab** para selecionar um.
+3. Adicione suas instruções ao redor do referencial inserido.
+4. Enviar a mensagem.
+
+Por exemplo, faça referência ao componente de configurações e pergunte:
+
+> Explique como este formulário carrega e salva preferências. Encontre por que uma atualização perde o valor selecionado.
+
+Selecione um arquivo quando você sabe onde a tarefa pertence, ou um diretório quando o agente precisa inspecionar vários arquivos relacionados. A lista de resultados mostra os caminhos pai para ajudar a distinguir arquivos com o mesmo nome. Aperte **Escape** para fechar a lista.
+
+Referências identificam localizações no projeto atual. Elas não congelam o conteúdo de arquivos nem anexam cópia de um diretório inteiro à conversa.
+
+## Anexar um arquivo
+
+1. Clique no controle **Anexar arquivo** ao lado da caixa de mensagem.
+2. Escolha a ação de anexar e selecione um arquivo do seu computador.
+3. Verifique se o anexo aparece no composer.
+4. Explicar o que o agente deve fazer com isso, em seguida, enviar a mensagem.
+
+Para uma captura de tela, descreva o comportamento esperado bem como o que está errado. O provedor e o modelo selecionados determinam quais tipos de anexo eles podem usar.
+
+<Frame caption="Use o controle + ao lado da caixa de mensagem para adicionar um anexo.">
+  <img
+    src="/images/docs/chat-composer.png"
+    alt="Um controle de anexo adicional à esquerda da caixa de mensagem do chat."
+    width={600}
+    height={108}
+    loading="lazy"
+  />
+</Frame>
+
+## Use uma habilidade para instruções reutilizáveis
+
+Digite **$** no composer para encontrar uma [habilidade do agente](/docs/pt/skills) para o provedor e projeto selecionados. Escolha-a, em seguida, descreva a tarefa. As habilidades podem fornecer procedimentos ou convenções de projeto juntamente com os referências de arquivo e anexos em sua mensagem.
+
+Para texto plano que você quer enviar repetidamente, use [prompts reutilizáveis](/docs/pt/saved-prompts).
+
+## Visualizar e copiar uma imagem
+
+Clique em uma imagem na conversa para abrir sua prévia maior. Posicione o ponteiro sobre a imagem para exibir **Copiar imagem** no canto superior-direito, depois clique para copiar a imagem para a área de transferência.
+
+Para capturar a própria janela do Dream para um relatório ou outro chat, use o [atalho de captura de tela da janela](/docs/pt/workspace#capturar-a-janela-do-dream).
+
+## Remover contexto antes de enviar
+
+Use o controle de remoção de anexo para removê-lo do compositor. Para uma referência de projeto inline, exclua sua menção do mensagem; a referência é removida com ela. Verifique o texto restante para garantir que a solicitação ainda tenha sentido.
+
+Se o **@** não encontrar um caminho, verifique o projeto ativo e procure o arquivo em [Arquivos](/docs/pt/files). Use seu caminho atual se foi movido ou renomeado.
+
+## Dê mais contexto para outro chat
+
+Chat separados não compartilham automaticamente suas mensagens. Ao iniciar uma revisão ao lado de um chat de implementação, identifique o que mudou, quais arquivos são relevantes e o que o revisor deve verificar.
+
+Use [branching](/docs/pt/branching-chats) para transportar mensagens anteriores para outra conversa, ou [Stash](/docs/pt/stash) para salvar um prompt com referências de projeto para posterior uso.

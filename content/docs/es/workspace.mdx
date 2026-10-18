@@ -1,0 +1,87 @@
+---
+title: "Proyectos y espacio de trabajo"
+description: "Gestionar pestañas de proyecto, organizar paneles y moverse entre chats y herramientas de desarrollo."
+---
+
+Cada proyecto de Dream tiene su propio espacio de trabajo. Las pestañas de proyectos te permiten moverte entre repositorios mientras mantienes los chats y herramientas abiertos de cada proyecto juntos.
+
+Los proyectos también pueden estar en [hosts SSH](/docs/es/remote-hosts). Comprueba la etiqueta del host antes de ejecutar comandos; las herramientas del proyecto remoto trabajan en esa máquina.
+
+<Frame caption="Proyectos y espacio de trabajo">
+  <img
+    src="/images/screen-main.png"
+    alt="Espacio de trabajo de Dream con una pestaña de proyecto, un cuadro de chat vacío, barras de herramientas y la rama en el pie."
+    width={1920}
+    height={1080}
+    loading="lazy"
+  />
+</Frame>
+
+## Agregar y cambiar de proyecto
+
+1. Haga clic en el **+** junto a las pestañas del proyecto, o use **Abrir carpeta** en la pantalla de inicio.
+2. Elige el carpeta en la que quieres trabajar.
+3. Selecciona su pestaña para hacer que sea el proyecto activo.
+
+El proyecto activo determina qué chats, archivos, terminales, pestañas del navegador y elementos de stash ves. Revisa la pestaña seleccionada antes de enviar una tarea o ejecutar un comando. Arrastra las pestañas de proyecto para reordenarlas cuando quieras que los proyectos relacionados estén uno al lado del otro.
+
+<Frame caption="La pestaña resaltada es el proyecto activo. Usa + para abrir otro directorio.">
+  <img
+    src="/images/docs/project-tabs.png"
+    alt="Pestañas de proyecto Dream con Dream seleccionado y un botón más junto a los proyectos abiertos."
+    width={1256}
+    height={48}
+    loading="lazy"
+  />
+</Frame>
+
+## Renombrar o abrir un proyecto externamente
+
+Abre el menú **…** del proyecto y elige **Editar** para cambiar su nombre de visualización o icono. Haz clic en el icono para subir una imagen de hasta 5 MB, luego **Guardar**. Restablece un icono personalizado para volver a la detección automática desde el proyecto. Renombrar un proyecto en Dream no renombra su carpeta en disco.
+
+Use las opciones **Abrir en** del menú para abrir el proyecto en un editor externo disponible.
+
+## Vuelve a una conversación anterior
+
+Use **Atrás** y **Adelante** junto a las pestañas de proyecto para volver a visitar proyectos y chats que abrió. En Windows y Linux, use **Alt+Left** y **Alt+Right**; en macOS, use **Command+[** y **Command+]**. Los botones de navegación de ratón también funcionan.
+
+Esta historia sigue las selecciones de proyecto y de chat. Cambiar paneles de herramientas no añade entradas, y el navegador integrado tiene su propia historia de navegación. Los atajos de teclado dentro del terminal o del editor de código los deja a los mismos herramientas.
+
+## Cerrar y volver a abrir un proyecto
+
+1. Abre el menú **…** del proyecto y elige **Cerrar**.
+2. Cuando quieras regresar, abre la pantalla de inicio rápidamente a través del botón **+** del proyecto.
+3. Busca el proyecto en **Cerrados recientemente**, usando su campo de búsqueda si es necesario.
+4. Selecciona el proyecto para reiniciarlo.
+
+Cerrar un proyecto elimina su pestaña abierta; no borra su carpeta. Dream restaura el contexto del proyecto guardado, como chats y herramientas abiertas, cuando sea posible. No use un proyecto cerrado como medio para mantener un proceso de terminal activo.
+
+## Buscar los controles del espacio de trabajo
+
+La barra lateral contiene **Historial de chat**, **Nuevo chat** y **Activar multichat**. Pasa el ratón sobre un icono para ver su etiqueta. El compositor de chat contiene el modelo seleccionado, el esfuerzo y la velocidad cuando estén disponibles, y los permisos.
+
+La barra lateral derecha abre las herramientas del proyecto:
+
+| Herramienta | Lo que puedes hacer |
+| --- | --- |
+| [Git](/docs/es/git-workflows) | Revisar cambios, crear commits, consultar el historial y gestionar la solicitud de incorporación de la rama |
+| [Archivos](/docs/es/files) | Explorar archivos, buscar rutas y editar el contenido de los archivos |
+| [Navegador](/docs/es/browser) | Ver URLs y inspeccionar páginas web |
+| [Terminal](/docs/es/terminals) | Ejecutar comandos de proyecto en sesiones separadas |
+| [Stash](/docs/es/stash) | Guardar prompts y ejecútalos más tarde |
+
+Los controles de Git aparecen para los proyectos de repositorio. Debajo del chat, use el control de ramas para cambiar de rama o [crear un árbol de trabajo](/docs/es/worktrees). El menú adjacente **Acciones de Git** ofrece acciones de commit, publicación, solicitudes de incorporación y acciones de árbol de trabajo según el estado de la rama.
+
+## Organice conversaciones y paneles
+
+Haga clic en una herramienta para abrir su panel. Use el control de cierre o colapso del panel cuando necesite más espacio para los chats, y arrastre los divisores de panel para reorganizar el diseño. Cerrar un panel de herramienta es diferente de cerrar sus sesiones individuales de terminal o sus pestañas de navegador.
+
+Habilite [multi-chat](/docs/es/multiple-chats) para organizar conversaciones en columnas resizables. Cada chat tiene su propia historia de conversación, mientras que todos los chats en el proyecto utilizan los mismos archivos. Use árboles de trabajo para checkouts independientes.
+
+## Capturar la ventana de Dream
+
+Presione **Ctrl+Shift+S** en Windows/Linux o **Command+Shift+S** en macOS para capturar la ventana de Dream. Dream copia la captura de pantalla al portapapeles, luego abre un cuadro de diálogo para guardarlo como PNG. Cancelar el cuadro de diálogo de guardado mantiene la copia en el portapapeles. Un aviso informa si la imagen fue copiada, guardada o no se pudo capturar.
+
+Para una captura de pantalla de una página web, use la acción de captura de pantalla del [navegador](/docs/es/browser).
+
+Para el aspecto general de la aplicación, el idioma y las preferencias de modelo, abre [Configuración](/docs/es/settings). Para encontrar conversaciones antiguas, utiliza [Historial de chats](/docs/es/chats) o [Chats archivados](/docs/es/archived-chats).

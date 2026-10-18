@@ -27,11 +27,7 @@ export default function DownloadOptions() {
                 <a
                   href={downloadUrl(item.file)}
                   download
-                  data-umami-event={umamiEventName(
-                    "download",
-                    os,
-                    item.label,
-                  )}
+                  data-umami-event={umamiEventName("download", os, item.label)}
                   className="flex items-center justify-between gap-4 py-4 text-sm text-foreground transition-colors hover:text-primary"
                 >
                   {item.label}

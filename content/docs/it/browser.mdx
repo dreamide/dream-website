@@ -1,0 +1,74 @@
+---
+title: "Anteprima nel browser"
+description: "Prevedi un'applicazione locale, gestisci le schede del browser e esplora le pagine all'interno di Dream."
+---
+
+Il browser di Dream apre pagine web accanto al tuo progetto e effettua conversazioni. Utilizzalo per esaminare un'applicazione locale mentre un agente lavora sul suo codice.
+
+## Prevedi la tua applicazione
+
+1. Avvia l'applicazione utilizzando il comando normale del progetto in un [terminale](/docs/it/terminals).
+2. Copia l'URL locale stampato dall'applicazione, incluso il suo porto.
+3. Fai clic su **Browser** nell'area laterale destra.
+4. Inserisci l'URL nel barra degli indirizzi e premi **Invio**.
+
+La pagina si apre all'interno dello spazio di lavoro. Se l'applicazione utilizza un porto diverso nella sua prossima esecuzione, aggiornare l'indirizzo di conseguenza. Il browser di Dream apre l'URL; non avvia l'applicazione.
+
+<Frame caption="Inserisci un URL nel barra degli indirizzi per anticipare una pagina all'interno di Dream.">
+  <img
+    src="/images/docs/browser-panel.png"
+    alt="Il browser di Dream con una scheda di pagina, barra dell'indirizzo, controlli di navigazione e la pagina di download di Dream."
+    width={1099}
+    height={480}
+    loading="lazy"
+  />
+</Frame>
+
+## Usa le schede del browser
+
+Clicca **Nuova scheda** per aprire una nuova pagina e seleziona una scheda per passarvi. Questo è utile per mantenere due percorsi visibili nell'historico di navigazione senza sostituirne uno con l'altro.
+
+Usa **Indietro**, **Avanti** e **Aggiorna browser** per navigare. Chiudi un singolo scheda utilizzando il suo controllo di chiusura. Nascondere il panello del browser ti permette di tornare alle sue schede aperte in seguito.
+
+## Controlla e condividi ciò che vedi
+
+Le azioni del browser includono:
+
+| Azione | Usalo per… |
+| --- | --- |
+| Apri DevTools | Controlla il console, gli elementi e l'attività di rete della pagina |
+| Acquisisci screenshot | Cattura la pagina per un rapporto di bug o per una discussione successiva |
+| Ingrandisci / Riduci / Ripristina lo zoom | Regola lo scale di visualizzazione della anteprima |
+| Apri nel browser di sistema | Visualizza l'URL corrente nel tuo browser normale |
+
+Usa **Espandi browser** quando hai bisogno di più spazio e **Comprimi browser** per tornare alla vista più piccola. Per fornire a un agente una foto del tutto il sito, usa il controllo dell'attachment del chat [controllo dell'attachment](/docs/it/providing-context).
+
+## Invia un elemento a un chat
+
+1. Fai clic su **Seleziona un elemento da inviare alla chat** nell'area di barra del browser.
+2. Sfiora la pagina per evidenziare gli elementi, poi fai clic sull'elemento che desideri discutere. Premi **Escape** per annullare.
+3. Inserisci un commento nel campo **Invia alla chat**, attiva **Nuova chat** se vuoi una conversazione separata, e invialo.
+
+Dream invia il tuo commento insieme al selettore, alle dimensioni, al testo, ai stili, all'HTML e a una schermata dell'elemento, in modo che l'agente possa localizzarlo nel codice. Vedere [Inviare feedback a una chat](/docs/it/feedback) per i dettagli e le limitazioni.
+
+## Chiedi a un agente di utilizzare il browser
+
+Claude Code, Codex, OpenCode e Grok generano chat con strumenti per il browser di Dream automaticamente. Funzionano con gli stessi schede del browser progetto che vedi. Le chat di Cursor non ricevono questi strumenti.
+
+Dai all'agente l'URL della pagina e un compito concreto, ad esempio:
+
+> Apri http://localhost:3000/settings nel browser di Dream. Cambia il tema, aggiorna la pagina e verifica che la selezione venga mantenuta. In caso contrario, controlla la console e le richieste di rete.
+
+Gli strumenti possono aprire e navigare le schede, esaminare il contenuto della pagina, fare clic, digitare, sovrapporre, selezionare opzioni, scorrere, prendere schermate e esaminare i log del console e le risposte di rete. Possono anche allegare file dal progetto per controlli di caricamento. I caricamenti di file devono utilizzare percorsi all'interno del progetto.
+
+Avvia l'applicazione prima di chiedere all'agente di esaminare l'URL locale. Le azioni del browser seguono le [autorizzazioni](/docs/it/agent-modes) del chat; rispondi nel chat in caso di richiesta di approvazione. Questi strumenti sono integrati e non richiedono una definizione manuale di un server [MCP](/docs/it/mcp-servers).
+
+## Ricarica e cancella i dati del sito
+
+Prova un normale aggiornamento dopo aver modificato il codice dell'applicazione. Se la pagina continua a sembrare vecchia, usa **Forza ricaricamento** dalle azioni del browser.
+
+**Svuota cache** elimina i dati in cache del browser. **Cancella cookie** elimina i cookie e può disconnetterti dai siti nel browser incorporato. Utilizza queste azioni con cura quando si esplora il comportamento relativo al caching o all'autenticazione.
+
+## Se una pagina locale non si carica
+
+Verifica che l'applicazione sia ancora in esecuzione, conferma l'URL completo e la porta nel suo output terminale, e esamina eventuali errori del server. Prova lo stesso indirizzo nel browser del tuo sistema per determinare se il problema riguarda l'applicazione o la preview integrata.

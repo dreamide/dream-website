@@ -1,0 +1,64 @@
+---
+title: "Proporcionar contexto"
+description: "Referencie archivos y carpetas de proyecto, adjunte archivos y proporcione una tarea clara al agente."
+---
+
+Proporcione al agente un resultado, el contexto relevante y cualquier restricción antes de que comience el trabajo. Una referencia de archivo le ayuda a localizar el código; un anexo puede proporcionar material adicional como una captura de pantalla.
+
+## Referencie un archivo o carpeta de proyecto
+
+1. En la caja de mensaje de un chat, escribe **@** seguido de una parte de la ruta de archivo o carpeta.
+2. Elige un resultado de la lista. Usa **Flecha Arriba** y **Flecha Abajo** para moverte por los resultados, luego **Enter** o **Tab** para seleccionar uno.
+3. Agrega tus instrucciones alrededor de la referencia insertada.
+4. Enviar el mensaje.
+
+Por ejemplo, haga referencia al componente de configuraciones y pregunte:
+
+> Explica cómo cargan y guardan esta forma las preferencias. Busca por qué un refresco pierde el valor seleccionado.
+
+Selecciona un archivo cuando sepas dónde está la tarea, o un directorio cuando el agente necesite inspeccionar varios archivos relacionados. La lista de resultados muestra los caminos padres para ayudar a distinguir archivos con el mismo nombre. Presiona **Escape** para cerrar la lista.
+
+Las referencias identifican ubicaciones en el proyecto actual. No congelan el contenido de los archivos ni adjuntan una copia de un directorio completo a la conversación.
+
+## Adjunta un archivo
+
+1. Haga clic en el control **Adjuntar archivo** junto al cuadro de mensaje.
+2. Elige la acción de adjuntar y selecciona un archivo de tu computadora.
+3. Verifique que el archivo adjunto aparezca en el compositor.
+4. Explica qué debe hacer el agente con ello, luego envía el mensaje.
+
+Para una captura de pantalla, describe el comportamiento esperado así como lo que está mal. El proveedor y el modelo seleccionados determinan qué tipos de adjuntos pueden utilizar.
+
+<Frame caption="Use el control + junto al cuadro de mensaje para agregar un archivo adjunto.">
+  <img
+    src="/images/docs/chat-composer.png"
+    alt="Un control de adjunto adicional a la izquierda del cuadro de mensaje de chat."
+    width={600}
+    height={108}
+    loading="lazy"
+  />
+</Frame>
+
+## Use una habilidad para instrucciones reutilizables
+
+Escribe **$** en el compositor para encontrar una [habilidad del agente](/docs/es/skills) para el proveedor y proyecto seleccionados. Elige una, luego describe la tarea. Las habilidades pueden proporcionar procedimientos o convenciones de proyecto junto con los referencias de archivo y los archivos adjuntos en tu mensaje.
+
+Para texto plano que quieras enviar repetidamente, utiliza [prompts reutilizables](/docs/es/saved-prompts).
+
+## Ver e copiar una imagen
+
+Haga clic en una imagen en la conversación para abrir su vista previa más grande. Pase el ratón por encima de la imagen para revelar **Copiar imagen** en la esquina superior derecha, luego hágalo clic para copiar la imagen al portapapeles.
+
+Para capturar Dream mismo para un informe u otro chat, use el atajo para capturar la ventana [window screenshot shortcut](/docs/es/workspace#capturar-la-ventana-de-dream).
+
+## Eliminar contexto antes de enviarlo
+
+Use el control de eliminación de un anexo para eliminarlo del compositor. Para una referencia de proyecto en línea, elimina su mención del mensaje; la referencia se elimina junto con ella. Revisa el texto restante para asegurarte de que la solicitud siga siendo coherente.
+
+Si **@** no encuentra un camino, verifica el proyecto activo y busca el archivo en [Archivos](/docs/es/files). Usa su ruta actual si ha sido movido o renombrado.
+
+## Proporcione otro chat con suficiente contexto
+
+Los chats separados no comparten automáticamente sus mensajes. Al comenzar una revisión junto a un chat de implementación, identifica qué cambió, qué archivos son relevantes y qué debe revisar el revisor.
+
+Utiliza [branching](/docs/es/branching-chats) para llevar mensajes anteriores a otra conversación, o [Stash](/docs/es/stash) para guardar un prompt con referencias de proyecto para más adelante.

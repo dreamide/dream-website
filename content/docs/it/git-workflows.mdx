@@ -1,0 +1,132 @@
+---
+title: "Flussi di lavoro Git"
+description: "Revisione dei cambiamenti, lavorare con i rami e utilizzare i worktree Git in Dream."
+---
+
+Apri **Git** nella barra laterale destra per le schede **Modifiche**, **Cronologia** e **Pull request**. Il menu **Azioni Git** sotto il chat offre i prossimi passi per la ramifica corrente.
+
+## Prima di iniziare
+
+Per i commit, il tuo repository ha bisogno di un'identità autore configurata con Git. Per il push, ha bisogno di un remoto e di credenziali che possano accedervi. La creazione di un pull request utilizza il GitHub CLI, che deve essere installato e autenticato per il repository di destinazione.
+
+Puoi digitare i messaggi di commit e il testo del PR tu stesso. Per generare tali testi, abilita un modello fornitore e scegli **Impostazioni → Generale → Modelli → Modello di generazione del testo**.
+
+## Revisione dei cambiamenti
+
+1. Apri **Git → Modifiche** per esaminare i file modificati, aggiunti e eliminati.
+2. Espandi un file per esaminare la sua differenza.
+3. Scegli **Diff unificato** o **Diff diviso** nell'intestazione, e abilita il wrapping delle parole nell'azione **Modifiche** se utile.
+4. Usa **Azioni Modifiche → Aggiorna** se le modifiche effettuate fuori da Dream non sono ancora riflesse.
+
+Per diff estremamente grandi, Dream potrebbe mostrare **Diff troppo grande per essere renderizzato**. Utilizza **Renderizza comunque** solo quando desideri caricare quella vista più ampia, o esaminare il file nel tuo editor o terminale.
+
+Usa l'azione **Annulla le modifiche apportate al file** per scartare modifiche di lavoro non desiderate. L'azione **Annulla tutte le modifiche** ha un ambito più ampio; verifica il suo raggio prima di confermarlo. Annullare il codice è separato dall'archiviazione della conversazione che lo ha generato. Per annullare soltanto ciò che una risposta specifica ha modificato, usa il relativo [punto di controllo](/docs/it/checkpoints).
+
+Per chiedere a un agente di informazioni su righe specifiche, trascina sulle righe di un diff o fai clic sul controllo **+** di una riga, poi scrivi un commento. Dream lo invia insieme al percorso del file e alle righe selezionate. Vedere [Inviare feedback a una chat](/docs/it/feedback).
+
+## Committare il tuo lavoro
+
+<Frame caption="Committare il tuo lavoro">
+  <img
+    src="/images/docs/changes-panel.png"
+    alt="Scheda Modifiche di Git con un messaggio di commit, i controlli di commit e un diff espanso."
+    width={1070}
+    height={1016}
+    loading="lazy"
+  />
+</Frame>
+
+1. Apri **Git → Modifiche**, o scegli **Esegui commit** dal menu **Azioni Git** nel footer.
+2. Revisita le differenze dei file sotto il commit composer.
+3. Verifica **Includi le modifiche non aggiunte all’indice**. È abilitato per impostazione predefinita e include le modifiche non stage nel commit.
+4. Controlla il messaggio **Genera automaticamente il messaggio**, che è abilitato per impostazione predefinita. Per scrivere il proprio messaggio, disattivalo e inserisci il testo; disattivarlo cancella il messaggio generato.
+5. Scegli **Esegui commit**, o **Effettua il commit e il push** se sei pronto a pubblicare il commit sul remoto.
+
+Per committare solo un sottoinsieme selezionato, stage quei file utilizzando Git in un terminale o un editor esterno e disattiva **Includi le modifiche non aggiunte all’indice**. Il pannello delle modifiche non fornisce controlli individuali di staging.
+
+Dream rifiuta i commit in caso ci siano modifiche staged al di fuori della cartella progetto attiva. Committale separatamente prima di procedere con questa operazione.
+
+<Warning>
+  Revisti i file inclusi nonché il messaggio. Con Include unstaged abilitato, un commit può contenere lavori da diversi chat che condividono questo checkout.
+</Warning>
+
+## Spingi un ramo
+
+<Frame caption="Flussi di lavoro Git">
+  <img
+    src="/images/docs/git-actions-menu.png"
+    alt="Menu delle azioni Git aperto sopra il branch corrente nel piè di pagina della chat."
+    width={226}
+    height={259}
+    loading="lazy"
+  />
+</Frame>
+
+Usa **Pubblica branch** per un branch senza upstream, oppure **Esegui push** per inviare i commit in uscita. Queste azioni nel piè di pagina eseguono subito il push. Controlla prima il branch, il remoto e i commit in **Cronologia**; quando esiste un upstream, il piè di pagina mostra il numero di commit in anticipo e in ritardo.
+
+Se l'invio fallisce, verifica l'errore e conferma l'accesso remoto. Un commit locale riuscito rimane comunque commesso anche se un successivo push fallisce; verifica lo stato della ramifica prima di ripetere un'azione combinata.
+
+## Crea una pull request
+
+1. Lavora su un ramo caratterizzato da un nome diverso dal ramo base della richiesta di merge.
+2. Scegli **Crea PR** nel piede della pagina, o **Azioni Git → Crea richiesta pull**.
+3. Controlla i rami source e base e le modifiche proposte.
+4. Inserisci un titolo e una descrizione, oppure usa **Genera automaticamente i dettagli PR** e verifica il testo generato.
+5. Sotto **Passaggi successivi**, seleziona l'azione che corrisponde allo stato della ramificazione.
+6. Accendi **Bozza** se la richiesta di merge non è pronta per il review, poi invia.
+
+<Frame caption="Revisti i dettagli della richiesta di merge e scegli il passo successivo. Il draft è disattivato in questo esempio.">
+  <img
+    src="/images/docs/create-pr-dialog.png"
+    alt="Crea dialogo PR con rami source e base, titolo, descrizione, opzioni per il passaggio successivo e opzione Draft."
+    width={672}
+    height={680}
+    loading="lazy"
+  />
+</Frame>
+
+| Passo successivo | Cosa succede |
+| --- | --- |
+| Crea PR | Crea una PR per lavoro già spostato |
+| Spingi e crea una richiesta di pull | Spinge i commit prima di creare la richiesta di merge |
+| Commit, push e crea PR | Committati i cambiamenti in corso, effettuano il push e creano la richiesta di merge |
+
+Il dialogo inizia con **Bozza** disattivato. Abilitalo per creare un PR in bozza. La creazione di un PR richiede un ramo piuttosto che un HEAD separato, e source e base non possono essere lo stesso ramo.
+
+Se un'azione combinata fallisce, passaggi precedenti potrebbero già essere stati completati. Verifica il commit, il ramo remoto o la richiesta di merge prima di riprovarci.
+
+## Revisione e fusione di una richiesta di pull
+
+Apri **Git → Pull request** per visualizzare la richiesta di fusione della ramifica corrente. Usa **Riepilogo** per la sua descrizione, i controlli e il discorso, oppure **Codice** per esaminare i diff e pubblicare commenti inline. Puoi modificare il titolo e la descrizione quando è consentito e utilizza **Unisci** per scegliere il metodo di fusione. Vedi [Esaminare le pull request](/docs/it/pull-requests) per il flusso completo.
+
+## Passare o creare ramificazioni
+
+Apri il selettore di ramificazioni sotto il chat, cerca le ramificazioni locali e seleziona una per verificarne l'uscita. Usa **Crea e verifica nuova ramificazione…** per nominare e creare una ramificazione. Aggiorna l'elenco se una ramificazione creata al di fuori di Dream manca.
+
+<Frame caption="Il segno di spunta identifica la ramifica corrente. Cerca un'altra ramifica o crea una nuova da quel menù.">
+  <img
+    src="/images/docs/branch-switcher.png"
+    alt="Switcher di ramification che mostra Cerca ramificazioni, main selezionato, un'altra ramificazione locale, Creare e passare a una nuova ramificazione, e Nuovo albero di lavoro."
+    width={377}
+    height={256}
+    loading="lazy"
+  />
+</Frame>
+
+Cambiare ramificazioni modifica i file utilizzati da ogni chat in quel progetto. Verifica il lavoro incompiuto prima di effettuare il cambio. Per compiti paralleli con check-out indipendenti, usa [Git worktrees](/docs/it/worktrees). Quando un worktree è completato, utilizza il suo footer per unirsi al ramo principale, creare una richiesta di pull, o rimuovere il check-out. Vedi [Completare un worktree](/docs/it/worktrees#completa-un-worktree).
+
+## Visualizza il history dei commit
+
+<Frame caption="Visualizza il history dei commit">
+  <img
+    src="/images/docs/git-history-panel.png"
+    alt="Scheda Cronologia di Git con ricerca dei commit, etichette dei branch e un grafico colorato di commit e merge."
+    width={933}
+    height={1016}
+    loading="lazy"
+  />
+</Frame>
+
+Apri **Git → Cronologia**, o **Azioni Git → Visualizza cronologia**, per seguire i commit e i merge nel grafico a colori. Usa **Cerca commit** per filtrare i commit caricati per messaggio, autore, prefisso hash o riferimento. **Carica di più** include commit più vecchi; cancella la ricerca per riprendere il grafico.
+
+Spostare il cursore su un commit o concentrarsi su di esso con il tastierino per utilizzare **Copia hash del commit**.

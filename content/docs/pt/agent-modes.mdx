@@ -1,0 +1,42 @@
+---
+title: "Permissões dos agentes"
+description: "Escolha Ask, Aceitar edições ou Acesso total e responda aos pedidos do agente."
+---
+
+Cada chat possui um controle de **Permissões** abaixo de sua caixa de mensagem. Novos chats herdam as **Configurações → Geral → Modelos → Permissões padrão**, que começa com **Acesso total**. Mudar o padrão não altera os chats existentes.
+
+## Escolher permissões
+
+1. Abra o controle com o ícone de escudo abaixo da caixa de mensagem. Sua dica de ferramenta é **Permissões**.
+2. Selecione **Perguntar**, **Aceitar edições** ou **Acesso total**.
+3. Revise a tarefa e envie.
+
+| Permissão | Comportamento intencionado |
+| --- | --- |
+| Perguntar | Solicitar aprovação para ações que exigem permissão conforme a configuração do provedor |
+| Aceitar edições | Permita edições de arquivo automaticamente enquanto mantém o processo de aprovação para outras ações |
+| Acesso total | Dê ao agente acesso mais amplo para agir sem prompts de aprovação |
+
+O provedor selecionado determina o comportamento exato das permissões. **Perguntar** não significa que toda leitura ou chamada de ferramenta solicitará aprovação, e **Aceitar edições** não autoriza todos os comandos.
+
+<Note>
+  O Dream não tem mais controles separados de Build e Plan. Para planejar primeiro, peça ao agente que investigue e proponha uma abordagem antes de fazer alterações. Essa instrução não impõe acesso somente de leitura ao sistema de arquivos; escolha também as permissões adequadas à tarefa.
+</Note>
+
+<Frame caption="O escudo e o rótulo Acesso completo identificam o controle de permissões deste chat.">
+  <img
+    src="/images/docs/chat-composer.png"
+    alt="O compositor de chat exibindo Acesso total ao lado do modelo, controles de esforço e velocidade."
+    width={600}
+    height={108}
+    loading="lazy"
+  />
+</Frame>
+
+## Responder a perguntas e aprovações
+
+Um agente pode te pedir para esclarecer um requisito, escolher uma opção ou aprovar uma ação. Leia a solicitação na conversa e responda usando os controles que ela fornece. Uma guia de projeto pode indicar que um agente está aguardando sua resposta. Abra esse projeto e retorne à conversa para ler a solicitação.
+
+Se a solicitação exigir uma mudança na tarefa, dê ao agente a instrução revisada nesse chat. Use o controle de parada para interromper uma resposta quando necessário. Parar não desfaz edições nem comandos já concluídos; verifique as [Alterações](/docs/pt/git-workflows) depois ou use o [checkpoint](/docs/pt/checkpoints) da resposta para restaurar os arquivos que ela alterou.
+
+Para tarefas paralelas que precisam de arquivos separados, use [árvore de trabalho](/docs/pt/worktrees). As configurações de permissão não permitem dois chats em mesmo diretório com checkouts independentes.

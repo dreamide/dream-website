@@ -1,0 +1,62 @@
+---
+title: "Ngữ cảnh và mức sử dụng"
+description: "Đọc ngữ cảnh sử dụng, hiểu về việc thu gọn, và điều chỉnh cách hiển thị hoạt động của agent."
+---
+
+Dream hiển thị thông tin về cuộc trò chuyện hiện tại và, nếu có sẵn, giới hạn sử dụng của nhà cung cấp đã chọn. Những câu trả lời này trả lời những câu hỏi khác nhau: lượng bối cảnh mà cuộc trò chuyện đang sử dụng, và lượng cho phép của nhà cung cấp đã được sử dụng.
+
+## Kiểm tra bối cảnh cuộc trò chuyện
+
+Sử dụng chỉ báo bối cảnh dưới hộp tin nhắn để kiểm tra việc sử dụng bối cảnh của cuộc trò chuyện. Cửa sổ bối cảnh là lượng nội dung mà mô hình có thể xem xét để tạo phản hồi, bao gồm nội dung cuộc trò chuyện và kết quả công cụ.
+
+Dream sử dụng thông tin sử dụng được cung cấp bởi nhà cung cấp khi có sẵn và có thể ước tính sử dụng từ các tin nhắn nếu không có. Xem chỉ số này như là hướng dẫn thay vì một chỉ số tính phí chính xác. Việc thay đổi mô hình có thể thay đổi kích thước cửa sổ ngữ cảnh có sẵn.
+
+## Hiểu về việc nén
+
+Một số nhà cung cấp thu gọn các cuộc trò chuyện dài bằng cách tóm tắt ngữ cảnh cũ. Khi nhà cung cấp báo cáo hoạt động này, Dream hiển thị **Thu gọn ngữ cảnh…** hoặc **Đã nén ngữ cảnh** trong cuộc trò chuyện.
+
+Việc nén giúp agent tiếp tục một nhiệm vụ dài, nhưng một tóm tắt có thể không giữ lại mọi chi tiết. Lặp lại các yêu cầu quan trọng và tham chiếu đến các tệp hiện tại nếu cuộc trò chuyện đã xa rời yêu cầu ban đầu. Transcripts được hiển thị bởi Dream và bối cảnh được sử dụng bởi nhà cung cấp không nhất thiết là giống nhau.
+
+Hành vi thu gọn được kiểm soát bởi tích hợp nhà cung cấp. Nó không giống với việc lưu trữ cuộc trò chuyện, và nó không giải phóng lượng sử dụng tài khoản của nhà cung cấp.
+
+## Kiểm tra việc sử dụng dịch vụ cung cấp
+
+1. Mở một cuộc trò chuyện bằng nhà cung cấp bạn muốn kiểm tra.
+2. Nhấn vào biểu đồ sử dụng nằm dưới hộp tin nhắn.
+3. Xem lại thông tin sử dụng có sẵn và thời gian đặt lại.
+
+<Frame caption="Biểu đồ sử dụng mở ra chi tiết giới hạn sử dụng của nhà cung cấp. Ví dụ từ Anthropic này hiển thị thời gian sử dụng trong 5 giờ và theo tuần với thời gian đặt lại.">
+  <img
+    src="/images/docs/provider-usage.png"
+    alt="Thanh pop-up sử dụng của Anthropic ở phía trên thanh đo composer, hiển thị 5% giới hạn năm giờ và 30% giới hạn tuần được sử dụng, cùng với thời gian đặt lại."
+    width={336}
+    height={227}
+    loading="lazy"
+  />
+</Frame>
+
+Phím bật hộp được ghi nhãn **Mức sử dụng gói** với hầu hết các nhà cung cấp và **Số liệu thống kê sử dụng** với OpenCode. Tính khả dụng và chi tiết có thể thay đổi tùy theo nhà cung cấp. Việc không có giá trị đọc không có nghĩa là cuộc trò chuyện không thể chạy; hãy kiểm tra bất kỳ lỗi nào trên phản hồi thực tế và thông tin tài khoản của nhà cung cấp.
+
+## Giảm độ phức tạp của hoạt động công cụ để dễ đọc hơn
+
+Mở **Cài đặt → Chung** và tìm **Tin nhắn chat**:
+
+| Cài đặt | Hiệu ứng |
+| --- | --- |
+| Hiển thị tóm tắt suy luận | Hiển thị các tóm tắt suy luận được cung cấp bởi mô hình |
+| Nhóm lệnh gọi công cụ | Nhóm hoạt động công cụ thành các viên đếm gọn gàng |
+| Mở rộng lệnh gọi công cụ | Hiện thông tin gọi công cụ được mở rộng mặc định |
+
+Các cài đặt này thay đổi cách trình bày. Chúng không thay đổi nỗ lực suy luận yêu cầu từ mô hình; cấu hình điều đó tại [Mô hình và thiết lập mặc định](/docs/vi/models). Nhóm tương tự cũng chứa **Checkpoint thay đổi**, điều khiển việc lưu file snapshot của Dream trước mỗi lần trả lời; xem [Kiểm tra và khôi phục thay đổi](/docs/vi/checkpoints).
+
+<Frame caption="Hoạt động của công cụ xuất hiện trực tiếp bên cạnh phản hồi để bạn có thể kiểm tra những gì công cụ đã sử dụng.">
+  <img
+    src="/images/docs/chat-tools.png"
+    alt="Tệp đọc và chip lệnh trong một phản hồi của agent, bao gồm tên tệp và khoảng dòng."
+    width={600}
+    height={184}
+    loading="lazy"
+  />
+</Frame>
+
+Để bắt đầu một nhiệm vụ mới với mục tiêu khác, hãy bắt đầu một [tâm sự mới](/docs/vi/chats). Để giữ lại một phần cụ thể của cuộc trò chuyện khi khám phá một lựa chọn thay thế, [phân nhánh từ một tin nhắn](/docs/vi/branching-chats).

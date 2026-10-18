@@ -1,0 +1,71 @@
+---
+title: "Connecter un fournisseur"
+description: "Configurer les interfaces de ligne de commande et les modèles du agent de codage que Dream peut utiliser."
+---
+
+Dream fonctionne avec des outils de ligne de commande de type agent de programmation déjà installés sur votre ordinateur.
+
+## Fournisseurs pris en charge
+
+| Fournisseur | CLI requis |
+| --- | --- |
+| OpenAI | Codex CLI |
+| Anthropic | Claude Code CLI |
+| OpenCode | OpenCode CLI |
+| Cursor | Cursor Agent CLI |
+| Grok Build | Grok Build CLI |
+
+Installez l'interface en ligne de commande depuis son fournisseur, puis effectuez la procédure normale de connexion ou d'authentification de cet interface en dehors de Dream.
+
+## Activer les modèles
+
+1. Ouvrir **Paramètres** dans Dream.
+2. Sélectionnez **Fournisseurs**.
+3. Actualisez le fournisseur après avoir installé ou authentifié son CLI.
+4. Activez l'interrupteur du fournisseur, puis activez l'un ou plusieurs de ses modèles détectés.
+5. Ouvrir **Général → Modèles** et choisir les valeurs par défaut pour les nouveaux échanges et pour la rédaction de commits et de demandes de fusion.
+
+Vous devez activer au moins un modèle avant d'ouvrir votre premier projet. Un chat peut utiliser un modèle activé différent du modèle par défaut après qu'il ait commencé.
+
+<Frame caption="Actualisez la carte du fournisseur, puis activez les modèles que vous souhaitez utiliser.">
+  <img
+    src="/images/docs/provider-models.png"
+    alt="Carte du fournisseur OpenAI montrant la détection du CLI Codex, un bouton de rafraîchissement et des commutateurs individuels de modèle."
+    width={1016}
+    height={440}
+    loading="lazy"
+  />
+</Frame>
+
+## Utiliser plus d’un fournisseur
+
+Activer les modèles fournis par chaque fournisseur que vous souhaitez utiliser. La composition du chat affiche les modèles activés, afin que vous puissiez choisir un autre fournisseur pour une autre conversation ou modifier le modèle dans un chat existant.
+
+Par exemple, maintenez votre chat d'implémentation sur un seul fournisseur et créez un chat de revue avec un autre. Vous n'avez pas besoin de modifier votre valeur par défaut globale chaque fois. Suivez [Modèles et valeurs par défaut](/docs/fr/models) pour configurer les valeurs par défaut des nouveaux chats, l'effort de raisonnement, la vitesse, et le modèle séparé de création de Git.
+
+## Comprendre les différences entre les fournisseurs
+
+L'interface en ligne de commande installée gère l'authentification et exécute le travail de l'agent. Les listes de modèles, les options de niveau d'effort et de vitesse prises en charge, le traitement des pièces jointes, les informations sur l'utilisation et le comportement des permissions peuvent varier selon les fournisseurs.
+
+Dream expose des autorisations **Demander**, **Accepter les modifications** et **Accès complet** par conversation. Veuillez lire [Autorisations des agents](/docs/fr/agent-modes) avant de les choisir. Claude chat avec une session résumable offre également [Continuer dans le terminal](/docs/fr/terminals#continuer-une-conversation-avec-claude-dans-un-terminal).
+
+Les [compétences](/docs/fr/skills) sont disponibles pour Claude Code, Codex, OpenCode et Cursor. Les [serveurs MCP](/docs/fr/mcp-servers) et les outils de navigateur intégrés à Dream sont disponibles pour Claude Code, Codex, OpenCode et Grok Build ; Cursor ne prend pas en charge ces connexions d’outils gérées par Dream.
+
+## Vérifier les mises à jour de l'interface en ligne de commande
+
+Les cartes des fournisseurs affichent la version CLI installée lorsque celle-ci est disponible. Dream vérifie également la présence de versions plus récentes et affiche un badge **Mise à jour disponible : …** lorsque l'une est trouvée. Ce badge indique la disponibilité de la mise à jour ; il ne la installe pas. Mettez à jour la CLI par le biais de sa méthode d'installation normale, puis rafraîchissez sa carte fournisseur dans Dream.
+
+Utilisez l'interrupteur de activation du fournisseur pour cacher ses modèles des sélections disponibles sans désinstaller la CLI. Vérifiez à nouveau vos paramètres par défaut après avoir modifié les fournisseurs ou les modèles activés.
+
+## Dépannage de la détection
+
+Si un fournisseur indique **CLI non détecté** :
+
+1. Ouvrez votre terminal système et vérifiez que la commande CLI démarre avec succès.
+2. Finaliser toute demande de connexion ou de configuration initiale requise par la CLI.
+3. Retournez vers **Paramètres → Fournisseurs** et actualisez-le.
+4. Pour OpenCode, exécutez son flux d'authentification ou configurez `opencode.json` si aucun modèle ne s'affiche.
+
+Si l'interface de ligne de commande a été installée pendant que Dream était ouvert, redémarrez Dream si le refresh ne détecte toujours pas l'installation. La commande doit être disponible dans l'environnement de Dream ; un alias de shell ne suffit pas à considérer l'interface de ligne de commande installée.
+
+Si un interface de ligne de commande est détecté mais que le modèle souhaité est absent, vérifiez les paramètres et la configuration de l'éditeur et actualisez la liste. Si les modèles sont listés mais indisponibles dans les discussions, activez-les via leurs boutons d'activation et assurez-vous que l'éditeur lui-même est activé. Voir [Dépannage](/docs/fr/troubleshooting) pour des vérifications supplémentaires.

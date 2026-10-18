@@ -1,0 +1,57 @@
+---
+title: "Mehrere Chats verwenden"
+description: "Arbeiten Sie mit Gesprächen gleichzeitig, ordnen Sie Spalten und verstehen Sie ihre gemeinsamen Projektdateien."
+---
+
+Multi-chat zeigt mehrere Gespräche nebeneinander in demselben Projekt an. Jedes Gespräch behält seine eigenen Nachrichten und die Auswahl des Modells, sodass Sie Ansätze vergleichen oder eine Überprüfung während der Entwicklung eines Implementierungsverfahrens beibehalten können.
+
+<Frame caption="Jede Spalte behält ihre eigene Konversation und Modellkontrollen, teilt jedoch die Dateien des Projekts.">
+  <img
+    src="/images/screen-multiple-chats.png"
+    alt="Drei Chats nebeneinander in Dream, jeweils mit eigenem Modell und Berechtigungen unter der Nachrichtenbox."
+    width={1920}
+    height={1080}
+    loading="lazy"
+  />
+</Frame>
+
+## Offene Chats nebeneinander anzeigen
+
+1. Ein Projekt öffnen und das Gespräch, das Sie sichtbar halten möchten.
+2. Klicken Sie im linken Toolbar auf **Multi-Chat aktivieren**. Hoveren Sie über die Toolbar-Icons, um deren Namen zu sehen.
+3. Klicken Sie auf **Neuer Chat**, um ein Gespräch neben dem offenen hinzuzufügen.
+4. Wählen Sie ein Modell im Komponisten des neuen Chats aus und senden Sie eine Nachricht.
+
+Um eine bestehende Konversation wiederherzustellen, öffnen Sie **Chat-Verlauf** und wählen sie aus. Die Auswahl einer bereits im Layout vorhandenen Chat-Verbindung fokussiert diese Konversation und erzeugt keine doppelte.
+
+Multi-chat ist ein Projekt-Einstellung. Sie können mehrere Gespräche in einem Projekt anzeigen und einen einzigen Gesprächsfluß in einem anderen verwenden.
+
+## Arbeiten im Workspace organisieren
+
+- **Größe verändern:** Ziehen Sie die Trennlinie zwischen den Chatspalten, um ihre Breiten anzupassen.
+- **Neuordnen:** Ziehen Sie ein Chat-Fenster über seinen Titelbereich, um es neben ein anderes Gespräch zu verschieben.
+- **Eine Spalte schließen:** Klicken Sie das **×** in ihrem Header. Das Gespräch bleibt im Chatverlauf.
+- **Zur Einzelkonversation zurückkehren:** Wählen Sie das Chat-Verläuf, den Sie im Blick haben wollen, dann klicken Sie in der linken Toolbar auf **Multi-Chat deaktivieren**.
+
+Die engere Kontrolle ist verfügbar, wenn ein weiterer Chat offen ist, um ihn im Blickfeld zu lassen. Die Deaktivierung des Multi-Chat-Modus archiviert die anderen Gespräche nicht; öffnen Sie diese erneut aus der Geschichte, wenn nötig.
+
+## Beispiel: implementieren, dann überprüfen
+
+1. Starte ein Chat-Verzeichnis namens „Implementierung der Einstellungspersistenz“ und bitte es, das Einstellungsformular zu beheben.
+2. Multi-Chat aktivieren und ein zweites Chat-Verzeichnis namens „Review settings persistence“ erstellen.
+3. Wählen Sie ein anderes aktiviertes Modell im Überprüfungsgespräch aus, wenn Sie eine Bewertung eines zweiten Modells wünschen.
+4. Sobald die Implementierung bereit ist, bitte die Review-Chat-Instanz, die aktuellen Änderungen zu überprüfen und Probleme zu melden, ohne Dateien zu bearbeiten.
+5. Halten Sie die Überprüfung sichtbar, während Sie dem Implementierungschat den Hinweisen darauf folgen lassen.
+6. Schließen Sie die Spalte Bewertung, wenn Sie mehr Platz benötigen. Wiederholen Sie sie aus der Geschichte, um die Ergebnisse erneut zu betrachten.
+
+Der zweite Chat erhält nicht automatisch die Nachrichten des ersten Chats. Geben Sie ihm den Aufgabenkontext und [verweisen Sie auf die relevanten Dateien](/docs/de/providing-context), oder verwenden Sie [Konversationsschaltung](/docs/de/branching-chats), wenn Sie frühere Nachrichten kopieren möchten.
+
+## Verstehe, was geteilt wird
+
+Alle Chats in demselben Projekt arbeiten an dem gleichen Projektverzeichnis. Datei-Änderungen und Git-Branch-Änderungen sind den anderen Chats sichtbar, selbst wenn ihre Konversationsgeschichten getrennt sind.
+
+<Warning>
+  Zwei Agenten, die die gleichen Dateien bearbeiten, können sich gegenseitig stören. Verwenden Sie separate [Git-Worktrees](/docs/de/worktrees), wenn Aufgaben unabhängige Checkouts erfordern. Die Aktivierung von multi-chat allein isoliert file-Änderungen nicht.
+</Warning>
+
+Für abgeschlossene Gespräche verwenden Sie [Archivierung](/docs/de/archived-chats), um die Geschichte übersichtlich zu halten.

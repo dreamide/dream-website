@@ -1,0 +1,76 @@
+---
+title: "Modelos y valores predeterminados"
+description: "Habilitar modelos, elegir valores predeterminados para chats y redacción de Git, y cambiar el modelo de una conversación."
+---
+
+Dream separa los modelos disponibles para usar de los modelos seleccionados para una tarea específica. **Configuración → Proveedores** controla la disponibilidad. **Configuración → General**, en el grupo **Modelos**, controla los valores predeterminados. El selector debajo de cada mensaje de chat controla esa conversación.
+
+## Habilitar modelos
+
+1. Instale y autentique un [CLI de proveedor compatible](/docs/es/providers).
+2. Abrir **Configuración → Proveedores** y habilitar el proveedor.
+3. Actualiza el proveedor para detectar su CLI y los modelos disponibles.
+4. Habilite los modelos que desea que aparezcan en los selectores de Dream.
+
+Puedes habilitar modelos de varios proveedores. Si un modelo no aparece en un selector, verifica primero que esté habilitado aquí. Actualizar detecta la disponibilidad; es distinto de elegir tu predeterminado.
+
+## Establecer el valor predeterminado para nuevos chats
+
+1. Abrir **Configuración → General → Modelos**.
+2. Bajo **Modelo de chat predeterminado**, seleccione un modelo habilitado.
+3. Elige **Esfuerzo** y **Velocidad** si el modelo seleccionado ofrece esos controles.
+4. Vuelve a un proyecto y comienza una nueva conversación para usar la selección.
+
+El valor predeterminado se aplica a chats recién creados en todos los proyectos. Las conversaciones existentes mantienen sus propios ajustes de modelo. Si **Nuevo chat** vuelve a abrir un borrador vacío que ya habías abierto, revisa su compositor y cambia el modelo allí si es necesario.
+
+<Frame caption="Los valores predeterminados del chat y el modelo de generación de texto para borradores de commit y solicitudes de cambios tienen controles separados.">
+  <img
+    src="/images/docs/model-defaults.png"
+    alt="Configuraciones de Modelos mostrando Modelo de chat predeterminado, Permisos predeterminados y Modelo de generación de texto."
+    width={1016}
+    height={246}
+    loading="lazy"
+  />
+</Frame>
+
+## Establecer un modelo para el redactado de comits y solicitudes de incorporación de código
+
+En el mismo grupo **Modelos**, elige **Modelo de generación de texto** y su esfuerzo y velocidad cuando estén disponibles. Dream utiliza estas selecciones al redactar los mensajes de commit y el texto de solicitud de incorporación.
+
+Por ejemplo, puedes usar un modelo para conversaciones de implementación y otro para resúmenes de Git. Cambiar el modelo para la redacción de Git no afecta tus modelos de chat. Consulta [Flujos de trabajo de Git](/docs/es/git-workflows) para revisar y editar el texto generado antes de publicarlo.
+
+## Cambiar el modelo de un chat
+
+1. Abre la conversación y espera que su respuesta actual termine.
+2. Haga clic en el nombre del modelo debajo del cuadro de mensaje.
+3. Selecciona un modelo habilitado, incluyendo un modelo de otro proveedor si es necesario.
+4. Revise los controles de esfuerzo y velocidad antes de enviar el siguiente mensaje.
+
+La conversación permanece visible en Dream. Cambiar el modelo reinicia sus selecciones de esfuerzo y velocidad, por lo que elige nuevamente si necesita valores específicos. Un cambio de modelo también inicia una nueva sesión de proveedor para el trabajo subsiguiente; no modifica los mensajes ya generados.
+
+<Frame caption="El compositor de un chat muestra su propio modelo, esfuerzo y selección de velocidad.">
+  <img
+    src="/images/docs/chat-composer.png"
+    alt="Modelo, esfuerzo de razonamiento, velocidad y selecciones de permiso bajo una caja de mensaje de chat."
+    width={600}
+    height={108}
+    loading="lazy"
+  />
+</Frame>
+
+## Esfuerzo y velocidad
+
+| Control | Propósito |
+| --- | --- |
+| Esfuerzo | Selecciona un nivel de esfuerzo en el razonamiento ofrecido por ese modelo |
+| Velocidad | Selecciona un nivel de velocidad compatible, como Standard o Fast |
+
+Estos controles solo aparecen cuando el modelo seleccionado los soporta. Los niveles de esfuerzo disponibles varían según el modelo. Los niveles de velocidad pueden tener implicaciones diferentes en el uso; utilice las descripciones de las opciones y la información de uso de su proveedor al elegir un nivel.
+
+El esfuerzo y la velocidad por defecto se aplican a los nuevos chats. Cambiar uno de ellos en un chat afecta a esa conversación. Cambiar la velocidad también reinicia la sesión del proveedor para trabajos subsiguientes.
+
+## Si un valor predeterminado se vuelve inaccesible
+
+Deshabilitar un modelo seleccionado por defecto o actualizar la lista de modelos modificados puede hacer que Dream elija otro modelo habilitado. Revísese nuevamente ambos selectores por defecto tras cambiar sus modelos habilitados. Si no hay modelos habilitados, habilite uno antes de iniciar un nuevo chat.
+
+Para controles faltantes o fallos en la detección, consulte [Solución de problemas](/docs/es/troubleshooting).

@@ -1,0 +1,62 @@
+---
+title: "Archivar y restaurar chats"
+description: "Archivar conversaciones terminadas, restaurar el trabajo anterior y eliminar el historial de chat antiguo."
+---
+
+Archive una conversación cuando quieras eliminarla de la historia activa mientras mantienes la opción de regresar a ella. Los chats archivados se gestionan centralmente en **Configuración → Chats archivados**.
+
+## Archivar una conversación
+
+1. Abre el chat que deseas archivar.
+2. Abre su menú **…** en el encabezado de la conversación.
+3. Selecciona **Archivar**.
+
+También puede usar la acción de archivar junto a una conversación en **Historial de chat**. El chat desaparece del historial activo y del diseño abierto. Sus mensajes permanecen disponibles para su restauración.
+
+Archivar no revierte cambios de código, no elimina el folder del proyecto ni crea un stash de Git. Para eliminar solo una columna de la vista, [cierra la columna](/docs/es/multiple-chats) en su lugar.
+
+## Buscar y restaurar conversaciones archivadas
+
+1. Abrir **Configuración** usando el icono de engranaje en la parte superior de Dream.
+2. Selecciona **Chats archivados**.
+3. Busca la conversación en la tabla. Cada fila muestra su título, proyecto y fecha de archivo.
+4. Selecciona la casilla junto al chat, luego haz clic en **Restaurar**.
+5. Vuelve a su proyecto y abre **Historial de chat** para seleccionar la conversación restaurada.
+
+Puede seleccionar varias filas y restaurarlas juntas. La casilla en la cabecera de la tabla selecciona todos los chats archivados, incluyendo los chats de otros proyectos. Verifique el campo **Proyecto** antes de aplicar una acción en masa.
+
+<Frame caption="Selecciona conversaciones archivadas para restaurarlas o eliminarlas. La columna Proyecto identifica dónde se encuentra cada chat.">
+  <img
+    src="/images/docs/archived-chats-panel.png"
+    alt="Configuraciones de Chats archivados mostrando cuatro conversaciones con nombres de proyectos y fechas, botones de Restaurar y Eliminar, y el control de Archivar ahora."
+    width={1016}
+    height={386}
+    loading="lazy"
+  />
+</Frame>
+
+Restaurar hace que un chat esté disponible en el historial; no lo abre automáticamente ni su proyecto. Si su proyecto está cerrado, réopenlo desde **Cerrados recientemente** en la pantalla de inicio.
+
+## Archivar conversaciones antiguas juntas
+
+1. En **Configuración → Chats archivados**, busca **Archivar chats después de**.
+2. Ingrese un número positivo de días. El valor predeterminado es **30**.
+3. Haga clic en **Archivar ahora**.
+
+Dream archiva conversaciones cuya última actividad es al menos tan antigua como ese número de días. Los chats que actualmente están respondiendo o generando un título se omiten. Esta acción se aplica a todos los proyectos.
+
+El valor de día es un umbral para **Archivar ahora**. Cambiarlo solo no programa el archivado automático. Restaurar un chat tampoco modifica su fecha de última actividad, por lo que un chat antiguo restaurado puede volver a cumplir con los requisitos la próxima vez que se ejecute **Archivar ahora**.
+
+## Eliminar permanentemente los chats archivados
+
+1. Abrir **Configuración → Chats archivados**.
+2. Elige las conversaciones que ya no necesitas.
+3. Revise las filas seleccionadas y haz clic en **Eliminar**.
+
+<Warning>
+  Eliminar permanentemente elimina los chats seleccionados y sus mensajes de Dream. La acción se aplica sin otro cuadro de confirmación y esos chats no pueden restaurarse a través de Dream.
+</Warning>
+
+La eliminación afecta el historial de chat de Dream. No revierte los cambios en el proyecto ni elimina los archivos del proyecto.
+
+Si una conversación está ausente en ambos historiales activo y archivado, consulta [solución de problemas para chats desaparecidos](/docs/es/troubleshooting#no-puedo-encontrar-un-chat).

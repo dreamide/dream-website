@@ -1,0 +1,62 @@
+---
+title: "Contexto e uso"
+description: "Leia o contexto de uso, entenda a compactação e ajuste como a atividade do agente é exibida."
+---
+
+O Dream exibe informações sobre a conversa atual e, onde disponível, os limites de uso do provedor selecionado. Essas respostas respondem a perguntas diferentes: quantos contextos um chat está utilizando e quanto do limite do provedor já foi usado.
+
+## Verificar o contexto da conversa
+
+Use o indicador de contexto abaixo da caixa de mensagem para inspecionar o uso de contexto da conversa. A janela de contexto é a quantidade de material que o modelo pode considerar para uma resposta, incluindo o conteúdo da conversa e os resultados das ferramentas.
+
+O Dream utiliza informações de uso fornecidas pelo provedor, quando disponíveis, e pode estimar o uso a partir das mensagens caso contrário. Trate o indicador como orientação, e não como medição exata de cobrança. Mudar os modelos pode alterar o tamanho da janela de contexto disponível.
+
+## Entender a compactação
+
+Alguns provedores compactam conversas longas ao resumir o contexto anterior. Quando o provedor relata essa atividade, o Dream exibe **Compactando contexto…** ou **Contexto compactado** na conversa.
+
+A compactação ajuda o agente a continuar uma tarefa longa, mas um resumo pode não manter todos os detalhes. Repita os requisitos críticos e faça referência aos arquivos atuais se a conversa se afastou muito do pedido original. O transcrivo exibido pelo Dream e o contexto usado pelo provedor não são necessariamente idênticos.
+
+O comportamento de compactação é controlado pela integração do provedor. Não é o mesmo que arquivar uma conversa e não libera o limite de uso da conta do provedor.
+
+## Verificar o uso do provedor
+
+1. Abra um chat usando o provedor que deseja inspecionar.
+2. Clique no indicador de uso abaixo da caixa de mensagem.
+3. Revise as informações de uso disponíveis e os tempos de reinicialização.
+
+<Frame caption="O indicador de uso abre os detalhes do limite do provedor. Este exemplo do Anthropic mostra o uso de cinco horas e semanal com horários de reinício.">
+  <img
+    src="/images/docs/provider-usage.png"
+    alt="Pop-up de uso do Anthropic acima do indicador de composição, mostrando 5% do limite de cinco horas e 30% do limite semanal usado, com horários de reinício."
+    width={336}
+    height={227}
+    loading="lazy"
+  />
+</Frame>
+
+O pop-up está rotulado **Uso do plano** para a maioria dos provedores e **Estatísticas de uso** para OpenCode. A disponibilidade e o detalhamento variam conforme o provedor. A ausência de uma leitura não significa por si só que o chat não possa ser executado; verifique qualquer erro na resposta real e nas informações de conta do próprio provedor.
+
+## Fazer a atividade das ferramentas mais fácil de ser lida
+
+Abra **Configurações → Geral** e localize **Mensagens de chat**:
+
+| Configuração | Efeito |
+| --- | --- |
+| Mostrar resumos de raciocínio | Exibe resumos de raciocínio fornecidos pelo modelo |
+| Agrupar chamadas de ferramentas | Agrupa a atividade das ferramentas em pedaços de contagem compactos |
+| Expandir chamadas de ferramentas | Mostra os detalhes das chamadas de ferramenta expandidos por padrão |
+
+Essas configurações alteram a apresentação. Elas não alteram o esforço de raciocínio solicitado ao modelo; configure isso em [Modelos e padrões](/docs/pt/models). O mesmo grupo contém **Checkpoints de alterações**, que controla se os arquivos de snapshot do Dream são alterados antes de cada resposta; veja [Revisar e restaurar alterações](/docs/pt/checkpoints).
+
+<Frame caption="A atividade da ferramenta aparece ao lado da resposta para que você possa inspecionar o que o agente utilizou.">
+  <img
+    src="/images/docs/chat-tools.png"
+    alt="Leitura de arquivos e chips de comando dentro de uma resposta de agente, incluindo nomes de arquivos e intervalos de linhas."
+    width={600}
+    height={184}
+    loading="lazy"
+  />
+</Frame>
+
+Para uma nova tarefa com um objetivo diferente, inicie um [novo chat](/docs/pt/chats). Para manter uma parte específica de uma conversa enquanto explora uma alternativa, [branch de uma mensagem](/docs/pt/branching-chats).

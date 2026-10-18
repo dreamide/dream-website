@@ -1,0 +1,62 @@
+---
+title: "Contexte et utilisation"
+description: "Lisez le contexte d'utilisation, comprenez la compactation et ajustez l'affichage de l'activité de l'agent."
+---
+
+Dream affiche des informations sur la conversation actuelle et, lorsque disponible, les limites d'utilisation du fournisseur sélectionné. Ces réponses répondent à des questions différentes : combien de contexte une conversation utilise-t-elle, et combien de la limite du fournisseur a été utilisée.
+
+## Vérifier le contexte de la conversation
+
+Utilisez l'indicateur de contexte situé sous la boîte de message pour vérifier l'utilisation du contexte de la conversation. La fenêtre de contexte est la quantité de matériel que le modèle peut prendre en compte pour une réponse, y compris le contenu de la conversation et les résultats des outils.
+
+Dream utilise les informations sur l'utilisation fournies par le fournisseur lorsque celles-ci sont disponibles et peut estimer l'utilisation à partir des messages dans d'autres cas. Considérez l'indicateur comme une orientation plutôt qu'une mesure exacte de facturation. Changer de modèle peut modifier la taille du contexte disponible.
+
+## Comprendre la compactation
+
+Certains fournisseurs réduisent les conversations longues en résumant le contexte plus ancien. Lorsque le fournisseur signale cette activité, Dream affiche **Compactage du contexte…** ou **Contexte compressé** dans la conversation.
+
+La compaction aide l'agent à poursuivre une tâche longue, mais un résumé ne retient pas nécessairement tous les détails. Réécrivez les exigences critiques et faites référence aux fichiers actuels si la conversation s'est éloignée de la demande initiale. Le transcript affiché par Dream et le contexte utilisé par le fournisseur ne sont pas nécessairement identiques.
+
+Le comportement de compactage est contrôlé par l'intégration du fournisseur. Il ne s'agit pas de l'archivage d'un échange de conversation, et il ne libère pas l'usage alloué à un compte du fournisseur.
+
+## Vérifier l'utilisation du fournisseur
+
+1. Ouvrir un chat en utilisant le fournisseur que vous souhaitez inspecter.
+2. Cliquez sur l'indicateur de consommation situé sous la boîte de message.
+3. Examine les informations sur l'utilisation disponibles et les temps de réinitialisation.
+
+<Frame caption="L'indicateur d'utilisation ouvre les détails de la limite du fournisseur. Exemple d'Anthropic montrant cinq heures et utilisation hebdomadaire avec des temps de réinitialisation.">
+  <img
+    src="/images/docs/provider-usage.png"
+    alt="Pop-up d'utilisation d'Anthropic situé au-dessus de l'indicateur de composition, affichant 5 % de la limite de cinq heures et 30 % de la limite hebdomadaire utilisés, avec les horaires de réinitialisation."
+    width={336}
+    height={227}
+    loading="lazy"
+  />
+</Frame>
+
+La pop-up est étiquetée **Utilisation du forfait** pour la plupart des fournisseurs et **Statistiques d'utilisation** pour OpenCode. La disponibilité et le niveau de détail varient selon le fournisseur. L'absence d'une lecture ne signifie pas nécessairement que la conversation ne peut pas s'exécuter ; vérifiez tout erreur sur la réponse réelle et les informations de compte du fournisseur.
+
+## Faire que l'activité des outils soit plus facile à lire
+
+Ouvrir **Paramètres → Général** et trouver **Messages de chat** :
+
+| Paramètres | Effet |
+| --- | --- |
+| Afficher les résumés de raisonnement | Affiche des résumés de raisonnement fournis par le modèle |
+| Grouper les appels d’outils | Regroupe l'activité des outils dans des pièces de comptage compactes |
+| Développer les appels d’outils | Affiche les détails des appels d'outils déployés par défaut |
+
+Ces paramètres modifient la présentation. Ils ne changent pas l'effort de raisonnement requis du modèle ; configurez cela dans [Modèles et valeurs par défaut](/docs/fr/models). Le même groupe contient **Checkpoints de modifications**, qui contrôle si les fichiers de snapshots de Dream sont modifiés avant chaque réponse ; voir [Vérifier et restaurer les modifications](/docs/fr/checkpoints).
+
+<Frame caption="L'activité de l'outil apparaît en ligne avec la réponse afin que vous puissiez inspecter ce que l'agent a utilisé.">
+  <img
+    src="/images/docs/chat-tools.png"
+    alt="Lecture de fichiers et pièces de commande dans une réponse d'agent, y compris les noms de fichiers et les intervalles de lignes."
+    width={600}
+    height={184}
+    loading="lazy"
+  />
+</Frame>
+
+Pour une nouvelle tâche avec un objectif différent, commencez une [nouvelle conversation](/docs/fr/chats). Pour conserver une partie spécifique d'une conversation tout en explorant une alternative, [déclenchez une branche à partir d'un message](/docs/fr/branching-chats).
