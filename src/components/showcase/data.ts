@@ -1,6 +1,7 @@
 import type { ComponentType, SVGProps } from "react";
 import ClaudeIcon from "../icons/ClaudeIcon";
 import CursorIcon from "../icons/CursorIcon";
+import GrokIcon from "../icons/GrokIcon";
 import OpenAIIcon from "../icons/OpenAIIcon";
 import OpenCodeIcon from "../icons/OpenCodeIcon";
 
@@ -17,7 +18,7 @@ export const PANEL = { left: 508, top: 57, right: 1498, bottom: 895 };
 export type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
 
 export type Provider = {
-  id: "codex" | "claude" | "opencode" | "cursor";
+  id: "codex" | "claude" | "opencode" | "cursor" | "grok";
   name: string;
   vendor: string;
   model: string;
@@ -59,6 +60,13 @@ export const PROVIDERS: Provider[] = [
     vendor: "Cursor",
     model: "Cursor / Auto",
     Icon: CursorIcon,
+  },
+  {
+    id: "grok",
+    name: "Grok",
+    vendor: "xAI",
+    model: "Grok 4.5",
+    Icon: GrokIcon,
   },
 ];
 
