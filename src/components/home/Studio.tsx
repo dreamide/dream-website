@@ -2,19 +2,16 @@
 
 import {
   AnimatePresence,
+  MotionConfig,
   type MotionValue,
   motion,
   useTransform,
 } from "motion/react";
 import { cn } from "../../lib/utils";
 import DownloadButton from "../DownloadButton";
-import {
-  COMMIT_MESSAGE,
-  PROVIDERS,
-  type TabId,
-  TERMINAL_UNITS,
-} from "../showcase/data";
-import type { PanelId } from "../showcase/scene";
+import Hero from "../Hero";
+import { PROVIDERS } from "../showcase/data";
+import { type PanelId, sceneAt } from "../showcase/scene";
 import {
   Bleed,
   CHAPTER,
@@ -25,9 +22,18 @@ import {
   Reveal,
   ScaledWindow,
   ScrollWords,
-  scene,
   useStep,
 } from "./shared";
+
+type ChapterProps = {
+  progress: MotionValue<number>;
+};
+
+// Drive the app interactions from each chapter’s scroll progress.
+function useChapterScene(progress: MotionValue<number>, chapter: number) {
+  const tick = useStep(progress, 1000);
+  return sceneAt(chapter + tick / 1000);
+}
 
 function Wallpaper({
   src,
@@ -55,57 +61,9 @@ function Wallpaper({
   );
 }
 
-function Opening({ progress }: { progress: MotionValue<number> }) {
-  const zoom = useTransform(progress, [0, 0.7], [2.6, 1]);
-  const y = useTransform(progress, [0, 0.7], ["18%", "4%"]);
-  const titleOpacity = useTransform(progress, [0, 0.25], [1, 0]);
-  const titleScale = useTransform(progress, [0, 0.25], [1, 1.25]);
-  const titleBlur = useTransform(
-    progress,
-    [0, 0.25],
-    ["blur(0px)", "blur(20px)"],
-  );
-  const tagOpacity = useTransform(progress, [0.55, 0.8], [0, 1]);
-  const tagY = useTransform(progress, [0.55, 0.8], [30, 0]);
-
-  return (
-    <>
-      <Wallpaper src="/bg-07.jpg" progress={progress} dim={0.35} />
-      <div className="absolute inset-0 flex items-center justify-center">
-        <motion.div
-          style={{ scale: zoom, y }}
-          className="w-[min(1100px,88vw)] rounded-[14px]"
-        >
-          <ScaledWindow scene={scene()} className="rounded-[14px]" />
-        </motion.div>
-      </div>
-      <motion.div
-        style={{ opacity: titleOpacity, scale: titleScale, filter: titleBlur }}
-        className="pointer-events-none absolute inset-0 flex flex-col items-center justify-center bg-black/40 text-center"
-      >
-        <div className="text-[clamp(5rem,22vw,20rem)] leading-none font-bold tracking-[-0.06em]">
-          DREAM
-        </div>
-        <div className="mt-4 text-lg text-white/70">Scroll to step inside.</div>
-      </motion.div>
-      <motion.div
-        style={{ opacity: tagOpacity, y: tagY }}
-        className="absolute inset-x-0 top-[6%] flex flex-col items-center gap-4 px-4 text-center"
-      >
-        <h1 className="text-[clamp(2rem,5vw,4.5rem)] leading-none font-semibold tracking-[-0.04em]">
-          Your agents. One window.
-        </h1>
-        <div className="flex flex-wrap justify-center gap-3">
-          <DownloadButton eventName="designs-cinema-hero" />
-          <GitHubButton eventName="designs-cinema-github" />
-        </div>
-      </motion.div>
-    </>
-  );
-}
-
-function ProvidersChapter({ progress }: { progress: MotionValue<number> }) {
-  const step = useStep(progress, PROVIDERS.length);
+function ProvidersChapter({ progress }: ChapterProps) {
+  const current = useChapterScene(progress, CHAPTER.providers);
+  const step = current.provider;
   const provider = PROVIDERS[step];
 
   return (
@@ -128,19 +86,14 @@ function ProvidersChapter({ progress }: { progress: MotionValue<number> }) {
             </motion.div>
           ))}
         </div>
-        <div className="hidden flex-col items-center gap-8 lg:flex">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={provider.id}
-              initial={{ opacity: 0, scale: 0.6, rotate: -20 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0 }}
-              exit={{ opacity: 0, scale: 0.6, rotate: 20 }}
-              transition={{ type: "spring", duration: 0.7, bounce: 0.3 }}
-              className="flex size-56 items-center justify-center rounded-[3rem] border border-white/10 bg-black/50 backdrop-blur-xl"
-            >
-              <provider.Icon className={cn("size-28", provider.iconClass)} />
-            </motion.div>
-          </AnimatePresence>
+        <div className="flex min-w-0 flex-col items-center gap-8">
+          <ScaledWindow
+            scene={current}
+            zoom={current.camera.zoom}
+            originX={current.camera.x}
+            originY={current.camera.y}
+            className="rounded-[14px]"
+          />
           <p className="max-w-sm text-center text-lg text-white/70">
             Dream runs the {provider.vendor} agent CLI you already have, with
             your existing subscription. Model:{" "}
@@ -152,10 +105,8 @@ function ProvidersChapter({ progress }: { progress: MotionValue<number> }) {
   );
 }
 
-const TAB_ORDER: TabId[] = ["dream", "website", "api"];
-
-function TabsChapter({ progress }: { progress: MotionValue<number> }) {
-  const step = useStep(progress, 4);
+function TabsChapter({ progress }: ChapterProps) {
+  const current = useChapterScene(progress, CHAPTER.tabs);
   const headlineY = useTransform(progress, [0, 0.3], [60, 0]);
   const headlineOpacity = useTransform(progress, [0, 0.2], [0, 1]);
 
@@ -176,12 +127,8 @@ function TabsChapter({ progress }: { progress: MotionValue<number> }) {
         <div className="w-[min(1000px,92vw)] rounded-[14px]">
           <ScaledWindow
             className="rounded-[14px]"
-            scene={scene({
-              chapter: CHAPTER.tabs,
-              tabsShown: step > 0,
-              activeTab: TAB_ORDER[Math.max(0, step - 1)],
-            })}
-            zoom={1.5}
+            scene={current}
+            zoom={current.camera.zoom}
             originX={0}
             originY={0}
           />
@@ -191,19 +138,16 @@ function TabsChapter({ progress }: { progress: MotionValue<number> }) {
   );
 }
 
-function ChatsChapter({ progress }: { progress: MotionValue<number> }) {
-  const step = useStep(progress, 3);
-  const columns = (step + 1) as 1 | 2 | 3;
+function ChatsChapter({ progress }: ChapterProps) {
+  const current = useChapterScene(progress, CHAPTER.chats);
+  const step = current.columns - 1;
 
   return (
     <>
       <Wallpaper src="/bg-04.jpg" progress={progress} />
       <div className="relative flex h-full flex-col justify-end gap-8 px-6 pb-10 sm:pb-16">
         <div className="mx-auto w-[min(1200px,94vw)] rounded-[14px]">
-          <ScaledWindow
-            className="rounded-[14px]"
-            scene={scene({ chapter: CHAPTER.chats, tabsShown: true, columns })}
-          />
+          <ScaledWindow className="rounded-[14px]" scene={current} />
         </div>
         <div className="mx-auto flex w-[min(1200px,94vw)] items-end justify-between gap-6">
           <h2 className="text-[clamp(2.5rem,6vw,5.5rem)] leading-none font-semibold tracking-[-0.05em]">
@@ -241,8 +185,9 @@ const TOOLS: { id: PanelId; word: string; body: string }[] = [
   { id: "browser", word: "Browser.", body: "Preview your app as it changes." },
 ];
 
-function ToolsChapter({ progress }: { progress: MotionValue<number> }) {
-  const step = useStep(progress, TOOLS.length);
+function ToolsChapter({ progress }: ChapterProps) {
+  const current = useChapterScene(progress, CHAPTER.tools);
+  const step = TOOLS.findIndex((tool) => tool.id === current.panel);
   const tool = TOOLS[step];
 
   return (
@@ -281,13 +226,8 @@ function ToolsChapter({ progress }: { progress: MotionValue<number> }) {
         <div className="rounded-[14px]">
           <ScaledWindow
             className="rounded-[14px]"
-            scene={scene({
-              chapter: CHAPTER.tools,
-              tabsShown: true,
-              panel: tool.id,
-              terminalUnits: TERMINAL_UNITS,
-            })}
-            zoom={1.25}
+            scene={current}
+            zoom={current.camera.zoom}
             originX={1}
             originY={0.5}
           />
@@ -297,13 +237,15 @@ function ToolsChapter({ progress }: { progress: MotionValue<number> }) {
   );
 }
 
-function GitChapter({ progress }: { progress: MotionValue<number> }) {
-  // Fine-grained steps so the commit message types out as you scroll.
-  const fine = useStep(progress, 100);
-  const step = Math.min(3, Math.floor(fine / 25));
-  const chars = Math.round(
-    Math.min(1, Math.max(0, (fine - 25) / 18)) * COMMIT_MESSAGE.length,
-  );
+function GitChapter({ progress }: ChapterProps) {
+  const current = useChapterScene(progress, CHAPTER.git);
+  const step = current.committed
+    ? 3
+    : current.commitPressed
+      ? 2
+      : current.commitOpen
+        ? 1
+        : 0;
 
   return (
     <>
@@ -336,18 +278,7 @@ function GitChapter({ progress }: { progress: MotionValue<number> }) {
           </span>
         </h2>
         <div className="w-[min(1000px,92vw)] rounded-[14px]">
-          <ScaledWindow
-            className="rounded-[14px]"
-            scene={scene({
-              chapter: CHAPTER.git,
-              tabsShown: true,
-              panel: "changes",
-              commitOpen: step === 1 || step === 2,
-              commitChars: step === 1 ? chars : COMMIT_MESSAGE.length,
-              commitPressed: step === 2,
-              committed: step === 3,
-            })}
-          />
+          <ScaledWindow className="rounded-[14px]" scene={current} />
         </div>
       </div>
     </>
@@ -385,28 +316,30 @@ function Finale() {
         delay={0.2}
         className="relative flex flex-wrap justify-center gap-3"
       >
-        <DownloadButton eventName="designs-cinema-cta" />
-        <GitHubButton eventName="designs-cinema-cta-github" />
+        <DownloadButton eventName="home-cta-download" />
+        <GitHubButton eventName="home-cta-github" />
       </Reveal>
     </Bleed>
   );
 }
 
-export default function DesignCinema() {
+export default function Studio() {
   return (
-    <div className="flex flex-col">
-      <Bleed>
-        <Pinned height={260}>{(p) => <Opening progress={p} />}</Pinned>
-      </Bleed>
-      <Manifesto />
-      <Bleed className="flex flex-col">
-        <Pinned height={320}>{(p) => <ProvidersChapter progress={p} />}</Pinned>
-        <Pinned height={300}>{(p) => <TabsChapter progress={p} />}</Pinned>
-        <Pinned height={300}>{(p) => <ChatsChapter progress={p} />}</Pinned>
-        <Pinned height={300}>{(p) => <ToolsChapter progress={p} />}</Pinned>
-        <Pinned height={340}>{(p) => <GitChapter progress={p} />}</Pinned>
-      </Bleed>
-      <Finale />
-    </div>
+    <MotionConfig reducedMotion="user">
+      <div className="landing-page flex flex-col">
+        <Hero />
+        <Manifesto />
+        <Bleed className="flex flex-col">
+          <Pinned height={320}>
+            {(p) => <ProvidersChapter progress={p} />}
+          </Pinned>
+          <Pinned height={300}>{(p) => <TabsChapter progress={p} />}</Pinned>
+          <Pinned height={300}>{(p) => <ChatsChapter progress={p} />}</Pinned>
+          <Pinned height={300}>{(p) => <ToolsChapter progress={p} />}</Pinned>
+          <Pinned height={340}>{(p) => <GitChapter progress={p} />}</Pinned>
+        </Bleed>
+        <Finale />
+      </div>
+    </MotionConfig>
   );
 }

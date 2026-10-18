@@ -2,9 +2,8 @@ import { ArrowUpRight } from "lucide-react";
 import Button from "./Button";
 import DownloadButton from "./DownloadButton";
 import GitHubIcon from "./icons/GitHubIcon";
-import Screenshot from "./Screenshot";
 
-export default function Hero({ screenshot = true }: { screenshot?: boolean }) {
+export default function Hero() {
   return (
     <div className="text-center">
       <div className="pointer-events-none select-none flex items-center justify-center text-[clamp(5rem,25vw,28rem)] font-bold leading-none my-18">
@@ -26,7 +25,6 @@ export default function Hero({ screenshot = true }: { screenshot?: boolean }) {
           <ArrowUpRight className="size-4 text-muted-foreground" />
         </Button>
       </div>
-      {screenshot ? <Screenshot /> : null}
     </div>
   );
 }

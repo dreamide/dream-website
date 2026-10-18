@@ -23,7 +23,7 @@ import Button from "../Button";
 import GitHubIcon from "../icons/GitHubIcon";
 import AppWindow from "../showcase/AppWindow";
 import { CANVAS } from "../showcase/data";
-import { type Scene, sceneAt } from "../showcase/scene";
+import type { Scene } from "../showcase/scene";
 
 export const ease = [0.22, 1, 0.36, 1] as const;
 
@@ -53,16 +53,6 @@ export const CHAPTER = {
   tools: 4,
   git: 5,
 } as const;
-
-/** A fully played-out scene with sensible defaults, plus overrides. */
-export function scene(overrides: Partial<Scene> = {}): Scene {
-  return {
-    ...sceneAt(0.999),
-    camera: { x: 0.5, y: 0.5, zoom: 1 },
-    focus: null,
-    ...overrides,
-  };
-}
 
 /**
  * The app mock rendered at its native size and scaled to fill the width of
@@ -119,77 +109,6 @@ export function ScaledWindow({
           </div>
         </motion.div>
       </div>
-    </div>
-  );
-}
-
-export type ShotId =
-  | "overview"
-  | "tabs"
-  | "chats"
-  | "files"
-  | "terminal"
-  | "browser"
-  | "git";
-
-/** Ready-made moments of the app, with where the interesting part starts. */
-export const SHOTS: Record<ShotId, { scene: Scene; focusX: number }> = {
-  overview: { scene: scene({ tabsShown: true }), focusX: 0 },
-  tabs: {
-    scene: scene({
-      chapter: CHAPTER.tabs,
-      tabsShown: true,
-      activeTab: "website",
-    }),
-    focusX: 0,
-  },
-  chats: {
-    scene: scene({ chapter: CHAPTER.chats, tabsShown: true, columns: 3 }),
-    focusX: 0,
-  },
-  files: {
-    scene: scene({ chapter: CHAPTER.tools, tabsShown: true, panel: "files" }),
-    focusX: 0.32,
-  },
-  terminal: {
-    scene: scene({
-      chapter: CHAPTER.tools,
-      tabsShown: true,
-      panel: "terminal",
-    }),
-    focusX: 0.32,
-  },
-  browser: {
-    scene: scene({ chapter: CHAPTER.tools, tabsShown: true, panel: "browser" }),
-    focusX: 0.32,
-  },
-  git: {
-    scene: scene({ chapter: CHAPTER.git, tabsShown: true, panel: "changes" }),
-    focusX: 0.32,
-  },
-};
-
-/**
- * The app window, oversized and cropped by its container like a product
- * screenshot. `width` is a percentage of the container; the window is shifted
- * so the shot's focus point lines up with the container's left edge.
- */
-export function Shot({
-  id,
-  width = 200,
-  className,
-}: {
-  id: ShotId;
-  width?: number;
-  className?: string;
-}) {
-  const shot = SHOTS[id];
-  return (
-    <div
-      className={className}
-      style={{ width: `${width}%`, marginLeft: `-${shot.focusX * width}%` }}
-    >
-      <ScaledWindow scene={shot.scene} className="rounded-[10px] shadow-2xl" />
     </div>
   );
 }
@@ -277,62 +196,6 @@ function Word({
   );
 }
 
-/** Counts up to `to` once it scrolls into view. */
-export function CountUp({
-  to,
-  duration = 1.4,
-  suffix = "",
-}: {
-  to: number;
-  duration?: number;
-  suffix?: string;
-}) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true });
-  const [value, setValue] = useState(0);
-
-  useEffect(() => {
-    if (!inView) return;
-    let frame = 0;
-    const start = performance.now();
-    const tick = (now: number) => {
-      const t = Math.min(1, (now - start) / (duration * 1000));
-      setValue(Math.round(to * (1 - (1 - t) ** 3)));
-      if (t < 1) frame = requestAnimationFrame(tick);
-    };
-    frame = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(frame);
-  }, [inView, to, duration]);
-
-  return (
-    <span ref={ref} className="tabular-nums">
-      {value}
-      {suffix}
-    </span>
-  );
-}
-
-/** Cycle through `count` steps on a timer while the element is on screen. */
-export function useCycle(
-  ref: RefObject<HTMLElement | null>,
-  count: number,
-  interval = 2200,
-) {
-  const inView = useInView(ref, { margin: "-10% 0px" });
-  const [step, setStep] = useState(0);
-
-  useEffect(() => {
-    if (!inView) return;
-    const timer = setInterval(
-      () => setStep((current) => (current + 1) % count),
-      interval,
-    );
-    return () => clearInterval(timer);
-  }, [inView, count, interval]);
-
-  return step;
-}
-
 /** Breaks out of the page's centred container to the full viewport width. */
 export function Bleed({
   children,
@@ -374,7 +237,7 @@ export function Eyebrow({
 
 export function GitHubButton({
   className,
-  eventName = "designs-github",
+  eventName = "home-github",
 }: {
   className?: string;
   eventName?: string;
