@@ -203,6 +203,7 @@
     }
   },
   "footer": {
+    "attribution": false,
     "socials": [
       {
         "icon": "github",
