@@ -8,6 +8,7 @@ if (!element) {
   throw new Error("Shiso could not find the root element.");
 }
 
+// Development serves an empty root; production pages contain prerendered HTML.
 if (element.childElementCount > 0) {
   hydrateRoot(element, <ShisoApp />);
 } else {

@@ -105,6 +105,9 @@ for (const file of fs
 
 for (const file of [
   "src/components/home/HomePage.tsx",
+  "src/components/home/Studio.tsx",
+  "src/components/home/shared.tsx",
+  "src/components/Hero.tsx",
   "src/components/home/shots.ts",
   "src/components/DownloadButton.tsx",
   "content/pages/home.tsx",
@@ -120,8 +123,15 @@ for (const file of [
   );
   function visit(node) {
     if (
+      ts.isJsxAttribute(node) &&
+      node.name.getText(ast) === "text" &&
+      node.initializer &&
+      ts.isStringLiteral(node.initializer)
+    )
+      add(node.initializer.text, ui);
+    if (
       ts.isPropertyAssignment(node) &&
-      ["title", "label", "body", "alt", "description"].includes(
+      ["title", "label", "body", "alt", "description", "word"].includes(
         node.name.getText(ast),
       ) &&
       ts.isStringLiteral(node.initializer)

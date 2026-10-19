@@ -22,14 +22,17 @@ footer > div > span:empty::before {
   --font-heading: var(--font-sans);
 }
 
+.landing-page,
 .download-page {
   max-width: none;
 }
 
+.landing-page a,
 .download-page a {
   text-decoration: none;
 }
 
+.landing-page h2,
 .download-page h2 {
   margin: 0;
   border: 0;
@@ -83,4 +86,10 @@ footer > div > span:empty::before {
     var(--muted-foreground) 70%,
     transparent
   );
+}
+
+/* Full-bleed homepage sections use 100vw; clip the scrollbar-width overflow at
+   the root so the page never scrolls sideways (and sticky still works). */
+html:has(.landing-page) {
+  overflow-x: clip;
 }

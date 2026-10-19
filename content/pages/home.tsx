@@ -1,5 +1,4 @@
-import HomePageContent from "../../src/components/home/HomePage";
-import { DreamTheme } from "../../src/components/home/theme";
+import Studio from "../../src/components/home/Studio";
 
 export const frontmatter = {
   title: "Dream — the IDE for AI coding",
@@ -9,9 +8,5 @@ export const frontmatter = {
 };
 
 export default function HomePage() {
-  return (
-    <DreamTheme>
-      <HomePageContent />
-    </DreamTheme>
-  );
+  return <Studio />;
 }
