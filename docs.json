@@ -16,6 +16,15 @@
   "colors": {
     "primary": "#bbf7d0"
   },
+  "seo": {
+    "metatags": {
+      "og:image": "https://dreamide.dev/og.png",
+      "og:image:width": "1200",
+      "og:image:height": "630",
+      "og:image:alt": "Dream — the open-source IDE built for AI coding agents",
+      "twitter:image": "https://dreamide.dev/og.png"
+    }
+  },
   "pages": [
     {
       "path": "/",

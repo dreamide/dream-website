@@ -140,7 +140,7 @@ for (const [file, { source, replacements }] of Object.entries(
 }
 
 function localizeHref(href, locale) {
-  const url = new URL(href, "https://dreamide.co");
+  const url = new URL(href, "https://dreamide.dev");
   if (url.pathname === "/docs" || url.pathname.startsWith("/docs/")) {
     const slug = url.pathname.slice(6) || "index";
     const index = anchors[slug]?.en.indexOf(
