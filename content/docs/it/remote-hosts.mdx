@@ -1,30 +1,23 @@
 ---
-title: "Spazi di lavoro remoti SSH"
-description: "Connetti un host SSH e lavora con progetti, agenti, file, Git e terminali remoti."
+title: "Host remoti"
+description: "Connetti un’altra macchina tramite SSH o HTTPS e lavora con i suoi progetti, agenti, file, Git e terminali."
 ---
 
-Dream può aprire progetti su macchine remote tramite SSH accanto ai progetti locali. File, comandi Git, processi degli agenti e terminali vengono eseguiti sull'host del progetto. L'etichetta dell'host indica dove stai lavorando.
+Dream può aprire progetti su macchine remote accanto ai tuoi progetti locali. File, comandi Git, processi degli agenti e terminali vengono eseguiti sull’host del progetto. L’etichetta dell’host del progetto indica dove stai lavorando.
 
-Gli spazi di lavoro SSH sono disponibili da Dream v0.25.0. Questa versione include runtime host gestiti per Linux x64, Linux ARM64 e macOS con Apple silicon (ARM64). Queste sono le piattaforme dell'host remoto; l'app desktop Dream può essere eseguita su Windows, macOS o Linux.
+Connetti un host tramite SSH, oppure associati a un host Dream tramite HTTPS quando su quella macchina è attivo l’[Accesso remoto](/docs/it/remote-access). Un host può avere più percorsi e Dream usa il primo che si connette.
 
-A partire dalla versione 0.28.0, i runtime host Linux supportano i sistemi con glibc 2.31 o successivi.
+Dream installa tramite SSH runtime host gestiti per Linux x64, Linux ARM64 e macOS Apple silicon (ARM64). Queste sono le piattaforme degli host remoti; l’app desktop Dream può essere eseguita su Windows, macOS o Linux. I runtime host per Linux supportano sistemi con glibc 2.31 o versioni successive.
 
-## Aggiungere e connettere un host
-
-<Frame caption="Gestisci gli host SSH e controlla il loro stato di connessione nelle impostazioni.">
-  <img
-    src="/images/docs/ssh-hosts-panel.png"
-    alt="Impostazioni degli host SSH con due host salvati, stato della connessione e controlli Connetti, Modifica, Rimuovi e Aggiungi host SSH."
-    width={1016}
-    height={208}
-    loading="lazy"
-  />
-</Frame>
+## Aggiungere un host SSH
 
 1. Verifica che `ssh devbox` funzioni nel terminale di sistema, sostituendo `devbox` con l'alias della configurazione SSH o `user@host`. Dream usa il client SSH, la configurazione e le chiavi del sistema.
-2. Apri **Impostazioni → Host SSH**, poi **Aggiungi host SSH**. Inserisci la **Destinazione SSH** e, facoltativamente, un **Nome**.
-3. Lascia **Comando dell’host** vuoto per installare automaticamente il runtime. Fai clic su **Salva**, poi su **Connetti**.
-4. Rispondi in Dream alle richieste di chiave host, password, passphrase o autenticazione a due fattori. Rifiutare o annullare una richiesta interrompe quel tentativo di connessione.
+2. Apri **Impostazioni → Connessioni** e scegli **Aggiungi host → Host SSH**.
+3. Inserisci la **Destinazione SSH**, o scegli un alias suggerito dal tuo `~/.ssh/config`, e un **Nome** facoltativo.
+4. Lascia vuoto **Comando dell’host** per l’installazione automatica del runtime, poi fai clic su **Salva**. Dream si connette al nuovo host.
+5. Rispondi in Dream alle richieste di chiave host, password, passphrase o autenticazione a due fattori. Rifiutare o annullare una richiesta interrompe quel tentativo di connessione.
+
+Puoi anche scegliere **Aggiungi host SSH…** nella finestra **Apri cartella**.
 
 <Frame caption="Inserisci una destinazione SSH e lascia Comando host vuoto per l'installazione automatica.">
   <img
@@ -40,13 +33,24 @@ I runtime gestiti vengono installati per versione in `~/.dream/host/versions/`. 
 
 Per un runtime installato manualmente, imposta **Comando dell’host** sul comando che esegue `dream-host` sulla macchina remota.
 
+## Associare un host tramite HTTPS
+
+L’associazione collega questo desktop a un host Dream senza SSH, tramite l’indirizzo usato dalle impostazioni di [Accesso remoto](/docs/it/remote-access) di quell’host.
+
+1. Sulla macchina host, apri **Impostazioni → Connessioni**, poi scegli **Associa un dispositivo** in **Accesso remoto**.
+2. Su questo desktop, apri **Impostazioni → Connessioni** e scegli **Aggiungi host → Link di abbinamento**.
+3. Nella scheda **Link**, incolla il **Link di abbinamento**. Oppure, nella scheda **Codice**, inserisci l’**Indirizzo dell’host** e il **Codice di associazione** mostrato sull’host.
+4. Inserisci un nome facoltativo e scegli **Associa**.
+5. Se hai usato un codice, conferma questo desktop in **In attesa di associazione** nelle impostazioni di accesso remoto dell’host.
+
+Un link di associazione funziona una sola volta e scade dopo 10 minuti. Il certificato HTTPS dell’host deve essere considerato attendibile da questo computer.
+
 ## Aprire un progetto remoto
 
-Se non hai ancora aggiunto un host, **Apri su host SSH** porta direttamente a **Impostazioni → Host SSH**. Aggiungi un host, poi torna alla schermata iniziale per aprire la sua cartella.
-
-1. Nella schermata iniziale scegli **Apri su host SSH**. Usa il pulsante **+** dei progetti per tornare a quella schermata.
-2. Seleziona un **Host** e connettilo se necessario. Esplora le sue cartelle con **Cartella home**, **Su di una cartella** o **Mostra nascoste**, oppure inserisci direttamente un **Percorso della cartella**.
-3. Fai clic su **Apri**. La cartella remota si apre come scheda di progetto con chat e strumenti propri.
+1. Nella schermata iniziale, scegli **Apri cartella**. Usa il pulsante **+** dei progetti per tornare a quella schermata.
+2. In **Apri su**, seleziona l’host. Connettilo se Dream lo chiede.
+3. Digita un **Percorso della cartella**; Dream suggerisce le cartelle mentre scrivi. Puoi anche sfogliare l’elenco sotto il percorso e usare **Su di una cartella**.
+4. Fai clic su **Apri**. La cartella remota si apre come scheda di progetto con chat e strumenti propri.
 
 <Frame caption="L'etichetta dell'host identifica il progetto remoto; i comandi del terminale vengono eseguiti su quell'host.">
   <img
@@ -67,14 +71,29 @@ Se non hai ancora aggiunto un host, **Apri su host SSH** porta direttamente a **
 
 I progetti remoti chiusi appaiono in **Chiusi di recente** con host e percorso. Riaprirne uno connette quell'host. I percorsi remoti appartengono alla macchina remota; usa un editor connesso a quella macchina per aprire file fuori da Dream.
 
+## Gestire i percorsi
+
+Un percorso è un modo per raggiungere un host: una connessione SSH o un indirizzo HTTPS associato. Aggiungi più percorsi allo stesso host per continuare a lavorare quando uno non è disponibile, ad esempio SSH sulla rete dell’ufficio e HTTPS altrove.
+
+1. Apri **Impostazioni → Connessioni** e fai clic su **Modifica** sull’host.
+2. Controlla i percorsi. Vengono provati in ordine finché uno non si connette, e **Percorso attivo** indica quello in uso.
+3. Usa **Sposta su** e **Sposta giù** per cambiare l’ordine.
+4. Scegli **Aggiungi percorso SSH** o **Aggiungi percorso HTTPS** per aggiungere un altro modo di raggiungere lo stesso host, oppure **Rimuovi percorso** per eliminarne uno. Deve restare almeno un percorso.
+
+Quando il percorso preferito non è disponibile, Dream passa al successivo e mantiene stabili le porte inoltrate. La modifica di un percorso HTTPS richiede un nuovo link di associazione.
+
 ## Riconnettere o rimuovere un host
 
-Dream ritenta le connessioni interrotte. Le schede dei progetti restano visibili quando un host non è disponibile e l'invio di messaggi è disabilitato fino alla riconnessione. Se la riconnessione si interrompe, leggi l'errore e usa **Riconnetti**, oppure **Connetti** in **Impostazioni → Host SSH**.
+Ogni host in **Impostazioni → Connessioni** mostra il suo stato, ad esempio **Connesso**, **Riconnessione…** o **Connessione non riuscita**. Dream ritenta le connessioni interrotte. Le schede dei progetti restano visibili mentre un host non è disponibile e l’invio di messaggi è disattivato fino alla riconnessione. Se la riconnessione si interrompe, leggi l’errore mostrato e usa **Connetti**.
 
-Usa **Modifica** per cambiare nome, destinazione o comando dell'host. Cambiare destinazione o comando ristabilisce una connessione attiva. **Disconnetti** mantiene le schede dei progetti. **Rimuovi** toglie l'host e i suoi progetti da questo spazio Dream senza eliminare i file remoti o il catalogo dell'host.
+Usa **Modifica** per cambiare nome, destinazione o comando di un host. La modifica della destinazione o del comando riconnette una connessione attiva. **Disconnetti** lascia al loro posto le schede dei suoi progetti.
+
+**Rimuovi** chiede conferma, poi rimuove l’host e i suoi progetti da questo spazio di lavoro Dream e ne arresta i terminali. I file e le chat sull’host non vengono eliminati.
 
 ## Problemi di connessione
 
-Controlla prima la stessa destinazione SSH nel terminale di sistema. Risolvi i problemi di autenticazione o chiave host prima di riconnetterti. Se il runtime dell'host non si avvia, leggi l'errore in **Impostazioni → Host SSH** e controlla il **Comando dell’host** configurato o la disponibilità di un runtime per la tua piattaforma.
+Controlla prima la stessa destinazione SSH nel terminale di sistema. Risolvi i problemi di autenticazione o di chiave host prima di riconnetterti. Se il runtime dell’host non si avvia, leggi l’errore in **Impostazioni → Connessioni** e controlla il **Comando dell’host** configurato o la disponibilità di un runtime per la tua piattaforma.
+
+Per un percorso HTTPS, verifica che l’host sia in esecuzione con l’accesso remoto **Pronto**. Se il percorso mostra **Richiede attenzione** nella finestra **Modifica** dell’host, il dispositivo potrebbe essere stato revocato; associalo di nuovo con un nuovo link dalle impostazioni di accesso remoto dell’host. Consulta [Problemi di accesso remoto](/docs/it/remote-access#problemi-di-accesso-remoto).
 
 Le build di sviluppo non hanno un runtime pubblicato da scaricare. Dal repository dell'app Dream, esegui `pnpm host:install-dev devbox`, poi riconnettiti lasciando **Comando dell’host** vuoto. La build remota richiede Node.js 22 o successivo, pnpm o Corepack, make, Python 3 e una toolchain C++ (g++ 10 o successivo). Il programma di installazione arresta il daemon dell'host di sviluppo esistente prima di sostituire il runtime.

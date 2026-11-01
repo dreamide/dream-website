@@ -5,7 +5,7 @@ description: "Resolva modelos e conversas faltantes, problemas no terminal e no 
 
 Comece com o erro exibido no chat ou ferramenta afetado. Verifique qual projeto e provedor estão selecionados antes de alterar as configurações, especialmente quando vários chats estão abertos.
 
-Para projetos remotos, verifique o estado da conexão em **Configurações → Hosts SSH**. Consulte [Problemas de conexão SSH](/docs/pt/remote-hosts#problemas-de-conexão) para autenticação, ambiente de execução e compilações de desenvolvimento.
+Para projetos remotos, verifique o status da conexão do host em **Configurações → Conexões**. Consulte [Problemas de conexão](/docs/pt/remote-hosts#problemas-de-conexão) para autenticação, ambiente de execução e configuração de compilações de desenvolvimento. Para celulares e outros dispositivos emparelhados, consulte [Problemas de acesso remoto](/docs/pt/remote-access#problemas-de-acesso-remoto).
 
 ## Um CLI de fornecedor não foi detectado
 
@@ -52,7 +52,11 @@ O controle aparece nas mensagens do assistente após a resposta ser finalizada, 
 
 ## Eu não consigo enviar diff ou feedback de elemento
 
-O controle de envio está desativado enquanto o chat de destino está respondendo e exibe **Chat ocupado**. Aguarde até que ele termine ou habilite **Novo chat** no pop-up. Se o pop-up informar que a seleção não corresponde mais com a diferença, atualize as Alterações e selecione as linhas novamente. Veja [Enviar feedback para um chat](/docs/pt/feedback).
+O controle de envio fica desativado enquanto o chat de destino está respondendo e exibe **Chat ocupado**. Aguarde até que ele termine ou ative **Novo chat** no pop-up. Se o pop-up informar que a seleção não corresponde mais ao diff, aguarde a atualização de Alterações e selecione as linhas novamente. Consulte [Enviar feedback para um chat](/docs/pt/feedback).
+
+## Uma mensagem na fila não é executada
+
+Abra o chat e confira a **Fila**. Se ela mostrar **Fila pausada**, escolha **Retomar fila** ou envie uma nova mensagem. Um item com status **Falhou** ou **Interrompido** aguarda sua ação: leia a resposta e depois escolha **Tentar novamente** ou **Remover**. Consulte [Enfileirar mensagens](/docs/pt/chats#enfileirar-mensagens).
 
 ## Continuar no terminal está faltando
 

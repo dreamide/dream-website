@@ -77,9 +77,29 @@ Un indicatore di caricamento identifica le chat che stanno ricevendo una rispost
 
 Mentre un agente risponde, il chat mostra il suo progresso e l'attività degli strumenti. Apri i dettagli dell'utente per esaminare i comandi, le letture dei file o i cambiamenti. Quando l'agente fornisce un elenco di attività, il controllo delle attività accanto alla casella dei messaggi mostra il suo progresso.
 
-Istanze e schede progetto includono indicatori di stato per i lavori in elaborazione o completati; le schede progetto possono anche indicare che un agente sta aspettando la tua risposta. Seleziona il progetto e apri la conversazione per leggere il messaggio più recente. Utilizza il controllo stop nel compositore per interrompere una risposta. Interrompere una risposta non annulla i cambiamenti ai file già effettuati.
+Le schede Cronologia e progetto includono indicatori di stato per il lavoro in corso o completato; le schede progetto possono anche indicare che un agente attende la tua risposta. Seleziona il progetto e apri la conversazione per leggerne l’ultimo messaggio. Usa il controllo di arresto nel compositore per terminare una risposta. Fermare una risposta non annulla le modifiche ai file già apportate.
+
+Le risposte vengono eseguite sull’host del progetto, non nella finestra. Se un client si disconnette mentre una risposta è in corso, la risposta continua e la chat vi si riconnette automaticamente.
 
 Dopo che una risposta è completata, usa **Mostra i file modificati da questa risposta** nel suo piede per vedere i file modificati e [ripristina quelli presenti](/docs/it/checkpoints).
+
+## Mettere in coda i messaggi
+
+Puoi inviare altri messaggi mentre una risposta è in corso. Scrivi nella casella del messaggio e invia; il controllo di arresto diventa il controllo di invio finché la casella contiene testo. Dream aggiunge il messaggio alla **Coda** della chat e lo esegue dopo la risposta corrente, usando il modello indicato accanto. I messaggi in coda vengono salvati sull’host, quindi restano anche dopo il riavvio di Dream.
+
+La **Coda** appare sopra la casella del messaggio quando ci sono messaggi in attesa o un’esecuzione richiede attenzione.
+
+| Controllo | Cosa fa |
+| --- | --- |
+| Pausa coda | Trattiene i messaggi in coda; la risposta corrente termina comunque |
+| Riprendi coda | Prosegue con il messaggio successivo in coda |
+| Annulla | Rimuove un messaggio non ancora avviato |
+| Riprova | Esegue di nuovo un messaggio **Non riuscito** o **Interrotto** |
+| Rimuovi | Scarta un messaggio **Non riuscito** o **Interrotto** |
+
+**Ferma** termina la risposta corrente, insieme alle attività che ha [delegato](/docs/it/agent-modes#attività-delegate), e trattiene il resto della coda. L’invio di un nuovo messaggio riprende una coda in pausa e scarta i messaggi non riusciti o interrotti.
+
+Una risposta risulta **Interrotto** quando il suo host si arresta prima che termini, ad esempio durante un aggiornamento. In seguito la coda viene messa in pausa. Leggi la risposta prima di scegliere **Riprova**, perché l’agente potrebbe aver già modificato dei file.
 
 ## Chiudi, archivia o elimina?
 

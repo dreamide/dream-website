@@ -1,0 +1,81 @@
+---
+title: "ホストサービス"
+description: "デスクトップアプリなしで Dream のホストを実行し続け、コマンドラインから管理します。"
+---
+
+Dream のホストである `dream-host` は、プロジェクトのエージェント、ターミナル、Git コマンドを実行します。通常はデスクトップアプリがホストを起動し、アプリの終了時に停止します。ホストをサービスとしてインストールすると、アプリを閉じた後もチャットとターミナルを実行し続けられます。[リモートアクセス](/docs/ja/remote-access)を使う場合や、デスクトップ環境のないマシンで役立ちます。
+
+| システム | サービスマネージャー | 起動タイミング |
+| --- | --- | --- |
+| Linux | systemd ユーザーサービス | ログイン時、または `loginctl enable-linger` を使用して起動時 |
+| macOS | LaunchAgent | ログイン時 |
+| Windows | Task Scheduler (タスク スケジューラ) | ログイン時 |
+
+ホストに障害が発生すると、サービスがホストを再起動します。スリープ中のコンピューターには接続できません。
+
+## ホストランタイムを入手する
+
+[Dream のリリース](https://github.com/dreamide/dream/releases)から、お使いのシステム用の `dream-host` アーカイブをダウンロードします。パッケージ化されたランタイムは Linux x64、Linux ARM64、macOS Apple シリコン向けに公開されています。各アーカイブには Node.js、ホスト、ターミナルサポート、ブラウザクライアントが含まれます。
+
+サービスを実行するのと同じユーザーで、エージェント CLI をインストールしてサインインします。
+
+## このデスクトップのホストをサービスとして実行する
+
+1. Dream を終了します。
+2. プロジェクトとチャットを引き継げるように、デスクトップのデータフォルダーを指定してサービスをインストールします：
+
+   ```sh
+   dream-host service install --data-dir "<desktop data folder>"
+   ```
+
+3. 環境変数に `DREAM_HOST_MODE=service` を設定して Dream を起動します。macOS での例：
+
+   ```sh
+   DREAM_HOST_MODE=service /Applications/Dream.app/Contents/MacOS/Dream
+   ```
+
+| システム | デスクトップのデータフォルダー |
+| --- | --- |
+| macOS | `~/Library/Application Support/dreamide` |
+| Windows | `%APPDATA%/dreamide` |
+| Linux | `~/.config/dreamide` |
+
+その後、デスクトップはサービスに接続します。デスクトップを閉じても実行中の応答とターミナルは動作し続け、再び開くとターミナルが復元されます。1 つのデータフォルダーを同時に使用できるホストは 1 つだけです。デスクトップが独自にホストを起動する方式に戻すには、先にサービスを停止してください。
+
+インストール時には現在の `PATH` が記録されます。ホストやエージェント CLI が必要とするその他の環境変数ごとに `--env NAME` を追加してください。値は非公開のサービスファイルに保存されます。
+
+## ヘッドレスホストをセットアップする
+
+デスクトップアプリのないマシンでは、`--data-dir` を付けずにサービスをインストールします。データは `~/.dream/host/data` に保存されます。`--home` で別のホストフォルダーを使用する場合は、すべてのコマンドに同じ `--home` を指定してください。
+
+次に、コマンドラインからリモートアクセスをオンにしてデバイスをペアリングします：
+
+| コマンド | 何をしますか |
+| --- | --- |
+| `dream-host remote on --tailscale` | Tailscale 経由のリモートアクセスをオンにします |
+| `dream-host remote install-cloudflared` | Cloudflare コネクターをインストールまたは更新します |
+| `dream-host remote on --cloudflare --origin https://dream.example.com --token-file <path>` | Cloudflare Tunnel 経由のリモートアクセスをオンにします。トークンは非公開ファイルから読み込みます |
+| `dream-host remote on --cloudflare --external --origin https://dream.example.com` | 自分で実行している Cloudflare コネクターを使用します |
+| `dream-host remote status` / `dream-host remote check` | 設定を表示するか、再確認します |
+| `dream-host remote off` | ペアリング済みデバイスへの提供を停止します |
+| `dream-host pair` | 表示と作業のアクセス権を持つペアリングリンク、コード、QR コードを作成します。表示のみにするには `--scopes view`、フルアクセスにするには `--scopes view,operate,manage` を使用します |
+| `dream-host claims` | ペアリングコードを入力したデバイスを一覧表示します |
+| `dream-host confirm <claimId>` / `dream-host deny <claimId>` | デバイスを承認または拒否します |
+| `dream-host devices` | ペアリング済みデバイスを一覧表示します |
+| `dream-host revoke <sessionId>` | デバイスのアクセス権を削除します |
+
+機械で読み取れる形式で出力するには、これらのコマンドに `--json` を追加します。
+
+## サービスを管理する
+
+| コマンド | 何をしますか |
+| --- | --- |
+| `dream-host service status` | サービスが実行中かどうか、バージョン、ポート、ログを表示します |
+| `dream-host service start` / `stop` / `restart` | 実行中のサービスを制御します |
+| `dream-host service uninstall` | スタートアップ登録を削除し、データは保持します |
+| `dream-host service update <version>` | 公開されたバージョンをインストールします |
+| `dream-host service recover` | 中断した更新を完了するか、ロールバックします |
+
+更新では、ホストを停止する前にリリースアーカイブをダウンロードし、チェックサムを検証します。新しいバージョンの起動に失敗した場合、サービスは以前のランタイムに戻ります。更新すると実行中の応答とターミナルは中断されます。応答は**中断**としてマークされ、そのキューは一時停止します。応答を確認してから、再試行するか[キューを再開](/docs/ja/chats#メッセージをキューに入れる)してください。
+
+マシンのシャットダウンなどで更新が途中で止まった場合は、`dream-host service status` を実行してから `dream-host service recover` を実行します。

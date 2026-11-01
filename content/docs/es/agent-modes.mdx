@@ -1,6 +1,6 @@
 ---
 title: "Permisos del agente"
-description: "Elige Preguntar, Aceptar ediciones o Acceso completo y responde a los pedidos del agente."
+description: "Elige Preguntar, Aceptar ediciones o Acceso completo, responde a los pedidos del agente y delega tareas."
 ---
 
 Cada chat tiene un control de **Permisos** debajo de su cuadro de mensaje. Los nuevos chats heredan **Configuración → General → Modelos → Permisos predeterminados**, que comienza en **Acceso completo**. Cambiar el predeterminado no afecta a chats existentes.
@@ -40,3 +40,17 @@ Un agente puede pedirte que aclaras un requisito, elijas una opción o apruebes 
 Si la solicitud requiere cambiar la tarea, da al agente las instrucciones revisadas en ese chat. Usa el control de detener para interrumpir una respuesta cuando sea necesario. Detener no revierte las ediciones ni los comandos que ya se completaron; revisa después [Cambios](/docs/es/git-workflows) o utiliza el [punto de control](/docs/es/checkpoints) de la respuesta para restaurar los archivos que modificó.
 
 Para tareas paralelas que necesitan archivos separados, use [árbol de trabajo](/docs/es/worktrees). Los ajustes de permisos no dan dos chats en la misma carpeta checkouts independientes.
+
+## Tareas delegadas
+
+Los agentes pueden pasar parte de una tarea a otro proveedor de agentes en el mismo proyecto. Por ejemplo, un chat de Claude Code puede pedirle a Codex que revise un cambio y luego leer el resultado en un turno posterior. Pídelo en tu mensaje, por ejemplo: “Haz que otro agente escriba las pruebas de este módulo y me informe”.
+
+| Regla | Detalle |
+| --- | --- |
+| Proveedores que pueden delegar | Codex, Claude Code, OpenCode y Grok Build. Cursor Agent puede recibir tareas delegadas, pero no puede iniciarlas |
+| Proveedores disponibles | La CLI del otro proveedor debe estar instalada y con la sesión iniciada en el host del proyecto |
+| Permisos | Una tarea delegada no puede tener más acceso que el chat que la inició |
+| Archivos | Las tareas delegadas trabajan en los mismos archivos del proyecto; asigna a cada una una parte distinta del trabajo para evitar conflictos |
+| Detener | Detener el chat también detiene las tareas que delegó |
+
+Las tareas delegadas se ejecutan en el host y conservan sus resultados, para que el agente pueda consultarlas en un turno posterior o después de que Dream se reinicie. Abre los detalles de la herramienta en la respuesta para ver qué tareas inició el agente.

@@ -3,24 +3,25 @@ title: "Quy trình làm việc với Git"
 description: "Xem lại các thay đổi, làm việc với nhánh và sử dụng worktree Git trong Dream."
 ---
 
-Mở **Git** trong thanh công cụ bên phải cho các tab **Thay đổi**, **Lịch sử** và **Pull request**. Menu **Thao tác Git** dưới phần chat cung cấp các bước tiếp theo cho nhánh hiện tại.
+Mở **Git** trong thanh công cụ bên phải để xem các tab **Thay đổi**, **Lịch sử** và **Pull request**. Menu **Thao tác Git** bên dưới cuộc trò chuyện đưa ra các bước tiếp theo cho nhánh hiện tại. Nút của menu được làm nổi bật khi có thay đổi cần commit hoặc commit cần đẩy.
 
 ## Trước khi bắt đầu
 
 Đối với các commit, khoa học của bạn cần có danh tính tác giả Git được cấu hình. Đối với việc đẩy, nó cần một remote và thông tin xác thực có thể truy cập vào nó. Việc tạo pull request sử dụng GitHub CLI, điều này yêu cầu phải cài đặt và xác thực cho khoa học đích.
 
-Bạn có thể tự nhập thông điệp commit và văn bản PR. Để tạo chúng, hãy bật một mô hình cung cấp và chọn **Cài đặt → Chung → Mô hình → Mô hình tạo văn bản**.
+Bạn có thể tự nhập thông điệp commit và nội dung PR. Để tạo tự động, hãy bật một mô hình của nhà cung cấp và chọn **Cài đặt → Chung → Mô hình → Mô hình tạo văn bản**. Khi **Tự động tạo tin nhắn** được bật, Dream sẽ soạn thông điệp commit mới khi phản hồi agent cuối cùng đang chạy trong dự án hoàn tất.
 
 ## Xem lại các thay đổi
 
 1. Mở **Git → Thay đổi** để kiểm tra các tệp đã được sửa đổi, thêm và xóa.
 2. Mở rộng tệp để xem xét sự thay đổi của nó.
-3. Chọn **Diff thống nhất** hoặc **Diff chia đôi** ở phần đầu, và bật chế độ cuộn từ trong **Hành động thay đổi** nếu cần thiết.
-4. Sử dụng **Hành động Thay đổi → Làm mới** nếu những thay đổi được thực hiện ngoài Dream chưa được phản ánh.
+3. Chọn **Diff thống nhất** hoặc **Diff chia đôi** ở phần đầu. **Ngắt dòng** được bật mặc định; dùng nút bật/tắt của nó ở phần đầu để hiển thị dòng dài mà không ngắt.
+
+Thay đổi và cây tệp được cập nhật sau khi lệnh terminal chạy xong và khi bạn quay lại cửa sổ Dream, nên công việc thực hiện bên ngoài Dream sẽ xuất hiện mà không cần làm mới thủ công.
 
 Với các đoạn khác nhau rất lớn, Dream có thể hiển thị **Khác biệt quá lớn để hiển thị**. Sử dụng **Vẫn kết xuất** chỉ khi bạn muốn tải view lớn hơn đó, hoặc kiểm tra tệp trong trình soạn thảo hoặc terminal của mình.
 
-Sử dụng hành động **Hoàn nguyên các thay đổi của tệp** của tệp để bỏ qua các thay đổi làm việc không mong muốn. Hành động **Hoàn tác tất cả thay đổi** áp dụng rộng hơn; hãy kiểm tra phạm vi của nó trước khi xác nhận. Việc hoàn tác mã nguồn là độc lập với việc lưu trữ cuộc trò chuyện đã tạo ra nó. Để chỉ khôi phục lại những gì một phản hồi cụ thể đã thay đổi, hãy sử dụng [điểm kiểm tra](/docs/vi/checkpoints) của phản hồi đó.
+Dùng thao tác **Hoàn nguyên các thay đổi của tệp** của một tệp để loại bỏ các thay đổi làm việc không mong muốn. **Thao tác thay đổi → Hoàn tác tất cả thay đổi** áp dụng rộng hơn; hãy xem phạm vi của nó trước khi xác nhận. Việc hoàn nguyên mã tách biệt với việc lưu trữ cuộc trò chuyện đã tạo ra mã đó. Để chỉ hoàn tác những gì một phản hồi cụ thể đã thay đổi, hãy dùng [điểm kiểm tra](/docs/vi/checkpoints) của phản hồi đó.
 
 Để yêu cầu một agent về các dòng cụ thể, kéo qua các số dòng trong một diff hoặc nhấp vào nút **+** của một dòng, sau đó nhập một bình luận. Dream sẽ gửi bình luận này cùng với đường dẫn tệp và các dòng đã chọn. Xem [Gửi phản hồi đến cuộc trò chuyện](/docs/vi/feedback).
 
@@ -37,9 +38,9 @@ Sử dụng hành động **Hoàn nguyên các thay đổi của tệp** của t
 </Frame>
 
 1. Mở **Git → Thay đổi**, hoặc chọn **Commit** từ menu **Thao tác Git** ở phần dưới cùng.
-2. Xem các thay đổi tệp dưới đây sau khi commit composer.
+2. Xem lại diff của các tệp bên dưới composer commit. Composer cho biết commit gồm bao nhiêu tệp.
 3. Kiểm tra **Bao gồm thay đổi chưa được stage**. Nó được bật mặc định và bao gồm các thay đổi chưa được ghi lại trong thao tác ghi lại.
-4. Xem lại **Tự động tạo tin nhắn**, được bật mặc định. Để nhập thông điệp riêng, hãy tắt tính năng này và nhập nội dung; việc tắt tính năng này sẽ làm mất thông điệp được tạo ra.
+4. Xem lại **Tự động tạo tin nhắn**, tùy chọn này được bật mặc định. Để tự viết thông điệp, hãy tắt nó và nhập vào **Thông điệp commit**; tắt tùy chọn sẽ xóa thông điệp đã được tạo.
 5. Chọn **Commit**, hoặc **Commit và đẩy** nếu bạn đã sẵn sàng để xuất bản commit đến remote.
 
 Chỉ thực hiện commit cho một tập hợp được chọn, sử dụng Git trong terminal hoặc trình biên tập bên ngoài để đánh dấu các tệp đó, và tắt **Bao gồm thay đổi chưa được stage**. Bảng thay đổi không cung cấp các tùy chọn đánh dấu riêng biệt cho từng tệp.
@@ -62,9 +63,17 @@ Dream từ chối các commit khi có những thay đổi đã được chuẩn 
   />
 </Frame>
 
-Dùng **Xuất bản nhánh** cho nhánh chưa có upstream, hoặc **Đẩy** để gửi các commit đang chờ. Các thao tác này ở chân trang thực hiện push ngay lập tức. Trước tiên, hãy kiểm tra nhánh, remote và các commit trong **Lịch sử**; khi có upstream, chân trang hiển thị số commit đi trước và đi sau.
+1. Mở **Thao tác Git** bên dưới cuộc trò chuyện. **Đẩy** cho biết có bao nhiêu commit đi trước upstream. Nhánh chưa có upstream sẽ hiển thị **Xuất bản nhánh** thay thế.
+2. Trong **Đẩy các thay đổi**, kiểm tra **Nhánh**, **Điểm đến** và các commit sẽ được đẩy, bao gồm số commit mà nhánh đi trước và đi sau.
+3. Chọn **Đẩy**.
 
-Nếu việc đẩy thất bại, hãy kiểm tra lỗi và xác nhận quyền truy cập xa. Một lần ghi lại thành công tại địa phương vẫn được duy trì ngay cả khi việc đẩy tiếp theo thất bại; hãy kiểm tra trạng thái nhánh trước khi lặp lại hành động kết hợp.
+Nếu đẩy thất bại, hãy kiểm tra lỗi và xác nhận quyền truy cập của bạn vào remote Git. Một commit cục bộ thành công vẫn được giữ nguyên ngay cả khi lần đẩy sau đó thất bại; hãy kiểm tra trạng thái nhánh trước khi lặp lại một thao tác kết hợp.
+
+## Fetch và pull
+
+Dùng **Thao tác Git → Fetch** để tải các commit và nhánh mới từ remote mà không thay đổi tệp của bạn. Dùng **Thao tác Git → Pull** để đưa các commit của nhánh upstream vào nhánh hiện tại; menu cho biết nhánh đang đi sau bao nhiêu commit. Dream báo số commit đã pull, hoặc cho biết nhánh đã được cập nhật.
+
+Pull sẽ thay đổi các tệp mà mọi cuộc trò chuyện trong dự án đang dùng. Hãy để các phản hồi đang chạy hoàn tất, rồi commit hoặc cất tạm công việc của bạn trước. **Thao tác Git → Mở kho mã** mở kho mã từ xa trong trình duyệt.
 
 ## Tạo pull request
 

@@ -77,9 +77,29 @@ Eine Ladeanzeige kennzeichnet Chats, die gerade eine Antwort empfangen. Wenn du 
 
 Während ein Agent antwortet, wird der Chat seine Fortschritte und Tool-Aktivitäten anzeigen. Offene Tool-Details anzeigen, um Befehle, Datei-Lesungen oder Änderungen zu überprüfen. Wenn der Agent eine Aufgabenliste bereitstellt, zeigt die Aufgabensteuerung neben der Nachrichtenbox ihren Fortschritt an.
 
-Historie- und Projekt-Register zeigen Statusindikatoren für Arbeit, die verarbeitet oder abgeschlossen wird; Projekt-Register können außerdem anzeigen, dass ein Agent auf Ihre Antwort wartet. Wählen Sie das Projekt und öffnen Sie das Gespräch, um die letzte Nachricht zu lesen. Verwenden Sie die Stop-Funktion im Composer, um eine Antwort zu unterbrechen. Die Unterbrechung einer Antwort führt nicht dazu, dass bereits vorgenommene Dateiänderungen rückgängig gemacht werden.
+Verlaufs- und Projekt-Tabs zeigen Statusindikatoren für Arbeit, die gerade verarbeitet wird oder abgeschlossen ist; Projekt-Tabs können außerdem anzeigen, dass ein Agent auf Ihre Antwort wartet. Wählen Sie das Projekt und öffnen Sie die Unterhaltung, um die neueste Nachricht zu lesen. Verwenden Sie die Stopp-Schaltfläche im Composer, um eine Antwort zu beenden. Das Stoppen einer Antwort macht bereits vorgenommene Dateiänderungen nicht rückgängig.
+
+Antworten laufen auf dem Host des Projekts, nicht im Fenster. Wenn ein Client die Verbindung trennt, während eine Antwort läuft, wird die Antwort fortgesetzt, und der Chat verbindet sich automatisch wieder mit ihr.
 
 Nachdem eine Antwort abgeschlossen ist, verwenden Sie im Footer **Dateiänderungen dieser Antwort anzeigen**, um die Dateien zu sehen, die sie verändert hat, und [eine davon wiederherzustellen](/docs/de/checkpoints).
+
+## Nachrichten einreihen
+
+Sie können weitere Nachrichten senden, während eine Antwort läuft. Geben Sie Text in das Nachrichtenfeld ein und senden Sie ihn; solange das Feld Text enthält, wird die Stopp-Schaltfläche zur Senden-Schaltfläche. Dream fügt die Nachricht der **Warteschlange** des Chats hinzu und führt sie nach der aktuellen Antwort mit dem daneben angezeigten Modell aus. Eingereihte Nachrichten werden auf dem Host gespeichert und bleiben daher auch nach einem Neustart von Dream erhalten.
+
+Die **Warteschlange** erscheint über dem Nachrichtenfeld, solange Nachrichten warten oder ein Durchlauf Ihre Aufmerksamkeit erfordert.
+
+| Steuerung | Was es tut |
+| --- | --- |
+| Pausieren | Hält eingereihte Nachrichten zurück; die aktuelle Antwort wird noch abgeschlossen |
+| Fortsetzen | Fährt mit der nächsten eingereihten Nachricht fort |
+| Abbrechen | Entfernt eine Nachricht, die noch nicht gestartet wurde |
+| Wiederholen | Führt eine Nachricht mit **Fehlgeschlagen** oder **Unterbrochen** erneut aus |
+| Entfernen | Verwirft eine Nachricht mit **Fehlgeschlagen** oder **Unterbrochen** |
+
+**Stoppen** beendet die aktuelle Antwort samt aller Aufgaben, die sie [delegiert](/docs/de/agent-modes#delegierte-aufgaben) hat, und hält den Rest der Warteschlange an. Wenn Sie eine neue Nachricht senden, wird eine pausierte Warteschlange fortgesetzt, und fehlgeschlagene oder unterbrochene Nachrichten werden verworfen.
+
+Eine Antwort ist **Unterbrochen**, wenn ihr Host stoppt, bevor sie abgeschlossen ist, zum Beispiel während eines Updates. Die Warteschlange wird danach pausiert. Lesen Sie die Antwort, bevor Sie **Wiederholen** wählen, da der Agent möglicherweise bereits Dateien geändert hat.
 
 ## Schließen, archivieren oder löschen?
 

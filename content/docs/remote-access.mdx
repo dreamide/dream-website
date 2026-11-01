@@ -1,0 +1,105 @@
+---
+title: Remote access
+description: Use this computer's projects from a phone, a browser, or another Dream desktop.
+---
+
+Remote access lets other devices work with the projects on this computer. A phone or another
+computer opens Dream in its browser, and another Dream desktop can add this computer as a
+[remote host](/docs/remote-hosts#pair-a-host-over-https). Every device must be paired first, and
+you can revoke it at any time.
+
+Agents, terminals, and Git commands still run on this computer. Paired devices can reach it only
+while Dream's host is running here. To keep the host running after you close Dream, install it as a
+[service](/docs/host-service).
+
+## Before you start
+
+Choose how devices will reach this computer:
+
+| Connection | What you need |
+| --- | --- |
+| Tailscale | Tailscale installed and signed in on this computer and on each device, with MagicDNS and HTTPS certificates turned on for your tailnet |
+| Cloudflare Tunnel | A persistent Cloudflare Tunnel and hostname in your Cloudflare account, such as `dream.example.com` |
+
+For Cloudflare Tunnel, create a dedicated, remotely managed tunnel and copy only its connector
+token. Route its hostname to `http://127.0.0.1` on the **Local port** Dream shows, and bypass
+caching for `/api/*`. Quick Tunnels are not supported, and the hostname cannot require an
+interactive Cloudflare Access login.
+
+## Turn on remote access
+
+1. Open **Settings → Connections** and find **Remote access**.
+2. Choose **Set up**.
+3. Under **Reach this computer through**, choose **Tailscale** or **Cloudflare Tunnel**.
+4. For Cloudflare Tunnel, enter the **Public address** and paste the **Tunnel token**. If the
+   connector shows **Not installed**, choose **Install cloudflared**.
+5. Choose **Turn on**.
+
+Dream checks the connection before it shows **Ready**. If it shows **Not ready**, read the message
+beneath it, fix the setup, and use **Check again**. Some messages include **Open setup page**.
+
+Use **Change** to switch connections or replace the tunnel token. Leave the token blank to keep the
+saved one. The **Allow paired devices** switch turns remote access off and on without losing the
+setup or paired devices.
+
+### Advanced options
+
+| Option | What it does |
+| --- | --- |
+| HTTPS port | The port Tailscale serves Dream on. Change it if Tailscale already serves something on that port |
+| Local port | The port on this computer that receives remote connections. Leave it empty to choose automatically |
+| I run cloudflared myself | Use a Cloudflare connector you install and run separately. Dream does not start, stop, or delete it |
+
+## Pair a device
+
+1. With remote access **Ready**, choose **Pair a device**.
+2. Choose an **Access** level for the device.
+3. Choose **Create pairing**.
+4. On the device, scan the QR code or open the link. You can also use **Copy link** to send it.
+5. Choose **Done**.
+
+| Access | What the device can do |
+| --- | --- |
+| View only | Read projects, chats, and terminals |
+| View and work | Also run agents, terminals, and Git as you |
+| Full | Also pair and remove devices |
+
+The link works once and expires after 10 minutes. To pair without the link, open the host's
+address on the device, enter the pairing code shown beside the QR code, and give the device a name.
+The device then waits until you choose **Confirm** under **Waiting to pair** on this computer. Choose
+**Deny** for any device you do not recognize.
+
+To pair another Dream desktop, paste the link in its **Add host → Pairing link** dialog. See
+[Pair a host over HTTPS](/docs/remote-hosts#pair-a-host-over-https).
+
+## Use Dream on a paired device
+
+A paired device opens Dream in its browser. On a phone, Dream uses a compact layout. The device works
+with the projects, chats, files, and terminals on this computer, within its access level.
+
+If this computer cannot be reached, a banner says so and the device shows what it saved. Dream
+reconnects when the host is available again. Sleeping computers cannot be reached.
+
+To remove the device's access from the device itself, choose **Sign out** under **This device**.
+Signing out also removes what that browser saved.
+
+## Manage paired devices
+
+**Paired devices** lists each device and when it was last used. Choose **Revoke** to remove a
+device's access. Its open pages stop at once; work on this computer continues. A device that is not
+used for 30 days must be paired again.
+
+## Remote access problems
+
+| Message or symptom | What to do |
+| --- | --- |
+| Tailscale isn't installed or running | Install Tailscale, sign in, and connect this computer, then choose **Check again** |
+| This computer is waiting for approval | Approve it in the Tailscale admin console |
+| Turn on MagicDNS and HTTPS certificates | Enable both for your tailnet in the Tailscale admin console |
+| Tailscale won't let this user change its Serve settings | On Linux, run `sudo tailscale set --operator=$USER` once, then check again |
+| Something else is already using the port | Choose another **HTTPS port** or **Local port** under **Advanced** |
+| Couldn't reach this computer through Tailscale | Tailscale may still be getting its certificate; check again in a minute |
+| Couldn't reach this computer through Cloudflare | Set the hostname's service URL in Cloudflare to `http://127.0.0.1` with the **Local port** shown in Dream |
+| Waiting for the Cloudflare connector to connect | Check the tunnel token and that outbound connections from this computer are allowed |
+| Pairing link expired or already used | Choose **Pair a device** again and use the new link |
+| A device stopped working | Check whether it was revoked or unused for 30 days, then pair it again |

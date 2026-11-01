@@ -3,24 +3,25 @@ title: "Flussi di lavoro Git"
 description: "Revisione dei cambiamenti, lavorare con i rami e utilizzare i worktree Git in Dream."
 ---
 
-Apri **Git** nella barra laterale destra per le schede **Modifiche**, **Cronologia** e **Pull request**. Il menu **Azioni Git** sotto il chat offre i prossimi passi per la ramifica corrente.
+Apri **Git** nella barra degli strumenti a destra per le schede **Modifiche**, **Cronologia** e **Pull request**. Il menu **Azioni Git** sotto la chat propone i passaggi successivi per il branch corrente. Il suo pulsante è evidenziato quando ci sono modifiche di cui eseguire il commit o commit di cui eseguire il push.
 
 ## Prima di iniziare
 
 Per i commit, il tuo repository ha bisogno di un'identità autore configurata con Git. Per il push, ha bisogno di un remoto e di credenziali che possano accedervi. La creazione di un pull request utilizza il GitHub CLI, che deve essere installato e autenticato per il repository di destinazione.
 
-Puoi digitare i messaggi di commit e il testo del PR tu stesso. Per generare tali testi, abilita un modello fornitore e scegli **Impostazioni → Generale → Modelli → Modello di generazione del testo**.
+Puoi scrivere tu stesso i messaggi di commit e il testo delle PR. Per generarli, abilita un modello di un provider e scegli **Impostazioni → Generale → Modelli → Modello di generazione del testo**. Con **Genera automaticamente il messaggio** attivo, Dream prepara un nuovo messaggio di commit quando termina l’ultima risposta dell’agente in esecuzione nel progetto.
 
 ## Revisione dei cambiamenti
 
 1. Apri **Git → Modifiche** per esaminare i file modificati, aggiunti e eliminati.
 2. Espandi un file per esaminare la sua differenza.
-3. Scegli **Diff unificato** o **Diff diviso** nell'intestazione, e abilita il wrapping delle parole nell'azione **Modifiche** se utile.
-4. Usa **Azioni Modifiche → Aggiorna** se le modifiche effettuate fuori da Dream non sono ancora riflesse.
+3. Scegli **Diff unificato** o **Diff diviso** nell’intestazione. **A capo automatico** è attivo per impostazione predefinita; usa il relativo interruttore nell’intestazione per mostrare le righe lunghe senza andare a capo.
+
+Le modifiche e l’albero dei file si aggiornano al termine dei comandi del terminale e quando torni alla finestra di Dream, quindi il lavoro svolto fuori da Dream compare senza aggiornamento manuale.
 
 Per diff estremamente grandi, Dream potrebbe mostrare **Diff troppo grande per essere renderizzato**. Utilizza **Renderizza comunque** solo quando desideri caricare quella vista più ampia, o esaminare il file nel tuo editor o terminale.
 
-Usa l'azione **Annulla le modifiche apportate al file** per scartare modifiche di lavoro non desiderate. L'azione **Annulla tutte le modifiche** ha un ambito più ampio; verifica il suo raggio prima di confermarlo. Annullare il codice è separato dall'archiviazione della conversazione che lo ha generato. Per annullare soltanto ciò che una risposta specifica ha modificato, usa il relativo [punto di controllo](/docs/it/checkpoints).
+Usa l’azione **Annulla le modifiche apportate al file** di un file per scartare le modifiche di lavoro indesiderate. **Azioni modifiche → Annulla tutte le modifiche** ha un effetto più ampio; verificane la portata prima di confermare. Annullare il codice è separato dall’archiviare la chat che lo ha prodotto. Per annullare solo ciò che ha modificato una determinata risposta, usa il [checkpoint](/docs/it/checkpoints) di quella risposta.
 
 Per chiedere a un agente di informazioni su righe specifiche, trascina sulle righe di un diff o fai clic sul controllo **+** di una riga, poi scrivi un commento. Dream lo invia insieme al percorso del file e alle righe selezionate. Vedere [Inviare feedback a una chat](/docs/it/feedback).
 
@@ -37,9 +38,9 @@ Per chiedere a un agente di informazioni su righe specifiche, trascina sulle rig
 </Frame>
 
 1. Apri **Git → Modifiche**, o scegli **Esegui commit** dal menu **Azioni Git** nel footer.
-2. Revisita le differenze dei file sotto il commit composer.
+2. Esamina i diff dei file sotto il compositore del commit. Il compositore mostra quanti file include il commit.
 3. Verifica **Includi le modifiche non aggiunte all’indice**. È abilitato per impostazione predefinita e include le modifiche non stage nel commit.
-4. Controlla il messaggio **Genera automaticamente il messaggio**, che è abilitato per impostazione predefinita. Per scrivere il proprio messaggio, disattivalo e inserisci il testo; disattivarlo cancella il messaggio generato.
+4. Controlla **Genera automaticamente il messaggio**, attivo per impostazione predefinita. Per scrivere un messaggio tuo, disattivalo e inseriscilo in **Messaggio di commit**; disattivarlo cancella il messaggio generato.
 5. Scegli **Esegui commit**, o **Effettua il commit e il push** se sei pronto a pubblicare il commit sul remoto.
 
 Per committare solo un sottoinsieme selezionato, stage quei file utilizzando Git in un terminale o un editor esterno e disattiva **Includi le modifiche non aggiunte all’indice**. Il pannello delle modifiche non fornisce controlli individuali di staging.
@@ -62,9 +63,17 @@ Dream rifiuta i commit in caso ci siano modifiche staged al di fuori della carte
   />
 </Frame>
 
-Usa **Pubblica branch** per un branch senza upstream, oppure **Esegui push** per inviare i commit in uscita. Queste azioni nel piè di pagina eseguono subito il push. Controlla prima il branch, il remoto e i commit in **Cronologia**; quando esiste un upstream, il piè di pagina mostra il numero di commit in anticipo e in ritardo.
+1. Apri **Azioni Git** sotto la chat. **Esegui push** mostra quanti commit sono avanti rispetto all’upstream. Un branch senza upstream offre invece **Pubblica branch**.
+2. In **Invia le modifiche**, controlla il **Ramo**, la **Destinazione** e i commit che verranno inviati, compreso il numero di commit in avanti e indietro del branch.
+3. Scegli **Esegui push**.
 
-Se l'invio fallisce, verifica l'errore e conferma l'accesso remoto. Un commit locale riuscito rimane comunque commesso anche se un successivo push fallisce; verifica lo stato della ramifica prima di ripetere un'azione combinata.
+Se il push non riesce, esamina l’errore e verifica il tuo accesso al remote Git. Un commit locale riuscito resta valido anche se il push successivo non riesce; controlla lo stato del branch prima di ripetere un’azione combinata.
+
+## Fetch e pull
+
+Usa **Azioni Git → Fetch** per scaricare nuovi commit e branch dal remote senza modificare i tuoi file. Usa **Azioni Git → Pull** per portare i commit del branch upstream nel branch corrente; il menu mostra di quanti commit sei indietro. Dream indica quanti commit ha scaricato o che il branch è già aggiornato.
+
+Il pull modifica i file usati da tutte le chat del progetto. Prima lascia terminare le risposte in corso ed esegui il commit del tuo lavoro o mettilo da parte. **Azioni Git → Apri repository** apre il repository remoto nel browser.
 
 ## Crea una pull request
 

@@ -1,0 +1,96 @@
+---
+title: Host service
+description: Keep Dream's host running without the desktop app, and manage it from the command line.
+---
+
+Dream's host, `dream-host`, runs agents, terminals, and Git commands for your projects. Normally the
+desktop app starts it and stops it when you quit. Install the host as a service to keep chats and
+terminals running after the app closes, for [Remote access](/docs/remote-access) or on a machine
+without a desktop.
+
+| System | Service manager | Starts |
+| --- | --- | --- |
+| Linux | systemd user service | At login, or at boot with `loginctl enable-linger` |
+| macOS | LaunchAgent | At login |
+| Windows | Task Scheduler | At login |
+
+The service restarts the host if it fails. A sleeping computer cannot be reached.
+
+## Get the host runtime
+
+Download the `dream-host` archive for your system from the
+[Dream releases](https://github.com/dreamide/dream/releases). Packaged runtimes are published for
+Linux x64, Linux ARM64, and macOS Apple silicon. Each archive includes Node.js, the host, terminal
+support, and the browser client.
+
+Install and sign in to the agent CLIs as the same user that will run the service.
+
+## Run this desktop's host as a service
+
+1. Quit Dream.
+2. Install the service with the desktop's data folder, so it keeps your projects and chats:
+
+   ```sh
+   dream-host service install --data-dir "<desktop data folder>"
+   ```
+
+3. Start Dream with `DREAM_HOST_MODE=service` set in its environment. For example, on macOS:
+
+   ```sh
+   DREAM_HOST_MODE=service /Applications/Dream.app/Contents/MacOS/Dream
+   ```
+
+| System | Desktop data folder |
+| --- | --- |
+| macOS | `~/Library/Application Support/dreamide` |
+| Windows | `%APPDATA%/dreamide` |
+| Linux | `~/.config/dreamide` |
+
+The desktop then attaches to the service. Closing it leaves running replies and terminals going,
+and reopening it restores the terminals. Only one host can use a data folder at a time. To go
+back to the desktop starting its own host, stop the service first.
+
+Installing records your current `PATH`. Add `--env NAME` for each other environment variable the
+host or agent CLIs need; values are kept in private service files.
+
+## Set up a headless host
+
+On a machine without the desktop app, install the service without `--data-dir`. Its data is kept
+in `~/.dream/host/data`. If you use a different host folder with `--home`, pass the same `--home` to
+every command.
+
+Then turn on remote access and pair devices from the command line:
+
+| Command | What it does |
+| --- | --- |
+| `dream-host remote on --tailscale` | Turns on remote access through Tailscale |
+| `dream-host remote install-cloudflared` | Installs or updates the Cloudflare connector |
+| `dream-host remote on --cloudflare --origin https://dream.example.com --token-file <path>` | Turns on remote access through a Cloudflare Tunnel, reading the token from a private file |
+| `dream-host remote on --cloudflare --external --origin https://dream.example.com` | Uses a Cloudflare connector you run yourself |
+| `dream-host remote status` / `dream-host remote check` | Shows the setup, or checks it again |
+| `dream-host remote off` | Stops serving paired devices |
+| `dream-host pair` | Creates a pairing link, code, and QR code with View and work access. Use `--scopes view` for view only, or `--scopes view,operate,manage` for full access |
+| `dream-host claims` | Lists devices that entered a pairing code |
+| `dream-host confirm <claimId>` / `dream-host deny <claimId>` | Confirms or denies a device |
+| `dream-host devices` | Lists paired devices |
+| `dream-host revoke <sessionId>` | Removes a device's access |
+
+Add `--json` to any of these commands for machine-readable output.
+
+## Manage the service
+
+| Command | What it does |
+| --- | --- |
+| `dream-host service status` | Shows whether the service is running, its version, port, and log |
+| `dream-host service start` / `stop` / `restart` | Controls the running service |
+| `dream-host service uninstall` | Removes the startup registration and keeps your data |
+| `dream-host service update <version>` | Installs a published version |
+| `dream-host service recover` | Finishes or rolls back an interrupted update |
+
+Updates download the release archive and verify its checksum before stopping the host. If the new
+version fails to start, the service returns to the previous runtime. Updating interrupts running
+replies and terminals: replies are marked **Interrupted** and their queues pause. Review them, then
+retry or [resume the queue](/docs/chats#queue-messages).
+
+If an update stops partway, for example because the machine shut down, run
+`dream-host service status`, then `dream-host service recover`.

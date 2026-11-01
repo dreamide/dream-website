@@ -3,24 +3,25 @@ title: "Flux de travail Git"
 description: "Revoir les modifications, travailler avec des branches et utiliser les Worktrees Git dans Dream."
 ---
 
-Ouvrir **Git** dans la barre d'outils de droite pour les onglets **Modifications**, **Historique** et **Pull request**. Le menu **Actions Git** situé sous le chat propose les prochaines étapes pour la branche actuelle.
+Ouvrez **Git** dans la barre d’outils de droite pour accéder aux onglets **Modifications**, **Historique** et **Pull request**. Le menu **Actions Git** situé sous le chat propose les prochaines étapes pour la branche actuelle. Son bouton est mis en évidence lorsqu’il y a des modifications à valider ou des commits à pousser.
 
 ## Avant de commencer
 
 Pour les commits, votre référentiel a besoin d'une identité Git author configurée. Pour les pushes, il faut un remote et des identifiants permettant d'y accéder. La création de pull request utilise GitHub CLI, qui doit être installé et authentifié pour le référentiel de destination.
 
-Vous pouvez taper vous-mêmes les messages de commit et le texte de demande de modification. Pour les générer, activez un modèle fourni et choisissez **Paramètres → Général → Modèles → Modèle de génération de texte**.
+Vous pouvez saisir vous-même les messages de commit et le texte des PR. Pour les générer, activez un modèle d’un fournisseur et choisissez **Paramètres → Général → Modèles → Modèle de génération de texte**. Lorsque **Générer automatiquement un message** est activé, Dream rédige un nouveau message de commit à la fin de la dernière réponse d’agent en cours dans le projet.
 
 ## Revoir les modifications
 
 1. Ouvrir **Git → Modifications** pour inspecter les fichiers modifiés, ajoutés et supprimés.
 2. Développer un fichier pour examiner sa différence.
-3. Choisissez **Diff unifié** ou **Diff côte à côte** dans l'en-tête, et activez le wrap de mot dans **Actions Modifications** si nécessaire.
-4. Utilisez **Actions Modifications → Actualiser** si les modifications effectuées en dehors de Dream n'ont pas encore été reflétées.
+3. Choisissez **Diff unifié** ou **Diff côte à côte** dans l’en-tête. **Retour à la ligne** est activé par défaut ; utilisez son interrupteur dans l’en-tête pour afficher les lignes longues sans retour à la ligne.
+
+Les modifications et l’arborescence se mettent à jour à la fin des commandes du terminal et lorsque vous revenez dans la fenêtre de Dream : le travail effectué en dehors de Dream apparaît donc sans actualisation manuelle.
 
 Pour des différences très grandes, Dream peut afficher **Diff trop grand pour être rendu**. Utilisez **Rendre quand même** uniquement lorsque vous souhaitez charger cette vue plus large, ou inspecter le fichier dans votre éditeur ou terminal.
 
-Utilisez l'action **Annuler les modifications du fichier** pour abandonner des modifications de travail inutiles. L'action **Annuler toutes les modifications** s'applique plus largement ; vérifiez son portée avant de confirmer. Annuler du code est indépendant de l'archivage du chat qui l'a produit. Pour annuler uniquement ce que a modifié une réponse particulière, utilisez le [point d'arrêt](/docs/fr/checkpoints) de cette réponse.
+Utilisez l’action **Annuler les modifications du fichier** d’un fichier pour abandonner les modifications de travail indésirables. **Actions sur les modifications → Annuler toutes les modifications** s’applique plus largement ; vérifiez sa portée avant de confirmer. Annuler du code est distinct de l’archivage du chat qui l’a produit. Pour annuler uniquement ce qu’une réponse donnée a modifié, utilisez le [checkpoint](/docs/fr/checkpoints) de cette réponse.
 
 Pour demander à un agent de commenter des lignes spécifiques, glissez sur les numéros de ligne dans une diff ou cliquez sur le contrôle **+** d'une ligne, puis saisissez un commentaire. Dream l'envoie avec le chemin du fichier et les lignes sélectionnées. Voir [Envoyer des retours à une conversation](/docs/fr/feedback).
 
@@ -37,9 +38,9 @@ Pour demander à un agent de commenter des lignes spécifiques, glissez sur les 
 </Frame>
 
 1. Ouvrir **Git → Modifications**, ou choisir **Valider** dans le menu des **Actions Git** du pied de page.
-2. Revoir les différences de fichier ci-dessous le commit composer.
+2. Examinez les diffs des fichiers sous le composeur de commit. Le composeur indique combien de fichiers le commit inclut.
 3. Vérifiez **Inclure les fichiers non préparés**. Elle est activée par défaut et inclut les modifications non indexées dans le commit.
-4. Vérifier **Générer automatiquement un message**, qui est activé par défaut. Pour écrire votre propre message, désactivez-le et saisissez le texte ; désactiver cela efface le message généré.
+4. Vérifiez **Générer automatiquement un message**, activé par défaut. Pour écrire votre propre message, désactivez-le et saisissez votre texte sous **Message de validation** ; le désactiver efface le message généré.
 5. Choisissez **Valider**, ou **Valider et pousser** si vous êtes prêt à publier le commit sur le distant.
 
 Pour commiter uniquement un sous-ensemble sélectionné, stagez ces fichiers en utilisant Git dans un terminal ou un éditeur externe et désactivez **Inclure les fichiers non préparés**. Le panneau des modifications ne fournit pas de contrôles individuels de staging.
@@ -62,9 +63,17 @@ Dream refuse les commits lorsque des modifications stagées se trouvent en dehor
   />
 </Frame>
 
-Utilisez **Publier la branche** pour une branche sans branche de suivi, ou **Pousser** pour envoyer les commits en attente. Ces actions en bas de la fenêtre effectuent l’envoi immédiatement. Vérifiez d’abord la branche, le dépôt distant et les commits dans **Historique** ; les nombres de commits en avance et en retard apparaissent lorsqu’une branche de suivi existe.
+1. Ouvrez **Actions Git** sous le chat. **Pousser** indique combien de commits sont en avance sur la branche amont. Une branche sans amont propose plutôt **Publier la branche**.
+2. Dans **Pousser les modifications**, vérifiez la **Branche**, la **Destination** et les commits qui seront poussés, y compris le nombre de commits d’avance et de retard de la branche.
+3. Choisissez **Pousser**.
 
-Si l'envoi échoue, vérifiez l'erreur et confirmez votre accès au serveur distant. Un commit local réussi reste enregistré même si une mise à jour suivante échoue ; vérifiez l'état du branche avant de répéter une action combinée.
+Si le push échoue, examinez l’erreur et confirmez votre accès au dépôt Git distant. Un commit local réussi reste validé même si le push qui suit échoue ; vérifiez l’état de la branche avant de répéter une action combinée.
+
+## Fetch et pull
+
+Utilisez **Actions Git → Fetch** pour télécharger les nouveaux commits et branches du dépôt distant sans modifier vos fichiers. Utilisez **Actions Git → Pull** pour intégrer les commits de la branche amont dans votre branche actuelle ; le menu indique le nombre de commits de retard. Dream indique combien de commits il a récupérés, ou que la branche est déjà à jour.
+
+Un pull modifie les fichiers utilisés par tous les chats du projet. Laissez d’abord les réponses en cours se terminer, puis validez ou mettez de côté votre travail. **Actions Git → Ouvrir le dépôt** ouvre le dépôt distant dans votre navigateur.
 
 ## Créer un pull request
 

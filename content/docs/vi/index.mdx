@@ -33,8 +33,10 @@ Dream mang lại không gian làm việc trên bàn phím tích hợp các dự 
 ## Dream bao gồm những gì
 
 - Một không gian làm việc đa dự án với các tab dự án bền vững
-- [Không gian làm việc từ xa qua SSH](/docs/vi/remote-hosts) với tác nhân, tệp, Git và terminal từ xa
-- Nhiều cuộc trò chuyện bên cạnh và phân nhánh cuộc trò chuyện
+- [Máy chủ từ xa](/docs/vi/remote-hosts) qua SSH hoặc HTTPS, với agent, tệp, Git và terminal từ xa
+- [Truy cập từ xa](/docs/vi/remote-access) vào dự án của máy tính này từ điện thoại, trình duyệt hoặc máy tính khác
+- Nhiều cuộc trò chuyện song song, phân nhánh cuộc trò chuyện và [hàng đợi tin nhắn](/docs/vi/chats#xếp-hàng-tin-nhắn)
+- [Tác vụ được giao](/docs/vi/agent-modes#tác-vụ-được-giao) cho phép một agent giao việc cho nhà cung cấp khác
 - Câu lệnh có thể tái sử dụng trong các dự án và kỹ năng agent có nhận thức về nhà cung cấp
 - Các điểm kiểm tra theo phản hồi để xem xét và khôi phục các tệp mà người đại diện đã thay đổi
 - Hỗ trợ cho Codex CLI, Claude Code CLI, OpenCode CLI, Cursor Agent CLI và Grok Build CLI
@@ -67,12 +69,15 @@ Dream mang lại không gian làm việc trên bàn phím tích hợp các dự 
 | Duyệt, gọi hoặc tạo một kỹ năng của agent | [Kỹ năng của tác nhân](/docs/vi/skills) |
 | Kết nối các công cụ bổ sung với một agent | [Máy chủ MCP](/docs/vi/mcp-servers) |
 | Cho một agent tệp hoặc một hình ảnh chụp màn hình | [Cung cấp ngữ cảnh](/docs/vi/providing-context) |
+| Xếp nhiều tác vụ cho một cuộc trò chuyện | [Xếp hàng tin nhắn](/docs/vi/chats#xếp-hàng-tin-nhắn) |
+| Làm việc với dự án trên máy khác | [Máy chủ từ xa](/docs/vi/remote-hosts) |
+| Dùng Dream từ điện thoại hoặc thiết bị khác | [Truy cập từ xa](/docs/vi/remote-access) |
 | Làm việc trong một bản sao độc lập, sau đó hợp nhất lại | [Worktree Git](/docs/vi/worktrees) |
 | Xem xét và công bố các thay đổi mã nguồn | [Quy trình làm việc với Git](/docs/vi/git-workflows) |
 | Đọc các bình luận đánh giá và hợp nhất một yêu cầu PR trên GitHub | [Đánh giá pull request](/docs/vi/pull-requests) |
 
 ## Hiểu không gian làm việc
 
-**Dự án** là một thư mục trên máy tính hoặc máy chủ SSH, có các cuộc trò chuyện và công cụ riêng. **Cuộc trò chuyện** có mô hình và thiết lập riêng. Nhiều cuộc trò chuyện trong cùng dự án dùng chung tệp; **cây công việc** cung cấp một bản làm việc Git riêng cho một tác vụ.
+**Dự án** là một thư mục trên máy tính của bạn hoặc trên máy chủ từ xa, có các cuộc trò chuyện và công cụ riêng. **Cuộc trò chuyện** là một cuộc hội thoại có mô hình và thiết lập riêng. Nhiều cuộc trò chuyện trong cùng dự án dùng chung tệp; **cây công việc** cung cấp một bản checkout Git riêng cho một tác vụ.
 
 Sử dụng [Quyền của tác nhân](/docs/vi/agent-modes) để chọn cách một tác nhân hoạt động, và [Ngữ cảnh và mức sử dụng](/docs/vi/context-and-usage) để hiểu thông tin dưới composer. Tài liệu [tham số cài đặt](/docs/vi/settings) liệt kê các lựa chọn toàn bộ ứng dụng. Nếu điều gì đó bị thiếu hoặc không chạy, hãy bắt đầu với [Khắc phục sự cố](/docs/vi/troubleshooting).

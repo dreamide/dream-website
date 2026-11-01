@@ -1,0 +1,84 @@
+---
+title: "Fernzugriff"
+description: "Nutzen Sie die Projekte dieses Computers von einem Smartphone, einem Browser oder einem anderen Dream-Desktop aus."
+---
+
+Mit dem Fernzugriff können andere Geräte mit den Projekten auf diesem Computer arbeiten. Ein Smartphone oder ein anderer Computer öffnet Dream im Browser, und ein anderer Dream-Desktop kann diesen Computer als [Remote-Host](/docs/de/remote-hosts#host-über-https-koppeln) hinzufügen. Jedes Gerät muss zuerst gekoppelt werden, und Sie können den Zugriff jederzeit widerrufen.
+
+Agenten, Terminals und Git-Befehle laufen weiterhin auf diesem Computer. Gekoppelte Geräte erreichen ihn nur, solange der Host von Dream hier läuft. Damit der Host nach dem Schließen von Dream weiterläuft, installieren Sie ihn als [Dienst](/docs/de/host-service).
+
+## Bevor Sie beginnen
+
+Wählen Sie, wie Geräte diesen Computer erreichen:
+
+| Verbindung | Voraussetzungen |
+| --- | --- |
+| Tailscale | Tailscale ist auf diesem Computer und auf jedem Gerät installiert und angemeldet, und MagicDNS sowie HTTPS-Zertifikate sind für Ihr Tailnet aktiviert |
+| Cloudflare Tunnel | Ein dauerhafter Cloudflare Tunnel und ein Hostname in Ihrem Cloudflare-Konto, z. B. `dream.example.com` |
+
+Erstellen Sie für Cloudflare Tunnel einen eigenen, remote verwalteten Tunnel und kopieren Sie nur dessen Connector-Token. Leiten Sie seinen Hostnamen an `http://127.0.0.1` auf dem Port weiter, den Dream unter **Lokaler Port** anzeigt, und umgehen Sie das Caching für `/api/*`. Quick Tunnels werden nicht unterstützt, und der Hostname darf keine interaktive Anmeldung über Cloudflare Access erfordern.
+
+## Fernzugriff aktivieren
+
+1. Öffnen Sie **Einstellungen → Verbindungen** und suchen Sie **Fernzugriff**.
+2. Wählen Sie **Einrichten**.
+3. Wählen Sie unter **Diesen Computer erreichen über** entweder **Tailscale** oder **Cloudflare Tunnel**.
+4. Geben Sie für Cloudflare Tunnel die **Öffentliche Adresse** ein und fügen Sie das **Tunnel-Token** ein. Wenn der Connector **Nicht installiert** anzeigt, wählen Sie **cloudflared installieren**.
+5. Wählen Sie **Einschalten**.
+
+Dream prüft die Verbindung, bevor **Bereit** angezeigt wird. Wenn **Nicht bereit** angezeigt wird, lesen Sie die Meldung darunter, korrigieren Sie die Einrichtung und verwenden Sie **Erneut prüfen**. Einige Meldungen enthalten **Einrichtungsseite öffnen**.
+
+Verwenden Sie **Ändern**, um die Verbindung zu wechseln oder das Tunnel-Token zu ersetzen. Lassen Sie das Token leer, um das gespeicherte zu behalten. Der Schalter **Gekoppelte Geräte zulassen** schaltet den Fernzugriff aus und ein, ohne dass die Einrichtung oder gekoppelte Geräte verloren gehen.
+
+### Erweiterte Optionen
+
+| Option | Was es tut |
+| --- | --- |
+| HTTPS-Port | Der Port, über den Tailscale Dream bereitstellt. Ändern Sie ihn, wenn Tailscale auf diesem Port bereits etwas anderes bereitstellt |
+| Lokaler Port | Der Port auf diesem Computer, der Remote-Verbindungen empfängt. Leer lassen, um ihn automatisch zu wählen |
+| Ich betreibe cloudflared selbst | Verwenden Sie einen Cloudflare-Connector, den Sie separat installieren und betreiben. Dream startet, stoppt oder löscht ihn nicht |
+
+## Gerät koppeln
+
+1. Wenn der Fernzugriff **Bereit** ist, wählen Sie **Gerät koppeln**.
+2. Wählen Sie unter **Zugriff** eine Stufe für das Gerät.
+3. Wählen Sie **Kopplung erstellen**.
+4. Scannen Sie auf dem Gerät den QR-Code oder öffnen Sie den Link. Sie können ihn auch mit **Link kopieren** versenden.
+5. Wählen Sie **Fertig**.
+
+| Zugriff | Was das Gerät tun kann |
+| --- | --- |
+| Nur ansehen | Projekte, Chats und Terminals lesen |
+| Ansehen und arbeiten | Zusätzlich Agenten, Terminals und Git in Ihrem Namen ausführen |
+| Vollständig | Zusätzlich Geräte koppeln und entfernen |
+
+Der Link funktioniert einmal und läuft nach 10 Minuten ab. Um ohne den Link zu koppeln, öffnen Sie die Adresse des Hosts auf dem Gerät, geben Sie den neben dem QR-Code angezeigten Kopplungscode ein und geben Sie dem Gerät einen Namen. Das Gerät wartet dann, bis Sie auf diesem Computer **Bestätigen** unter **Warten auf Kopplung** wählen. Wählen Sie **Ablehnen** für jedes Gerät, das Sie nicht kennen.
+
+Um einen anderen Dream-Desktop zu koppeln, fügen Sie den Link in dessen Dialog **Host hinzufügen → Kopplungslink** ein. Siehe [Host über HTTPS koppeln](/docs/de/remote-hosts#host-über-https-koppeln).
+
+## Dream auf einem gekoppelten Gerät verwenden
+
+Ein gekoppeltes Gerät öffnet Dream im Browser. Auf einem Smartphone verwendet Dream ein kompaktes Layout. Das Gerät arbeitet im Rahmen seiner Zugriffsstufe mit den Projekten, Chats, Dateien und Terminals auf diesem Computer.
+
+Wenn dieser Computer nicht erreichbar ist, weist ein Banner darauf hin, und das Gerät zeigt an, was es gespeichert hat. Dream verbindet sich wieder, sobald der Host erneut verfügbar ist. Computer im Ruhezustand sind nicht erreichbar.
+
+Um dem Gerät den Zugriff vom Gerät selbst aus zu entziehen, wählen Sie **Abmelden** unter **Dieses Gerät**. Beim Abmelden wird auch entfernt, was dieser Browser gespeichert hat.
+
+## Gekoppelte Geräte verwalten
+
+**Gekoppelte Geräte** listet jedes Gerät und den Zeitpunkt seiner letzten Nutzung auf. Wählen Sie **Widerrufen**, um einem Gerät den Zugriff zu entziehen. Seine geöffneten Seiten stoppen sofort; die Arbeit auf diesem Computer läuft weiter. Ein Gerät, das 30 Tage lang nicht verwendet wird, muss erneut gekoppelt werden.
+
+## Probleme mit dem Fernzugriff
+
+| Meldung oder Symptom | Was zu tun ist |
+| --- | --- |
+| Tailscale ist nicht installiert oder läuft nicht | Installieren Sie Tailscale, melden Sie sich an und verbinden Sie diesen Computer; wählen Sie dann **Erneut prüfen** |
+| Dieser Computer wartet auf Freigabe | Geben Sie ihn in der Tailscale-Verwaltungskonsole frei |
+| MagicDNS und HTTPS-Zertifikate aktivieren | Aktivieren Sie beides für Ihr Tailnet in der Tailscale-Verwaltungskonsole |
+| Tailscale lässt diesen Benutzer die Serve-Einstellungen nicht ändern | Führen Sie unter Linux einmal `sudo tailscale set --operator=$USER` aus und prüfen Sie dann erneut |
+| Der Port wird bereits von etwas anderem verwendet | Ändern Sie **HTTPS-Port** oder **Lokaler Port** unter **Erweitert** |
+| Dieser Computer ist über Tailscale nicht erreichbar | Tailscale ruft das Zertifikat möglicherweise noch ab; prüfen Sie in einer Minute erneut |
+| Dieser Computer ist über Cloudflare nicht erreichbar | Setzen Sie in Cloudflare die Dienst-URL des Hostnamens auf `http://127.0.0.1` mit dem Port, den Dream unter **Lokaler Port** anzeigt |
+| Warten auf die Verbindung des Cloudflare-Connectors | Prüfen Sie das Tunnel-Token und ob ausgehende Verbindungen von diesem Computer erlaubt sind |
+| Kopplungslink abgelaufen oder bereits verwendet | Wählen Sie erneut **Gerät koppeln** und verwenden Sie den neuen Link |
+| Ein Gerät funktioniert nicht mehr | Prüfen Sie, ob es widerrufen oder 30 Tage lang nicht verwendet wurde, und koppeln Sie es dann erneut |

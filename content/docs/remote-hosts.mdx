@@ -1,37 +1,33 @@
 ---
-title: SSH remote workspaces
-description: Connect an SSH host and work with remote projects, agents, files, Git, and terminals.
+title: Remote hosts
+description: Connect another machine over SSH or HTTPS and work with its projects, agents, files, Git, and terminals.
 ---
 
-Dream can open projects on remote machines over SSH alongside your local projects. Files, Git
+Dream can open projects on remote machines alongside your local projects. Files, Git
 commands, agent processes, and terminals run on the project's host. The project host label shows
 where you are working.
 
-SSH workspaces are available from Dream v0.25.0. This release includes managed host runtimes for
-Linux x64, Linux ARM64, and macOS Apple silicon (ARM64). These are the remote host platforms;
-the Dream desktop app can run on Windows, macOS, or Linux.
+Connect a host over SSH, or pair with a Dream host over HTTPS when that machine has
+[Remote access](/docs/remote-access) turned on. One host can have several routes, and Dream uses the
+first one that connects.
 
-From v0.28.0, Linux host runtimes support systems with glibc 2.31 or newer.
+Dream installs managed host runtimes for Linux x64, Linux ARM64, and macOS Apple silicon (ARM64)
+over SSH. These are the remote host platforms; the Dream desktop app can run on Windows, macOS, or
+Linux. Linux host runtimes support systems with glibc 2.31 or newer.
 
-## Add and connect a host
-
-<Frame caption="Manage SSH hosts and check their connection status in Settings.">
-  <img
-    src="/images/docs/ssh-hosts-panel.png"
-    alt="SSH hosts settings with two saved hosts, connection status, and Connect, Edit, Remove, and Add SSH host controls."
-    width={1016}
-    height={208}
-    loading="lazy"
-  />
-</Frame>
+## Add an SSH host
 
 1. Verify that `ssh devbox` works in your system terminal, replacing `devbox` with your SSH config
    alias or `user@host`. Dream uses your system SSH client, configuration, and keys.
-2. Open **Settings → SSH hosts**, then **Add SSH host**. Enter the **SSH target** and an optional
+2. Open **Settings → Connections** and choose **Add host → SSH host**.
+3. Enter the **SSH target**, or pick an alias suggested from your `~/.ssh/config`, and an optional
    **Name**.
-3. Leave **Host command** empty for automatic runtime installation. Click **Save**, then **Connect**.
-4. Answer any host-key, password, passphrase, or two-factor prompts in Dream. Declining or canceling
+4. Leave **Host command** empty for automatic runtime installation, then click **Save**. Dream
+   connects to the new host.
+5. Answer any host-key, password, passphrase, or two-factor prompts in Dream. Declining or canceling
    a prompt stops that connection attempt.
+
+You can also choose **Add SSH host…** in the **Open folder** dialog.
 
 <Frame caption="Enter an SSH target and leave Host command empty for automatic installation.">
   <img
@@ -50,16 +46,31 @@ to the agent CLIs on the remote machine too; they run in that machine's environm
 For a manually installed runtime, set **Host command** to the command that runs `dream-host` on
 the remote machine.
 
+## Pair a host over HTTPS
+
+Pairing connects this desktop to a Dream host without SSH, through the address that host's
+[Remote access](/docs/remote-access) settings use.
+
+1. On the host machine, open **Settings → Connections**, then choose **Pair a device** under
+   **Remote access**.
+2. On this desktop, open **Settings → Connections** and choose **Add host → Pairing link**.
+3. On the **Link** tab, paste the **Pairing link**. Or, on the **Code** tab, enter the **Host address**
+   and the **Pairing code** shown on the host.
+4. Enter an optional name and choose **Pair**.
+5. If you used a code, confirm this desktop under **Waiting to pair** in the host's Remote access
+   settings.
+
+A pairing link works once and expires after 10 minutes. The host's HTTPS certificate must be
+trusted by this computer.
+
 ## Open a remote project
 
-If you have not added a host yet, **Open on SSH Host** takes you directly to **Settings → SSH hosts**.
-Add a host there, then return to the getting-started screen to open its folder.
-
-1. On the getting-started screen, choose **Open on SSH Host**. Use the project **+** button to return
+1. On the getting-started screen, choose **Open Folder**. Use the project **+** button to return
    to that screen.
-2. Select a **Host** and connect if needed. Browse its folders, using **Home folder**,
-   **Up one folder**, or **Show hidden**, or enter a **Folder path** directly.
-3. Click **Open**. The remote folder opens as a project tab with its own chats and tools.
+2. In **Open on**, select the host. Connect it if Dream asks.
+3. Type a **Folder path**; Dream suggests folders as you type. You can also browse the list below
+   the path and use **Up one folder**.
+4. Click **Open**. The remote folder opens as a project tab with its own chats and tools.
 
 <Frame caption="The host label identifies the remote project; terminal commands run on that host.">
   <img
@@ -82,22 +93,46 @@ Closed remote projects appear in **Recently closed** with their host and path. R
 connects to that host. Remote paths belong to the remote machine; use an editor connected there
 when opening files outside Dream.
 
+## Manage routes
+
+A route is one way to reach a host: an SSH connection or a paired HTTPS address. Add several
+routes to the same host to keep working when one is unavailable, such as SSH on your office
+network and HTTPS elsewhere.
+
+1. Open **Settings → Connections** and click **Edit** on the host.
+2. Review the routes. Routes are tried in order until one connects, and **Active route** marks the
+   one in use.
+3. Use **Move up** and **Move down** to change the order.
+4. Choose **Add SSH route** or **Add HTTPS route** to add another way to reach the same host, or
+   **Remove route** to delete one. At least one route must remain.
+
+When the preferred route is unavailable, Dream switches to the next route and keeps forwarded
+ports stable. Changing an HTTPS route requires a new pairing link.
+
 ## Reconnect or remove a host
 
-Dream retries interrupted connections. Project tabs remain visible while a host is unavailable,
-and sending a message is disabled until it reconnects. If reconnection stops, read the displayed
-error and use **Reconnect**, or **Connect** in **Settings → SSH hosts**.
+Each host in **Settings → Connections** shows its status, such as **Connected**, **Reconnecting…**, or
+**Connection failed**. Dream retries interrupted connections. Project tabs remain visible while a
+host is unavailable, and sending a message is disabled until it reconnects. If reconnection stops,
+read the displayed error and use **Connect**.
 
 Use **Edit** to change a host's name, target, or command. Changing the target or command reconnects
-an active connection. **Disconnect** leaves its project tabs in place. **Remove** removes the host
-and its projects from this Dream workspace without deleting the remote files or host catalog.
+an active connection. **Disconnect** leaves its project tabs in place.
+
+**Remove** asks for confirmation, then removes the host and its projects from this Dream workspace
+and stops their terminals. Files and chats on the host are not deleted.
 
 ## Connection problems
 
 Check the same SSH target in your system terminal first. Correct authentication or host-key
 problems before reconnecting. If the host runtime cannot start, read the error in
-**Settings → SSH hosts** and check the configured **Host command** or availability of a runtime for
+**Settings → Connections** and check the configured **Host command** or availability of a runtime for
 your platform.
+
+For an HTTPS route, check that the host is running with Remote access **Ready**. If the route shows
+**Needs attention** in the host's **Edit** dialog, the device may have been revoked; pair again with
+a new link from the host's Remote access settings. See
+[Remote access problems](/docs/remote-access#remote-access-problems).
 
 Development builds have no published runtime to download. From the Dream app repository, run
 `pnpm host:install-dev devbox`, then connect again with **Host command** empty. The remote build

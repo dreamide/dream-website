@@ -6,7 +6,7 @@ description: Manage project tabs, arrange panels, and move between chats and dev
 Each Dream project has its own workspace. Project tabs let you move between repositories while
 keeping each project's open chats and tools together.
 
-Projects can also live on [SSH hosts](/docs/remote-hosts). Check the host label before running
+Projects can also live on [remote hosts](/docs/remote-hosts). Check the host label before running
 commands; remote project tools work on that machine.
 
 <Frame caption="Projects and workspace">
@@ -22,7 +22,7 @@ commands; remote project tools work on that machine.
 ## Add and switch projects
 
 1. Click the **+** beside the project tabs, or use **Open Folder** on the getting-started screen.
-2. Choose the folder you want to work in.
+2. In **Open folder**, type the **Folder path** or choose **Browse…**, then choose **Open**.
 3. Select its tab to make it the active project.
 
 The active project determines which chats, files, terminals, browser tabs, and stash items you see.
@@ -61,7 +61,8 @@ code editor are left to those tools.
 
 1. Open the project's **…** menu and choose **Close**.
 2. When you want to return, open the getting-started screen through the project **+** button.
-3. Find the project in **Recently closed**, using its search field if needed.
+3. Find the project in **Recently closed**. Each entry shows the project's location, and the search
+   field matches names and locations.
 4. Select the project to reopen it.
 
 Closing a project removes its open tab; it does not delete its folder. Dream restores saved project
@@ -92,7 +93,8 @@ publishing, pull requests, and worktree actions according to the branch's state.
 
 Click a tool to open its panel. Use the panel's close or collapse control when you need more room
 for chats, and drag panel dividers to resize the layout. Closing a tool panel is different from
-closing its individual terminal sessions or browser tabs.
+closing its individual terminal sessions or browser tabs. Double-click the divider beside the
+right panel to give it an equal share of the width.
 
 Enable [multi-chat](/docs/multiple-chats) to arrange conversations in resizable columns. Each chat has
 its own conversation history, while all chats in the project use the same files. Use worktrees for

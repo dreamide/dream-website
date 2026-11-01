@@ -33,8 +33,10 @@ Dream 將你的專案、AI 編碼代理、檔案、終端、瀏覽器預覽和 G
 ## Dream 包含了什麼
 
 - 一個支援多專案的工作區，具有持久化的專案標籤頁
-- [SSH 遠端工作區](/docs/zh-Hant/remote-hosts)，支援遠端代理、檔案、Git 和終端機
-- 多個並排聊天視窗和聊天分支
+- 透過 SSH 或 HTTPS 連線的[遠端主機](/docs/zh-Hant/remote-hosts)，支援遠端代理、檔案、Git 和終端機
+- 從手機、瀏覽器或另一個 Dream 桌面應用程式[遠端存取](/docs/zh-Hant/remote-access)這台電腦上的專案
+- 多個並排聊天、聊天分支和[訊息佇列](/docs/zh-Hant/chats#訊息排隊)
+- [委派任務](/docs/zh-Hant/agent-modes#委派任務)，讓一個代理將工作交給另一個提供者
 - 專案間可複用的提示詞及供應商感知的代理技能
 - 每條回覆的檢查點用於審查和恢復代理更改的檔案
 - 支援 Codex CLI、Claude Code CLI、OpenCode CLI、Cursor Agent CLI 和 Grok Build CLI
@@ -67,12 +69,15 @@ Dream 將你的專案、AI 編碼代理、檔案、終端、瀏覽器預覽和 G
 | 瀏覽、呼叫或建立一個代理技能 | [智慧體技能](/docs/zh-Hant/skills) |
 | 將額外工具連線到代理 | [MCP 伺服器](/docs/zh-Hant/mcp-servers) |
 | 提供一個代理檔案或截圖 | [提供上下文](/docs/zh-Hant/providing-context) |
+| 為一個聊天安排多個任務 | [訊息排隊](/docs/zh-Hant/chats#訊息排隊) |
+| 處理另一台機器上的專案 | [遠端主機](/docs/zh-Hant/remote-hosts) |
+| 從手機或其他裝置使用 Dream | [遠端存取](/docs/zh-Hant/remote-access) |
 | 在獨立檢出分支上工作，然後將其合並回去 | [Git 工作樹](/docs/zh-Hant/worktrees) |
 | 審查併發布程式碼變更 | [Git 工作流程](/docs/zh-Hant/git-workflows) |
 | 閱讀評論併合並一個 GitHub PR | [審查拉取請求](/docs/zh-Hant/pull-requests) |
 
 ## 瞭解工作區
 
-**專案**是本機或 SSH 主機上的資料夾，擁有獨立的聊天和工具。**聊天**是擁有獨立模型和設定的對話。同一專案中的多個聊天共用檔案；**工作樹** 為任務提供獨立的 Git 工作副本。
+**專案** 是你電腦或遠端主機上的資料夾，擁有自己的聊天和工具。**聊天** 是擁有自己模型和設定的對話。同一專案中的多個聊天共用其檔案；**工作樹** 為任務提供獨立的 Git 簽出。
 
 使用 [智慧體許可權](/docs/zh-Hant/agent-modes) 來選擇智慧體的工作方式，並透過 [上下文與用量](/docs/zh-Hant/context-and-usage) 來了解 composer 以下的資訊。[設定參考](/docs/zh-Hant/settings) 列出了全域性應用偏好設定。如果某個功能缺失或無法執行，請先檢視 [故障排查](/docs/zh-Hant/troubleshooting)。

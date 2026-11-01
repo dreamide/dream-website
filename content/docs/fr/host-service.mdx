@@ -1,0 +1,81 @@
+---
+title: "Service de l’hôte"
+description: "Gardez l’hôte de Dream actif sans l’application de bureau et gérez-le depuis la ligne de commande."
+---
+
+L’hôte de Dream, `dream-host`, exécute les agents, les terminaux et les commandes Git de vos projets. Normalement, l’application de bureau le démarre et l’arrête lorsque vous la quittez. Installez l’hôte comme service pour que les chats et les terminaux continuent de tourner après la fermeture de l’application, pour l’[Accès à distance](/docs/fr/remote-access) ou sur une machine sans environnement de bureau.
+
+| Système | Gestionnaire de services | Démarrage |
+| --- | --- | --- |
+| Linux | Service utilisateur systemd | À l’ouverture de session, ou au démarrage avec `loginctl enable-linger` |
+| macOS | LaunchAgent | À l’ouverture de session |
+| Windows | Task Scheduler (Planificateur de tâches) | À l’ouverture de session |
+
+Le service redémarre l’hôte en cas d’échec. Un ordinateur en veille est injoignable.
+
+## Obtenir l’environnement d’exécution de l’hôte
+
+Téléchargez l’archive `dream-host` correspondant à votre système depuis les [versions de Dream](https://github.com/dreamide/dream/releases). Des environnements d’exécution empaquetés sont publiés pour Linux x64, Linux ARM64 et macOS Apple silicon. Chaque archive inclut Node.js, l’hôte, la prise en charge des terminaux et le client navigateur.
+
+Installez les CLI d’agents et connectez-vous-y avec le même utilisateur que celui qui exécutera le service.
+
+## Exécuter l’hôte de cette application de bureau comme service
+
+1. Quittez Dream.
+2. Installez le service avec le dossier de données de l’application de bureau, afin qu’il conserve vos projets et vos chats :
+
+   ```sh
+   dream-host service install --data-dir "<desktop data folder>"
+   ```
+
+3. Démarrez Dream avec `DREAM_HOST_MODE=service` défini dans son environnement. Par exemple, sur macOS :
+
+   ```sh
+   DREAM_HOST_MODE=service /Applications/Dream.app/Contents/MacOS/Dream
+   ```
+
+| Système | Dossier de données de l’application de bureau |
+| --- | --- |
+| macOS | `~/Library/Application Support/dreamide` |
+| Windows | `%APPDATA%/dreamide` |
+| Linux | `~/.config/dreamide` |
+
+L’application de bureau se connecte alors au service. La fermer laisse les réponses et les terminaux en cours continuer, et la rouvrir restaure les terminaux. Un seul hôte peut utiliser un dossier de données à la fois. Pour que l’application de bureau recommence à démarrer son propre hôte, arrêtez d’abord le service.
+
+L’installation enregistre votre `PATH` actuel. Ajoutez `--env NAME` pour chaque autre variable d’environnement dont l’hôte ou les CLI d’agents ont besoin ; les valeurs sont conservées dans des fichiers de service privés.
+
+## Configurer un hôte sans interface graphique
+
+Sur une machine sans l’application de bureau, installez le service sans `--data-dir`. Ses données sont conservées dans `~/.dream/host/data`. Si vous utilisez un autre dossier d’hôte avec `--home`, passez le même `--home` à chaque commande.
+
+Activez ensuite l’accès à distance et associez des appareils depuis la ligne de commande :
+
+| Commande | Ce que cela fait |
+| --- | --- |
+| `dream-host remote on --tailscale` | Active l’accès à distance via Tailscale |
+| `dream-host remote install-cloudflared` | Installe ou met à jour le connecteur Cloudflare |
+| `dream-host remote on --cloudflare --origin https://dream.example.com --token-file <path>` | Active l’accès à distance via un Cloudflare Tunnel, en lisant le jeton depuis un fichier privé |
+| `dream-host remote on --cloudflare --external --origin https://dream.example.com` | Utilise un connecteur Cloudflare que vous exécutez vous-même |
+| `dream-host remote status` / `dream-host remote check` | Affiche la configuration ou la vérifie à nouveau |
+| `dream-host remote off` | Cesse de servir les appareils associés |
+| `dream-host pair` | Crée un lien, un code et un QR code d’association avec l’accès Consulter et travailler. Utilisez `--scopes view` pour la consultation seule, ou `--scopes view,operate,manage` pour un accès complet |
+| `dream-host claims` | Liste les appareils qui ont saisi un code d’association |
+| `dream-host confirm <claimId>` / `dream-host deny <claimId>` | Confirme ou refuse un appareil |
+| `dream-host devices` | Liste les appareils associés |
+| `dream-host revoke <sessionId>` | Retire l’accès d’un appareil |
+
+Ajoutez `--json` à n’importe laquelle de ces commandes pour obtenir une sortie lisible par une machine.
+
+## Gérer le service
+
+| Commande | Ce que cela fait |
+| --- | --- |
+| `dream-host service status` | Indique si le service est en cours d’exécution, ainsi que sa version, son port et son journal |
+| `dream-host service start` / `stop` / `restart` | Contrôle le service en cours d’exécution |
+| `dream-host service uninstall` | Supprime l’inscription au démarrage et conserve vos données |
+| `dream-host service update <version>` | Installe une version publiée |
+| `dream-host service recover` | Termine ou annule une mise à jour interrompue |
+
+Les mises à jour téléchargent l’archive de la version et vérifient sa somme de contrôle avant d’arrêter l’hôte. Si la nouvelle version ne démarre pas, le service revient à l’environnement d’exécution précédent. La mise à jour interrompt les réponses et les terminaux en cours : les réponses sont marquées **Interrompu** et leurs files d’attente sont suspendues. Examinez-les, puis réessayez ou [reprenez la file](/docs/fr/chats#mettre-des-messages-en-file-dattente).
+
+Si une mise à jour s’arrête en cours de route, par exemple parce que la machine s’est éteinte, exécutez `dream-host service status`, puis `dream-host service recover`.

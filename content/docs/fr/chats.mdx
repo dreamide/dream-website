@@ -77,9 +77,29 @@ Un indicateur de chargement signale les conversations qui reçoivent une répons
 
 Pendant que l'agent réagit, le chat affiche son progrès et l'activité des outils. Ouvrir les détails de l'outil pour inspecter les commandes, les lectures de fichiers ou les modifications. Lorsque l'agent fournit une liste de tâches, le contrôle des tâches situé à côté de la boîte de message indique son progrès.
 
-Les onglets Historique et Projet incluent des indicateurs d'état pour les tâches en cours de traitement ou terminées ; les onglets Projet peuvent également indiquer qu'un agent attend votre réponse. Sélectionnez le projet et ouvrez la conversation pour lire son dernier message. Utilisez le bouton Arrêter dans le composateur pour interrompre une réponse. L'arrêt d'une réponse ne révoque pas les modifications de fichiers déjà effectuées.
+Les onglets Historique et Projet affichent des indicateurs d’état pour le travail en cours ou terminé ; les onglets de projet peuvent aussi indiquer qu’un agent attend votre réponse. Sélectionnez le projet et ouvrez la conversation pour lire son dernier message. Utilisez le bouton d’arrêt du composeur pour mettre fin à une réponse. Arrêter une réponse n’annule pas les modifications de fichiers déjà effectuées.
+
+Les réponses s’exécutent sur l’hôte du projet, pas dans la fenêtre. Si un client se déconnecte pendant qu’une réponse est en cours, celle-ci continue et le chat s’y reconnecte automatiquement.
 
 Après que une réponse soit terminée, utilisez **Voir les fichiers modifiés par cette réponse** dans son pied de page pour voir les fichiers qu'elle a modifiés et [reconstituer l'un d'entre eux](/docs/fr/checkpoints).
+
+## Mettre des messages en file d’attente
+
+Vous pouvez envoyer d’autres messages pendant qu’une réponse est en cours. Tapez dans la zone de message et envoyez ; le bouton d’arrêt devient le bouton d’envoi tant que la zone contient du texte. Dream ajoute le message à la **File d’attente** du chat et l’exécute après la réponse en cours, avec le modèle affiché à côté. Les messages en file d’attente sont enregistrés sur l’hôte et survivent donc à un redémarrage de Dream.
+
+La **File d’attente** apparaît au-dessus de la zone de message lorsque des messages attendent ou qu’une exécution demande votre attention.
+
+| Contrôle | Ce que cela fait |
+| --- | --- |
+| Suspendre | Retient les messages en attente ; la réponse en cours se termine quand même |
+| Reprendre | Passe au message suivant de la file |
+| Annuler | Retire un message qui n’a pas encore démarré |
+| Réessayer | Relance un message à l’état **Échec** ou **Interrompu** |
+| Supprimer | Retire un message à l’état **Échec** ou **Interrompu** |
+
+**Arrêter** met fin à la réponse en cours, ainsi qu’aux tâches qu’elle a [déléguées](/docs/fr/agent-modes#tâches-déléguées), et retient le reste de la file. Envoyer un nouveau message reprend une file suspendue et retire les messages en échec ou interrompus.
+
+Une réponse passe à l’état **Interrompu** lorsque son hôte s’arrête avant qu’elle se termine, par exemple pendant une mise à jour. La file est ensuite suspendue. Lisez la réponse avant de choisir **Réessayer**, car l’agent a peut-être déjà modifié des fichiers.
 
 ## Fermer, archiver ou supprimer ?
 

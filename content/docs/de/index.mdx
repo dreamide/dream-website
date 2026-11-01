@@ -33,8 +33,10 @@ Dream bringt Ihre Projekte, AI-Coding-Agenten, Dateien, Terminals, Browser-Vorab
 ## Was Dream enthält
 
 - Ein mehrprojekt-Workspace mit persistierenden Projekt-Optionen
-- [Remote-Arbeitsbereiche über SSH](/docs/de/remote-hosts) mit entfernten Agenten, Dateien, Git und Terminals
-- Mehrere Seitlich nebeneinander liegende Chats und chat-Verzweigungen
+- [Remote-Hosts](/docs/de/remote-hosts) über SSH oder HTTPS mit entfernten Agenten, Dateien, Git und Terminals
+- [Fernzugriff](/docs/de/remote-access) auf die Projekte dieses Computers von einem Smartphone, einem Browser oder einem anderen Desktop
+- Mehrere Chats nebeneinander, Chat-Verzweigungen und [Nachrichtenwarteschlangen](/docs/de/chats#nachrichten-einreihen)
+- [Delegierte Aufgaben](/docs/de/agent-modes#delegierte-aufgaben), mit denen ein Agent Arbeit an einen anderen Anbieter abgeben kann
 - Wiederverwendbare Prompts über Projekte hinweg und providerbewusste Agent-Fähigkeiten
 - Per-Reply-Checkpoints zum Überprüfen und Wiederherstellen der Dateien, die ein Agent geändert hat
 - Unterstützung für Codex CLI, Claude Code CLI, OpenCode CLI, Cursor Agent CLI und Grok Build CLI
@@ -67,12 +69,15 @@ Dream bringt Ihre Projekte, AI-Coding-Agenten, Dateien, Terminals, Browser-Vorab
 | Durchsuchen, aufrufen oder ein Agent-Fähigkeits-Element erstellen | [Agenten-Skills](/docs/de/skills) |
 | Additional Tools an Agent verbinden | [MCP-Server](/docs/de/mcp-servers) |
 | Eine Agent-Datei oder ein Screenshot geben | [Kontext bereitstellen](/docs/de/providing-context) |
+| Mehrere Aufgaben für einen Chat einreihen | [Nachrichten einreihen](/docs/de/chats#nachrichten-einreihen) |
+| An Projekten auf einem anderen Rechner arbeiten | [Remote-Hosts](/docs/de/remote-hosts) |
+| Dream von einem Smartphone oder einem anderen Gerät aus verwenden | [Fernzugriff](/docs/de/remote-access) |
 | Arbeite in einem separaten Checkout, dann füge ihn wieder ein | [Git-Worktrees](/docs/de/worktrees) |
 | Code-Änderungen überprüfen und veröffentlichen | [Git-Arbeitsabläufe](/docs/de/git-workflows) |
 | Reviewe Kommentare und füge eine GitHub-Pull-Anfrage ein | [Pull Requests prüfen](/docs/de/pull-requests) |
 
 ## Verstehe den Arbeitsbereich
 
-Ein **Projekt** ist ein Ordner auf deinem Rechner oder einem SSH-Host mit eigenen Chats und Werkzeugen. Ein **Chat** ist eine Unterhaltung mit eigenem Modell und eigenen Einstellungen. Mehrere Chats eines Projekts teilen dessen Dateien; ein **Arbeitsbaum** bietet einer Aufgabe eine separate Git-Arbeitskopie.
+Ein **Projekt** ist ein Ordner auf Ihrem Computer oder einem Remote-Host mit eigenen Chats und Werkzeugen. Ein **Chat** ist eine Unterhaltung mit eigenem Modell und eigenen Einstellungen. Mehrere Chats in einem Projekt teilen dessen Dateien; ein **Arbeitsbaum** gibt einer Aufgabe einen separaten Git-Checkout.
 
 Verwenden Sie [Agentenberechtigungen](/docs/de/agent-modes), um zu wählen, wie ein Agent funktioniert, und [Kontext und Nutzung](/docs/de/context-and-usage), um die Informationen unter dem Composer zu verstehen. Die [Einstellungsreferenz](/docs/de/settings) enthält die allgemeinen Einstellungen der Anwendung. Wenn etwas fehlt oder nicht funktioniert, beginnen Sie mit [Fehlerbehebung](/docs/de/troubleshooting).

@@ -1,0 +1,84 @@
+---
+title: "Truy cập từ xa"
+description: "Dùng dự án của máy tính này từ điện thoại, trình duyệt hoặc một ứng dụng Dream trên máy tính khác."
+---
+
+Truy cập từ xa cho phép thiết bị khác làm việc với các dự án trên máy tính này. Điện thoại hoặc máy tính khác mở Dream trong trình duyệt, còn một ứng dụng Dream trên máy tính khác có thể thêm máy tính này làm [máy chủ từ xa](/docs/vi/remote-hosts#ghép-nối-máy-chủ-qua-https). Mỗi thiết bị phải được ghép nối trước và bạn có thể thu hồi quyền bất cứ lúc nào.
+
+Agent, terminal và lệnh Git vẫn chạy trên máy tính này. Thiết bị đã ghép nối chỉ truy cập được khi máy chủ Dream đang chạy ở đây. Để máy chủ tiếp tục chạy sau khi đóng Dream, hãy cài nó dưới dạng [dịch vụ](/docs/vi/host-service).
+
+## Trước khi bắt đầu
+
+Chọn cách các thiết bị sẽ truy cập máy tính này:
+
+| Kết nối | Những gì bạn cần |
+| --- | --- |
+| Tailscale | Tailscale được cài đặt và đăng nhập trên máy tính này và trên từng thiết bị, đồng thời bật MagicDNS và chứng chỉ HTTPS cho tailnet của bạn |
+| Cloudflare Tunnel | Một Cloudflare Tunnel cố định và tên máy chủ trong tài khoản Cloudflare của bạn, chẳng hạn `dream.example.com` |
+
+Với Cloudflare Tunnel, hãy tạo một đường hầm riêng, được quản lý từ xa, và chỉ sao chép token trình kết nối của nó. Trỏ tên máy chủ của đường hầm đến `http://127.0.0.1` trên **Cổng cục bộ** mà Dream hiển thị, và bỏ qua bộ nhớ đệm cho `/api/*`. Quick Tunnels không được hỗ trợ, và tên máy chủ không được yêu cầu đăng nhập Cloudflare Access tương tác.
+
+## Bật truy cập từ xa
+
+1. Mở **Cài đặt → Kết nối** và tìm **Truy cập từ xa**.
+2. Chọn **Thiết lập**.
+3. Trong **Truy cập máy tính này qua**, chọn **Tailscale** hoặc **Cloudflare Tunnel**.
+4. Với Cloudflare Tunnel, nhập **Địa chỉ công khai** và dán **Mã token đường hầm**. Nếu trình kết nối hiển thị **Chưa cài đặt**, hãy chọn **Cài đặt cloudflared**.
+5. Chọn **Bật**.
+
+Dream kiểm tra kết nối trước khi hiển thị **Sẵn sàng**. Nếu hiển thị **Chưa sẵn sàng**, hãy đọc thông báo bên dưới, sửa thiết lập và dùng **Kiểm tra lại**. Một số thông báo có **Mở trang thiết lập**.
+
+Dùng **Thay đổi** để chuyển kết nối hoặc thay token đường hầm. Để trống token để giữ token đã lưu. Công tắc **Cho phép thiết bị đã ghép nối** tắt và bật truy cập từ xa mà không mất thiết lập hay các thiết bị đã ghép nối.
+
+### Tùy chọn nâng cao
+
+| Tùy chọn | Điều gì mà nó làm |
+| --- | --- |
+| Cổng HTTPS | Cổng mà Tailscale dùng để phục vụ Dream. Hãy đổi nếu Tailscale đã phục vụ nội dung khác trên cổng đó |
+| Cổng cục bộ | Cổng trên máy tính này nhận các kết nối từ xa. Để trống để tự động chọn |
+| Tôi tự chạy cloudflared | Dùng trình kết nối Cloudflare do bạn tự cài đặt và chạy riêng. Dream không khởi động, dừng hay xóa nó |
+
+## Ghép nối thiết bị
+
+1. Khi truy cập từ xa ở trạng thái **Sẵn sàng**, chọn **Ghép nối thiết bị**.
+2. Chọn mức **Quyền truy cập** cho thiết bị.
+3. Chọn **Tạo ghép nối**.
+4. Trên thiết bị, quét mã QR hoặc mở liên kết. Bạn cũng có thể dùng **Sao chép liên kết** để gửi liên kết.
+5. Chọn **Xong**.
+
+| Quyền truy cập | Thiết bị có thể làm gì |
+| --- | --- |
+| Chỉ xem | Đọc dự án, cuộc trò chuyện và terminal |
+| Xem và làm việc | Thêm quyền chạy agent, terminal và Git dưới danh nghĩa của bạn |
+| Toàn quyền | Thêm quyền ghép nối và gỡ thiết bị |
+
+Liên kết chỉ dùng được một lần và hết hạn sau 10 phút. Để ghép nối không cần liên kết, hãy mở địa chỉ của máy chủ trên thiết bị, nhập mã ghép nối hiển thị bên cạnh mã QR và đặt tên cho thiết bị. Sau đó thiết bị sẽ chờ cho đến khi bạn chọn **Xác nhận** trong **Đang chờ ghép nối** trên máy tính này. Chọn **Từ chối** với bất kỳ thiết bị nào bạn không nhận ra.
+
+Để ghép nối một ứng dụng Dream trên máy tính khác, hãy dán liên kết vào hộp thoại **Thêm máy chủ → Liên kết ghép nối** của nó. Xem [Ghép nối máy chủ qua HTTPS](/docs/vi/remote-hosts#ghép-nối-máy-chủ-qua-https).
+
+## Dùng Dream trên thiết bị đã ghép nối
+
+Thiết bị đã ghép nối mở Dream trong trình duyệt. Trên điện thoại, Dream dùng bố cục thu gọn. Thiết bị làm việc với dự án, cuộc trò chuyện, tệp và terminal trên máy tính này, trong phạm vi quyền truy cập của nó.
+
+Nếu không thể truy cập máy tính này, một biểu ngữ sẽ thông báo và thiết bị hiển thị nội dung đã lưu. Dream sẽ kết nối lại khi máy chủ khả dụng trở lại. Không thể truy cập máy tính đang ở chế độ ngủ.
+
+Để xóa quyền truy cập ngay từ thiết bị, hãy chọn **Đăng xuất** trong **Thiết bị này**. Đăng xuất cũng xóa nội dung mà trình duyệt đó đã lưu.
+
+## Quản lý thiết bị đã ghép nối
+
+**Thiết bị đã ghép nối** liệt kê từng thiết bị và thời điểm sử dụng gần nhất. Chọn **Thu hồi** để xóa quyền truy cập của một thiết bị. Các trang đang mở của thiết bị sẽ dừng ngay; công việc trên máy tính này vẫn tiếp tục. Thiết bị không được sử dụng trong 30 ngày phải ghép nối lại.
+
+## Sự cố truy cập từ xa
+
+| Thông báo hoặc triệu chứng | Cái gì cần làm |
+| --- | --- |
+| Tailscale chưa được cài đặt hoặc chưa chạy | Cài đặt Tailscale, đăng nhập và kết nối máy tính này, rồi chọn **Kiểm tra lại** |
+| Máy tính này đang chờ phê duyệt | Phê duyệt máy trong bảng quản trị Tailscale |
+| Bật MagicDNS và chứng chỉ HTTPS | Bật cả hai cho tailnet của bạn trong bảng quản trị Tailscale |
+| Tailscale không cho người dùng này thay đổi cài đặt Serve | Trên Linux, chạy `sudo tailscale set --operator=$USER` một lần, rồi kiểm tra lại |
+| Cổng đang được chương trình khác sử dụng | Chọn **Cổng HTTPS** hoặc **Cổng cục bộ** khác trong **Nâng cao** |
+| Không thể truy cập máy tính này qua Tailscale | Có thể Tailscale vẫn đang lấy chứng chỉ; hãy kiểm tra lại sau một phút |
+| Không thể truy cập máy tính này qua Cloudflare | Trong Cloudflare, đặt URL dịch vụ của tên máy chủ thành `http://127.0.0.1` với **Cổng cục bộ** hiển thị trong Dream |
+| Đang chờ trình kết nối Cloudflare kết nối | Kiểm tra token đường hầm và đảm bảo máy tính này được phép tạo kết nối ra ngoài |
+| Liên kết ghép nối đã hết hạn hoặc đã được sử dụng | Chọn lại **Ghép nối thiết bị** và dùng liên kết mới |
+| Một thiết bị ngừng hoạt động | Kiểm tra xem thiết bị có bị thu hồi hoặc không được dùng trong 30 ngày không, rồi ghép nối lại |

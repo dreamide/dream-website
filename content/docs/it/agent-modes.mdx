@@ -1,6 +1,6 @@
 ---
 title: "Autorizzazioni degli agenti"
-description: "Scegli Chiedi, Accetta modifiche o Accesso completo e rispondi alle richieste dell'agente."
+description: "Scegli Chiedi, Accetta modifiche o Accesso completo, rispondi alle richieste dell’agente e delega attività."
 ---
 
 Ogni chat ha un controllo **Permessi** sotto il suo campo messaggio. Le nuove chat ereditano **Impostazioni → Generale → Modelli → Permessi predefiniti**, che inizia con **Accesso completo**. Cambiare i permessi predefiniti non modifica le chat esistenti.
@@ -40,3 +40,17 @@ Un agente può chiederti di chiarire un requisito, scegliere un'opzione o approv
 Se la richiesta comporta un cambiamento dell’attività, fornisci all’agente le istruzioni aggiornate nella stessa chat. Usa il controllo di arresto per interrompere una risposta quando necessario. L’arresto non annulla modifiche o comandi già completati; controlla poi le [Modifiche](/docs/it/git-workflows) oppure usa il [checkpoint](/docs/it/checkpoints) della risposta per ripristinare i file che ha modificato.
 
 Per compiti paralleli che richiedono file separati, usa [worktrees](/docs/it/worktrees). Impostazioni di permessi non danno a due chat nello stesso cartella check-out indipendenti.
+
+## Attività delegate
+
+Gli agenti possono affidare parte di un’attività a un altro provider di agenti nello stesso progetto. Ad esempio, una chat Claude Code può chiedere a Codex di revisionare una modifica e leggerne poi il risultato in un turno successivo. Chiedilo nel tuo messaggio, ad esempio: “Fai scrivere a un altro agente i test per questo modulo e riferiscimi il risultato.”
+
+| Regola | Dettaglio |
+| --- | --- |
+| Provider che possono delegare | Codex, Claude Code, OpenCode e Grok Build. Cursor Agent può ricevere attività delegate ma non avviarle |
+| Provider disponibili | La CLI dell’altro provider deve essere installata e con accesso effettuato sull’host del progetto |
+| Permessi | Un’attività delegata non può avere più accesso della chat che l’ha avviata |
+| File | Le attività delegate lavorano sugli stessi file del progetto; assegna a ciascuna una parte diversa del lavoro per evitare conflitti |
+| Interruzione | Fermare la chat ferma anche le attività che ha delegato |
+
+Le attività delegate vengono eseguite sull’host e ne conservano i risultati, così l’agente può controllarle in un turno successivo o dopo il riavvio di Dream. Apri i dettagli dello strumento nella risposta per vedere quali attività ha avviato l’agente.

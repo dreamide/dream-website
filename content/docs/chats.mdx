@@ -97,11 +97,39 @@ message box shows its progress.
 
 History and project tabs include status indicators for work that is processing or has finished;
 project tabs can also indicate that an agent is waiting for your answer. Select the project and
-open the conversation to read its latest message. Use the stop control in the composer to interrupt
+open the conversation to read its latest message. Use the stop control in the composer to end
 a response. Stopping a response does not undo file changes already made.
+
+Replies run on the project's host, not in the window. If a client disconnects while a reply is
+running, the reply continues, and the chat reconnects to it automatically.
 
 After a reply finishes, use **View file changes from this reply** in its footer to see the files it
 changed and [restore any of them](/docs/checkpoints).
+
+## Queue messages
+
+You can send more messages while a reply is running. Type in the message box and send; the stop
+control becomes the send control while the box has text. Dream adds the message to the chat's
+**Queue** and runs it after the current reply, using the model shown beside it. Queued messages are
+saved on the host, so they survive restarting Dream.
+
+The **Queue** appears above the message box while messages are waiting or a run needs attention.
+
+| Control | What it does |
+| --- | --- |
+| Pause queue | Holds queued messages; the current reply still finishes |
+| Resume queue | Continues with the next queued message |
+| Cancel | Removes a message that has not started |
+| Retry | Runs a **Failed** or **Interrupted** message again |
+| Remove | Dismisses a **Failed** or **Interrupted** message |
+
+**Stop** ends the current reply, along with any tasks it [delegated](/docs/agent-modes#delegated-tasks),
+and holds the rest of the queue. Sending a new message resumes a paused queue and dismisses failed
+or interrupted messages.
+
+A reply is **Interrupted** when its host stops before it finishes, for example during an update.
+The queue is paused afterward. Read the reply before choosing **Retry**, because the agent may
+already have changed files.
 
 ## Close, archive, or delete?
 

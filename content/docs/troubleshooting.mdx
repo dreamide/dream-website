@@ -6,9 +6,10 @@ description: Resolve missing models and chats, terminal and preview problems, an
 Start with the error shown in the affected chat or tool. Check which project and provider are
 selected before changing settings, especially when several chats are open.
 
-For remote projects, check the host's connection status in **Settings → SSH hosts**. See
-[SSH connection problems](/docs/remote-hosts#connection-problems) for authentication, runtime,
-and development-build setup.
+For remote projects, check the host's connection status in **Settings → Connections**. See
+[Connection problems](/docs/remote-hosts#connection-problems) for authentication, runtime,
+and development-build setup. For phones and other paired devices, see
+[Remote access problems](/docs/remote-access#remote-access-problems).
 
 ## A provider CLI is not detected
 
@@ -75,8 +76,14 @@ the capture time limit, in which case the reply runs without a checkpoint. See
 
 The send control is disabled while the destination chat is responding and shows **Chat busy**. Wait
 for it to finish or enable **New chat** in the popover. If the popover reports that the selection no
-longer matches the diff, refresh Changes and select the lines again. See
+longer matches the diff, wait for Changes to update and select the lines again. See
 [Sending feedback to a chat](/docs/feedback).
+
+## A queued message does not run
+
+Open the chat and check its **Queue**. If it shows **Queue paused**, choose **Resume queue** or send a
+new message. A **Failed** or **Interrupted** item waits for you: read the reply, then choose
+**Retry** or **Remove**. See [Queue messages](/docs/chats#queue-messages).
 
 ## Continue in terminal is missing
 

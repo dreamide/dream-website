@@ -77,9 +77,29 @@ Um indicador de carregamento identifica os chats que estão recebendo uma respos
 
 Enquanto um agente responde, o chat exibe seu progresso e a atividade das ferramentas. Abra os detalhes da ferramenta para inspecionar comandos, leituras de arquivos ou alterações. Quando o agente fornece uma lista de tarefas, o controle de tarefas ao lado da caixa de mensagem mostra seu progresso.
 
-Histórico e guias de projeto incluem indicadores de status para trabalhos em processamento ou concluídos; os guias de projeto também podem indicar que um agente está aguardando sua resposta. Selecione o projeto e abra a conversa para ler a última mensagem. Use o controle de parada no compositor para interromper uma resposta. Parar uma resposta não desfaz as alterações de arquivo já realizadas.
+As abas de histórico e de projeto incluem indicadores de status para trabalhos em processamento ou concluídos; as abas de projeto também podem indicar que um agente está aguardando sua resposta. Selecione o projeto e abra a conversa para ler a última mensagem. Use o controle de parada no compositor para encerrar uma resposta. Parar uma resposta não desfaz as alterações de arquivo já realizadas.
+
+As respostas são executadas no host do projeto, não na janela. Se um cliente se desconectar enquanto uma resposta estiver em execução, a resposta continua e o chat se reconecta a ela automaticamente.
 
 Após uma resposta terminar, use **Ver alterações de arquivos desta resposta** no seu rodapé para ver os arquivos que foram modificados e [restaurar qualquer um deles](/docs/pt/checkpoints).
+
+## Enfileirar mensagens
+
+Você pode enviar mais mensagens enquanto uma resposta está em execução. Digite na caixa de mensagem e envie; o controle de parada vira o controle de envio enquanto a caixa tem texto. O Dream adiciona a mensagem à **Fila** do chat e a executa depois da resposta atual, usando o modelo exibido ao lado dela. As mensagens na fila são salvas no host, então sobrevivem à reinicialização do Dream.
+
+A **Fila** aparece acima da caixa de mensagem enquanto há mensagens aguardando ou uma execução precisa de atenção.
+
+| Controle | O que faz |
+| --- | --- |
+| Pausar fila | Retém as mensagens na fila; a resposta atual ainda é concluída |
+| Retomar fila | Continua com a próxima mensagem da fila |
+| Cancelar | Remove uma mensagem que ainda não começou |
+| Tentar novamente | Executa novamente uma mensagem com status **Falhou** ou **Interrompido** |
+| Remover | Descarta uma mensagem com status **Falhou** ou **Interrompido** |
+
+**Parar** encerra a resposta atual, junto com as tarefas que ela [delegou](/docs/pt/agent-modes#tarefas-delegadas), e retém o restante da fila. Enviar uma nova mensagem retoma uma fila pausada e descarta as mensagens que falharam ou foram interrompidas.
+
+Uma resposta fica com o status **Interrompido** quando o host para antes de ela terminar, por exemplo durante uma atualização. Em seguida, a fila é pausada. Leia a resposta antes de escolher **Tentar novamente**, porque o agente pode já ter alterado arquivos.
 
 ## Fechar, arquivar ou excluir?
 

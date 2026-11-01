@@ -3,7 +3,7 @@ title: "Referência de configurações"
 description: "Localizar padrões de modelo, provedores, prompts, habilidades, servidores MCP e controles de chat arquivado."
 ---
 
-Abra as **Configurações** com o ícone de engrenagem no topo do Dream. A barra lateral possui **Geral**, **Provedores**, **Hosts SSH**, **Prompts**, **Skills**, **Servidores MCP**, **Atalhos de teclado** e **Chats arquivados**. As preferências gerais são aplicadas conforme você as seleciona. Os formulários para prompts, habilidades e definições de servidor possuem suas próprias ações de Criar ou Salvar.
+Abra as **Configurações** com o ícone de engrenagem no topo do Dream. A barra lateral possui **Geral**, **Provedores**, **Atalhos de teclado**, **Prompts**, **Skills**, **Servidores MCP**, **Conexões** e **Chats arquivados**. As preferências gerais são aplicadas conforme você as seleciona. Os formulários de prompts, skills e definições de servidor possuem suas próprias ações de Criar ou Salvar.
 
 ## Geral
 
@@ -82,9 +82,14 @@ O Dream não verifica atualizações de CLI para provedores desativados. Ative u
 
 Instale e faça login pelo CLI do provedor fora do Dream, depois atualize seu cartão. As configurações do Dream não substituem o fluxo de autenticação do CLI. Veja [Conectar um provedor](/docs/pt/providers).
 
-## Hosts SSH
+## Conexões
 
-Adicione, edite, conecte, desconecte ou remova máquinas remotas em **Configurações → Hosts SSH**. Cada entrada tem destino SSH, nome, comando do host opcional, estado da conexão e eventuais erros. Consulte [Espaços de trabalho remotos por SSH](/docs/pt/remote-hosts) para configuração e recuperação.
+**Conexões** tem duas partes:
+
+| Seção | O que você pode fazer |
+| --- | --- |
+| Hosts remotos | Adicione hosts SSH ou emparelhe hosts por HTTPS, ordene as rotas de cada host e conecte, desconecte ou remova hosts. Consulte [Hosts remotos](/docs/pt/remote-hosts) |
+| Acesso remoto | Permita que celulares, navegadores e outros desktops do Dream usem os projetos deste computador, e emparelhe ou revogue dispositivos. Consulte [Acesso remoto](/docs/pt/remote-access) |
 
 ## Prompts, Habilidades e Servidores MCP
 

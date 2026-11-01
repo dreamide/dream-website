@@ -33,8 +33,10 @@ Dream regroupe dans un espace de bureau sur ordinateur vos projets, vos agents d
 ## Ce que Dream inclut
 
 - Un espace de travail multi-projet avec des onglets de projet persistants
-- [Espaces de travail distants SSH](/docs/fr/remote-hosts) avec agents, fichiers, Git et terminaux distants
-- Plusieurs conversations côte à côte et branching de conversation
+- [Hôtes distants](/docs/fr/remote-hosts) via SSH ou HTTPS, avec agents, fichiers, Git et terminaux distants
+- [Accès à distance](/docs/fr/remote-access) aux projets de cet ordinateur depuis un téléphone, un navigateur ou une autre application de bureau
+- Plusieurs chats côte à côte, ramification des chats et [files d’attente de messages](/docs/fr/chats#mettre-des-messages-en-file-dattente)
+- [Tâches déléguées](/docs/fr/agent-modes#tâches-déléguées) permettant à un agent de confier du travail à un autre fournisseur
 - Prompts réutilisables entre projets et compétences d'agents conscientes du fournisseur
 - Points de contrôle par réponse pour revue et restauration des fichiers modifiés par un agent
 - Support pour Codex CLI, Claude Code CLI, OpenCode CLI, Cursor Agent CLI et Grok Build CLI
@@ -67,12 +69,15 @@ Dream regroupe dans un espace de bureau sur ordinateur vos projets, vos agents d
 | Parcourir, appeler ou créer une compétence d'agent | [Skills des agents](/docs/fr/skills) |
 | Connectez des outils supplémentaires à un agent | [Serveurs MCP](/docs/fr/mcp-servers) |
 | Donner un agent fichiers ou une capture d'écran | [Fournir du contexte](/docs/fr/providing-context) |
+| Enchaîner plusieurs tâches dans un même chat | [Mettre des messages en file d’attente](/docs/fr/chats#mettre-des-messages-en-file-dattente) |
+| Travailler sur des projets situés sur une autre machine | [Hôtes distants](/docs/fr/remote-hosts) |
+| Utiliser Dream depuis un téléphone ou un autre appareil | [Accès à distance](/docs/fr/remote-access) |
 | Travailler dans un checkout indépendant, puis le fusionner à nouveau | [Worktrees Git](/docs/fr/worktrees) |
 | Revoir et publier des modifications de code | [Flux de travail Git](/docs/fr/git-workflows) |
 | Lire les commentaires de revue et fusionner une demande de pull sur GitHub | [Examiner les pull requests](/docs/fr/pull-requests) |
 
 ## Comprendre l'espace de travail
 
-Un **projet** est un dossier sur votre ordinateur ou un hôte SSH, avec ses propres conversations et outils. Une **conversation** dispose de son propre modèle et de ses paramètres. Plusieurs conversations d'un projet partagent ses fichiers ; un **arbre de travail** fournit une copie de travail Git distincte pour une tâche.
+Un **projet** est un dossier sur votre ordinateur ou sur un hôte distant, avec ses propres chats et outils. Un **chat** est une conversation avec son propre modèle et ses propres paramètres. Plusieurs chats d’un même projet partagent ses fichiers ; un **arbre de travail** donne à une tâche une copie de travail Git distincte.
 
 Utilisez [Autorisations des agents](/docs/fr/agent-modes) pour choisir la manière dont un agent fonctionne, et [Contexte et utilisation](/docs/fr/context-and-usage) pour comprendre les informations situées sous le composant. La [référence des paramètres](/docs/fr/settings) liste les préférences globales de l'application. Si quelque chose manque ou ne fonctionne pas, commencez par [Dépannage](/docs/fr/troubleshooting).

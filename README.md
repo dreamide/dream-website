@@ -97,58 +97,53 @@ live in `public/images/docs`; regenerate them from the originals on Windows with
 Crop coordinates are recorded in that script so screenshots can be refreshed
 without guessing which part of the interface each example shows.
 
-## Release documentation and screenshots (v0.28.0)
+## Release documentation and screenshots (v0.31.0)
 
-The docs cover the published changes from v0.26.0 through v0.28.0, checked against
-the `v0.28.0` app source and release notes:
-[v0.26.0](https://github.com/dreamide/dream/releases/tag/v0.26.0),
-[v0.27.0](https://github.com/dreamide/dream/releases/tag/v0.27.0), and
-[v0.28.0](https://github.com/dreamide/dream/releases/tag/v0.28.0).
-The feature instructions target that tag. Some supplied screenshots show a newer
-development build, including Fetch/Pull/Open repository in the footer and the
-word-wrap button; these additional controls are not described as v0.28.0 features.
+The docs cover the published changes through v0.31.0, checked against the `v0.31.0` app source
+and release notes:
+[v0.29.0](https://github.com/dreamide/dream/releases/tag/v0.29.0),
+[v0.30.0](https://github.com/dreamide/dream/releases/tag/v0.30.0), and
+[v0.31.0](https://github.com/dreamide/dream/releases/tag/v0.31.0). Earlier releases
+(v0.26.0–v0.28.0) were documented in the previous pass. Feature instructions target the
+`v0.31.0` tag, not unreleased work on `main`.
 
-The supplied PNGs are cropped to the relevant panel, menu, or dialog using
-`scripts/crop-docs-images.ps1`. Docs use the crops in `public/images/docs` with
-explicit dimensions and translated alt text. The workspace overview keeps the
-full window to show the overall layout. One English capture serves all locales.
-All required release screenshots are now included.
+| Release | Documented in |
+| --- | --- |
+| Message queue, Stop and Pause | Working with chats (Queue messages), Troubleshooting |
+| Delegated tasks | Agent permissions (Delegated tasks) |
+| Fetch, Pull, Open repository, Push changes preview, ahead/behind counts | Git workflows |
+| Word wrap toggle, automatic Git and Files refresh, commit message label | Git workflows, Files, Reviewing pull requests |
+| Settings → Connections, routes, HTTPS pairing, Open folder dialog | Remote hosts, Open your first project, Projects and workspace, Settings reference |
+| Remote access, Tailscale, Cloudflare Tunnel, pairing, paired devices | Remote access (new page) |
+| `dream-host` service and remote/pairing commands | Host service (new page) |
+| Remove-host confirmation, terminals stopped on removal, service-restored terminals | Remote hosts, Terminals |
 
-| Status | Image | What it shows | Used in |
+The new pages live in the **Remote work** navigation group with Remote hosts. New and changed
+strings were drafted for all ten locales and still need native-speaker review. New bold control
+labels were added to `src/i18n/app-terms/` from the app's own `v0.31.0` locale files.
+
+### Screenshots still needed
+
+No screenshots were captured for this pass. Until these exist, the affected sections are text
+only; do not add image references before the files exist. Capture from a v0.31.0 build.
+
+| Status | Image | What it should show | Use in |
 | --- | --- | --- | --- |
-| Added | `screen-changes-commit.png` | Git tabs, commit composer and controls, and an expanded diff | Git workflows |
-| Added | `screen-git-actions.png` | Git actions menu above the branch footer | Git workflows |
-| Added | `screen-git-history.png` | Search commits, colored graph lanes, merges, and branch labels | Git workflows |
-| Updated | `screen-create-pr.png` | PR title, description, next-step choices, and Draft off | Git workflows |
-| Added | `screen-pr-summary.png` | Open PR, description, running/passed checks with links, and Merge | Reviewing pull requests |
-| Added | `screen-pr-code.png` | Changed-file list, line counts, and added/removed badges | Reviewing pull requests |
-| Added | `screen-files-search.png` | Filename/path filtering by .ts and http.ts open in the editor | Files |
-| Added | `screen-file-find.png` | Search and replace within messages.ts, with the query add and highlighted matches | Files |
-| Added | `screen-find-in-files.png` | Project-wide search for function, results grouped by file, a truncation notice, and a selected match open in errors.ts | Files |
-| Added | `screen-chat-search.png` | Matching message text highlighted in results from multiple projects | Working with chats |
-| Added | `screen-keyboard-shortcuts.png` | Keyboard shortcuts settings and default bindings | Settings reference |
-| Added | `screen-settings-notifications.png` | Desktop notifications and Notification sound enabled under Chat messages | Settings reference |
-| Added | `screen-worktree-git-actions.png` | Worktree menu with Publish branch, Create pull request, Merge into dev, and Remove worktree | Git worktrees |
-| Added | `screen-worktree-merge.png` | Merge into dev review with the base branch, commits, changed file, and clean main checkout | Git worktrees |
-| Added | `screen-worktree-merge-success.png` | Successful merge into dev with Keep worktree / Remove worktree and branch | Git worktrees |
-| Added | `screen-main.png` | Main window with the current toolbars and branch footer | Workspace |
+| New | Queue panel | The Queue above the message box with one queued and one Failed item (Retry/Remove), plus Pause queue | Working with chats |
+| New | Push changes dialog | Branch, Destination, ahead/behind counts, and the commit list | Git workflows |
+| New | Remote access settings | Settings → Connections with Remote access Ready and a paired device listed | Remote access |
+| New | Set up remote access dialog | Reach this computer through with Tailscale and Cloudflare Tunnel, and Advanced | Remote access |
+| New | Pair a device dialog | QR code, Copy link, pairing code, and the Access selector | Remote access |
+| New | Open folder dialog | Open on host selector, Folder path with suggestions, Browse… | Open your first project, Remote hosts |
+| New | Host routes dialog | A host with an SSH and an HTTPS route, Active route, and Move up/down | Remote hosts |
+| Optional | Phone layout | Dream on a phone in the compact layout | Remote access |
+| Replace | `docs/ssh-hosts-panel.png` | Settings → Connections → Remote hosts with Add host and status badges (the old crop shows the removed SSH hosts section and is no longer referenced) | Remote hosts |
+| Refresh | `docs/changes-panel.png` | The commit box with the Commit message label and file count | Git workflows |
+| Refresh | `docs/git-actions-menu.png` | Push and Pull with ahead/behind counts and the highlighted Git actions button | Git workflows |
 
-All filenames in the table are originals under `public/images`. The Changes,
-Pull request, Files, and Create PR crops have been refreshed from these originals.
-The obsolete Commit/Push dialog frames remain removed; their files are retained
-but are not referenced by the docs. Do not recapture them as dialogs.
+The Push changes preview is a dialog again in v0.30.0 and later; capture it as a dialog. The old
+Commit/Push dialog frames from earlier releases remain unused.
 
-Optional follow-ups: a failed PR check count, a customized keyboard shortcut or
-conflict, an SSH/archived chat search result, and the worktree removal dialog with
-its discard option. The supplied images already illustrate the core workflows.
-
-If refreshing full-window overview images too, prioritize
-`public/images/screen-multiple-chats.png`, which appears in the introduction and
-multi-chat guide: show the current right toolbar and Git footer. Existing focused
-SSH, provider, prompt, skills, MCP, browser, and terminal crops do not need new
-images solely for these release features.
-
-For future screenshot updates, update the English MDX frames, alt text, and
-dimensions; add translations and regenerate locales. Do not add image references
-before the corresponding files exist. Update `scripts/crop-docs-images.ps1` with
-the new originals and coordinates, then regenerate and inspect the crops.
+For screenshot updates, update the English MDX frames, alt text, and dimensions; add translations
+and regenerate locales. Update `scripts/crop-docs-images.ps1` with the new originals and
+coordinates, then regenerate and inspect the crops.

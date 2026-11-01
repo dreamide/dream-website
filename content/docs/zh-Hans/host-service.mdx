@@ -1,0 +1,81 @@
+---
+title: "主机服务"
+description: "无需桌面应用即可保持 Dream 的主机运行，并通过命令行进行管理。"
+---
+
+Dream 的主机 `dream-host` 负责为你的项目运行代理、终端和 Git 命令。通常由桌面应用启动它，并在你退出时停止它。将主机安装为服务后，应用关闭后聊天和终端仍会继续运行，适用于[远程访问](/docs/zh-Hans/remote-access)或没有桌面环境的机器。
+
+| 系统 | 服务管理器 | 启动时机 |
+| --- | --- | --- |
+| Linux | systemd 用户服务 | 登录时，或使用 `loginctl enable-linger` 后于开机时 |
+| macOS | LaunchAgent | 登录时 |
+| Windows | Task Scheduler（任务计划程序） | 登录时 |
+
+如果主机出现故障，服务会将其重启。处于睡眠状态的电脑无法访问。
+
+## 获取主机运行时
+
+从 [Dream 发布页面](https://github.com/dreamide/dream/releases)下载适用于你系统的 `dream-host` 归档文件。我们为 Linux x64、Linux ARM64 和 macOS Apple silicon 发布了打包好的运行时。每个归档文件都包含 Node.js、主机、终端支持和浏览器客户端。
+
+以将要运行该服务的同一用户身份安装并登录代理 CLI。
+
+## 将此桌面的主机作为服务运行
+
+1. 退出 Dream。
+2. 使用桌面应用的数据文件夹安装服务，以保留你的项目和聊天：
+
+   ```sh
+   dream-host service install --data-dir "<desktop data folder>"
+   ```
+
+3. 在环境中设置 `DREAM_HOST_MODE=service` 后启动 Dream。例如，在 macOS 上：
+
+   ```sh
+   DREAM_HOST_MODE=service /Applications/Dream.app/Contents/MacOS/Dream
+   ```
+
+| 系统 | 桌面数据文件夹 |
+| --- | --- |
+| macOS | `~/Library/Application Support/dreamide` |
+| Windows | `%APPDATA%/dreamide` |
+| Linux | `~/.config/dreamide` |
+
+之后，桌面应用会连接到该服务。关闭桌面应用后，正在运行的回复和终端会继续运行；重新打开后会恢复终端。一个数据文件夹同一时间只能由一个主机使用。若要改回由桌面应用启动自己的主机，请先停止该服务。
+
+安装时会记录你当前的 `PATH`。对于主机或代理 CLI 需要的其他每个环境变量，请添加一个 `--env NAME`；变量值会保存在私有的服务文件中。
+
+## 设置无界面主机
+
+在没有桌面应用的机器上，安装服务时不要使用 `--data-dir`。其数据保存在 `~/.dream/host/data` 中。如果你通过 `--home` 使用其他主机文件夹，请在每条命令中都传入相同的 `--home`。
+
+然后通过命令行开启远程访问并配对设备：
+
+| 命令 | 它能做什么 |
+| --- | --- |
+| `dream-host remote on --tailscale` | 通过 Tailscale 开启远程访问 |
+| `dream-host remote install-cloudflared` | 安装或更新 Cloudflare 连接器 |
+| `dream-host remote on --cloudflare --origin https://dream.example.com --token-file <path>` | 通过 Cloudflare Tunnel 开启远程访问，并从私有文件中读取令牌 |
+| `dream-host remote on --cloudflare --external --origin https://dream.example.com` | 使用你自行运行的 Cloudflare 连接器 |
+| `dream-host remote status` / `dream-host remote check` | 显示当前设置，或重新检查 |
+| `dream-host remote off` | 停止为已配对设备提供服务 |
+| `dream-host pair` | 创建具有“查看和工作”权限的配对链接、配对码和二维码。使用 `--scopes view` 仅授予查看权限，或使用 `--scopes view,operate,manage` 授予完全访问权限 |
+| `dream-host claims` | 列出已输入配对码的设备 |
+| `dream-host confirm <claimId>` / `dream-host deny <claimId>` | 确认或拒绝设备 |
+| `dream-host devices` | 列出已配对设备 |
+| `dream-host revoke <sessionId>` | 移除设备的访问权限 |
+
+在以上任一命令后添加 `--json`，即可获得机器可读的输出。
+
+## 管理服务
+
+| 命令 | 它能做什么 |
+| --- | --- |
+| `dream-host service status` | 显示服务是否正在运行，以及其版本、端口和日志 |
+| `dream-host service start` / `stop` / `restart` | 控制正在运行的服务 |
+| `dream-host service uninstall` | 移除开机启动注册，并保留你的数据 |
+| `dream-host service update <version>` | 安装已发布的版本 |
+| `dream-host service recover` | 完成或回滚中断的更新 |
+
+更新时会先下载发布归档文件并验证其校验和，然后才停止主机。如果新版本无法启动，服务会恢复到之前的运行时。更新会中断正在运行的回复和终端：回复会被标记为 **已中断**，其队列会暂停。检查这些回复后，再重试或[继续队列](/docs/zh-Hans/chats#消息排队)。
+
+如果更新中途停止（例如因为机器关机），请先运行 `dream-host service status`，再运行 `dream-host service recover`。

@@ -77,9 +77,29 @@ Un indicador de carga identifica los chats que están recibiendo una respuesta. 
 
 Mientras que un agente responde, el chat muestra su progreso y actividad de herramientas. Abre los detalles de la herramienta para inspeccionar comandos, lecturas de archivos o cambios. Cuando el agente proporciona una lista de tareas, el control de tareas junto al cuadro de mensaje muestra su progreso.
 
-Las pestañas de historia y proyecto incluyen indicadores de estado para el trabajo que está procesándose o que ya ha finalizado; las pestañas de proyecto también pueden indicar que un agente está esperando tu respuesta. Selecciona el proyecto y abre la conversación para leer su último mensaje. Utiliza el control de detener en el compositor para interrumpir una respuesta. Detener una respuesta no anula los cambios de archivo ya realizados.
+Las pestañas de historial y de proyecto incluyen indicadores de estado para el trabajo que está en proceso o que ya ha finalizado; las pestañas de proyecto también pueden indicar que un agente está esperando tu respuesta. Selecciona el proyecto y abre la conversación para leer su último mensaje. Usa el control de detener en el compositor para finalizar una respuesta. Detener una respuesta no deshace los cambios de archivo ya realizados.
+
+Las respuestas se ejecutan en el host del proyecto, no en la ventana. Si un cliente se desconecta mientras se ejecuta una respuesta, la respuesta continúa y el chat se vuelve a conectar a ella automáticamente.
 
 Después de que una respuesta termine, use **Ver cambios de archivos de esta respuesta** en su pie de página para ver los archivos que modificó y [restablecer cualquiera de ellos](/docs/es/checkpoints).
+
+## Poner mensajes en cola
+
+Puedes enviar más mensajes mientras se ejecuta una respuesta. Escribe en el cuadro de mensaje y envía; el control de detener se convierte en el control de envío mientras el cuadro tiene texto. Dream añade el mensaje a la **Cola** del chat y lo ejecuta después de la respuesta actual, con el modelo que se muestra junto a él. Los mensajes en cola se guardan en el host, por lo que se conservan al reiniciar Dream.
+
+La **Cola** aparece encima del cuadro de mensaje mientras hay mensajes en espera o una ejecución requiere atención.
+
+| Control | Qué hace |
+| --- | --- |
+| Pausar cola | Retiene los mensajes en cola; la respuesta actual termina igualmente |
+| Reanudar cola | Continúa con el siguiente mensaje en cola |
+| Cancelar | Quita un mensaje que aún no ha comenzado |
+| Reintentar | Vuelve a ejecutar un mensaje **Fallido** o **Interrumpido** |
+| Quitar | Descarta un mensaje **Fallido** o **Interrumpido** |
+
+**Detener** finaliza la respuesta actual, junto con las tareas que [delegó](/docs/es/agent-modes#tareas-delegadas), y retiene el resto de la cola. Enviar un mensaje nuevo reanuda una cola pausada y descarta los mensajes fallidos o interrumpidos.
+
+Una respuesta pasa al estado **Interrumpido** cuando su host se detiene antes de que termine, por ejemplo durante una actualización. Después, la cola queda en pausa. Lee la respuesta antes de elegir **Reintentar**, porque es posible que el agente ya haya cambiado archivos.
 
 ## Cerrar, archivar o borrar?
 

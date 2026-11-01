@@ -1,6 +1,6 @@
 ---
 title: Agent permissions
-description: Choose Ask, Accept edits, or Full access and respond to agent requests.
+description: Choose Ask, Accept edits, or Full access, respond to agent requests, and delegate tasks.
 ---
 
 Each chat has a **Permissions** control beneath its message box. New chats inherit
@@ -52,3 +52,20 @@ reply's [checkpoint](/docs/checkpoints) to restore files it changed.
 
 For parallel tasks that need separate files, use [worktrees](/docs/worktrees). Permission settings
 do not give two chats in the same folder independent checkouts.
+
+## Delegated tasks
+
+Agents can hand part of a task to another agent provider in the same project. For example, a
+Claude Code chat can ask Codex to review a change, then read the result in a later turn. Ask for
+this in your message, such as “Have another agent write the tests for this module and report back.”
+
+| Rule | Detail |
+| --- | --- |
+| Providers that can delegate | Codex, Claude Code, OpenCode, and Grok Build. Cursor Agent can receive delegated tasks but cannot start them |
+| Available providers | The other provider's CLI must be installed and signed in on the project's host |
+| Permissions | A delegated task cannot have more access than the chat that started it |
+| Files | Delegated tasks work in the same project files; give each one a separate part of the work to avoid conflicts |
+| Stopping | Stopping the chat also stops the tasks it delegated |
+
+Delegated tasks run on the host and keep their results, so the agent can check on them in a later
+turn or after Dream restarts. Open the tool details in the reply to see which tasks the agent started.

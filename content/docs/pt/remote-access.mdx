@@ -1,0 +1,84 @@
+---
+title: "Acesso remoto"
+description: "Use os projetos deste computador em um celular, um navegador ou outro desktop do Dream."
+---
+
+O acesso remoto permite que outros dispositivos trabalhem com os projetos deste computador. Um celular ou outro computador abre o Dream no navegador, e outro desktop do Dream pode adicionar este computador como [host remoto](/docs/pt/remote-hosts#emparelhar-um-host-por-https). Todo dispositivo precisa ser emparelhado primeiro, e você pode revogá-lo a qualquer momento.
+
+Agentes, terminais e comandos Git continuam sendo executados neste computador. Os dispositivos emparelhados só conseguem acessá-lo enquanto o host do Dream estiver em execução aqui. Para manter o host em execução depois de fechar o Dream, instale-o como [serviço](/docs/pt/host-service).
+
+## Antes de começar
+
+Escolha como os dispositivos vão acessar este computador:
+
+| Conexão | O que você precisa |
+| --- | --- |
+| Tailscale | Tailscale instalado e conectado neste computador e em cada dispositivo, com MagicDNS e certificados HTTPS ativados na sua tailnet |
+| Cloudflare Tunnel | Um Cloudflare Tunnel persistente e um nome de host na sua conta do Cloudflare, como `dream.example.com` |
+
+Para o Cloudflare Tunnel, crie um túnel dedicado e gerenciado remotamente e copie apenas o token do conector. Direcione o nome de host para `http://127.0.0.1` na **Porta local** exibida pelo Dream e ignore o cache para `/api/*`. Quick Tunnels não são compatíveis, e o nome de host não pode exigir um login interativo do Cloudflare Access.
+
+## Ativar o acesso remoto
+
+1. Abra **Configurações → Conexões** e localize **Acesso remoto**.
+2. Escolha **Configurar**.
+3. Em **Acessar este computador por**, escolha **Tailscale** ou **Cloudflare Tunnel**.
+4. Para o Cloudflare Tunnel, informe o **Endereço público** e cole o **Token do túnel**. Se o conector mostrar **Não instalado**, escolha **Instalar cloudflared**.
+5. Escolha **Ativar**.
+
+O Dream verifica a conexão antes de mostrar **Pronto**. Se aparecer **Não está pronto**, leia a mensagem abaixo, corrija a configuração e use **Verificar novamente**. Algumas mensagens incluem **Abrir página de configuração**.
+
+Use **Alterar** para trocar de conexão ou substituir o token do túnel. Deixe o token em branco para manter o salvo. A chave **Permitir dispositivos emparelhados** desativa e ativa o acesso remoto sem perder a configuração nem os dispositivos emparelhados.
+
+### Opções avançadas
+
+| Opção | O que faz |
+| --- | --- |
+| Porta HTTPS | A porta em que o Tailscale disponibiliza o Dream. Altere-a se o Tailscale já disponibiliza algo nessa porta |
+| Porta local | A porta deste computador que recebe as conexões remotas. Deixe vazia para escolher automaticamente |
+| Eu executo o cloudflared por conta própria | Usa um conector do Cloudflare que você instala e executa separadamente. O Dream não o inicia, para nem exclui |
+
+## Emparelhar um dispositivo
+
+1. Com o acesso remoto **Pronto**, escolha **Emparelhar um dispositivo**.
+2. Escolha um nível de **Acesso** para o dispositivo.
+3. Escolha **Criar emparelhamento**.
+4. No dispositivo, escaneie o QR code ou abra o link. Você também pode usar **Copiar link** para enviá-lo.
+5. Escolha **Concluído**.
+
+| Acesso | O que o dispositivo pode fazer |
+| --- | --- |
+| Somente ver | Ler projetos, chats e terminais |
+| Ver e trabalhar | Também executar agentes, terminais e Git em seu nome |
+| Completo | Também emparelhar e remover dispositivos |
+
+O link funciona uma única vez e expira após 10 minutos. Para emparelhar sem o link, abra o endereço do host no dispositivo, insira o código de emparelhamento exibido ao lado do QR code e dê um nome ao dispositivo. O dispositivo então aguarda até você escolher **Confirmar** em **Aguardando emparelhamento** neste computador. Escolha **Recusar** para qualquer dispositivo que você não reconheça.
+
+Para emparelhar outro desktop do Dream, cole o link na caixa de diálogo **Adicionar host → Link de pareamento** dele. Consulte [Emparelhar um host por HTTPS](/docs/pt/remote-hosts#emparelhar-um-host-por-https).
+
+## Usar o Dream em um dispositivo emparelhado
+
+Um dispositivo emparelhado abre o Dream no navegador. Em um celular, o Dream usa um layout compacto. O dispositivo trabalha com os projetos, chats, arquivos e terminais deste computador, dentro do seu nível de acesso.
+
+Se este computador não puder ser acessado, um banner avisa e o dispositivo mostra o que salvou. O Dream se reconecta quando o host volta a ficar disponível. Computadores em suspensão não podem ser acessados.
+
+Para remover o acesso do dispositivo pelo próprio dispositivo, escolha **Sair** em **Este dispositivo**. Sair também remove o que esse navegador salvou.
+
+## Gerenciar dispositivos emparelhados
+
+**Dispositivos emparelhados** lista cada dispositivo e quando ele foi usado pela última vez. Escolha **Revogar** para remover o acesso de um dispositivo. As páginas abertas nele param na hora; o trabalho neste computador continua. Um dispositivo que não for usado por 30 dias precisa ser emparelhado novamente.
+
+## Problemas de acesso remoto
+
+| Mensagem ou sintoma | O que fazer |
+| --- | --- |
+| O Tailscale não está instalado ou não está em execução | Instale o Tailscale, faça login e conecte este computador; depois escolha **Verificar novamente** |
+| Este computador está aguardando aprovação | Aprove-o no console de administração do Tailscale |
+| Ative o MagicDNS e os certificados HTTPS | Ative ambos para a sua tailnet no console de administração do Tailscale |
+| O Tailscale não permite que este usuário altere as configurações do Serve | No Linux, execute `sudo tailscale set --operator=$USER` uma vez e verifique novamente |
+| Outro programa já está usando a porta | Escolha outra **Porta HTTPS** ou **Porta local** em **Avançado** |
+| Não foi possível alcançar este computador pelo Tailscale | O Tailscale pode ainda estar obtendo o certificado; verifique novamente em um minuto |
+| Não foi possível alcançar este computador pelo Cloudflare | No Cloudflare, defina a URL de serviço do nome de host como `http://127.0.0.1` com a **Porta local** exibida no Dream |
+| Aguardando o conector do Cloudflare se conectar | Verifique o token do túnel e se as conexões de saída deste computador são permitidas |
+| Link de emparelhamento expirado ou já usado | Escolha **Emparelhar um dispositivo** novamente e use o novo link |
+| Um dispositivo parou de funcionar | Verifique se ele foi revogado ou ficou 30 dias sem uso e emparelhe-o novamente |

@@ -272,16 +272,11 @@
           },
           {
             "group": "Workspace tools",
-            "pages": [
-              "workspace",
-              {
-                "page": "remote-hosts",
-                "title": "SSH remote workspaces"
-              },
-              "files",
-              "terminals",
-              "browser"
-            ]
+            "pages": ["workspace", "files", "terminals", "browser"]
+          },
+          {
+            "group": "Remote work",
+            "pages": ["remote-hosts", "remote-access", "host-service"]
           },
           {
             "group": "Git",
@@ -387,10 +382,6 @@
                 "title": "Proyectos y espacio de trabajo"
               },
               {
-                "page": "es/remote-hosts",
-                "title": "Espacios de trabajo remotos por SSH"
-              },
-              {
                 "page": "es/files",
                 "title": "Archivos"
               },
@@ -401,6 +392,23 @@
               {
                 "page": "es/browser",
                 "title": "Vista previa en el navegador"
+              }
+            ]
+          },
+          {
+            "group": "Trabajo remoto",
+            "pages": [
+              {
+                "page": "es/remote-hosts",
+                "title": "Hosts remotos"
+              },
+              {
+                "page": "es/remote-access",
+                "title": "Acceso remoto"
+              },
+              {
+                "page": "es/host-service",
+                "title": "Servicio del host"
               }
             ]
           },
@@ -530,10 +538,6 @@
                 "title": "Projets et espace de travail"
               },
               {
-                "page": "fr/remote-hosts",
-                "title": "Espaces de travail distants SSH"
-              },
-              {
                 "page": "fr/files",
                 "title": "Fichiers"
               },
@@ -544,6 +548,23 @@
               {
                 "page": "fr/browser",
                 "title": "Aperçu dans le navigateur"
+              }
+            ]
+          },
+          {
+            "group": "Travail à distance",
+            "pages": [
+              {
+                "page": "fr/remote-hosts",
+                "title": "Hôtes distants"
+              },
+              {
+                "page": "fr/remote-access",
+                "title": "Accès à distance"
+              },
+              {
+                "page": "fr/host-service",
+                "title": "Service de l’hôte"
               }
             ]
           },
@@ -673,10 +694,6 @@
                 "title": "Projekte und Arbeitsbereich"
               },
               {
-                "page": "de/remote-hosts",
-                "title": "Remote-Arbeitsbereiche über SSH"
-              },
-              {
                 "page": "de/files",
                 "title": "Dateien"
               },
@@ -687,6 +704,23 @@
               {
                 "page": "de/browser",
                 "title": "Browser-Vorschau"
+              }
+            ]
+          },
+          {
+            "group": "Remote-Arbeit",
+            "pages": [
+              {
+                "page": "de/remote-hosts",
+                "title": "Remote-Hosts"
+              },
+              {
+                "page": "de/remote-access",
+                "title": "Fernzugriff"
+              },
+              {
+                "page": "de/host-service",
+                "title": "Host-Dienst"
               }
             ]
           },
@@ -816,10 +850,6 @@
                 "title": "Projetos e espaço de trabalho"
               },
               {
-                "page": "pt/remote-hosts",
-                "title": "Espaços de trabalho remotos por SSH"
-              },
-              {
                 "page": "pt/files",
                 "title": "Arquivos"
               },
@@ -830,6 +860,23 @@
               {
                 "page": "pt/browser",
                 "title": "Prévia no navegador"
+              }
+            ]
+          },
+          {
+            "group": "Trabalho remoto",
+            "pages": [
+              {
+                "page": "pt/remote-hosts",
+                "title": "Hosts remotos"
+              },
+              {
+                "page": "pt/remote-access",
+                "title": "Acesso remoto"
+              },
+              {
+                "page": "pt/host-service",
+                "title": "Serviço do host"
               }
             ]
           },
@@ -959,10 +1006,6 @@
                 "title": "Progetti e spazio di lavoro"
               },
               {
-                "page": "it/remote-hosts",
-                "title": "Spazi di lavoro remoti SSH"
-              },
-              {
                 "page": "it/files",
                 "title": "File"
               },
@@ -973,6 +1016,23 @@
               {
                 "page": "it/browser",
                 "title": "Anteprima nel browser"
+              }
+            ]
+          },
+          {
+            "group": "Lavoro da remoto",
+            "pages": [
+              {
+                "page": "it/remote-hosts",
+                "title": "Host remoti"
+              },
+              {
+                "page": "it/remote-access",
+                "title": "Accesso remoto"
+              },
+              {
+                "page": "it/host-service",
+                "title": "Servizio host"
               }
             ]
           },
@@ -1102,10 +1162,6 @@
                 "title": "プロジェクトとワークスペース"
               },
               {
-                "page": "ja/remote-hosts",
-                "title": "SSH リモートワークスペース"
-              },
-              {
                 "page": "ja/files",
                 "title": "ファイル"
               },
@@ -1116,6 +1172,23 @@
               {
                 "page": "ja/browser",
                 "title": "ブラウザープレビュー"
+              }
+            ]
+          },
+          {
+            "group": "リモート作業",
+            "pages": [
+              {
+                "page": "ja/remote-hosts",
+                "title": "リモートホスト"
+              },
+              {
+                "page": "ja/remote-access",
+                "title": "リモートアクセス"
+              },
+              {
+                "page": "ja/host-service",
+                "title": "ホストサービス"
               }
             ]
           },
@@ -1245,10 +1318,6 @@
                 "title": "프로젝트와 작업 공간"
               },
               {
-                "page": "ko/remote-hosts",
-                "title": "SSH 원격 작업 공간"
-              },
-              {
                 "page": "ko/files",
                 "title": "파일"
               },
@@ -1259,6 +1328,23 @@
               {
                 "page": "ko/browser",
                 "title": "브라우저 미리 보기"
+              }
+            ]
+          },
+          {
+            "group": "원격 작업",
+            "pages": [
+              {
+                "page": "ko/remote-hosts",
+                "title": "원격 호스트"
+              },
+              {
+                "page": "ko/remote-access",
+                "title": "원격 액세스"
+              },
+              {
+                "page": "ko/host-service",
+                "title": "호스트 서비스"
               }
             ]
           },
@@ -1388,10 +1474,6 @@
                 "title": "Dự án và không gian làm việc"
               },
               {
-                "page": "vi/remote-hosts",
-                "title": "Không gian làm việc từ xa qua SSH"
-              },
-              {
                 "page": "vi/files",
                 "title": "Tệp"
               },
@@ -1402,6 +1484,23 @@
               {
                 "page": "vi/browser",
                 "title": "Xem trước trong trình duyệt"
+              }
+            ]
+          },
+          {
+            "group": "Làm việc từ xa",
+            "pages": [
+              {
+                "page": "vi/remote-hosts",
+                "title": "Máy chủ từ xa"
+              },
+              {
+                "page": "vi/remote-access",
+                "title": "Truy cập từ xa"
+              },
+              {
+                "page": "vi/host-service",
+                "title": "Dịch vụ máy chủ"
               }
             ]
           },
@@ -1531,10 +1630,6 @@
                 "title": "项目与工作区"
               },
               {
-                "page": "zh-Hans/remote-hosts",
-                "title": "SSH 远程工作区"
-              },
-              {
                 "page": "zh-Hans/files",
                 "title": "文件"
               },
@@ -1545,6 +1640,23 @@
               {
                 "page": "zh-Hans/browser",
                 "title": "浏览器预览"
+              }
+            ]
+          },
+          {
+            "group": "远程工作",
+            "pages": [
+              {
+                "page": "zh-Hans/remote-hosts",
+                "title": "远程主机"
+              },
+              {
+                "page": "zh-Hans/remote-access",
+                "title": "远程访问"
+              },
+              {
+                "page": "zh-Hans/host-service",
+                "title": "主机服务"
               }
             ]
           },
@@ -1674,10 +1786,6 @@
                 "title": "專案與工作區"
               },
               {
-                "page": "zh-Hant/remote-hosts",
-                "title": "SSH 遠端工作區"
-              },
-              {
                 "page": "zh-Hant/files",
                 "title": "檔案"
               },
@@ -1688,6 +1796,23 @@
               {
                 "page": "zh-Hant/browser",
                 "title": "瀏覽器預覽"
+              }
+            ]
+          },
+          {
+            "group": "遠端工作",
+            "pages": [
+              {
+                "page": "zh-Hant/remote-hosts",
+                "title": "遠端主機"
+              },
+              {
+                "page": "zh-Hant/remote-access",
+                "title": "遠端存取"
+              },
+              {
+                "page": "zh-Hant/host-service",
+                "title": "主機服務"
               }
             ]
           },

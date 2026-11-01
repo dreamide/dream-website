@@ -1,0 +1,81 @@
+---
+title: "Dịch vụ máy chủ"
+description: "Giữ máy chủ Dream chạy mà không cần ứng dụng máy tính và quản lý nó từ dòng lệnh."
+---
+
+Máy chủ của Dream, `dream-host`, chạy agent, terminal và lệnh Git cho các dự án của bạn. Thông thường, ứng dụng máy tính khởi động nó và dừng nó khi bạn thoát. Hãy cài máy chủ dưới dạng dịch vụ để cuộc trò chuyện và terminal tiếp tục chạy sau khi đóng ứng dụng, phục vụ [Truy cập từ xa](/docs/vi/remote-access) hoặc trên máy không có môi trường desktop.
+
+| Hệ thống | Trình quản lý dịch vụ | Khởi động |
+| --- | --- | --- |
+| Linux | Dịch vụ người dùng systemd | Khi đăng nhập, hoặc khi khởi động máy với `loginctl enable-linger` |
+| macOS | LaunchAgent | Khi đăng nhập |
+| Windows | Task Scheduler | Khi đăng nhập |
+
+Dịch vụ sẽ khởi động lại máy chủ nếu bị lỗi. Không thể truy cập máy tính đang ở chế độ ngủ.
+
+## Tải môi trường chạy máy chủ
+
+Tải tệp nén `dream-host` cho hệ thống của bạn từ [các bản phát hành Dream](https://github.com/dreamide/dream/releases). Môi trường chạy đóng gói sẵn được phát hành cho Linux x64, Linux ARM64 và macOS Apple silicon. Mỗi tệp nén gồm Node.js, máy chủ, hỗ trợ terminal và client trình duyệt.
+
+Cài đặt và đăng nhập các CLI agent bằng chính người dùng sẽ chạy dịch vụ.
+
+## Chạy máy chủ của ứng dụng máy tính này dưới dạng dịch vụ
+
+1. Thoát Dream.
+2. Cài dịch vụ với thư mục dữ liệu của ứng dụng máy tính để giữ lại các dự án và cuộc trò chuyện của bạn:
+
+   ```sh
+   dream-host service install --data-dir "<desktop data folder>"
+   ```
+
+3. Khởi động Dream với `DREAM_HOST_MODE=service` được đặt trong môi trường. Ví dụ trên macOS:
+
+   ```sh
+   DREAM_HOST_MODE=service /Applications/Dream.app/Contents/MacOS/Dream
+   ```
+
+| Hệ thống | Thư mục dữ liệu ứng dụng máy tính |
+| --- | --- |
+| macOS | `~/Library/Application Support/dreamide` |
+| Windows | `%APPDATA%/dreamide` |
+| Linux | `~/.config/dreamide` |
+
+Sau đó ứng dụng máy tính sẽ kết nối với dịch vụ. Khi đóng ứng dụng, các phản hồi và terminal đang chạy vẫn tiếp tục, và khi mở lại, các terminal được khôi phục. Mỗi thư mục dữ liệu chỉ có thể được một máy chủ sử dụng tại một thời điểm. Để quay lại chế độ ứng dụng máy tính tự khởi động máy chủ riêng, hãy dừng dịch vụ trước.
+
+Khi cài đặt, `PATH` hiện tại của bạn sẽ được ghi lại. Thêm `--env NAME` cho mỗi biến môi trường khác mà máy chủ hoặc các CLI agent cần; giá trị được lưu trong các tệp dịch vụ riêng tư.
+
+## Thiết lập máy chủ không giao diện
+
+Trên máy không có ứng dụng máy tính, hãy cài dịch vụ mà không dùng `--data-dir`. Dữ liệu của nó được lưu trong `~/.dream/host/data`. Nếu bạn dùng thư mục máy chủ khác với `--home`, hãy truyền cùng `--home` cho mọi lệnh.
+
+Sau đó bật truy cập từ xa và ghép nối thiết bị từ dòng lệnh:
+
+| Lệnh | Điều gì mà nó làm |
+| --- | --- |
+| `dream-host remote on --tailscale` | Bật truy cập từ xa qua Tailscale |
+| `dream-host remote install-cloudflared` | Cài đặt hoặc cập nhật trình kết nối Cloudflare |
+| `dream-host remote on --cloudflare --origin https://dream.example.com --token-file <path>` | Bật truy cập từ xa qua Cloudflare Tunnel, đọc token từ một tệp riêng tư |
+| `dream-host remote on --cloudflare --external --origin https://dream.example.com` | Dùng trình kết nối Cloudflare do bạn tự chạy |
+| `dream-host remote status` / `dream-host remote check` | Hiển thị thiết lập hoặc kiểm tra lại |
+| `dream-host remote off` | Ngừng phục vụ các thiết bị đã ghép nối |
+| `dream-host pair` | Tạo liên kết ghép nối, mã và mã QR với quyền Xem và làm việc. Dùng `--scopes view` để chỉ xem, hoặc `--scopes view,operate,manage` để có toàn quyền |
+| `dream-host claims` | Liệt kê các thiết bị đã nhập mã ghép nối |
+| `dream-host confirm <claimId>` / `dream-host deny <claimId>` | Xác nhận hoặc từ chối một thiết bị |
+| `dream-host devices` | Liệt kê các thiết bị đã ghép nối |
+| `dream-host revoke <sessionId>` | Xóa quyền truy cập của một thiết bị |
+
+Thêm `--json` vào bất kỳ lệnh nào ở trên để nhận đầu ra dạng máy đọc được.
+
+## Quản lý dịch vụ
+
+| Lệnh | Điều gì mà nó làm |
+| --- | --- |
+| `dream-host service status` | Cho biết dịch vụ có đang chạy không, cùng phiên bản, cổng và nhật ký của nó |
+| `dream-host service start` / `stop` / `restart` | Điều khiển dịch vụ đang chạy |
+| `dream-host service uninstall` | Xóa đăng ký khởi động và giữ lại dữ liệu của bạn |
+| `dream-host service update <version>` | Cài một phiên bản đã phát hành |
+| `dream-host service recover` | Hoàn tất hoặc khôi phục một bản cập nhật bị gián đoạn |
+
+Bản cập nhật sẽ tải tệp nén phát hành và xác minh checksum trước khi dừng máy chủ. Nếu phiên bản mới không khởi động được, dịch vụ quay về môi trường chạy trước đó. Việc cập nhật làm gián đoạn các phản hồi và terminal đang chạy: phản hồi được đánh dấu **Bị gián đoạn** và hàng đợi của chúng tạm dừng. Hãy xem lại chúng, rồi thử lại hoặc [tiếp tục hàng đợi](/docs/vi/chats#xếp-hàng-tin-nhắn).
+
+Nếu bản cập nhật dừng giữa chừng, ví dụ vì máy bị tắt, hãy chạy `dream-host service status`, rồi `dream-host service recover`.

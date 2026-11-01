@@ -1,30 +1,23 @@
 ---
-title: "Không gian làm việc từ xa qua SSH"
-description: "Kết nối máy chủ SSH để làm việc với dự án, tác nhân, tệp, Git và terminal từ xa."
+title: "Máy chủ từ xa"
+description: "Kết nối máy khác qua SSH hoặc HTTPS và làm việc với dự án, agent, tệp, Git và terminal của máy đó."
 ---
 
-Dream có thể mở dự án trên máy từ xa qua SSH bên cạnh các dự án cục bộ. Tệp, lệnh Git, tiến trình tác nhân và terminal chạy trên máy chủ của dự án. Nhãn máy chủ cho biết bạn đang làm việc ở đâu.
+Dream có thể mở dự án trên máy từ xa bên cạnh các dự án cục bộ của bạn. Tệp, lệnh Git, tiến trình agent và terminal chạy trên máy chủ của dự án. Nhãn máy chủ của dự án cho biết bạn đang làm việc ở đâu.
 
-Không gian làm việc SSH có từ Dream v0.25.0. Bản phát hành này có môi trường chạy máy chủ được quản lý cho Linux x64, Linux ARM64 và macOS Apple silicon (ARM64). Đây là các nền tảng máy chủ từ xa; ứng dụng Dream trên máy tính có thể chạy trên Windows, macOS hoặc Linux.
+Kết nối máy chủ qua SSH, hoặc ghép nối với máy chủ Dream qua HTTPS khi máy đó đã bật [Truy cập từ xa](/docs/vi/remote-access). Một máy chủ có thể có nhiều tuyến, và Dream dùng tuyến đầu tiên kết nối được.
 
-Từ phiên bản v0.28.0, các runtime máy chủ Linux hỗ trợ các hệ điều hành có glibc 2.31 hoặc mới hơn.
+Dream cài đặt môi trường chạy máy chủ được quản lý cho Linux x64, Linux ARM64 và macOS Apple silicon (ARM64) qua SSH. Đây là các nền tảng máy chủ từ xa; ứng dụng Dream trên máy tính có thể chạy trên Windows, macOS hoặc Linux. Môi trường chạy máy chủ Linux hỗ trợ hệ thống có glibc 2.31 trở lên.
 
-## Thêm và kết nối máy chủ
-
-<Frame caption="Quản lý máy chủ SSH và kiểm tra trạng thái kết nối trong Cài đặt.">
-  <img
-    src="/images/docs/ssh-hosts-panel.png"
-    alt="Cài đặt máy chủ SSH với hai máy chủ đã lưu, trạng thái kết nối và các nút Kết nối, Chỉnh sửa, Xóa và Thêm máy chủ SSH."
-    width={1016}
-    height={208}
-    loading="lazy"
-  />
-</Frame>
+## Thêm máy chủ SSH
 
 1. Kiểm tra rằng `ssh devbox` hoạt động trong terminal hệ thống, thay `devbox` bằng bí danh cấu hình SSH hoặc `user@host`. Dream dùng trình khách SSH, cấu hình và khóa của hệ thống.
-2. Mở **Cài đặt → Máy chủ SSH**, rồi chọn **Thêm máy chủ SSH**. Nhập **Đích SSH** và **Tên** nếu muốn.
-3. Để trống **Lệnh host** để tự động cài môi trường chạy. Nhấp **Lưu**, rồi **Kết nối**.
-4. Trả lời các yêu cầu về khóa máy chủ, mật khẩu, cụm mật khẩu hoặc xác thực hai yếu tố trong Dream. Từ chối hoặc hủy yêu cầu sẽ dừng lần kết nối đó.
+2. Mở **Cài đặt → Kết nối** và chọn **Thêm máy chủ → Máy chủ SSH**.
+3. Nhập **Đích SSH**, hoặc chọn một alias được gợi ý từ `~/.ssh/config`, và **Tên** nếu muốn.
+4. Để trống **Lệnh host** để tự động cài môi trường chạy, rồi nhấp **Lưu**. Dream sẽ kết nối với máy chủ mới.
+5. Trả lời các yêu cầu về khóa máy chủ, mật khẩu, cụm mật khẩu hoặc xác thực hai yếu tố trong Dream. Từ chối hoặc hủy yêu cầu sẽ dừng lần kết nối đó.
+
+Bạn cũng có thể chọn **Thêm máy chủ SSH…** trong hộp thoại **Mở thư mục**.
 
 <Frame caption="Nhập đích SSH và để trống Lệnh máy chủ để cài đặt tự động.">
   <img
@@ -40,13 +33,24 @@ Môi trường chạy được quản lý được cài theo phiên bản trong 
 
 Với môi trường chạy được cài thủ công, đặt **Lệnh host** thành lệnh chạy `dream-host` trên máy từ xa.
 
+## Ghép nối máy chủ qua HTTPS
+
+Ghép nối giúp kết nối ứng dụng máy tính này với một máy chủ Dream mà không cần SSH, thông qua địa chỉ mà cài đặt [Truy cập từ xa](/docs/vi/remote-access) của máy chủ đó sử dụng.
+
+1. Trên máy chủ, mở **Cài đặt → Kết nối**, rồi chọn **Ghép nối thiết bị** trong **Truy cập từ xa**.
+2. Trên ứng dụng máy tính này, mở **Cài đặt → Kết nối** và chọn **Thêm máy chủ → Liên kết ghép nối**.
+3. Trên tab **Liên kết**, dán **Liên kết ghép nối**. Hoặc trên tab **Mã**, nhập **Địa chỉ máy chủ** và **Mã ghép nối** hiển thị trên máy chủ.
+4. Nhập tên nếu muốn và chọn **Ghép nối**.
+5. Nếu bạn dùng mã, hãy xác nhận máy tính này trong **Đang chờ ghép nối** ở cài đặt Truy cập từ xa của máy chủ.
+
+Liên kết ghép nối chỉ dùng được một lần và hết hạn sau 10 phút. Chứng chỉ HTTPS của máy chủ phải được máy tính này tin cậy.
+
 ## Mở dự án từ xa
 
-Nếu bạn chưa thêm máy chủ, **Mở trên máy chủ SSH** sẽ đưa bạn thẳng đến **Cài đặt → Máy chủ SSH**. Thêm máy chủ tại đó, rồi quay lại màn hình bắt đầu để mở thư mục của nó.
-
-1. Trên màn hình bắt đầu, chọn **Mở trên máy chủ SSH**. Dùng nút **+** của dự án để quay lại màn hình đó.
-2. Chọn **Máy chủ** và kết nối nếu cần. Duyệt thư mục bằng **Thư mục chính**, **Lên một thư mục** hoặc **Hiện thư mục ẩn**, hoặc nhập trực tiếp **Đường dẫn thư mục**.
-3. Nhấp **Mở**. Thư mục từ xa mở thành một thẻ dự án với các cuộc trò chuyện và công cụ riêng.
+1. Trên màn hình bắt đầu, chọn **Mở thư mục**. Dùng nút **+** của dự án để quay lại màn hình đó.
+2. Trong **Mở trên**, chọn máy chủ. Kết nối máy chủ nếu Dream yêu cầu.
+3. Nhập **Đường dẫn thư mục**; Dream gợi ý thư mục khi bạn nhập. Bạn cũng có thể duyệt danh sách bên dưới đường dẫn và dùng **Lên một thư mục**.
+4. Nhấp **Mở**. Thư mục từ xa mở thành một thẻ dự án với các cuộc trò chuyện và công cụ riêng.
 
 <Frame caption="Nhãn máy chủ xác định dự án từ xa; lệnh terminal chạy trên máy chủ đó.">
   <img
@@ -67,14 +71,29 @@ Nếu bạn chưa thêm máy chủ, **Mở trên máy chủ SSH** sẽ đưa b�
 
 Dự án từ xa đã đóng xuất hiện trong **Đã đóng gần đây** cùng máy chủ và đường dẫn. Mở lại sẽ kết nối với máy chủ đó. Đường dẫn từ xa thuộc về máy từ xa; hãy dùng trình soạn thảo kết nối với máy đó khi mở tệp bên ngoài Dream.
 
+## Quản lý tuyến
+
+Tuyến là một cách để truy cập máy chủ: một kết nối SSH hoặc một địa chỉ HTTPS đã ghép nối. Thêm nhiều tuyến cho cùng một máy chủ để tiếp tục làm việc khi một tuyến không khả dụng, chẳng hạn SSH trong mạng văn phòng và HTTPS ở nơi khác.
+
+1. Mở **Cài đặt → Kết nối** và nhấp **Chỉnh sửa** trên máy chủ.
+2. Xem lại các tuyến. Các tuyến được thử lần lượt cho đến khi một tuyến kết nối được, và **Tuyến đang dùng** đánh dấu tuyến đang được sử dụng.
+3. Dùng **Chuyển lên** và **Chuyển xuống** để thay đổi thứ tự.
+4. Chọn **Thêm tuyến SSH** hoặc **Thêm tuyến HTTPS** để thêm một cách khác truy cập cùng máy chủ, hoặc **Xóa tuyến** để xóa một tuyến. Phải còn lại ít nhất một tuyến.
+
+Khi tuyến ưu tiên không khả dụng, Dream chuyển sang tuyến tiếp theo và giữ ổn định các cổng đã chuyển tiếp. Thay đổi tuyến HTTPS cần một liên kết ghép nối mới.
+
 ## Kết nối lại hoặc xóa máy chủ
 
-Dream thử lại các kết nối bị gián đoạn. Thẻ dự án vẫn hiển thị khi máy chủ không khả dụng và việc gửi tin nhắn bị vô hiệu hóa cho đến khi kết nối lại. Nếu quá trình kết nối lại dừng, hãy đọc lỗi và dùng **Kết nối lại**, hoặc **Kết nối** trong **Cài đặt → Máy chủ SSH**.
+Mỗi máy chủ trong **Cài đặt → Kết nối** hiển thị trạng thái, chẳng hạn **Đã kết nối**, **Đang kết nối lại…** hoặc **Kết nối thất bại**. Dream thử lại các kết nối bị gián đoạn. Thẻ dự án vẫn hiển thị khi máy chủ không khả dụng và việc gửi tin nhắn bị vô hiệu hóa cho đến khi kết nối lại. Nếu quá trình kết nối lại dừng, hãy đọc lỗi hiển thị và dùng **Kết nối**.
 
-Dùng **Chỉnh sửa** để đổi tên, đích hoặc lệnh máy chủ. Thay đổi đích hoặc lệnh sẽ thiết lập lại kết nối đang hoạt động. **Ngắt kết nối** giữ nguyên các thẻ dự án. **Xóa** loại máy chủ và dự án của nó khỏi không gian Dream này mà không xóa tệp từ xa hoặc danh mục của máy chủ.
+Dùng **Chỉnh sửa** để đổi tên, đích hoặc lệnh của máy chủ. Thay đổi đích hoặc lệnh sẽ thiết lập lại kết nối đang hoạt động. **Ngắt kết nối** giữ nguyên các thẻ dự án.
+
+**Xóa** yêu cầu xác nhận, sau đó xóa máy chủ và các dự án của nó khỏi không gian làm việc Dream này và dừng các terminal của chúng. Tệp và cuộc trò chuyện trên máy chủ không bị xóa.
 
 ## Sự cố kết nối
 
-Trước tiên, kiểm tra cùng đích SSH trong terminal hệ thống. Sửa lỗi xác thực hoặc khóa máy chủ trước khi kết nối lại. Nếu môi trường chạy của máy chủ không khởi động, đọc lỗi trong **Cài đặt → Máy chủ SSH** và kiểm tra **Lệnh host** đã cấu hình hoặc môi trường chạy có sẵn cho nền tảng của bạn.
+Trước tiên, kiểm tra cùng đích SSH trong terminal hệ thống. Sửa lỗi xác thực hoặc khóa máy chủ trước khi kết nối lại. Nếu môi trường chạy của máy chủ không khởi động, đọc lỗi trong **Cài đặt → Kết nối** và kiểm tra **Lệnh host** đã cấu hình hoặc môi trường chạy có sẵn cho nền tảng của bạn.
+
+Với tuyến HTTPS, hãy kiểm tra máy chủ đang chạy và Truy cập từ xa ở trạng thái **Sẵn sàng**. Nếu tuyến hiển thị **Cần kiểm tra** trong hộp thoại **Chỉnh sửa** của máy chủ, thiết bị có thể đã bị thu hồi; hãy ghép nối lại bằng liên kết mới từ cài đặt Truy cập từ xa của máy chủ. Xem [Sự cố truy cập từ xa](/docs/vi/remote-access#sự-cố-truy-cập-từ-xa).
 
 Bản dựng phát triển không có môi trường chạy đã phát hành để tải xuống. Từ kho mã ứng dụng Dream, chạy `pnpm host:install-dev devbox`, rồi kết nối lại với **Lệnh host** để trống. Việc dựng trên máy từ xa cần Node.js 22 trở lên, pnpm hoặc Corepack, make, Python 3 và bộ công cụ C++ (g++ 10 trở lên). Trình cài đặt dừng daemon máy chủ phát triển hiện có trước khi thay môi trường chạy.

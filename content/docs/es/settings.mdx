@@ -3,7 +3,7 @@ title: "Referencia de ajustes"
 description: "Buscar modelos predeterminados, proveedores, prompts, habilidades, servidores MCP y controles de chat archivado."
 ---
 
-Abre **Configuración** con el icono de engranaje en la parte superior de Dream. El panel lateral tiene **General**, **Proveedores**, **Hosts SSH**, **Prompts**, **Skills**, **Servidores MCP**, **Atajos de teclado** y **Chats archivados**. Las preferencias generales se aplican al seleccionarlas. Los formularios para prompts, habilidades y definiciones de servidor tienen sus propios botones de Crear o Guardar.
+Abre **Configuración** con el icono de engranaje en la parte superior de Dream. La barra lateral tiene **General**, **Proveedores**, **Atajos de teclado**, **Prompts**, **Skills**, **Servidores MCP**, **Conexiones** y **Chats archivados**. Las preferencias generales se aplican al seleccionarlas. Los formularios de prompts, skills y definiciones de servidores tienen su propia acción de Crear o Guardar.
 
 ## General
 
@@ -82,9 +82,14 @@ Dream omite las comprobaciones de actualizaciones de CLI para proveedores desact
 
 Instale y inicie sesión a través de la CLI del proveedor fuera de Dream, luego actualice su tarjeta. Las configuraciones de Dream no reemplazan el flujo de autenticación de la CLI. Consulte [Conectar un proveedor](/docs/es/providers).
 
-## Hosts SSH
+## Conexiones
 
-Añade, edita, conecta, desconecta o elimina máquinas remotas en **Configuración → Hosts SSH**. Cada entrada muestra un destino SSH, nombre, comando del host opcional, estado de conexión y posibles errores. Consulta [Espacios de trabajo remotos por SSH](/docs/es/remote-hosts) para la configuración y recuperación.
+**Conexiones** tiene dos partes:
+
+| Sección | Lo que puedes hacer |
+| --- | --- |
+| Hosts remotos | Añade hosts SSH o vincula hosts por HTTPS, ordena las rutas de cada host y conecta, desconecta o quita hosts. Consulta [Hosts remotos](/docs/es/remote-hosts) |
+| Acceso remoto | Permite que teléfonos, navegadores y otras apps de escritorio de Dream usen los proyectos de este equipo, y vincula o revoca dispositivos. Consulta [Acceso remoto](/docs/es/remote-access) |
 
 ## Prompts, habilidades y servidores MCP
 

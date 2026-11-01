@@ -6,7 +6,7 @@ description: Run project commands, manage terminal sessions, and continue a Clau
 The integrated terminal runs commands in your project without leaving Dream. Click **Terminal** in
 the right toolbar to open it. A normal project terminal starts in the project folder.
 
-In an [SSH project](/docs/remote-hosts), terminal commands run on the remote host. Install the
+In a [remote project](/docs/remote-hosts), terminal commands run on the remote host. Install the
 commands and development tools you need on that machine.
 
 ## Run commands alongside a chat
@@ -35,6 +35,9 @@ in Dream's [Browser](/docs/browser). Opening Browser does not start a server aut
 4. Use a terminal's close control when you are finished with it.
 
 Use separate sessions for a long-running application and occasional commands such as tests.
+Removing a project or its host from Dream stops that project's terminals. When the
+[host runs as a service](/docs/host-service), terminals keep running after you close Dream and are
+restored when you reopen it.
 Closing a terminal session ends its process. Closing the panel preserves sessions you have used,
 but Dream cleans up automatically opened sessions that have received no user input.
 

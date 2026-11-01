@@ -1,30 +1,23 @@
 ---
-title: "Espacios de trabajo remotos por SSH"
-description: "Conecta un host SSH y trabaja con proyectos, agentes, archivos, Git y terminales remotos."
+title: "Hosts remotos"
+description: "Conecta otra máquina por SSH o HTTPS y trabaja con sus proyectos, agentes, archivos, Git y terminales."
 ---
 
-Dream permite abrir proyectos en máquinas remotas por SSH junto a tus proyectos locales. Los archivos, comandos de Git, procesos de agentes y terminales se ejecutan en el host del proyecto. La etiqueta del host indica dónde estás trabajando.
+Dream permite abrir proyectos en máquinas remotas junto a tus proyectos locales. Los archivos, los comandos de Git, los procesos de agentes y los terminales se ejecutan en el host del proyecto. La etiqueta del host del proyecto indica dónde estás trabajando.
 
-Los espacios de trabajo SSH están disponibles desde Dream v0.25.0. Esta versión incluye entornos de host administrados para Linux x64, Linux ARM64 y macOS con Apple silicon (ARM64). Estas son las plataformas del host remoto; la aplicación de escritorio Dream puede ejecutarse en Windows, macOS o Linux.
+Conecta un host por SSH, o vincúlate con un host de Dream por HTTPS cuando esa máquina tenga activado el [Acceso remoto](/docs/es/remote-access). Un host puede tener varias rutas, y Dream usa la primera que logra conectarse.
 
-A partir de v0.28.0, los ejecutables de hospedaje Linux admiten sistemas con glibc 2.31 o posteriores.
+Dream instala por SSH entornos de host administrados para Linux x64, Linux ARM64 y macOS con Apple silicon (ARM64). Estas son las plataformas del host remoto; la aplicación de escritorio Dream puede ejecutarse en Windows, macOS o Linux. Los entornos de host de Linux son compatibles con sistemas con glibc 2.31 o posterior.
 
-## Añadir y conectar un host
-
-<Frame caption="Gestiona los hosts SSH y comprueba su estado de conexión en Configuración.">
-  <img
-    src="/images/docs/ssh-hosts-panel.png"
-    alt="Configuración de hosts SSH con dos hosts guardados, estado de conexión y controles Conectar, Editar, Eliminar y Añadir host SSH."
-    width={1016}
-    height={208}
-    loading="lazy"
-  />
-</Frame>
+## Añadir un host SSH
 
 1. Comprueba que `ssh devbox` funciona en tu terminal del sistema, sustituyendo `devbox` por tu alias de configuración SSH o `user@host`. Dream usa el cliente SSH, la configuración y las claves de tu sistema.
-2. Abre **Configuración → Hosts SSH** y luego **Añadir host SSH**. Introduce el **Destino SSH** y, opcionalmente, un **Nombre**.
-3. Deja **Comando del host** vacío para instalar el entorno de ejecución automáticamente. Haz clic en **Guardar** y luego en **Conectar**.
-4. Responde en Dream a las solicitudes de clave del host, contraseña, frase de contraseña o autenticación de dos factores. Rechazar o cancelar una solicitud detiene ese intento de conexión.
+2. Abre **Configuración → Conexiones** y elige **Añadir host → Host SSH**.
+3. Introduce el **Destino SSH**, o elige un alias sugerido de tu `~/.ssh/config`, y un **Nombre** opcional.
+4. Deja **Comando del host** vacío para instalar el entorno de ejecución automáticamente y luego haz clic en **Guardar**. Dream se conecta al nuevo host.
+5. Responde en Dream a las solicitudes de clave del host, contraseña, frase de contraseña o autenticación de dos factores. Rechazar o cancelar una solicitud detiene ese intento de conexión.
+
+También puedes elegir **Añadir host SSH…** en el diálogo **Abrir carpeta**.
 
 <Frame caption="Introduce un destino SSH y deja Comando del host vacío para la instalación automática.">
   <img
@@ -40,13 +33,24 @@ Los entornos de ejecución administrados se instalan por versión en `~/.dream/h
 
 Si instalaste el entorno manualmente, establece **Comando del host** con el comando que ejecuta `dream-host` en la máquina remota.
 
+## Vincular un host por HTTPS
+
+La vinculación conecta esta app de escritorio con un host de Dream sin SSH, a través de la dirección que usa la configuración de [Acceso remoto](/docs/es/remote-access) de ese host.
+
+1. En la máquina host, abre **Configuración → Conexiones** y elige **Vincular un dispositivo** en **Acceso remoto**.
+2. En esta app de escritorio, abre **Configuración → Conexiones** y elige **Añadir host → Enlace de emparejamiento**.
+3. En la pestaña **Enlace**, pega el **Enlace de emparejamiento**. O bien, en la pestaña **Código**, introduce la **Dirección del host** y el **Código de vinculación** que se muestra en el host.
+4. Introduce un nombre opcional y elige **Vincular**.
+5. Si usaste un código, confirma esta app de escritorio en **Esperando vinculación** en la configuración de Acceso remoto del host.
+
+Un enlace de vinculación funciona una sola vez y caduca a los 10 minutos. Este equipo debe confiar en el certificado HTTPS del host.
+
 ## Abrir un proyecto remoto
 
-Si aún no has añadido un host, **Abrir en un host SSH** te lleva directamente a **Configuración → Hosts SSH**. Añade uno allí y vuelve a la pantalla de inicio para abrir su carpeta.
-
-1. En la pantalla de inicio, elige **Abrir en un host SSH**. Usa el botón **+** de los proyectos para volver a esa pantalla.
-2. Selecciona un **Host** y conéctate si es necesario. Explora sus carpetas con **Carpeta personal**, **Subir una carpeta** o **Mostrar ocultas**, o introduce una **Ruta de la carpeta** directamente.
-3. Haz clic en **Abrir**. La carpeta remota se abre como una pestaña de proyecto con sus propios chats y herramientas.
+1. En la pantalla de inicio, elige **Abrir carpeta**. Usa el botón **+** de los proyectos para volver a esa pantalla.
+2. En **Abrir en**, selecciona el host. Conéctalo si Dream lo solicita.
+3. Escribe una **Ruta de la carpeta**; Dream sugiere carpetas mientras escribes. También puedes explorar la lista debajo de la ruta y usar **Subir una carpeta**.
+4. Haz clic en **Abrir**. La carpeta remota se abre como una pestaña de proyecto con sus propios chats y herramientas.
 
 <Frame caption="La etiqueta del host identifica el proyecto remoto; los comandos del terminal se ejecutan en ese host.">
   <img
@@ -67,14 +71,29 @@ Si aún no has añadido un host, **Abrir en un host SSH** te lleva directamente 
 
 Los proyectos remotos cerrados aparecen en **Cerrados recientemente** con su host y ruta. Al volver a abrirlos, Dream se conecta a ese host. Las rutas remotas pertenecen a la máquina remota; usa un editor conectado a ella para abrir archivos fuera de Dream.
 
+## Administrar rutas
+
+Una ruta es una forma de acceder a un host: una conexión SSH o una dirección HTTPS vinculada. Añade varias rutas al mismo host para seguir trabajando cuando una no esté disponible, como SSH en la red de tu oficina y HTTPS en otros lugares.
+
+1. Abre **Configuración → Conexiones** y haz clic en **Editar** en el host.
+2. Revisa las rutas. Las rutas se prueban en orden hasta que una se conecta, y **Ruta activa** marca la que está en uso.
+3. Usa **Subir** y **Bajar** para cambiar el orden.
+4. Elige **Añadir ruta SSH** o **Añadir ruta HTTPS** para añadir otra forma de acceder al mismo host, o **Eliminar ruta** para borrar una. Debe quedar al menos una ruta.
+
+Cuando la ruta preferida no está disponible, Dream cambia a la siguiente ruta y mantiene estables los puertos reenviados. Cambiar una ruta HTTPS requiere un nuevo enlace de vinculación.
+
 ## Reconectar o eliminar un host
 
-Dream reintenta las conexiones interrumpidas. Las pestañas de proyecto siguen visibles cuando un host no está disponible y el envío de mensajes se desactiva hasta que se reconecta. Si la reconexión se detiene, lee el error y usa **Reconectar**, o **Conectar** en **Configuración → Hosts SSH**.
+Cada host en **Configuración → Conexiones** muestra su estado, como **Conectado**, **Reconectando…** o **La conexión falló**. Dream reintenta las conexiones interrumpidas. Las pestañas de proyecto siguen visibles mientras un host no está disponible, y el envío de mensajes se desactiva hasta que se reconecta. Si la reconexión se detiene, lee el error que se muestra y usa **Conectar**.
 
-Usa **Editar** para cambiar el nombre, destino o comando del host. Cambiar el destino o comando vuelve a establecer una conexión activa. **Desconectar** conserva sus pestañas de proyecto. **Quitar** quita el host y sus proyectos de este espacio de trabajo de Dream sin borrar los archivos remotos ni el catálogo del host.
+Usa **Editar** para cambiar el nombre, el destino o el comando de un host. Cambiar el destino o el comando vuelve a establecer una conexión activa. **Desconectar** conserva sus pestañas de proyecto.
+
+**Quitar** pide confirmación y luego quita el host y sus proyectos de este espacio de trabajo de Dream y detiene sus terminales. Los archivos y los chats del host no se eliminan.
 
 ## Problemas de conexión
 
-Primero comprueba el mismo destino SSH en tu terminal del sistema. Corrige los problemas de autenticación o clave del host antes de reconectar. Si el entorno del host no se inicia, lee el error en **Configuración → Hosts SSH** y comprueba el **Comando del host** configurado o la disponibilidad de un entorno para tu plataforma.
+Primero comprueba el mismo destino SSH en el terminal de tu sistema. Corrige los problemas de autenticación o de clave del host antes de volver a conectar. Si el entorno de ejecución del host no se inicia, lee el error en **Configuración → Conexiones** y comprueba el **Comando del host** configurado o la disponibilidad de un entorno de ejecución para tu plataforma.
+
+Para una ruta HTTPS, comprueba que el host esté en ejecución con el Acceso remoto en **Listo**. Si la ruta muestra **Requiere atención** en el diálogo **Editar** del host, es posible que se haya revocado el dispositivo; vuelve a vincularlo con un nuevo enlace desde la configuración de Acceso remoto del host. Consulta [Problemas con el acceso remoto](/docs/es/remote-access#problemas-con-el-acceso-remoto).
 
 Las compilaciones de desarrollo no tienen un entorno publicado para descargar. Desde el repositorio de la aplicación Dream, ejecuta `pnpm host:install-dev devbox` y vuelve a conectar con **Comando del host** vacío. La compilación remota requiere Node.js 22 o posterior, pnpm o Corepack, make, Python 3 y herramientas de C++ (g++ 10 o posterior). El instalador detiene el demonio del host de desarrollo existente antes de sustituir su entorno.

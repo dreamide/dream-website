@@ -5,7 +5,7 @@ description: "Giải quyết các mô hình và cuộc trò chuyện bị thiế
 
 Bắt đầu với lỗi được hiển thị trong cuộc trò chuyện hoặc công cụ bị ảnh hưởng. Kiểm tra dự án và nhà cung cấp đang được chọn trước khi thay đổi cài đặt, đặc biệt khi có nhiều cuộc trò chuyện đang mở.
 
-Với dự án từ xa, kiểm tra trạng thái kết nối trong **Cài đặt → Máy chủ SSH**. Xem [Sự cố kết nối SSH](/docs/vi/remote-hosts#sự-cố-kết-nối) để biết về xác thực, môi trường chạy và thiết lập bản dựng phát triển.
+Với dự án từ xa, kiểm tra trạng thái kết nối của máy chủ trong **Cài đặt → Kết nối**. Xem [Sự cố kết nối](/docs/vi/remote-hosts#sự-cố-kết-nối) để biết về xác thực, môi trường chạy và thiết lập bản dựng phát triển. Với điện thoại và các thiết bị đã ghép nối khác, xem [Sự cố truy cập từ xa](/docs/vi/remote-access#sự-cố-truy-cập-từ-xa).
 
 ## Không phát hiện được CLI nhà cung cấp
 
@@ -52,7 +52,11 @@ Phần điều khiển xuất hiện trên tin nhắn của trợ lý sau khi ph
 
 ## Tôi không thể gửi diff hoặc phản hồi phần tử
 
-Kiểm soát gửi bị vô hiệu hóa khi cuộc trò chuyện đích đang phản hồi và hiển thị **Cuộc trò chuyện đang bận**. Hãy chờ cho đến khi nó kết thúc hoặc bật **Cuộc trò chuyện mới** trong thanh bật lên. Nếu thanh bật lên báo rằng lựa chọn không còn khớp với sự thay đổi, hãy cập nhật lại Thay đổi và chọn lại các dòng. Xem [Gửi phản hồi đến cuộc trò chuyện](/docs/vi/feedback).
+Nút gửi bị vô hiệu hóa khi cuộc trò chuyện đích đang phản hồi và hiển thị **Cuộc trò chuyện đang bận**. Hãy chờ nó hoàn tất hoặc bật **Cuộc trò chuyện mới** trong popover. Nếu popover báo rằng vùng chọn không còn khớp với diff, hãy chờ Thay đổi cập nhật rồi chọn lại các dòng. Xem [Gửi phản hồi đến cuộc trò chuyện](/docs/vi/feedback).
+
+## Tin nhắn trong hàng đợi không chạy
+
+Mở cuộc trò chuyện và kiểm tra **Hàng đợi** của nó. Nếu hiển thị **Hàng đợi đã tạm dừng**, hãy chọn **Tiếp tục hàng đợi** hoặc gửi tin nhắn mới. Mục **Thất bại** hoặc **Bị gián đoạn** sẽ chờ bạn xử lý: hãy đọc phản hồi, rồi chọn **Thử lại** hoặc **Xóa**. Xem [Xếp hàng tin nhắn](/docs/vi/chats#xếp-hàng-tin-nhắn).
 
 ## Tiếp tục trong terminal bị thiếu
 

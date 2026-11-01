@@ -33,8 +33,10 @@ Dream lleva tus proyectos, agentes de codificación con inteligencia artificial,
 ## ¿Qué incluye Dream?
 
 - Un espacio de trabajo multifunción con pestañas de proyecto persistentes
-- [Espacios de trabajo remotos por SSH](/docs/es/remote-hosts) con agentes, archivos, Git y terminales remotos
-- Múltiples chats lado a lado y ramificación de chats
+- [Hosts remotos](/docs/es/remote-hosts) por SSH o HTTPS, con agentes, archivos, Git y terminales remotos
+- [Acceso remoto](/docs/es/remote-access) a los proyectos de este equipo desde un teléfono, un navegador u otra app de escritorio
+- Varios chats en paralelo, ramificación de chats y [colas de mensajes](/docs/es/chats#poner-mensajes-en-cola)
+- [Tareas delegadas](/docs/es/agent-modes#tareas-delegadas) que permiten a un agente pasar trabajo a otro proveedor
 - Prompts reutilizables entre proyectos y habilidades de agentes conscientes del proveedor
 - Puntos de control por respuesta para revisar y restaurar los archivos que cambió un agente
 - Soporte para Codex CLI, Claude Code CLI, OpenCode CLI, Cursor Agent CLI y Grok Build CLI
@@ -67,12 +69,15 @@ Dream lleva tus proyectos, agentes de codificación con inteligencia artificial,
 | Explorar, invocar o crear una habilidad de agente | [Habilidades del agente](/docs/es/skills) |
 | Conectar herramientas adicionales a un agente | [Servidores MCP](/docs/es/mcp-servers) |
 | Proporcione archivos o una captura de pantalla | [Proporcionar contexto](/docs/es/providing-context) |
+| Encadenar varias tareas en un chat | [Poner mensajes en cola](/docs/es/chats#poner-mensajes-en-cola) |
+| Trabajar en proyectos de otra máquina | [Hosts remotos](/docs/es/remote-hosts) |
+| Usar Dream desde un teléfono u otro dispositivo | [Acceso remoto](/docs/es/remote-access) |
 | Trabaja en un checkout independiente, luego intégralo de nuevo | [Árboles de trabajo de Git](/docs/es/worktrees) |
 | Revisar y publicar cambios de código | [Flujos de Git](/docs/es/git-workflows) |
 | Lee los comentarios de revisión y fusiona un pedido de cambios de GitHub | [Revisión de solicitudes de incorporación](/docs/es/pull-requests) |
 
 ## Entender el entorno de trabajo
 
-Un **proyecto** es una carpeta de tu equipo o de un host SSH con sus propios chats y herramientas. Un **chat** es una conversación con su propio modelo y configuración. Varios chats de un proyecto comparten sus archivos; un **árbol de trabajo** proporciona una copia de trabajo de Git independiente para una tarea.
+Un **proyecto** es una carpeta de tu equipo o de un host remoto con sus propios chats y herramientas. Un **chat** es una conversación con su propio modelo y configuración. Varios chats de un proyecto comparten sus archivos; un **árbol de trabajo** proporciona a una tarea una copia de trabajo de Git independiente.
 
 Use [Permisos del agente](/docs/es/agent-modes) para elegir cómo funciona un agente, y [Contexto y uso](/docs/es/context-and-usage) para comprender la información que se encuentra debajo del compositor. La [referencia de configuraciones](/docs/es/settings) lista las preferencias generales del aplicativo. Si algo está faltando o no se ejecuta, comienza con [Solución de problemas](/docs/es/troubleshooting).

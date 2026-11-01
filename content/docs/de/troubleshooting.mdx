@@ -5,7 +5,7 @@ description: "Beheben Sie fehlende Modelle und Chats, Probleme mit Terminal und 
 
 Beginnen Sie mit dem Fehler, der in dem betroffenen Chat oder Werkzeug angezeigt wird. Überprüfen Sie vor der Änderung der Einstellungen, welches Projekt und welcher Anbieter ausgewählt ist, insbesondere wenn mehrere Chats offen sind.
 
-Prüfe bei entfernten Projekten den Verbindungsstatus unter **Einstellungen → SSH-Hosts**. Unter [SSH-Verbindungsprobleme](/docs/de/remote-hosts#verbindungsprobleme) findest du Hinweise zu Authentifizierung, Laufzeitumgebung und Entwicklungsbuilds.
+Prüfen Sie bei Remote-Projekten den Verbindungsstatus des Hosts unter **Einstellungen → Verbindungen**. Unter [Verbindungsprobleme](/docs/de/remote-hosts#verbindungsprobleme) finden Sie Hinweise zu Authentifizierung, Laufzeitumgebung und Entwicklungsbuilds. Für Smartphones und andere gekoppelte Geräte siehe [Probleme mit dem Fernzugriff](/docs/de/remote-access#probleme-mit-dem-fernzugriff).
 
 ## Ein Provider-CLI wird nicht erkannt
 
@@ -52,7 +52,11 @@ Das Kontrollkästchen erscheint nach Beendigung der Antwort in den Nachrichten d
 
 ## Ich kann keinen Diff oder Element-Feedback senden
 
-Die Sendekontrolle ist deaktiviert, während der Zielchat antwortet und zeigt **Chat ist beschäftigt**. Warten Sie, bis er beendet ist, oder aktivieren Sie im Popover **Neuer Chat**. Wenn der Popover berichtet, dass die Auswahl nicht mehr mit der Differenz übereinstimmt, aktualisieren Sie die Änderungen und wählen Sie die Zeilen erneut. Siehe [Feedback an einen Chat senden](/docs/de/feedback).
+Die Senden-Schaltfläche ist deaktiviert, während der Zielchat antwortet, und zeigt **Chat ist beschäftigt**. Warten Sie, bis er fertig ist, oder aktivieren Sie im Popover **Neuer Chat**. Wenn das Popover meldet, dass die Auswahl nicht mehr zum Diff passt, warten Sie, bis die Änderungen aktualisiert sind, und wählen Sie die Zeilen erneut aus. Siehe [Feedback an einen Chat senden](/docs/de/feedback).
+
+## Eine eingereihte Nachricht wird nicht ausgeführt
+
+Öffnen Sie den Chat und prüfen Sie seine **Warteschlange**. Wenn sie **Warteschlange pausiert** anzeigt, wählen Sie **Fortsetzen** oder senden Sie eine neue Nachricht. Ein Eintrag mit **Fehlgeschlagen** oder **Unterbrochen** wartet auf Sie: Lesen Sie die Antwort und wählen Sie dann **Wiederholen** oder **Entfernen**. Siehe [Nachrichten einreihen](/docs/de/chats#nachrichten-einreihen).
 
 ## Fortsetzen im Terminal ist fehlend
 

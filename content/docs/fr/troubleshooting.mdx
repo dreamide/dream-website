@@ -5,7 +5,7 @@ description: "Résoudre les modèles manquants et les conversations, les problè
 
 Commencez par l'erreur affichée dans le chat ou l'outil affecté. Vérifiez quel projet et quel fournisseur sont sélectionnés avant de modifier les paramètres, surtout lorsque plusieurs chats sont ouverts.
 
-Pour les projets distants, vérifiez l'état de connexion de l'hôte dans **Paramètres → Hôtes SSH**. Consultez [Problèmes de connexion SSH](/docs/fr/remote-hosts#problèmes-de-connexion) pour l'authentification, l'environnement d'exécution et les versions de développement.
+Pour les projets distants, vérifiez l’état de connexion de l’hôte dans **Paramètres → Connexions**. Consultez [Problèmes de connexion](/docs/fr/remote-hosts#problèmes-de-connexion) pour l’authentification, l’environnement d’exécution et la configuration des versions de développement. Pour les téléphones et les autres appareils associés, consultez [Problèmes d’accès à distance](/docs/fr/remote-access#problèmes-daccès-à-distance).
 
 ## Aucun CLI fourni n'est détecté
 
@@ -52,7 +52,11 @@ L'interface s'affiche après la réponse dans les messages de l'assistant, et un
 
 ## Je ne peux pas envoyer de diff ou des retours sur l'élément
 
-Le contrôle d'envoi est désactivé lorsque le chat de destination répond et affiche **Chat occupé**. Attendez qu'il se termine ou activez **Nouveau chat** dans le pop-up. Si le pop-up indique que le choix ne correspond plus à la différence, actualisez les Modifications et sélectionnez à nouveau les lignes. Voir [Envoyer des retours à une conversation](/docs/fr/feedback).
+Le bouton d’envoi est désactivé pendant que le chat de destination répond et affiche **Chat occupé**. Attendez la fin de la réponse ou activez **Nouveau chat** dans la fenêtre contextuelle. Si la fenêtre contextuelle indique que la sélection ne correspond plus au diff, attendez la mise à jour des Modifications et sélectionnez à nouveau les lignes. Consultez [Envoyer des retours à un chat](/docs/fr/feedback).
+
+## Un message en file d’attente ne s’exécute pas
+
+Ouvrez le chat et vérifiez sa **File d’attente**. Si elle affiche **File en pause**, choisissez **Reprendre** ou envoyez un nouveau message. Un élément à l’état **Échec** ou **Interrompu** attend votre intervention : lisez la réponse, puis choisissez **Réessayer** ou **Supprimer**. Consultez [Mettre des messages en file d’attente](/docs/fr/chats#mettre-des-messages-en-file-dattente).
 
 ## Continue dans le terminal est manquant
 

@@ -1,0 +1,81 @@
+---
+title: "Host-Dienst"
+description: "Lassen Sie den Host von Dream ohne die Desktop-App laufen und verwalten Sie ihn über die Befehlszeile."
+---
+
+Der Host von Dream, `dream-host`, führt Agenten, Terminals und Git-Befehle für Ihre Projekte aus. Normalerweise startet die Desktop-App ihn und stoppt ihn, wenn Sie sie beenden. Installieren Sie den Host als Dienst, damit Chats und Terminals nach dem Schließen der App weiterlaufen – für den [Fernzugriff](/docs/de/remote-access) oder auf einem Rechner ohne Desktop.
+
+| System | Dienstverwaltung | Startet |
+| --- | --- | --- |
+| Linux | systemd-Benutzerdienst | Bei der Anmeldung oder beim Systemstart mit `loginctl enable-linger` |
+| macOS | LaunchAgent | Bei der Anmeldung |
+| Windows | Task Scheduler (Aufgabenplanung) | Bei der Anmeldung |
+
+Der Dienst startet den Host neu, wenn er ausfällt. Ein Computer im Ruhezustand ist nicht erreichbar.
+
+## Host-Laufzeitumgebung herunterladen
+
+Laden Sie das `dream-host`-Archiv für Ihr System aus den [Dream-Releases](https://github.com/dreamide/dream/releases) herunter. Vorgefertigte Laufzeitumgebungen werden für Linux x64, Linux ARM64 und macOS mit Apple silicon veröffentlicht. Jedes Archiv enthält Node.js, den Host, die Terminalunterstützung und den Browser-Client.
+
+Installieren Sie die Agenten-CLIs und melden Sie sich dort mit demselben Benutzer an, der den Dienst ausführen wird.
+
+## Den Host dieses Desktops als Dienst ausführen
+
+1. Beenden Sie Dream.
+2. Installieren Sie den Dienst mit dem Datenordner des Desktops, damit Ihre Projekte und Chats erhalten bleiben:
+
+   ```sh
+   dream-host service install --data-dir "<desktop data folder>"
+   ```
+
+3. Starten Sie Dream mit `DREAM_HOST_MODE=service` in der Umgebung. Zum Beispiel unter macOS:
+
+   ```sh
+   DREAM_HOST_MODE=service /Applications/Dream.app/Contents/MacOS/Dream
+   ```
+
+| System | Desktop-Datenordner |
+| --- | --- |
+| macOS | `~/Library/Application Support/dreamide` |
+| Windows | `%APPDATA%/dreamide` |
+| Linux | `~/.config/dreamide` |
+
+Der Desktop verbindet sich dann mit dem Dienst. Wenn Sie ihn schließen, laufen Antworten und Terminals weiter, und beim erneuten Öffnen werden die Terminals wiederhergestellt. Ein Datenordner kann jeweils nur von einem Host verwendet werden. Damit der Desktop wieder seinen eigenen Host startet, stoppen Sie zuerst den Dienst.
+
+Bei der Installation wird Ihr aktueller `PATH` gespeichert. Fügen Sie `--env NAME` für jede weitere Umgebungsvariable hinzu, die der Host oder die Agenten-CLIs benötigen; die Werte werden in privaten Dienstdateien gespeichert.
+
+## Headless-Host einrichten
+
+Installieren Sie auf einem Rechner ohne Desktop-App den Dienst ohne `--data-dir`. Seine Daten liegen in `~/.dream/host/data`. Wenn Sie mit `--home` einen anderen Host-Ordner verwenden, übergeben Sie dasselbe `--home` an jeden Befehl.
+
+Aktivieren Sie dann den Fernzugriff und koppeln Sie Geräte über die Befehlszeile:
+
+| Befehl | Was es tut |
+| --- | --- |
+| `dream-host remote on --tailscale` | Aktiviert den Fernzugriff über Tailscale |
+| `dream-host remote install-cloudflared` | Installiert oder aktualisiert den Cloudflare-Connector |
+| `dream-host remote on --cloudflare --origin https://dream.example.com --token-file <path>` | Aktiviert den Fernzugriff über einen Cloudflare Tunnel und liest das Token aus einer privaten Datei |
+| `dream-host remote on --cloudflare --external --origin https://dream.example.com` | Verwendet einen Cloudflare-Connector, den Sie selbst betreiben |
+| `dream-host remote status` / `dream-host remote check` | Zeigt die Einrichtung an oder prüft sie erneut |
+| `dream-host remote off` | Beendet die Bereitstellung für gekoppelte Geräte |
+| `dream-host pair` | Erstellt einen Kopplungslink, einen Code und einen QR-Code mit der Zugriffsstufe „Ansehen und arbeiten“. Verwenden Sie `--scopes view` für „Nur ansehen“ oder `--scopes view,operate,manage` für vollständigen Zugriff |
+| `dream-host claims` | Listet Geräte auf, die einen Kopplungscode eingegeben haben |
+| `dream-host confirm <claimId>` / `dream-host deny <claimId>` | Bestätigt oder lehnt ein Gerät ab |
+| `dream-host devices` | Listet gekoppelte Geräte auf |
+| `dream-host revoke <sessionId>` | Entzieht einem Gerät den Zugriff |
+
+Fügen Sie einem dieser Befehle `--json` hinzu, um eine maschinenlesbare Ausgabe zu erhalten.
+
+## Dienst verwalten
+
+| Befehl | Was es tut |
+| --- | --- |
+| `dream-host service status` | Zeigt, ob der Dienst läuft, sowie seine Version, seinen Port und sein Log |
+| `dream-host service start` / `stop` / `restart` | Steuert den laufenden Dienst |
+| `dream-host service uninstall` | Entfernt die Autostart-Registrierung und behält Ihre Daten |
+| `dream-host service update <version>` | Installiert eine veröffentlichte Version |
+| `dream-host service recover` | Schließt ein unterbrochenes Update ab oder macht es rückgängig |
+
+Updates laden das Release-Archiv herunter und prüfen seine Prüfsumme, bevor der Host gestoppt wird. Wenn die neue Version nicht startet, kehrt der Dienst zur vorherigen Laufzeitumgebung zurück. Ein Update unterbricht laufende Antworten und Terminals: Antworten werden als **Unterbrochen** markiert und ihre Warteschlangen pausiert. Prüfen Sie sie und wiederholen Sie sie dann oder [setzen Sie die Warteschlange fort](/docs/de/chats#nachrichten-einreihen).
+
+Wenn ein Update mittendrin abbricht, zum Beispiel weil der Rechner heruntergefahren wurde, führen Sie `dream-host service status` und dann `dream-host service recover` aus.

@@ -4,7 +4,8 @@ description: Review changes, work with branches, and use Git worktrees in Dream.
 ---
 
 Open **Git** in the right toolbar for the **Changes**, **History**, and **Pull request** tabs.
-The **Git actions** menu beneath the chat offers the next steps for the current branch.
+The **Git actions** menu beneath the chat offers the next steps for the current branch. Its button
+is highlighted when there are changes to commit or commits to push.
 
 ## Before you start
 
@@ -13,20 +14,24 @@ and credentials that can access it. Pull-request creation uses GitHub CLI, which
 and authenticated for the destination repository.
 
 You can type commit messages and PR text yourself. To generate them, enable a provider model and
-choose **Settings → General → Models → Text generation model**.
+choose **Settings → General → Models → Text generation model**. With **Auto generate message** on,
+Dream drafts a new commit message when the last running agent reply in the project finishes.
 
 ## Review changes
 
 1. Open **Git → Changes** to inspect modified, added, and deleted files.
 2. Expand a file to review its diff.
-3. Choose **Unified diff** or **Split diff** in the header, and enable word wrap in **Changes actions** if useful.
-4. Use **Changes actions → Refresh** if work done outside Dream is not yet reflected.
+3. Choose **Unified diff** or **Split diff** in the header. **Word wrap** is on by default; use its
+   toggle in the header to show long lines without wrapping.
+
+Changes and the file tree update after terminal commands finish and when you return to the Dream
+window, so work done outside Dream appears without a manual refresh.
 
 For very large diffs, Dream may show **Diff too large to render**. Use **Render anyway** only when
 you want to load that larger view, or inspect the file in your editor or terminal.
 
-Use a file's **Revert file changes** action to discard unwanted working changes. **Revert all
-changes** applies more broadly; review its scope before confirming. Reverting code is separate from
+Use a file's **Revert file changes** action to discard unwanted working changes. **Changes actions →
+Revert all changes** applies more broadly; review its scope before confirming. Reverting code is separate from
 archiving the chat that produced it. To undo only what a particular reply changed, use that
 reply's [checkpoint](/docs/checkpoints).
 
@@ -47,9 +52,10 @@ To ask an agent about specific lines, drag across the line numbers in a diff or 
 </Frame>
 
 1. Open **Git → Changes**, or choose **Commit** from the footer's **Git actions** menu.
-2. Review the file diffs below the commit composer.
+2. Review the file diffs below the commit composer. The composer shows how many files the commit
+   includes.
 3. Check **Include unstaged**. It is enabled by default and includes unstaged changes in the commit.
-4. Review **Auto generate message**, which is on by default. To write your own message, turn it off and enter the text; turning it off clears the generated message.
+4. Review **Auto generate message**, which is on by default. To write your own message, turn it off and enter it under **Commit message**; turning it off clears the generated message.
 5. Choose **Commit**, or **Commit & push** if you are ready to publish the commit to the remote.
 
 To commit only a selected subset, stage those files using Git in a terminal or external editor and
@@ -75,13 +81,26 @@ those separately before continuing with this action.
   />
 </Frame>
 
-Use **Publish branch** for a branch without an upstream, or **Push** for outgoing commits.
-These footer actions push immediately. Check the branch, remote, and commits in **History** first;
-the footer shows ahead and behind counts when an upstream exists.
+1. Open **Git actions** beneath the chat. **Push** shows how many commits are ahead of the upstream.
+   A branch without an upstream offers **Publish branch** instead.
+2. In **Push changes**, check the **Branch**, the **Destination**, and the commits that will be pushed,
+   including how many commits the branch is ahead and behind.
+3. Choose **Push**.
 
-If pushing fails, inspect the error and confirm your remote access. A successful local commit
+If pushing fails, inspect the error and confirm your access to the Git remote. A successful local commit
 remains committed even if a following push fails; check the branch state before repeating a
 combined action.
+
+## Fetch and pull
+
+Use **Git actions → Fetch** to download new commits and branches from the remote without changing
+your files. Use **Git actions → Pull** to bring the upstream branch's commits into your current
+branch; the menu shows how many commits are behind. Dream reports how many commits it pulled, or
+that the branch is already up to date.
+
+Pulling changes the files used by every chat in the project. Let running replies finish and commit
+or set aside your work first. **Git actions → Open repository** opens the remote repository in your
+browser.
 
 ## Create a pull request
 

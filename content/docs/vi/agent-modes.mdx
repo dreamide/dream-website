@@ -1,6 +1,6 @@
 ---
 title: "Quyền của tác nhân"
-description: "Chọn Ask, Chấp nhận chỉnh sửa hoặc Toàn quyền truy cập và trả lời các yêu cầu của agent."
+description: "Chọn Hỏi, Chấp nhận chỉnh sửa hoặc Toàn quyền truy cập, trả lời các yêu cầu của agent và giao tác vụ cho agent khác."
 ---
 
 Mỗi cuộc trò chuyện đều có một kiểm soát **Quyền** nằm dưới hộp tin nhắn của nó. Các cuộc trò chuyện mới thừa kế **Cài đặt → Chung → Mô hình → Quyền mặc định**, bắt đầu với **Toàn quyền truy cập**. Việc thay đổi quyền mặc định không ảnh hưởng đến các cuộc trò chuyện đã tồn tại.
@@ -40,3 +40,17 @@ Một agent có thể yêu cầu bạn làm rõ yêu cầu, chọn một lựa c
 Nếu yêu cầu đòi hỏi thay đổi nhiệm vụ, hãy đưa chỉ dẫn đã sửa cho tác nhân trong cuộc trò chuyện đó. Dùng nút dừng để ngắt phản hồi khi cần. Việc dừng không hoàn tác các chỉnh sửa hoặc lệnh đã hoàn tất; hãy kiểm tra [Thay đổi](/docs/vi/git-workflows) sau đó, hoặc dùng [điểm kiểm tra](/docs/vi/checkpoints) của phản hồi để khôi phục các tệp mà nó đã thay đổi.
 
 Đối với các nhiệm vụ song song cần tệp riêng biệt, hãy sử dụng [worktrees](/docs/vi/worktrees). Cấu hình quyền không cho hai cuộc trò chuyện trong cùng một thư mục có kiểm tra độc lập.
+
+## Tác vụ được giao
+
+Agent có thể giao một phần tác vụ cho một nhà cung cấp agent khác trong cùng dự án. Ví dụ, một cuộc trò chuyện Claude Code có thể nhờ Codex xem xét một thay đổi, rồi đọc kết quả ở lượt sau. Hãy yêu cầu điều này trong tin nhắn của bạn, chẳng hạn “Hãy để một agent khác viết test cho module này rồi báo lại.”
+
+| Quy tắc | Chi tiết |
+| --- | --- |
+| Nhà cung cấp có thể giao tác vụ | Codex, Claude Code, OpenCode và Grok Build. Cursor Agent có thể nhận tác vụ được giao nhưng không thể bắt đầu chúng |
+| Nhà cung cấp khả dụng | CLI của nhà cung cấp kia phải được cài đặt và đăng nhập trên máy chủ của dự án |
+| Quyền | Tác vụ được giao không thể có nhiều quyền truy cập hơn cuộc trò chuyện đã bắt đầu nó |
+| Tệp | Các tác vụ được giao làm việc trên cùng tệp của dự án; hãy giao cho mỗi tác vụ một phần công việc riêng để tránh xung đột |
+| Dừng | Dừng cuộc trò chuyện cũng sẽ dừng các tác vụ mà nó đã giao |
+
+Tác vụ được giao chạy trên máy chủ và giữ lại kết quả, nên agent có thể kiểm tra chúng ở lượt sau hoặc sau khi Dream khởi động lại. Mở chi tiết công cụ trong phản hồi để xem agent đã bắt đầu những tác vụ nào.

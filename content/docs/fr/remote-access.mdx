@@ -1,0 +1,84 @@
+---
+title: "Accès à distance"
+description: "Utilisez les projets de cet ordinateur depuis un téléphone, un navigateur ou une autre application de bureau Dream."
+---
+
+L’accès à distance permet à d’autres appareils de travailler avec les projets de cet ordinateur. Un téléphone ou un autre ordinateur ouvre Dream dans son navigateur, et une autre application de bureau Dream peut ajouter cet ordinateur comme [hôte distant](/docs/fr/remote-hosts#associer-un-hôte-via-https). Chaque appareil doit d’abord être associé, et vous pouvez révoquer son accès à tout moment.
+
+Les agents, les terminaux et les commandes Git s’exécutent toujours sur cet ordinateur. Les appareils associés ne peuvent le joindre que lorsque l’hôte de Dream y est en cours d’exécution. Pour garder l’hôte actif après la fermeture de Dream, installez-le comme [service](/docs/fr/host-service).
+
+## Avant de commencer
+
+Choisissez comment les appareils joindront cet ordinateur :
+
+| Connexion | Ce qu’il vous faut |
+| --- | --- |
+| Tailscale | Tailscale installé et connecté sur cet ordinateur et sur chaque appareil, avec MagicDNS et les certificats HTTPS activés pour votre tailnet |
+| Cloudflare Tunnel | Un Cloudflare Tunnel persistant et un nom d’hôte dans votre compte Cloudflare, par exemple `dream.example.com` |
+
+Pour Cloudflare Tunnel, créez un tunnel dédié géré à distance et copiez uniquement son jeton de connecteur. Dirigez son nom d’hôte vers `http://127.0.0.1` sur le **Port local** indiqué par Dream, et désactivez le cache pour `/api/*`. Les Quick Tunnels ne sont pas pris en charge, et le nom d’hôte ne peut pas exiger de connexion interactive à Cloudflare Access.
+
+## Activer l’accès à distance
+
+1. Ouvrez **Paramètres → Connexions** et repérez **Accès à distance**.
+2. Choisissez **Configurer**.
+3. Sous **Atteindre cet ordinateur via**, choisissez **Tailscale** ou **Cloudflare Tunnel**.
+4. Pour Cloudflare Tunnel, saisissez l’**Adresse publique** et collez le **Jeton du tunnel**. Si le connecteur affiche **Non installé**, choisissez **Installer cloudflared**.
+5. Choisissez **Activer**.
+
+Dream vérifie la connexion avant d’afficher **Prêt**. S’il affiche **Pas prêt**, lisez le message en dessous, corrigez la configuration et utilisez **Vérifier à nouveau**. Certains messages incluent **Ouvrir la page de configuration**.
+
+Utilisez **Modifier** pour changer de connexion ou remplacer le jeton du tunnel. Laissez le jeton vide pour conserver celui qui est enregistré. L’interrupteur **Autoriser les appareils associés** désactive et réactive l’accès à distance sans perdre la configuration ni les appareils associés.
+
+### Options avancées
+
+| Option | Ce que cela fait |
+| --- | --- |
+| Port HTTPS | Le port sur lequel Tailscale sert Dream. Changez-le si Tailscale sert déjà autre chose sur ce port |
+| Port local | Le port de cet ordinateur qui reçoit les connexions distantes. Laissez-le vide pour un choix automatique |
+| J’exécute cloudflared moi-même | Utilise un connecteur Cloudflare que vous installez et exécutez séparément. Dream ne le démarre pas, ne l’arrête pas et ne le supprime pas |
+
+## Associer un appareil
+
+1. Lorsque l’accès à distance est **Prêt**, choisissez **Associer un appareil**.
+2. Choisissez un niveau d’**Accès** pour l’appareil.
+3. Choisissez **Créer une association**.
+4. Sur l’appareil, scannez le QR code ou ouvrez le lien. Vous pouvez aussi utiliser **Copier le lien** pour l’envoyer.
+5. Choisissez **Terminé**.
+
+| Accès | Ce que l’appareil peut faire |
+| --- | --- |
+| Consultation seule | Lire les projets, les chats et les terminaux |
+| Consulter et travailler | Exécuter aussi des agents, des terminaux et Git en votre nom |
+| Complet | Associer et retirer aussi des appareils |
+
+Le lien ne fonctionne qu’une fois et expire au bout de 10 minutes. Pour associer un appareil sans le lien, ouvrez l’adresse de l’hôte sur l’appareil, saisissez le code d’association affiché à côté du QR code et donnez un nom à l’appareil. L’appareil attend ensuite que vous choisissiez **Confirmer** sous **En attente d’association** sur cet ordinateur. Choisissez **Refuser** pour tout appareil que vous ne reconnaissez pas.
+
+Pour associer une autre application de bureau Dream, collez le lien dans sa boîte de dialogue **Ajouter un hôte → Lien d’appairage**. Consultez [Associer un hôte via HTTPS](/docs/fr/remote-hosts#associer-un-hôte-via-https).
+
+## Utiliser Dream sur un appareil associé
+
+Un appareil associé ouvre Dream dans son navigateur. Sur un téléphone, Dream utilise une disposition compacte. L’appareil travaille avec les projets, les chats, les fichiers et les terminaux de cet ordinateur, dans les limites de son niveau d’accès.
+
+Si cet ordinateur est injoignable, une bannière le signale et l’appareil affiche ce qu’il a enregistré. Dream se reconnecte lorsque l’hôte est de nouveau disponible. Les ordinateurs en veille sont injoignables.
+
+Pour retirer l’accès de l’appareil depuis l’appareil lui-même, choisissez **Se déconnecter** sous **Cet appareil**. La déconnexion supprime aussi ce que ce navigateur a enregistré.
+
+## Gérer les appareils associés
+
+**Appareils associés** liste chaque appareil et sa dernière utilisation. Choisissez **Révoquer** pour retirer l’accès d’un appareil. Ses pages ouvertes s’arrêtent immédiatement ; le travail sur cet ordinateur continue. Un appareil inutilisé pendant 30 jours doit être associé à nouveau.
+
+## Problèmes d’accès à distance
+
+| Message ou symptôme | Que faire |
+| --- | --- |
+| Tailscale n’est pas installé ou pas lancé | Installez Tailscale, connectez-vous et connectez cet ordinateur, puis choisissez **Vérifier à nouveau** |
+| Cet ordinateur attend une approbation | Approuvez-le dans la console d’administration Tailscale |
+| Activez MagicDNS et les certificats HTTPS | Activez les deux pour votre tailnet dans la console d’administration Tailscale |
+| Tailscale n’autorise pas cet utilisateur à modifier ses réglages Serve | Sous Linux, exécutez une fois `sudo tailscale set --operator=$USER`, puis vérifiez à nouveau |
+| Le port est déjà utilisé par autre chose | Choisissez un autre **Port HTTPS** ou **Port local** sous **Avancé** |
+| Impossible de joindre cet ordinateur via Tailscale | Tailscale est peut-être encore en train d’obtenir son certificat ; vérifiez à nouveau dans une minute |
+| Impossible de joindre cet ordinateur via Cloudflare | Dans Cloudflare, définissez l’URL de service du nom d’hôte sur `http://127.0.0.1` avec le **Port local** indiqué dans Dream |
+| En attente de la connexion du connecteur Cloudflare | Vérifiez le jeton du tunnel et que les connexions sortantes depuis cet ordinateur sont autorisées |
+| Lien d’association expiré ou déjà utilisé | Choisissez à nouveau **Associer un appareil** et utilisez le nouveau lien |
+| Un appareil ne fonctionne plus | Vérifiez s’il a été révoqué ou s’il est resté inutilisé pendant 30 jours, puis associez-le à nouveau |

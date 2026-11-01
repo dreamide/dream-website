@@ -1,0 +1,84 @@
+---
+title: "Accesso remoto"
+description: "Usa i progetti di questo computer da un telefono, un browser o un’altra app desktop Dream."
+---
+
+L’accesso remoto consente ad altri dispositivi di lavorare con i progetti di questo computer. Un telefono o un altro computer apre Dream nel browser, e un’altra app desktop Dream può aggiungere questo computer come [host remoto](/docs/it/remote-hosts#associare-un-host-tramite-https). Ogni dispositivo deve prima essere associato e puoi revocarlo in qualsiasi momento.
+
+Agenti, terminali e comandi Git vengono comunque eseguiti su questo computer. I dispositivi associati possono raggiungerlo solo mentre l’host di Dream è in esecuzione qui. Per mantenere l’host attivo dopo la chiusura di Dream, installalo come [servizio](/docs/it/host-service).
+
+## Prima di iniziare
+
+Scegli come i dispositivi raggiungeranno questo computer:
+
+| Connessione | Cosa serve |
+| --- | --- |
+| Tailscale | Tailscale installato e con accesso effettuato su questo computer e su ogni dispositivo, con MagicDNS e i certificati HTTPS attivati per la tua tailnet |
+| Cloudflare Tunnel | Un Cloudflare Tunnel persistente e un nome host nel tuo account Cloudflare, ad esempio `dream.example.com` |
+
+Per Cloudflare Tunnel, crea un tunnel dedicato gestito da remoto e copia solo il suo token del connettore. Instrada il suo nome host a `http://127.0.0.1` sulla **Porta locale** mostrata da Dream e ignora la cache per `/api/*`. I Quick Tunnel non sono supportati e il nome host non può richiedere un accesso interattivo a Cloudflare Access.
+
+## Attivare l’accesso remoto
+
+1. Apri **Impostazioni → Connessioni** e trova **Accesso remoto**.
+2. Scegli **Configura**.
+3. In **Raggiungi questo computer tramite**, scegli **Tailscale** o **Cloudflare Tunnel**.
+4. Per Cloudflare Tunnel, inserisci l’**Indirizzo pubblico** e incolla il **Token del tunnel**. Se il connettore mostra **Non installato**, scegli **Installa cloudflared**.
+5. Scegli **Attiva**.
+
+Dream verifica la connessione prima di mostrare **Pronto**. Se mostra **Non pronto**, leggi il messaggio sottostante, correggi la configurazione e usa **Verifica di nuovo**. Alcuni messaggi includono **Apri la pagina di configurazione**.
+
+Usa **Modifica** per cambiare connessione o sostituire il token del tunnel. Lascia vuoto il token per mantenere quello salvato. L’interruttore **Consenti i dispositivi associati** disattiva e riattiva l’accesso remoto senza perdere la configurazione o i dispositivi associati.
+
+### Opzioni avanzate
+
+| Opzione | Cosa fa |
+| --- | --- |
+| Porta HTTPS | La porta su cui Tailscale serve Dream. Cambiala se Tailscale serve già qualcos’altro su quella porta |
+| Porta locale | La porta di questo computer che riceve le connessioni remote. Lasciala vuota per sceglierla automaticamente |
+| Eseguo cloudflared per conto mio | Usa un connettore Cloudflare che installi ed esegui separatamente. Dream non lo avvia, non lo arresta e non lo elimina |
+
+## Associare un dispositivo
+
+1. Con l’accesso remoto **Pronto**, scegli **Associa un dispositivo**.
+2. Scegli un livello di **Accesso** per il dispositivo.
+3. Scegli **Crea associazione**.
+4. Sul dispositivo, scansiona il codice QR o apri il link. Puoi anche usare **Copia link** per inviarlo.
+5. Scegli **Fatto**.
+
+| Accesso | Cosa può fare il dispositivo |
+| --- | --- |
+| Solo visualizzazione | Leggere progetti, chat e terminali |
+| Visualizza e lavora | Anche eseguire agenti, terminali e Git a tuo nome |
+| Completo | Anche associare e rimuovere dispositivi |
+
+Il link funziona una sola volta e scade dopo 10 minuti. Per associare senza il link, apri l’indirizzo dell’host sul dispositivo, inserisci il codice di associazione mostrato accanto al codice QR e assegna un nome al dispositivo. Il dispositivo attende quindi che tu scelga **Conferma** in **In attesa di associazione** su questo computer. Scegli **Rifiuta** per qualsiasi dispositivo che non riconosci.
+
+Per associare un’altra app desktop Dream, incolla il link nella sua finestra **Aggiungi host → Link di abbinamento**. Consulta [Associare un host tramite HTTPS](/docs/it/remote-hosts#associare-un-host-tramite-https).
+
+## Usare Dream su un dispositivo associato
+
+Un dispositivo associato apre Dream nel browser. Su un telefono, Dream usa un layout compatto. Il dispositivo lavora con i progetti, le chat, i file e i terminali di questo computer, entro il suo livello di accesso.
+
+Se questo computer non è raggiungibile, un banner lo segnala e il dispositivo mostra ciò che ha salvato. Dream si riconnette quando l’host torna disponibile. I computer in sospensione non sono raggiungibili.
+
+Per rimuovere l’accesso del dispositivo dal dispositivo stesso, scegli **Esci** in **Questo dispositivo**. L’uscita rimuove anche ciò che ha salvato quel browser.
+
+## Gestire i dispositivi associati
+
+**Dispositivi associati** elenca ogni dispositivo e quando è stato usato l’ultima volta. Scegli **Revoca** per rimuovere l’accesso di un dispositivo. Le sue pagine aperte si fermano subito; il lavoro su questo computer continua. Un dispositivo non usato per 30 giorni deve essere associato di nuovo.
+
+## Problemi di accesso remoto
+
+| Messaggio o sintomo | Cosa fare |
+| --- | --- |
+| Tailscale non è installato o non è in esecuzione | Installa Tailscale, accedi e connetti questo computer, poi scegli **Verifica di nuovo** |
+| Questo computer è in attesa di approvazione | Approvalo nella console di amministrazione di Tailscale |
+| Attiva MagicDNS e i certificati HTTPS | Attivali entrambi per la tua tailnet nella console di amministrazione di Tailscale |
+| Tailscale non consente a questo utente di modificare le impostazioni di Serve | Su Linux, esegui una volta `sudo tailscale set --operator=$USER`, poi verifica di nuovo |
+| La porta è già usata da qualcos’altro | Scegli un’altra **Porta HTTPS** o **Porta locale** in **Avanzate** |
+| Impossibile raggiungere questo computer tramite Tailscale | Tailscale potrebbe star ancora ottenendo il certificato; verifica di nuovo tra un minuto |
+| Impossibile raggiungere questo computer tramite Cloudflare | In Cloudflare, imposta l’URL del servizio del nome host su `http://127.0.0.1` con la **Porta locale** mostrata in Dream |
+| In attesa che il connettore Cloudflare si connetta | Controlla il token del tunnel e che le connessioni in uscita da questo computer siano consentite |
+| Link di associazione scaduto o già usato | Scegli di nuovo **Associa un dispositivo** e usa il nuovo link |
+| Un dispositivo non funziona più | Controlla se è stato revocato o non è stato usato per 30 giorni, poi associalo di nuovo |

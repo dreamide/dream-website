@@ -1,30 +1,23 @@
 ---
-title: "Espaces de travail distants SSH"
-description: "Connectez un hôte SSH pour travailler avec des projets, agents, fichiers, Git et terminaux distants."
+title: "Hôtes distants"
+description: "Connectez une autre machine via SSH ou HTTPS et travaillez avec ses projets, agents, fichiers, Git et terminaux."
 ---
 
-Dream permet d'ouvrir des projets sur des machines distantes via SSH aux côtés des projets locaux. Les fichiers, commandes Git, processus des agents et terminaux s'exécutent sur l'hôte du projet. Le libellé de l'hôte indique où vous travaillez.
+Dream peut ouvrir des projets sur des machines distantes aux côtés de vos projets locaux. Les fichiers, les commandes Git, les processus des agents et les terminaux s’exécutent sur l’hôte du projet. Le libellé de l’hôte du projet indique où vous travaillez.
 
-Les espaces de travail SSH sont disponibles depuis Dream v0.25.0. Cette version inclut des environnements d'hôte gérés pour Linux x64, Linux ARM64 et macOS sur Apple silicon (ARM64). Il s'agit des plateformes de l'hôte distant ; l'application de bureau Dream peut fonctionner sous Windows, macOS ou Linux.
+Connectez un hôte via SSH, ou associez-vous à un hôte Dream via HTTPS lorsque l’[Accès à distance](/docs/fr/remote-access) est activé sur cette machine. Un hôte peut avoir plusieurs routes, et Dream utilise la première qui se connecte.
 
-À partir de v0.28.0, les environnements d'hôte Linux prennent en charge les systèmes avec glibc 2.31 ou une version plus récente.
+Dream installe via SSH des environnements d’exécution d’hôte gérés pour Linux x64, Linux ARM64 et macOS Apple silicon (ARM64). Il s’agit des plateformes d’hôte distant ; l’application de bureau Dream peut fonctionner sous Windows, macOS ou Linux. Les environnements d’exécution d’hôte Linux prennent en charge les systèmes dotés de glibc 2.31 ou d’une version plus récente.
 
-## Ajouter et connecter un hôte
-
-<Frame caption="Gérez les hôtes SSH et vérifiez leur état de connexion dans les paramètres.">
-  <img
-    src="/images/docs/ssh-hosts-panel.png"
-    alt="Paramètres des hôtes SSH avec deux hôtes enregistrés, leur état de connexion et les commandes Connecter, Modifier, Supprimer et Ajouter un hôte SSH."
-    width={1016}
-    height={208}
-    loading="lazy"
-  />
-</Frame>
+## Ajouter un hôte SSH
 
 1. Vérifiez que `ssh devbox` fonctionne dans votre terminal système, en remplaçant `devbox` par votre alias de configuration SSH ou `user@host`. Dream utilise le client SSH, la configuration et les clés de votre système.
-2. Ouvrez **Paramètres → Hôtes SSH**, puis **Ajouter un hôte SSH**. Saisissez la **Cible SSH** et, éventuellement, un **Nom**.
-3. Laissez **Commande de l’hôte** vide pour installer automatiquement l'environnement d'exécution. Cliquez sur **Enregistrer**, puis sur **Se connecter**.
-4. Répondez dans Dream aux demandes de clé d'hôte, mot de passe, phrase secrète ou authentification à deux facteurs. Refuser ou annuler une demande arrête cette tentative de connexion.
+2. Ouvrez **Paramètres → Connexions** et choisissez **Ajouter un hôte → Hôte SSH**.
+3. Saisissez la **Cible SSH**, ou choisissez un alias suggéré à partir de votre `~/.ssh/config`, ainsi qu’un **Nom** facultatif.
+4. Laissez **Commande de l’hôte** vide pour une installation automatique de l’environnement d’exécution, puis cliquez sur **Enregistrer**. Dream se connecte au nouvel hôte.
+5. Répondez dans Dream aux demandes de clé d'hôte, mot de passe, phrase secrète ou authentification à deux facteurs. Refuser ou annuler une demande arrête cette tentative de connexion.
+
+Vous pouvez aussi choisir **Ajouter un hôte SSH…** dans la boîte de dialogue **Ouvrir le dossier**.
 
 <Frame caption="Saisissez une cible SSH et laissez Commande de l'hôte vide pour l'installation automatique.">
   <img
@@ -40,13 +33,24 @@ Les environnements gérés sont installés par version sous `~/.dream/host/versi
 
 Pour un environnement installé manuellement, définissez **Commande de l’hôte** sur la commande qui lance `dream-host` sur la machine distante.
 
+## Associer un hôte via HTTPS
+
+L’association connecte cette application de bureau à un hôte Dream sans SSH, via l’adresse utilisée par les paramètres d’[Accès à distance](/docs/fr/remote-access) de cet hôte.
+
+1. Sur la machine hôte, ouvrez **Paramètres → Connexions**, puis choisissez **Associer un appareil** sous **Accès à distance**.
+2. Sur cette application de bureau, ouvrez **Paramètres → Connexions** et choisissez **Ajouter un hôte → Lien d’appairage**.
+3. Dans l’onglet **Lien**, collez le **Lien d’appairage**. Ou, dans l’onglet **Code**, saisissez l’**Adresse de l’hôte** et le **Code d’association** affiché sur l’hôte.
+4. Saisissez un nom facultatif et choisissez **Associer**.
+5. Si vous avez utilisé un code, confirmez cette application de bureau sous **En attente d’association** dans les paramètres d’accès à distance de l’hôte.
+
+Un lien d’association ne fonctionne qu’une fois et expire au bout de 10 minutes. Le certificat HTTPS de l’hôte doit être approuvé par cet ordinateur.
+
 ## Ouvrir un projet distant
 
-Si vous n'avez pas encore ajouté d'hôte, **Ouvrir sur un hôte SSH** vous mène directement à **Paramètres → Hôtes SSH**. Ajoutez un hôte, puis revenez à l'écran de démarrage pour ouvrir son dossier.
-
-1. Sur l'écran de démarrage, choisissez **Ouvrir sur un hôte SSH**. Utilisez le bouton **+** des projets pour revenir à cet écran.
-2. Sélectionnez un **Hôte** et connectez-le si nécessaire. Parcourez ses dossiers avec **Dossier personnel**, **Dossier parent** ou **Afficher les dossiers masqués**, ou saisissez directement un **Chemin du dossier**.
-3. Cliquez sur **Ouvrir**. Le dossier distant s'ouvre dans un onglet de projet avec ses propres conversations et outils.
+1. Sur l’écran de démarrage, choisissez **Ouvrir un dossier**. Utilisez le bouton **+** des projets pour revenir à cet écran.
+2. Dans **Ouvrir sur**, sélectionnez l’hôte. Connectez-le si Dream le demande.
+3. Saisissez un **Chemin du dossier** ; Dream suggère des dossiers pendant la saisie. Vous pouvez aussi parcourir la liste sous le chemin et utiliser **Dossier parent**.
+4. Cliquez sur **Ouvrir**. Le dossier distant s'ouvre dans un onglet de projet avec ses propres conversations et outils.
 
 <Frame caption="Le libellé de l'hôte identifie le projet distant ; les commandes du terminal s'exécutent sur cet hôte.">
   <img
@@ -67,14 +71,29 @@ Si vous n'avez pas encore ajouté d'hôte, **Ouvrir sur un hôte SSH** vous mèn
 
 Les projets distants fermés apparaissent dans **Fermés récemment** avec leur hôte et leur chemin. Les rouvrir connecte cet hôte. Les chemins distants appartiennent à la machine distante ; utilisez un éditeur connecté à cette machine pour ouvrir des fichiers hors de Dream.
 
+## Gérer les routes
+
+Une route est un moyen de joindre un hôte : une connexion SSH ou une adresse HTTPS associée. Ajoutez plusieurs routes au même hôte pour continuer à travailler lorsque l’une d’elles est indisponible, par exemple SSH sur le réseau de votre bureau et HTTPS ailleurs.
+
+1. Ouvrez **Paramètres → Connexions** et cliquez sur **Modifier** pour l’hôte.
+2. Examinez les routes. Elles sont essayées dans l’ordre jusqu’à ce que l’une se connecte, et **Route active** signale celle qui est utilisée.
+3. Utilisez **Monter** et **Descendre** pour changer l’ordre.
+4. Choisissez **Ajouter une route SSH** ou **Ajouter une route HTTPS** pour ajouter un autre moyen de joindre le même hôte, ou **Supprimer la route** pour en supprimer une. Au moins une route doit subsister.
+
+Lorsque la route préférée est indisponible, Dream passe à la route suivante et conserve les mêmes ports redirigés. Modifier une route HTTPS nécessite un nouveau lien d’association.
+
 ## Reconnecter ou supprimer un hôte
 
-Dream retente les connexions interrompues. Les onglets des projets restent visibles lorsqu'un hôte est indisponible et l'envoi de messages est désactivé jusqu'à sa reconnexion. Si la reconnexion s'arrête, lisez l'erreur affichée et utilisez **Se reconnecter**, ou **Se connecter** dans **Paramètres → Hôtes SSH**.
+Chaque hôte dans **Paramètres → Connexions** affiche son état, par exemple **Connecté**, **Reconnexion…** ou **Échec de la connexion**. Dream retente les connexions interrompues. Les onglets des projets restent visibles lorsqu’un hôte est indisponible, et l’envoi de messages est désactivé jusqu’à sa reconnexion. Si la reconnexion s’arrête, lisez l’erreur affichée et utilisez **Se connecter**.
 
-Utilisez **Modifier** pour changer le nom, la cible ou la commande d'un hôte. Modifier la cible ou la commande rétablit une connexion active. **Se déconnecter** conserve les onglets des projets. **Supprimer** retire l'hôte et ses projets de cet espace Dream sans supprimer les fichiers distants ni le catalogue de l'hôte.
+Utilisez **Modifier** pour changer le nom, la cible ou la commande d’un hôte. Modifier la cible ou la commande reconnecte une connexion active. **Se déconnecter** conserve les onglets de ses projets.
+
+**Supprimer** demande une confirmation, puis retire l’hôte et ses projets de cet espace de travail Dream et arrête leurs terminaux. Les fichiers et les chats présents sur l’hôte ne sont pas supprimés.
 
 ## Problèmes de connexion
 
-Vérifiez d'abord la même cible SSH dans votre terminal système. Corrigez les problèmes d'authentification ou de clé d'hôte avant de vous reconnecter. Si l'environnement de l'hôte ne démarre pas, lisez l'erreur dans **Paramètres → Hôtes SSH** et vérifiez la **Commande de l’hôte** ou la disponibilité d'un environnement pour votre plateforme.
+Vérifiez d’abord la même cible SSH dans le terminal de votre système. Corrigez les problèmes d’authentification ou de clé d’hôte avant de vous reconnecter. Si l’environnement d’exécution de l’hôte ne démarre pas, lisez l’erreur dans **Paramètres → Connexions** et vérifiez la **Commande de l’hôte** configurée ou la disponibilité d’un environnement d’exécution pour votre plateforme.
+
+Pour une route HTTPS, vérifiez que l’hôte est en cours d’exécution avec l’accès à distance **Prêt**. Si la route affiche **Action requise** dans la boîte de dialogue **Modifier** de l’hôte, l’appareil a peut-être été révoqué ; associez-le à nouveau avec un nouveau lien depuis les paramètres d’accès à distance de l’hôte. Consultez [Problèmes d’accès à distance](/docs/fr/remote-access#problèmes-daccès-à-distance).
 
 Les versions de développement n'ont pas d'environnement publié à télécharger. Depuis le dépôt de l'application Dream, exécutez `pnpm host:install-dev devbox`, puis reconnectez-vous en laissant **Commande de l’hôte** vide. La compilation distante nécessite Node.js 22 ou ultérieur, pnpm ou Corepack, make, Python 3 et des outils C++ (g++ 10 ou ultérieur). L'installateur arrête le démon de l'hôte de développement existant avant de remplacer son environnement.

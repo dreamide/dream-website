@@ -3,24 +3,25 @@ title: "Git-Arbeitsabläufe"
 description: "Änderungen überprüfen, mit Branchen arbeiten und Git-Worktrees in Dream verwenden."
 ---
 
-Öffne das **Git**-Verzeichnis in der rechten Leiste für die Registerkarten **Änderungen**, **Verlauf** und **Pull Request**. Das Menü **Git-Aktionen** unter dem Chat bietet die nächsten Schritte für den aktuellen Branch.
+Öffnen Sie **Git** in der rechten Werkzeugleiste für die Tabs **Änderungen**, **Verlauf** und **Pull Request**. Das Menü **Git-Aktionen** unter dem Chat bietet die nächsten Schritte für den aktuellen Branch. Seine Schaltfläche wird hervorgehoben, wenn es Änderungen zum Committen oder Commits zum Pushen gibt.
 
 ## Bevor Sie beginnen
 
 Für Commits benötigt Ihr Repository eine konfigurierte Git-Autoridentität. Für Push-Vorgänge ist ein Remote-Repository und die entsprechenden Anmeldeinformationen erforderlich, die darauf zugreifen können. Die Erstellung von Pull-Requests verwendet den GitHub CLI, der installiert und für das Zielrepository authentifiziert sein muss.
 
-Sie können Commit-Beschreibungen und PR-Texte selbst eingeben. Um sie zu generieren, aktivieren Sie ein Provider-Modell und wählen **Einstellungen → Allgemein → Modelle → Textgenerierungsmodell**.
+Sie können Commit-Nachrichten und PR-Texte selbst eingeben. Um sie zu generieren, aktivieren Sie ein Anbietermodell und wählen Sie **Einstellungen → Allgemein → Modelle → Textgenerierungsmodell**. Wenn **Nachricht automatisch generieren** aktiviert ist, entwirft Dream eine neue Commit-Nachricht, sobald die letzte laufende Agentenantwort im Projekt abgeschlossen ist.
 
 ## Änderungen überprüfen
 
 1. Öffne **Git → Änderungen**, um geänderte, hinzugefügte und gelöschte Dateien zu inspizieren.
 2. Eine Datei ausklappen, um deren Diff zu überprüfen.
-3. Wählen Sie im Header **Vereinheitlichtes Diff** oder **Geteiltes Diff** aus, und aktivieren Sie den Wortumbruch in **Änderungen-Aktionen**, wenn nützlich.
-4. Verwenden Sie **Änderungen-Aktionen → Aktualisieren**, wenn Änderungen außerhalb von Dream noch nicht berücksichtigt wurden.
+3. Wählen Sie in der Kopfzeile **Vereinheitlichtes Diff** oder **Geteiltes Diff**. **Zeilenumbruch** ist standardmäßig aktiviert; schalten Sie ihn in der Kopfzeile aus, um lange Zeilen ohne Umbruch anzuzeigen.
+
+Änderungen und der Dateibaum werden aktualisiert, wenn Terminalbefehle abgeschlossen sind und wenn Sie zum Dream-Fenster zurückkehren, sodass außerhalb von Dream erledigte Arbeit ohne manuelles Aktualisieren erscheint.
 
 Bei sehr großen Diffs kann Dream **Diff zu groß zum Rendern** anzeigen. Verwenden Sie **Trotzdem rendern**, nur dann, wenn Sie die größere Ansicht laden oder die Datei in Ihrem Editor oder Terminal untersuchen möchten.
 
-Verwenden Sie die Aktion **Dateiänderungen rückgängig machen**, um ungewünschte Arbeitsänderungen zu verworfen. Die Aktion **Alle Änderungen verwerfen** gilt breiter; prüfen Sie ihren Umfang, bevor Sie bestätigen. Das Zurücksetzen von Code ist unabhängig von der Archivierung des Chats, der diese Codegenerierung hervorbrachte. Um nur das zu rückgängig zu machen, was eine bestimmte Antwort geändert hat, verwenden Sie den [Checkpoint](/docs/de/checkpoints) dieser Antwort.
+Verwenden Sie die Aktion **Dateiänderungen rückgängig machen** einer Datei, um unerwünschte Arbeitsänderungen zu verwerfen. **Änderungsaktionen → Alle Änderungen verwerfen** wirkt umfassender; prüfen Sie den Umfang, bevor Sie bestätigen. Das Zurücksetzen von Code ist unabhängig vom Archivieren des Chats, der ihn erzeugt hat. Um nur rückgängig zu machen, was eine bestimmte Antwort geändert hat, verwenden Sie den [Checkpoint](/docs/de/checkpoints) dieser Antwort.
 
 Um einem Agenten über bestimmte Zeilen Fragen zu stellen, ziehen Sie über die Zeilennummern in einer Diff oder klicken Sie auf das **+**-Symbol einer Zeile und geben dann einen Kommentar ein. Dream sendet diese Mitteilung mit der Dateipfad und den ausgewählten Zeilen. Siehe [Feedback an einen Chat senden](/docs/de/feedback).
 
@@ -37,9 +38,9 @@ Um einem Agenten über bestimmte Zeilen Fragen zu stellen, ziehen Sie über die 
 </Frame>
 
 1. Öffne **Git → Änderungen**, oder wähle **Festschreiben** aus dem Menü **Git-Aktionen** im Footer.
-2. Überprüfen Sie die Dateidifferenzen unter dem Commit Composer.
+2. Prüfen Sie die Datei-Diffs unter dem Commit-Composer. Der Composer zeigt, wie viele Dateien der Commit enthält.
 3. Prüfen Sie **Unstaged einschließen**. Sie ist standardmäßig aktiviert und beinhaltet ungekennzeichnete Änderungen in der Commit.
-4. Prüfen Sie **Nachricht automatisch generieren**, das standardmäßig aktiviert ist. Um eine eigene Nachricht zu schreiben, deaktivieren Sie die Option und geben Sie Ihren Text ein. Beim Deaktivieren wird die generierte Nachricht gelöscht.
+4. Prüfen Sie **Nachricht automatisch generieren**, das standardmäßig aktiviert ist. Um eine eigene Nachricht zu schreiben, deaktivieren Sie die Option und geben Sie sie unter **Commit-Nachricht** ein; beim Deaktivieren wird die generierte Nachricht gelöscht.
 5. Wählen Sie **Festschreiben**, oder **Festschreiben und pushen**, wenn Sie bereit sind, den Commit an das Remote-System zu veröffentlichen.
 
 Um nur einen ausgewählten Teil zu commiten, stufen Sie diese Dateien über Git in einer Terminal- oder externen Editor und schalten Sie **Unstaged einschließen** aus. Das Änderungsübersichts-Fenster bietet keine individuellen Staging-Steuerungen.
@@ -62,9 +63,17 @@ Dream lehnt Commits ab, wenn Änderungen im aktiven Projektverzeichnis vorbereit
   />
 </Frame>
 
-Verwenden Sie **Branch veröffentlichen** für einen Branch ohne Upstream oder **Pushen** für ausgehende Commits. Diese Aktionen in der Fußzeile führen den Push sofort aus. Prüfen Sie vorher den Branch, das Remote und die Commits unter **Verlauf**. Wenn ein Upstream vorhanden ist, zeigt die Fußzeile die Anzahl der Commits an, die der Branch voraus oder zurückliegt.
+1. Öffnen Sie **Git-Aktionen** unter dem Chat. **Pushen** zeigt, wie viele Commits dem Upstream voraus sind. Ein Branch ohne Upstream bietet stattdessen **Branch veröffentlichen** an.
+2. Prüfen Sie in **Änderungen pushen** den **Zweig**, das **Ziel** und die Commits, die gepusht werden, einschließlich der Anzahl der Commits, die der Branch voraus und zurück ist.
+3. Wählen Sie **Pushen**.
 
-Wenn das Push fehlschlägt, prüfen Sie den Fehler und bestätigen Sie Ihre Remote-Zugriffsberechtigungen. Ein erfolgreicher lokaler Commit bleibt verankert, selbst wenn ein anschließendes Push scheitert; überprüfen Sie den Branch-Zustand vor dem Wiederholen einer kombinierten Aktion.
+Wenn das Pushen fehlschlägt, prüfen Sie den Fehler und Ihren Zugriff auf das Git-Remote. Ein erfolgreicher lokaler Commit bleibt bestehen, auch wenn ein anschließender Push fehlschlägt; prüfen Sie den Zustand des Branches, bevor Sie eine kombinierte Aktion wiederholen.
+
+## Fetch und Pull
+
+Verwenden Sie **Git-Aktionen → Fetch**, um neue Commits und Branches vom Remote herunterzuladen, ohne Ihre Dateien zu ändern. Verwenden Sie **Git-Aktionen → Pull**, um die Commits des Upstream-Branches in Ihren aktuellen Branch zu übernehmen; das Menü zeigt, wie viele Commits fehlen. Dream meldet, wie viele Commits abgerufen wurden oder dass der Branch bereits aktuell ist.
+
+Ein Pull ändert die Dateien, die alle Chats im Projekt verwenden. Lassen Sie laufende Antworten zuerst abschließen und committen Sie Ihre Arbeit oder legen Sie sie beiseite. **Git-Aktionen → Repository öffnen** öffnet das Remote-Repository in Ihrem Browser.
 
 ## Pull Request erstellen
 

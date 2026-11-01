@@ -1,6 +1,6 @@
 ---
 title: "Permissões dos agentes"
-description: "Escolha Ask, Aceitar edições ou Acesso total e responda aos pedidos do agente."
+description: "Escolha Ask, Aceitar edições ou Acesso total, responda aos pedidos do agente e delegue tarefas."
 ---
 
 Cada chat possui um controle de **Permissões** abaixo de sua caixa de mensagem. Novos chats herdam as **Configurações → Geral → Modelos → Permissões padrão**, que começa com **Acesso total**. Mudar o padrão não altera os chats existentes.
@@ -40,3 +40,17 @@ Um agente pode te pedir para esclarecer um requisito, escolher uma opção ou ap
 Se a solicitação exigir uma mudança na tarefa, dê ao agente a instrução revisada nesse chat. Use o controle de parada para interromper uma resposta quando necessário. Parar não desfaz edições nem comandos já concluídos; verifique as [Alterações](/docs/pt/git-workflows) depois ou use o [checkpoint](/docs/pt/checkpoints) da resposta para restaurar os arquivos que ela alterou.
 
 Para tarefas paralelas que precisam de arquivos separados, use [árvore de trabalho](/docs/pt/worktrees). As configurações de permissão não permitem dois chats em mesmo diretório com checkouts independentes.
+
+## Tarefas delegadas
+
+Os agentes podem passar parte de uma tarefa para outro provedor de agentes no mesmo projeto. Por exemplo, um chat do Claude Code pode pedir ao Codex que revise uma alteração e depois ler o resultado em um turno posterior. Peça isso na sua mensagem, por exemplo: “Peça a outro agente para escrever os testes deste módulo e me reportar”.
+
+| Regra | Detalhe |
+| --- | --- |
+| Provedores que podem delegar | Codex, Claude Code, OpenCode e Grok Build. O Cursor Agent pode receber tarefas delegadas, mas não pode iniciá-las |
+| Provedores disponíveis | A CLI do outro provedor precisa estar instalada e conectada no host do projeto |
+| Permissões | Uma tarefa delegada não pode ter mais acesso do que o chat que a iniciou |
+| Arquivos | As tarefas delegadas trabalham nos mesmos arquivos do projeto; dê a cada uma delas uma parte separada do trabalho para evitar conflitos |
+| Parada | Parar o chat também para as tarefas que ele delegou |
+
+As tarefas delegadas são executadas no host e mantêm seus resultados, para que o agente possa consultá-las em um turno posterior ou depois que o Dream reiniciar. Abra os detalhes da ferramenta na resposta para ver quais tarefas o agente iniciou.

@@ -35,8 +35,10 @@ chats without switching tools.
 ## What Dream includes
 
 - A multi-project workspace with persistent project tabs
-- [SSH remote workspaces](/docs/remote-hosts) with remote agents, files, Git, and terminals
-- Multiple side-by-side chats and chat branching
+- [Remote hosts](/docs/remote-hosts) over SSH or HTTPS, with remote agents, files, Git, and terminals
+- [Remote access](/docs/remote-access) to this computer's projects from a phone, a browser, or another desktop
+- Multiple side-by-side chats, chat branching, and [message queues](/docs/chats#queue-messages)
+- [Delegated tasks](/docs/agent-modes#delegated-tasks) that let one agent hand work to another provider
 - Reusable prompts across projects and provider-aware agent skills
 - Per-reply checkpoints for reviewing and restoring the files an agent changed
 - Support for Codex CLI, Claude Code CLI, OpenCode CLI, Cursor Agent CLI, and Grok Build CLI
@@ -71,13 +73,16 @@ chats without switching tools.
 | Browse, invoke, or create an agent skill | [Agent skills](/docs/skills) |
 | Connect additional tools to an agent | [MCP servers](/docs/mcp-servers) |
 | Give an agent files or a screenshot | [Providing context](/docs/providing-context) |
+| Line up several tasks for one chat | [Queue messages](/docs/chats#queue-messages) |
+| Work on projects on another machine | [Remote hosts](/docs/remote-hosts) |
+| Use Dream from a phone or another device | [Remote access](/docs/remote-access) |
 | Work in an independent checkout, then merge it back | [Git worktrees](/docs/worktrees) |
 | Review and publish code changes | [Git workflows](/docs/git-workflows) |
 | Read review comments and merge a GitHub PR | [Reviewing pull requests](/docs/pull-requests) |
 
 ## Understand the workspace
 
-A **project** is a folder on your computer or an SSH host with its own chats and tools. A **chat** is
+A **project** is a folder on your computer or a remote host with its own chats and tools. A **chat** is
 a conversation with its own model and settings. Multiple chats in one project share its files; a
 **worktree** gives a task a separate Git checkout.
 

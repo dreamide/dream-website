@@ -1,6 +1,6 @@
 ---
 title: "Agentenberechtigungen"
-description: "Wählen Sie Ask, Änderungen akzeptieren oder Vollzugriff und reagieren auf Anfragen von Agenten."
+description: "Wählen Sie Nachfragen, Änderungen akzeptieren oder Vollzugriff, reagieren Sie auf Anfragen von Agenten und delegieren Sie Aufgaben."
 ---
 
 Jeder Chat verfügt über ein **Berechtigungen**-Feld unter seiner Nachrichtenbox. Neue Chats erben **Einstellungen → Allgemein → Modelle → Standardberechtigungen**, die standardmäßig **Vollzugriff** beginnen. Änderungen der Standardberechtigungen haben keine Auswirkung auf bestehende Chats.
@@ -40,3 +40,17 @@ Ein Agent kann Sie bitten, eine Anforderung zu klären, eine Option auszuwählen
 Wenn die Anfrage eine Änderung der Aufgabe erfordert, gib dem Agenten die angepasste Anweisung in diesem Chat. Unterbrich eine Antwort bei Bedarf mit der Stopp-Schaltfläche. Das Stoppen macht bereits ausgeführte Änderungen oder Befehle nicht rückgängig. Prüfe anschließend die [Änderungen](/docs/de/git-workflows) oder verwende den [Checkpoint](/docs/de/checkpoints) der Antwort, um die von ihr geänderten Dateien wiederherzustellen.
 
 Für parallelle Aufgaben, die separate Dateien benötigen, verwenden Sie [Worktrees](/docs/de/worktrees). Rechtschreibungs-Einstellungen geben zwei Chats in derselben Ordner keine unabhängigen Checkouts.
+
+## Delegierte Aufgaben
+
+Agenten können einen Teil einer Aufgabe an einen anderen Agentenanbieter im selben Projekt abgeben. Zum Beispiel kann ein Chat mit Claude Code Codex bitten, eine Änderung zu prüfen, und das Ergebnis in einem späteren Durchlauf lesen. Bitten Sie in Ihrer Nachricht darum, etwa: „Lass einen anderen Agenten die Tests für dieses Modul schreiben und berichte mir dann.“
+
+| Regel | Details |
+| --- | --- |
+| Anbieter, die delegieren können | Codex, Claude Code, OpenCode und Grok Build. Cursor Agent kann delegierte Aufgaben empfangen, aber keine starten |
+| Verfügbare Anbieter | Die CLI des anderen Anbieters muss auf dem Host des Projekts installiert und angemeldet sein |
+| Berechtigungen | Eine delegierte Aufgabe kann nicht mehr Zugriff haben als der Chat, der sie gestartet hat |
+| Dateien | Delegierte Aufgaben arbeiten mit denselben Projektdateien; geben Sie jeder einen eigenen Teil der Arbeit, um Konflikte zu vermeiden |
+| Stoppen | Wenn Sie den Chat stoppen, werden auch die von ihm delegierten Aufgaben gestoppt |
+
+Delegierte Aufgaben laufen auf dem Host und behalten ihre Ergebnisse, sodass der Agent sie in einem späteren Durchlauf oder nach einem Neustart von Dream prüfen kann. Öffnen Sie die Tool-Details in der Antwort, um zu sehen, welche Aufgaben der Agent gestartet hat.

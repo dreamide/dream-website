@@ -1,6 +1,6 @@
 ---
 title: "Autorisations des agents"
-description: "Choisissez Ask, Accepter les modifications ou Accès complet et répondez aux demandes de l'agent."
+description: "Choisissez Demander, Accepter les modifications ou Accès complet, répondez aux demandes de l’agent et déléguez des tâches."
 ---
 
 Chaque chat dispose d'un contrôle **Autorisations** sous sa boîte de message. Les nouveaux chats héritent de **Paramètres → Général → Modèles → Autorisations par défaut**, qui commence par **Accès complet**. Modifier les autorisations par défaut n'affecte pas les chats existants.
@@ -40,3 +40,17 @@ Un agent peut vous demander de préciser une exigence, de choisir une option ou 
 Si la demande nécessite de modifier la tâche, donnez les nouvelles instructions à l’agent dans cette conversation. Utilisez le bouton d’arrêt pour interrompre une réponse si nécessaire. L’arrêt n’annule pas les modifications ni les commandes déjà exécutées ; consultez ensuite les [Modifications](/docs/fr/git-workflows), ou utilisez le [checkpoint](/docs/fr/checkpoints) de la réponse pour restaurer les fichiers qu’elle a modifiés.
 
 Pour des tâches parallèles nécessitant des fichiers séparés, utilisez [arbre de travail](/docs/fr/worktrees). Les paramètres de permission ne permettent pas deux discussions dans le même dossier d'indépendants checkouts.
+
+## Tâches déléguées
+
+Les agents peuvent confier une partie d’une tâche à un autre fournisseur d’agents dans le même projet. Par exemple, un chat Claude Code peut demander à Codex de relire une modification, puis en lire le résultat lors d’un tour ultérieur. Demandez-le dans votre message, par exemple : « Demande à un autre agent d’écrire les tests de ce module et de me faire un compte rendu. »
+
+| Règle | Détail |
+| --- | --- |
+| Fournisseurs pouvant déléguer | Codex, Claude Code, OpenCode et Grok Build. Cursor Agent peut recevoir des tâches déléguées, mais ne peut pas en lancer |
+| Fournisseurs disponibles | La CLI de l’autre fournisseur doit être installée et connectée sur l’hôte du projet |
+| Autorisations | Une tâche déléguée ne peut pas avoir plus d’accès que le chat qui l’a lancée |
+| Fichiers | Les tâches déléguées travaillent sur les mêmes fichiers du projet ; confiez à chacune une partie distincte du travail pour éviter les conflits |
+| Arrêt | Arrêter le chat arrête aussi les tâches qu’il a déléguées |
+
+Les tâches déléguées s’exécutent sur l’hôte et conservent leurs résultats : l’agent peut donc les consulter lors d’un tour ultérieur ou après un redémarrage de Dream. Ouvrez les détails de l’outil dans la réponse pour voir quelles tâches l’agent a lancées.

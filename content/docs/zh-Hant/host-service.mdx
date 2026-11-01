@@ -1,0 +1,81 @@
+---
+title: "主機服務"
+description: "無需桌面應用程式即可讓 Dream 的主機持續執行，並透過命令列進行管理。"
+---
+
+Dream 的主機 `dream-host` 負責為你的專案執行代理、終端機和 Git 指令。通常由桌面應用程式啟動它，並在你結束時停止它。將主機安裝為服務後，應用程式關閉後聊天和終端機仍會繼續執行，適用於[遠端存取](/docs/zh-Hant/remote-access)或沒有桌面環境的機器。
+
+| 系統 | 服務管理員 | 啟動時機 |
+| --- | --- | --- |
+| Linux | systemd 使用者服務 | 登入時，或使用 `loginctl enable-linger` 後於開機時 |
+| macOS | LaunchAgent | 登入時 |
+| Windows | Task Scheduler（工作排程器） | 登入時 |
+
+如果主機發生故障，服務會將其重新啟動。處於睡眠狀態的電腦無法連線。
+
+## 取得主機執行環境
+
+從 [Dream 發佈頁面](https://github.com/dreamide/dream/releases)下載適用於你系統的 `dream-host` 封存檔。我們為 Linux x64、Linux ARM64 和 macOS Apple silicon 發佈了封裝好的執行環境。每個封存檔都包含 Node.js、主機、終端機支援和瀏覽器用戶端。
+
+以將要執行該服務的同一使用者身分安裝並登入代理 CLI。
+
+## 將此桌面的主機作為服務執行
+
+1. 結束 Dream。
+2. 使用桌面應用程式的資料資料夾安裝服務，以保留你的專案和聊天：
+
+   ```sh
+   dream-host service install --data-dir "<desktop data folder>"
+   ```
+
+3. 在環境中設定 `DREAM_HOST_MODE=service` 後啟動 Dream。例如，在 macOS 上：
+
+   ```sh
+   DREAM_HOST_MODE=service /Applications/Dream.app/Contents/MacOS/Dream
+   ```
+
+| 系統 | 桌面資料資料夾 |
+| --- | --- |
+| macOS | `~/Library/Application Support/dreamide` |
+| Windows | `%APPDATA%/dreamide` |
+| Linux | `~/.config/dreamide` |
+
+之後，桌面應用程式會連接到該服務。關閉桌面應用程式後，執行中的回覆和終端機會繼續執行；重新開啟後會還原終端機。一個資料資料夾同一時間只能由一個主機使用。若要改回由桌面應用程式啟動自己的主機，請先停止該服務。
+
+安裝時會記錄你目前的 `PATH`。對於主機或代理 CLI 需要的其他每個環境變數，請加上一個 `--env NAME`；變數值會儲存在私有的服務檔案中。
+
+## 設定無介面主機
+
+在沒有桌面應用程式的機器上，安裝服務時不要使用 `--data-dir`。其資料儲存在 `~/.dream/host/data` 中。如果你透過 `--home` 使用其他主機資料夾，請在每個指令中都傳入相同的 `--home`。
+
+然後透過命令列開啟遠端存取並配對裝置：
+
+| 指令 | 它能做什麼 |
+| --- | --- |
+| `dream-host remote on --tailscale` | 透過 Tailscale 開啟遠端存取 |
+| `dream-host remote install-cloudflared` | 安裝或更新 Cloudflare 連接器 |
+| `dream-host remote on --cloudflare --origin https://dream.example.com --token-file <path>` | 透過 Cloudflare Tunnel 開啟遠端存取，並從私有檔案中讀取權杖 |
+| `dream-host remote on --cloudflare --external --origin https://dream.example.com` | 使用你自行執行的 Cloudflare 連接器 |
+| `dream-host remote status` / `dream-host remote check` | 顯示目前設定，或重新檢查 |
+| `dream-host remote off` | 停止為已配對裝置提供服務 |
+| `dream-host pair` | 建立具有「檢視與工作」權限的配對連結、配對碼和 QR 碼。使用 `--scopes view` 僅授予檢視權限，或使用 `--scopes view,operate,manage` 授予完整存取權限 |
+| `dream-host claims` | 列出已輸入配對碼的裝置 |
+| `dream-host confirm <claimId>` / `dream-host deny <claimId>` | 確認或拒絕裝置 |
+| `dream-host devices` | 列出已配對裝置 |
+| `dream-host revoke <sessionId>` | 移除裝置的存取權限 |
+
+在以上任一指令後加上 `--json`，即可取得機器可讀的輸出。
+
+## 管理服務
+
+| 指令 | 它能做什麼 |
+| --- | --- |
+| `dream-host service status` | 顯示服務是否正在執行，以及其版本、連接埠和日誌 |
+| `dream-host service start` / `stop` / `restart` | 控制執行中的服務 |
+| `dream-host service uninstall` | 移除開機啟動登錄，並保留你的資料 |
+| `dream-host service update <version>` | 安裝已發佈的版本 |
+| `dream-host service recover` | 完成或回復中斷的更新 |
+
+更新時會先下載發佈封存檔並驗證其總和檢查碼，然後才停止主機。如果新版本無法啟動，服務會回復到先前的執行環境。更新會中斷執行中的回覆和終端機：回覆會標示為 **已中斷**，其佇列會暫停。檢查這些回覆後，再重試或[繼續佇列](/docs/zh-Hant/chats#訊息排隊)。
+
+如果更新中途停止（例如因為機器關機），請先執行 `dream-host service status`，再執行 `dream-host service recover`。

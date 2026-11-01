@@ -33,8 +33,10 @@ O Dream traz seus projetos, agentes de codificação com IA, arquivos, terminais
 ## O que o Dream inclui
 
 - Um espaço de trabalho multi-projeto com guias de projeto persistentes
-- [Espaços de trabalho remotos por SSH](/docs/pt/remote-hosts) com agentes, arquivos, Git e terminais remotos
-- Várias conversas ao lado um do outro e ramificações de conversa
+- [Hosts remotos](/docs/pt/remote-hosts) por SSH ou HTTPS, com agentes, arquivos, Git e terminais remotos
+- [Acesso remoto](/docs/pt/remote-access) aos projetos deste computador a partir de um celular, um navegador ou outro desktop
+- Vários chats lado a lado, ramificação de chats e [filas de mensagens](/docs/pt/chats#enfileirar-mensagens)
+- [Tarefas delegadas](/docs/pt/agent-modes#tarefas-delegadas) que permitem a um agente passar trabalho para outro provedor
 - Prompts reutilizáveis em projetos e habilidades de agentes conscientes de provedor
 - Pontos de verificação por resposta para revisão e restauração dos arquivos que o agente alterou
 - Suporte ao CLI do Codex, CLI do Claude Code, CLI do OpenCode, CLI do Agent do Cursor e CLI do Grok Build
@@ -67,12 +69,15 @@ O Dream traz seus projetos, agentes de codificação com IA, arquivos, terminais
 | Navegue, invoque ou crie uma habilidade de agente | [Skills dos agentes](/docs/pt/skills) |
 | Conecte ferramentas adicionais a um agente | [Servidores MCP](/docs/pt/mcp-servers) |
 | Dê um agente arquivos ou uma captura de tela | [Fornecendo contexto](/docs/pt/providing-context) |
+| Enfileirar várias tarefas em um chat | [Enfileirar mensagens](/docs/pt/chats#enfileirar-mensagens) |
+| Trabalhar em projetos de outra máquina | [Hosts remotos](/docs/pt/remote-hosts) |
+| Usar o Dream em um celular ou outro dispositivo | [Acesso remoto](/docs/pt/remote-access) |
 | Trabalhe em um checkout independente, depois faça a fusão de volta | [Worktrees do Git](/docs/pt/worktrees) |
 | Revise e publique alterações no código | [Fluxos de trabalho do Git](/docs/pt/git-workflows) |
 | Leia comentários de revisão e integre um pedido de alteração do GitHub | [Revisar pull requests](/docs/pt/pull-requests) |
 
 ## Entender o workspace
 
-Um **projeto** é uma pasta no seu computador ou em um host SSH com seus próprios chats e ferramentas. Um **chat** é uma conversa com seu próprio modelo e configurações. Vários chats de um projeto compartilham seus arquivos; um **árvore de trabalho** oferece uma cópia de trabalho Git separada para uma tarefa.
+Um **projeto** é uma pasta no seu computador ou em um host remoto com seus próprios chats e ferramentas. Um **chat** é uma conversa com seu próprio modelo e configurações. Vários chats de um projeto compartilham seus arquivos; uma **árvore de trabalho** oferece a uma tarefa uma cópia de trabalho Git separada.
 
 Use [Permissões dos agentes](/docs/pt/agent-modes) para escolher como um agente funciona, e [Contexto e uso](/docs/pt/context-and-usage) para entender as informações abaixo do composer. O [referencial de configurações](/docs/pt/settings) lista as preferências aplicáveis em todo o aplicativo. Se algo estiver faltando ou não funcionar, comece com [Solução de problemas](/docs/pt/troubleshooting).

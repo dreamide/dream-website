@@ -3,24 +3,25 @@ title: "Fluxos de trabalho do Git"
 description: "Revise alterações, trabalhe com ramificações e use Worktrees do Git no Dream."
 ---
 
-Abra o **Git** na barra lateral direita para as guias **Alterações**, **Histórico** e **Pull request**. O menu de **Ações do Git** abaixo da conversa oferece os próximos passos para a branch atual.
+Abra o **Git** na barra de ferramentas direita para acessar as abas **Alterações**, **Histórico** e **Pull request**. O menu **Ações do Git** abaixo do chat oferece os próximos passos para a branch atual. O botão fica destacado quando há alterações para fazer commit ou commits para enviar.
 
 ## Antes de começar
 
 Para commits, seu repositório precisa ter uma identidade de autor Git configurada. Para push, é necessário um remoto e credenciais que possam acessá-lo. A criação de pull request utiliza o GitHub CLI, que deve estar instalado e autenticado para o repositório de destino.
 
-Você pode digitar os mensagens de commit e o texto do PR por si. Para gerá-los, habilite um modelo de provedor e escolha **Configurações → Geral → Modelos → Modelo de geração de texto**.
+Você pode digitar as mensagens de commit e o texto do PR por conta própria. Para gerá-los, habilite um modelo de provedor e escolha **Configurações → Geral → Modelos → Modelo de geração de texto**. Com **Gerar mensagem automaticamente** ativado, o Dream redige uma nova mensagem de commit quando a última resposta de agente em execução no projeto termina.
 
 ## Revise as alterações
 
 1. Aberto **Git → Alterações** para inspecionar arquivos modificados, adicionados e excluídos.
 2. Expandir um arquivo para revisar sua diferença.
-3. Escolha **Diff unificado** ou **Diff dividido** no cabeçalho, e habilite o wrap de palavras na seção **Alterações** se necessário.
-4. Use **Ações de Alterações → Atualizar** se as alterações realizadas fora do Dream ainda não foram refletidas.
+3. Escolha **Diff unificado** ou **Diff dividido** no cabeçalho. A **Quebra de linha** vem ativada por padrão; use o botão de alternância no cabeçalho para mostrar linhas longas sem quebra.
+
+As alterações e a árvore de arquivos são atualizadas quando os comandos do terminal terminam e quando você volta à janela do Dream, então o trabalho feito fora do Dream aparece sem atualização manual.
 
 Para diffs muito grandes, o Dream pode exibir **Diferença muito grande para renderizar**. Use **Renderizar mesmo assim** apenas quando quiser carregar essa visualização maior ou inspecionar o arquivo no seu editor ou terminal.
 
-Use a ação **Reverter alterações no arquivo** para descartar alterações de trabalho indesejadas. A ação **Reverter todas as alterações** se aplica de forma mais ampla; revise seu escopo antes de confirmar. Reverter código é distinto de arquivar a conversa que o gerou. Para desfazer apenas o que uma resposta específica alterou, use o [ponto de verificação](/docs/pt/checkpoints) dessa resposta.
+Use a ação **Reverter alterações no arquivo** de um arquivo para descartar alterações de trabalho indesejadas. **Ações de alterações → Reverter todas as alterações** se aplica de forma mais ampla; revise o escopo antes de confirmar. Reverter código é diferente de arquivar o chat que o gerou. Para desfazer apenas o que uma resposta específica alterou, use o [ponto de verificação](/docs/pt/checkpoints) dessa resposta.
 
 Para pedir a um agente sobre linhas específicas, arraste entre os números de linha em uma diff ou clique no controle **+** de uma linha, depois digite um comentário. O Dream envia com o caminho do arquivo e as linhas selecionadas. Veja [Enviar feedback para um chat](/docs/pt/feedback).
 
@@ -37,9 +38,9 @@ Para pedir a um agente sobre linhas específicas, arraste entre os números de l
 </Frame>
 
 1. Abra **Git → Alterações**, ou escolha **Confirmar** no menu **Ações do Git** do rodapé.
-2. Revise as diferenças de arquivo abaixo do commit composer.
+2. Revise os diffs dos arquivos abaixo do compositor de commit. O compositor mostra quantos arquivos o commit inclui.
 3. Verifique **Incluir não preparado**. Ela está habilitada por padrão e inclui mudanças não marcadas no commit.
-4. Revise **Gerar mensagem automaticamente**, que está ativada por padrão. Para escrever sua própria mensagem, desative-a e insira o texto; desativá-la apaga a mensagem gerada.
+4. Revise **Gerar mensagem automaticamente**, que vem ativado por padrão. Para escrever sua própria mensagem, desative-o e digite-a em **Mensagem de confirmação**; desativá-lo apaga a mensagem gerada.
 5. Escolha **Confirmar**, ou **Confirmar e enviar** se você estiver pronto para publicar o commit no remoto.
 
 Para commitar apenas um subconjunto selecionado, estagie esses arquivos usando Git em um terminal ou em um editor externo e desative **Incluir não preparado**. O Painel de alterações não fornece controles individuais de estagio.
@@ -62,9 +63,17 @@ O Dream rejeita commits quando há mudanças staged fora do diretório ativo do 
   />
 </Frame>
 
-Use **Publicar branch** para uma branch sem upstream, ou **Enviar** para enviar commits pendentes. Essas ações no rodapé fazem o envio imediatamente. Confira primeiro a branch, o remoto e os commits em **Histórico**; quando há um upstream, o rodapé mostra quantos commits estão à frente e atrás.
+1. Abra **Ações do Git** abaixo do chat. **Enviar** mostra quantos commits estão à frente do upstream. Uma branch sem upstream oferece **Publicar branch** em vez disso.
+2. Em **Enviar alterações**, confira a **Branch**, o **Destino** e os commits que serão enviados, incluindo quantos commits a branch está à frente e atrás.
+3. Escolha **Enviar**.
 
-Se o empurrar falhar, verifique o erro e confirme o acesso remoto. Um commit local bem-sucedido permanece comitado mesmo se um empurrar posterior falhe; verifique o estado da ramificação antes de repetir a ação combinada.
+Se o envio falhar, verifique o erro e confirme seu acesso ao remoto do Git. Um commit local bem-sucedido permanece confirmado mesmo que um envio posterior falhe; verifique o estado da branch antes de repetir uma ação combinada.
+
+## Fetch e pull
+
+Use **Ações do Git → Fetch** para baixar novos commits e branches do remoto sem alterar seus arquivos. Use **Ações do Git → Pull** para trazer os commits da branch upstream para a sua branch atual; o menu mostra quantos commits estão atrás. O Dream informa quantos commits trouxe ou que a branch já está atualizada.
+
+Fazer pull altera os arquivos usados por todos os chats do projeto. Deixe as respostas em execução terminarem e, antes, faça commit do seu trabalho ou guarde-o. **Ações do Git → Abrir repositório** abre o repositório remoto no navegador.
 
 ## Criar um pull request
 
