@@ -1,0 +1,19 @@
+---
+title: "Serviço do host"
+description: "Mantenha o host do Dream em execução sem o app desktop e gerencie-o pela linha de comando."
+---
+
+O aplicativo de desktop usa o host que está em execução sobre os dados dele e inicia um quando não há nenhum.
+
+- Um host iniciado pelo aplicativo é interrompido quando você encerra o Dream.
+- Um host iniciado por você continua em execução quando você encerra o Dream. Os chats continuam, os terminais permanecem abertos e o aplicativo volta a se conectar a eles na próxima vez que você o abrir.
+
+| Sistema | Gerenciador de serviços | Inicia |
+| --- | --- | --- |
+| Linux | Serviço de usuário do systemd | No login, ou na inicialização com `loginctl enable-linger` |
+| macOS | LaunchAgent | No login |
+| Windows | Task Scheduler (Agendador de Tarefas) | No login |
+
+O serviço reinicia o host se ele falhar. Um computador em suspensão não pode ser acessado.
+
+<Card title="Executar o host" href="/docs/pt/dream-host#manter-o-host-em-execução" />

@@ -1,0 +1,20 @@
+---
+title: Host service
+description: Keep Dream's host running without the desktop app, and manage it from the command line.
+---
+
+The desktop app uses the host that is running on its data, and starts one when there is none.
+
+- A host the app started stops when you quit Dream.
+- A host you started keeps running when you quit Dream. Chats continue, terminals stay open, and
+  the app attaches to them again the next time you open it.
+
+| System | Service manager | Starts |
+| --- | --- | --- |
+| Linux | systemd user service | At login, or at boot with `loginctl enable-linger` |
+| macOS | LaunchAgent | At login |
+| Windows | Task Scheduler | At login |
+
+The service restarts the host if it fails. A sleeping computer cannot be reached.
+
+<Card title="Running the host" href="/docs/dream-host#keep-it-running" />

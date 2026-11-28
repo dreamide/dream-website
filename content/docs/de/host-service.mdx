@@ -1,0 +1,19 @@
+---
+title: "Host-Dienst"
+description: "Lassen Sie den Host von Dream ohne die Desktop-App laufen und verwalten Sie ihn über die Befehlszeile."
+---
+
+Die Desktop-App verwendet den Host, der mit ihren Daten läuft, und startet einen, wenn keiner vorhanden ist.
+
+- Ein von der App gestarteter Host wird gestoppt, wenn du Dream beendest.
+- Ein von dir gestarteter Host läuft weiter, wenn du Dream beendest. Chats laufen weiter, Terminals bleiben geöffnet, und die App verbindet sich beim nächsten Öffnen wieder mit ihnen.
+
+| System | Dienstverwaltung | Startet |
+| --- | --- | --- |
+| Linux | systemd-Benutzerdienst | Bei der Anmeldung oder beim Systemstart mit `loginctl enable-linger` |
+| macOS | LaunchAgent | Bei der Anmeldung |
+| Windows | Task Scheduler (Aufgabenplanung) | Bei der Anmeldung |
+
+Der Dienst startet den Host neu, wenn er ausfällt. Ein Computer im Ruhezustand ist nicht erreichbar.
+
+<Card title="Host betreiben" href="/docs/de/dream-host#host-dauerhaft-betreiben" />

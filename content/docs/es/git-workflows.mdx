@@ -24,7 +24,7 @@ La lista se actualiza a medida que cambian los archivos, cuando terminan los com
 
 Para diffs muy grandes, Dream puede mostrar **Diferencia demasiado grande para renderizar**. Utiliza **Renderizar de todos modos** solo cuando quieras cargar esa vista más grande, o inspeccionar el archivo en tu editor o terminal.
 
-Use la acción **Revertir cambios de archivo** para descartar cambios de trabajo no deseados. **Revertir todos los cambios** se aplica de forma más amplia; revísalo antes de confirmarlo. Revertir código es distinto de archivar el chat que lo generó. Para anular solo lo que cambió una respuesta específica, utiliza el [punto de control](/docs/es/checkpoints) de esa respuesta.
+Usa la acción **Revertir cambios de archivo** de un archivo para descartar cambios de trabajo no deseados. **Acciones de cambios → Revertir todos los cambios** se aplica de forma más amplia; revisa su alcance antes de confirmar. Revertir código es distinto de archivar el chat que lo generó. Para deshacer solo lo que cambió una respuesta concreta, usa el [punto de control](/docs/es/checkpoints) de esa respuesta.
 
 Para pedir a un agente sobre líneas específicas, arrastre sobre los números de línea en un diff o haga clic en el control **+** de una línea, luego escriba un comentario. Dream lo envía junto con la ruta del archivo y las líneas seleccionadas. Vea [Enviar retroalimentación a un chat](/docs/es/feedback).
 
@@ -43,7 +43,7 @@ Para pedir a un agente sobre líneas específicas, arrastre sobre los números d
 1. Abre **Git → Cambios**, o elige **Confirmar** en el menú **Acciones de Git** situado debajo del chat.
 2. Revisa las diferencias de los archivos debajo del campo del mensaje de commit.
 3. Revise **Incluir no preparado**. Está habilitado por defecto y incluye los cambios no etiquetados en el commit.
-4. Revisar **Generar mensaje automáticamente**, que está activado por defecto. Para escribir su propio mensaje, desactívalo y escribe el texto; desactivarlo borra el mensaje generado.
+4. Revisa **Generar mensaje automáticamente**, que está activado de forma predeterminada. Para escribir tu propio mensaje, desactívalo y escríbelo en **Mensaje de confirmación**; al desactivarlo se borra el mensaje generado.
 5. Elige **Confirmar**, o **Confirmar y enviar** si estás listo para publicar el commit en el remoto.
 
 Con **Generar mensaje automáticamente** activado, Dream redacta el mensaje en segundo plano cuando termina el último turno de agente en ejecución del proyecto, por lo que suele estar listo cuando abres el panel. Pulsa **Command+Enter** en macOS o **Ctrl+Enter** en Windows/Linux para hacer commit, y añade **Shift** para hacer commit y enviar.
@@ -80,7 +80,7 @@ Después de un pull, una notificación indica cuántos commits han llegado. Elig
 
 Si tanto tu rama como su upstream han recibido commits, Dream fusiona los commits del upstream en tu rama; no hace rebase. Cuando esa fusión produciría conflictos, Dream la aborta, deja tus archivos como estaban y enumera los archivos en conflicto. Resuelve la diferencia con Git en un terminal y vuelve a hacer pull.
 
-**Abrir repositorio**, en el mismo menú, abre el repositorio remoto en tu navegador.
+Hacer pull cambia los archivos que usan todos los chats del proyecto. Deja que terminen las respuestas en ejecución y, antes, haz commit de tu trabajo o apártalo. **Acciones de Git → Abrir repositorio** abre el repositorio remoto en tu navegador.
 
 ## Crea un pull request
 

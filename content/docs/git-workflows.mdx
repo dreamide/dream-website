@@ -31,8 +31,8 @@ window.
 For very large diffs, Dream may show **Diff too large to render**. Use **Render anyway** only when
 you want to load that larger view, or inspect the file in your editor or terminal.
 
-Use a file's **Revert file changes** action to discard unwanted working changes. **Revert all
-changes** applies more broadly; review its scope before confirming. Reverting code is separate from
+Use a file's **Revert file changes** action to discard unwanted working changes. **Changes actions →
+Revert all changes** applies more broadly; review its scope before confirming. Reverting code is separate from
 archiving the chat that produced it. To undo only what a particular reply changed, use that
 reply's [checkpoint](/docs/checkpoints).
 
@@ -55,7 +55,7 @@ To ask an agent about specific lines, drag across the line numbers in a diff or 
 1. Open **Git → Changes**, or choose **Commit** from the footer's **Git actions** menu.
 2. Review the file diffs below the commit composer.
 3. Check **Include unstaged**. It is enabled by default and includes unstaged changes in the commit.
-4. Review **Auto generate message**, which is on by default. To write your own message, turn it off and enter the text; turning it off clears the generated message.
+4. Review **Auto generate message**, which is on by default. To write your own message, turn it off and enter it under **Commit message**; turning it off clears the generated message.
 5. Choose **Commit**, or **Commit & push** if you are ready to publish the commit to the remote.
 
 With **Auto generate message** on, Dream drafts the message in the background when the project's
@@ -108,7 +108,9 @@ your branch; it does not rebase. When that merge would conflict, Dream aborts it
 as they were, and lists the conflicting files. Resolve the difference with Git in a terminal, then
 pull again.
 
-**Open repository** in the same menu opens the remote repository in your browser.
+Pulling changes the files used by every chat in the project. Let running replies finish and commit
+or set aside your work first. **Git actions → Open repository** opens the remote repository in your
+browser.
 
 ## Create a pull request
 

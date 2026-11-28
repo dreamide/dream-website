@@ -24,7 +24,7 @@ L'elenco si aggiorna man mano che i file cambiano, al termine dei comandi del te
 
 Per diff estremamente grandi, Dream potrebbe mostrare **Diff troppo grande per essere renderizzato**. Utilizza **Renderizza comunque** solo quando desideri caricare quella vista più ampia, o esaminare il file nel tuo editor o terminale.
 
-Usa l'azione **Annulla le modifiche apportate al file** per scartare modifiche di lavoro non desiderate. L'azione **Annulla tutte le modifiche** ha un ambito più ampio; verifica il suo raggio prima di confermarlo. Annullare il codice è separato dall'archiviazione della conversazione che lo ha generato. Per annullare soltanto ciò che una risposta specifica ha modificato, usa il relativo [punto di controllo](/docs/it/checkpoints).
+Usa l’azione **Annulla le modifiche apportate al file** di un file per scartare le modifiche di lavoro indesiderate. **Azioni modifiche → Annulla tutte le modifiche** ha un effetto più ampio; verificane la portata prima di confermare. Annullare il codice è separato dall’archiviare la chat che lo ha prodotto. Per annullare solo ciò che ha modificato una determinata risposta, usa il [checkpoint](/docs/it/checkpoints) di quella risposta.
 
 Per chiedere a un agente di informazioni su righe specifiche, trascina sulle righe di un diff o fai clic sul controllo **+** di una riga, poi scrivi un commento. Dream lo invia insieme al percorso del file e alle righe selezionate. Vedere [Inviare feedback a una chat](/docs/it/feedback).
 
@@ -43,7 +43,7 @@ Per chiedere a un agente di informazioni su righe specifiche, trascina sulle rig
 1. Apri **Git → Modifiche**, o scegli **Esegui commit** dal menu **Azioni Git** nel footer.
 2. Revisita le differenze dei file sotto il commit composer.
 3. Verifica **Includi le modifiche non aggiunte all’indice**. È abilitato per impostazione predefinita e include le modifiche non stage nel commit.
-4. Controlla il messaggio **Genera automaticamente il messaggio**, che è abilitato per impostazione predefinita. Per scrivere il proprio messaggio, disattivalo e inserisci il testo; disattivarlo cancella il messaggio generato.
+4. Controlla **Genera automaticamente il messaggio**, attivo per impostazione predefinita. Per scrivere un messaggio tuo, disattivalo e inseriscilo in **Messaggio di commit**; disattivarlo cancella il messaggio generato.
 5. Scegli **Esegui commit**, o **Effettua il commit e il push** se sei pronto a pubblicare il commit sul remoto.
 
 Con **Genera automaticamente il messaggio** attivo, Dream prepara il messaggio in background quando termina l'ultimo turno di un agente ancora in esecuzione nel progetto, così di solito è pronto quando apri il pannello. Premi **Command+Enter** su macOS o **Ctrl+Enter** su Windows/Linux per eseguire il commit e aggiungi **Shift** per eseguire commit e push.
@@ -80,7 +80,7 @@ Dopo un pull, una notifica indica quanti commit sono arrivati. Scegli **Mostra m
 
 Se sia il tuo branch sia il suo upstream hanno ricevuto nuovi commit, Dream esegue il merge dei commit dell'upstream nel tuo branch; non esegue un rebase. Se quel merge genererebbe conflitti, Dream lo annulla, lascia i tuoi file com'erano ed elenca i file in conflitto. Risolvi la divergenza con Git in un terminale, poi esegui di nuovo il pull.
 
-**Apri repository** nello stesso menu apre il repository remoto nel tuo browser.
+Il pull modifica i file usati da tutte le chat del progetto. Prima lascia terminare le risposte in corso ed esegui il commit del tuo lavoro o mettilo da parte. **Azioni Git → Apri repository** apre il repository remoto nel browser.
 
 ## Crea una pull request
 

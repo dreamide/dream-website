@@ -24,7 +24,7 @@ Die Liste aktualisiert sich bei Dateiänderungen, nach Terminalbefehlen und bei 
 
 Bei sehr großen Diffs kann Dream **Diff zu groß zum Rendern** anzeigen. Verwenden Sie **Trotzdem rendern**, nur dann, wenn Sie die größere Ansicht laden oder die Datei in Ihrem Editor oder Terminal untersuchen möchten.
 
-Verwenden Sie die Aktion **Dateiänderungen rückgängig machen**, um ungewünschte Arbeitsänderungen zu verworfen. Die Aktion **Alle Änderungen verwerfen** gilt breiter; prüfen Sie ihren Umfang, bevor Sie bestätigen. Das Zurücksetzen von Code ist unabhängig von der Archivierung des Chats, der diese Codegenerierung hervorbrachte. Um nur das zu rückgängig zu machen, was eine bestimmte Antwort geändert hat, verwenden Sie den [Checkpoint](/docs/de/checkpoints) dieser Antwort.
+Verwenden Sie die Aktion **Dateiänderungen rückgängig machen** einer Datei, um unerwünschte Arbeitsänderungen zu verwerfen. **Änderungsaktionen → Alle Änderungen verwerfen** wirkt umfassender; prüfen Sie den Umfang, bevor Sie bestätigen. Das Zurücksetzen von Code ist unabhängig vom Archivieren des Chats, der ihn erzeugt hat. Um nur rückgängig zu machen, was eine bestimmte Antwort geändert hat, verwenden Sie den [Checkpoint](/docs/de/checkpoints) dieser Antwort.
 
 Um einem Agenten über bestimmte Zeilen Fragen zu stellen, ziehen Sie über die Zeilennummern in einer Diff oder klicken Sie auf das **+**-Symbol einer Zeile und geben dann einen Kommentar ein. Dream sendet diese Mitteilung mit der Dateipfad und den ausgewählten Zeilen. Siehe [Feedback an einen Chat senden](/docs/de/feedback).
 
@@ -43,7 +43,7 @@ Um einem Agenten über bestimmte Zeilen Fragen zu stellen, ziehen Sie über die 
 1. Öffne **Git → Änderungen**, oder wähle **Festschreiben** aus dem Menü **Git-Aktionen** im Footer.
 2. Überprüfen Sie die Dateidifferenzen unter dem Commit Composer.
 3. Prüfen Sie **Unstaged einschließen**. Sie ist standardmäßig aktiviert und beinhaltet ungekennzeichnete Änderungen in der Commit.
-4. Prüfen Sie **Nachricht automatisch generieren**, das standardmäßig aktiviert ist. Um eine eigene Nachricht zu schreiben, deaktivieren Sie die Option und geben Sie Ihren Text ein. Beim Deaktivieren wird die generierte Nachricht gelöscht.
+4. Prüfen Sie **Nachricht automatisch generieren**, das standardmäßig aktiviert ist. Um eine eigene Nachricht zu schreiben, deaktivieren Sie die Option und geben Sie sie unter **Commit-Nachricht** ein; beim Deaktivieren wird die generierte Nachricht gelöscht.
 5. Wählen Sie **Festschreiben**, oder **Festschreiben und pushen**, wenn Sie bereit sind, den Commit an das Remote-System zu veröffentlichen.
 
 Mit **Nachricht automatisch generieren** erstellt Dream nach dem letzten laufenden Agentenzug des Projekts einen Entwurf. Mit **Command+Enter** (macOS) oder **Ctrl+Enter** (Windows/Linux) committen Sie. Mit zusätzlichem **Shift** wird auch gepusht.
@@ -80,7 +80,7 @@ Die Benachrichtigung nennt die Zahl der empfangenen Commits. **Änderungen anzei
 
 Bei auseinanderlaufenden Branches führt Dream einen Merge aus. Bei Konflikten bricht Dream ihn ab, stellt die Dateien wieder her und nennt die Konfliktdateien. Lösen Sie die Unterschiede im Terminal mit Git und pullen Sie erneut.
 
-**Repository öffnen** öffnet das Remote-Repository im Browser.
+Ein Pull ändert die Dateien, die alle Chats im Projekt verwenden. Lassen Sie laufende Antworten zuerst abschließen und committen Sie Ihre Arbeit oder legen Sie sie beiseite. **Git-Aktionen → Repository öffnen** öffnet das Remote-Repository in Ihrem Browser.
 
 ## Pull Request erstellen
 

@@ -3,6 +3,12 @@
 
 /* Dream-specific extensions to Shiso's base theme. */
 
+/* Fill the footer's attribution placeholder with Dream's copyright. */
+footer > div > span:empty::before {
+  content: "© Dream";
+  font-size: 0.875rem;
+}
+
 :root,
 [data-theme="dark"] {
   --primary: #bbf7d0;

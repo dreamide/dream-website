@@ -1,0 +1,19 @@
+---
+title: "Service de l’hôte"
+description: "Gardez l’hôte de Dream actif sans l’application de bureau et gérez-le depuis la ligne de commande."
+---
+
+L'application de bureau utilise l'hôte qui s'exécute sur ses données, et en démarre un s'il n'y en a aucun.
+
+- Un hôte démarré par l'application s'arrête lorsque vous quittez Dream.
+- Un hôte que vous avez démarré continue de s'exécuter lorsque vous quittez Dream. Les chats se poursuivent, les terminaux restent ouverts et l'application s'y rattache à sa prochaine ouverture.
+
+| Système | Gestionnaire de services | Démarrage |
+| --- | --- | --- |
+| Linux | Service utilisateur systemd | À l’ouverture de session, ou au démarrage avec `loginctl enable-linger` |
+| macOS | LaunchAgent | À l’ouverture de session |
+| Windows | Task Scheduler (Planificateur de tâches) | À l’ouverture de session |
+
+Le service redémarre l’hôte en cas d’échec. Un ordinateur en veille est injoignable.
+
+<Card title="Exécuter l'hôte" href="/docs/fr/dream-host#maintenir-lhôte-en-fonctionnement" />

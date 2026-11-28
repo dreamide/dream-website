@@ -1,0 +1,19 @@
+---
+title: "Dịch vụ máy chủ"
+description: "Giữ máy chủ Dream chạy mà không cần ứng dụng máy tính và quản lý nó từ dòng lệnh."
+---
+
+Ứng dụng trên máy tính dùng máy chủ đang chạy trên dữ liệu của nó và khởi động một máy chủ khi chưa có.
+
+- Máy chủ do ứng dụng khởi động sẽ dừng khi bạn thoát Dream.
+- Máy chủ do bạn khởi động vẫn tiếp tục chạy khi bạn thoát Dream. Các cuộc trò chuyện vẫn tiếp diễn, terminal vẫn mở và ứng dụng sẽ kết nối lại với chúng vào lần mở tiếp theo.
+
+| Hệ thống | Trình quản lý dịch vụ | Khởi động |
+| --- | --- | --- |
+| Linux | Dịch vụ người dùng systemd | Khi đăng nhập, hoặc khi khởi động máy với `loginctl enable-linger` |
+| macOS | LaunchAgent | Khi đăng nhập |
+| Windows | Task Scheduler | Khi đăng nhập |
+
+Dịch vụ sẽ khởi động lại máy chủ nếu bị lỗi. Không thể truy cập máy tính đang ở chế độ ngủ.
+
+<Card title="Chạy máy chủ" href="/docs/vi/dream-host#giữ-máy-chủ-luôn-chạy" />

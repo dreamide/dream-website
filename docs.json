@@ -16,6 +16,15 @@
   "colors": {
     "primary": "#bbf7d0"
   },
+  "seo": {
+    "metatags": {
+      "og:image": "https://dreamide.dev/og.png",
+      "og:image:width": "1200",
+      "og:image:height": "630",
+      "og:image:alt": "Dream — the open-source IDE built for AI coding agents",
+      "twitter:image": "https://dreamide.dev/og.png"
+    }
+  },
   "pages": [
     {
       "path": "/",
@@ -203,6 +212,7 @@
     }
   },
   "footer": {
+    "attribution": false,
     "socials": [
       {
         "icon": "github",
@@ -268,7 +278,12 @@
           },
           {
             "group": "Hosts and remote access",
-            "pages": ["remote-hosts", "remote-access", "dream-host"]
+            "pages": [
+              "remote-hosts",
+              "remote-access",
+              "dream-host",
+              "host-service"
+            ]
           },
           {
             "group": "Git",
@@ -409,6 +424,10 @@
               {
                 "page": "es/dream-host",
                 "title": "Ejecución del host"
+              },
+              {
+                "page": "es/host-service",
+                "title": "Servicio del host"
               }
             ]
           },
@@ -573,6 +592,10 @@
               {
                 "page": "fr/dream-host",
                 "title": "Exécuter l'hôte"
+              },
+              {
+                "page": "fr/host-service",
+                "title": "Service de l’hôte"
               }
             ]
           },
@@ -737,6 +760,10 @@
               {
                 "page": "de/dream-host",
                 "title": "Host betreiben"
+              },
+              {
+                "page": "de/host-service",
+                "title": "Host-Dienst"
               }
             ]
           },
@@ -901,6 +928,10 @@
               {
                 "page": "pt/dream-host",
                 "title": "Executar o host"
+              },
+              {
+                "page": "pt/host-service",
+                "title": "Serviço do host"
               }
             ]
           },
@@ -1065,6 +1096,10 @@
               {
                 "page": "it/dream-host",
                 "title": "Esecuzione dell'host"
+              },
+              {
+                "page": "it/host-service",
+                "title": "Servizio host"
               }
             ]
           },
@@ -1229,6 +1264,10 @@
               {
                 "page": "ja/dream-host",
                 "title": "ホストの実行"
+              },
+              {
+                "page": "ja/host-service",
+                "title": "ホストサービス"
               }
             ]
           },
@@ -1393,6 +1432,10 @@
               {
                 "page": "ko/dream-host",
                 "title": "호스트 실행하기"
+              },
+              {
+                "page": "ko/host-service",
+                "title": "호스트 서비스"
               }
             ]
           },
@@ -1557,6 +1600,10 @@
               {
                 "page": "vi/dream-host",
                 "title": "Chạy máy chủ"
+              },
+              {
+                "page": "vi/host-service",
+                "title": "Dịch vụ máy chủ"
               }
             ]
           },
@@ -1721,6 +1768,10 @@
               {
                 "page": "zh-Hans/dream-host",
                 "title": "运行主机"
+              },
+              {
+                "page": "zh-Hans/host-service",
+                "title": "主机服务"
               }
             ]
           },
@@ -1885,6 +1936,10 @@
               {
                 "page": "zh-Hant/dream-host",
                 "title": "執行主機"
+              },
+              {
+                "page": "zh-Hant/host-service",
+                "title": "主機服務"
               }
             ]
           },

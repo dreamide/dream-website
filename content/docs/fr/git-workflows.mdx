@@ -24,7 +24,7 @@ La liste se met à jour à mesure que les fichiers changent, à la fin des comma
 
 Pour des différences très grandes, Dream peut afficher **Diff trop grand pour être rendu**. Utilisez **Rendre quand même** uniquement lorsque vous souhaitez charger cette vue plus large, ou inspecter le fichier dans votre éditeur ou terminal.
 
-Utilisez l'action **Annuler les modifications du fichier** pour abandonner des modifications de travail inutiles. L'action **Annuler toutes les modifications** s'applique plus largement ; vérifiez son portée avant de confirmer. Annuler du code est indépendant de l'archivage du chat qui l'a produit. Pour annuler uniquement ce que a modifié une réponse particulière, utilisez le [point d'arrêt](/docs/fr/checkpoints) de cette réponse.
+Utilisez l’action **Annuler les modifications du fichier** d’un fichier pour abandonner les modifications de travail indésirables. **Actions sur les modifications → Annuler toutes les modifications** s’applique plus largement ; vérifiez sa portée avant de confirmer. Annuler du code est distinct de l’archivage du chat qui l’a produit. Pour annuler uniquement ce qu’une réponse donnée a modifié, utilisez le [checkpoint](/docs/fr/checkpoints) de cette réponse.
 
 Pour demander à un agent de commenter des lignes spécifiques, glissez sur les numéros de ligne dans une diff ou cliquez sur le contrôle **+** d'une ligne, puis saisissez un commentaire. Dream l'envoie avec le chemin du fichier et les lignes sélectionnées. Voir [Envoyer des retours à une conversation](/docs/fr/feedback).
 
@@ -43,7 +43,7 @@ Pour demander à un agent de commenter des lignes spécifiques, glissez sur les 
 1. Ouvrir **Git → Modifications**, ou choisir **Valider** dans le menu des **Actions Git** du pied de page.
 2. Revoir les différences de fichier ci-dessous le commit composer.
 3. Vérifiez **Inclure les fichiers non préparés**. Elle est activée par défaut et inclut les modifications non indexées dans le commit.
-4. Vérifier **Générer automatiquement un message**, qui est activé par défaut. Pour écrire votre propre message, désactivez-le et saisissez le texte ; désactiver cela efface le message généré.
+4. Vérifiez **Générer automatiquement un message**, activé par défaut. Pour écrire votre propre message, désactivez-le et saisissez votre texte sous **Message de validation** ; le désactiver efface le message généré.
 5. Choisissez **Valider**, ou **Valider et pousser** si vous êtes prêt à publier le commit sur le distant.
 
 Lorsque **Générer automatiquement un message** est activé, Dream rédige le message en arrière-plan à la fin du dernier tour d'agent en cours du projet ; il est donc généralement prêt lorsque vous ouvrez le panneau. Appuyez sur **Command+Enter** sur macOS ou **Ctrl+Enter** sur Windows/Linux pour créer le commit, et ajoutez **Shift** pour créer le commit et le pousser.
@@ -80,7 +80,7 @@ Après un pull, une notification indique le nombre de commits reçus. Choisissez
 
 Si votre branche et sa branche amont ont toutes deux reçu des commits, Dream fusionne les commits amont dans votre branche ; il n'effectue pas de rebase. Lorsque cette fusion provoquerait un conflit, Dream l'annule, laisse vos fichiers tels qu'ils étaient et liste les fichiers en conflit. Résolvez la divergence avec Git dans un terminal, puis effectuez un nouveau pull.
 
-**Ouvrir le dépôt**, dans le même menu, ouvre le dépôt distant dans votre navigateur.
+Un pull modifie les fichiers utilisés par tous les chats du projet. Laissez d’abord les réponses en cours se terminer, puis validez ou mettez de côté votre travail. **Actions Git → Ouvrir le dépôt** ouvre le dépôt distant dans votre navigateur.
 
 ## Créer un pull request
 
