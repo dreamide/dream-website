@@ -88,7 +88,7 @@ L'unione, la creazione di un pull request e la rimozione di un worktree sono azi
 
 Per pubblicare per la revisione, usa **Azioni Git → Crea richiesta pull** e segui [Flussi di lavoro Git](/docs/it/git-workflows#crea-una-pull-request). Creare una richiesta di pull mantiene il worktree.
 
-Usa **Azioni Git → Rimuovi l'albero di lavoro** per rimuovere il checkout mantenendo il suo ramo. Se contiene modifiche non ancora commesse, commettile prima o seleziona esplicitamente **Scarta le modifiche senza commit**.
+Usa **Azioni Git → Rimuovi l'albero di lavoro** per rimuovere il checkout. Il suo branch viene conservato, a meno che tu non selezioni l'opzione per eliminare anche il branch, che prima della conferma indica se i commit del branch sono stati uniti. Se il worktree contiene modifiche senza commit, esegui prima il commit oppure seleziona esplicitamente **Scarta le modifiche senza commit**.
 
 <Warning>
   Eliminare un worktree elimina il suo directory e chiude il suo progetto. I chat del progetto worktree vengono eliminati insieme e non appaiono nella Cronologia chat o nei Chiusi di recente. Se desideri conservare una conversazione, [dividerla nel workspace padre](/docs/it/branching-chats) prima di completarla.
@@ -117,6 +117,8 @@ Se l'unione genera conflitti, Dream li annulla e segnala **L'unione in *base* ha
 4. Usi l'azione rimuovi e verifica la conferma.
 5. Conferma **Rimuovi l'albero di lavoro** quando non hai più bisogno di quel checkout.
 
-L'eliminazione elimina il cartella worktree dal disco. Git rifiuta l'eliminazione quando contiene modifiche non ancora commesse. Tornare a quel progetto e verificare le modifiche prima di riprovare.
+La rimozione elimina dal disco la directory del worktree e le sue chat. Quando il worktree contiene modifiche senza commit, **Rimuovi l'albero di lavoro** resta non disponibile finché non selezioni **Scarta le modifiche senza commit**. Se non sei sicuro, torna prima a quel progetto e controlla le modifiche.
+
+Puoi anche rimuovere un worktree mentre [elimini il suo branch](/docs/it/git-workflows#eliminare-un-branch-locale) dal selettore dei branch.
 
 Chiudere un'asta progetto la rimuove solo dal workspace aperto; rimuovere un worktree elimina il suo checkout. Per i passaggi di commit e PR, vedi [Flussi di lavoro Git](/docs/it/git-workflows).

@@ -12,7 +12,9 @@ Clique em **Arquivos** na barra lateral direita para navegar pela pasta do proje
 3. Selecione um resultado para abri-lo.
 4. Limpar a busca para voltar a navegar na árvore.
 
-Use **Atualizar arquivos** nas ações de arquivo quando as alterações feitas fora do Dream não são refletidas na árvore. Buscar por um arquivo localiza seu caminho; use **Localizar nos arquivos** para buscar o conteúdo do projeto.
+A árvore é atualizada conforme os arquivos mudam, inclusive depois que comandos do terminal terminam e quando você volta à janela do Dream. Pesquisar um arquivo localiza o caminho dele; use **Localizar nos arquivos** para pesquisar o conteúdo do projeto.
+
+Em um repositório Git, a árvore marca os arquivos com alterações sem commit, como arquivos modificados e novos, e as pastas que os contêm.
 
 <Frame caption="Busque ou navegue na árvore de arquivos, depois abra um arquivo ao lado de sua conversa.">
   <img
@@ -65,7 +67,7 @@ Edite um arquivo de texto gravável no editor de código. Alterações não salv
 
 Clique em **Salvar** na barra de ferramentas do editor, ou pressione **Command+S** no macOS ou **Ctrl+S** no Windows/Linux enquanto o editor estiver focado. Salve cada arquivo editado antes de pedir a um agente ou comando terminal para usar o novo conteúdo; essas ferramentas lerão os arquivos no disco.
 
-Alternar entre as guias de arquivo te permite manter rascunhos enquanto inspeciona outros arquivos. Use **Descartar alterações** para abandonar um rascunho local. Isso é distinto do reverter alterações por meio do Git.
+Alternar entre abas de arquivos permite manter rascunhos enquanto você inspeciona outros arquivos. Para abandonar um rascunho, feche a aba dele e escolha **Não salvar**. Isso é independente de reverter alterações pelo Git.
 
 Clique duas vezes em uma aba de arquivo para fixá-la, para que o abrimento de outro preview não a substitua.
 
@@ -86,6 +88,8 @@ Um agente, um comando terminal ou um editor externo pode modificar o mesmo arqui
 
 ## Ajuste a visualização
 
-Use **Ativar quebra de linha** para linhas longas. Redimensione as áreas da árvore de arquivos e do editor para dar mais espaço ao conteúdo. Use as ações disponíveis **Abrir em** para continuar em um editor externo.
+A **Quebra de linha** vem ativada por padrão. Use o botão de alternância dela no cabeçalho do painel para desativá-la em linhas longas que você prefira rolar. Redimensione os painéis da árvore de arquivos e do editor para dar mais espaço ao conteúdo.
+
+Em um projeto local, clique no caminho no cabeçalho do painel para abrir a pasta no gerenciador de arquivos. Para continuar em um editor externo, use o menu [Abrir em](/docs/pt/workspace#renomeie-ou-abra-um-projeto-externamente) do projeto.
 
 Após salvar, abra [Alterações](/docs/pt/git-workflows) para revisar o diff do Git. Para pedir a um agente sobre um arquivo, [cite-o com @](/docs/pt/providing-context) no compositor de chat.

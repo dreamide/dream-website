@@ -14,16 +14,18 @@ Dream works with coding-agent command-line tools already installed on your compu
 | OpenCode | OpenCode CLI |
 | Cursor | Cursor Agent CLI |
 | Grok Build | Grok Build CLI |
+| Antigravity | Antigravity CLI |
 
 Install the CLI from its provider, then complete that CLI's normal sign-in or authentication flow
-outside Dream.
+outside Dream. Antigravity is Google Antigravity; Dream runs it through its `agy` command.
 
 ## Enable models
 
 1. Open **Settings** in Dream.
 2. Select **Providers**.
 3. Refresh the provider after installing or authenticating its CLI.
-4. Turn on the provider's enable switch, then enable one or more of its detected models.
+4. Turn on the provider's enable switch, then click each detected model you want to use. A
+   checkmark identifies the selected models.
 5. Open **General → Models** and choose defaults for new chats and for commit and
    pull-request drafting.
 
@@ -61,14 +63,18 @@ resumable session also offer [Continue in terminal](/docs/terminals#continue-a-c
 
 [Skills](/docs/skills) are available for Claude Code, Codex, OpenCode, and Cursor.
 [MCP servers](/docs/mcp-servers) and Dream's built-in browser tools are available for Claude Code,
-Codex, OpenCode, and Grok Build; Cursor does not support these Dream-managed tool connections.
+Codex, OpenCode, and Grok Build; Cursor and Antigravity do not support these Dream-managed tool
+connections.
+
+Chats from those same four providers can also [delegate tasks](/docs/delegation) to any other
+provider you have set up.
 
 ## Check for CLI updates
 
 Provider cards show the installed CLI version when available. Dream also checks for newer versions
-and shows an **Update available: …** badge when one is found. The badge reports availability; it
-does not install the update. Update using that CLI's normal installation method, then refresh its
-provider card in Dream.
+and shows an **Update available: …** button when one is found. Click it to run that CLI's own update
+command; Dream reports the result when it finishes. If the update fails, update the CLI using its
+normal installation method, then refresh its provider card in Dream.
 
 Use the provider's enable switch to hide its models from the available selections without
 uninstalling the CLI. Recheck your defaults after changing enabled providers or models.
@@ -86,6 +92,6 @@ If the CLI was installed while Dream was open, restart Dream if refresh still ca
 The command must be available to Dream's environment; a shell alias alone is not an installed CLI.
 
 If a CLI is detected but your desired model is missing, check the provider's account/configuration
-and refresh the list. If models are listed but unavailable in chats, enable them with their
-toggles and confirm the provider itself is enabled. See [Troubleshooting](/docs/troubleshooting)
+and refresh the list. If models are listed but unavailable in chats, select them in the provider
+card and confirm the provider itself is enabled. See [Troubleshooting](/docs/troubleshooting)
 for additional checks.

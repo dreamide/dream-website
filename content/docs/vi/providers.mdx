@@ -14,15 +14,16 @@ Dream hoạt động cùng các công cụ dòng lệnh của coding-agent đã 
 | OpenCode | OpenCode CLI |
 | Cursor | Cursor Agent CLI |
 | Xây dựng Grok | Grok Build CLI |
+| Antigravity | Antigravity CLI |
 
-Cài đặt CLI từ nhà cung cấp của nó, sau đó hoàn thành luồng đăng nhập hoặc xác thực thông thường của CLI đó ngoài Dream.
+Cài đặt CLI từ nhà cung cấp của nó, sau đó hoàn tất quy trình đăng nhập hoặc xác thực thông thường của CLI đó bên ngoài Dream. Antigravity là Google Antigravity; Dream chạy nó thông qua lệnh `agy`.
 
 ## Kích hoạt các mô hình
 
 1. Mở **Cài đặt** trong Dream.
 2. Chọn **Nhà cung cấp**.
 3. Làm mới provider sau khi cài đặt hoặc xác thực CLI của nó.
-4. Bật công tắc kích hoạt của nhà cung cấp, sau đó kích hoạt một hoặc nhiều mô hình được phát hiện.
+4. Bật công tắc kích hoạt của nhà cung cấp, sau đó nhấp vào từng mô hình được phát hiện mà bạn muốn dùng. Dấu kiểm cho biết các mô hình đã chọn.
 5. Mở **Chung → Mô hình** và chọn mặc định cho các cuộc trò chuyện mới và cho việc tạo commit và pull request.
 
 Bạn phải bật ít nhất một mô hình trước khi mở dự án đầu tiên. Một cuộc trò chuyện có thể sử dụng mô hình đã bật khác với mô hình mặc định sau khi bắt đầu.
@@ -49,11 +50,13 @@ CLI đã cài đặt xử lý xác thực và thực hiện công việc của a
 
 Dream cung cấp các quyền **Hỏi**, **Chấp nhận chỉnh sửa**, và **Toàn quyền truy cập** cho mỗi cuộc trò chuyện. Hãy đọc [Quyền của tác nhân](/docs/vi/agent-modes) trước khi chọn chúng. Cuộc trò chuyện của Claude với chế độ phiên bản có thể tạm dừng cũng cung cấp [Tiếp tục trong terminal](/docs/vi/terminals#tiếp-tục-cuộc-trò-chuyện-claude-trong-một-terminal).
 
-[Kỹ năng](/docs/vi/skills) có sẵn cho Claude Code, Codex, OpenCode và Cursor. [Máy chủ MCP](/docs/vi/mcp-servers) và các công cụ trình duyệt tích hợp của Dream có sẵn cho Claude Code, Codex, OpenCode và Grok Build; Cursor không hỗ trợ các kết nối công cụ này do Dream quản lý.
+[Kỹ năng](/docs/vi/skills) có sẵn cho Claude Code, Codex, OpenCode và Cursor. [Máy chủ MCP](/docs/vi/mcp-servers) và các công cụ trình duyệt tích hợp của Dream có sẵn cho Claude Code, Codex, OpenCode và Grok Build; Cursor và Antigravity không hỗ trợ các kết nối công cụ do Dream quản lý này.
+
+Các cuộc trò chuyện của chính bốn nhà cung cấp đó cũng có thể [ủy thác tác vụ](/docs/vi/delegation) cho bất kỳ nhà cung cấp nào khác mà bạn đã thiết lập.
 
 ## Kiểm tra cập nhật CLI
 
-Các thẻ cung cấp hiển thị phiên bản CLI đã cài đặt khi có sẵn. Dream cũng kiểm tra phiên bản mới và hiển thị nhãn **Có cập nhật sẵn sàng: …** khi phát hiện phiên bản mới. Nhãn này báo cáo sự sẵn sàng; nó không cài đặt bản cập nhật. Cập nhật bằng phương pháp cài đặt thông thường của CLI đó, sau đó làm mới thẻ cung cấp trong Dream.
+Thẻ nhà cung cấp hiển thị phiên bản CLI đã cài đặt nếu có. Dream cũng kiểm tra phiên bản mới hơn và hiển thị nút **Có bản cập nhật: …** khi tìm thấy. Nhấp vào nút đó để chạy lệnh cập nhật của chính CLI; Dream sẽ báo kết quả khi hoàn tất. Nếu cập nhật thất bại, hãy cập nhật CLI bằng phương thức cài đặt thông thường của nó, rồi làm mới thẻ nhà cung cấp trong Dream.
 
 Sử dụng nút bật/tắt của nhà cung cấp để ẩn các mô hình của nó khỏi các lựa chọn có sẵn mà không cần unistall CLI. Kiểm tra lại các thiết lập mặc định của bạn sau khi thay đổi các nhà cung cấp hoặc mô hình đã bật.
 
@@ -68,4 +71,4 @@ Nếu một nhà cung cấp nói **không phát hiện được CLI**:
 
 Nếu đã cài đặt CLI khi Dream đang mở, hãy khởi động lại Dream nếu việc cập nhật vẫn không phát hiện được nó. Lệnh phải có sẵn trong môi trường của Dream; một biệt danh shell đơn thuần không phải là một CLI đã được cài đặt.
 
-Nếu phát hiện một CLI nhưng mô hình mong muốn bị thiếu, hãy kiểm tra tài khoản/cấu hình của nhà cung cấp và cập nhật danh sách. Nếu các mô hình được liệt kê nhưng không khả dụng trong các cuộc trò chuyện, hãy bật chúng bằng các nút bật/tắt và xác nhận nhà cung cấp được bật. Xem [Khắc phục sự cố](/docs/vi/troubleshooting) để thực hiện các kiểm tra bổ sung.
+Nếu CLI được phát hiện nhưng thiếu mô hình bạn muốn, hãy kiểm tra tài khoản/cấu hình của nhà cung cấp và làm mới danh sách. Nếu các mô hình được liệt kê nhưng không dùng được trong cuộc trò chuyện, hãy chọn chúng trong thẻ nhà cung cấp và xác nhận rằng chính nhà cung cấp đã được bật. Xem [Khắc phục sự cố](/docs/vi/troubleshooting) để biết thêm các bước kiểm tra.

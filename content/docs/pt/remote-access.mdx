@@ -1,0 +1,70 @@
+---
+title: "Acesso remoto"
+description: "Use os projetos deste computador a partir de um celular ou de outro computador emparelhando dispositivos por Tailscale ou Cloudflare Tunnel."
+---
+
+O acesso remoto permite que outros dispositivos usem os projetos deste computador. Um dispositivo emparelhado abre o Dream no navegador ou se conecta a partir de outro aplicativo de desktop Dream, enquanto os agentes, os arquivos, os terminais e os comandos Git continuam sendo executados aqui.
+
+O acesso remoto fica desativado até você ativá-lo, e todo dispositivo precisa ser emparelhado antes de poder se conectar. O Dream não usa conta nem serviço de retransmissão: você fornece a rota de rede, e o emparelhamento controla quem entra.
+
+## Escolher como os dispositivos acessam este computador
+
+| Opção | Como funciona | O que é necessário |
+| --- | --- | --- |
+| Tailscale | Serve o Dream por HTTPS dentro da sua tailnet | Tailscale neste computador e em todos os dispositivos, com MagicDNS e certificados HTTPS ativados na tailnet |
+| Cloudflare Tunnel | Serve o Dream em um nome de host público no seu próprio domínio | Um túnel persistente na sua conta da Cloudflare e um conector `cloudflared` executado por você |
+
+Você também pode colocar seu próprio proxy reverso na frente do host. Consulte [Executar o host](/docs/pt/dream-host#acesso-remoto-pela-linha-de-comando).
+
+## Ativar o acesso remoto
+
+1. Abra **Configurações → Conexões** e localize **Acesso remoto**.
+2. Clique em **Configurar**.
+3. Em **Acessar este computador por**, escolha **Tailscale** ou **Cloudflare Tunnel**.
+4. Para o Tailscale, mantenha ou altere a **Porta HTTPS**. Para o Cloudflare Tunnel, informe o **Endereço público**, como `https://dream.example.com`.
+5. Deixe **Porta local** em branco, a menos que precise de uma porta específica, e clique em **Ativar**.
+
+O status ao lado de **Permitir dispositivos emparelhados** exibe **Pronto** assim que o Dream consegue acessar este computador por esse endereço. Se exibir **Não está pronto**, siga a mensagem mostrada, corrija o problema e clique em **Verificar novamente**. Use **Alterar** para editar a configuração mais tarde. Desative **Permitir dispositivos emparelhados** para deixar de atender os dispositivos sem desfazer o emparelhamento deles.
+
+### Configurar um túnel da Cloudflare
+
+O Dream não instala nem executa o `cloudflared` e nunca precisa do token do seu túnel. Ele precisa apenas do endereço público e da porta local para a qual o nome de host é roteado.
+
+1. No painel da Cloudflare, crie um túnel e execute neste computador o comando de instalação que ele mostra.
+2. Adicione uma rota para um nome de host no seu domínio. Defina o serviço dela como `HTTP` e `127.0.0.1:5410`, ou use a **Porta local** exibida no Dream.
+3. Certifique-se de que o nome de host aceita solicitações diretas de API e WebSocket. Não coloque um login do Cloudflare Access nem um desafio de navegador na frente dele, e não armazene `/api/*` em cache nem em buffer.
+
+Não há suporte a Quick Tunnels. Os endereços deles mudam, e eles não conseguem transportar os fluxos de chat.
+
+## Emparelhar um dispositivo
+
+1. Quando o acesso remoto estiver pronto, clique em **Emparelhar um dispositivo**.
+2. Escolha o nível de **Acesso** do dispositivo.
+3. Clique em **Criar emparelhamento**. O Dream mostra um **Código de emparelhamento** e o **Endereço do host**.
+4. No outro dispositivo, abra o endereço do host em um navegador, informe o código e um **Nome do dispositivo** e clique em **Emparelhar**.
+
+Para conectar outro aplicativo de desktop Dream em vez de um navegador, [adicione este computador como host nele](/docs/pt/remote-hosts#emparelhar-com-um-host-por-https) com o mesmo endereço e o mesmo código.
+
+O código funciona uma única vez e expira em 10 minutos. Quem o informar recebe o acesso que você escolheu, por isso forneça-o apenas ao dispositivo que você pretende emparelhar.
+
+| Acesso | O que o dispositivo pode fazer |
+| --- | --- |
+| Somente ver | Ler projetos, chats e terminais |
+| Ver e trabalhar | Também executar agentes, terminais e Git em seu nome |
+| Completo | Também emparelhar e remover dispositivos |
+
+## Usar o Dream em um dispositivo emparelhado
+
+Um navegador emparelhado mostra os projetos deste computador com seus chats, arquivos, terminais e painéis do Git. Algumas coisas ficam só no aplicativo de desktop: a ferramenta integrada **Navegador**, **Configurações → Conexões**, a abertura de pastas em outros hosts e **Abrir em** para editores externos.
+
+Se o dispositivo perder a conexão, um aviso informa que ele está se reconectando ou que não consegue acessar o host e está mostrando o que salvou. O trabalho no host continua nos dois casos. Para desfazer o emparelhamento a partir do próprio dispositivo, abra as **Configurações** nele e escolha **Sair**.
+
+## Gerenciar dispositivos emparelhados
+
+**Dispositivos emparelhados** lista cada dispositivo com o nível de acesso e quando foi usado pela última vez. Clique em **Revogar** para remover um deles ou em **Revogar todos** para remover todos os dispositivos. Um dispositivo revogado perde o acesso imediatamente e as páginas abertas nele param de funcionar; o trabalho neste computador continua.
+
+## Manter este computador disponível
+
+Os dispositivos só conseguem se conectar enquanto o host do Dream está em execução e este computador não está em suspensão. O host iniciado pelo aplicativo de desktop é interrompido quando você encerra o Dream. Para manter um host em execução em segundo plano ou para compartilhar uma máquina sem sessão de desktop, consulte [Executar o host](/docs/pt/dream-host).
+
+Se as Configurações informarem que o host deste computador executa uma versão diferente da do aplicativo, atualize o que estiver mais antigo e reinicie o host.

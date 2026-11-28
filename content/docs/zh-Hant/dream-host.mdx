@@ -1,0 +1,125 @@
+---
+title: "執行主機"
+description: "安裝並執行 dream-host，讓代理在不開啟桌面視窗時，或在沒有桌面工作階段的機器上持續工作。"
+---
+
+Dream 的主機是負責管理專案、聊天、代理 CLI、終端機和 Git 的程序。桌面應用程式會為你啟動一個主機。如果想在關閉視窗後讓代理繼續工作、使用沒有桌面工作階段的機器，或以自己的服務管理員管理主機，請自行執行 `dream-host`。
+
+透過 [SSH](/docs/zh-Hant/remote-hosts#新增-ssh-主機) 連線的機器不需要進行這些步驟。Dream 連線時會在該機器上安裝並執行自己的主機。
+
+## 安裝
+
+每個發行版本都會發布主機的安裝程式。請將 `<version>` 替換為你使用的 Dream 版本，例如 `0.36.0`。
+
+在 macOS 和 Linux 上：
+
+```sh
+curl -fsSL https://github.com/dreamide/dream/releases/download/v<version>/install-host.sh | sh
+```
+
+在 Windows 上，使用 PowerShell：
+
+```powershell
+irm https://github.com/dreamide/dream/releases/download/v<version>/install-host.ps1 | iex
+```
+
+安裝程式會依照該發行版本的 `SHA256SUMS` 驗證下載的檔案，並將其安裝到 `~/.dream/host/versions/` 下。在 macOS 和 Linux 上，它會將 `dream-host` 連結到 `~/.local/bin`；在 Windows 上，則會將其加入使用者的 `PATH`。主機提供適用於 Apple silicon 版 macOS、Linux x64 與 ARM64，以及 Windows x64 的版本。
+
+執行主機的使用者必須能夠使用各個代理 CLI 及其登入狀態。
+
+## 執行主機
+
+| 指令 | 它能做什麼 |
+| --- | --- |
+| `dream-host serve` | 在前景執行主機，直到你按下 Ctrl+C |
+| `dream-host ensure` | 在背景啟動主機，或沿用已在執行的主機 |
+| `dream-host status` | 回報主機是否正在執行 |
+| `dream-host stop` | 在主機儲存工作後將其停止 |
+| `dream-host help` | 列出所有指令和選項 |
+
+## 選項
+
+每個選項都可以用旗標或環境變數指定。旗標的優先順序高於環境變數。
+
+| 旗標 | 環境變數 | 預設值 | 目的 |
+| --- | --- | --- | --- |
+| `--home` | `DREAM_HOST_HOME` | `~/.dream/host` | 主機存放執行記錄、日誌以及（預設情況下）資料的位置 |
+| `--data-dir` | `DREAM_HOST_DATA_DIR` | `<home>/data` | 主機的身分識別、設定，以及（預設情況下）資料庫 |
+| `--database` | `DREAM_HOST_DATABASE` | `<data dir>/dream.db` | 存放專案、聊天和對話記錄的資料庫 |
+| `--port` | `DREAM_HOST_PORT` | 可用的連接埠 | 供這台機器上的用戶端使用的本機連接埠 |
+| `--idle-timeout` | `DREAM_HOST_IDLE_TIMEOUT` | `3600` | 在沒有任何用戶端、終端機、回合或遠端存取的情況下，主機結束前等待的秒數。使用 `0` 可讓主機持續執行 |
+| `--remote-port` | `DREAM_HOST_REMOTE_PORT` | 已儲存的設定 | 為已配對裝置提供服務的本機連接埠，供你自行執行的反向代理使用 |
+| `--remote-origin` | `DREAM_HOST_REMOTE_ORIGINS` | 無 | 你的反向代理所提供的公開位址 |
+
+同一時間只能有一個主機使用同一個資料庫。`dream-host` 不會讀取 `.env` 檔案；請在其執行環境中設定變數。
+
+## 搭配桌面應用程式使用
+
+桌面應用程式會使用正在其資料上執行的主機；如果沒有，則會自行啟動一個。
+
+- 由應用程式啟動的主機會在你結束 Dream 時停止。
+- 由你啟動的主機在你結束 Dream 後會繼續執行。聊天會繼續進行，終端機保持開啟，下次開啟應用程式時會重新連接到它們。
+
+若要自行執行桌面應用程式的主機，請結束 Dream，以桌面應用程式的資料目錄啟動 `dream-host`，然後再次開啟 Dream：
+
+```sh
+dream-host serve --data-dir "<desktop data directory>" --idle-timeout 0
+```
+
+| 平臺 | 桌面應用程式資料目錄 |
+| --- | --- |
+| macOS | `~/Library/Application Support/dreamide` |
+| Windows | `%APPDATA%\dreamide` |
+| Linux | `~/.config/dreamide` |
+
+## 從命令列使用遠端存取
+
+遠端存取是主機的一項已儲存設定。在主機執行期間開啟一次後，每次主機啟動時都會套用。
+
+```sh
+dream-host remote on --tailscale
+dream-host remote on --cloudflare --origin https://dream.example.com
+dream-host remote status
+dream-host pair
+dream-host devices
+dream-host revoke <id>
+```
+
+`dream-host pair` 會印出一次性配對碼，`dream-host serve --pair` 則會在主機啟動時立即印出一組。`dream-host devices` 會列出已配對的裝置，`dream-host revoke` 則可移除其中一台。已配對裝置可執行的操作請參閱[遠端存取](/docs/zh-Hant/remote-access)。
+
+若要使用自己的反向代理，請以 `--remote-port` 和 `--remote-origin` 啟動主機。此時「設定」會顯示遠端存取是由這些選項設定，且無法在該處變更。
+
+## 讓主機持續執行
+
+在作業系統的服務管理員下執行 `dream-host serve --idle-timeout 0`，並設定為失敗時自動重新啟動。在 Linux 上，請將使用者層級的 systemd 單元儲存為 `~/.config/systemd/user/dream-host.service`：
+
+```ini
+[Unit]
+Description=Dream host
+
+[Service]
+ExecStart=%h/.local/bin/dream-host serve --idle-timeout 0
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+```
+
+然後啟用它：
+
+```sh
+systemctl --user daemon-reload
+systemctl --user enable --now dream-host
+loginctl enable-linger "$USER"
+```
+
+在 macOS 上，請使用 LaunchAgent。在 Windows 上，請使用在登入時執行的 Task Scheduler 工作。[Dream 儲存庫中的主機指南](https://github.com/dreamide/dream/blob/main/docs/host-service.md)提供了兩者的完整範例。請加入代理 CLI 所需的 `PATH` 項目和變數，並以 `dream-host status` 確認結果。
+
+<Note>
+  Dream v0.30 和 v0.31 可以用 `dream-host service` 將主機安裝為服務。該指令已在 v0.32 中移除。由這些版本安裝的服務會持續執行，直到你將其移除為止；主機指南說明了移除方式。
+</Note>
+
+## 更新主機
+
+執行新版本的安裝程式，然後重新啟動主機：使用 `dream-host stop` 後再次啟動，或重新啟動其服務。請讓主機與桌面應用程式維持相同版本。兩者版本不同時，**設定 → 連線**會提醒你。

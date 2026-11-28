@@ -5,6 +5,8 @@ description: "Revise alterações, trabalhe com ramificações e use Worktrees d
 
 Abra o **Git** na barra lateral direita para as guias **Alterações**, **Histórico** e **Pull request**. O menu de **Ações do Git** abaixo da conversa oferece os próximos passos para a branch atual.
 
+O botão **Ações do Git** fica à direita do rodapé e é destacado quando há alterações para commit ou commits para enviar. **Git** aparece apenas em projetos dentro de um repositório Git.
+
 ## Antes de começar
 
 Para commits, seu repositório precisa ter uma identidade de autor Git configurada. Para push, é necessário um remoto e credenciais que possam acessá-lo. A criação de pull request utiliza o GitHub CLI, que deve estar instalado e autenticado para o repositório de destino.
@@ -15,8 +17,10 @@ Você pode digitar os mensagens de commit e o texto do PR por si. Para gerá-los
 
 1. Aberto **Git → Alterações** para inspecionar arquivos modificados, adicionados e excluídos.
 2. Expandir um arquivo para revisar sua diferença.
-3. Escolha **Diff unificado** ou **Diff dividido** no cabeçalho, e habilite o wrap de palavras na seção **Alterações** se necessário.
-4. Use **Ações de Alterações → Atualizar** se as alterações realizadas fora do Dream ainda não foram refletidas.
+3. Escolha **Diff unificado** ou **Diff dividido** no cabeçalho. A **Quebra de linha** vem ativada por padrão e tem seu próprio botão de alternância ali, ao lado de **Expandir tudo** e **Recolher tudo**.
+4. Clique no caminho de um arquivo no cabeçalho do diff dele para abrir esse arquivo em **Arquivos**.
+
+A lista é atualizada conforme os arquivos mudam, depois que comandos do terminal terminam e quando você volta à janela do Dream.
 
 Para diffs muito grandes, o Dream pode exibir **Diferença muito grande para renderizar**. Use **Renderizar mesmo assim** apenas quando quiser carregar essa visualização maior ou inspecionar o arquivo no seu editor ou terminal.
 
@@ -42,6 +46,8 @@ Para pedir a um agente sobre linhas específicas, arraste entre os números de l
 4. Revise **Gerar mensagem automaticamente**, que está ativada por padrão. Para escrever sua própria mensagem, desative-a e insira o texto; desativá-la apaga a mensagem gerada.
 5. Escolha **Confirmar**, ou **Confirmar e enviar** se você estiver pronto para publicar o commit no remoto.
 
+Com **Gerar mensagem automaticamente** ativado, o Dream redige a mensagem em segundo plano quando termina o último turno de agente em execução no projeto, de modo que ela costuma estar pronta quando você abre o painel. Pressione **Command+Enter** no macOS ou **Ctrl+Enter** no Windows/Linux para fazer o commit e adicione **Shift** para fazer o commit e enviar.
+
 Para commitar apenas um subconjunto selecionado, estagie esses arquivos usando Git em um terminal ou em um editor externo e desative **Incluir não preparado**. O Painel de alterações não fornece controles individuais de estagio.
 
 O Dream rejeita commits quando há mudanças staged fora do diretório ativo do projeto. Faça o commit separadamente antes de continuar com esta ação.
@@ -62,14 +68,24 @@ O Dream rejeita commits quando há mudanças staged fora do diretório ativo do 
   />
 </Frame>
 
-Use **Publicar branch** para uma branch sem upstream, ou **Enviar** para enviar commits pendentes. Essas ações no rodapé fazem o envio imediatamente. Confira primeiro a branch, o remoto e os commits em **Histórico**; quando há um upstream, o rodapé mostra quantos commits estão à frente e atrás.
+Em **Ações do Git**, use **Publicar branch** para uma branch sem upstream ou **Enviar** para commits pendentes de envio. As duas opções abrem uma prévia **Enviar alterações** que mostra a branch, o destino dela e os commits que serão enviados. Revise-os e clique em **Enviar**. Quando há um upstream, os itens de menu **Enviar** e **Pull** mostram quantos commits a branch está à frente e atrás.
 
-Se o empurrar falhar, verifique o erro e confirme o acesso remoto. Um commit local bem-sucedido permanece comitado mesmo se um empurrar posterior falhe; verifique o estado da ramificação antes de repetir a ação combinada.
+Se o envio falhar, examine o erro e confirme seu acesso ao remoto. Quando o remoto tem commits que você ainda não tem, o Dream pede que você faça pull e envie novamente. Um commit local bem-sucedido permanece gravado mesmo que o envio seguinte falhe; verifique o estado da branch antes de repetir uma ação combinada.
+
+## Fetch e pull
+
+**Ações do Git → Fetch** baixa os novos commits do remoto sem alterar seus arquivos. **Pull** também traz os commits da branch upstream para a sua branch.
+
+Depois de um pull, uma notificação informa quantos commits chegaram. Escolha **Ver alterações** nela para abrir **Alterações recebidas**, que lista esses commits e os arquivos que eles alteraram.
+
+Se tanto a sua branch quanto o upstream dela receberam commits, o Dream mescla os commits do upstream na sua branch; ele não faz rebase. Quando essa mesclagem geraria conflitos, o Dream a aborta, deixa seus arquivos como estavam e lista os arquivos em conflito. Resolva a divergência com o Git em um terminal e faça pull novamente.
+
+**Abrir repositório**, no mesmo menu, abre o repositório remoto no seu navegador.
 
 ## Criar um pull request
 
 1. Trabalhe em uma ramificação de recurso cujo nome difere do nome da base da solicitação de alteração.
-2. Escolha **Criar PR** no rodapé, ou **Ações do Git → Criar solicitação pull**.
+2. Escolha **Ações do Git → Criar solicitação pull**.
 3. Revise as branches de origem e base e as mudanças propostas.
 4. Insira um título e uma descrição, ou use **Gerar automaticamente detalhes de PR** e revise o texto gerado.
 5. Em **Próximas etapas**, selecione a ação que corresponde ao estado da ramificação.
@@ -101,7 +117,7 @@ Abra **Git → Pull request** para ver a solicitação de pull da atual branch. 
 
 ## Alternar ou criar ramificações
 
-Abra o switcher de ramo abaixo do chat, procure ramos locais e selecione um para saí-lo. Use **Criar e checkout de novo ramo…** para nomear e criar um ramo. Atualize a lista se um ramo criado fora do Dream estiver faltando.
+Abra o seletor de branches abaixo do chat, pesquise as branches locais e selecione uma para fazer checkout dela. Use **Criar e fazer checkout de nova branch…** para nomear e criar uma branch. A lista é recarregada sempre que você a abre, por isso inclui branches criadas fora do Dream.
 
 <Frame caption="O marcador de verificação identifica a branch atual. Busque por outra branch ou crie uma nova a partir do mesmo menu.">
   <img
@@ -114,6 +130,17 @@ Abra o switcher de ramo abaixo do chat, procure ramos locais e selecione um para
 </Frame>
 
 Mudar de ramo altera os arquivos usados por cada chat nesse projeto. Revise o trabalho não finalizado antes de fazer a mudança. Para tarefas paralelas com checkouts independentes, use [Worktrees do Git](/docs/pt/worktrees). Quando um worktree for concluído, use seu rodapé para mesclar no ramo principal, criar um pull request ou remover o checkout. Veja [Conclua um worktree](/docs/pt/worktrees#conclua-a-árvore-de-trabalho).
+
+### Excluir uma branch local
+
+1. Abra o seletor de branches e passe o ponteiro sobre a branch, ou vá até ela com o teclado.
+2. Clique em **Excluir branch**, o ícone de lixeira na linha dela.
+3. Leia o resumo. O Dream informa se os commits da branch estão na branch base, o estado do pull request dela e se há commits que existem apenas nessa branch.
+4. Clique em **Excluir branch**. Quando há commits que seriam perdidos, o botão exibe **Excluir mesmo assim**.
+
+A exclusão remove apenas a branch local; a branch remota correspondente não é alterada. Não é possível excluir a branch atual, a branch base nem uma branch que esteja aberta no checkout principal.
+
+Se a branch estiver com checkout feito em uma [árvore de trabalho](/docs/pt/worktrees), a caixa de diálogo oferece **Remover worktree e branch** no lugar. Isso também exclui a pasta da árvore de trabalho e os chats dela.
 
 ## Navegar pelo histórico de commits
 

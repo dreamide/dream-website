@@ -1,0 +1,30 @@
+---
+title: "Delegar tareas en otros agentes"
+description: "Deja que un agente pase parte de una tarea a otro proveedor y compruebe el resultado más tarde."
+---
+
+Un agente puede pasar parte de su trabajo a otro proveedor de agentes que hayas configurado. Por ejemplo, un chat de Claude Code puede pedir a Codex que revise un cambio mientras él escribe las pruebas. No hay nada que activar: pídelo en tu mensaje.
+
+## Pedir a un agente que delegue
+
+Indica el proveedor y describe la parte del trabajo que debe hacer:
+
+> Pide a Codex que revise los cambios de esta rama en busca de errores mientras tú escribes las pruebas. Informa de sus hallazgos cuando termine.
+
+El agente inicia la tarea, continúa con su propio trabajo y comprueba el resultado en un turno posterior. Una tarea delegada se ejecuta en el mismo proyecto y comparte sus archivos. No recibe la conversación de origen, así que el agente redacta instrucciones propias para la tarea.
+
+Cada tarea es un chat nuevo en el mismo proyecto. Su título empieza por `Task:` seguido del comienzo de esas instrucciones. Abre ese chat para seguir el trabajo del otro agente.
+
+## Qué proveedores pueden delegar
+
+Los chats de Claude Code, Codex, OpenCode y Grok Build pueden delegar. Los de Cursor y Antigravity no. Cualquiera de los seis proveedores puede recibir una tarea, siempre que su CLI esté instalada y con la sesión iniciada. Consulta [Conectar un proveedor](/docs/es/providers).
+
+## Permisos y límites
+
+- Una tarea delegada empieza con los [permisos](/docs/es/agent-modes) del chat de origen y nunca puede tener otros más amplios.
+- Detener el turno del chat de origen también detiene las tareas que este delegó.
+- Un chat puede tener hasta 8 tareas delegadas activas a la vez. Una tarea delegada puede delegar a su vez, hasta 4 niveles de profundidad.
+
+<Warning>
+  Las tareas delegadas editan la misma carpeta de proyecto que el chat de origen. Pide una revisión o una investigación, o indica a cada agente qué archivos debe cambiar. Usa un [árbol de trabajo de Git](/docs/es/worktrees) cuando una tarea necesite un checkout independiente.
+</Warning>

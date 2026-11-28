@@ -5,7 +5,7 @@ description: "Exécuter des commandes de projet, gérer des sessions de terminal
 
 Le terminal intégré exécute des commandes dans votre projet sans quitter Dream. Cliquez sur **Terminal** dans la barre latérale de droite pour l'ouvrir. Un terminal de projet normal démarre dans le dossier du projet.
 
-Dans un [projet SSH](/docs/fr/remote-hosts), les commandes du terminal s'exécutent sur l'hôte distant. Installez les commandes et outils de développement nécessaires sur cette machine.
+Dans un projet sur un [hôte distant](/docs/fr/remote-hosts), les commandes du terminal s'exécutent sur cet hôte. Installez les commandes et outils de développement nécessaires sur cette machine.
 
 ## Exécuter des commandes en parallèle avec un chat
 
@@ -32,7 +32,9 @@ Pour une prévisualisation dans un navigateur, démarrez l'application du projet
 
 Utilisez des sessions séparées pour une application en cours d'exécution et pour des commandes occasionnelles telles que les tests. Fermer une session de terminal termine son processus. Fermer le panneau conserve les sessions que vous avez utilisées, mais Dream effectue automatiquement la suppression des sessions ouvertes qui n'ont reçu aucune entrée utilisateur.
 
-Utilisez **Agrandir le terminal** pour donner plus d'espace au panneau et **Réduire le terminal** pour restaurer sa taille habituelle. Développer ou réduire modifie l'organisation sans fermer la session.
+Fermer un projet, ou supprimer son hôte de Dream, arrête les terminaux de ce projet. Les terminaux s'exécutent sur l'hôte du projet ; lorsque vous [exécutez l'hôte vous-même](/docs/fr/dream-host), ils continuent donc de s'exécuter après la fermeture de Dream et sont restaurés à sa réouverture.
+
+Utilisez **Développer** pour donner plus d'espace au panneau et **Réduire** pour lui rendre sa taille habituelle. Développer ou réduire modifie la disposition sans fermer la session.
 
 Changer de panneau d'outils conserve les vues du terminal chargées pour retrouver la même session et sa sortie. Dream tente également de rétablir le moteur de rendu du terminal en cas de perte de son contexte graphique.
 

@@ -3,7 +3,9 @@ title: "Trabalhar com chats"
 description: "Comece conversas, encontre trabalhos anteriores, renomeie chats e gerencie seu histórico de conversas."
 ---
 
-Um chat mantém uma conversa com um agente de código. Cada chat pertence a um projeto e possui seu próprio modelo, permissões e histórico de conversa. Use chats separados para tarefas que deseja retornar independentemente, como corrigir um bug e revisar uma funcionalidade.
+Um chat contém uma conversa com um agente de código. Em geral, um chat pertence a um projeto e tem seu próprio modelo, suas permissões e seu histórico de conversa. Use chats separados para tarefas às quais você queira voltar de forma independente, como corrigir um bug e revisar uma funcionalidade.
+
+Para perguntar algo sem abrir uma pasta, inicie um [chat sem projeto](/docs/pt/standalone-chats).
 
 ## Comece uma conversa
 
@@ -47,7 +49,7 @@ Use [referências de arquivo e anexos](/docs/pt/providing-context) para apontar 
   />
 </Frame>
 
-Busca de histórico filtra os títulos desse projeto. Para buscar títulos e texto de mensagens em projetos, clique em **Pesquisar chats** na barra superior (padrão **Command+Shift+F** no macOS ou **Ctrl+Shift+F** em Windows/Linux). Os resultados incluem projetos locais e hosts conectados via SSH. Selecionar um resultado arquivado o restaura; selecionar o chat de um projeto fechado o reabre.
+A pesquisa no histórico filtra os títulos deste projeto. Para pesquisar títulos e texto de mensagens em todos os projetos, clique em **Pesquisar chats** na barra superior (por padrão, **Command+Shift+F** no macOS ou **Ctrl+Shift+F** no Windows/Linux). Os resultados incluem projetos locais, hosts remotos conectados e [chats sem projeto](/docs/pt/standalone-chats). Selecionar um resultado arquivado o restaura; selecionar o chat de um projeto fechado reabre esse projeto.
 
 Se um anfitrião não puder ser buscado, reconecte-o e tente novamente. Atribua um alcance mais restrito quando os resultados são truncados. Você também pode gerenciar conversas antigas em [Chats arquivados](/docs/pt/archived-chats).
 
@@ -73,13 +75,39 @@ Nomes como “Corrigir a persistência das configurações” e “Revistar os t
 
 Ative **Notificações da área de trabalho** em **Configurações → Geral → Mensagens de chat** para receber um aviso quando um chat terminar, falhar ou precisar da sua resposta enquanto o Dream estiver em segundo plano. Clique na notificação para abrir o chat. **Som de notificação** é uma opção separada e pode tocar mesmo quando o Dream estiver em foco.
 
+As notificações também abrangem os turnos que continuam em execução no host enquanto esta janela não os acompanha. Um turno que você mesmo interrompe não gera notificação.
+
 Um indicador de carregamento identifica os chats que estão recebendo uma resposta. Ao enviar uma mensagem, o Dream rola até ela para deixá-la visível.
 
 Enquanto um agente responde, o chat exibe seu progresso e a atividade das ferramentas. Abra os detalhes da ferramenta para inspecionar comandos, leituras de arquivos ou alterações. Quando o agente fornece uma lista de tarefas, o controle de tarefas ao lado da caixa de mensagem mostra seu progresso.
 
-Histórico e guias de projeto incluem indicadores de status para trabalhos em processamento ou concluídos; os guias de projeto também podem indicar que um agente está aguardando sua resposta. Selecione o projeto e abra a conversa para ler a última mensagem. Use o controle de parada no compositor para interromper uma resposta. Parar uma resposta não desfaz as alterações de arquivo já realizadas.
+O Histórico de bate-papo e as abas dos projetos mostram um status para cada chat: um indicador de carregamento enquanto ele responde, um ponto âmbar quando o agente está esperando por você e um ponto verde quando ele terminou e você ainda não o abriu. Selecione o projeto e abra a conversa para ler a mensagem mais recente. Use o controle de parada no compositor para interromper uma resposta. Interromper uma resposta não desfaz as alterações já feitas nos arquivos.
+
+Um turno é executado no host do projeto, e não na janela. Se a janela perder a conexão com o host, o turno continua em execução e o Dream se reconecta a ele automaticamente. Encerrar o Dream interrompe o host iniciado pelo aplicativo, junto com os turnos dele; para manter os agentes trabalhando depois de fechar o aplicativo, [execute o host por conta própria](/docs/pt/dream-host).
 
 Após uma resposta terminar, use **Ver alterações de arquivos desta resposta** no seu rodapé para ver os arquivos que foram modificados e [restaurar qualquer um deles](/docs/pt/checkpoints).
+
+## Colocar mensagens na fila
+
+Você não precisa esperar uma resposta terminar para enviar a próxima instrução. Digite uma mensagem enquanto o agente trabalha e envie-a. O Dream a adiciona à fila do chat e a executa quando o turno atual termina. Enquanto um turno está em execução, o botão do compositor interrompe o turno quando a caixa de mensagem está vazia e envia a mensagem assim que você digita algo.
+
+A lista **Fila** aparece acima da caixa de mensagem quando há uma mensagem aguardando ou quando uma execução precisa da sua atenção. Cada linha mostra a mensagem, o modelo dela e um status.
+
+| Status | Significado |
+| --- | --- |
+| Na fila | Aguardando os turnos que estão à frente |
+| Em execução | O turno em que o agente está trabalhando agora |
+| Aguardando | O turno em execução aguarda sua resposta ou aprovação |
+| Interrompido | Parou antes de terminar, por exemplo pelo controle de parada ou por uma reinicialização do host |
+| Falhou | Terminou com erro |
+
+Use **Cancelar** em uma mensagem na fila para retirá-la da fila. Uma execução que falhou ou foi interrompida oferece **Tentar novamente** e **Remover**. Antes de tentar novamente, leia a resposta deixada pela execução interrompida, pois parte do trabalho já pode ter sido feita.
+
+**Pausar fila** retém as mensagens na fila e deixa o turno atual terminar. **Retomar fila** volta a executá-las. O controle de parada é diferente: ele encerra o turno em execução, junto com as tarefas que esse turno [delegou](/docs/pt/delegation), e pausa a fila.
+
+Uma execução que falhou ou foi interrompida também pausa a fila, e o cabeçalho da fila passa a exibir **Fila pausada**. Enviar uma nova mensagem retoma a fila e descarta essas execuções.
+
+As filas são salvas no host do projeto e são preservadas quando o Dream é reiniciado. Depois que o host reinicia, um turno que estava em execução é marcado como interrompido e a fila permanece pausada até você retomá-la. Se uma mensagem na fila não puder ser enviada, o texto dela volta para a caixa de mensagem.
 
 ## Fechar, arquivar ou excluir?
 

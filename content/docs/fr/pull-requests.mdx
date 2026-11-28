@@ -24,13 +24,15 @@ Le résumé des vérifications affiche le nombre de vérifications échouées. S
   />
 </Frame>
 
-Si la branche n'a pas de demande de fusion, le panneau propose **Créer une demande d'extraction**. Utilisez **Actions de la pull request → Actualiser** après des modifications effectuées sur GitHub, ou **Ouvrir sur GitHub** pour consulter la demande de fusion dans votre navigateur. Une demande de fusion fusionnée cesse d'apparaître dès que la branche contient des commits plus récents au-delà de la tête de cette demande de fusion.
+Si la branche n'a pas de PR, le panneau l'indique ; créez-en une avec **Actions Git → Créer une demande d'extraction**. Le panneau s'actualise à mesure que la branche change et lorsque vous revenez à la fenêtre de Dream. Pour afficher la PR dans votre navigateur, cliquez sur le dépôt et le numéro de la PR en haut de **Résumé**. Une PR fusionnée cesse d'apparaître dès que la branche contient des commits plus récents au-delà de la tête de cette PR.
 
 ## Revoir du code et poster des commentaires
 
 Dans **Résumé**, lisez la discussion et utilisez **Écrire** et **Aperçu** pour composer un commentaire Markdown. Choisissez **Publier un commentaire** pour le publier sur GitHub.
 
 Dans **Code**, expandez un fichier et sélectionnez des lignes dans son diff pour publier un **Publier un commentaire sur la ligne**. Vous pouvez lire les threads de révision existants et utiliser **Répondre** pour les poursuivre. Lorsqu'un patch de texte n'est pas disponible, ouvrez la demande de modification sur GitHub pour inspecter ce fichier.
+
+L'onglet **Code** renvoie les longues lignes à la ligne par défaut. Utilisez **Retour à la ligne** au-dessus de la liste des fichiers pour désactiver ce comportement.
 
 Ces commentaires sont publiés sur GitHub. Pour demander à votre agent de codage de prendre en compte les modifications locales, utilisez [le feedback sur les différences dans les Modifications](/docs/fr/feedback#commenter-des-lignes-dans-un-diff).
 

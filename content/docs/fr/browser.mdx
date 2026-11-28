@@ -41,7 +41,7 @@ Les actions du navigateur incluent :
 | Zoomer vers l'intérieur / Zoomer vers l'extérieur / Réinitialiser le zoom | Modifier l'échelle d'affichage de la prévisualisation |
 | Ouvrir dans le navigateur système | Voir l'URL actuelle dans votre navigateur habituel |
 
-Utilisez **Agrandir le navigateur** lorsque vous avez besoin d'espace supplémentaire et **Réduire le navigateur** pour revenir à la vue réduite. Pour fournir à un agent une capture d'écran de toute la page, utilisez le contrôle d'attache du chat [contrôle d'attache](/docs/fr/providing-context).
+Utilisez **Développer** dans l'en-tête du panneau lorsque vous avez besoin de plus d'espace et **Réduire** pour revenir à la vue réduite. Pour fournir à un agent une capture d'écran de la page entière, utilisez le [contrôle des pièces jointes](/docs/fr/providing-context) du chat.
 
 ## Envoyer un élément à un chat
 
@@ -53,7 +53,9 @@ Dream envoie votre commentaire avec le sélecteur, la taille, le texte, les styl
 
 ## Demandez à un agent d'utiliser le navigateur
 
-Claude Code, Codex, OpenCode et Grok génèrent automatiquement des outils pour le navigateur de Dream. Ils fonctionnent avec les onglets de projet identiques que vous voyez. Les discussions de Cursor n'ont pas accès à ces outils.
+Les chats Claude Code, Codex, OpenCode et Grok Build reçoivent automatiquement des outils pour le navigateur de Dream. Les chats Cursor et Antigravity ne reçoivent pas ces outils.
+
+Un agent travaille en arrière-plan dans son propre onglet de navigateur ; vous pouvez donc continuer à utiliser un autre onglet, un autre panneau ou un autre projet pendant son exécution. La barre d'outils du navigateur affiche **Agent actif** tant qu'un agent utilise le navigateur. Pour que Dream place l'onglet de l'agent au premier plan pendant qu'il travaille, activez **Suivre l’agent dans le navigateur** sous **Paramètres → Général → Messages de chat**. Cette option est désactivée par défaut.
 
 Donnez à l'agent l'URL de la page et une tâche précise, par exemple :
 
@@ -62,6 +64,12 @@ Donnez à l'agent l'URL de la page et une tâche précise, par exemple :
 Les outils peuvent ouvrir et naviguer dans des onglets, inspecter le contenu de la page, cliquer, taper, survoler, sélectionner des options, faire défiler, prendre des captures d'écran et inspecter les journaux de console et les réponses réseau. Ils peuvent également attacher des fichiers provenant du projet pour uploader des contrôles. Les téléchargements de fichiers doivent utiliser des chemins situés dans le projet.
 
 Démarrer l'application avant de demander à l'agent d'inspecter son URL local. Les actions de navigateur suivent les [permissions](/docs/fr/agent-modes) du chat ; répondez dans le chat si une approbation est demandée. Ces outils sont intégrés et ne nécessitent pas une définition manuelle d'un [serveur MCP](/docs/fr/mcp-servers).
+
+## Utiliser Claude in Chrome
+
+Les chats Claude peuvent aussi travailler dans votre propre Chrome grâce à l'extension Claude in Chrome, indépendamment du navigateur de Dream. Installez l'extension, exécutez `/chrome` dans Claude Code et choisissez **Enabled by default**. Dream démarre alors les tours de Claude avec l'accès à Chrome ; Dream ne propose aucun paramètre distinct pour cela.
+
+Utilisez le navigateur de Dream pour prévisualiser et tester des pages dans l'espace de travail. Utilisez Chrome lorsque la tâche nécessite un site auquel vous y êtes déjà connecté.
 
 ## Recharger et effacer les données du site
 
@@ -72,3 +80,5 @@ Essayez une mise à jour normale après avoir modifié le code de l'application.
 ## Si une page locale ne se charge pas
 
 Vérifiez que l'application est toujours en cours d'exécution, confirmez l'URL complète et le port dans son output terminal, et inspectez toute erreur serveur présente là-bas. Essayez l'adresse même dans votre navigateur système pour identifier si le problème relève de l'application ou du prévisualisation intégrée.
+
+Pour un projet sur un [hôte distant](/docs/fr/remote-hosts#routes), la prévisualisation d'une URL que l'hôte sert localement nécessite une route SSH vers cet hôte. Un hôte accessible uniquement en HTTPS ne peut pas rediriger la page.

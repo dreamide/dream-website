@@ -1,0 +1,39 @@
+---
+title: "Chat senza progetto"
+description: "Avvia una conversazione senza aprire una cartella e trasformala in un progetto quando cresce."
+---
+
+Una chat senza progetto è una conversazione che non appartiene a un progetto che hai aperto. Usala per una domanda, uno script veloce o un'idea che non hai ancora deciso dove collocare. Dream assegna a ogni chat senza progetto una cartella propria, così l'agente ha comunque un posto in cui leggere e scrivere file.
+
+## Avviare una chat senza progetto
+
+- Nella schermata iniziale, scegli **Avvia una chat**.
+- Premi **Command+Shift+N** su macOS o **Ctrl+Shift+N** su Windows/Linux. In [Scorciatoie da tastiera](/docs/it/settings#istruzioni-rapide-del-tastierino) l'azione si chiama **Nuova chat senza progetto**.
+- Con la scheda **Chat** selezionata, fai clic su **Nuova chat** nella barra degli strumenti sinistra.
+
+Dream apre la chat in una scheda **Chat** accanto alle schede dei progetti. La scheda è visibile finché è aperta una chat senza progetto. Chiudere la scheda non elimina le tue chat.
+
+Per avviare la chat su un [host remoto](/docs/it/remote-hosts), usa **Nuova chat su…** in cima all'elenco delle chat e scegli l'host. L'opzione compare quando è connesso un host remoto.
+
+## Trovare una chat senza progetto
+
+Seleziona la scheda **Chat** e apri **Cronologia chat** nella barra degli strumenti sinistra. In questa scheda il pannello si intitola **Chat**. Elenca le chat senza progetto di questo computer e di ogni host connesso, con il nome dell'host accanto alle chat che si trovano altrove.
+
+Anche la [ricerca nelle chat](/docs/it/chats#torna-a-una-conversazione) trova le chat senza progetto. I relativi risultati riportano l'etichetta **Chat** al posto del nome di un progetto.
+
+## Che cosa può usare una chat senza progetto
+
+La cartella di ogni chat viene creata in `~/.dream/chats` sull'host su cui l'hai avviata. **File**, **Browser**, **Terminale** e **Stash** lavorano in quella cartella, e i [checkpoint](/docs/it/checkpoints) registrano che cosa ha modificato ogni risposta. **Git** è nascosto perché la cartella non è un repository.
+
+È aperta una sola chat senza progetto alla volta. Con la [multi-chat](/docs/it/multiple-chats) attiva, **Nuova chat** aggiunge una conversazione accanto a quella aperta, e le due condividono la stessa cartella.
+
+Dream rimuove una cartella di chat che nessuna chat usa più quando è vuota o contiene solo `node_modules`, dopo un periodo di tolleranza di un'ora.
+
+## Trasformare una chat in un progetto
+
+Quando una chat senza progetto diventa un lavoro vero e proprio, conservala come progetto:
+
+1. Seleziona la scheda **Chat** e apri **Cronologia chat**.
+2. Passa il puntatore sulla chat e fai clic su **Trasforma in progetto**. L'azione compare quando la chat contiene un messaggio.
+
+Dream converte la chat sul posto. La sua cartella diventa un normale progetto con il nome della chat, e il progetto si apre in una propria scheda con la conversazione al suo interno.

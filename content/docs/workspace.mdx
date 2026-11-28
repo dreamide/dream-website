@@ -6,8 +6,9 @@ description: Manage project tabs, arrange panels, and move between chats and dev
 Each Dream project has its own workspace. Project tabs let you move between repositories while
 keeping each project's open chats and tools together.
 
-Projects can also live on [SSH hosts](/docs/remote-hosts). Check the host label before running
-commands; remote project tools work on that machine.
+Projects can also live on [remote hosts](/docs/remote-hosts). The footer beneath the chat shows the
+host, the project, and the branch. Check it before running commands; remote project tools work on
+that machine.
 
 <Frame caption="Projects and workspace">
   <img
@@ -22,8 +23,13 @@ commands; remote project tools work on that machine.
 ## Add and switch projects
 
 1. Click the **+** beside the project tabs, or use **Open Folder** on the getting-started screen.
-2. Choose the folder you want to work in.
-3. Select its tab to make it the active project.
+2. In the **Open folder** dialog, enter the folder's path or click **Browse…**. When you have added a
+   [remote host](/docs/remote-hosts), choose where the folder lives under **Open on**.
+3. Click **Open**, then select the project's tab to make it the active project.
+
+As you type a path, Dream lists the matching folders. Press **Tab** to complete the highlighted
+folder and **Enter** to open it. The default shortcut for this dialog is **Command+O** on macOS or
+**Ctrl+O** on Windows/Linux.
 
 The active project determines which chats, files, terminals, browser tabs, and stash items you see.
 Check the selected tab before sending a task or running a command. Drag project tabs to reorder them
@@ -45,7 +51,12 @@ Open the project's **…** menu and choose **Edit** to change its display name o
 to upload an image up to 5 MB, then **Save**. Reset a custom icon to return to automatic detection
 from the project. Renaming a project in Dream does not rename its folder on disk.
 
-Use the menu's **Open in** choices to open the project in an available external editor.
+Use the menu's **Open in** choices to open the project in your file manager, a terminal, or an
+installed editor. The same choices open when you click the project's name in the footer beneath the
+chat.
+
+For a project on an SSH host, **Open in** lists the installed editors that support Remote SSH. A
+project reached only over HTTPS, or viewed from a paired device's browser, has no **Open in** menu.
 
 ## Go back to a previous chat
 
@@ -64,9 +75,11 @@ code editor are left to those tools.
 3. Find the project in **Recently closed**, using its search field if needed.
 4. Select the project to reopen it.
 
-Closing a project removes its open tab; it does not delete its folder. Dream restores saved project
-context such as chats and open tools when possible. Do not use a closed project as a way to keep a
-terminal process running.
+Closing a project removes its open tab and stops its terminals; it does not delete its folder. Dream
+restores saved project context such as chats and open tools when possible.
+
+**Recently closed** remembers up to 50 projects and shows each one's host and path. Its search
+matches a project's name, path, and host.
 
 ## Find the workspace controls
 
@@ -78,21 +91,27 @@ The right toolbar opens project tools:
 
 | Tool | What you can do |
 | --- | --- |
-| [Git](/docs/git-workflows) | Review changes, commit, browse history, and manage the branch's pull request |
 | [Files](/docs/files) | Browse files, search paths, and edit file contents |
 | [Browser](/docs/browser) | Preview URLs and inspect web pages |
 | [Terminal](/docs/terminals) | Run project commands in separate sessions |
+| [Git](/docs/git-workflows) | Review changes, commit, browse history, and manage the branch's pull request |
 | [Stash](/docs/stash) | Save prompts and run them later |
 
-Git controls appear for repository projects. Beneath the chat, use the branch control to switch
-branches or [create a worktree](/docs/worktrees). The adjacent **Git actions** menu offers committing,
-publishing, pull requests, and worktree actions according to the branch's state.
+**Git** and the Git controls appear only for projects inside a Git repository. The footer beneath the
+chat shows the host, the project, and the branch. Use the branch control to switch branches or
+[create a worktree](/docs/worktrees). The **Git actions** menu at the right of the footer offers
+committing, fetching, pulling, pushing, pull requests, and worktree actions according to the
+branch's state.
 
 ## Arrange chats and panels
 
 Click a tool to open its panel. Use the panel's close or collapse control when you need more room
 for chats, and drag panel dividers to resize the layout. Closing a tool panel is different from
 closing its individual terminal sessions or browser tabs.
+
+Double-click the right panel's divider to give the panel an equal share of the window's width. Use
+**Expand** in a panel's header to let it fill the workspace and **Collapse** to return it to its
+usual size.
 
 Enable [multi-chat](/docs/multiple-chats) to arrange conversations in resizable columns. Each chat has
 its own conversation history, while all chats in the project use the same files. Use worktrees for

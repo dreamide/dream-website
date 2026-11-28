@@ -3,7 +3,9 @@ title: "Hướng dẫn thiết lập"
 description: "Tìm các giá trị mặc định của mô hình, nhà cung cấp, câu hỏi, kỹ năng, máy chủ MCP và các thiết lập điều khiển cuộc trò chuyện đã lưu trữ."
 ---
 
-Mở **Cài đặt** bằng biểu tượng bánh xe ở phía trên Dream. Bên trái có **Chung**, **Nhà cung cấp**, **Máy chủ SSH**, **Prompt**, **Kỹ năng**, **Máy chủ MCP**, **Phím tắt**, và **Chat đã lưu trữ**. Các thiết lập chung sẽ được áp dụng khi bạn chọn chúng. Các biểu mẫu cho dòng lệnh, kỹ năng và định nghĩa máy chủ có hành động Tạo hoặc Lưu riêng biệt.
+Mở **Cài đặt** bằng biểu tượng bánh răng ở phía trên cùng của Dream. Thanh bên có **Chung**, **Nhà cung cấp**, **Phím tắt**, **Prompt**, **Kỹ năng**, **Máy chủ MCP**, **Kết nối** và **Chat đã lưu trữ**. Các tùy chọn chung được áp dụng ngay khi bạn chọn. Biểu mẫu cho prompt, kỹ năng và định nghĩa máy chủ có thao tác Tạo hoặc Lưu riêng.
+
+Số phiên bản ở cuối thanh bên sẽ kiểm tra bản cập nhật ứng dụng khi bạn nhấp vào.
 
 ## Chung
 
@@ -35,6 +37,9 @@ Việc thay đổi shell của terminal ảnh hưởng đến các phiên bản 
 | Nhóm lệnh gọi công cụ | Tắt | Nhóm gọn hoạt động công cụ một cách gọn gàng |
 | Mở rộng lệnh gọi công cụ | Tắt | Có mở rộng chi tiết gọi công cụ hay không |
 | Thay đổi điểm kiểm tra | Trên | Lưu dự án tệp trước mỗi phản hồi để bạn có thể xem lại và khôi phục các thay đổi |
+| Thông báo trên màn hình | Trên | Cảnh báo khi một cuộc trò chuyện hoàn tất, thất bại hoặc cần bạn phản hồi trong lúc Dream chạy nền |
+| Âm thanh thông báo | Tắt | Phát âm thanh cho các sự kiện đó, kể cả khi bạn đang ở trong cửa sổ Dream |
+| Theo dõi tác nhân trong trình duyệt | Tắt | Đưa tab [trình duyệt](/docs/vi/browser#yêu-cầu-một-người-dùng-sử-dụng-trình-duyệt) mà tác nhân đang dùng lên trước |
 
 Các cài đặt hiển thị ảnh hưởng đến các cuộc trò chuyện trong các dự án. Chúng không thay đổi nỗ lực suy luận của mô hình hay cấp thêm quyền truy cập công cụ. Việc tắt **Checkpoint thay đổi** sẽ ngừng tạo các bản sao mới; xem [Kiểm tra và khôi phục thay đổi](/docs/vi/checkpoints).
 
@@ -76,15 +81,17 @@ Các cuộc trò chuyện hiện tại vẫn giữ nguyên các lựa chọn c�
 
 ## Nhà cung cấp
 
-Mỗi thẻ cung cấp hiển thị trạng thái CLI được phát hiện, phiên bản đã cài đặt, hành động cập nhật và nút bật. Bật cung cấp và các mô hình riêng lẻ để làm chúng có sẵn trong các lựa chọn. Một nhãn **Có phiên bản mới** hiển thị khi phát hiện phiên bản CLI mới; cập nhật CLI ngoài Dream và sau đó làm mới thẻ.
+Mỗi thẻ nhà cung cấp hiển thị trạng thái CLI được phát hiện, phiên bản đã cài đặt, thao tác làm mới và một công tắc kích hoạt. Bật nhà cung cấp, rồi nhấp vào các mô hình bạn muốn có trong các bộ chọn. Nút **Có bản cập nhật** xuất hiện khi phát hiện phiên bản CLI mới hơn; nhấp vào đó để chạy trình cập nhật của chính CLI.
 
 Dream bỏ qua việc kiểm tra bản cập nhật CLI cho nhà cung cấp đã tắt. Hãy bật nhà cung cấp trước khi kiểm tra bản cập nhật có sẵn.
 
 Cài đặt và đăng nhập qua giao diện dòng lệnh (CLI) của nhà cung cấp ngoài Dream, sau đó cập nhật thẻ của nó. Cấu hình Dream không thay thế luồng đăng nhập của CLI. Xem [Kết nối nhà cung cấp](/docs/vi/providers).
 
-## Máy chủ SSH
+## Kết nối
 
-Thêm, chỉnh sửa, kết nối, ngắt kết nối hoặc xóa máy từ xa trong **Cài đặt → Máy chủ SSH**. Mỗi mục có đích SSH, tên hiển thị, lệnh máy chủ tùy chọn, trạng thái kết nối và lỗi nếu có. Xem [Không gian làm việc từ xa qua SSH](/docs/vi/remote-hosts) để biết cách thiết lập và khôi phục.
+**Cài đặt → Kết nối** có hai nhóm. **Máy chủ từ xa** liệt kê các máy mà bạn có thể mở dự án trên đó: thêm máy chủ SSH hoặc ghép nối với máy chủ qua HTTPS, rồi kết nối, ngắt kết nối, chỉnh sửa các tuyến hoặc xóa máy chủ. Xem [Máy chủ từ xa](/docs/vi/remote-hosts) để biết các bước thiết lập và khôi phục.
+
+**Truy cập từ xa** cho phép các thiết bị đã ghép nối dùng những dự án trên máy tính này và liệt kê các thiết bị bạn đã ghép nối. Xem [Truy cập từ xa](/docs/vi/remote-access). Mục **Kết nối** có trong ứng dụng trên máy tính.
 
 ## Các gợi ý, kỹ năng và máy chủ MCP
 

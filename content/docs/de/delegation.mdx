@@ -1,0 +1,30 @@
+---
+title: "Aufgaben an andere Agenten delegieren"
+description: "Lass einen Agenten einen Teil einer Aufgabe an einen anderen Anbieter übergeben und das Ergebnis später prüfen."
+---
+
+Ein Agent kann einen Teil seiner Arbeit an einen anderen Agenten-Anbieter übergeben, den du eingerichtet hast. Ein Chat mit Claude Code kann zum Beispiel Codex bitten, eine Änderung zu prüfen, während er selbst die Tests schreibt. Du musst nichts einschalten; bitte einfach in deiner Nachricht darum.
+
+## Einen Agenten zum Delegieren auffordern
+
+Nenne den Anbieter und beschreibe den Teil der Arbeit, den er übernehmen soll:
+
+> Bitte Codex, die Änderungen auf diesem Branch auf Fehler zu prüfen, während du die Tests schreibst. Berichte seine Ergebnisse, sobald es fertig ist.
+
+Der Agent startet die Aufgabe, setzt seine eigene Arbeit fort und prüft das Ergebnis in einem späteren Durchlauf. Eine delegierte Aufgabe läuft im selben Projekt und teilt dessen Dateien. Sie erhält die übergeordnete Unterhaltung nicht, daher schreibt der Agent eigene Anweisungen für die Aufgabe.
+
+Jede Aufgabe ist ein neuer Chat im selben Projekt. Sein Titel beginnt mit `Task:`, gefolgt vom Anfang dieser Anweisungen. Öffne diesen Chat, um die Arbeit des anderen Agenten zu verfolgen.
+
+## Welche Anbieter delegieren können
+
+Chats mit Claude Code, Codex, OpenCode und Grok Build können delegieren, Chats mit Cursor und Antigravity nicht. Jeder der sechs Anbieter kann eine Aufgabe übernehmen, sofern seine CLI installiert und angemeldet ist. Siehe [Anbieter verbinden](/docs/de/providers).
+
+## Berechtigungen und Grenzen
+
+- Eine delegierte Aufgabe startet mit den [Berechtigungen](/docs/de/agent-modes) des übergeordneten Chats und kann nie weitergehende erhalten.
+- Wenn du den Durchlauf des übergeordneten Chats stoppst, werden auch die von ihm delegierten Aufgaben gestoppt.
+- In einem Chat können bis zu 8 delegierte Aufgaben gleichzeitig aktiv sein. Eine delegierte Aufgabe kann ihrerseits delegieren, bis zu 4 Ebenen tief.
+
+<Warning>
+  Delegierte Aufgaben bearbeiten denselben Projektordner wie der übergeordnete Chat. Bitte um ein Review oder eine Recherche, oder gib jedem Agenten vor, welche Dateien er ändern soll. Verwende einen [Git-Worktree](/docs/de/worktrees), wenn eine Aufgabe einen unabhängigen Checkout benötigt.
+</Warning>

@@ -5,6 +5,8 @@ description: "Revisar cambios, trabajar con ramas y usar árboles de trabajo de 
 
 Abrir **Git** en la barra de herramientas derecha para las pestañas **Cambios**, **Historial** y **Solicitud de extracción**. El menú de **Acciones de Git** bajo el chat ofrece los siguientes pasos para la rama actual.
 
+El botón **Acciones de Git** se encuentra a la derecha del pie y se resalta cuando hay cambios por confirmar o commits por enviar. **Git** solo aparece en los proyectos que están dentro de un repositorio de Git.
+
 ## Antes de comenzar
 
 Para hacer commits, el repositorio necesita una identidad de autor de Git configurada. Para hacer push, necesita un remoto y credenciales con acceso a él. La creación de pull requests utiliza GitHub CLI, que debe estar instalado y autenticado para el repositorio de destino.
@@ -15,8 +17,10 @@ Puedes escribir tus mensajes de commit y el texto de la solicitud de cambios tú
 
 1. Abrir **Git → Cambios** para inspeccionar los archivos modificados, añadidos y eliminados.
 2. Expandir un archivo para revisar su diff.
-3. Elige **Diff unificado** o **Diff dividido** en el encabezado, y habilita el desplazamiento de palabras en **Acciones de Cambios** si es útil.
-4. Use **Acciones de Cambios → Actualizar** si los cambios realizados fuera de Dream aún no se reflejan.
+3. Elige **Diff unificado** o **Diff dividido** en el encabezado. **Ajuste de línea** está activado de forma predeterminada y tiene allí su propio interruptor, junto a **Expandir todo** y **Contraer todo**.
+4. Haz clic en la ruta de un archivo, en el encabezado de su diff, para abrirlo en **Archivos**.
+
+La lista se actualiza a medida que cambian los archivos, cuando terminan los comandos del terminal y cuando vuelves a la ventana de Dream.
 
 Para diffs muy grandes, Dream puede mostrar **Diferencia demasiado grande para renderizar**. Utiliza **Renderizar de todos modos** solo cuando quieras cargar esa vista más grande, o inspeccionar el archivo en tu editor o terminal.
 
@@ -42,6 +46,8 @@ Para pedir a un agente sobre líneas específicas, arrastre sobre los números d
 4. Revisar **Generar mensaje automáticamente**, que está activado por defecto. Para escribir su propio mensaje, desactívalo y escribe el texto; desactivarlo borra el mensaje generado.
 5. Elige **Confirmar**, o **Confirmar y enviar** si estás listo para publicar el commit en el remoto.
 
+Con **Generar mensaje automáticamente** activado, Dream redacta el mensaje en segundo plano cuando termina el último turno de agente en ejecución del proyecto, por lo que suele estar listo cuando abres el panel. Pulsa **Command+Enter** en macOS o **Ctrl+Enter** en Windows/Linux para hacer commit, y añade **Shift** para hacer commit y enviar.
+
 Para commiter solo un subconjunto seleccionado, stage esos archivos usando Git en un terminal o en un editor externo y desactiva **Incluir no preparado**. El panel de cambios no proporciona controles individuales de estaging.
 
 Dream rechaza los commits cuando hay cambios estagados fuera del directorio activo del proyecto. Comitea esos cambios por separado antes de continuar con esta acción.
@@ -62,14 +68,24 @@ Dream rechaza los commits cuando hay cambios estagados fuera del directorio acti
   />
 </Frame>
 
-Usa **Publicar rama** para una rama sin upstream, o **Enviar** para enviar commits pendientes. Estas acciones del pie de página envían los cambios inmediatamente. Comprueba primero la rama, el remoto y los commits en **Historial**; el pie muestra cuántos commits hay por delante y por detrás cuando existe un upstream.
+En **Acciones de Git**, usa **Publicar rama** para una rama sin upstream, o **Enviar** para los commits salientes. Cualquiera de las dos abre una vista previa **Enviar cambios** que muestra la rama, su destino y los commits que se enviarán. Revísalos y haz clic en **Enviar**. Cuando existe un upstream, los elementos de menú **Enviar** y **Pull** muestran cuántos commits lleva la rama por delante y por detrás.
 
-Si el empuje falla, revisa el error y confirma tu acceso remoto. Un commit local exitoso permanece commitado incluso si un empuje posterior falla; verifica el estado de la rama antes de repetir una acción combinada.
+Si el envío falla, revisa el error y confirma que tienes acceso al remoto. Cuando el remoto tiene commits que aún no tienes, Dream te indica que hagas pull y vuelvas a enviar. Un commit local correcto sigue confirmado aunque falle un envío posterior; comprueba el estado de la rama antes de repetir una acción combinada.
+
+## Fetch y pull
+
+**Acciones de Git → Fetch** descarga los commits nuevos del remoto sin cambiar tus archivos. **Pull** además incorpora a tu rama los commits de la rama upstream.
+
+Después de un pull, una notificación indica cuántos commits han llegado. Elige en ella **Ver cambios** para abrir **Cambios traídos**, que enumera esos commits y los archivos que modificaron.
+
+Si tanto tu rama como su upstream han recibido commits, Dream fusiona los commits del upstream en tu rama; no hace rebase. Cuando esa fusión produciría conflictos, Dream la aborta, deja tus archivos como estaban y enumera los archivos en conflicto. Resuelve la diferencia con Git en un terminal y vuelve a hacer pull.
+
+**Abrir repositorio**, en el mismo menú, abre el repositorio remoto en tu navegador.
 
 ## Crea un pull request
 
 1. Trabaja en una rama de características cuyo nombre difiera de la rama base del pedido.
-2. Elige **Crear PR** en el pie de página, o **Acciones de Git → Crear solicitud de extracción**.
+2. Elige **Acciones de Git → Crear solicitud de extracción**.
 3. Revisa los branches de origen y base y los cambios propuestos.
 4. Ingrese un título y una descripción, o use **Generar detalles de PR automáticamente** y revise el texto generado.
 5. Bajo **Próximos pasos**, seleccione la acción que corresponda al estado de la rama.
@@ -101,7 +117,7 @@ Abrir **Git → Solicitud de extracción** para ver la solicitud de incorporaci�
 
 ## Cambiar o crear ramas
 
-Abre el interruptor de ramas debajo del chat, busca ramas locales y elige una para verificarla. Utiliza **Crear y cambiar a una nueva rama…** para nombrar y crear una rama. Actualiza la lista si una rama creada fuera de Dream está faltando.
+Abre el selector de ramas debajo del chat, busca entre las ramas locales y selecciona una para cambiar a ella. Usa **Crear y cambiar a una nueva rama…** para dar nombre a una rama y crearla. La lista se recarga cada vez que la abres, así que incluye las ramas creadas fuera de Dream.
 
 <Frame caption="La marca de verificación identifica la rama actual. Buscar otra rama o crear una nueva desde menú.">
   <img
@@ -114,6 +130,17 @@ Abre el interruptor de ramas debajo del chat, busca ramas locales y elige una pa
 </Frame>
 
 Cambiar de rama cambia los archivos utilizados por cada chat en ese proyecto. Revisa el trabajo no completado antes de cambiar de rama. Para tareas paralelas con checkouts independientes, utiliza [Worktrees de Git](/docs/es/worktrees). Cuando un worktree ha terminado, utiliza su pie de página para fusionarlo en la rama base, crear una solicitud de fusión o eliminar el checkout. Consulta [Completar un worktree](/docs/es/worktrees#completear-un-árbol-de-trabajo).
+
+### Eliminar una rama local
+
+1. Abre el selector de ramas y pasa el cursor sobre la rama, o desplázate hasta ella con el teclado.
+2. Haz clic en **Eliminar rama**, el icono de papelera de su fila.
+3. Lee el resumen. Dream indica si los commits de la rama están en la rama base, el estado de su solicitud de extracción y si hay commits que solo existen en esta rama.
+4. Haz clic en **Eliminar rama**. Cuando se perderían commits, el botón indica **Eliminar de todos modos**.
+
+La eliminación solo quita la rama local; su rama remota no cambia. No puedes eliminar la rama actual, la rama base ni una rama que esté abierta en el checkout principal.
+
+Si la rama está en uso en un [árbol de trabajo](/docs/es/worktrees), el diálogo ofrece en su lugar **Eliminar worktree y rama**. Eso también elimina la carpeta del árbol de trabajo y sus chats.
 
 ## Explorar el historial de commits
 

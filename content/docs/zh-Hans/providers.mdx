@@ -14,15 +14,16 @@ Dream 与你计算机上已安装的编程代理命令行工具协同工作。
 | OpenCode | OpenCode CLI |
 | Cursor | Cursor Agent CLI |
 | Grok 构建 | Grok 构建 CLI |
+| Antigravity | Antigravity CLI |
 
-从其提供商处安装 CLI，然后在 Dream 之外完成该 CLI 的正常登录或身份验证流程。
+从提供者处安装 CLI，然后在 Dream 之外完成该 CLI 的一般登入或验证流程。Antigravity 即 Google Antigravity；Dream 透过其 `agy` 指令执行它。
 
 ## 启用模型
 
 1. 在 Dream 中打开设置。
 2. 选择 **提供商**。
 3. 安装或认证其 CLI 后，刷新提供者。
-4. 打开提供商的启用开关，然后启用其检测到的一个或多个模型。
+4. 开启提供者的启用开关，然后按一下每个你想使用的已侦测到模型。已选取的模型会以勾号标示。
 5. 打开 **通用 → 模型**，为新的聊天和提交及拉取请求草稿设置默认值。
 
 在打开第一个项目之前，必须启用至少一个模型。聊天在启动后可以使用不同于默认模型的启用模型。
@@ -49,11 +50,13 @@ Dream 与你计算机上已安装的编程代理命令行工具协同工作。
 
 Dream 为每个聊天提供了 **询问**、**接受编辑** 和 **完全访问** 三种权限。在选择之前，请阅读 [智能体权限](/docs/zh-Hans/agent-modes)。Claude 通过可恢复会话进行聊天时，也支持 [在终端中继续聊天](/docs/zh-Hans/terminals#在终端中继续一个-claude-聊天记录)。
 
-[技能](/docs/zh-Hans/skills)适用于 Claude Code、Codex、OpenCode 和 Cursor。[MCP 服务器](/docs/zh-Hans/mcp-servers)和 Dream 的内置浏览器工具适用于 Claude Code、Codex、OpenCode 和 Grok Build；Cursor 不支持这些由 Dream 管理的工具连接。
+[技能](/docs/zh-Hans/skills)适用于 Claude Code、Codex、OpenCode 和 Cursor。[MCP 服务器](/docs/zh-Hans/mcp-servers)和 Dream 的内建浏览器工具适用于 Claude Code、Codex、OpenCode 和 Grok Build；Cursor 和 Antigravity 不支援这些由 Dream 管理的工具连接。
+
+同样这四个提供者的聊天，也可以[将任务委派](/docs/zh-Hans/delegation)给你已设置的任何其他提供者。
 
 ## 检查 CLI 更新
 
-提供商卡片在可用时会显示已安装的 CLI 版本。Dream 还会检查是否有新版本，并在发现新版本时显示 **更新可用：…** 标签。该标签仅报告更新的可用性，并不会执行安装操作。请使用该 CLI 的常规安装方法进行更新，然后在 Dream 中刷新其提供商卡片。
+提供者卡片会在可取得时显示已安装的 CLI 版本。Dream 也会检查是否有较新的版本，并在找到时显示**有可用更新：…** 按钮。按一下该按钮即可执行该 CLI 自己的更新指令；完成后 Dream 会回报结果。如果更新失败，请使用该 CLI 的一般安装方式进行更新，然后在 Dream 中重新整理其提供者卡片。
 
 使用提供商的启用开关将其模型从可用选择中隐藏，而无需卸载 CLI。在更改启用的提供商或模型后，请重新检查默认设置。
 
@@ -68,4 +71,4 @@ Dream 为每个聊天提供了 **询问**、**接受编辑** 和 **完全访问*
 
 如果在 Dream 启动时已安装了 CLI，如果刷新仍无法检测到它，请重新启动 Dream。该命令必须在 Dream 的环境中可用；仅一个 shell 别名并不等同于已安装的 CLI。
 
-如果检测到 CLI 但所需的模型缺失，请检查提供商的账户/配置并刷新列表。如果模型已列出但在聊天中不可用，请通过其切换按钮启用模型，并确认提供商本身已启用。有关更多检查，请参见 [故障排查](/docs/zh-Hans/troubleshooting)。
+如果已侦测到 CLI，但缺少你想要的模型，请检查提供者的帐户与设置，并重新整理清单。如果模型已列出但无法在聊天中使用，请在提供者卡片中选取这些模型，并确认提供者本身已启用。其他检查项目请参阅[疑难排解](/docs/zh-Hans/troubleshooting)。

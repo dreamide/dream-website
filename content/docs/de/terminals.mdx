@@ -5,7 +5,7 @@ description: "Projektbefehle ausführen, Terminal-Sessions verwalten und eine Cl
 
 Der integrierte Terminal führt Befehle in deinem Projekt ohne den Einsatz von Dream aus. Klicken Sie auf **Terminal** in der rechten Werkzeugleiste, um es zu öffnen. Ein normaler Projektterminal startet im Projektverzeichnis.
 
-In einem [SSH-Projekt](/docs/de/remote-hosts) laufen Terminalbefehle auf dem entfernten Host. Installiere die benötigten Befehle und Entwicklungswerkzeuge auf diesem Rechner.
+Für Projekte auf einem [Remote-Host](/docs/de/remote-hosts) laufen Terminalbefehle dort. Installieren Sie benötigte Werkzeuge auf diesem Rechner.
 
 ## Befehle neben einem Chat ausführen
 
@@ -32,7 +32,9 @@ Um eine Browser-Vorschau zu starten, beginnen Sie mit dem Start der Anwendung de
 
 Verwenden Sie separate Sitzungen für eine langlaufende Anwendung und gelegentliche Befehle wie Tests. Das Beenden einer Terminal-Sitzung beendet deren Prozess. Das Schließen des Panels behält die Sitzungen, die Sie verwendet haben, bei, Dream bereinigt jedoch automatisch jene Sitzungen, die eröffnet wurden, aber keine Benutzer-Eingaben erhalten haben.
 
-Verwende **Terminal erweitern**, um dem Panel mehr Platz zu geben und **Terminal einklappen**, um seine gewöhnliche Größe wiederherzustellen. Das Ausklappen oder Einklappen ändert die Layout-Struktur ohne die Sitzung zu schließen.
+Das Schließen des Projekts oder Entfernen seines Hosts stoppt seine Terminals. Wenn Sie den [Host selbst starten](/docs/de/dream-host), laufen die Terminals beim Beenden der App weiter und erscheinen beim nächsten Start wieder.
+
+**Erweitern** vergrößert das Panel, **Reduzieren** stellt die vorherige Größe her. Die Sitzung bleibt geöffnet.
 
 Beim Wechseln der Werkzeug-Panels bleiben Terminalansichten geladen, sodass du zur selben Sitzung und ihrer Ausgabe zurückkehren kannst. Dream versucht außerdem, den Terminal-Renderer nach einem Verlust des Grafikkontexts wiederherzustellen.
 

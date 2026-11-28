@@ -1,0 +1,125 @@
+---
+title: "ホストの実行"
+description: "dream-host をインストールして実行すると、デスクトップのウィンドウがなくても、またデスクトップセッションのないマシンでも、エージェントに作業を続けさせられます。"
+---
+
+Dream のホストは、プロジェクト、チャット、エージェントの CLI、ターミナル、Git を管理するプロセスです。デスクトップアプリはホストを自動的に起動します。ウィンドウを閉じた後もエージェントに作業を続けさせたい場合、デスクトップセッションのないマシンを使いたい場合、または独自のサービスマネージャーでホストを管理したい場合は、`dream-host` を自分で実行します。
+
+[SSH](/docs/ja/remote-hosts#ssh-ホストを追加する) で接続するマシンでは、この作業は一切不要です。Dream が接続時に、そのマシンへ専用のホストをインストールして実行します。
+
+## インストール
+
+リリースごとに、ホストのインストーラーが公開されます。`<version>` は、`0.36.0` のように、使用している Dream のバージョンに置き換えてください。
+
+macOS と Linux の場合：
+
+```sh
+curl -fsSL https://github.com/dreamide/dream/releases/download/v<version>/install-host.sh | sh
+```
+
+Windows の場合は PowerShell で実行します：
+
+```powershell
+irm https://github.com/dreamide/dream/releases/download/v<version>/install-host.ps1 | iex
+```
+
+インストーラーは、ダウンロードしたファイルをリリースの `SHA256SUMS` と照合し、`~/.dream/host/versions/` にインストールします。macOS と Linux では `dream-host` を `~/.local/bin` にリンクし、Windows ではユーザーの `PATH` に追加します。ホストは、Apple silicon 搭載の macOS、Linux x64 と ARM64、Windows x64 向けにビルドされています。
+
+エージェントの CLI とそのサインイン情報は、ホストを実行するのと同じユーザーで利用できる必要があります。
+
+## ホストを実行する
+
+| コマンド | 何をしますか |
+| --- | --- |
+| `dream-host serve` | Ctrl+C を押すまで、ホストをフォアグラウンドで実行する |
+| `dream-host ensure` | ホストをバックグラウンドで起動する。すでに実行中のホストがあれば、それを再利用する |
+| `dream-host status` | ホストが実行中かどうかを報告する |
+| `dream-host stop` | 作業内容を保存してからホストを停止する |
+| `dream-host help` | すべてのコマンドとオプションを一覧表示する |
+
+## オプション
+
+すべてのオプションは、フラグまたは環境変数で指定できます。フラグは環境変数より優先されます。
+
+| フラグ | 環境変数 | デフォルト | 目的 |
+| --- | --- | --- | --- |
+| `--home` | `DREAM_HOST_HOME` | `~/.dream/host` | ホストが実行記録とログ、および既定ではデータを保存する場所 |
+| `--data-dir` | `DREAM_HOST_DATA_DIR` | `<home>/data` | ホストの識別情報と設定、および既定ではデータベース |
+| `--database` | `DREAM_HOST_DATABASE` | `<data dir>/dream.db` | プロジェクト、チャット、会話記録のデータベース |
+| `--port` | `DREAM_HOST_PORT` | 空いているポート | このマシン上のクライアント用のローカルポート |
+| `--idle-timeout` | `DREAM_HOST_IDLE_TIMEOUT` | `3600` | クライアント、ターミナル、ターン、リモートアクセスのいずれもない状態が続いたときに、ホストが終了するまでの秒数。`0` を指定すると実行し続ける |
+| `--remote-port` | `DREAM_HOST_REMOTE_PORT` | 保存済みの設定 | 自分で運用するリバースプロキシ向けに、ペアリング済みデバイスへ配信するローカルポート |
+| `--remote-origin` | `DREAM_HOST_REMOTE_ORIGINS` | なし | リバースプロキシが配信する公開アドレス |
+
+1 つのデータベースを同時に使用できるホストは 1 つだけです。`dream-host` は `.env` ファイルを読み込みません。変数は実行環境に設定してください。
+
+## デスクトップアプリと併用する
+
+デスクトップアプリは、自身のデータを使って実行中のホストがあればそれを使用し、なければホストを起動します。
+
+- アプリが起動したホストは、Dream を終了すると停止します。
+- 自分で起動したホストは、Dream を終了しても実行され続けます。チャットは継続し、ターミナルは開いたままで、次にアプリを開くと再びそれらに接続します。
+
+デスクトップアプリのホストを自分で実行するには、Dream を終了し、デスクトップアプリのデータディレクトリを指定して `dream-host` を起動してから、Dream を再び開きます：
+
+```sh
+dream-host serve --data-dir "<desktop data directory>" --idle-timeout 0
+```
+
+| プラットフォーム | デスクトップアプリのデータディレクトリ |
+| --- | --- |
+| macOS | `~/Library/Application Support/dreamide` |
+| Windows | `%APPDATA%\dreamide` |
+| Linux | `~/.config/dreamide` |
+
+## コマンドラインからのリモートアクセス
+
+リモートアクセスは、ホストに保存される設定です。ホストの実行中に一度オンにすれば、ホストが起動するたびに適用されます。
+
+```sh
+dream-host remote on --tailscale
+dream-host remote on --cloudflare --origin https://dream.example.com
+dream-host remote status
+dream-host pair
+dream-host devices
+dream-host revoke <id>
+```
+
+`dream-host pair` で使い捨てコードを発行します。`dream-host serve --pair` は起動時に発行します。`dream-host devices` でペアリング済み端末を一覧表示し、`dream-host revoke` で解除します。権限については[リモートアクセス](/docs/ja/remote-access)を参照してください。
+
+独自のリバースプロキシには `--remote-port` と `--remote-origin` を指定して起動します。この場合、設定画面では値の確認のみできます。
+
+## ホストを常時起動する
+
+OS のサービス管理機能で `dream-host serve --idle-timeout 0` を実行し、異常終了時に再起動するよう設定します。Linux ではユーザー用 systemd ユニットを `~/.config/systemd/user/dream-host.service` に保存します。
+
+```ini
+[Unit]
+Description=Dream host
+
+[Service]
+ExecStart=%h/.local/bin/dream-host serve --idle-timeout 0
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+```
+
+次に有効化します。
+
+```sh
+systemctl --user daemon-reload
+systemctl --user enable --now dream-host
+loginctl enable-linger "$USER"
+```
+
+macOS は LaunchAgent、Windows はログオン時のタスクを使用します。[ホストガイド](https://github.com/dreamide/dream/blob/main/docs/host-service.md)の例に CLI 用の `PATH` と環境変数を追加し、`dream-host status` で確認します。
+
+<Note>
+  v0.30 と v0.31 の `dream-host service` は v0.32 で廃止されました。既存のサービスはホストガイドの手順で削除するまで動作します。
+</Note>
+
+## ホストを更新する
+
+新しいインストーラーを実行し、`dream-host stop` で停止して起動し直すかサービスを再起動します。アプリとホストのバージョンは揃えてください。異なる場合は **設定 → 接続** に表示されます。

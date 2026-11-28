@@ -1,0 +1,54 @@
+---
+title: Chats without a project
+description: Start a conversation without opening a folder, and turn it into a project when it grows.
+---
+
+A standalone chat is a conversation that does not belong to a project you opened. Use one for a
+question, a quick script, or an idea you have not decided where to put. Dream gives each standalone
+chat a folder of its own, so the agent still has somewhere to read and write files.
+
+## Start a chat without a project
+
+- On the getting-started screen, choose **Start a chat**.
+- Press **Command+Shift+N** on macOS or **Ctrl+Shift+N** on Windows/Linux. The action is named
+  **New chat without a project** under [Keyboard shortcuts](/docs/settings#keyboard-shortcuts).
+- With the **Chats** tab selected, click **New chat** in the left toolbar.
+
+Dream opens the chat in a **Chats** tab beside your project tabs. The tab is shown while a
+standalone chat is open. Closing the tab does not delete your chats.
+
+To start the chat on a [remote host](/docs/remote-hosts), use **New chat on…** at the top of the
+chat list and choose the host. The option appears when a remote host is connected.
+
+## Find a standalone chat
+
+Select the **Chats** tab and open **Chat history** in the left toolbar. In this tab the panel is
+titled **Chats**. It lists standalone chats from this computer and from every connected host, with
+the host's name beside chats that live elsewhere.
+
+[Chat search](/docs/chats#return-to-a-conversation) finds standalone chats too. Their results are
+labeled **Chats** in place of a project name.
+
+## What a standalone chat can use
+
+Each chat's folder is created under `~/.dream/chats` on the host where you started it. **Files**,
+**Browser**, **Terminal**, and **Stash** work in that folder, and
+[checkpoints](/docs/checkpoints) record what each reply changed. **Git** is hidden because the
+folder is not a repository.
+
+One standalone chat is open at a time. With [multi-chat](/docs/multiple-chats) enabled,
+**New chat** adds a conversation beside the open one, and the two share the same folder.
+
+Dream removes a chat folder that no chat uses any longer once it is empty or holds only
+`node_modules`, after a one-hour grace period.
+
+## Turn a chat into a project
+
+When a standalone chat becomes real work, keep it as a project:
+
+1. Select the **Chats** tab and open **Chat history**.
+2. Hover over the chat and click **Turn into project**. The action appears once the chat has a
+   message.
+
+Dream converts the chat in place. Its folder becomes an ordinary project named after the chat, and
+the project opens in its own tab with the conversation in it.

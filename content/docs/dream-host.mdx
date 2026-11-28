@@ -1,0 +1,149 @@
+---
+title: Running the host
+description: Install and run dream-host to keep agents working without the desktop window or on a machine with no desktop session.
+---
+
+Dream's host is the process that owns projects, chats, agent CLIs, terminals, and Git. The desktop
+app starts one for you. Run `dream-host` yourself to keep agents working after you close the window,
+to use a machine with no desktop session, or to manage the host with your own service manager.
+
+A machine you reach over [SSH](/docs/remote-hosts#add-an-ssh-host) needs none of this. Dream
+installs and runs its own host there when it connects.
+
+## Install
+
+Each release publishes an installer for the host. Replace `<version>` with the Dream version you
+use, such as `0.36.0`.
+
+On macOS and Linux:
+
+```sh
+curl -fsSL https://github.com/dreamide/dream/releases/download/v<version>/install-host.sh | sh
+```
+
+On Windows, in PowerShell:
+
+```powershell
+irm https://github.com/dreamide/dream/releases/download/v<version>/install-host.ps1 | iex
+```
+
+The installer checks the download against the release's `SHA256SUMS` and installs it under
+`~/.dream/host/versions/`. It links `dream-host` into `~/.local/bin` on macOS and Linux, and adds it
+to your user `PATH` on Windows. The host is built for macOS on Apple silicon, Linux x64 and ARM64,
+and Windows x64.
+
+The agent CLIs and their sign-ins must be available to the same user that runs the host.
+
+## Run the host
+
+| Command | What it does |
+| --- | --- |
+| `dream-host serve` | Runs the host in the foreground until you press Ctrl+C |
+| `dream-host ensure` | Starts the host in the background, or reuses the one already running |
+| `dream-host status` | Reports whether a host is running |
+| `dream-host stop` | Stops the host after it saves its work |
+| `dream-host help` | Lists every command and option |
+
+## Options
+
+Every option can be given as a flag or as an environment variable. A flag takes precedence over the
+variable.
+
+| Flag | Environment variable | Default | Purpose |
+| --- | --- | --- | --- |
+| `--home` | `DREAM_HOST_HOME` | `~/.dream/host` | Where the host keeps its run record, its log, and by default its data |
+| `--data-dir` | `DREAM_HOST_DATA_DIR` | `<home>/data` | The host's identity, settings, and by default its database |
+| `--database` | `DREAM_HOST_DATABASE` | `<data dir>/dream.db` | The database of projects, chats, and transcripts |
+| `--port` | `DREAM_HOST_PORT` | A free port | The local port for clients on this machine |
+| `--idle-timeout` | `DREAM_HOST_IDLE_TIMEOUT` | `3600` | Seconds with no client, terminal, turn, or remote access before the host exits. Use `0` to keep it running |
+| `--remote-port` | `DREAM_HOST_REMOTE_PORT` | The saved setting | A local port that serves paired devices, for a reverse proxy you run |
+| `--remote-origin` | `DREAM_HOST_REMOTE_ORIGINS` | None | The public address that your reverse proxy serves |
+
+Only one host can use a database at a time. `dream-host` does not read a `.env` file; set variables
+in its environment.
+
+## Use it with the desktop app
+
+The desktop app uses the host that is running on its data, and starts one when there is none.
+
+- A host the app started stops when you quit Dream.
+- A host you started keeps running when you quit Dream. Chats continue, terminals stay open, and
+  the app attaches to them again the next time you open it.
+
+To run the desktop's host yourself, quit Dream, start `dream-host` on the desktop's data directory,
+and then open Dream again:
+
+```sh
+dream-host serve --data-dir "<desktop data directory>" --idle-timeout 0
+```
+
+| Platform | Desktop data directory |
+| --- | --- |
+| macOS | `~/Library/Application Support/dreamide` |
+| Windows | `%APPDATA%\dreamide` |
+| Linux | `~/.config/dreamide` |
+
+## Remote access from the command line
+
+Remote access is a saved setting of the host. Turn it on once while the host is running, and it is
+applied every time the host starts.
+
+```sh
+dream-host remote on --tailscale
+dream-host remote on --cloudflare --origin https://dream.example.com
+dream-host remote status
+dream-host pair
+dream-host devices
+dream-host revoke <id>
+```
+
+`dream-host pair` prints a one-time pairing code, and `dream-host serve --pair` prints one as soon
+as the host starts. `dream-host devices` lists the paired devices, and `dream-host revoke` removes
+one. See [Remote access](/docs/remote-access) for what a paired device can do.
+
+To use your own reverse proxy, start the host with `--remote-port` and `--remote-origin`. Settings
+then shows that remote access is set by those options, and it cannot be changed there.
+
+## Keep it running
+
+Run `dream-host serve --idle-timeout 0` under your operating system's service manager and have it
+restart on failure. On Linux, save a per-user systemd unit as
+`~/.config/systemd/user/dream-host.service`:
+
+```ini
+[Unit]
+Description=Dream host
+
+[Service]
+ExecStart=%h/.local/bin/dream-host serve --idle-timeout 0
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+```
+
+Then enable it:
+
+```sh
+systemctl --user daemon-reload
+systemctl --user enable --now dream-host
+loginctl enable-linger "$USER"
+```
+
+On macOS, use a LaunchAgent. On Windows, use a Task Scheduler task that runs at logon. The
+[host guide in the Dream repository](https://github.com/dreamide/dream/blob/main/docs/host-service.md)
+has complete examples for both. Add the `PATH` entries and variables that your agent CLIs need, and
+confirm the result with `dream-host status`.
+
+<Note>
+  Dream v0.30 and v0.31 could install the host as a service with `dream-host service`. That command
+  was removed in v0.32. A service installed by those versions keeps running until you remove it; the
+  host guide explains how.
+</Note>
+
+## Update the host
+
+Run the installer for the new version, then restart the host: use `dream-host stop` and start it
+again, or restart its service. Keep the host and the desktop app on the same version.
+**Settings → Connections** tells you when they differ.

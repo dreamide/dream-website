@@ -33,16 +33,20 @@ Dream regroupe dans un espace de bureau sur ordinateur vos projets, vos agents d
 ## Ce que Dream inclut
 
 - Un espace de travail multi-projet avec des onglets de projet persistants
-- [Espaces de travail distants SSH](/docs/fr/remote-hosts) avec agents, fichiers, Git et terminaux distants
+- [Hôtes distants](/docs/fr/remote-hosts) via SSH ou HTTPS, avec agents, fichiers, Git et terminaux distants
+- [Accès à distance](/docs/fr/remote-access) aux projets de cet ordinateur depuis un téléphone ou un ordinateur associé
 - Plusieurs conversations côte à côte et branching de conversation
+- [Files d'attente de messages](/docs/fr/chats#mettre-des-messages-en-file-dattente) pour envoyer des instructions pendant qu'un agent travaille
+- [Chats sans projet](/docs/fr/standalone-chats) pour les questions qui ne nécessitent pas de dossier
+- [Délégation](/docs/fr/delegation) de tâches d'un fournisseur d'agents à un autre
 - Prompts réutilisables entre projets et compétences d'agents conscientes du fournisseur
 - Points de contrôle par réponse pour revue et restauration des fichiers modifiés par un agent
-- Support pour Codex CLI, Claude Code CLI, OpenCode CLI, Cursor Agent CLI et Grok Build CLI
+- Prise en charge de Codex CLI, Claude Code CLI, OpenCode CLI, Cursor Agent CLI, Grok Build CLI et Antigravity CLI
 - Un explorateur de fichiers, une recherche et édition de fichiers, des terminaux intégrés et des prévisualisations de navigateur
-- État de Git, branche, diff, commit, poussée, demande de fusion, et workflows d'arbre de travail, y compris la fusion d'un arbre de travail terminé dans sa branche de base
+- Workflows Git : état, branche, diff, commit, fetch, pull, push, pull request et arbre de travail, y compris la fusion d'un arbre de travail terminé dans sa branche de base
 - Feedback de diff au niveau de la ligne et sélection d'éléments de navigateur qui envoient des messages ciblés à un chat
 - Un panneau Git unifié avec Modifications, un graphique d'histoire coloré et la révision de pull request
-- [Recherche de chat et notifications](/docs/fr/chats) dans les projets locaux et les hôtes SSH connectés
+- [Recherche dans les chats et notifications](/docs/fr/chats) pour les projets locaux et les hôtes distants connectés
 - [Rechercher dans les fichiers](/docs/fr/files#rechercher-dans-les-fichiers) avec des expressions régulières et des filtres de fichiers
 - [Raccourcis clavier personnalisables](/docs/fr/settings#raccourcis-clavier)
 - Serveurs MCP configurables et outils d'agent intégrés pour l'interaction avec le navigateur
@@ -60,6 +64,9 @@ Dream regroupe dans un espace de bureau sur ordinateur vos projets, vos agents d
 | Choisir un modèle de départ et un niveau de raisonnement | [Modèles et valeurs par défaut](/docs/fr/models) |
 | Essayez une autre approche mentionnée dans un message précédent | [Création de branches de conversation](/docs/fr/branching-chats) |
 | Suivre l'avancement d'un agent ou répondre à une question | [Travailler avec les conversations](/docs/fr/chats#suivre-le-travail-en-cours) |
+| Envoyer l'instruction suivante pendant qu'un agent travaille encore | [Mettre des messages en file d'attente](/docs/fr/chats#mettre-des-messages-en-file-dattente) |
+| Poser une question rapide sans ouvrir de dossier | [Chats sans projet](/docs/fr/standalone-chats) |
+| Demander à un agent de confier du travail à un autre fournisseur | [Déléguer des tâches à d'autres agents](/docs/fr/delegation) |
 | Vérifiez ce qui a changé dans une réponse et annulez une partie d'elle | [Vérifier et restaurer les modifications](/docs/fr/checkpoints) |
 | Commenter des lignes spécifiques d'un diff ou un élément de page | [Envoyer des retours à une conversation](/docs/fr/feedback) |
 | Préparer une tâche à exécuter plus tard | [Enregistrer des prompts avec Stash](/docs/fr/stash) |
@@ -70,9 +77,12 @@ Dream regroupe dans un espace de bureau sur ordinateur vos projets, vos agents d
 | Travailler dans un checkout indépendant, puis le fusionner à nouveau | [Worktrees Git](/docs/fr/worktrees) |
 | Revoir et publier des modifications de code | [Flux de travail Git](/docs/fr/git-workflows) |
 | Lire les commentaires de revue et fusionner une demande de pull sur GitHub | [Examiner les pull requests](/docs/fr/pull-requests) |
+| Travailler sur un projet situé sur une autre machine | [Hôtes distants](/docs/fr/remote-hosts) |
+| Suivre vos agents depuis un téléphone ou un autre ordinateur | [Accès à distance](/docs/fr/remote-access) |
+| Laisser les agents travailler après la fermeture de la fenêtre de bureau | [Exécuter l'hôte](/docs/fr/dream-host) |
 
 ## Comprendre l'espace de travail
 
-Un **projet** est un dossier sur votre ordinateur ou un hôte SSH, avec ses propres conversations et outils. Une **conversation** dispose de son propre modèle et de ses paramètres. Plusieurs conversations d'un projet partagent ses fichiers ; un **arbre de travail** fournit une copie de travail Git distincte pour une tâche.
+Un **projet** est un dossier sur votre ordinateur ou sur un hôte distant, avec ses propres chats et outils. Un **chat** est une conversation dotée de son propre modèle et de ses propres paramètres. Plusieurs chats d'un même projet partagent ses fichiers ; un **arbre de travail** fournit à une tâche une copie de travail Git distincte.
 
 Utilisez [Autorisations des agents](/docs/fr/agent-modes) pour choisir la manière dont un agent fonctionne, et [Contexte et utilisation](/docs/fr/context-and-usage) pour comprendre les informations situées sous le composant. La [référence des paramètres](/docs/fr/settings) liste les préférences globales de l'application. Si quelque chose manque ou ne fonctionne pas, commencez par [Dépannage](/docs/fr/troubleshooting).

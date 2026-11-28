@@ -88,7 +88,7 @@ Việc hợp nhất, tạo một pull request và xóa một worktree là nhữn
 
 Để xuất bản để xem xét thay vì đó, hãy sử dụng **Thao tác Git → Tạo yêu cầu kéo** và tuân theo [Quy trình làm việc với Git](/docs/vi/git-workflows#tạo-pull-request). Việc tạo pull request sẽ giữ lại worktree.
 
-Sử dụng **Thao tác Git → Xóa cây công việc** để loại bỏ bản checkout mà vẫn giữ lại nhánh của nó. Nếu nó có các thay đổi chưa được ghi lại, hãy ghi lại trước hoặc chọn rõ ràng **Bỏ các thay đổi chưa commit**.
+Dùng **Thao tác Git → Xóa cây công việc** để xóa bản checkout. Nhánh của nó được giữ lại trừ khi bạn chọn tùy chọn xóa cả nhánh; tùy chọn này cho biết các commit của nhánh đã được hợp nhất hay chưa trước khi bạn xác nhận. Nếu worktree có thay đổi chưa commit, hãy commit chúng trước hoặc chủ động chọn **Bỏ các thay đổi chưa commit**.
 
 <Warning>
   Việc xóa một worktree sẽ xóa thư mục của nó và đóng dự án của nó. Các cuộc trò chuyện của dự án worktree sẽ bị xóa bỏ cùng với nó và không xuất hiện trong Lịch sử chat hay Đã đóng gần đây. Nếu bạn muốn giữ lại một cuộc trò chuyện, hãy [chuyển nó sang workspace cha](/docs/vi/branching-chats) trước khi hoàn thành.
@@ -117,6 +117,8 @@ Bạn cũng có thể xóa một worktree mà không cần hộp thoại hoàn t
 4. Sử dụng hành động loại bỏ và xem xác nhận.
 5. Xác nhận **Xóa cây công việc** khi bạn không còn cần kiểm tra đó nữa.
 
-Việc xóa sẽ xóa thư mục worktree khỏi ổ cứng. Git từ chối việc xóa khi nó chứa các thay đổi chưa được ghi lại. Quay lại dự án đó và kiểm tra các thay đổi trước khi cố gắng lại.
+Thao tác xóa sẽ xóa thư mục worktree và các cuộc trò chuyện của nó khỏi ổ đĩa. Khi worktree có thay đổi chưa commit, **Xóa cây công việc** vẫn không khả dụng cho đến khi bạn chọn **Bỏ các thay đổi chưa commit**. Nếu chưa chắc chắn, hãy quay lại dự án đó và xem lại các thay đổi trước.
+
+Bạn cũng có thể xóa worktree khi [xóa nhánh của nó](/docs/vi/git-workflows#xóa-nhánh-cục-bộ) từ bộ chuyển nhánh.
 
 Chỉ đóng tab dự án sẽ làm nó bị loại khỏi không gian làm việc đang mở; việc xóa một worktree sẽ xóa bản checkout của nó. Xem [Quy trình làm việc với Git](/docs/vi/git-workflows) để biết thêm về các bước commit và yêu cầu PR.

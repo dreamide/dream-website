@@ -5,7 +5,7 @@ description: "Verwalten von Projekttabellen, Anordnen von Panels und Wechsel zwi
 
 Jedes Dream-Projekt verfügt über seinen eigenen Arbeitsbereich. Projekt-Tabs ermöglichen es Ihnen, zwischen Repositorien zu wechseln, während die offenen Chats und Werkzeuge jedes Projekts erhalten bleiben.
 
-Projekte können auch auf [SSH-Hosts](/docs/de/remote-hosts) liegen. Prüfe die Host-Anzeige, bevor du Befehle ausführst; die Werkzeuge des entfernten Projekts arbeiten auf diesem Rechner.
+Projekte können auf [Remote-Hosts](/docs/de/remote-hosts) liegen. Prüfen Sie vor Befehlen Host, Projekt und Branch in der Chat-Fußleiste. Die Werkzeuge laufen auf diesem Rechner.
 
 <Frame caption="Projekte und Arbeitsbereich">
   <img
@@ -20,8 +20,10 @@ Projekte können auch auf [SSH-Hosts](/docs/de/remote-hosts) liegen. Prüfe die 
 ## Projekte hinzufügen und wechseln
 
 1. Klicken Sie neben den Projekttabellen auf das **+**, oder verwenden Sie **Ordner öffnen** auf der Einstiegsseite.
-2. Wählen Sie den Ordner aus, in dem Sie arbeiten möchten.
-3. Wählen Sie seine Registerkarte aus, um ihn zum aktiven Projekt zu machen.
+2. Geben Sie in **Ordner öffnen** den Ordnerpfad ein oder klicken Sie **Durchsuchen…**. Nach Hinzufügen eines [Remote-Hosts](/docs/de/remote-hosts) wählen Sie unter **Öffnen auf** den Standort.
+3. Klicken Sie auf **Öffnen** und wählen Sie den Projekttab aus.
+
+Dream schlägt beim Tippen Ordner vor. **Tab** vervollständigt den markierten Pfad, **Enter** öffnet ihn. Der Dialog öffnet sich mit **Command+O** unter macOS oder **Ctrl+O** unter Windows/Linux.
 
 Das aktive Projekt bestimmt, welche Chats, Dateien, Terminals, Browser-Registerkarten und Stash-Elemente Sie sehen. Überprüfen Sie die ausgewählte Registerkarte, bevor Sie eine Aufgabe senden oder einen Befehl ausführen. Ziehen Sie Projektablagen, um sie zu ordnen, wenn Sie projektbezogene Projekte nebeneinander platzieren möchten.
 
@@ -39,7 +41,9 @@ Das aktive Projekt bestimmt, welche Chats, Dateien, Terminals, Browser-Registerk
 
 Öffnen Sie das Menü von **…** des Projekts und wählen Sie **Bearbeiten**, um den Anzeigename oder das Icon zu ändern. Klicken Sie auf das Icon, um ein Bild bis zu 5 MB hochzuladen, dann **Speichern**. Setzen Sie ein benutzerdefiniertes Icon zurück, um zur automatischen Erkennung aus dem Projekt zurückzukehren. Das Umbenennen eines Projekts in Dream ändert den Ordner auf der Festplatte nicht.
 
-Nutzen Sie die Menüoptionen **Öffnen in**, um das Projekt in einem verfügbaren externen Editor zu öffnen.
+**Öffnen in** öffnet das Projekt im Dateimanager, Terminal oder installierten Editor. Dasselbe Menü erscheint beim Klick auf den Projektnamen in der Fußleiste.
+
+**Öffnen in** zeigt für SSH-Hosts installierte Remote-SSH-Editoren. Bei reinem HTTPS oder im Browser eines gekoppelten Geräts erscheint **Öffnen in** nicht.
 
 ## Zurück zu einem früheren Chat
 
@@ -54,7 +58,9 @@ Diese Geschichte folgt den Projekten und Chat-Auswahlen. Das Wechseln von Werkze
 3. Suche das Projekt in **Zuletzt geschlossen**, verwenden Sie das Suchfeld gegebenenfalls.
 4. Wählen Sie das Projekt aus, um es erneut zu öffnen.
 
-Das Schließen eines Projekts entfernt seine offene Registerkarte; es wird das Verzeichnis nicht gelöscht. Dream stellt den gespeicherten Projektzustand wie Chats und offene Werkzeuge bei Bedarf wiederher. Verwenden Sie ein geschlossenes Projekt nicht, um einen Terminalprozess laufen zu lassen.
+Beim Schließen verschwinden der Tab und seine Terminals. Der Ordner bleibt erhalten. Dream stellt gespeicherte Chats und Werkzeuge nach Möglichkeit wieder her.
+
+**Zuletzt geschlossen** speichert bis zu 50 Projekte mit Host und Pfad. Die Suche berücksichtigt Namen, Pfad und Host.
 
 ## Das Workspace-Steuerungselemente suchen
 
@@ -64,17 +70,19 @@ Die rechte Leiste öffnet Werkzeuge für Projekte:
 
 | Werkzeug | Was Sie tun können |
 | --- | --- |
-| [Git](/docs/de/git-workflows) | Änderungen überprüfen, commiten, die Geschichte durchsehen und den Branch-Pull Request verwalten |
 | [Dateien](/docs/de/files) | Dateien durchsuchen, Pfade suchen und Inhalt von Dateien bearbeiten |
 | [Browser](/docs/de/browser) | Vorschau von URLs und Inspektion von Webseiten |
 | [Terminal](/docs/de/terminals) | Projektbefehle in separaten Sitzungen ausführen |
+| [Git](/docs/de/git-workflows) | Änderungen überprüfen, commiten, die Geschichte durchsehen und den Branch-Pull Request verwalten |
 | [Stash](/docs/de/stash) | Prompts speichern und sie später ausführen |
 
-Für Repository-Projekte erscheinen Git-Steuerungselemente. Unten im Chat können Sie den Branch-Controller verwenden, um Branches zu wechseln oder [einen Worktree zu erstellen](/docs/de/worktrees). Das benachbarte Menü **Git-Aktionen** bietet je nach Branch-Zustand die Optionen zum Commitvorgang, zum Publizieren, zu Pull Requests und zu Worktree-Aktionen.
+**Git** erscheint nur in Git-Repositories. Die Fußleiste zeigt Host, Projekt und Branch. Über den Branch wechseln Sie Zweige oder [erstellen einen Worktree](/docs/de/worktrees). **Git-Aktionen** bietet je nach Status Commit, Fetch, Pull, Push, Pull Requests und Worktree-Aktionen.
 
 ## Verwalten von Chats und Panels
 
 Klicken Sie auf ein Werkzeug, um dessen Panel zu öffnen. Verwenden Sie das Schließen- oder Zusammenfalten-Element des Panels, wenn Sie mehr Platz für Chats benötigen, und ziehen Sie die Panel-Trennlinien, um die Anordnung zu verändern. Das Schließen eines Werkzeugpanels unterscheidet sich von der Schließung seiner einzelnen Terminal-Sessions oder Browser-Optionen.
+
+Ein Doppelklick auf den rechten Trenner teilt die Breite gleichmäßig. **Erweitern** füllt den Workspace, **Reduzieren** stellt die übliche Größe wieder her.
 
 Aktiviere [multi-chat](/docs/de/multiple-chats), um Gespräche in veränderbaren Spalten anzuordnen. Jedes Chat-Verzeichnis verfügt über seine eigene Gesprächsgeschichte, während alle Chats im Projekt die gleichen Dateien verwenden. Verwende Worktree für unabhängige Checkouts.
 

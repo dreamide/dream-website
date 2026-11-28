@@ -24,13 +24,15 @@ Der Überblick über die Prüfungen zeigt die Anzahl der fehlgeschlagenen Prüfu
   />
 </Frame>
 
-Wenn der Branch kein Pull Request hat, bietet das Panel **Pull-Anfrage erstellen** an. Verwenden Sie **Pull-Request-Aktionen → Aktualisieren**, nachdem Änderungen auf GitHub vorgenommen wurden, oder **Auf GitHub öffnen**, um das PR in Ihrem Browser anzuzeigen. Ein gefundenes PR verschwindet, sobald der Branch commits enthält, die jenseits des Heads des PRs liegen.
+Fehlt ein PR, erstellen Sie ihn über **Git-Aktionen → Pull-Anfrage erstellen**. Das Panel aktualisiert sich bei Branchwechsel und Rückkehr ins Fenster. Repository und PR-Nummer unter **Zusammenfassung** öffnen den PR im Browser. Nach weiteren Commits verschwindet ein bereits gemergter PR.
 
 ## Code überprüfen und Kommentare posten
 
 In **Zusammenfassung** lesen Sie die Diskussion und verwenden **Schreiben** und **Vorschau**, um einen Markdown-Kommentar zu komponieren. Wählen Sie **Kommentar senden**, um ihn an GitHub zu veröffentlichen.
 
 In **Code** können Sie eine Datei ausdehnen und Zeilen in deren Diff auswählen, um einen **Zeilenkommentar senden**. Sie können bestehende Überprüfungsthreads lesen und mit **Antworten** weiterführen. Wenn ein Text-Patch nicht verfügbar ist, öffnen Sie den Pull Request auf GitHub, um die Datei zu inspizieren.
+
+**Code** bricht lange Zeilen standardmäßig um. Mit **Zeilenumbruch** über der Dateiliste schalten Sie dies aus.
 
 Diese Kommentare werden auf GitHub veröffentlicht. Um Ihrem Coding-Agenten über lokale Änderungen zu berichten, verwenden Sie [Diff-Feedback in Änderungen](/docs/de/feedback#kommentare-in-einer-diff-zeile-hinzufügen).
 

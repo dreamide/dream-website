@@ -33,16 +33,20 @@ Dream mang lại không gian làm việc trên bàn phím tích hợp các dự 
 ## Dream bao gồm những gì
 
 - Một không gian làm việc đa dự án với các tab dự án bền vững
-- [Không gian làm việc từ xa qua SSH](/docs/vi/remote-hosts) với tác nhân, tệp, Git và terminal từ xa
+- [Máy chủ từ xa](/docs/vi/remote-hosts) qua SSH hoặc HTTPS, với tác nhân, tệp, Git và terminal từ xa
+- [Truy cập từ xa](/docs/vi/remote-access) vào các dự án trên máy tính này từ điện thoại hoặc máy tính đã ghép nối
 - Nhiều cuộc trò chuyện bên cạnh và phân nhánh cuộc trò chuyện
+- [Hàng đợi tin nhắn](/docs/vi/chats#xếp-tin-nhắn-vào-hàng-đợi) để gửi chỉ dẫn trong lúc tác nhân đang làm việc
+- [Cuộc trò chuyện không có dự án](/docs/vi/standalone-chats) cho những câu hỏi không cần thư mục
+- [Ủy thác](/docs/vi/delegation) tác vụ từ nhà cung cấp tác nhân này sang nhà cung cấp khác
 - Câu lệnh có thể tái sử dụng trong các dự án và kỹ năng agent có nhận thức về nhà cung cấp
 - Các điểm kiểm tra theo phản hồi để xem xét và khôi phục các tệp mà người đại diện đã thay đổi
-- Hỗ trợ cho Codex CLI, Claude Code CLI, OpenCode CLI, Cursor Agent CLI và Grok Build CLI
+- Hỗ trợ Codex CLI, Claude Code CLI, OpenCode CLI, Cursor Agent CLI, Grok Build CLI và Antigravity CLI
 - Một trình duyệt tệp, tìm kiếm và chỉnh sửa tệp, các terminal tích hợp, và xem trước trình duyệt
-- Tình trạng, nhánh, khác biệt, ghi nhật ký, đẩy, yêu cầu lấy, và quy trình làm việc với worktree, bao gồm việc hợp nhất một worktree đã hoàn thành trở lại nhánh gốc
+- Các quy trình Git về trạng thái, nhánh, diff, commit, fetch, pull, đẩy, pull request và worktree, bao gồm cả việc hợp nhất một worktree đã hoàn tất trở lại nhánh cơ sở
 - Phản hồi chi tiết theo dòng và chọn phần tử trình duyệt gửi các thông điệp mục tiêu đến một cuộc trò chuyện
 - Một bảng điều khiển Git thống nhất với Thay đổi, biểu đồ lịch sử có màu, và kiểm tra yêu cầu pull
-- [Tìm kiếm chat và thông báo](/docs/vi/chats) trong các dự án địa phương và các máy chủ SSH được kết nối
+- [Tìm kiếm cuộc trò chuyện và thông báo](/docs/vi/chats) trên các dự án cục bộ và các máy chủ từ xa đã kết nối
 - [Tìm trong tệp](/docs/vi/files#tìm-trong-tệp) với biểu thức chính quy và bộ lọc tệp
 - [Phím tắt tùy chỉnh](/docs/vi/settings#các-phím-tắt-bàn-phím)
 - Máy chủ MCP điều chỉnh được và công cụ agent tích hợp để tương tác với trình duyệt
@@ -60,6 +64,9 @@ Dream mang lại không gian làm việc trên bàn phím tích hợp các dự 
 | Chọn một mô hình khởi đầu và nỗ lực suy luận | [Mô hình và thiết lập mặc định](/docs/vi/models) |
 | Thử cách tiếp cận khác từ một tin nhắn trước đó | [Phân nhánh cuộc trò chuyện](/docs/vi/branching-chats) |
 | Theo dõi tiến trình của một agent hoặc trả lời câu hỏi | [Làm việc với cuộc trò chuyện](/docs/vi/chats#theo-dõi-công-việc-đang-tiến-hành) |
+| Gửi chỉ dẫn tiếp theo trong lúc tác nhân vẫn đang làm việc | [Xếp tin nhắn vào hàng đợi](/docs/vi/chats#xếp-tin-nhắn-vào-hàng-đợi) |
+| Hỏi nhanh một câu mà không cần mở thư mục | [Cuộc trò chuyện không có dự án](/docs/vi/standalone-chats) |
+| Để một tác nhân giao việc cho nhà cung cấp khác | [Ủy thác tác vụ cho tác nhân khác](/docs/vi/delegation) |
 | Kiểm tra phần trả lời đã thay đổi và hủy bỏ một phần của nó | [Kiểm tra và khôi phục thay đổi](/docs/vi/checkpoints) |
 | Bình luận về các dòng diff cụ thể hoặc một phần tử trang | [Gửi phản hồi đến cuộc trò chuyện](/docs/vi/feedback) |
 | Chuẩn bị một nhiệm vụ để chạy sau này | [Lưu câu lệnh với Stash](/docs/vi/stash) |
@@ -70,9 +77,12 @@ Dream mang lại không gian làm việc trên bàn phím tích hợp các dự 
 | Làm việc trong một bản sao độc lập, sau đó hợp nhất lại | [Worktree Git](/docs/vi/worktrees) |
 | Xem xét và công bố các thay đổi mã nguồn | [Quy trình làm việc với Git](/docs/vi/git-workflows) |
 | Đọc các bình luận đánh giá và hợp nhất một yêu cầu PR trên GitHub | [Đánh giá pull request](/docs/vi/pull-requests) |
+| Làm việc với dự án nằm trên máy khác | [Máy chủ từ xa](/docs/vi/remote-hosts) |
+| Theo dõi các tác nhân của bạn từ điện thoại hoặc máy tính khác | [Truy cập từ xa](/docs/vi/remote-access) |
+| Để tác nhân tiếp tục làm việc sau khi đóng cửa sổ ứng dụng trên máy tính | [Chạy máy chủ](/docs/vi/dream-host) |
 
 ## Hiểu không gian làm việc
 
-**Dự án** là một thư mục trên máy tính hoặc máy chủ SSH, có các cuộc trò chuyện và công cụ riêng. **Cuộc trò chuyện** có mô hình và thiết lập riêng. Nhiều cuộc trò chuyện trong cùng dự án dùng chung tệp; **cây công việc** cung cấp một bản làm việc Git riêng cho một tác vụ.
+**Dự án** là một thư mục trên máy tính của bạn hoặc trên máy chủ từ xa, có các cuộc trò chuyện và công cụ riêng. **Cuộc trò chuyện** là một cuộc hội thoại có mô hình và thiết lập riêng. Nhiều cuộc trò chuyện trong cùng một dự án dùng chung tệp của dự án; **cây công việc** (worktree) cung cấp cho một tác vụ một bản checkout Git riêng.
 
 Sử dụng [Quyền của tác nhân](/docs/vi/agent-modes) để chọn cách một tác nhân hoạt động, và [Ngữ cảnh và mức sử dụng](/docs/vi/context-and-usage) để hiểu thông tin dưới composer. Tài liệu [tham số cài đặt](/docs/vi/settings) liệt kê các lựa chọn toàn bộ ứng dụng. Nếu điều gì đó bị thiếu hoặc không chạy, hãy bắt đầu với [Khắc phục sự cố](/docs/vi/troubleshooting).

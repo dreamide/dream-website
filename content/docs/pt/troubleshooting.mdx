@@ -5,7 +5,7 @@ description: "Resolva modelos e conversas faltantes, problemas no terminal e no 
 
 Comece com o erro exibido no chat ou ferramenta afetado. Verifique qual projeto e provedor estão selecionados antes de alterar as configurações, especialmente quando vários chats estão abertos.
 
-Para projetos remotos, verifique o estado da conexão em **Configurações → Hosts SSH**. Consulte [Problemas de conexão SSH](/docs/pt/remote-hosts#problemas-de-conexão) para autenticação, ambiente de execução e compilações de desenvolvimento.
+Para projetos remotos, verifique o estado da conexão do host em **Configurações → Conexões**. Consulte [problemas de conexão](/docs/pt/remote-hosts#problemas-de-conexão) para autenticação, emparelhamento e configuração de compilações de desenvolvimento.
 
 ## Um CLI de fornecedor não foi detectado
 
@@ -35,6 +35,12 @@ Esses controles dependem das capacidades do modelo selecionado. Escolha um model
 5. Se seu projeto foi encerrado, reabri-lo através de **Fechados recentemente** na tela de começo.
 
 Fechar uma coluna de múltiplos chats não arquiva a conversa. Chats vazios sem mensagens não estão listados no histórico. Um chat permanentemente excluído não pode ser restaurado pelo Dream.
+
+Um chat iniciado sem projeto é listado na aba **Chats**, e não no histórico de um projeto. Consulte [Chats sem projeto](/docs/pt/standalone-chats).
+
+## Uma mensagem na fila não é executada
+
+Confira a lista **Fila** acima da caixa de mensagem. Se o cabeçalho dela exibir **Fila pausada**, clique em **Retomar fila**. Uma execução que falhou ou foi interrompida pausa a fila até você tentar novamente, removê-la ou enviar uma nova mensagem. Consulte [Colocar mensagens na fila](/docs/pt/chats#colocar-mensagens-na-fila).
 
 ## Um chat restaurado foi arquivado novamente
 
@@ -66,6 +72,10 @@ Verifique se o diretório do projeto ainda existe. Escolha uma shell disponível
 
 Confirme que o aplicativo está em execução e use a URL e porta exatas mostradas no seu terminal. Verifique os erros no terminal, em seguida, tente **Atualizar navegador** ou **Forçar recarregamento**. Compare a URL no navegador do seu sistema. Use DevTools para erros de página; reserve a remoção de cookies ou cache para problemas específicos de autenticação ou armazenamento. Veja [Prévia no navegador](/docs/pt/browser).
 
+## Um dispositivo emparelhado não consegue se conectar
+
+Confirme que o Dream ou o `dream-host` está em execução no computador host e que esse computador não está em suspensão. Em **Configurações → Conexões** nesse computador, verifique se **Acesso remoto** exibe **Pronto** e use **Verificar novamente** depois de corrigir o que for informado. Se o dispositivo foi revogado ou o código de emparelhamento expirou, crie um novo código com **Emparelhar um dispositivo**. Consulte [Acesso remoto](/docs/pt/remote-access).
+
 ## Um arquivo não pode ser salvo
 
 Verifique se o arquivo é gravável e leia o erro do editor. Se ele foi modificado no disco enquanto você estava editando, preserve seu rascunho antes de **Recarregar do disco**, em seguida, reaplique as alterações intencionadas. Veja [Arquivos e busca](/docs/pt/files#tratar-um-arquivo-modificado-fora-do-editor).
@@ -80,6 +90,9 @@ Para problemas com comentários, edição ou fusão de PRs, veja [Revisar pull r
 | Sem alterações agendadas para commit | Revise incluindo arquivos não estagios, ou estagie os arquivos intencionados através do Git |
 | Mudanças agendadas fora do projeto ativo | Comitem separadamente antes de usar a ação de commit do Dream |
 | Push não possui destino | Configure um remoto Git e verifique o acesso a ele |
+| O envio é rejeitado | O remoto tem commits que você ainda não tem; faça pull e envie novamente |
+| O pull informa conflitos | A mesclagem foi abortada e nada mudou; resolva a divergência com o Git em um terminal e faça pull novamente |
+| Uma branch não pode ser excluída | Ela é a branch atual, a branch base ou está aberta no checkout principal |
 | Relatório de criação de PR mostra um erro no CLI | Verifique se o GitHub CLI está instalado, autenticado e pode acessar o repositório |
 | A origem e a base do PR são iguais | Mude para uma ramificação de funcionalidade antes de criar o PR |
 | Relatórios de criação de PR com HEAD desconectado | Verifique um ramo antes de criar a solicitação de alteração |

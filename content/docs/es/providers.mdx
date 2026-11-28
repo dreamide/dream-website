@@ -14,15 +14,16 @@ Dream funciona con herramientas de línea de comandos de agentes de programació
 | OpenCode | OpenCode CLI |
 | Cursor | Cursor Agent CLI |
 | Grok Build | Grok Build CLI |
+| Antigravity | Antigravity CLI |
 
-Instale el CLI desde su proveedor, luego complete el flujo normal de autenticación o inicio de sesión de ese CLI fuera de Dream.
+Instala la CLI desde su proveedor y completa fuera de Dream el flujo normal de inicio de sesión o autenticación de esa CLI. Antigravity es Google Antigravity; Dream lo ejecuta mediante su comando `agy`.
 
 ## Habilitar modelos
 
 1. Abrir **Configuración** en Dream.
 2. Selecciona **Proveedores**.
 3. Actualiza el proveedor después de instalar o autenticar su CLI.
-4. Encienda el interruptor de habilitación del proveedor, luego habilite uno o más de sus modelos detectados.
+4. Activa el interruptor de activación del proveedor y haz clic en cada modelo detectado que quieras usar. Una marca de verificación identifica los modelos seleccionados.
 5. Abierta **General → Modelos** y elige valores predeterminados para nuevos chats y para la redacción de comits y solicitudes de incorporación.
 
 Usted debe habilitar al menos un modelo antes de abrir su primer proyecto. Un chat puede usar un modelo habilitado diferente del predeterminado después de que comience.
@@ -49,11 +50,13 @@ El CLI instalado maneja la autenticación y ejecuta el trabajo del agente. Las l
 
 Dream expone los permisos **Preguntar**, **Aceptar ediciones** y **Acceso completo** por chat. Lea [Permisos de agente](/docs/es/agent-modes) antes de elegirlos. Las conversaciones de Claude con sesión reutilizable también ofrecen [Continuar en terminal](/docs/es/terminals#continuar-una-conversación-con-claude-en-un-terminal).
 
-Las [habilidades](/docs/es/skills) están disponibles para Claude Code, Codex, OpenCode y Cursor. Los [servidores MCP](/docs/es/mcp-servers) y las herramientas de navegador integradas de Dream están disponibles para Claude Code, Codex, OpenCode y Grok Build; Cursor no admite estas conexiones de herramientas gestionadas por Dream.
+Las [habilidades](/docs/es/skills) están disponibles para Claude Code, Codex, OpenCode y Cursor. Los [servidores MCP](/docs/es/mcp-servers) y las herramientas de navegador integradas de Dream están disponibles para Claude Code, Codex, OpenCode y Grok Build; Cursor y Antigravity no admiten estas conexiones de herramientas gestionadas por Dream.
+
+Los chats de esos mismos cuatro proveedores también pueden [delegar tareas](/docs/es/delegation) en cualquier otro proveedor que hayas configurado.
 
 ## Verificar actualizaciones del CLI
 
-Las tarjetas de proveedor muestran la versión instalada del CLI cuando esté disponible. Dream también verifica la existencia de versiones más recientes y muestra una etiqueta **Actualización disponible: …** cuando se encuentra una. La etiqueta indica la disponibilidad; no instala la actualización. Actualice utilizando el método normal de instalación del CLI, luego refresque la tarjeta de proveedor en Dream.
+Las tarjetas de proveedor muestran la versión instalada de la CLI cuando está disponible. Dream también busca versiones más recientes y muestra un botón **Actualización disponible: …** cuando encuentra una. Haz clic en él para ejecutar el comando de actualización propio de esa CLI; Dream informa del resultado cuando termina. Si la actualización falla, actualiza la CLI con su método de instalación habitual y luego actualiza la información de su tarjeta de proveedor en Dream.
 
 Use la opción de habilitar del proveedor para ocultar sus modelos de las selecciones disponibles sin desinstalar el CLI. Rever tus configuraciones predeterminadas después de haber cambiado los proveedores o modelos habilitados.
 
@@ -68,4 +71,4 @@ Si un proveedor dice **CLI no detectado**:
 
 Si se instaló el CLI mientras estaba abierto Dream, reinicie Dream si aún no se detecta. El comando debe estar disponible para el entorno de Dream; un alias de shell en sí mismo no es un CLI instalado.
 
-Si se detecta una interfaz de línea de comandos pero el modelo deseado está ausente, revisa la cuenta o la configuración del proveedor y actualiza la lista. Si los modelos están listados pero no están disponibles en los chats, activa ellos mediante sus interruptores y confirma que el propio proveedor esté habilitado. Consulta [Solución de problemas](/docs/es/troubleshooting) para comprobaciones adicionales.
+Si se detecta una CLI pero falta el modelo que quieres, revisa la cuenta o la configuración del proveedor y actualiza la lista. Si los modelos aparecen en la lista pero no están disponibles en los chats, selecciónalos en la tarjeta del proveedor y confirma que el propio proveedor esté activado. Consulta [Solución de problemas](/docs/es/troubleshooting) para ver más comprobaciones.

@@ -3,7 +3,9 @@ title: "Trabajar con chats"
 description: "Comience conversaciones, encuentre el trabajo anterior, renombre chats y gestione su historial de chats."
 ---
 
-Un chat mantiene una conversación con un agente de codificación. Cada chat pertenece a un proyecto y tiene su propio modelo, permisos y historial de conversaciones. Utilice chats separados para tareas que desea volver a consultar de forma independiente, como arreglar un bug y revisar una característica.
+Un chat contiene una conversación con un agente de programación. Normalmente pertenece a un proyecto y tiene su propio modelo, permisos e historial de conversación. Usa chats separados para tareas a las que quieras volver de forma independiente, como corregir un error y revisar una funcionalidad.
+
+Para preguntar algo sin abrir una carpeta, inicia un [chat sin proyecto](/docs/es/standalone-chats).
 
 ## Comenzar una conversación
 
@@ -47,7 +49,7 @@ Use [referencias de archivo y adjuntos](/docs/es/providing-context) para apuntar
   />
 </Frame>
 
-Filtrar el historial busca los títulos de este proyecto. Para buscar títulos y texto de mensajes entre proyectos, haga clic en **Buscar chats** en la barra superior (por defecto **Command+Shift+F** en macOS o **Ctrl+Shift+F** en Windows/Linux). Los resultados incluyen proyectos locales y hosts conectados por SSH. Seleccionar un resultado archivado lo restaura; seleccionar el chat de un proyecto cerrado lo vuelve a abrir.
+La búsqueda del historial filtra los títulos de este proyecto. Para buscar en los títulos y el texto de los mensajes de todos los proyectos, haz clic en **Buscar chats** en la barra superior (de forma predeterminada, **Command+Shift+F** en macOS o **Ctrl+Shift+F** en Windows/Linux). Los resultados incluyen proyectos locales, hosts remotos conectados y [chats sin proyecto](/docs/es/standalone-chats). Al seleccionar un resultado archivado, este se restaura; al seleccionar un chat de un proyecto cerrado, ese proyecto se vuelve a abrir.
 
 Si un anfitrión no puede ser buscado, reconéctalo y vuelve a intentarlo. Reduce la consulta cuando los resultados se truncan. También puedes gestionar conversaciones antiguas en [Chats archivados](/docs/es/archived-chats).
 
@@ -73,13 +75,39 @@ Nombres como “Fijar la persistencia de configuraciones” y “Revisar los tes
 
 Activa **Notificaciones de escritorio** en **Configuración → General → Mensajes de chat** para recibir un aviso cuando un chat termine, falle o necesite tu respuesta mientras Dream está en segundo plano. Haz clic en una notificación para abrir su chat. **Sonido de notificación** es una opción independiente y puede sonar incluso cuando Dream tiene el foco.
 
+Las notificaciones también cubren los turnos que siguen ejecutándose en el host mientras esta ventana no los sigue. Un turno que detienes tú no envía ninguna.
+
 Un indicador de carga identifica los chats que están recibiendo una respuesta. Cuando envías un mensaje, Dream lo desplaza hasta que queda visible.
 
 Mientras que un agente responde, el chat muestra su progreso y actividad de herramientas. Abre los detalles de la herramienta para inspeccionar comandos, lecturas de archivos o cambios. Cuando el agente proporciona una lista de tareas, el control de tareas junto al cuadro de mensaje muestra su progreso.
 
-Las pestañas de historia y proyecto incluyen indicadores de estado para el trabajo que está procesándose o que ya ha finalizado; las pestañas de proyecto también pueden indicar que un agente está esperando tu respuesta. Selecciona el proyecto y abre la conversación para leer su último mensaje. Utiliza el control de detener en el compositor para interrumpir una respuesta. Detener una respuesta no anula los cambios de archivo ya realizados.
+El Historial de chat y las pestañas de proyecto muestran un estado para cada chat: un indicador giratorio mientras responde, un punto ámbar cuando el agente te está esperando y un punto verde cuando ha terminado y aún no lo has abierto. Selecciona el proyecto y abre la conversación para leer su último mensaje. Usa el control de detención del compositor para interrumpir una respuesta. Detener una respuesta no deshace los cambios en archivos ya realizados.
+
+Un turno se ejecuta en el host del proyecto, no en la ventana. Si la ventana pierde la conexión con el host, el turno sigue ejecutándose y Dream se vuelve a conectar a él automáticamente. Al salir de Dream se detiene el host que inició la aplicación, junto con sus turnos; para que los agentes sigan trabajando después de cerrar la aplicación, [ejecuta el host por tu cuenta](/docs/es/dream-host).
 
 Después de que una respuesta termine, use **Ver cambios de archivos de esta respuesta** en su pie de página para ver los archivos que modificó y [restablecer cualquiera de ellos](/docs/es/checkpoints).
+
+## Poner mensajes en cola
+
+No hace falta esperar a que termine una respuesta para enviar la siguiente instrucción. Escribe un mensaje mientras el agente trabaja y envíalo. Dream lo añade a la cola del chat y lo ejecuta cuando termina el turno actual. Mientras hay un turno en ejecución, el botón del compositor detiene el turno si el cuadro de mensaje está vacío y envía el mensaje en cuanto has escrito algo.
+
+La lista **Cola** aparece encima del cuadro de mensaje cuando hay un mensaje en espera o una ejecución necesita tu atención. Cada fila muestra el mensaje, su modelo y un estado.
+
+| Estado | Significado |
+| --- | --- |
+| En cola | A la espera de los turnos que tiene delante |
+| En ejecución | El turno en el que el agente trabaja ahora |
+| Esperando | El turno en ejecución espera tu respuesta o aprobación |
+| Interrumpido | Se detuvo antes de terminar, por ejemplo por el control de detención o por un reinicio del host |
+| Fallido | Terminó con un error |
+
+Usa **Cancelar** en un mensaje en cola para sacarlo de la cola. Una ejecución fallida o interrumpida ofrece **Reintentar** y **Quitar**. Lee la respuesta que dejó una ejecución interrumpida antes de reintentarla, porque parte de su trabajo puede estar ya hecho.
+
+**Pausar cola** retiene los mensajes en cola y deja que termine el turno actual. **Reanudar cola** vuelve a ponerlos en marcha. El control de detención es distinto: finaliza el turno en ejecución, junto con las tareas que haya [delegado](/docs/es/delegation), y pausa la cola.
+
+Una ejecución fallida o interrumpida también pausa la cola, y su encabezado indica **Cola pausada**. Al enviar un mensaje nuevo, la cola se reanuda y esas ejecuciones se descartan.
+
+Las colas se guardan en el host del proyecto y se conservan al reiniciar Dream. Cuando el host se reinicia, el turno que estaba en ejecución se marca como interrumpido y la cola permanece en pausa hasta que la reanudes. Si un mensaje en cola no se puede enviar, su texto vuelve al cuadro de mensaje.
 
 ## Cerrar, archivar o borrar?
 

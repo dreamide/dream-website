@@ -1,0 +1,39 @@
+---
+title: "Chats ohne Projekt"
+description: "Starten Sie ohne Ordner und wandeln Sie die Unterhaltung später in ein Projekt um."
+---
+
+Ein eigenständiger Chat eignet sich für Fragen, kleine Skripte oder erste Ideen. Er gehört zu keinem geöffneten Projekt. Dream gibt ihm einen eigenen Ordner, in dem der Agent Dateien lesen und schreiben kann.
+
+## Chat ohne Projekt starten
+
+- Wählen Sie auf der Startseite **Chat starten**.
+- Drücken Sie **Command+Shift+N** unter macOS oder **Ctrl+Shift+N** unter Windows/Linux. Unter [Tastenkürzel](/docs/de/settings#tastenkürzel) heißt die Aktion **Neuer Chat ohne Projekt**.
+- Wählen Sie den Tab **Chats** und klicken Sie links auf **Neuer Chat**.
+
+Der Tab **Chats** erscheint neben den Projekten, solange ein eigenständiger Chat offen ist. Seine Chats bleiben beim Schließen erhalten.
+
+Für einen [Remote-Host](/docs/de/remote-hosts) wählen Sie oben in der Chatliste **Neuer Chat auf …** und den Host. Die Option erscheint bei verbundenen Hosts.
+
+## Eigenständigen Chat finden
+
+Wählen Sie **Chats** und links **Chat-Verlauf**. Das Panel **Chats** zeigt Chats dieses Rechners und aller verbundenen Hosts mit deren Namen an.
+
+Die [Chatsuche](/docs/de/chats#zurück-zu-einem-gespräch) zeigt solche Treffer unter **Chats** statt einem Projektnamen an.
+
+## Werkzeuge im eigenständigen Chat
+
+Der Ordner liegt auf dem Starthost unter `~/.dream/chats`. **Dateien**, **Browser**, **Terminal** und **Stash** arbeiten dort. [Checkpoints](/docs/de/checkpoints) erfassen Änderungen je Antwort. **Git** bleibt außerhalb eines Repositories verborgen.
+
+Jeweils ein eigenständiger Chat ist offen. Im [Multi-Chat](/docs/de/multiple-chats) öffnet **Neuer Chat** daneben eine weitere Unterhaltung im selben Ordner.
+
+Ungenutzte Chatordner, die leer sind oder nur `node_modules` enthalten, entfernt Dream nach einer Stunde.
+
+## Chat in ein Projekt umwandeln
+
+Behalten Sie einen längerfristigen Chat als Projekt.
+
+1. Wählen Sie **Chats** und öffnen Sie **Chat-Verlauf**.
+2. Zeigen Sie auf den Chat und klicken Sie auf **In Projekt umwandeln**. Die Aktion erscheint ab der ersten Nachricht.
+
+Der Ordner bleibt am selben Ort und wird zum Projekt mit dem Namen des Chats. Das Projekt öffnet sich mit der Unterhaltung in einem eigenen Tab.

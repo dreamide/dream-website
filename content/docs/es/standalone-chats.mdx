@@ -1,0 +1,39 @@
+---
+title: "Chats sin proyecto"
+description: "Inicia una conversación sin abrir una carpeta y conviértela en proyecto cuando crezca."
+---
+
+Un chat independiente es una conversación que no pertenece a ningún proyecto que hayas abierto. Úsalo para una pregunta, un script rápido o una idea que aún no sabes dónde poner. Dream asigna a cada chat independiente una carpeta propia, de modo que el agente sigue teniendo un lugar donde leer y escribir archivos.
+
+## Iniciar un chat sin proyecto
+
+- En la pantalla de inicio, elige **Iniciar un chat**.
+- Pulsa **Command+Shift+N** en macOS o **Ctrl+Shift+N** en Windows/Linux. La acción se llama **Nuevo chat sin proyecto** en [Atajos de teclado](/docs/es/settings#atajos-de-teclado).
+- Con la pestaña **Chats** seleccionada, haz clic en **Nuevo chat** en la barra de herramientas izquierda.
+
+Dream abre el chat en una pestaña **Chats** junto a tus pestañas de proyecto. La pestaña se muestra mientras hay un chat independiente abierto. Cerrar la pestaña no elimina tus chats.
+
+Para iniciar el chat en un [host remoto](/docs/es/remote-hosts), usa **Nuevo chat en…** en la parte superior de la lista de chats y elige el host. La opción aparece cuando hay un host remoto conectado.
+
+## Encontrar un chat independiente
+
+Selecciona la pestaña **Chats** y abre **Historial de chat** en la barra de herramientas izquierda. En esta pestaña, el panel se titula **Chats**. Enumera los chats independientes de este equipo y de todos los hosts conectados, con el nombre del host junto a los chats que están en otro lugar.
+
+La [búsqueda de chats](/docs/es/chats#volver-a-una-conversación) también encuentra los chats independientes. Sus resultados llevan la etiqueta **Chats** en lugar de un nombre de proyecto.
+
+## Qué puede usar un chat independiente
+
+La carpeta de cada chat se crea en `~/.dream/chats` en el host donde lo iniciaste. **Archivos**, **Navegador**, **Terminal** y **Stash** funcionan en esa carpeta, y los [puntos de control](/docs/es/checkpoints) registran lo que cambió cada respuesta. **Git** está oculto porque la carpeta no es un repositorio.
+
+Solo hay un chat independiente abierto a la vez. Con el [multichat](/docs/es/multiple-chats) activado, **Nuevo chat** añade una conversación junto a la que está abierta, y las dos comparten la misma carpeta.
+
+Dream elimina una carpeta de chat que ya no usa ningún chat cuando está vacía o solo contiene `node_modules`, tras un período de gracia de una hora.
+
+## Convertir un chat en proyecto
+
+Cuando un chat independiente se convierta en trabajo de verdad, consérvalo como proyecto:
+
+1. Selecciona la pestaña **Chats** y abre **Historial de chat**.
+2. Pasa el cursor sobre el chat y haz clic en **Convertir en proyecto**. La acción aparece cuando el chat ya tiene un mensaje.
+
+Dream convierte el chat sin moverlo de sitio. Su carpeta pasa a ser un proyecto normal con el nombre del chat, y el proyecto se abre en su propia pestaña con la conversación dentro.

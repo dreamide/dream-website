@@ -88,7 +88,7 @@ La fusión, la creación de una solicitud de incorporación y la eliminación de
 
 Para publicar para revisión en su lugar, use **Acciones de Git → Crear solicitud de extracción** y siga [Flujos de trabajo de Git](/docs/es/git-workflows#crea-un-pull-request). Crear una solicitud de incorporación mantiene el árbol de trabajo.
 
-Use **Acciones de Git → Eliminar árbol de trabajo** para eliminar el checkout mientras se mantiene su rama. Si tiene cambios no commitados, commitéelos primero o selecciona explícitamente **Descartar cambios sin confirmar**.
+Usa **Acciones de Git → Eliminar árbol de trabajo** para eliminar el checkout. Su rama se conserva a menos que selecciones la opción de eliminar también la rama, que muestra si los commits de la rama están fusionados antes de que confirmes. Si el árbol de trabajo tiene cambios sin confirmar, haz commit de ellos primero o selecciona explícitamente **Descartar cambios sin confirmar**.
 
 <Warning>
   Eliminar un árbol de trabajo elimina su directorio y cierra su proyecto. Los chats del proyecto de árbol de trabajo se eliminan junto con él y no aparecen en el Historial de chats ni en Cerrados recientemente. Si deseas conservar una conversación, [divídelo en el entorno principal](/docs/es/branching-chats) antes de completarlo.
@@ -117,6 +117,8 @@ También puedes eliminar un árbol de trabajo sin el cuadro de diálogo de confi
 4. Use su acción eliminar y revísela de confirmación.
 5. Confirma **Eliminar árbol de trabajo** cuando ya no necesites esa revisión.
 
-La eliminación elimina el directorio del árbol de trabajo del disco. Git niega la eliminación cuando contiene cambios no commiteados. Vuelve a ese proyecto y revisa los cambios antes de intentarlo de nuevo.
+La eliminación borra del disco el directorio del árbol de trabajo y sus chats. Cuando el árbol de trabajo tiene cambios sin confirmar, **Eliminar árbol de trabajo** no está disponible hasta que seleccionas **Descartar cambios sin confirmar**. Si no estás seguro, vuelve antes a ese proyecto y revisa los cambios.
+
+También puedes eliminar un árbol de trabajo al [eliminar su rama](/docs/es/git-workflows#eliminar-una-rama-local) desde el selector de ramas.
 
 Cerrar una pestaña de proyecto solo la elimina del área de trabajo abierto; eliminar un árbol de trabajo elimina su checkout. Para pasos de commit y solicitud de cambios, consulte [Flujos de Git](/docs/es/git-workflows).

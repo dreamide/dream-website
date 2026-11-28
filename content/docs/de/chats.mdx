@@ -3,7 +3,9 @@ title: "Mit Chats arbeiten"
 description: "Starte Gespräche, finde vorherige Arbeiten, umbenenne Chats und verwaltet deine Chat-Geschichte."
 ---
 
-Ein Chat beinhaltet eine einzelne Konversation mit einem Coding-Agent. Jeder Chat gehört zu einem Projekt und verfügt über seine eigenen Modell, Berechtigungen und Konversationsgeschichte. Verwenden Sie separate Chats für Aufgaben, die Sie unabhängig wiederholen möchten, wie z. B. die Behebung eines Bugs und die Überprüfung einer Funktion.
+Ein Chat enthält eine Unterhaltung mit einem Coding-Agenten. Ein Chat gehört in der Regel zu einem Projekt und hat ein eigenes Modell, eigene Berechtigungen und einen eigenen Unterhaltungsverlauf. Verwende getrennte Chats für Aufgaben, zu denen du unabhängig voneinander zurückkehren möchtest, etwa das Beheben eines Fehlers und das Prüfen eines Features.
+
+Um etwas zu fragen, ohne einen Ordner zu öffnen, starte einen [Chat ohne Projekt](/docs/de/standalone-chats).
 
 ## Eine Konversation starten
 
@@ -47,7 +49,7 @@ Verwenden Sie [Dateireferenzen und Anhänge](/docs/de/providing-context), um auf
   />
 </Frame>
 
-Die Historie wird mit Filtern auf die Titel dieses Projekts eingeschränkt. Um Titel und Nachrichtentext über mehrere Projekte hinweg zu suchen, klicken Sie im oberen Bereich auf **Chats durchsuchen** (Standard: **Command+Shift+F** auf macOS oder **Ctrl+Shift+F** auf Windows/Linux). Die Suchergebnisse umfassen lokale Projekte und SSH-Hosts, die verbunden sind. Die Wiederherstellung eines archivierten Ergebnisses erfolgt durch Auswahl; die Wiederöffnung eines geschlossenen Projekts erfolgt durch Auswahl des Chats des geschlossenen Projekts.
+Die Suche im Verlauf filtert die Titel dieses Projekts. Um Titel und Nachrichtentext projektübergreifend zu durchsuchen, klicke in der oberen Leiste auf **Chats durchsuchen** (standardmäßig **Command+Shift+F** unter macOS oder **Ctrl+Shift+F** unter Windows/Linux). Die Ergebnisse umfassen lokale Projekte, verbundene Remote-Hosts und [Chats ohne Projekt](/docs/de/standalone-chats). Wählst du ein archiviertes Ergebnis aus, wird es wiederhergestellt; wählst du den Chat eines geschlossenen Projekts aus, wird dieses Projekt wieder geöffnet.
 
 Wenn ein Host nicht gesucht werden kann, reconnecten Sie ihn und versuchen Sie es erneut. Beschränken Sie die Abfrage, wenn die Suchergebnisse abgeschnitten werden. Sie können auch ältere Gespräche in [Archivierte Chats](/docs/de/archived-chats) verwalten.
 
@@ -73,13 +75,39 @@ Namensbeispiele wie „Einstellungen der Persistenz beheben“ und „Einstellun
 
 Aktivieren Sie **Desktop-Benachrichtigungen** unter **Einstellungen → Allgemein → Chatnachrichten**, um benachrichtigt zu werden, wenn ein Chat abgeschlossen wird, fehlschlägt oder eine Eingabe benötigt, während Dream im Hintergrund ist. Klicken Sie auf eine Benachrichtigung, um den zugehörigen Chat zu öffnen. **Benachrichtigungston** ist eine separate Option und kann auch ertönen, wenn Dream den Fokus hat.
 
+Benachrichtigungen gibt es auch für Durchläufe, die auf dem Host weiterlaufen, während dieses Fenster sie nicht verfolgt. Ein Durchlauf, den du selbst stoppst, löst keine Benachrichtigung aus.
+
 Eine Ladeanzeige kennzeichnet Chats, die gerade eine Antwort empfangen. Wenn du eine Nachricht sendest, scrollt Dream sie in den sichtbaren Bereich.
 
 Während ein Agent antwortet, wird der Chat seine Fortschritte und Tool-Aktivitäten anzeigen. Offene Tool-Details anzeigen, um Befehle, Datei-Lesungen oder Änderungen zu überprüfen. Wenn der Agent eine Aufgabenliste bereitstellt, zeigt die Aufgabensteuerung neben der Nachrichtenbox ihren Fortschritt an.
 
-Historie- und Projekt-Register zeigen Statusindikatoren für Arbeit, die verarbeitet oder abgeschlossen wird; Projekt-Register können außerdem anzeigen, dass ein Agent auf Ihre Antwort wartet. Wählen Sie das Projekt und öffnen Sie das Gespräch, um die letzte Nachricht zu lesen. Verwenden Sie die Stop-Funktion im Composer, um eine Antwort zu unterbrechen. Die Unterbrechung einer Antwort führt nicht dazu, dass bereits vorgenommene Dateiänderungen rückgängig gemacht werden.
+Der Chat-Verlauf und die Projekt-Tabs zeigen für jeden Chat einen Status: ein Ladesymbol, solange er antwortet, einen bernsteinfarbenen Punkt, wenn der Agent auf dich wartet, und einen grünen Punkt, wenn er fertig ist und du ihn noch nicht geöffnet hast. Wähle das Projekt aus und öffne die Unterhaltung, um ihre neueste Nachricht zu lesen. Mit dem Stopp-Steuerelement im Composer unterbrichst du eine Antwort. Das Stoppen einer Antwort macht bereits vorgenommene Dateiänderungen nicht rückgängig.
+
+Ein Durchlauf wird auf dem Host des Projekts ausgeführt, nicht im Fenster. Verliert das Fenster die Verbindung zum Host, läuft der Durchlauf weiter, und Dream verbindet sich automatisch wieder mit ihm. Wenn du Dream beendest, wird der von der App gestartete Host samt seinen Durchläufen gestoppt; damit Agenten nach dem Schließen der App weiterarbeiten, [betreibe den Host selbst](/docs/de/dream-host).
 
 Nachdem eine Antwort abgeschlossen ist, verwenden Sie im Footer **Dateiänderungen dieser Antwort anzeigen**, um die Dateien zu sehen, die sie verändert hat, und [eine davon wiederherzustellen](/docs/de/checkpoints).
+
+## Nachrichten einreihen
+
+Du musst nicht warten, bis eine Antwort abgeschlossen ist, bevor du die nächste Anweisung sendest. Gib eine Nachricht ein, während der Agent arbeitet, und sende sie ab. Dream fügt sie der Warteschlange des Chats hinzu und führt sie aus, sobald der aktuelle Durchlauf endet. Während ein Durchlauf läuft, stoppt die Schaltfläche des Composers den Durchlauf, wenn das Nachrichtenfeld leer ist, und sendet die Nachricht, sobald du etwas eingegeben hast.
+
+Die Liste **Warteschlange** erscheint über dem Nachrichtenfeld, wenn eine Nachricht wartet oder eine Ausführung deine Aufmerksamkeit erfordert. Jede Zeile zeigt die Nachricht, ihr Modell und einen Status.
+
+| Status | Bedeutung |
+| --- | --- |
+| Eingereiht | Wartet auf die Durchläufe vor ihr |
+| Läuft | Der Durchlauf, an dem der Agent gerade arbeitet |
+| Wartet | Der laufende Durchlauf wartet auf deine Antwort oder Genehmigung |
+| Unterbrochen | Vor dem Abschluss gestoppt, etwa durch das Stopp-Steuerelement oder einen Neustart des Hosts |
+| Fehlgeschlagen | Mit einem Fehler beendet |
+
+Mit **Abbrechen** nimmst du eine eingereihte Nachricht aus der Warteschlange. Eine fehlgeschlagene oder unterbrochene Ausführung bietet **Wiederholen** und **Entfernen** an. Lies die Antwort, die eine unterbrochene Ausführung hinterlassen hat, bevor du sie wiederholst, denn ein Teil ihrer Arbeit ist möglicherweise schon erledigt.
+
+**Pausieren** hält die eingereihten Nachrichten zurück und lässt den aktuellen Durchlauf zu Ende laufen. **Fortsetzen** startet sie wieder. Das Stopp-Steuerelement wirkt anders: Es beendet den laufenden Durchlauf samt allen Aufgaben, die er [delegiert](/docs/de/delegation) hat, und pausiert die Warteschlange.
+
+Auch eine fehlgeschlagene oder unterbrochene Ausführung pausiert die Warteschlange; in deren Kopfzeile steht dann **Warteschlange pausiert**. Wenn du eine neue Nachricht sendest, wird die Warteschlange fortgesetzt, und diese Ausführungen werden verworfen.
+
+Warteschlangen werden auf dem Host des Projekts gespeichert und bleiben bei einem Neustart von Dream erhalten. Nach einem Neustart des Hosts wird ein Durchlauf, der gerade lief, als unterbrochen markiert, und die Warteschlange bleibt pausiert, bis du sie fortsetzt. Kann eine eingereihte Nachricht nicht gesendet werden, kehrt ihr Text in das Nachrichtenfeld zurück.
 
 ## Schließen, archivieren oder löschen?
 

@@ -12,7 +12,9 @@ Cliquez sur **Fichiers** dans la barre latérale de droite pour parcourir le dos
 3. Sélectionnez un résultat pour l'ouvrir.
 4. Effacer la recherche pour retourner à navigation de l'arborescence.
 
-Utilisez **Actualiser les fichiers** dans les actions de fichier lorsque des modifications effectuées en dehors de Dream ne sont pas reflétées dans l'arborescence. Rechercher un fichier permet de localiser son chemin ; utilisez **Rechercher dans les fichiers** pour rechercher le contenu du projet.
+L'arborescence se met à jour à mesure que les fichiers changent, notamment à la fin des commandes du terminal et lorsque vous revenez à la fenêtre de Dream. Rechercher un fichier permet de localiser son chemin ; utilisez **Rechercher dans les fichiers** pour rechercher dans le contenu du projet.
+
+Dans un dépôt Git, l'arborescence signale les fichiers comportant des modifications non validées, comme les fichiers modifiés et les nouveaux fichiers, ainsi que les dossiers qui les contiennent.
 
 <Frame caption="Rechercher ou parcourir l'arborescence de fichiers, puis ouvrir un fichier à côté de votre chat.">
   <img
@@ -65,7 +67,7 @@ Le panneau de recherche propose également des contrôles de remplacement. Véri
 
 Cliquez sur **Enregistrer** dans la barre d'outils de l'éditeur, ou appuyez sur **Commande+S** sur macOS ou **Ctrl+S** sur Windows/Linux lorsque l'éditeur est actif. Enregistrez chaque fichier modifié avant de demander à un agent ou à une commande terminale d'utiliser les nouveaux contenus ; ces outils lisent les fichiers sur le disque.
 
-Passer entre les onglets de fichier vous permet de garder des brouillons tout en inspectant d'autres fichiers. Utilisez **Annuler les modifications** pour abandonner un brouillon local. Cela est indépendant de l'annulation des modifications via Git.
+Changer d'onglet de fichier vous permet de conserver des brouillons pendant que vous inspectez d'autres fichiers. Pour abandonner un brouillon, fermez son onglet et choisissez **Ne pas enregistrer**. Cette action est distincte de l'annulation de modifications via Git.
 
 Double-cliquez sur un onglet de fichier pour le fixer afin que l'ouverture d'un autre aperçu ne le remplace pas.
 
@@ -86,6 +88,8 @@ Un agent, une commande terminale ou un éditeur externe peut modifier le même f
 
 ## Modifier la vue
 
-Utilisez **Activer le retour à la ligne** pour les lignes longues. Redimensionnez les panneaux d'arborescence de fichier et d'édition pour donner plus d'espace au contenu. Utilisez les actions **Ouvrir dans** disponibles pour continuer dans un éditeur externe.
+**Retour à la ligne** est activé par défaut. Utilisez son interrupteur dans l'en-tête du panneau pour le désactiver sur les longues lignes que vous préférez faire défiler. Redimensionnez l'arborescence de fichiers et les volets de l'éditeur pour donner plus d'espace au contenu.
+
+Pour un projet local, cliquez sur le chemin dans l'en-tête du panneau pour ouvrir le dossier dans votre gestionnaire de fichiers. Pour continuer dans un éditeur externe, utilisez le menu [Ouvrir dans](/docs/fr/workspace#renommer-ou-ouvrir-un-projet-externement) du projet.
 
 Après avoir enregistré, ouvrez [Modifications](/docs/fr/git-workflows) pour consulter la différence Git. Pour demander à un agent de renseignements sur un fichier, [référez-y avec @](/docs/fr/providing-context) dans le composant de discussion.

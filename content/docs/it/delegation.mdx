@@ -1,0 +1,30 @@
+---
+title: "Delegare attività ad altri agenti"
+description: "Lascia che un agente affidi parte di un'attività a un altro provider e ne controlli il risultato in seguito."
+---
+
+Un agente può affidare parte del proprio lavoro a un altro provider di agenti che hai configurato. Ad esempio, una chat di Claude Code può chiedere a Codex di rivedere una modifica mentre scrive i test. Non c'è nulla da attivare: chiedilo nel tuo messaggio.
+
+## Chiedere a un agente di delegare
+
+Indica il provider e descrivi la parte di lavoro che deve svolgere:
+
+> Chiedi a Codex di cercare bug nelle modifiche di questo branch mentre tu scrivi i test. Riporta i suoi risultati quando ha finito.
+
+L'agente avvia l'attività, prosegue con il proprio lavoro e controlla il risultato in un turno successivo. Un'attività delegata viene eseguita nello stesso progetto e ne condivide i file. Non riceve la conversazione di origine, quindi l'agente scrive istruzioni apposite per l'attività.
+
+Ogni attività è una nuova chat nello stesso progetto. Il suo titolo inizia con `Task:` seguito dall'inizio di quelle istruzioni. Apri quella chat per seguire il lavoro dell'altro agente.
+
+## Quali provider possono delegare
+
+Le chat di Claude Code, Codex, OpenCode e Grok Build possono delegare. Le chat di Cursor e Antigravity no. Ognuno dei sei provider può ricevere un'attività, purché la sua CLI sia installata e abbia effettuato l'accesso. Consulta [Connettere un provider](/docs/it/providers).
+
+## Autorizzazioni e limiti
+
+- Un'attività delegata parte con le [autorizzazioni](/docs/it/agent-modes) della chat di origine e non può mai averne di più ampie.
+- Interrompere il turno della chat di origine interrompe anche le attività che ha delegato.
+- Una chat può avere fino a 8 attività delegate attive contemporaneamente. Un'attività delegata può a sua volta delegare, fino a 4 livelli di profondità.
+
+<Warning>
+  Le attività delegate modificano la stessa cartella di progetto della chat di origine. Chiedi una revisione o una ricerca, oppure indica a ciascun agente quali file modificare. Usa un [worktree Git](/docs/it/worktrees) quando un'attività richiede un checkout indipendente.
+</Warning>

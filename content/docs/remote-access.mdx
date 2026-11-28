@@ -1,0 +1,96 @@
+---
+title: Remote access
+description: Use this computer's projects from a phone or another computer by pairing devices over Tailscale or Cloudflare Tunnel.
+---
+
+Remote access lets other devices use the projects on this computer. A paired device opens Dream in
+its browser, or connects from another Dream desktop app, while the agents, files, terminals, and Git
+commands keep running here.
+
+Remote access stays off until you turn it on, and every device must be paired before it can connect.
+Dream does not use an account or a relay service: you provide the network route, and pairing
+controls who gets in.
+
+## Choose how devices reach this computer
+
+| Option | How it works | What you need |
+| --- | --- | --- |
+| Tailscale | Serves Dream over HTTPS inside your tailnet | Tailscale on this computer and on every device, with MagicDNS and HTTPS certificates turned on for the tailnet |
+| Cloudflare Tunnel | Serves Dream at a public hostname on your own domain | A persistent tunnel in your Cloudflare account and a `cloudflared` connector that you run |
+
+You can also put your own reverse proxy in front of the host. See
+[Running the host](/docs/dream-host#remote-access-from-the-command-line).
+
+## Turn on remote access
+
+1. Open **Settings → Connections** and find **Remote access**.
+2. Click **Set up**.
+3. Under **Reach this computer through**, choose **Tailscale** or **Cloudflare Tunnel**.
+4. For Tailscale, keep or change the **HTTPS port**. For Cloudflare Tunnel, enter the
+   **Public address**, such as `https://dream.example.com`.
+5. Leave **Local port** empty unless you need a specific port, then click **Turn on**.
+
+The status beside **Allow paired devices** reads **Ready** once Dream can reach this computer through
+that address. If it reads **Not ready**, follow the message shown, correct the problem, and click
+**Check again**. Use **Change** to edit the setup later. Turn **Allow paired devices** off to stop
+serving devices without unpairing them.
+
+### Set up a Cloudflare tunnel
+
+Dream does not install or run `cloudflared` and never needs your tunnel token. It needs only the
+public address and the local port that the hostname is routed to.
+
+1. In the Cloudflare dashboard, create a tunnel and run the install command it shows on this
+   computer.
+2. Add a route for a hostname on your domain. Set its service to `HTTP` and `127.0.0.1:5410`, or to
+   the **Local port** shown in Dream.
+3. Make sure the hostname accepts direct API and WebSocket requests. Do not put a Cloudflare Access
+   login or a browser challenge in front of it, and do not cache or buffer `/api/*`.
+
+Quick Tunnels are not supported. Their addresses change, and they cannot carry chat streams.
+
+## Pair a device
+
+1. When remote access is ready, click **Pair a device**.
+2. Choose the **Access** level for the device.
+3. Click **Create pairing**. Dream shows a **Pairing code** and the **Host address**.
+4. On the other device, open the host address in a browser, enter the code and a **Device name**,
+   and click **Pair**.
+
+To connect another Dream desktop app instead of a browser,
+[add this computer there as a host](/docs/remote-hosts#pair-with-a-host-over-https) with the same
+address and code.
+
+The code works once and expires in 10 minutes. Whoever enters it gets the access you chose, so give
+it only to the device you mean to pair.
+
+| Access | What the device can do |
+| --- | --- |
+| View only | Read projects, chats, and terminals |
+| View and work | Also run agents, terminals, and Git as you |
+| Full | Also pair and remove devices |
+
+## Use Dream from a paired device
+
+A paired browser shows this computer's projects with their chats, files, terminals, and Git panels.
+A few things stay in the desktop app: the embedded **Browser** tool, **Settings → Connections**,
+opening folders on other hosts, and **Open in** for external editors.
+
+If the device loses its connection, a banner reports that it is reconnecting, or that it cannot
+reach the host and is showing what it saved. Work on the host continues either way. To unpair from
+the device itself, open **Settings** there and choose **Sign out**.
+
+## Manage paired devices
+
+**Paired devices** lists each device with its access level and when it was last used. Click
+**Revoke** to remove one, or **Revoke all** to remove every device. A revoked device loses access at
+once and its open pages stop; work on this computer continues.
+
+## Keep this computer available
+
+Devices can connect only while Dream's host is running and this computer is awake. The host that
+the desktop app starts stops when you quit Dream. To keep one running in the background, or to share
+a machine that has no desktop session, see [Running the host](/docs/dream-host).
+
+If Settings reports that this computer's host runs a different version from the app, update the
+older one and restart the host.

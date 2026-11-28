@@ -1,0 +1,70 @@
+---
+title: "Fernzugriff"
+description: "Koppeln Sie Geräte über Tailscale oder Cloudflare Tunnel, um Projekte vom Telefon oder einem anderen Rechner zu nutzen."
+---
+
+Gekoppelte Geräte öffnen Dream im Browser oder in der Desktop-App. Agenten, Dateien, Terminals und Git bleiben auf diesem Rechner.
+
+Fernzugriff ist zunächst aus. Sie stellen den Netzwerkweg bereit und koppeln jedes Gerät. Ein Dream-Konto oder Relay ist dafür nicht erforderlich.
+
+## Verbindungsweg wählen
+
+| Option | Funktionsweise | Voraussetzungen |
+| --- | --- | --- |
+| Tailscale | Stellt Dream per HTTPS im Tailnet bereit | Tailscale auf allen Geräten, MagicDNS und HTTPS-Zertifikate im Tailnet aktiviert |
+| Cloudflare Tunnel | Veröffentlicht Dream unter einem Hostnamen Ihrer Domain | Dauerhafter Cloudflare-Tunnel und selbst betriebener `cloudflared`-Connector |
+
+Ein eigener Reverse Proxy ist ebenfalls möglich. Siehe [Host betreiben](/docs/de/dream-host#fernzugriff-über-die-befehlszeile).
+
+## Fernzugriff einschalten
+
+1. Öffnen Sie **Einstellungen → Verbindungen** und suchen Sie **Fernzugriff**.
+2. Klicken Sie auf **Einrichten**.
+3. Wählen Sie unter **Diesen Computer erreichen über** entweder **Tailscale** oder **Cloudflare Tunnel**.
+4. Prüfen Sie für Tailscale den **HTTPS-Port**. Geben Sie für Cloudflare Tunnel die **Öffentliche Adresse** ein, etwa `https://dream.example.com`.
+5. Lassen Sie **Lokaler Port** ohne feste Portvorgabe leer und klicken Sie auf **Einschalten**.
+
+Bei Erreichbarkeit zeigt **Gekoppelte Geräte zulassen** den Status **Bereit**. Bei **Nicht bereit** beheben Sie das angezeigte Problem und klicken auf **Erneut prüfen**. Mit **Ändern** passen Sie die Einrichtung an. Schalten Sie **Gekoppelte Geräte zulassen** aus, um den Zugriff bei erhaltener Kopplung zu stoppen.
+
+### Cloudflare-Tunnel einrichten
+
+Betreiben Sie `cloudflared` selbst. Dream benötigt die öffentliche Adresse und den lokalen Zielport. Das Tunnel-Token bleibt bei Ihnen.
+
+1. Erstellen Sie im Cloudflare-Dashboard einen Tunnel und führen Sie den angezeigten Installationsbefehl auf diesem Rechner aus.
+2. Richten Sie für einen Hostnamen Ihrer Domain eine Route mit dem Dienst `HTTP` und `127.0.0.1:5410` oder dem in Dream angegebenen **Lokaler Port** ein.
+3. Der Hostname muss direkte API- und WebSocket-Anfragen zulassen. Vermeiden Sie vorgeschaltete Cloudflare-Access-Anmeldungen und Browserprüfungen. Deaktivieren Sie Caching und Pufferung für `/api/*`.
+
+Quick Tunnels haben wechselnde Adressen und unterstützen keine Chatstreams. Verwenden Sie einen dauerhaften Tunnel.
+
+## Gerät koppeln
+
+1. Klicken Sie nach erfolgreicher Einrichtung auf **Gerät koppeln**.
+2. Wählen Sie die Stufe unter **Zugriff**.
+3. Klicken Sie auf **Kopplung erstellen**. Dream zeigt **Kopplungscode** und **Host-Adresse** an.
+4. Öffnen Sie auf dem Gerät die Hostadresse im Browser, geben Sie Code und **Gerätename** ein und klicken Sie auf **Koppeln**.
+
+In einer anderen Desktop-App können Sie mit derselben Adresse und demselben Code [diesen Rechner als Host hinzufügen](/docs/de/remote-hosts#host-über-https-koppeln).
+
+Der Code gilt einmalig für zehn Minuten. Geben Sie ihn nur dem vorgesehenen Gerät, da er die gewählte Berechtigung gewährt.
+
+| Zugriff | Gerätefunktionen |
+| --- | --- |
+| Nur ansehen | Projekte, Chats und Terminals lesen |
+| Ansehen und arbeiten | Zusätzlich Agenten, Terminals und Git in Ihrem Namen ausführen |
+| Vollzugriff | Zusätzlich Geräte koppeln und entfernen |
+
+## Dream auf einem gekoppelten Gerät verwenden
+
+Der Browser zeigt Projekte, Chats, Dateien, Terminals und Git dieses Rechners. **Browser**, **Einstellungen → Verbindungen**, Ordner auf anderen Hosts und **Öffnen in** für externe Editoren stehen in der Desktop-App bereit.
+
+Bei Verbindungsverlust zeigt ein Banner den Neuaufbau oder die zuletzt gespeicherten Daten an. Der Host arbeitet weiter. Zum Entkoppeln wählen Sie auf dem Gerät unter **Einstellungen** die Option **Abmelden**.
+
+## Gekoppelte Geräte verwalten
+
+**Gekoppelte Geräte** zeigt Berechtigungen und letzte Verwendung. **Widerrufen** entfernt ein Gerät, **Alle widerrufen** alle Geräte. Geöffnete Seiten verlieren sofort den Zugriff. Die Arbeit auf dem Host läuft weiter.
+
+## Rechner erreichbar halten
+
+Für Verbindungen muss der Rechner wach sein und der Host laufen. Beim Beenden von Dream stoppt der von der App gestartete Host. Für Hintergrundbetrieb oder Rechner ohne Desktop siehe [Host betreiben](/docs/de/dream-host).
+
+Meldet die App unterschiedliche Versionen, aktualisieren Sie die ältere Komponente und starten Sie den Host neu.

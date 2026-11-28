@@ -5,7 +5,7 @@ description: "Gérez les onglets de projet, organisez les panneaux et passez d'u
 
 Chaque projet Dream possède son propre espace de travail. Les onglets de projets vous permettent de vous déplacer entre les répos tout en conservant les discussions et les outils ouverts de chaque projet.
 
-Les projets peuvent aussi résider sur des [hôtes SSH](/docs/fr/remote-hosts). Vérifiez le libellé de l'hôte avant d'exécuter des commandes ; les outils du projet distant travaillent sur cette machine.
+Les projets peuvent aussi résider sur des [hôtes distants](/docs/fr/remote-hosts). Le pied de page sous le chat indique l'hôte, le projet et la branche. Vérifiez-le avant d'exécuter des commandes ; les outils d'un projet distant travaillent sur cette machine.
 
 <Frame caption="Projets et espace de travail">
   <img
@@ -20,8 +20,10 @@ Les projets peuvent aussi résider sur des [hôtes SSH](/docs/fr/remote-hosts). 
 ## Ajouter et changer de projet
 
 1. Cliquez sur le **+** situé à côté des onglets de projet, ou utilisez **Ouvrir un dossier** sur l'écran de démarrage.
-2. Choisissez le dossier dans lequel vous souhaitez travailler.
-3. Sélectionnez son onglet pour le rendre le projet actif.
+2. Dans la boîte de dialogue **Ouvrir le dossier**, saisissez le chemin du dossier ou cliquez sur **Parcourir…**. Si vous avez ajouté un [hôte distant](/docs/fr/remote-hosts), choisissez l'emplacement du dossier sous **Ouvrir sur**.
+3. Cliquez sur **Ouvrir**, puis sélectionnez l'onglet du projet pour en faire le projet actif.
+
+À mesure que vous saisissez un chemin, Dream liste les dossiers correspondants. Appuyez sur **Tab** pour compléter le dossier en surbrillance et sur **Enter** pour l'ouvrir. Le raccourci par défaut de cette boîte de dialogue est **Command+O** sur macOS ou **Ctrl+O** sur Windows/Linux.
 
 Le projet actif détermine les discussions, les fichiers, les terminaux, les onglets du navigateur et les éléments du stash que vous voyez. Vérifiez l'onglet sélectionné avant d'envoyer une tâche ou d'exécuter une commande. Glissez les onglets de projet pour les réorganiser lorsque vous souhaitez placer des projets liés les uns à côté des autres.
 
@@ -39,7 +41,9 @@ Le projet actif détermine les discussions, les fichiers, les terminaux, les ong
 
 Ouvrez le menu **…** du projet et choisissez **Modifier** pour changer son nom affiché ou son icône. Cliquez sur l'icône pour télécharger une image de jusqu'à 5 Mo, puis **Enregistrer**. Réinitialisez un icône personnalisé pour revenir à la détection automatique depuis le projet. Renommer un projet dans Dream ne renomme pas son dossier sur disque.
 
-Utilisez les options **Ouvrir dans** du menu pour ouvrir le projet dans un éditeur externe disponible.
+Utilisez les options **Ouvrir dans** du menu pour ouvrir le projet dans votre gestionnaire de fichiers, un terminal ou un éditeur installé. Les mêmes options s'affichent lorsque vous cliquez sur le nom du projet dans le pied de page sous le chat.
+
+Pour un projet sur un hôte SSH, **Ouvrir dans** liste les éditeurs installés qui prennent en charge Remote SSH. Un projet accessible uniquement en HTTPS, ou consulté depuis le navigateur d'un appareil associé, n'a pas de menu **Ouvrir dans**.
 
 ## Retourner à un échange antérieur
 
@@ -54,7 +58,9 @@ Cette histoire suit les sélections de projet et de chat. Passer d'un panneau d'
 3. Recherchez le projet dans **Fermés récemment**, en utilisant son champ de recherche si nécessaire.
 4. Sélectionnez le projet pour le réouvrir.
 
-Fermer un projet supprime sa fenêtre ouverte ; il ne supprime pas son dossier. Dream restaure le contexte du projet sauvegardé tel que les discussions et les outils ouverts lorsqu'il est possible. Ne pas utiliser un projet fermé comme moyen de maintenir un processus terminal en cours.
+Fermer un projet retire son onglet ouvert et arrête ses terminaux ; son dossier n'est pas supprimé. Dream restaure, lorsque c'est possible, le contexte enregistré du projet, comme les chats et les outils ouverts.
+
+**Fermés récemment** mémorise jusqu'à 50 projets et affiche l'hôte et le chemin de chacun. Sa recherche porte sur le nom, le chemin et l'hôte d'un projet.
 
 ## Rechercher les contrôles du workspace
 
@@ -64,17 +70,19 @@ La barre latérale droite ouvre les outils du projet :
 
 | Outil | Ce que vous pouvez faire |
 | --- | --- |
-| [Git](/docs/fr/git-workflows) | Revoir les modifications, commiter, parcourir l'historique et gérer la demande de fusion du branche |
 | [Fichiers](/docs/fr/files) | Parcourir des fichiers, rechercher des chemins et éditer le contenu des fichiers |
 | [Navigateur](/docs/fr/browser) | Aperçu des URLs et inspection des pages web |
 | [Terminal](/docs/fr/terminals) | Exécuter les commandes du projet dans des sessions séparées |
+| [Git](/docs/fr/git-workflows) | Revoir les modifications, commiter, parcourir l'historique et gérer la demande de fusion du branche |
 | [Stash](/docs/fr/stash) | Enregistrer des prompts et les exécuter plus tard |
 
-Les contrôles Git s'affichent pour les projets de dépôt. Sous la discussion, utilisez le contrôle de branche pour passer d'une branche ou [créer un arbre de travail](/docs/fr/worktrees). Le menu adjacent **Actions Git** propose des opérations de commit, de publication, de pull request et d'arbre de travail selon l'état de la branche.
+**Git** et les contrôles Git n'apparaissent que pour les projets situés dans un dépôt Git. Le pied de page sous le chat indique l'hôte, le projet et la branche. Utilisez le contrôle de branche pour changer de branche ou [créer un arbre de travail](/docs/fr/worktrees). Le menu **Actions Git**, à droite du pied de page, propose des actions de commit, de fetch, de pull, de push, de pull request et d'arbre de travail selon l'état de la branche.
 
 ## Organiser les discussions et les panneaux
 
 Cliquez sur un outil pour ouvrir son panneau. Utilisez le contrôle de fermeture ou de repli du panneau lorsque vous avez besoin d'espace supplémentaire pour les discussions, et glissez les diviseurs de panneau pour réajuster l'arrangement. Fermer un panneau d'outil est différent de fermer ses sessions de terminal individuelles ou ses onglets de navigateur.
+
+Double-cliquez sur le séparateur du panneau de droite pour donner au panneau une part égale de la largeur de la fenêtre. Utilisez **Développer** dans l'en-tête d'un panneau pour qu'il occupe tout l'espace de travail et **Réduire** pour lui rendre sa taille habituelle.
 
 Activer [multi-chat](/docs/fr/multiple-chats) pour organiser les conversations en colonnes redimensionnables. Chaque chat possède son propre historique de conversation, tandis que tous les chats du projet utilisent les mêmes fichiers. Utilisez des arborescences de travail pour des checkouts indépendants.
 

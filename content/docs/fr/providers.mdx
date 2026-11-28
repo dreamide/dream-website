@@ -14,15 +14,16 @@ Dream fonctionne avec des outils de ligne de commande de type agent de programma
 | OpenCode | OpenCode CLI |
 | Cursor | Cursor Agent CLI |
 | Grok Build | Grok Build CLI |
+| Antigravity | Antigravity CLI |
 
-Installez l'interface en ligne de commande depuis son fournisseur, puis effectuez la procédure normale de connexion ou d'authentification de cet interface en dehors de Dream.
+Installez le CLI depuis son fournisseur, puis effectuez la procédure normale de connexion ou d'authentification de ce CLI en dehors de Dream. Antigravity désigne Google Antigravity ; Dream l'exécute via sa commande `agy`.
 
 ## Activer les modèles
 
 1. Ouvrir **Paramètres** dans Dream.
 2. Sélectionnez **Fournisseurs**.
 3. Actualisez le fournisseur après avoir installé ou authentifié son CLI.
-4. Activez l'interrupteur du fournisseur, puis activez l'un ou plusieurs de ses modèles détectés.
+4. Activez l'interrupteur du fournisseur, puis cliquez sur chaque modèle détecté que vous souhaitez utiliser. Une coche identifie les modèles sélectionnés.
 5. Ouvrir **Général → Modèles** et choisir les valeurs par défaut pour les nouveaux échanges et pour la rédaction de commits et de demandes de fusion.
 
 Vous devez activer au moins un modèle avant d'ouvrir votre premier projet. Un chat peut utiliser un modèle activé différent du modèle par défaut après qu'il ait commencé.
@@ -49,11 +50,13 @@ L'interface en ligne de commande installée gère l'authentification et exécute
 
 Dream expose des autorisations **Demander**, **Accepter les modifications** et **Accès complet** par conversation. Veuillez lire [Autorisations des agents](/docs/fr/agent-modes) avant de les choisir. Claude chat avec une session résumable offre également [Continuer dans le terminal](/docs/fr/terminals#continuer-une-conversation-avec-claude-dans-un-terminal).
 
-Les [compétences](/docs/fr/skills) sont disponibles pour Claude Code, Codex, OpenCode et Cursor. Les [serveurs MCP](/docs/fr/mcp-servers) et les outils de navigateur intégrés à Dream sont disponibles pour Claude Code, Codex, OpenCode et Grok Build ; Cursor ne prend pas en charge ces connexions d’outils gérées par Dream.
+Les [skills](/docs/fr/skills) sont disponibles pour Claude Code, Codex, OpenCode et Cursor. Les [serveurs MCP](/docs/fr/mcp-servers) et les outils de navigateur intégrés à Dream sont disponibles pour Claude Code, Codex, OpenCode et Grok Build ; Cursor et Antigravity ne prennent pas en charge ces connexions d'outils gérées par Dream.
+
+Les chats de ces quatre mêmes fournisseurs peuvent aussi [déléguer des tâches](/docs/fr/delegation) à tout autre fournisseur que vous avez configuré.
 
 ## Vérifier les mises à jour de l'interface en ligne de commande
 
-Les cartes des fournisseurs affichent la version CLI installée lorsque celle-ci est disponible. Dream vérifie également la présence de versions plus récentes et affiche un badge **Mise à jour disponible : …** lorsque l'une est trouvée. Ce badge indique la disponibilité de la mise à jour ; il ne la installe pas. Mettez à jour la CLI par le biais de sa méthode d'installation normale, puis rafraîchissez sa carte fournisseur dans Dream.
+Les cartes des fournisseurs affichent la version installée du CLI lorsqu'elle est disponible. Dream recherche également des versions plus récentes et affiche un bouton **Mise à jour disponible : …** lorsqu'il en trouve une. Cliquez dessus pour exécuter la commande de mise à jour propre à ce CLI ; Dream indique le résultat une fois l'opération terminée. Si la mise à jour échoue, mettez le CLI à jour avec sa méthode d'installation habituelle, puis actualisez sa carte de fournisseur dans Dream.
 
 Utilisez l'interrupteur de activation du fournisseur pour cacher ses modèles des sélections disponibles sans désinstaller la CLI. Vérifiez à nouveau vos paramètres par défaut après avoir modifié les fournisseurs ou les modèles activés.
 
@@ -68,4 +71,4 @@ Si un fournisseur indique **CLI non détecté** :
 
 Si l'interface de ligne de commande a été installée pendant que Dream était ouvert, redémarrez Dream si le refresh ne détecte toujours pas l'installation. La commande doit être disponible dans l'environnement de Dream ; un alias de shell ne suffit pas à considérer l'interface de ligne de commande installée.
 
-Si un interface de ligne de commande est détecté mais que le modèle souhaité est absent, vérifiez les paramètres et la configuration de l'éditeur et actualisez la liste. Si les modèles sont listés mais indisponibles dans les discussions, activez-les via leurs boutons d'activation et assurez-vous que l'éditeur lui-même est activé. Voir [Dépannage](/docs/fr/troubleshooting) pour des vérifications supplémentaires.
+Si un CLI est détecté mais que le modèle souhaité est absent, vérifiez le compte et la configuration du fournisseur, puis actualisez la liste. Si des modèles sont listés mais indisponibles dans les chats, sélectionnez-les dans la carte du fournisseur et vérifiez que le fournisseur lui-même est activé. Consultez [Dépannage](/docs/fr/troubleshooting) pour d'autres vérifications.

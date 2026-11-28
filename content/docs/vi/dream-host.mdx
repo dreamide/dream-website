@@ -1,0 +1,125 @@
+---
+title: "Chạy máy chủ"
+description: "Cài đặt và chạy dream-host để tác nhân tiếp tục làm việc khi không có cửa sổ ứng dụng trên máy tính hoặc trên máy không có phiên desktop."
+---
+
+Máy chủ của Dream là tiến trình nắm giữ các dự án, cuộc trò chuyện, CLI tác nhân, terminal và Git. Ứng dụng trên máy tính tự khởi động một máy chủ cho bạn. Hãy tự chạy `dream-host` để tác nhân tiếp tục làm việc sau khi bạn đóng cửa sổ, để dùng một máy không có phiên desktop hoặc để quản lý máy chủ bằng trình quản lý dịch vụ của riêng bạn.
+
+Máy mà bạn truy cập qua [SSH](/docs/vi/remote-hosts#thêm-máy-chủ-ssh) không cần những bước này. Khi kết nối, Dream tự cài đặt và chạy máy chủ của mình trên máy đó.
+
+## Cài đặt
+
+Mỗi bản phát hành đều kèm một trình cài đặt cho máy chủ. Thay `<version>` bằng phiên bản Dream bạn đang dùng, chẳng hạn `0.36.0`.
+
+Trên macOS và Linux:
+
+```sh
+curl -fsSL https://github.com/dreamide/dream/releases/download/v<version>/install-host.sh | sh
+```
+
+Trên Windows, trong PowerShell:
+
+```powershell
+irm https://github.com/dreamide/dream/releases/download/v<version>/install-host.ps1 | iex
+```
+
+Trình cài đặt đối chiếu tệp tải xuống với `SHA256SUMS` của bản phát hành rồi cài vào `~/.dream/host/versions/`. Nó tạo liên kết `dream-host` trong `~/.local/bin` trên macOS và Linux, và thêm lệnh này vào `PATH` của người dùng trên Windows. Máy chủ được dựng cho macOS trên Apple silicon, Linux x64 và ARM64, cùng Windows x64.
+
+Các CLI tác nhân và thông tin đăng nhập của chúng phải khả dụng với chính người dùng chạy máy chủ.
+
+## Chạy máy chủ
+
+| Lệnh | Điều gì mà nó làm |
+| --- | --- |
+| `dream-host serve` | Chạy máy chủ ở tiền cảnh cho đến khi bạn nhấn Ctrl+C |
+| `dream-host ensure` | Khởi động máy chủ ở chế độ nền hoặc dùng lại máy chủ đang chạy |
+| `dream-host status` | Cho biết có máy chủ nào đang chạy hay không |
+| `dream-host stop` | Dừng máy chủ sau khi nó lưu công việc |
+| `dream-host help` | Liệt kê mọi lệnh và tùy chọn |
+
+## Tùy chọn
+
+Mọi tùy chọn đều có thể được truyền dưới dạng cờ hoặc biến môi trường. Cờ được ưu tiên hơn biến.
+
+| Cờ | Biến môi trường | Mặc định | Mục đích |
+| --- | --- | --- | --- |
+| `--home` | `DREAM_HOST_HOME` | `~/.dream/host` | Nơi máy chủ lưu bản ghi phiên chạy, nhật ký và, theo mặc định, dữ liệu của nó |
+| `--data-dir` | `DREAM_HOST_DATA_DIR` | `<home>/data` | Danh tính, thiết lập và, theo mặc định, cơ sở dữ liệu của máy chủ |
+| `--database` | `DREAM_HOST_DATABASE` | `<data dir>/dream.db` | Cơ sở dữ liệu chứa các dự án, cuộc trò chuyện và bản ghi hội thoại |
+| `--port` | `DREAM_HOST_PORT` | Một cổng trống | Cổng cục bộ dành cho các máy khách trên máy này |
+| `--idle-timeout` | `DREAM_HOST_IDLE_TIMEOUT` | `3600` | Số giây không có máy khách, terminal, lượt hay truy cập từ xa nào trước khi máy chủ thoát. Dùng `0` để máy chủ luôn chạy |
+| `--remote-port` | `DREAM_HOST_REMOTE_PORT` | Thiết lập đã lưu | Cổng cục bộ phục vụ các thiết bị đã ghép nối, dành cho reverse proxy do bạn tự chạy |
+| `--remote-origin` | `DREAM_HOST_REMOTE_ORIGINS` | Không có | Địa chỉ công khai mà reverse proxy của bạn phục vụ |
+
+Tại một thời điểm, chỉ một máy chủ có thể dùng một cơ sở dữ liệu. `dream-host` không đọc tệp `.env`; hãy đặt biến trong môi trường của nó.
+
+## Dùng cùng ứng dụng trên máy tính
+
+Ứng dụng trên máy tính dùng máy chủ đang chạy trên dữ liệu của nó và khởi động một máy chủ khi chưa có.
+
+- Máy chủ do ứng dụng khởi động sẽ dừng khi bạn thoát Dream.
+- Máy chủ do bạn khởi động vẫn tiếp tục chạy khi bạn thoát Dream. Các cuộc trò chuyện vẫn tiếp diễn, terminal vẫn mở và ứng dụng sẽ kết nối lại với chúng vào lần mở tiếp theo.
+
+Để tự chạy máy chủ của ứng dụng trên máy tính, hãy thoát Dream, khởi động `dream-host` trên thư mục dữ liệu của ứng dụng rồi mở lại Dream:
+
+```sh
+dream-host serve --data-dir "<desktop data directory>" --idle-timeout 0
+```
+
+| Nền tảng | Thư mục dữ liệu của ứng dụng trên máy tính |
+| --- | --- |
+| macOS | `~/Library/Application Support/dreamide` |
+| Windows | `%APPDATA%\dreamide` |
+| Linux | `~/.config/dreamide` |
+
+## Truy cập từ xa bằng dòng lệnh
+
+Truy cập từ xa là một thiết lập được lưu của máy chủ. Chỉ cần bật một lần khi máy chủ đang chạy, thiết lập này sẽ được áp dụng mỗi khi máy chủ khởi động.
+
+```sh
+dream-host remote on --tailscale
+dream-host remote on --cloudflare --origin https://dream.example.com
+dream-host remote status
+dream-host pair
+dream-host devices
+dream-host revoke <id>
+```
+
+`dream-host pair` in ra mã ghép nối dùng một lần, còn `dream-host serve --pair` in ra một mã ngay khi máy chủ khởi động. `dream-host devices` liệt kê các thiết bị đã ghép nối và `dream-host revoke` xóa một thiết bị. Xem [Truy cập từ xa](/docs/vi/remote-access) để biết thiết bị đã ghép nối có thể làm gì.
+
+Để dùng reverse proxy của riêng bạn, hãy khởi động máy chủ với `--remote-port` và `--remote-origin`. Khi đó, Cài đặt cho biết truy cập từ xa được thiết lập bằng các tùy chọn này và không thể thay đổi tại đó.
+
+## Giữ máy chủ luôn chạy
+
+Chạy `dream-host serve --idle-timeout 0` bằng trình quản lý dịch vụ của hệ điều hành và thiết lập để nó khởi động lại khi gặp lỗi. Trên Linux, hãy lưu một unit systemd của người dùng vào `~/.config/systemd/user/dream-host.service`:
+
+```ini
+[Unit]
+Description=Dream host
+
+[Service]
+ExecStart=%h/.local/bin/dream-host serve --idle-timeout 0
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+```
+
+Sau đó kích hoạt nó:
+
+```sh
+systemctl --user daemon-reload
+systemctl --user enable --now dream-host
+loginctl enable-linger "$USER"
+```
+
+Trên macOS, hãy dùng LaunchAgent. Trên Windows, hãy dùng một tác vụ Task Scheduler chạy khi đăng nhập. [Hướng dẫn về máy chủ trong kho mã Dream](https://github.com/dreamide/dream/blob/main/docs/host-service.md) có ví dụ đầy đủ cho cả hai. Hãy thêm các mục `PATH` và biến mà các CLI tác nhân của bạn cần, rồi xác nhận kết quả bằng `dream-host status`.
+
+<Note>
+  Dream v0.30 và v0.31 có thể cài máy chủ thành dịch vụ bằng `dream-host service`. Lệnh đó đã bị loại bỏ trong v0.32. Dịch vụ do các phiên bản đó cài đặt vẫn tiếp tục chạy cho đến khi bạn gỡ bỏ; hướng dẫn về máy chủ giải thích cách thực hiện.
+</Note>
+
+## Cập nhật máy chủ
+
+Chạy trình cài đặt của phiên bản mới, rồi khởi động lại máy chủ: dùng `dream-host stop` và khởi động lại, hoặc khởi động lại dịch vụ của nó. Hãy giữ máy chủ và ứng dụng trên máy tính ở cùng một phiên bản. **Cài đặt → Kết nối** sẽ cho bạn biết khi hai phiên bản khác nhau.

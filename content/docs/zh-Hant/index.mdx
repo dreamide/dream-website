@@ -33,16 +33,20 @@ Dream 將你的專案、AI 編碼代理、檔案、終端、瀏覽器預覽和 G
 ## Dream 包含了什麼
 
 - 一個支援多專案的工作區，具有持久化的專案標籤頁
-- [SSH 遠端工作區](/docs/zh-Hant/remote-hosts)，支援遠端代理、檔案、Git 和終端機
+- [遠端主機](/docs/zh-Hant/remote-hosts)，透過 SSH 或 HTTPS 連線，支援遠端代理、檔案、Git 和終端機
+- [遠端存取](/docs/zh-Hant/remote-access)，從已配對的手機或電腦使用這台電腦上的專案
 - 多個並排聊天視窗和聊天分支
+- [訊息佇列](/docs/zh-Hant/chats#將訊息排入佇列)，在代理工作時傳送指示
+- [無專案的聊天](/docs/zh-Hant/standalone-chats)，適合不需要資料夾的問題
+- [委派](/docs/zh-Hant/delegation)，將任務從一個代理提供者交給另一個
 - 專案間可複用的提示詞及供應商感知的代理技能
 - 每條回覆的檢查點用於審查和恢復代理更改的檔案
-- 支援 Codex CLI、Claude Code CLI、OpenCode CLI、Cursor Agent CLI 和 Grok Build CLI
+- 支援 Codex CLI、Claude Code CLI、OpenCode CLI、Cursor Agent CLI、Grok Build CLI 和 Antigravity CLI
 - 檔案資源管理器、檔案搜尋與編輯、整合終端和瀏覽器預覽
-- Git 狀態、分支、差異、提交、推送、拉取請求和工作樹工作流程，包括將完成的工作樹合併回其基礎分支
+- Git 狀態、分支、差異、提交、擷取、拉取、推送、拉取請求和工作樹工作流程，包括將完成的工作樹合併回其基礎分支
 - 逐行差異回饋和瀏覽器元素選擇，可向聊天傳送定向訊息
 - 一個整合的 Git 介面，包含變更、彩色歷史圖表，以及拉取請求審查
-- [聊天搜尋與通知](/docs/zh-Hant/chats) 針對本地專案與連接的 SSH 主機
+- [聊天搜尋與通知](/docs/zh-Hant/chats)，涵蓋本機專案和已連線的遠端主機
 - 支援正規表示式和檔案篩選的[在檔案中尋找](/docs/zh-Hant/files#在檔案中尋找)
 - [可自訂的鍵盤快捷鍵](/docs/zh-Hant/settings#鍵盤快捷鍵)
 - 可配置的 MCP 伺服器和內建的瀏覽器互動代理工具
@@ -60,6 +64,9 @@ Dream 將你的專案、AI 編碼代理、檔案、終端、瀏覽器預覽和 G
 | 選擇一個起始模型和推理努力 | [模型與預設設定](/docs/zh-Hant/models) |
 | 嘗試之前訊息中的另一種方法 | [分支對話](/docs/zh-Hant/branching-chats) |
 | 跟蹤代理的進度或回應問題 | [使用聊天](/docs/zh-Hant/chats#跟蹤正在進行的工作) |
+| 在代理仍在工作時傳送下一個指示 | [將訊息排入佇列](/docs/zh-Hant/chats#將訊息排入佇列) |
+| 不開啟資料夾就快速提問 | [無專案的聊天](/docs/zh-Hant/standalone-chats) |
+| 讓一個代理將工作交給另一個提供者 | [將任務委派給其他代理](/docs/zh-Hant/delegation) |
 | 檢查回覆發生了什麼更改，並撤銷其中一部分內容 | [審查與恢復更改](/docs/zh-Hant/checkpoints) |
 | 在特定的差異行或頁面元素上評論 | [向聊天傳送回饋](/docs/zh-Hant/feedback) |
 | 準備一個稍後執行的任務 | [使用暫存儲存提示詞](/docs/zh-Hant/stash) |
@@ -70,9 +77,12 @@ Dream 將你的專案、AI 編碼代理、檔案、終端、瀏覽器預覽和 G
 | 在獨立檢出分支上工作，然後將其合並回去 | [Git 工作樹](/docs/zh-Hant/worktrees) |
 | 審查併發布程式碼變更 | [Git 工作流程](/docs/zh-Hant/git-workflows) |
 | 閱讀評論併合並一個 GitHub PR | [審查拉取請求](/docs/zh-Hant/pull-requests) |
+| 處理位於另一台機器上的專案 | [遠端主機](/docs/zh-Hant/remote-hosts) |
+| 從手機或另一台電腦查看代理的狀況 | [遠端存取](/docs/zh-Hant/remote-access) |
+| 關閉桌面視窗後讓代理繼續工作 | [執行主機](/docs/zh-Hant/dream-host) |
 
 ## 瞭解工作區
 
-**專案**是本機或 SSH 主機上的資料夾，擁有獨立的聊天和工具。**聊天**是擁有獨立模型和設定的對話。同一專案中的多個聊天共用檔案；**工作樹** 為任務提供獨立的 Git 工作副本。
+**專案**是你的電腦或遠端主機上的資料夾，擁有自己的聊天和工具。**聊天**是擁有自己的模型和設定的對話。同一個專案中的多個聊天共用其檔案；**工作樹**則為任務提供獨立的 Git 檢出。
 
 使用 [智慧體許可權](/docs/zh-Hant/agent-modes) 來選擇智慧體的工作方式，並透過 [上下文與用量](/docs/zh-Hant/context-and-usage) 來了解 composer 以下的資訊。[設定參考](/docs/zh-Hant/settings) 列出了全域性應用偏好設定。如果某個功能缺失或無法執行，請先檢視 [故障排查](/docs/zh-Hant/troubleshooting)。

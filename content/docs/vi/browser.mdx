@@ -41,7 +41,7 @@ Các hành động trình duyệt bao gồm:
 | Kéo gần / Kéo ra / Đặt lại mức phóng to | Điều chỉnh tỷ lệ hiển thị của bản xem trước |
 | Mở trong trình duyệt hệ thống | Xem URL hiện tại trong trình duyệt thông thường của bạn |
 
-Sử dụng **Mở rộng trình duyệt** khi bạn cần không gian hơn và **Thu gọn trình duyệt** để quay lại chế độ nhỏ. Để cho agent một hình ảnh chụp màn hình toàn trang, hãy sử dụng điều khiển [phụ lục](/docs/vi/providing-context) trong cuộc trò chuyện.
+Dùng **Mở rộng** ở phần đầu bảng điều khiển khi bạn cần thêm không gian và **Thu gọn** để trở về chế độ xem nhỏ hơn. Để gửi cho tác nhân ảnh chụp màn hình toàn bộ trang, hãy dùng [nút đính kèm](/docs/vi/providing-context) của cuộc trò chuyện.
 
 ## Gửi một phần tử vào cuộc trò chuyện
 
@@ -53,7 +53,9 @@ Dream gửi bình luận của bạn cùng với lựa chọn phần tử, kích
 
 ## Yêu cầu một người dùng sử dụng trình duyệt
 
-Claude Code, Codex, OpenCode và Grok Build các cuộc trò chuyện nhận công cụ cho trình duyệt của Dream tự động. Chúng hoạt động cùng với các tab trình duyệt dự án mà bạn thấy. Các cuộc trò chuyện của Cursor không nhận được các công cụ này.
+Các cuộc trò chuyện Claude Code, Codex, OpenCode và Grok Build tự động nhận được công cụ dành cho trình duyệt của Dream. Các cuộc trò chuyện Cursor và Antigravity không nhận được những công cụ này.
+
+Tác nhân làm việc ở chế độ nền trong một tab trình duyệt riêng, nên bạn có thể tiếp tục dùng tab, bảng điều khiển hoặc dự án khác trong lúc nó chạy. Thanh công cụ trình duyệt hiển thị **Tác nhân đang hoạt động** khi có tác nhân đang dùng trình duyệt. Để Dream đưa tab của tác nhân lên trước trong lúc nó làm việc, hãy bật **Theo dõi tác nhân trong trình duyệt** trong **Cài đặt → Chung → Tin nhắn chat**. Tùy chọn này tắt theo mặc định.
 
 Cho agent địa chỉ trang web và một nhiệm vụ cụ thể, ví dụ:
 
@@ -62,6 +64,12 @@ Cho agent địa chỉ trang web và một nhiệm vụ cụ thể, ví dụ:
 Các công cụ có thể mở và duyệt các tab, kiểm tra nội dung trang, nhấp, nhập văn bản, di chuột, chọn các tùy chọn, cuộn, chụp màn hình và kiểm tra log console và phản hồi mạng. Chúng cũng có thể gắn các tệp từ dự án để tải lên các bộ điều khiển. Việc tải tệp phải sử dụng các đường dẫn nằm trong dự án.
 
 Bắt đầu ứng dụng trước khi yêu cầu agent kiểm tra URL cục bộ. Các hành động trình duyệt tuân theo [quyền hạn](/docs/vi/agent-modes) của cuộc trò chuyện; trả lời trong cuộc trò chuyện nếu yêu cầu phê duyệt. Các công cụ này được tích hợp sẵn và không cần định nghĩa tay [một máy chủ MCP](/docs/vi/mcp-servers).
+
+## Dùng Claude in Chrome
+
+Các cuộc trò chuyện Claude cũng có thể làm việc trong Chrome của chính bạn thông qua tiện ích mở rộng Claude in Chrome, tách biệt với trình duyệt của Dream. Hãy cài tiện ích, chạy `/chrome` trong Claude Code và chọn **Enabled by default**. Sau đó, Dream sẽ bắt đầu các lượt của Claude kèm quyền truy cập Chrome; Dream không có thiết lập riêng cho việc này.
+
+Dùng trình duyệt của Dream để xem trước và kiểm thử trang ngay trong không gian làm việc. Dùng Chrome khi tác vụ cần một trang web mà bạn đã đăng nhập sẵn ở đó.
 
 ## Tải lại và xóa dữ liệu trang
 
@@ -72,3 +80,5 @@ Thử cập nhật bình thường sau khi thay đổi mã ứng dụng. Nếu t
 ## Nếu một trang cục bộ không tải được
 
 Kiểm tra xem ứng dụng có đang chạy không, xác nhận URL đầy đủ và cổng trong thông tin xuất ra từ terminal, và kiểm tra bất kỳ lỗi máy chủ nào ở đó. Thử địa chỉ tương tự trong trình duyệt hệ thống của bạn để xác định xem vấn đề thuộc về ứng dụng hay phần xem trước được nhúng.
+
+Với dự án trên [máy chủ từ xa](/docs/vi/remote-hosts#tuyến), việc xem trước một URL mà máy chủ phục vụ cục bộ cần có tuyến SSH đến máy chủ đó. Máy chủ chỉ truy cập được qua HTTPS không thể chuyển tiếp trang.

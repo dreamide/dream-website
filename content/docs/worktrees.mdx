@@ -103,8 +103,10 @@ Merging, creating a pull request, and removing a worktree are separate actions i
 To publish for review instead, use **Git actions → Create pull request** and follow
 [Git workflows](/docs/git-workflows#create-a-pull-request). Creating a PR keeps the worktree.
 
-Use **Git actions → Remove worktree** to remove the checkout while keeping its branch. If it has
-uncommitted changes, commit them first or explicitly select **Discard uncommitted changes**.
+Use **Git actions → Remove worktree** to remove the checkout. Its branch is kept unless you select
+the option to also delete the branch, which shows whether the branch's commits are merged before
+you confirm. If the worktree has uncommitted changes, commit them first or explicitly select
+**Discard uncommitted changes**.
 
 <Warning>
   Removing a worktree deletes its directory and closes its project. The worktree project's chats
@@ -138,8 +140,12 @@ You can also remove a worktree without the completion dialog:
 4. Use its remove action and review the confirmation.
 5. Confirm **Remove worktree** when you no longer need that checkout.
 
-Removal deletes the worktree directory from disk. Git refuses removal when it contains uncommitted
-changes. Return to that project and review the changes before trying again.
+Removal deletes the worktree directory and its chats from disk. When the worktree has uncommitted
+changes, **Remove worktree** stays unavailable until you select **Discard uncommitted changes**.
+Return to that project and review the changes first if you are not sure.
+
+You can also remove a worktree while
+[deleting its branch](/docs/git-workflows#delete-a-local-branch) from the branch switcher.
 
 Closing a project tab only removes it from the open workspace; removing a worktree deletes its
 checkout. For commit and PR steps, see [Git workflows](/docs/git-workflows).

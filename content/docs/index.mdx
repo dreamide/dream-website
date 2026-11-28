@@ -35,17 +35,22 @@ chats without switching tools.
 ## What Dream includes
 
 - A multi-project workspace with persistent project tabs
-- [SSH remote workspaces](/docs/remote-hosts) with remote agents, files, Git, and terminals
+- [Remote hosts](/docs/remote-hosts) over SSH or HTTPS, with remote agents, files, Git, and terminals
+- [Remote access](/docs/remote-access) to this computer's projects from a paired phone or computer
 - Multiple side-by-side chats and chat branching
+- [Message queues](/docs/chats#queue-messages) for sending instructions while an agent is working
+- [Chats without a project](/docs/standalone-chats) for questions that do not need a folder
+- [Delegation](/docs/delegation) of tasks from one agent provider to another
 - Reusable prompts across projects and provider-aware agent skills
 - Per-reply checkpoints for reviewing and restoring the files an agent changed
-- Support for Codex CLI, Claude Code CLI, OpenCode CLI, Cursor Agent CLI, and Grok Build CLI
+- Support for Codex CLI, Claude Code CLI, OpenCode CLI, Cursor Agent CLI, Grok Build CLI, and
+  Antigravity CLI
 - A file explorer, file search and editing, integrated terminals, and browser previews
-- Git status, branch, diff, commit, push, pull request, and worktree workflows, including merging
-  a finished worktree back into its base branch
+- Git status, branch, diff, commit, fetch, pull, push, pull request, and worktree workflows,
+  including merging a finished worktree back into its base branch
 - Line-level diff feedback and browser element selection that send targeted messages to a chat
 - A unified Git panel with Changes, a colored History graph, and Pull request review
-- [Chat search and notifications](/docs/chats) across local projects and connected SSH hosts
+- [Chat search and notifications](/docs/chats) across local projects and connected remote hosts
 - [Find in files](/docs/files#find-in-files) with regular expressions and file filters
 - [Customizable keyboard shortcuts](/docs/settings#keyboard-shortcuts)
 - Configurable MCP servers and built-in agent tools for browser interaction
@@ -64,6 +69,9 @@ chats without switching tools.
 | Choose a starting model and reasoning effort | [Models and defaults](/docs/models) |
 | Try another approach from an earlier message | [Branching conversations](/docs/branching-chats) |
 | Follow an agent's progress or respond to a question | [Working with chats](/docs/chats#follow-work-in-progress) |
+| Send the next instruction while an agent is still working | [Queue messages](/docs/chats#queue-messages) |
+| Ask a quick question without opening a folder | [Chats without a project](/docs/standalone-chats) |
+| Have one agent hand work to another provider | [Delegating tasks to other agents](/docs/delegation) |
 | Check what a reply changed and undo part of it | [Reviewing and restoring changes](/docs/checkpoints) |
 | Comment on specific diff lines or a page element | [Sending feedback to a chat](/docs/feedback) |
 | Prepare a task to run later | [Saving prompts with Stash](/docs/stash) |
@@ -74,10 +82,13 @@ chats without switching tools.
 | Work in an independent checkout, then merge it back | [Git worktrees](/docs/worktrees) |
 | Review and publish code changes | [Git workflows](/docs/git-workflows) |
 | Read review comments and merge a GitHub PR | [Reviewing pull requests](/docs/pull-requests) |
+| Work on a project that lives on another machine | [Remote hosts](/docs/remote-hosts) |
+| Check on your agents from a phone or another computer | [Remote access](/docs/remote-access) |
+| Keep agents working after closing the desktop window | [Running the host](/docs/dream-host) |
 
 ## Understand the workspace
 
-A **project** is a folder on your computer or an SSH host with its own chats and tools. A **chat** is
+A **project** is a folder on your computer or a remote host with its own chats and tools. A **chat** is
 a conversation with its own model and settings. Multiple chats in one project share its files; a
 **worktree** gives a task a separate Git checkout.
 

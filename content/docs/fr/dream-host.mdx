@@ -1,0 +1,125 @@
+---
+title: "Exécuter l'hôte"
+description: "Installez et exécutez dream-host pour que les agents continuent de travailler sans la fenêtre de bureau ou sur une machine sans session de bureau."
+---
+
+L'hôte de Dream est le processus qui gère les projets, les chats, les CLI des agents, les terminaux et Git. L'application de bureau en démarre un pour vous. Exécutez vous-même `dream-host` pour que les agents continuent de travailler après la fermeture de la fenêtre, pour utiliser une machine sans session de bureau ou pour gérer l'hôte avec votre propre gestionnaire de services.
+
+Une machine à laquelle vous accédez via [SSH](/docs/fr/remote-hosts#ajouter-un-hôte-ssh) n'a besoin de rien de tout cela. Dream y installe et y exécute son propre hôte lorsqu'il s'y connecte.
+
+## Installation
+
+Chaque version publie un installateur pour l'hôte. Remplacez `<version>` par la version de Dream que vous utilisez, par exemple `0.36.0`.
+
+Sur macOS et Linux :
+
+```sh
+curl -fsSL https://github.com/dreamide/dream/releases/download/v<version>/install-host.sh | sh
+```
+
+Sur Windows, dans PowerShell :
+
+```powershell
+irm https://github.com/dreamide/dream/releases/download/v<version>/install-host.ps1 | iex
+```
+
+L'installateur vérifie le téléchargement par rapport au fichier `SHA256SUMS` de la version et l'installe sous `~/.dream/host/versions/`. Il crée un lien vers `dream-host` dans `~/.local/bin` sur macOS et Linux, et l'ajoute à votre `PATH` utilisateur sur Windows. L'hôte est compilé pour macOS sur Apple silicon, Linux x64 et ARM64, et Windows x64.
+
+Les CLI des agents et leurs sessions de connexion doivent être accessibles à l'utilisateur qui exécute l'hôte.
+
+## Lancer l'hôte
+
+| Commande | Ce que cela fait |
+| --- | --- |
+| `dream-host serve` | Exécute l'hôte au premier plan jusqu'à ce que vous appuyiez sur Ctrl+C |
+| `dream-host ensure` | Démarre l'hôte en arrière-plan ou réutilise celui qui est déjà en cours d'exécution |
+| `dream-host status` | Indique si un hôte est en cours d'exécution |
+| `dream-host stop` | Arrête l'hôte une fois son travail enregistré |
+| `dream-host help` | Liste toutes les commandes et options |
+
+## Options
+
+Chaque option peut être fournie sous forme d'indicateur ou de variable d'environnement. L'indicateur prime sur la variable.
+
+| Indicateur | Variable d'environnement | Par défaut | Objectif |
+| --- | --- | --- | --- |
+| `--home` | `DREAM_HOST_HOME` | `~/.dream/host` | Emplacement où l'hôte conserve son enregistrement d'exécution, son journal et, par défaut, ses données |
+| `--data-dir` | `DREAM_HOST_DATA_DIR` | `<home>/data` | L'identité de l'hôte, ses paramètres et, par défaut, sa base de données |
+| `--database` | `DREAM_HOST_DATABASE` | `<data dir>/dream.db` | La base de données des projets, des chats et des transcriptions |
+| `--port` | `DREAM_HOST_PORT` | Un port libre | Le port local pour les clients de cette machine |
+| `--idle-timeout` | `DREAM_HOST_IDLE_TIMEOUT` | `3600` | Nombre de secondes sans client, terminal, tour ni accès à distance avant l'arrêt de l'hôte. Utilisez `0` pour qu'il continue de s'exécuter |
+| `--remote-port` | `DREAM_HOST_REMOTE_PORT` | Le paramètre enregistré | Un port local qui sert les appareils associés, pour un proxy inverse que vous gérez |
+| `--remote-origin` | `DREAM_HOST_REMOTE_ORIGINS` | Aucune | L'adresse publique servie par votre proxy inverse |
+
+Un seul hôte à la fois peut utiliser une base de données. `dream-host` ne lit pas de fichier `.env` ; définissez les variables dans son environnement.
+
+## Utiliser l'hôte avec l'application de bureau
+
+L'application de bureau utilise l'hôte qui s'exécute sur ses données, et en démarre un s'il n'y en a aucun.
+
+- Un hôte démarré par l'application s'arrête lorsque vous quittez Dream.
+- Un hôte que vous avez démarré continue de s'exécuter lorsque vous quittez Dream. Les chats se poursuivent, les terminaux restent ouverts et l'application s'y rattache à sa prochaine ouverture.
+
+Pour exécuter vous-même l'hôte de l'application de bureau, quittez Dream, démarrez `dream-host` sur le répertoire de données de l'application de bureau, puis rouvrez Dream :
+
+```sh
+dream-host serve --data-dir "<desktop data directory>" --idle-timeout 0
+```
+
+| Plateforme | Répertoire de données de l'application de bureau |
+| --- | --- |
+| macOS | `~/Library/Application Support/dreamide` |
+| Windows | `%APPDATA%\dreamide` |
+| Linux | `~/.config/dreamide` |
+
+## Accès à distance depuis la ligne de commande
+
+L'accès à distance est un paramètre enregistré de l'hôte. Activez-le une fois pendant que l'hôte est en cours d'exécution ; il est ensuite appliqué à chaque démarrage de l'hôte.
+
+```sh
+dream-host remote on --tailscale
+dream-host remote on --cloudflare --origin https://dream.example.com
+dream-host remote status
+dream-host pair
+dream-host devices
+dream-host revoke <id>
+```
+
+`dream-host pair` affiche un code d'association à usage unique, et `dream-host serve --pair` en affiche un dès le démarrage de l'hôte. `dream-host devices` liste les appareils associés, et `dream-host revoke` en supprime un. Consultez [Accès à distance](/docs/fr/remote-access) pour savoir ce qu'un appareil associé peut faire.
+
+Pour utiliser votre propre proxy inverse, démarrez l'hôte avec `--remote-port` et `--remote-origin`. Les paramètres indiquent alors que l'accès à distance est défini par ces options et qu'il ne peut pas y être modifié.
+
+## Maintenir l'hôte en fonctionnement
+
+Exécutez `dream-host serve --idle-timeout 0` sous le gestionnaire de services de votre système d'exploitation et configurez-le pour qu'il redémarre en cas d'échec. Sur Linux, enregistrez une unité systemd utilisateur dans `~/.config/systemd/user/dream-host.service` :
+
+```ini
+[Unit]
+Description=Dream host
+
+[Service]
+ExecStart=%h/.local/bin/dream-host serve --idle-timeout 0
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+```
+
+Activez-la ensuite :
+
+```sh
+systemctl --user daemon-reload
+systemctl --user enable --now dream-host
+loginctl enable-linger "$USER"
+```
+
+Sur macOS, utilisez un LaunchAgent. Sur Windows, utilisez une tâche Task Scheduler qui s'exécute à l'ouverture de session. Le [guide de l'hôte dans le dépôt Dream](https://github.com/dreamide/dream/blob/main/docs/host-service.md) contient des exemples complets pour les deux. Ajoutez les entrées `PATH` et les variables dont vos CLI d'agents ont besoin, puis vérifiez le résultat avec `dream-host status`.
+
+<Note>
+  Dream v0.30 et v0.31 pouvaient installer l'hôte en tant que service avec `dream-host service`. Cette commande a été supprimée dans la v0.32. Un service installé par ces versions continue de s'exécuter jusqu'à ce que vous le supprimiez ; le guide de l'hôte explique comment procéder.
+</Note>
+
+## Mettre à jour l'hôte
+
+Exécutez l'installateur de la nouvelle version, puis redémarrez l'hôte : utilisez `dream-host stop` et démarrez-le de nouveau, ou redémarrez son service. Conservez l'hôte et l'application de bureau à la même version. **Paramètres → Connexions** vous signale toute différence.

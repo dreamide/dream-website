@@ -1,0 +1,39 @@
+---
+title: "Chats sans projet"
+description: "Démarrez une conversation sans ouvrir de dossier, puis transformez-la en projet lorsqu'elle prend de l'ampleur."
+---
+
+Un chat autonome est une conversation qui n'appartient à aucun projet que vous avez ouvert. Utilisez-en un pour une question, un script rapide ou une idée que vous ne savez pas encore où ranger. Dream attribue à chaque chat autonome son propre dossier ; l'agent dispose ainsi toujours d'un emplacement où lire et écrire des fichiers.
+
+## Démarrer un chat sans projet
+
+- Sur l'écran de démarrage, choisissez **Démarrer une discussion**.
+- Appuyez sur **Command+Shift+N** sur macOS ou **Ctrl+Shift+N** sur Windows/Linux. L'action s'appelle **Nouveau chat sans projet** dans les [Raccourcis clavier](/docs/fr/settings#raccourcis-clavier).
+- Avec l'onglet **Discussions** sélectionné, cliquez sur **Nouveau chat** dans la barre d'outils de gauche.
+
+Dream ouvre le chat dans un onglet **Discussions** à côté de vos onglets de projet. L'onglet est affiché tant qu'un chat autonome est ouvert. Fermer l'onglet ne supprime pas vos chats.
+
+Pour démarrer le chat sur un [hôte distant](/docs/fr/remote-hosts), utilisez **Nouveau chat sur…** en haut de la liste des chats et choisissez l'hôte. L'option apparaît lorsqu'un hôte distant est connecté.
+
+## Retrouver un chat autonome
+
+Sélectionnez l'onglet **Discussions** et ouvrez **Historique des discussions** dans la barre d'outils de gauche. Dans cet onglet, le panneau s'intitule **Discussions**. Il liste les chats autonomes de cet ordinateur et de chaque hôte connecté, avec le nom de l'hôte à côté des chats situés ailleurs.
+
+La [recherche dans les chats](/docs/fr/chats#retourner-à-une-conversation) trouve aussi les chats autonomes. Leurs résultats portent le libellé **Discussions** à la place d'un nom de projet.
+
+## Ce qu'un chat autonome peut utiliser
+
+Le dossier de chaque chat est créé sous `~/.dream/chats` sur l'hôte où vous l'avez démarré. **Fichiers**, **Navigateur**, **Terminal** et **Stash** fonctionnent dans ce dossier, et les [checkpoints](/docs/fr/checkpoints) enregistrent ce que chaque réponse a modifié. **Git** est masqué, car le dossier n'est pas un dépôt.
+
+Un seul chat autonome est ouvert à la fois. Lorsque le [multi-chat](/docs/fr/multiple-chats) est activé, **Nouveau chat** ajoute une conversation à côté de celle qui est ouverte, et les deux partagent le même dossier.
+
+Dream supprime un dossier de chat qu'aucun chat n'utilise plus dès qu'il est vide ou ne contient que `node_modules`, après un délai de grâce d'une heure.
+
+## Transformer un chat en projet
+
+Lorsqu'un chat autonome devient un véritable travail, conservez-le sous forme de projet :
+
+1. Sélectionnez l'onglet **Discussions** et ouvrez **Historique des discussions**.
+2. Survolez le chat et cliquez sur **Transformer en projet**. L'action apparaît dès que le chat contient un message.
+
+Dream convertit le chat sur place. Son dossier devient un projet ordinaire portant le nom du chat, et le projet s'ouvre dans son propre onglet avec la conversation.

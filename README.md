@@ -97,16 +97,13 @@ live in `public/images/docs`; regenerate them from the originals on Windows with
 Crop coordinates are recorded in that script so screenshots can be refreshed
 without guessing which part of the interface each example shows.
 
-## Release documentation and screenshots (v0.28.0)
+## Release coverage
 
-The docs cover the published changes from v0.26.0 through v0.28.0, checked against
-the `v0.28.0` app source and release notes:
-[v0.26.0](https://github.com/dreamide/dream/releases/tag/v0.26.0),
-[v0.27.0](https://github.com/dreamide/dream/releases/tag/v0.27.0), and
-[v0.28.0](https://github.com/dreamide/dream/releases/tag/v0.28.0).
-The feature instructions target that tag. Some supplied screenshots show a newer
-development build, including Fetch/Pull/Open repository in the footer and the
-word-wrap button; these additional controls are not described as v0.28.0 features.
+The product guides cover [Dream v0.36.0](https://github.com/dreamide/dream/releases/tag/v0.36.0).
+The v0.29–v0.36 updates include chat queues and delegation, standalone chats, remote access
+and host management, Antigravity, Git workflows, and background browser tabs.
+
+## Screenshot inventory (v0.28.0)
 
 The supplied PNGs are cropped to the relevant panel, menu, or dialog using
 `scripts/crop-docs-images.ps1`. Docs use the crops in `public/images/docs` with

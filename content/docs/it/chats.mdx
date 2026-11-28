@@ -3,7 +3,9 @@ title: "Lavorare con le chat"
 description: "Inizia conversazioni, trova il lavoro precedente, rinomina i chat e gestisci la tua storia delle conversazioni."
 ---
 
-Un chat contiene una singola conversazione con un agente di programmazione. Ogni chat appartiene a un progetto e ha il proprio modello, autorizzazioni e storia della conversazione. Utilizza chat separate per attività che desideri riprendere indipendentemente, come riparare un bug e revisionare una funzionalità.
+Una chat contiene una conversazione con un agente di programmazione. Di solito una chat appartiene a un progetto e ha un proprio modello, proprie autorizzazioni e una propria cronologia della conversazione. Usa chat separate per le attività a cui vuoi tornare in modo indipendente, ad esempio correggere un bug e rivedere una funzionalità.
+
+Per fare una domanda senza aprire una cartella, avvia una [chat senza progetto](/docs/it/standalone-chats).
 
 ## Inizia una conversazione
 
@@ -47,7 +49,7 @@ Usa [riferimenti a file e allegati](/docs/it/providing-context) per puntare a co
   />
 </Frame>
 
-La ricerca nella cronologia filtra i titoli di questo progetto. Per cercare nei titoli e nel testo dei messaggi di tutti i progetti, fai clic su **Cerca nelle chat** nella barra superiore (per impostazione predefinita **Command+Shift+F** su macOS o **Ctrl+Shift+F** su Windows/Linux). I risultati includono i progetti locali e gli host SSH connessi. Selezionare un risultato archiviato lo ripristina; selezionare la chat di un progetto chiuso riapre quel progetto.
+La ricerca nella cronologia filtra i titoli di questo progetto. Per cercare nei titoli e nel testo dei messaggi di tutti i progetti, fai clic su **Cerca nelle chat** nella barra superiore (per impostazione predefinita **Command+Shift+F** su macOS o **Ctrl+Shift+F** su Windows/Linux). I risultati includono i progetti locali, gli host remoti connessi e le [chat senza progetto](/docs/it/standalone-chats). Selezionare un risultato archiviato lo ripristina; selezionare la chat di un progetto chiuso riapre quel progetto.
 
 Se un host non può essere cercato, ricollegialo e riprova. Ristretti la query quando i risultati vengono troncati. È anche possibile gestire conversazioni più vecchie in [Chat archiviate](/docs/it/archived-chats).
 
@@ -73,13 +75,39 @@ Nomini come “Correggi la persistenza delle impostazioni” e “Verifica i tes
 
 Attiva **Notifiche desktop** in **Impostazioni → Generale → Messaggi chat** per ricevere un avviso quando una chat termina, non riesce o richiede una risposta mentre Dream è in background. Fai clic su una notifica per aprire la relativa chat. **Suono di notifica** è un’opzione separata e può essere riprodotto anche quando Dream è in primo piano.
 
+Le notifiche riguardano anche i turni che continuano a essere eseguiti sull'host mentre questa finestra non li sta seguendo. Un turno che interrompi tu non ne invia.
+
 Un indicatore di caricamento identifica le chat che stanno ricevendo una risposta. Quando invii un messaggio, Dream scorre fino a renderlo visibile.
 
 Mentre un agente risponde, il chat mostra il suo progresso e l'attività degli strumenti. Apri i dettagli dell'utente per esaminare i comandi, le letture dei file o i cambiamenti. Quando l'agente fornisce un elenco di attività, il controllo delle attività accanto alla casella dei messaggi mostra il suo progresso.
 
-Istanze e schede progetto includono indicatori di stato per i lavori in elaborazione o completati; le schede progetto possono anche indicare che un agente sta aspettando la tua risposta. Seleziona il progetto e apri la conversazione per leggere il messaggio più recente. Utilizza il controllo stop nel compositore per interrompere una risposta. Interrompere una risposta non annulla i cambiamenti ai file già effettuati.
+La Cronologia chat e le schede dei progetti mostrano uno stato per ogni chat: un indicatore di attività mentre sta rispondendo, un punto ambra quando l'agente attende te e un punto verde quando ha finito e non l'hai ancora aperta. Seleziona il progetto e apri la conversazione per leggere l'ultimo messaggio. Usa il controllo di arresto nel compositore per interrompere una risposta. Interrompere una risposta non annulla le modifiche ai file già apportate.
+
+Un turno viene eseguito sull'host del progetto, non nella finestra. Se la finestra perde la connessione all'host, il turno prosegue e Dream vi si riconnette automaticamente. Uscire da Dream arresta l'host avviato dall'app, insieme ai suoi turni; per far lavorare gli agenti anche dopo aver chiuso l'app, [esegui tu stesso l'host](/docs/it/dream-host).
 
 Dopo che una risposta è completata, usa **Mostra i file modificati da questa risposta** nel suo piede per vedere i file modificati e [ripristina quelli presenti](/docs/it/checkpoints).
+
+## Mettere in coda i messaggi
+
+Non devi aspettare la fine di una risposta per inviare l'istruzione successiva. Scrivi un messaggio mentre l'agente lavora e invialo. Dream lo aggiunge alla coda della chat e lo esegue al termine del turno corrente. Mentre un turno è in esecuzione, il pulsante del compositore interrompe il turno se la casella del messaggio è vuota e invia il messaggio non appena hai scritto qualcosa.
+
+L'elenco **Coda** compare sopra la casella del messaggio quando un messaggio è in attesa o un'esecuzione richiede la tua attenzione. Ogni riga mostra il messaggio, il suo modello e uno stato.
+
+| Stato | Significato |
+| --- | --- |
+| In coda | In attesa dei turni che lo precedono |
+| In esecuzione | Il turno a cui l'agente sta lavorando ora |
+| In attesa | Il turno in esecuzione attende una tua risposta o approvazione |
+| Interrotto | Arrestato prima del termine, ad esempio dal controllo di arresto o da un riavvio dell'host |
+| Non riuscito | Terminato con un errore |
+
+Usa **Annulla** su un messaggio in coda per toglierlo dalla coda. Un'esecuzione non riuscita o interrotta offre **Riprova** e **Rimuovi**. Prima di riprovare un'esecuzione interrotta, leggi la risposta che ha lasciato, perché parte del lavoro potrebbe essere già stata svolta.
+
+**Pausa coda** trattiene i messaggi in coda e lascia terminare il turno corrente. **Riprendi coda** li fa ripartire. Il controllo di arresto è diverso: termina il turno in esecuzione, insieme alle eventuali attività che ha [delegato](/docs/it/delegation), e mette in pausa la coda.
+
+Anche un'esecuzione non riuscita o interrotta mette in pausa la coda, la cui intestazione indica **Coda in pausa**. L'invio di un nuovo messaggio riprende la coda e scarta quelle esecuzioni.
+
+Le code vengono salvate sull'host del progetto e sopravvivono al riavvio di Dream. Dopo un riavvio dell'host, un turno che era in esecuzione viene contrassegnato come interrotto e la coda resta in pausa finché non la riprendi. Se un messaggio in coda non può essere inviato, il suo testo torna nella casella del messaggio.
 
 ## Chiudi, archivia o elimina?
 

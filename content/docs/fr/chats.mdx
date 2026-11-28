@@ -3,7 +3,9 @@ title: "Travailler avec les conversations"
 description: "Commencez des conversations, trouvez du travail antérieur, renommez des discussions et gérez votre historique de chat."
 ---
 
-Un chat entretient une seule conversation avec un agent de programmation. Chaque chat appartient à un projet et possède son propre modèle, ses permissions et son historique de conversation. Utilisez des chats séparés pour des tâches que vous souhaitez retrouver indépendamment, comme la correction d'un bug et la révision d'une fonctionnalité.
+Un chat contient une conversation avec un agent de programmation. Un chat appartient généralement à un projet et possède son propre modèle, ses propres autorisations et son propre historique de conversation. Utilisez des chats distincts pour les tâches que vous souhaitez reprendre indépendamment, comme la correction d'un bug et la revue d'une fonctionnalité.
+
+Pour poser une question sans ouvrir de dossier, démarrez un [chat sans projet](/docs/fr/standalone-chats).
 
 ## Commencer une conversation
 
@@ -47,7 +49,7 @@ Utilisez [les références de fichiers et les pièces jointes](/docs/fr/providin
   />
 </Frame>
 
-La recherche historique filtre les titres de ce projet. Pour rechercher des titres et du texte de message dans plusieurs projets, cliquez sur **Rechercher dans les chats** dans la barre supérieure (par défaut **Command+Shift+F** sur macOS ou **Ctrl+Shift+F** sur Windows/Linux). Les résultats incluent les projets locaux et les hôtes SSH connectés. Le choix d'un résultat archivé le restaure ; le choix d'une discussion d'un projet fermé le réouvre.
+La recherche dans l'historique filtre les titres de ce projet. Pour rechercher dans les titres et le texte des messages de tous les projets, cliquez sur **Rechercher dans les chats** dans la barre supérieure (par défaut **Command+Shift+F** sur macOS ou **Ctrl+Shift+F** sur Windows/Linux). Les résultats incluent les projets locaux, les hôtes distants connectés et les [chats sans projet](/docs/fr/standalone-chats). Sélectionner un résultat archivé le restaure ; sélectionner un chat d'un projet fermé rouvre ce projet.
 
 Si un hôte ne peut pas être recherché, reconnectez-le et réessayez. Affinez la requête lorsque les résultats sont tronqués. Vous pouvez également gérer des conversations plus anciennes dans [Chats archivés](/docs/fr/archived-chats).
 
@@ -73,13 +75,39 @@ Des noms comme « Corriger la persistance des paramètres » et « Vérifier les
 
 Activez **Notifications de bureau** dans **Paramètres → Général → Messages de chat** pour recevoir une alerte lorsqu’un chat se termine, échoue ou attend votre réponse pendant que Dream est en arrière-plan. Cliquez sur une notification pour ouvrir le chat correspondant. **Son de notification** est une option distincte qui peut aussi retentir lorsque Dream est au premier plan.
 
+Les notifications couvrent aussi les tours qui continuent de s'exécuter sur l'hôte alors que cette fenêtre ne les suit pas. Un tour que vous arrêtez vous-même n'en envoie pas.
+
 Un indicateur de chargement signale les conversations qui reçoivent une réponse en continu. Lorsque vous envoyez un message, Dream le fait défiler dans la zone visible.
 
 Pendant que l'agent réagit, le chat affiche son progrès et l'activité des outils. Ouvrir les détails de l'outil pour inspecter les commandes, les lectures de fichiers ou les modifications. Lorsque l'agent fournit une liste de tâches, le contrôle des tâches situé à côté de la boîte de message indique son progrès.
 
-Les onglets Historique et Projet incluent des indicateurs d'état pour les tâches en cours de traitement ou terminées ; les onglets Projet peuvent également indiquer qu'un agent attend votre réponse. Sélectionnez le projet et ouvrez la conversation pour lire son dernier message. Utilisez le bouton Arrêter dans le composateur pour interrompre une réponse. L'arrêt d'une réponse ne révoque pas les modifications de fichiers déjà effectuées.
+L'historique des discussions et les onglets de projet affichent un état pour chaque chat : un indicateur de chargement pendant qu'il répond, un point ambre lorsque l'agent vous attend et un point vert lorsqu'il a terminé et que vous ne l'avez pas encore ouvert. Sélectionnez le projet et ouvrez la conversation pour lire son dernier message. Utilisez le contrôle d'arrêt de la zone de saisie pour interrompre une réponse. Arrêter une réponse n'annule pas les modifications de fichiers déjà effectuées.
+
+Un tour s'exécute sur l'hôte du projet, et non dans la fenêtre. Si la fenêtre perd sa connexion à l'hôte, le tour continue de s'exécuter et Dream s'y reconnecte automatiquement. Quitter Dream arrête l'hôte démarré par l'application, ainsi que ses tours ; pour que les agents continuent de travailler après la fermeture de l'application, [exécutez l'hôte vous-même](/docs/fr/dream-host).
 
 Après que une réponse soit terminée, utilisez **Voir les fichiers modifiés par cette réponse** dans son pied de page pour voir les fichiers qu'elle a modifiés et [reconstituer l'un d'entre eux](/docs/fr/checkpoints).
+
+## Mettre des messages en file d'attente
+
+Vous n'avez pas besoin d'attendre la fin d'une réponse pour envoyer l'instruction suivante. Saisissez un message pendant que l'agent travaille et envoyez-le. Dream l'ajoute à la file d'attente du chat et l'exécute à la fin du tour en cours. Pendant qu'un tour est en cours, le bouton de la zone de saisie arrête le tour lorsque la zone de message est vide et envoie le message dès que vous avez saisi du texte.
+
+La liste **File d’attente** apparaît au-dessus de la zone de message lorsqu'un message est en attente ou qu'une exécution requiert votre attention. Chaque ligne affiche le message, son modèle et un état.
+
+| État | Signification |
+| --- | --- |
+| En attente | Attend la fin des tours qui le précèdent |
+| En cours | Le tour sur lequel l'agent travaille actuellement |
+| Attend une réponse | Le tour en cours attend votre réponse ou votre approbation |
+| Interrompu | Arrêté avant la fin, par exemple par le contrôle d'arrêt ou un redémarrage de l'hôte |
+| Échec | Terminé avec une erreur |
+
+Utilisez **Annuler** sur un message en attente pour le retirer de la file d'attente. Une exécution en échec ou interrompue propose **Réessayer** et **Supprimer**. Lisez la réponse laissée par une exécution interrompue avant de la relancer, car une partie de son travail est peut-être déjà faite.
+
+**Suspendre** retient les messages en attente et laisse le tour en cours se terminer. **Reprendre** les relance. Le contrôle d'arrêt est différent : il met fin au tour en cours, ainsi qu'aux tâches qu'il a [déléguées](/docs/fr/delegation), et met la file d'attente en pause.
+
+Une exécution en échec ou interrompue met aussi la file d'attente en pause, et l'en-tête de la file indique **File en pause**. L'envoi d'un nouveau message relance la file d'attente et écarte ces exécutions.
+
+Les files d'attente sont enregistrées sur l'hôte du projet et survivent au redémarrage de Dream. Après un redémarrage de l'hôte, un tour qui était en cours est marqué comme interrompu et la file d'attente reste en pause jusqu'à ce que vous la repreniez. Si un message en attente ne peut pas être envoyé, son texte revient dans la zone de message.
 
 ## Fermer, archiver ou supprimer ?
 

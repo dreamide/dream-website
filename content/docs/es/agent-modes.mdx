@@ -37,6 +37,8 @@ El proveedor seleccionado determina el comportamiento exacto de los permisos. **
 
 Un agente puede pedirte que aclaras un requisito, elijas una opción o apruebes una acción. Lee la solicitud en la conversación y responde utilizando los controles que proporciona. Una pestaña de proyecto puede indicar que un agente está esperando tu respuesta. Abre esa pestaña y vuelve a la conversación para leer la solicitud.
 
+Una solicitud solo se puede responder mientras su turno sigue en ejecución. Si el turno se interrumpió antes, por ejemplo porque el host se reinició, Dream indica que la aprobación ha caducado. Revisa lo que ya hizo el turno interrumpido y reinténtalo desde la [cola](/docs/es/chats#poner-mensajes-en-cola).
+
 Si la solicitud requiere cambiar la tarea, da al agente las instrucciones revisadas en ese chat. Usa el control de detener para interrumpir una respuesta cuando sea necesario. Detener no revierte las ediciones ni los comandos que ya se completaron; revisa después [Cambios](/docs/es/git-workflows) o utiliza el [punto de control](/docs/es/checkpoints) de la respuesta para restaurar los archivos que modificó.
 
 Para tareas paralelas que necesitan archivos separados, use [árbol de trabajo](/docs/es/worktrees). Los ajustes de permisos no dan dos chats en la misma carpeta checkouts independientes.

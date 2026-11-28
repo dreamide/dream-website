@@ -12,7 +12,9 @@ Fai clic su **File** nella barra laterale destra per esplorare la cartella del p
 3. Seleziona un risultato per aprirlo.
 4. Elimina la ricerca per tornare alla navigazione dell'albero.
 
-Usare **Aggiorna file** negli azioni dei file quando le modifiche apportate fuori da Dream non sono riflesse nell'albero. Cerchare un file ne individua il percorso; usare **Cerca nei file** per cercare i contenuti del progetto.
+L'albero si aggiorna man mano che i file cambiano, anche al termine dei comandi del terminale e quando torni alla finestra di Dream. La ricerca di un file ne individua il percorso; usa **Cerca nei file** per cercare nei contenuti del progetto.
+
+In un repository Git, l'albero contrassegna i file con modifiche senza commit, come i file modificati e quelli nuovi, e le cartelle che li contengono.
 
 <Frame caption="Cerca o esplora l'albero dei file, poi apri un file accanto al tuo chat.">
   <img
@@ -65,7 +67,7 @@ Modifica un file di testo scrivibile nell'editor di codice. I cambiamenti non sa
 
 Fai clic su **Salva** nel pannello degli strumenti dell'editor, oppure premi **Command+S** su macOS o **Ctrl+S** su Windows/Linux quando l'editor è in focus. Salva ogni file modificato prima di chiedere a un agente o a un comando terminale di utilizzare i nuovi contenuti; questi strumenti leggono i file sul disco.
 
-Passare tra le schede dei file ti permette di mantenere bozze mentre esplori altri file. Usa **Abbandona modifiche** per abbandonare una bozza locale. Questo è separato dal ripristino delle modifiche attraverso Git.
+Passare da una scheda di file all'altra ti permette di conservare le bozze mentre esamini altri file. Per abbandonare una bozza, chiudi la sua scheda e scegli **Non salvare**. Questa operazione è distinta dall'annullamento delle modifiche tramite Git.
 
 Doppio clic su un'icona di file per fissarlo in modo che l'apertura di un altro preview non lo sostituisca.
 
@@ -86,6 +88,8 @@ Un agente, un comando terminale o un editor esterno può modificare lo stesso fi
 
 ## Regola la vista
 
-Usa **Abilita ritorno a capo** per linee lunghe. Ridimensiona il pannello albero file e i pannelli editor per dare più spazio al contenuto. Usa le azioni disponibili **Apri in** per continuare in un editor esterno.
+**A capo automatico** è attivo per impostazione predefinita. Usa il relativo interruttore nell'intestazione del pannello per disattivarlo quando preferisci scorrere le righe lunghe. Ridimensiona l'albero dei file e i riquadri dell'editor per dare più spazio al contenuto.
+
+Per un progetto locale, fai clic sul percorso nell'intestazione del pannello per aprire la cartella nel tuo gestore di file. Per continuare in un editor esterno, usa il menu [Apri in](/docs/it/workspace#rinominare-o-aprire-un-progetto-esternamente) del progetto.
 
 Dopo aver salvato, apri [Modifiche](/docs/it/git-workflows) per visualizzare il diff di Git. Per chiedere a un agente riguardo a un file, [riferiscine con @](/docs/it/providing-context) nel compositore della chat.

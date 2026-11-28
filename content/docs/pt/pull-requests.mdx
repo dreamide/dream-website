@@ -24,13 +24,15 @@ O resumo das verificações mostra o número de verificações falhas. Selecione
   />
 </Frame>
 
-Se a ramificação não tiver solicitação de pull request, o painel oferece **Criar solicitação pull**. Use **Ações do pull request → Atualizar** após alterações feitas no GitHub, ou **Abrir no GitHub** para visualizar o PR no navegador. Uma solicitação de pull request consolidada deixa de aparecer assim que a ramificação contém commits mais recentes além da cabeça desse PR.
+Se a branch não tiver um PR, o painel informa isso; crie um com **Ações do Git → Criar solicitação pull**. O painel é atualizado conforme a branch muda e quando você volta à janela do Dream. Para ver o PR no navegador, clique no repositório e no número do PR no topo de **Resumo**. Um PR mesclado deixa de aparecer quando a branch passa a conter commits mais recentes que o head desse PR.
 
 ## Revise o código e poste comentários
 
 No **Resumo**, leia o debate e use **Escreva** e **Visualização** para compor um comentário em Markdown. Escolha **Publicar comentário** para publicá-lo no GitHub.
 
 Em **Code**, expanda um arquivo e selecione linhas em sua diferença para publicar um comentário na linha. Você pode ler os fios de revisão existentes e usar **Responder** para continuá-los. Quando um patch de texto estiver indisponível, abra o pedido de revisão no GitHub para inspecionar esse arquivo.
+
+A aba **Código** quebra linhas longas por padrão. Use **Quebra de linha**, acima da lista de arquivos, para desativar esse comportamento.
 
 Esses comentários são publicados no GitHub. Para pedir ao seu agente de codificação sobre alterações locais, use [feedback de diff em Alterações](/docs/pt/feedback#comentar-em-linhas-de-um-diff).
 

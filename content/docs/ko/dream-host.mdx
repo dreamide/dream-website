@@ -1,0 +1,125 @@
+---
+title: "호스트 실행하기"
+description: "dream-host를 설치하고 실행해 데스크톱 창 없이도, 데스크톱 세션이 없는 컴퓨터에서도 에이전트가 계속 작업하게 하세요."
+---
+
+Dream의 호스트는 프로젝트, 채팅, 에이전트 CLI, 터미널, Git을 담당하는 프로세스입니다. 데스크톱 앱은 호스트를 자동으로 시작합니다. 창을 닫은 뒤에도 에이전트가 계속 작업하게 하거나, 데스크톱 세션이 없는 컴퓨터를 사용하거나, 자체 서비스 관리자로 호스트를 관리하려면 `dream-host`를 직접 실행하세요.
+
+[SSH](/docs/ko/remote-hosts#ssh-호스트-추가)로 연결하는 컴퓨터에는 이 작업이 필요하지 않습니다. Dream이 연결할 때 해당 컴퓨터에 호스트를 직접 설치하고 실행합니다.
+
+## 설치
+
+릴리스마다 호스트 설치 프로그램이 게시됩니다. `<version>`을 `0.36.0`처럼 사용 중인 Dream 버전으로 바꾸세요.
+
+macOS 및 Linux에서:
+
+```sh
+curl -fsSL https://github.com/dreamide/dream/releases/download/v<version>/install-host.sh | sh
+```
+
+Windows의 PowerShell에서:
+
+```powershell
+irm https://github.com/dreamide/dream/releases/download/v<version>/install-host.ps1 | iex
+```
+
+설치 프로그램은 다운로드한 파일을 릴리스의 `SHA256SUMS`와 대조해 확인한 뒤 `~/.dream/host/versions/`에 설치합니다. macOS와 Linux에서는 `dream-host`를 `~/.local/bin`에 링크하고, Windows에서는 사용자 `PATH`에 추가합니다. 호스트는 Apple silicon 기반 macOS, Linux x64 및 ARM64, Windows x64용으로 빌드됩니다.
+
+호스트를 실행하는 사용자와 동일한 사용자가 에이전트 CLI와 해당 로그인 정보를 사용할 수 있어야 합니다.
+
+## 호스트 실행
+
+| 명령 | 무엇을 하는지 |
+| --- | --- |
+| `dream-host serve` | Ctrl+C를 누를 때까지 포그라운드에서 호스트를 실행합니다 |
+| `dream-host ensure` | 백그라운드에서 호스트를 시작하거나 이미 실행 중인 호스트를 재사용합니다 |
+| `dream-host status` | 호스트가 실행 중인지 알려 줍니다 |
+| `dream-host stop` | 호스트가 작업을 저장한 뒤 중지합니다 |
+| `dream-host help` | 모든 명령과 옵션을 나열합니다 |
+
+## 옵션
+
+모든 옵션은 플래그 또는 환경 변수로 지정할 수 있습니다. 플래그가 환경 변수보다 우선합니다.
+
+| 플래그 | 환경 변수 | 기본값 | 목적 |
+| --- | --- | --- | --- |
+| `--home` | `DREAM_HOST_HOME` | `~/.dream/host` | 호스트가 실행 기록과 로그, 그리고 기본적으로 데이터를 보관하는 위치 |
+| `--data-dir` | `DREAM_HOST_DATA_DIR` | `<home>/data` | 호스트의 식별 정보와 설정, 그리고 기본적으로 데이터베이스 |
+| `--database` | `DREAM_HOST_DATABASE` | `<data dir>/dream.db` | 프로젝트, 채팅, 대화 기록이 담긴 데이터베이스 |
+| `--port` | `DREAM_HOST_PORT` | 사용 가능한 포트 | 이 컴퓨터의 클라이언트가 사용하는 로컬 포트 |
+| `--idle-timeout` | `DREAM_HOST_IDLE_TIMEOUT` | `3600` | 클라이언트, 터미널, 턴, 원격 액세스가 없을 때 호스트가 종료되기까지의 시간(초). 계속 실행하려면 `0`을 사용하세요 |
+| `--remote-port` | `DREAM_HOST_REMOTE_PORT` | 저장된 설정 | 직접 운영하는 리버스 프록시용으로, 페어링된 기기의 연결을 받는 로컬 포트 |
+| `--remote-origin` | `DREAM_HOST_REMOTE_ORIGINS` | 없음 | 리버스 프록시가 제공하는 공개 주소 |
+
+하나의 데이터베이스는 한 번에 하나의 호스트만 사용할 수 있습니다. `dream-host`는 `.env` 파일을 읽지 않으므로 변수는 실행 환경에 설정하세요.
+
+## 데스크톱 앱과 함께 사용하기
+
+데스크톱 앱은 자신의 데이터로 실행 중인 호스트를 사용하고, 없으면 새로 시작합니다.
+
+- 앱이 시작한 호스트는 Dream을 종료하면 중지됩니다.
+- 직접 시작한 호스트는 Dream을 종료해도 계속 실행됩니다. 채팅은 계속 진행되고 터미널은 열린 상태로 유지되며, 다음에 앱을 열면 다시 연결됩니다.
+
+데스크톱 앱의 호스트를 직접 실행하려면 Dream을 종료하고, 데스크톱 데이터 디렉터리를 지정해 `dream-host`를 시작한 다음 Dream을 다시 여세요:
+
+```sh
+dream-host serve --data-dir "<desktop data directory>" --idle-timeout 0
+```
+
+| 플랫폼 | 데스크톱 데이터 디렉터리 |
+| --- | --- |
+| macOS | `~/Library/Application Support/dreamide` |
+| Windows | `%APPDATA%\dreamide` |
+| Linux | `~/.config/dreamide` |
+
+## 명령줄에서 원격 액세스 사용하기
+
+원격 액세스는 호스트에 저장되는 설정입니다. 호스트가 실행 중일 때 한 번 켜 두면 호스트가 시작될 때마다 적용됩니다.
+
+```sh
+dream-host remote on --tailscale
+dream-host remote on --cloudflare --origin https://dream.example.com
+dream-host remote status
+dream-host pair
+dream-host devices
+dream-host revoke <id>
+```
+
+`dream-host pair`로 일회용 코드를 발급하고 `dream-host serve --pair`로 시작과 동시에 발급합니다. `dream-host devices`로 페어링된 기기를 보고 `dream-host revoke`로 제거합니다. 권한은 [원격 액세스](/docs/ko/remote-access)를 참고하세요.
+
+자체 리버스 프록시에는 `--remote-port` 및 `--remote-origin` 옵션으로 호스트를 시작하세요. 설정에는 해당 값이 읽기 전용으로 표시됩니다.
+
+## 호스트를 계속 실행하기
+
+운영 체제의 서비스 관리자로 `dream-host serve --idle-timeout 0`를 실행하고 실패 시 다시 시작하도록 설정하세요. Linux에서는 사용자 systemd 유닛을 `~/.config/systemd/user/dream-host.service`에 저장하세요.
+
+```ini
+[Unit]
+Description=Dream host
+
+[Service]
+ExecStart=%h/.local/bin/dream-host serve --idle-timeout 0
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+```
+
+그런 다음 활성화하세요.
+
+```sh
+systemctl --user daemon-reload
+systemctl --user enable --now dream-host
+loginctl enable-linger "$USER"
+```
+
+macOS에서는 LaunchAgent, Windows에서는 로그인 시 실행하는 예약 작업을 사용하세요. [호스트 가이드](https://github.com/dreamide/dream/blob/main/docs/host-service.md)의 예제에 CLI에 필요한 `PATH`와 변수를 추가하고 `dream-host status`로 확인하세요.
+
+<Note>
+  v0.30과 v0.31의 `dream-host service` 명령은 v0.32에서 제거됐습니다. 기존 서비스는 호스트 가이드에 따라 제거할 때까지 계속 실행됩니다.
+</Note>
+
+## 호스트 업데이트
+
+새 버전 설치 후 `dream-host stop`로 중지하고 다시 시작하거나 서비스를 다시 시작하세요. 호스트와 앱 버전이 다르면 **설정 → 연결**에 표시됩니다.

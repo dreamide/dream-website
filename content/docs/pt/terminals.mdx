@@ -5,7 +5,7 @@ description: "Execute comandos de projeto, gerencie sessões de terminal e conti
 
 O terminal integrado executa comandos no seu projeto sem sair do Dream. Clique no **Terminal** na barra lateral direita para abri-lo. Um terminal normal de projeto inicia na pasta do projeto.
 
-Em um [projeto SSH](/docs/pt/remote-hosts), os comandos do terminal são executados no host remoto. Instale os comandos e as ferramentas de desenvolvimento necessários nessa máquina.
+Em um projeto em um [host remoto](/docs/pt/remote-hosts), os comandos do terminal são executados nesse host. Instale os comandos e as ferramentas de desenvolvimento necessários nessa máquina.
 
 ## Execute comandos ao lado de uma conversa
 
@@ -32,7 +32,9 @@ Para uma prévia no navegador, inicie o aplicativo do projeto, observe a URL que
 
 Use sessões separadas para aplicações de longa duração e comandos ocasionais, como testes. Fechar uma sessão de terminal encerra seu processo. Fechar o painel preserva as sessões que você já utilizou, mas o Dream limpa automaticamente as sessões abertas que não receberam entrada do usuário.
 
-Use **Expandir terminal** para dar mais espaço ao painel e **Recolher terminal** para restaurar seu tamanho usual. Expandir ou recolher altera a disposição sem fechar a sessão.
+Fechar um projeto, ou remover o host dele do Dream, interrompe os terminais desse projeto. Os terminais são executados no host do projeto; por isso, quando você [executa o host por conta própria](/docs/pt/dream-host), eles continuam em execução depois que você encerra o Dream e são restaurados quando você o abre novamente.
+
+Use **Expandir** para dar mais espaço ao painel e **Recolher** para restaurar o tamanho habitual. Expandir ou recolher altera o layout sem fechar a sessão.
 
 Ao trocar de painel de ferramentas, as visualizações do terminal continuam carregadas para que você possa voltar à mesma sessão e sua saída. O Dream também tenta recuperar o renderizador do terminal se o contexto gráfico for perdido.
 

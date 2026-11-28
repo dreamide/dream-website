@@ -4,8 +4,10 @@ description: Find model defaults, providers, prompts, skills, MCP servers, and a
 ---
 
 Open **Settings** with the gear icon at the top of Dream. The sidebar has **General**, **Providers**,
-**SSH hosts**, **Prompts**, **Skills**, **MCP servers**, **Keyboard shortcuts**, and **Archived chats**. General preferences apply
+**Keyboard shortcuts**, **Prompts**, **Skills**, **MCP servers**, **Connections**, and **Archived chats**. General preferences apply
 as you select them. Forms for prompts, skills, and server definitions have their own Create or Save action.
+
+The version number at the bottom of the sidebar checks for an application update when you click it.
 
 ## General
 
@@ -38,6 +40,9 @@ Changing the terminal shell affects new sessions. Open a new terminal to use the
 | Group tool calls | Off | Compact grouping of tool activity |
 | Expand tool calls | Off | Whether tool-call details start expanded |
 | Change checkpoints | On | Snapshots project files before each reply so you can review and restore changes |
+| Desktop notifications | On | Alerts when a chat finishes, fails, or needs input while Dream is in the background |
+| Notification sound | Off | Plays a sound for the same events, even while Dream is focused |
+| Follow agent in browser | Off | Brings the [browser](/docs/browser#ask-an-agent-to-use-the-browser) tab an agent is using to the front |
 
 The display settings affect conversations across projects. They do not change the model's
 reasoning effort or grant additional tool permissions. Turning off **Change checkpoints** stops new
@@ -84,9 +89,9 @@ default. Follow [Models and defaults](/docs/models) for the complete setup workf
 ## Providers
 
 Each provider card shows its detected CLI status, installed version, refresh action, and an enable
-switch. Enable the provider and individual models to make them available in selectors. An
-**Update available** badge shows a newer CLI version when detected; update the CLI outside Dream
-and refresh the card afterward.
+switch. Enable the provider, then click the models you want to make available in selectors. An
+**Update available** button appears when a newer CLI version is detected; click it to run that
+CLI's own updater.
 
 Dream skips CLI update checks for disabled providers. Enable a provider before checking its
 available updates.
@@ -94,11 +99,15 @@ available updates.
 Install and sign in through the provider's CLI outside Dream, then refresh its card. Dream settings
 do not replace the CLI's authentication flow. See [Connect a provider](/docs/providers).
 
-## SSH hosts
+## Connections
 
-Add, edit, connect, disconnect, or remove remote machines in **Settings → SSH hosts**. Each entry
-has an SSH target, display name, optional host command, connection status, and any connection error.
-See [SSH remote workspaces](/docs/remote-hosts) for setup and recovery steps.
+**Settings → Connections** has two groups. **Remote hosts** lists the machines you can open projects
+on: add an SSH host or pair with a host over HTTPS, then connect, disconnect, edit its routes, or
+remove it. See [Remote hosts](/docs/remote-hosts) for setup and recovery steps.
+
+**Remote access** lets paired devices use this computer's projects, and lists the devices you have
+paired. See [Remote access](/docs/remote-access). The **Connections** section is available in the
+desktop app.
 
 ## Prompts, Skills, and MCP servers
 

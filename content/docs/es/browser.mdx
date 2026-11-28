@@ -41,7 +41,7 @@ Las acciones del navegador incluyen:
 | Acercar / Alejar / Restablecer el zoom | Ajuste la escala de visualización del previsualizador |
 | Abrir en el navegador del sistema | Ver la URL actual en tu navegador normal |
 
-Use **Expandir navegador** cuando necesites más espacio y **Contraer navegador** para volver a la vista más pequeña. Para dar a un agente una captura de pantalla de toda la página, utiliza el control de [adjuntos](/docs/es/providing-context) del chat.
+Usa **Expandir** en el encabezado del panel cuando necesites más espacio y **Contraer** para volver a la vista más pequeña. Para dar a un agente una captura de pantalla de toda la página, usa el [control de adjuntos](/docs/es/providing-context) del chat.
 
 ## Enviar un elemento a un chat
 
@@ -53,7 +53,9 @@ Dream envía tu comentario junto con el selector del elemento, su tamaño, su te
 
 ## Pide a un agente que use el navegador
 
-Claude Code, Codex, OpenCode y Grok generan chats con herramientas para el navegador de Dream de forma automática. Funcionan con las mismas pestañas de explorador de proyecto que ves. Los chats de Cursor no reciben estas herramientas.
+Los chats de Claude Code, Codex, OpenCode y Grok Build reciben automáticamente herramientas para el navegador de Dream. Los chats de Cursor y Antigravity no reciben estas herramientas.
+
+El agente trabaja en segundo plano en su propia pestaña del navegador, así que puedes seguir usando otra pestaña, otro panel u otro proyecto mientras tanto. La barra de herramientas del navegador muestra **Agente activo** mientras un agente usa el navegador. Para que Dream traiga al frente la pestaña del agente mientras trabaja, activa **Seguir al agente en el navegador** en **Configuración → General → Mensajes de chat**. Está desactivado de forma predeterminada.
 
 Da al agente la URL de la página y una tarea concreta, por ejemplo:
 
@@ -62,6 +64,12 @@ Da al agente la URL de la página y una tarea concreta, por ejemplo:
 Las herramientas pueden abrir y navegar por pestañas, inspeccionar el contenido de la página, hacer clic, escribir, posicionar el cursor, seleccionar opciones, desplazarse, tomar capturas de pantalla y inspeccionar registros del consola y respuestas de red. También pueden adjuntar archivos desde el proyecto para controles de subida. Las subidas de archivos deben utilizar rutas dentro del proyecto.
 
 Inicie la aplicación antes de pedirle al agente que inspeccione su URL local. Las acciones del navegador siguen los [permisos](/docs/es/agent-modes) del chat; responda en el chat si se solicita aprobación. Estas herramientas están integradas y no requieren una definición manual de un [servidor MCP](/docs/es/mcp-servers).
+
+## Usar Claude in Chrome
+
+Los chats de Claude también pueden trabajar en tu propio Chrome mediante la extensión Claude in Chrome, de forma independiente del navegador de Dream. Instala la extensión, ejecuta `/chrome` en Claude Code y elige **Enabled by default**. A partir de entonces, Dream inicia los turnos de Claude con acceso a Chrome; en Dream no hay un ajuste aparte para ello.
+
+Usa el navegador de Dream para previsualizar y probar páginas dentro del espacio de trabajo. Usa Chrome cuando la tarea necesite un sitio en el que ya hayas iniciado sesión allí.
 
 ## Recargar y borrar los datos del sitio
 
@@ -72,3 +80,5 @@ Intente una actualización normal después de haber modificado el código de la 
 ## Si una página local no se carga
 
 Verifique que la aplicación still esté en ejecución, confirme la URL completa y el puerto en su salida por terminal, y revise cualquier error del servidor allí. Intente la misma dirección en el navegador de su sistema para determinar si el problema pertenece a la aplicación o al preview integrado.
+
+En un proyecto de un [host remoto](/docs/es/remote-hosts#rutas), previsualizar una URL que el host sirve localmente requiere una ruta SSH a ese host. Un host al que solo se accede por HTTPS no puede reenviar la página.

@@ -1,0 +1,70 @@
+---
+title: "Truy cập từ xa"
+description: "Dùng các dự án trên máy tính này từ điện thoại hoặc máy tính khác bằng cách ghép nối thiết bị qua Tailscale hoặc Cloudflare Tunnel."
+---
+
+Truy cập từ xa cho phép các thiết bị khác dùng những dự án trên máy tính này. Thiết bị đã ghép nối mở Dream trong trình duyệt của nó hoặc kết nối từ ứng dụng Dream trên một máy tính khác, trong khi tác nhân, tệp, terminal và lệnh Git vẫn chạy tại đây.
+
+Truy cập từ xa luôn tắt cho đến khi bạn bật, và mọi thiết bị đều phải được ghép nối trước khi kết nối. Dream không dùng tài khoản hay dịch vụ chuyển tiếp: bạn cung cấp đường kết nối mạng, còn việc ghép nối kiểm soát ai được vào.
+
+## Chọn cách thiết bị truy cập máy tính này
+
+| Tùy chọn | Cách hoạt động | Bạn cần gì |
+| --- | --- | --- |
+| Tailscale | Phục vụ Dream qua HTTPS bên trong tailnet của bạn | Tailscale trên máy tính này và trên mọi thiết bị, với MagicDNS và chứng chỉ HTTPS được bật cho tailnet |
+| Cloudflare Tunnel | Phục vụ Dream tại một hostname công khai trên tên miền của riêng bạn | Một tunnel cố định trong tài khoản Cloudflare của bạn và một connector `cloudflared` do bạn tự chạy |
+
+Bạn cũng có thể đặt reverse proxy của riêng mình phía trước máy chủ. Xem [Chạy máy chủ](/docs/vi/dream-host#truy-cập-từ-xa-bằng-dòng-lệnh).
+
+## Bật truy cập từ xa
+
+1. Mở **Cài đặt → Kết nối** và tìm **Truy cập từ xa**.
+2. Nhấp **Thiết lập**.
+3. Trong **Truy cập máy tính này qua**, chọn **Tailscale** hoặc **Cloudflare Tunnel**.
+4. Với Tailscale, hãy giữ nguyên hoặc thay đổi **Cổng HTTPS**. Với Cloudflare Tunnel, hãy nhập **Địa chỉ công khai**, chẳng hạn `https://dream.example.com`.
+5. Để trống **Cổng cục bộ** trừ khi bạn cần một cổng cụ thể, rồi nhấp **Bật**.
+
+Trạng thái bên cạnh **Cho phép thiết bị đã ghép nối** hiển thị **Sẵn sàng** khi Dream có thể truy cập máy tính này qua địa chỉ đó. Nếu trạng thái là **Chưa sẵn sàng**, hãy làm theo thông báo hiển thị, khắc phục sự cố rồi nhấp **Kiểm tra lại**. Dùng **Thay đổi** để chỉnh sửa thiết lập sau này. Tắt **Cho phép thiết bị đã ghép nối** để ngừng phục vụ các thiết bị mà không hủy ghép nối chúng.
+
+### Thiết lập tunnel Cloudflare
+
+Dream không cài đặt hay chạy `cloudflared` và không bao giờ cần token tunnel của bạn. Dream chỉ cần địa chỉ công khai và cổng cục bộ mà hostname được định tuyến đến.
+
+1. Trong bảng điều khiển Cloudflare, hãy tạo một tunnel và chạy lệnh cài đặt mà nó hiển thị trên máy tính này.
+2. Thêm một route cho một hostname trên tên miền của bạn. Đặt dịch vụ của nó thành `HTTP` và `127.0.0.1:5410`, hoặc thành **Cổng cục bộ** hiển thị trong Dream.
+3. Đảm bảo hostname chấp nhận các yêu cầu API và WebSocket trực tiếp. Đừng đặt màn hình đăng nhập Cloudflare Access hay thử thách trình duyệt phía trước nó, và đừng cache hay buffer `/api/*`.
+
+Quick Tunnels không được hỗ trợ. Địa chỉ của chúng thay đổi và chúng không truyền được luồng trò chuyện.
+
+## Ghép nối thiết bị
+
+1. Khi truy cập từ xa đã sẵn sàng, nhấp **Ghép nối thiết bị**.
+2. Chọn mức **Quyền truy cập** cho thiết bị.
+3. Nhấp **Tạo ghép nối**. Dream hiển thị **Mã ghép nối** và **Địa chỉ máy chủ**.
+4. Trên thiết bị kia, mở địa chỉ máy chủ trong trình duyệt, nhập mã cùng **Tên thiết bị**, rồi nhấp **Ghép nối**.
+
+Để kết nối từ một ứng dụng Dream trên máy tính khác thay vì trình duyệt, hãy [thêm máy tính này làm máy chủ tại đó](/docs/vi/remote-hosts#ghép-nối-với-máy-chủ-qua-https) với cùng địa chỉ và mã.
+
+Mã chỉ dùng được một lần và hết hạn sau 10 phút. Bất kỳ ai nhập mã đều nhận được quyền truy cập bạn đã chọn, nên chỉ cung cấp mã cho thiết bị mà bạn định ghép nối.
+
+| Quyền truy cập | Thiết bị có thể làm gì |
+| --- | --- |
+| Chỉ xem | Đọc các dự án, cuộc trò chuyện và terminal |
+| Xem và làm việc | Ngoài ra còn chạy tác nhân, terminal và Git dưới danh nghĩa bạn |
+| Toàn quyền | Ngoài ra còn ghép nối và xóa thiết bị |
+
+## Dùng Dream từ thiết bị đã ghép nối
+
+Trình duyệt đã ghép nối hiển thị các dự án trên máy tính này cùng các cuộc trò chuyện, tệp, terminal và bảng điều khiển Git của chúng. Một số tính năng chỉ có trong ứng dụng trên máy tính: công cụ **Trình duyệt** tích hợp, **Cài đặt → Kết nối**, mở thư mục trên các máy chủ khác và **Mở trong** dành cho trình soạn thảo bên ngoài.
+
+Nếu thiết bị mất kết nối, một thanh thông báo cho biết nó đang kết nối lại, hoặc nó không truy cập được máy chủ và đang hiển thị dữ liệu đã lưu. Dù trong trường hợp nào, công việc trên máy chủ vẫn tiếp tục. Để hủy ghép nối ngay từ thiết bị, hãy mở **Cài đặt** trên thiết bị đó và chọn **Đăng xuất**.
+
+## Quản lý thiết bị đã ghép nối
+
+**Thiết bị đã ghép nối** liệt kê từng thiết bị cùng mức quyền truy cập và lần dùng gần nhất. Nhấp **Thu hồi** để xóa một thiết bị, hoặc **Thu hồi tất cả** để xóa mọi thiết bị. Thiết bị bị thu hồi sẽ mất quyền truy cập ngay lập tức và các trang đang mở trên đó ngừng hoạt động; công việc trên máy tính này vẫn tiếp tục.
+
+## Giữ máy tính này luôn sẵn sàng
+
+Thiết bị chỉ kết nối được khi máy chủ của Dream đang chạy và máy tính này không ở chế độ ngủ. Máy chủ do ứng dụng trên máy tính khởi động sẽ dừng khi bạn thoát Dream. Để giữ một máy chủ chạy nền, hoặc để chia sẻ một máy không có phiên desktop, hãy xem [Chạy máy chủ](/docs/vi/dream-host).
+
+Nếu Cài đặt báo rằng máy chủ của máy tính này chạy phiên bản khác với ứng dụng, hãy cập nhật bên cũ hơn và khởi động lại máy chủ.

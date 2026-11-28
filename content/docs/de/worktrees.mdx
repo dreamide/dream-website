@@ -88,7 +88,7 @@ Das Zusammenführen, die Erstellung eines Pull-Requests und die Entfernung eines
 
 Statt für die Prüfung zu veröffentlichen, verwenden Sie **Git-Aktionen → Pull-Anfrage erstellen** und folgen Sie [Git-Arbeitsabläufen](/docs/de/git-workflows#pull-request-erstellen). Die Erstellung einer PR behält das Worktree bei.
 
-Verwende **Git-Aktionen → Arbeitsbaum entfernen**, um die Checkout-Verzeichnis zu entfernen, während die Branch beibehalten wird. Wenn es uncommitted Änderungen gibt, committe diese zuerst oder wähle explizit **Nicht committete Änderungen verwerfen**.
+**Git-Aktionen → Arbeitsbaum entfernen** entfernt den Checkout. Der Branch bleibt ohne gesonderte Auswahl erhalten. Vor dem Löschen sehen Sie den Merge-Status. Committen Sie offene Änderungen oder wählen Sie ausdrücklich **Nicht committete Änderungen verwerfen**.
 
 <Warning>
   Die Löschung eines worktree löscht seinen Ordner und schließt dessen Projekt. Die Chats des worktree-Projects werden mit ihm verworfen und erscheinen weder in Chatverlauf noch in Zuletzt geschlossen. Wenn Sie eine Diskussion behalten möchten, [teilen Sie sie in den Elternspace auf](/docs/de/branching-chats), bevor Sie sie abschließen.
@@ -117,6 +117,8 @@ Sie können ein Worktree auch ohne das Bestätigungsfenster entfernen:
 4. Verwenden Sie seine Entfernungsfunktion und prüfen Sie die Bestätigung.
 5. Bestätigen Sie **Arbeitsbaum entfernen**, wenn Sie diesen Checkout nicht mehr benötigen.
 
-Die Löschung entfernt das Worktree-Verzeichnis aus dem Speicher. Git lehnt die Löschung ab, wenn es uncommitted Änderungen enthält. Gehe zurück zu diesem Projekt und überprüfe die Änderungen, bevor du erneut versuchst.
+Worktree-Verzeichnis und Chats werden gelöscht. Bei offenen Änderungen bleibt **Arbeitsbaum entfernen** gesperrt, bis Sie **Nicht committete Änderungen verwerfen** auswählen. Prüfen Sie die Änderungen zuvor im Projekt.
+
+Auch beim [Löschen des Branches](/docs/de/git-workflows#lokalen-branch-löschen) im Branch-Menü lässt sich der Worktree entfernen.
 
 Die Schließung eines Projekttabs entfernt ihn nur aus dem offenen Arbeitsbereich; die Löschung eines Worktree löscht seine Checkout. Für Commit- und PR-Schritte siehe [Git-Arbeitsabläufe](/docs/de/git-workflows).

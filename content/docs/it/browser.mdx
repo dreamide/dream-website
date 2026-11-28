@@ -41,7 +41,7 @@ Le azioni del browser includono:
 | Ingrandisci / Riduci / Ripristina lo zoom | Regola lo scale di visualizzazione della anteprima |
 | Apri nel browser di sistema | Visualizza l'URL corrente nel tuo browser normale |
 
-Usa **Espandi browser** quando hai bisogno di più spazio e **Comprimi browser** per tornare alla vista più piccola. Per fornire a un agente una foto del tutto il sito, usa il controllo dell'attachment del chat [controllo dell'attachment](/docs/it/providing-context).
+Usa **Espandi** nell'intestazione del pannello quando ti serve più spazio e **Comprimi** per tornare alla vista ridotta. Per fornire a un agente uno screenshot dell'intera pagina, usa il [controllo degli allegati](/docs/it/providing-context) della chat.
 
 ## Invia un elemento a un chat
 
@@ -53,7 +53,9 @@ Dream invia il tuo commento insieme al selettore, alle dimensioni, al testo, ai 
 
 ## Chiedi a un agente di utilizzare il browser
 
-Claude Code, Codex, OpenCode e Grok generano chat con strumenti per il browser di Dream automaticamente. Funzionano con gli stessi schede del browser progetto che vedi. Le chat di Cursor non ricevono questi strumenti.
+Le chat di Claude Code, Codex, OpenCode e Grok Build ricevono automaticamente gli strumenti per il browser di Dream. Le chat di Cursor e Antigravity non ricevono questi strumenti.
+
+Un agente lavora in background in una propria scheda del browser, così puoi continuare a usare un'altra scheda, un altro pannello o un altro progetto mentre è in esecuzione. La barra degli strumenti del browser mostra **Agente attivo** mentre un agente sta usando il browser. Perché Dream porti in primo piano la scheda dell'agente mentre lavora, attiva **Segui l’agente nel browser** in **Impostazioni → Generale → Messaggi chat**. L'opzione è disattivata per impostazione predefinita.
 
 Dai all'agente l'URL della pagina e un compito concreto, ad esempio:
 
@@ -62,6 +64,12 @@ Dai all'agente l'URL della pagina e un compito concreto, ad esempio:
 Gli strumenti possono aprire e navigare le schede, esaminare il contenuto della pagina, fare clic, digitare, sovrapporre, selezionare opzioni, scorrere, prendere schermate e esaminare i log del console e le risposte di rete. Possono anche allegare file dal progetto per controlli di caricamento. I caricamenti di file devono utilizzare percorsi all'interno del progetto.
 
 Avvia l'applicazione prima di chiedere all'agente di esaminare l'URL locale. Le azioni del browser seguono le [autorizzazioni](/docs/it/agent-modes) del chat; rispondi nel chat in caso di richiesta di approvazione. Questi strumenti sono integrati e non richiedono una definizione manuale di un server [MCP](/docs/it/mcp-servers).
+
+## Usare Claude in Chrome
+
+Le chat di Claude possono lavorare anche nel tuo Chrome tramite l'estensione Claude in Chrome, separatamente dal browser di Dream. Installa l'estensione, esegui `/chrome` in Claude Code e scegli **Enabled by default**. Da quel momento Dream avvia i turni di Claude con accesso a Chrome; in Dream non esiste un'impostazione separata.
+
+Usa il browser di Dream per visualizzare in anteprima e provare le pagine all'interno dello spazio di lavoro. Usa Chrome quando l'attività richiede un sito a cui hai già effettuato l'accesso in Chrome.
 
 ## Ricarica e cancella i dati del sito
 
@@ -72,3 +80,5 @@ Prova un normale aggiornamento dopo aver modificato il codice dell'applicazione.
 ## Se una pagina locale non si carica
 
 Verifica che l'applicazione sia ancora in esecuzione, conferma l'URL completo e la porta nel suo output terminale, e esamina eventuali errori del server. Prova lo stesso indirizzo nel browser del tuo sistema per determinare se il problema riguarda l'applicazione o la preview integrata.
+
+Per un progetto su un [host remoto](/docs/it/remote-hosts#percorsi), l'anteprima di un URL che l'host serve in locale richiede un percorso SSH verso quell'host. Un host raggiunto solo tramite HTTPS non può inoltrare la pagina.

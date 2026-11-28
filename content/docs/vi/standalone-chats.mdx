@@ -1,0 +1,39 @@
+---
+title: "Cuộc trò chuyện không có dự án"
+description: "Bắt đầu một cuộc trò chuyện mà không cần mở thư mục, rồi chuyển nó thành dự án khi nó lớn dần."
+---
+
+Cuộc trò chuyện độc lập là cuộc trò chuyện không thuộc dự án nào bạn đã mở. Hãy dùng nó cho một câu hỏi, một đoạn script nhanh hoặc một ý tưởng mà bạn chưa quyết định sẽ đặt ở đâu. Dream cấp cho mỗi cuộc trò chuyện độc lập một thư mục riêng, nên tác nhân vẫn có nơi để đọc và ghi tệp.
+
+## Bắt đầu cuộc trò chuyện không có dự án
+
+- Trên màn hình bắt đầu, chọn **Bắt đầu trò chuyện**.
+- Nhấn **Command+Shift+N** trên macOS hoặc **Ctrl+Shift+N** trên Windows/Linux. Thao tác này có tên **Chat mới không có dự án** trong [Phím tắt](/docs/vi/settings#các-phím-tắt-bàn-phím).
+- Khi thẻ **Trò chuyện** đang được chọn, nhấp **Cuộc trò chuyện mới** trong thanh công cụ bên trái.
+
+Dream mở cuộc trò chuyện trong thẻ **Trò chuyện** bên cạnh các thẻ dự án của bạn. Thẻ này hiển thị khi có một cuộc trò chuyện độc lập đang mở. Đóng thẻ không xóa các cuộc trò chuyện của bạn.
+
+Để bắt đầu cuộc trò chuyện trên một [máy chủ từ xa](/docs/vi/remote-hosts), hãy dùng **Chat mới trên…** ở đầu danh sách cuộc trò chuyện và chọn máy chủ. Tùy chọn này xuất hiện khi có máy chủ từ xa đang kết nối.
+
+## Tìm cuộc trò chuyện độc lập
+
+Chọn thẻ **Trò chuyện** và mở **Lịch sử trò chuyện** trong thanh công cụ bên trái. Trong thẻ này, bảng điều khiển có tiêu đề **Trò chuyện**. Nó liệt kê các cuộc trò chuyện độc lập trên máy tính này và trên mọi máy chủ đã kết nối, kèm tên máy chủ bên cạnh những cuộc trò chuyện nằm ở nơi khác.
+
+[Tìm kiếm cuộc trò chuyện](/docs/vi/chats#trở-về-cuộc-trò-chuyện) cũng tìm thấy các cuộc trò chuyện độc lập. Kết quả của chúng được gắn nhãn **Trò chuyện** thay cho tên dự án.
+
+## Cuộc trò chuyện độc lập dùng được những gì
+
+Thư mục của mỗi cuộc trò chuyện được tạo trong `~/.dream/chats` trên máy chủ nơi bạn bắt đầu cuộc trò chuyện đó. **Tệp**, **Trình duyệt**, **Terminal** và **Stash** hoạt động trong thư mục đó, còn [điểm kiểm tra](/docs/vi/checkpoints) ghi lại những gì mỗi câu trả lời đã thay đổi. **Git** bị ẩn vì thư mục không phải là kho mã.
+
+Mỗi lần chỉ mở được một cuộc trò chuyện độc lập. Khi bật [chế độ nhiều cuộc trò chuyện](/docs/vi/multiple-chats), **Cuộc trò chuyện mới** thêm một cuộc trò chuyện bên cạnh cuộc đang mở và cả hai dùng chung một thư mục.
+
+Dream xóa thư mục trò chuyện không còn cuộc trò chuyện nào dùng khi thư mục đó trống hoặc chỉ chứa `node_modules`, sau thời gian chờ một giờ.
+
+## Chuyển cuộc trò chuyện thành dự án
+
+Khi một cuộc trò chuyện độc lập trở thành công việc thực sự, hãy giữ nó lại dưới dạng dự án:
+
+1. Chọn thẻ **Trò chuyện** và mở **Lịch sử trò chuyện**.
+2. Di chuột qua cuộc trò chuyện và nhấp **Chuyển thành dự án**. Thao tác này xuất hiện khi cuộc trò chuyện đã có tin nhắn.
+
+Dream chuyển đổi cuộc trò chuyện ngay tại chỗ. Thư mục của nó trở thành một dự án thông thường mang tên cuộc trò chuyện, và dự án mở trong thẻ riêng, có sẵn cuộc trò chuyện bên trong.

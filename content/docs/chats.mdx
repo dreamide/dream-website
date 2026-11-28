@@ -3,9 +3,12 @@ title: Working with chats
 description: Start conversations, find previous work, rename chats, and manage your chat history.
 ---
 
-A chat holds one conversation with a coding agent. Each chat belongs to a project and has its own
-model, permissions, and conversation history. Use separate chats for tasks you want to return to
+A chat holds one conversation with a coding agent. A chat usually belongs to a project, and has its
+own model, permissions, and conversation history. Use separate chats for tasks you want to return to
 independently, such as fixing a bug and reviewing a feature.
+
+To ask something without opening a folder, start a
+[chat without a project](/docs/standalone-chats).
 
 ## Start a conversation
 
@@ -54,8 +57,9 @@ Use [file references and attachments](/docs/providing-context) to point to relev
 
 History search filters this project's titles. To search titles and message text across projects,
 click **Search chats** in the top bar (default **Command+Shift+F** on macOS or **Ctrl+Shift+F** on
-Windows/Linux). Results include local projects and connected SSH hosts. Selecting an archived
-result restores it; selecting a closed project's chat reopens that project.
+Windows/Linux). Results include local projects, connected remote hosts, and
+[chats without a project](/docs/standalone-chats). Selecting an archived result restores it;
+selecting a closed project's chat reopens that project.
 
 If a host cannot be searched, reconnect it and try again. Narrow the query when results are truncated.
 You can also manage older conversations in [Archived chats](/docs/archived-chats).
@@ -88,6 +92,9 @@ Enable **Desktop notifications** under **Settings → General → Chat messages*
 finishes, fails, or needs input while Dream is in the background. Click a notification to open its
 chat. **Notification sound** is a separate option and can play even while Dream is focused.
 
+Notifications also cover turns that keep running on the host while this window is not following
+them. A turn that you stop yourself does not send one.
+
 A loading spinner identifies chats that are streaming a response. When you send a message,
 Dream scrolls it into view.
 
@@ -95,13 +102,52 @@ While an agent responds, the chat shows its progress and tool activity. Open too
 commands, file reads, or changes. When the agent supplies a task list, the task control beside the
 message box shows its progress.
 
-History and project tabs include status indicators for work that is processing or has finished;
-project tabs can also indicate that an agent is waiting for your answer. Select the project and
-open the conversation to read its latest message. Use the stop control in the composer to interrupt
-a response. Stopping a response does not undo file changes already made.
+Chat history and project tabs show a status for each chat: a spinner while it is responding, an
+amber dot when the agent is waiting for you, and a green dot when it has finished and you have not
+opened it yet. Select the project and open the conversation to read its latest message. Use the
+stop control in the composer to interrupt a response. Stopping a response does not undo file changes
+already made.
+
+A turn runs on the project's host rather than in the window. If the window loses its connection to
+the host, the turn keeps running and Dream reconnects to it automatically. Quitting Dream stops the
+host that the app started, along with its turns; to keep agents working after you close the app,
+[run the host yourself](/docs/dream-host).
 
 After a reply finishes, use **View file changes from this reply** in its footer to see the files it
 changed and [restore any of them](/docs/checkpoints).
+
+## Queue messages
+
+You do not have to wait for a response to finish before sending the next instruction. Type a
+message while the agent is working and send it. Dream adds it to the chat's queue and runs it when
+the current turn ends. While a turn is running, the composer's button stops the turn when the
+message box is empty and sends the message once you have typed something.
+
+The **Queue** list appears above the message box when a message is waiting or a run needs your
+attention. Each row shows the message, its model, and a status.
+
+| Status | Meaning |
+| --- | --- |
+| Queued | Waiting for the turns ahead of it |
+| Running | The turn the agent is working on now |
+| Waiting | The running turn is waiting for your answer or approval |
+| Interrupted | Stopped before it finished, for example by the stop control or a host restart |
+| Failed | Ended with an error |
+
+Use **Cancel** on a queued message to take it out of the queue. A failed or interrupted run offers
+**Retry** and **Remove**. Read the reply that an interrupted run left behind before you retry it,
+because part of its work may already be done.
+
+**Pause queue** holds the queued messages and lets the current turn finish. **Resume queue** starts
+them again. The stop control is different: it ends the running turn, along with any tasks it
+[delegated](/docs/delegation), and pauses the queue.
+
+A failed or interrupted run also pauses the queue, and its header reads **Queue paused**. Sending a
+new message resumes the queue and dismisses those runs.
+
+Queues are saved on the project's host and survive restarting Dream. After the host restarts, a
+turn that was running is marked as interrupted and the queue stays paused until you resume it. If a
+queued message cannot be sent, its text returns to the message box.
 
 ## Close, archive, or delete?
 

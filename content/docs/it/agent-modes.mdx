@@ -37,6 +37,8 @@ Il provider selezionato determina il comportamento esatto delle autorizzazioni. 
 
 Un agente può chiederti di chiarire un requisito, scegliere un'opzione o approvare un'azione. Leggi la richiesta nel colloquio e rispondi utilizzando i controlli forniti. Un'opzione progetto può indicare che un agente sta aspettando la tua risposta. Apri quel progetto e torna al colloquio per leggere la richiesta.
 
+Puoi rispondere a una richiesta solo finché il suo turno è ancora in esecuzione. Se il turno è stato interrotto prima, ad esempio perché l'host è stato riavviato, Dream segnala che l'approvazione è scaduta. Controlla che cosa ha già fatto il turno interrotto, poi riprovalo dalla [coda](/docs/it/chats#mettere-in-coda-i-messaggi).
+
 Se la richiesta comporta un cambiamento dell’attività, fornisci all’agente le istruzioni aggiornate nella stessa chat. Usa il controllo di arresto per interrompere una risposta quando necessario. L’arresto non annulla modifiche o comandi già completati; controlla poi le [Modifiche](/docs/it/git-workflows) oppure usa il [checkpoint](/docs/it/checkpoints) della risposta per ripristinare i file che ha modificato.
 
 Per compiti paralleli che richiedono file separati, usa [worktrees](/docs/it/worktrees). Impostazioni di permessi non danno a due chat nello stesso cartella check-out indipendenti.

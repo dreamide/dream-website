@@ -5,7 +5,7 @@ description: "Beheben Sie fehlende Modelle und Chats, Probleme mit Terminal und 
 
 Beginnen Sie mit dem Fehler, der in dem betroffenen Chat oder Werkzeug angezeigt wird. Überprüfen Sie vor der Änderung der Einstellungen, welches Projekt und welcher Anbieter ausgewählt ist, insbesondere wenn mehrere Chats offen sind.
 
-Prüfe bei entfernten Projekten den Verbindungsstatus unter **Einstellungen → SSH-Hosts**. Unter [SSH-Verbindungsprobleme](/docs/de/remote-hosts#verbindungsprobleme) findest du Hinweise zu Authentifizierung, Laufzeitumgebung und Entwicklungsbuilds.
+Prüfen Sie bei Remote-Projekten den Status unter **Einstellungen → Verbindungen**. Hilfe zu Authentifizierung, Kopplung und Entwicklungsbuilds finden Sie unter [Verbindungsprobleme](/docs/de/remote-hosts#verbindungsprobleme).
 
 ## Ein Provider-CLI wird nicht erkannt
 
@@ -35,6 +35,12 @@ Diese Einstellungen hängen von den Fähigkeiten des ausgewählten Modells ab. W
 5. Wenn das Projekt geschlossen ist, öffnen Sie es über **Zuletzt geschlossen** auf der Startseite.
 
 Die Schließung einer mehrfach-chat-Spalte archiviert das Gespräch nicht. Leerere Chats ohne Nachrichten sind in der Geschichte nicht aufgelistet. Ein dauerhaft gelöschter Chat kann nicht über Dream wiederhergestellt werden.
+
+Eigenständige Chats finden Sie im Tab **Chats**. Siehe [Chats ohne Projekt](/docs/de/standalone-chats).
+
+## Eine eingereihte Nachricht startet nicht
+
+Prüfen Sie **Warteschlange** über dem Eingabefeld. Bei **Warteschlange pausiert** wählen Sie **Fortsetzen**. Fehlgeschlagene oder unterbrochene Läufe können Sie erneut versuchen, entfernen oder durch eine neue Nachricht ablösen. Siehe [Nachrichten einreihen](/docs/de/chats#nachrichten-einreihen).
 
 ## Ein wiederhergestellter Chat wurde erneut archiviert
 
@@ -66,6 +72,10 @@ Prüfen Sie, ob das Projektverzeichnis noch existiert. Wählen Sie einen verfüg
 
 Stellen Sie sicher, dass die Anwendung läuft und verwenden Sie die genaue URL und Port, die im Terminal angezeigt werden. Prüfen Sie die Terminal-Fehler, dann versuchen Sie **Browser aktualisieren** oder **Neu laden erzwingen**. Vergleichen Sie die URL in Ihrem Systembrowser. Verwenden Sie DevTools für Seitenfehler; reservieren Sie das Löschen von Cookies oder Cache für das entsprechende Authentifizierungs- oder Caching-Problem. Siehe [Browser-Vorschau](/docs/de/browser).
 
+## Gekoppeltes Gerät kann keine Verbindung herstellen
+
+Prüfen Sie, ob der Rechner wach ist und Dream oder `dream-host` läuft. Unter **Einstellungen → Verbindungen** muss **Fernzugriff** den Status **Bereit** zeigen. Beheben Sie Fehler und wählen Sie **Erneut prüfen**. Nach Widerruf oder Ablauf erstellen Sie mit **Gerät koppeln** einen neuen Code. Siehe [Fernzugriff](/docs/de/remote-access).
+
 ## Eine Datei kann nicht gespeichert werden
 
 Prüfen Sie, ob die Datei schreibbar ist, und lesen Sie den Fehler des Editors. Wenn die Datei während der Bearbeitung auf der Festplatte geändert wurde, speichern Sie Ihren Entwurf vor **Von Festplatte neu laden**, bevor Sie die beabsichtigten Änderungen erneut anwenden. Siehe [Dateien und Suche](/docs/de/files#eine-datei-außerhalb-des-editors-geändert-handeln).
@@ -80,6 +90,9 @@ Für Probleme mit PR-Bemerkungen, Bearbeitung oder Zusammenführung siehe [Pull 
 | Keine geplante Änderungen zum Commit | Überprüfen Sie die nicht gestellten Dateien oder stellene die beabsichtigten Dateien über Git ein |
 | Geplante Änderungen außerhalb des aktiven Projekts | Führen Sie sie einzeln durch, bevor Sie die Commit-Aktion von Dream verwenden |
 | Push hat keine Zieladresse | Eine Git-Remote-Konfiguration erstellen und den Zugriff darauf überprüfen |
+| Push abgelehnt | Holen Sie die fehlenden Remote-Commits per Pull und pushen Sie erneut. |
+| Konflikte beim Pull | Der Merge wurde abgebrochen. Lösen Sie die Unterschiede im Terminal mit Git und pullen Sie erneut. |
+| Branch kann nicht gelöscht werden | Aktueller Branch, Basisbranch oder Branch im Hauptcheckout |
 | Die Erstellung eines PR zeigt einen CLI-Fehler | Verifiziere, dass GitHub CLI installiert, authentifiziert und auf das Repository zugreifen kann |
 | Quelle und Basis des PR sind gleich | Wechseln Sie zu einem Feature-Branch, bevor Sie die PR erstellen |
 | Berichte über die Erstellung von PRs zeigen einen abgekoppelten HEAD anzeigen | Geben Sie einen Branch vor der Erstellung des PRs aus |

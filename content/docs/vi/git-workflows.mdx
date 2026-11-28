@@ -5,6 +5,8 @@ description: "Xem lại các thay đổi, làm việc với nhánh và sử dụ
 
 Mở **Git** trong thanh công cụ bên phải cho các tab **Thay đổi**, **Lịch sử** và **Pull request**. Menu **Thao tác Git** dưới phần chat cung cấp các bước tiếp theo cho nhánh hiện tại.
 
+Nút **Thao tác Git** nằm ở bên phải chân trang và được làm nổi bật khi có thay đổi cần commit hoặc commit cần đẩy. **Git** chỉ xuất hiện với các dự án nằm trong kho Git.
+
 ## Trước khi bắt đầu
 
 Đối với các commit, khoa học của bạn cần có danh tính tác giả Git được cấu hình. Đối với việc đẩy, nó cần một remote và thông tin xác thực có thể truy cập vào nó. Việc tạo pull request sử dụng GitHub CLI, điều này yêu cầu phải cài đặt và xác thực cho khoa học đích.
@@ -15,8 +17,10 @@ Bạn có thể tự nhập thông điệp commit và văn bản PR. Để tạo
 
 1. Mở **Git → Thay đổi** để kiểm tra các tệp đã được sửa đổi, thêm và xóa.
 2. Mở rộng tệp để xem xét sự thay đổi của nó.
-3. Chọn **Diff thống nhất** hoặc **Diff chia đôi** ở phần đầu, và bật chế độ cuộn từ trong **Hành động thay đổi** nếu cần thiết.
-4. Sử dụng **Hành động Thay đổi → Làm mới** nếu những thay đổi được thực hiện ngoài Dream chưa được phản ánh.
+3. Chọn **Diff thống nhất** hoặc **Diff chia đôi** ở phần đầu. **Ngắt dòng** được bật theo mặc định và có nút bật/tắt riêng tại đó, bên cạnh **Mở rộng tất cả** và **Thu gọn tất cả**.
+4. Nhấp vào đường dẫn của tệp ở phần đầu diff của nó để mở tệp đó trong **Tệp**.
+
+Danh sách cập nhật khi tệp thay đổi, sau khi lệnh terminal chạy xong và khi bạn quay lại cửa sổ Dream.
 
 Với các đoạn khác nhau rất lớn, Dream có thể hiển thị **Khác biệt quá lớn để hiển thị**. Sử dụng **Vẫn kết xuất** chỉ khi bạn muốn tải view lớn hơn đó, hoặc kiểm tra tệp trong trình soạn thảo hoặc terminal của mình.
 
@@ -42,6 +46,8 @@ Sử dụng hành động **Hoàn nguyên các thay đổi của tệp** của t
 4. Xem lại **Tự động tạo tin nhắn**, được bật mặc định. Để nhập thông điệp riêng, hãy tắt tính năng này và nhập nội dung; việc tắt tính năng này sẽ làm mất thông điệp được tạo ra.
 5. Chọn **Commit**, hoặc **Commit và đẩy** nếu bạn đã sẵn sàng để xuất bản commit đến remote.
 
+Khi bật **Tự động tạo tin nhắn**, Dream soạn sẵn thông điệp commit ở chế độ nền khi lượt tác nhân cuối cùng đang chạy của dự án kết thúc, nên thông điệp thường đã sẵn sàng khi bạn mở bảng điều khiển. Nhấn **Command+Enter** trên macOS hoặc **Ctrl+Enter** trên Windows/Linux để commit, và nhấn thêm **Shift** để commit rồi đẩy.
+
 Chỉ thực hiện commit cho một tập hợp được chọn, sử dụng Git trong terminal hoặc trình biên tập bên ngoài để đánh dấu các tệp đó, và tắt **Bao gồm thay đổi chưa được stage**. Bảng thay đổi không cung cấp các tùy chọn đánh dấu riêng biệt cho từng tệp.
 
 Dream từ chối các commit khi có những thay đổi đã được chuẩn bị nằm ngoài thư mục dự án đang hoạt động. Thực hiện commit riêng biệt trước khi tiếp tục hành động này.
@@ -62,14 +68,24 @@ Dream từ chối các commit khi có những thay đổi đã được chuẩn 
   />
 </Frame>
 
-Dùng **Xuất bản nhánh** cho nhánh chưa có upstream, hoặc **Đẩy** để gửi các commit đang chờ. Các thao tác này ở chân trang thực hiện push ngay lập tức. Trước tiên, hãy kiểm tra nhánh, remote và các commit trong **Lịch sử**; khi có upstream, chân trang hiển thị số commit đi trước và đi sau.
+Trong **Thao tác Git**, dùng **Xuất bản nhánh** cho nhánh chưa có upstream, hoặc **Đẩy** để gửi các commit đang chờ. Cả hai đều mở bản xem trước **Đẩy các thay đổi**, hiển thị nhánh, đích đến và các commit sẽ được gửi. Hãy xem lại, rồi nhấp **Đẩy**. Khi có upstream, các mục menu **Đẩy** và **Pull** cho biết nhánh đang đi trước và đi sau bao nhiêu commit.
 
-Nếu việc đẩy thất bại, hãy kiểm tra lỗi và xác nhận quyền truy cập xa. Một lần ghi lại thành công tại địa phương vẫn được duy trì ngay cả khi việc đẩy tiếp theo thất bại; hãy kiểm tra trạng thái nhánh trước khi lặp lại hành động kết hợp.
+Nếu đẩy thất bại, hãy xem lỗi và xác nhận quyền truy cập remote của bạn. Khi remote có những commit mà bạn chưa có, Dream sẽ nhắc bạn pull rồi đẩy lại. Một commit cục bộ thành công vẫn được giữ nguyên ngay cả khi lần đẩy sau đó thất bại; hãy kiểm tra trạng thái nhánh trước khi lặp lại một thao tác kết hợp.
+
+## Fetch và pull
+
+**Thao tác Git → Fetch** tải các commit mới từ remote về mà không thay đổi tệp của bạn. **Pull** còn đưa các commit của nhánh upstream vào nhánh của bạn.
+
+Sau khi pull, một thông báo cho biết có bao nhiêu commit đã về. Chọn **Xem thay đổi** trong thông báo để mở **Thay đổi đã kéo**, nơi liệt kê các commit đó và những tệp chúng đã thay đổi.
+
+Nếu cả nhánh của bạn và upstream của nó đều có thêm commit, Dream hợp nhất các commit upstream vào nhánh của bạn; nó không rebase. Khi lần hợp nhất đó sẽ gây xung đột, Dream hủy bỏ nó, giữ nguyên tệp của bạn và liệt kê các tệp xung đột. Hãy xử lý khác biệt bằng Git trong terminal, rồi pull lại.
+
+**Mở kho mã** trong cùng menu sẽ mở kho mã từ xa trong trình duyệt của bạn.
 
 ## Tạo pull request
 
 1. Làm việc trên một nhánh tính năng mà tên của nó khác với nhánh cơ sở của PR.
-2. Chọn **Tạo PR** ở phần chân, hoặc **Thao tác Git → Tạo yêu cầu kéo**.
+2. Chọn **Thao tác Git → Tạo yêu cầu kéo**.
 3. Xem lại các nhánh nguồn và nhánh cơ sở cùng với các thay đổi đề xuất.
 4. Nhập tiêu đề và mô tả, hoặc sử dụng **Tự động tạo chi tiết PR** và xem nội dung đã được sinh ra.
 5. Dưới **Các bước tiếp theo**, chọn hành động phù hợp với trạng thái nhánh.
@@ -101,7 +117,7 @@ Mở **Git → Pull request** để xem pull request của nhánh hiện tại. 
 
 ## Chuyển sang hoặc tạo nhánh
 
-Mở thanh chuyển nhánh dưới cuộc trò chuyện, tìm kiếm các nhánh cục bộ và chọn một nhánh để xuất nó. Sử dụng **Tạo và chuyển nhánh mới…** để đặt tên và tạo một nhánh. Làm mới danh sách nếu một nhánh được tạo bên ngoài Dream bị thiếu.
+Mở bộ chuyển nhánh bên dưới cuộc trò chuyện, tìm trong các nhánh cục bộ và chọn một nhánh để checkout. Dùng **Tạo và chuyển nhánh mới…** để đặt tên và tạo nhánh. Danh sách được tải lại mỗi lần bạn mở, nên nó bao gồm cả các nhánh được tạo bên ngoài Dream.
 
 <Frame caption="Dấu chấm than xác định nhánh hiện tại. Tìm kiếm nhánh khác hoặc tạo nhánh mới từ cùng menu đó.">
   <img
@@ -114,6 +130,17 @@ Mở thanh chuyển nhánh dưới cuộc trò chuyện, tìm kiếm các nhánh
 </Frame>
 
 Việc thay đổi nhánh sẽ làm thay đổi các tệp được sử dụng bởi mọi cuộc trò chuyện trong dự án đó. Kiểm tra lại công việc chưa hoàn thành trước khi chuyển nhánh. Với các nhiệm vụ song song có kiểm xuất độc lập, hãy sử dụng [Git worktrees](/docs/vi/worktrees). Khi một worktree được hoàn thành, hãy sử dụng phần cuối của nó để hợp nhất vào nhánh chính, tạo một pull request, hoặc xóa kiểm xuất. Xem [Hoàn thành một worktree](/docs/vi/worktrees#hoàn-thành-một-worktree).
+
+### Xóa nhánh cục bộ
+
+1. Mở bộ chuyển nhánh và di chuột qua nhánh, hoặc di chuyển đến nhánh đó bằng bàn phím.
+2. Nhấp **Xóa nhánh**, biểu tượng thùng rác trên hàng của nhánh.
+3. Đọc phần tóm tắt. Dream cho biết các commit của nhánh đã có trong nhánh cơ sở hay chưa, trạng thái pull request của nhánh và liệu có commit nào chỉ tồn tại trên nhánh này hay không.
+4. Nhấp **Xóa nhánh**. Khi có commit sẽ bị mất, nút này hiển thị **Vẫn xóa**.
+
+Thao tác xóa chỉ xóa nhánh cục bộ; nhánh từ xa của nó không thay đổi. Bạn không thể xóa nhánh hiện tại, nhánh cơ sở hoặc nhánh đang mở trong bản checkout chính.
+
+Nếu nhánh đang được checkout trong một [worktree](/docs/vi/worktrees), hộp thoại sẽ đưa ra **Xóa worktree và nhánh** thay thế. Thao tác đó cũng xóa thư mục của worktree và các cuộc trò chuyện của nó.
 
 ## Duyệt lịch sử ghi chú commit
 

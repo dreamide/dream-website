@@ -1,0 +1,42 @@
+---
+title: Delegating tasks to other agents
+description: Let an agent hand part of a task to another provider and check the result later.
+---
+
+An agent can hand part of its work to another agent provider that you have set up. For example, a
+Claude Code chat can ask Codex to review a change while it writes the tests. There is nothing to
+turn on; ask for it in your message.
+
+## Ask an agent to delegate
+
+Name the provider and describe the piece of work it should do:
+
+> Ask Codex to review the changes on this branch for bugs while you write the tests. Report its
+> findings when it finishes.
+
+The agent starts the task, carries on with its own work, and checks the result in a later turn. A
+delegated task runs in the same project and shares its files. It does not receive the parent
+conversation, so the agent writes the task its own instructions.
+
+Each task is a new chat in the same project. Its title begins with `Task:` followed by the start of
+those instructions. Open that chat to follow the other agent's work.
+
+## Which providers can delegate
+
+Claude Code, Codex, OpenCode, and Grok Build chats can delegate. Cursor and Antigravity chats
+cannot. Any of the six providers can receive a task, as long as its CLI is installed and signed in.
+See [Connect a provider](/docs/providers).
+
+## Permissions and limits
+
+- A delegated task starts with the parent chat's [permissions](/docs/agent-modes) and can never
+  have broader ones.
+- Stopping the parent's turn also stops the tasks it delegated.
+- A chat can have up to 8 delegated tasks active at once. A delegated task can delegate in turn, up
+  to 4 levels deep.
+
+<Warning>
+  Delegated tasks edit the same project folder as the parent chat. Ask for a review or for
+  research, or tell each agent which files to change. Use a [Git worktree](/docs/worktrees) when a
+  task needs an independent checkout.
+</Warning>

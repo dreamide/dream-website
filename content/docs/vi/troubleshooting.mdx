@@ -5,7 +5,7 @@ description: "Giải quyết các mô hình và cuộc trò chuyện bị thiế
 
 Bắt đầu với lỗi được hiển thị trong cuộc trò chuyện hoặc công cụ bị ảnh hưởng. Kiểm tra dự án và nhà cung cấp đang được chọn trước khi thay đổi cài đặt, đặc biệt khi có nhiều cuộc trò chuyện đang mở.
 
-Với dự án từ xa, kiểm tra trạng thái kết nối trong **Cài đặt → Máy chủ SSH**. Xem [Sự cố kết nối SSH](/docs/vi/remote-hosts#sự-cố-kết-nối) để biết về xác thực, môi trường chạy và thiết lập bản dựng phát triển.
+Với dự án từ xa, hãy kiểm tra trạng thái kết nối của máy chủ trong **Cài đặt → Kết nối**. Xem [sự cố kết nối](/docs/vi/remote-hosts#sự-cố-kết-nối) để biết về xác thực, ghép nối và thiết lập bản dựng phát triển.
 
 ## Không phát hiện được CLI nhà cung cấp
 
@@ -35,6 +35,12 @@ Các tùy chọn này phụ thuộc vào khả năng của mô hình đã chọn
 5. Nếu dự án của nó đã được đóng, hãy mở lại nó qua **Đã đóng gần đây** trên màn hình bắt đầu.
 
 Việc đóng một cột nhiều cuộc trò chuyện không lưu trữ cuộc trò chuyện. Các cuộc trò chuyện trống không có tin nhắn không được liệt kê trong lịch sử. Một cuộc trò chuyện đã được xóa vĩnh viễn không thể được khôi phục qua Dream.
+
+Cuộc trò chuyện được bắt đầu mà không có dự án sẽ nằm trong thẻ **Trò chuyện** chứ không nằm trong lịch sử của dự án nào. Xem [Cuộc trò chuyện không có dự án](/docs/vi/standalone-chats).
+
+## Tin nhắn đang xếp hàng không chạy
+
+Kiểm tra danh sách **Hàng đợi** phía trên ô nhập tin nhắn. Nếu tiêu đề của nó hiển thị **Hàng đợi đã tạm dừng**, hãy nhấp **Tiếp tục hàng đợi**. Lượt chạy thất bại hoặc bị gián đoạn sẽ tạm dừng hàng đợi cho đến khi bạn thử lại, xóa nó hoặc gửi một tin nhắn mới. Xem [Xếp tin nhắn vào hàng đợi](/docs/vi/chats#xếp-tin-nhắn-vào-hàng-đợi).
 
 ## Một cuộc trò chuyện đã được khôi phục lại được lưu trữ lại
 
@@ -66,6 +72,10 @@ Kiểm tra xem thư mục dự án vẫn tồn tại không. Chọn một shell 
 
 Xác nhận rằng ứng dụng đang chạy và sử dụng URL và cổng được hiển thị chính xác trong terminal. Kiểm tra lỗi terminal, sau đó thử **Làm mới trình duyệt** hoặc **Buộc tải lại**. So sánh URL trong trình duyệt hệ thống của bạn. Sử dụng DevTools để phát hiện lỗi trang; chỉ xóa cookie hoặc cache khi có vấn đề liên quan đến xác thực hoặc lưu trữ cache. Xem [Xem trước trong trình duyệt](/docs/vi/browser).
 
+## Thiết bị đã ghép nối không kết nối được
+
+Xác nhận rằng Dream hoặc `dream-host` đang chạy trên máy tính làm máy chủ và máy tính đó không ở chế độ ngủ. Trong **Cài đặt → Kết nối** trên máy đó, hãy kiểm tra xem **Truy cập từ xa** có hiển thị **Sẵn sàng** hay không, và dùng **Kiểm tra lại** sau khi khắc phục những gì nó báo. Nếu thiết bị đã bị thu hồi hoặc mã ghép nối đã hết hạn, hãy tạo mã mới bằng **Ghép nối thiết bị**. Xem [Truy cập từ xa](/docs/vi/remote-access).
+
 ## Một tệp không thể được lưu trữ
 
 Kiểm tra xem tệp có thể ghi được không và đọc lỗi của trình soạn thảo. Nếu tệp đã thay đổi trên đĩa trong khi bạn đang chỉnh sửa, hãy lưu bản nháp của bạn trước khi **Tải lại từ đĩa**, sau đó áp dụng lại các thay đổi mong muốn. Xem [Tệp và tìm kiếm](/docs/vi/files#xử-lý-tệp-đã-được-thay-đổi-bên-ngoài-trình-soạn-thảo).
@@ -80,6 +90,9 @@ Kiểm tra xem tệp có thể ghi được không và đọc lỗi của trình
 | Không có thay đổi được chuẩn bị để ghi lại | Kiểm tra gồm các tập tin chưa được đánh dấu, hoặc đánh dấu các tập tin mong muốn thông qua Git |
 | Các thay đổi được lưu trong trạng thái ngoài dự án đang hoạt động | Tiến hành commit riêng biệt trước khi sử dụng hành động commit của Dream |
 | Push không có nơi đến | Cấu hình một remote Git và xác minh quyền truy cập vào nó |
+| Lệnh đẩy bị từ chối | Remote có những commit mà bạn chưa có; hãy pull rồi đẩy lại |
+| Pull báo xung đột | Lần hợp nhất đã bị hủy và không có gì thay đổi; hãy xử lý khác biệt bằng Git trong terminal, rồi pull lại |
+| Không xóa được nhánh | Đó là nhánh hiện tại, nhánh cơ sở hoặc nhánh đang mở trong bản checkout chính |
 | Báo cáo tạo PR ghi lỗi CLI | Xác minh rằng GitHub CLI đã được cài đặt, đã được xác thực và có thể truy cập vào kho lưu trữ |
 | Nguồn và cơ sở của PR là như nhau | Chuyển sang một nhánh tính năng trước khi tạo PR |
 | Báo cáo tạo PR có HEAD tách rời | Kiểm tra nhánh trước khi tạo PR |

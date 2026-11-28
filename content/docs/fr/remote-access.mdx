@@ -1,0 +1,70 @@
+---
+title: "Accès à distance"
+description: "Utilisez les projets de cet ordinateur depuis un téléphone ou un autre ordinateur en associant des appareils via Tailscale ou Cloudflare Tunnel."
+---
+
+L'accès à distance permet à d'autres appareils d'utiliser les projets de cet ordinateur. Un appareil associé ouvre Dream dans son navigateur, ou se connecte depuis une autre application de bureau Dream, tandis que les agents, les fichiers, les terminaux et les commandes Git continuent de s'exécuter ici.
+
+L'accès à distance reste désactivé tant que vous ne l'activez pas, et chaque appareil doit être associé avant de pouvoir se connecter. Dream n'utilise ni compte ni service de relais : vous fournissez la route réseau, et l'association contrôle qui peut entrer.
+
+## Choisir comment les appareils atteignent cet ordinateur
+
+| Option | Fonctionnement | Ce qu'il vous faut |
+| --- | --- | --- |
+| Tailscale | Sert Dream en HTTPS au sein de votre tailnet | Tailscale sur cet ordinateur et sur chaque appareil, avec MagicDNS et les certificats HTTPS activés pour le tailnet |
+| Cloudflare Tunnel | Sert Dream sur un nom d'hôte public de votre propre domaine | Un tunnel persistant dans votre compte Cloudflare et un connecteur `cloudflared` que vous exécutez |
+
+Vous pouvez aussi placer votre propre proxy inverse devant l'hôte. Consultez [Exécuter l'hôte](/docs/fr/dream-host#accès-à-distance-depuis-la-ligne-de-commande).
+
+## Activer l'accès à distance
+
+1. Ouvrez **Paramètres → Connexions** et repérez **Accès à distance**.
+2. Cliquez sur **Configurer**.
+3. Sous **Atteindre cet ordinateur via**, choisissez **Tailscale** ou **Cloudflare Tunnel**.
+4. Pour Tailscale, conservez ou modifiez le **Port HTTPS**. Pour Cloudflare Tunnel, saisissez l'**Adresse publique**, par exemple `https://dream.example.com`.
+5. Laissez **Port local** vide sauf si vous avez besoin d'un port précis, puis cliquez sur **Activer**.
+
+L'état affiché à côté de **Autoriser les appareils associés** indique **Prêt** dès que Dream peut atteindre cet ordinateur via cette adresse. S'il indique **Pas prêt**, suivez le message affiché, corrigez le problème et cliquez sur **Vérifier à nouveau**. Utilisez **Modifier** pour changer la configuration ultérieurement. Désactivez **Autoriser les appareils associés** pour cesser de servir les appareils sans les dissocier.
+
+### Configurer un tunnel Cloudflare
+
+Dream n'installe ni n'exécute `cloudflared` et n'a jamais besoin du jeton de votre tunnel. Il lui faut uniquement l'adresse publique et le port local vers lequel le nom d'hôte est acheminé.
+
+1. Dans le tableau de bord Cloudflare, créez un tunnel et exécutez sur cet ordinateur la commande d'installation qu'il affiche.
+2. Ajoutez une route pour un nom d'hôte de votre domaine. Définissez son service sur `HTTP` et `127.0.0.1:5410`, ou sur le **Port local** affiché dans Dream.
+3. Assurez-vous que le nom d'hôte accepte les requêtes API et WebSocket directes. Ne placez devant lui ni connexion Cloudflare Access ni vérification du navigateur, et ne mettez `/api/*` ni en cache ni en tampon.
+
+Les Quick Tunnels ne sont pas pris en charge. Leurs adresses changent et ils ne peuvent pas acheminer les flux de chat.
+
+## Associer un appareil
+
+1. Lorsque l'accès à distance est prêt, cliquez sur **Associer un appareil**.
+2. Choisissez le niveau d'**Accès** de l'appareil.
+3. Cliquez sur **Créer une association**. Dream affiche un **Code d’association** et l'**Adresse de l’hôte**.
+4. Sur l'autre appareil, ouvrez l'adresse de l'hôte dans un navigateur, saisissez le code et un **Nom de l’appareil**, puis cliquez sur **Associer**.
+
+Pour connecter une autre application de bureau Dream plutôt qu'un navigateur, [ajoutez-y cet ordinateur comme hôte](/docs/fr/remote-hosts#associer-un-hôte-via-https) avec la même adresse et le même code.
+
+Le code ne fonctionne qu'une fois et expire au bout de 10 minutes. Quiconque le saisit obtient l'accès que vous avez choisi ; ne le communiquez donc qu'à l'appareil que vous souhaitez associer.
+
+| Accès | Ce que l'appareil peut faire |
+| --- | --- |
+| Consultation seule | Lire les projets, les chats et les terminaux |
+| Consulter et travailler | Exécuter aussi des agents, des terminaux et Git en votre nom |
+| Complet | Associer et supprimer aussi des appareils |
+
+## Utiliser Dream depuis un appareil associé
+
+Un navigateur associé affiche les projets de cet ordinateur avec leurs chats, leurs fichiers, leurs terminaux et leurs panneaux Git. Quelques éléments restent réservés à l'application de bureau : l'outil **Navigateur** intégré, **Paramètres → Connexions**, l'ouverture de dossiers sur d'autres hôtes et **Ouvrir dans** pour les éditeurs externes.
+
+Si l'appareil perd sa connexion, un bandeau signale qu'il se reconnecte, ou qu'il ne peut pas joindre l'hôte et affiche ce qu'il a enregistré. Dans les deux cas, le travail se poursuit sur l'hôte. Pour dissocier l'appareil depuis celui-ci, ouvrez-y **Paramètres** et choisissez **Se déconnecter**.
+
+## Gérer les appareils associés
+
+**Appareils associés** liste chaque appareil avec son niveau d'accès et la date de sa dernière utilisation. Cliquez sur **Révoquer** pour en supprimer un, ou sur **Tout révoquer** pour supprimer tous les appareils. Un appareil révoqué perd immédiatement l'accès et ses pages ouvertes cessent de fonctionner ; le travail sur cet ordinateur se poursuit.
+
+## Garder cet ordinateur disponible
+
+Les appareils ne peuvent se connecter que lorsque l'hôte de Dream est en cours d'exécution et que cet ordinateur n'est pas en veille. L'hôte démarré par l'application de bureau s'arrête lorsque vous quittez Dream. Pour en garder un actif en arrière-plan, ou pour partager une machine sans session de bureau, consultez [Exécuter l'hôte](/docs/fr/dream-host).
+
+Si les paramètres signalent que l'hôte de cet ordinateur exécute une version différente de celle de l'application, mettez à jour le plus ancien des deux et redémarrez l'hôte.

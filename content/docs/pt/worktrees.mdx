@@ -88,7 +88,7 @@ Mesclar, criar um pedido de pull e remover uma árvore de trabalho são ações 
 
 Para publicar para revisão, use **Ações do Git → Criar solicitação pull** e siga [Fluxos de trabalho do Git](/docs/pt/git-workflows#criar-um-pull-request). Criar uma solicitação de pull mantém a árvore de trabalho.
 
-Use **Ações do Git → Remover árvore de trabalho** para remover o checkout mantendo sua branch. Se tiver alterações não commitadas, commitelas primeiro ou selecione explicitamente **Descartar alterações sem commit**.
+Use **Ações do Git → Remover árvore de trabalho** para remover o checkout. A branch é mantida, a menos que você selecione a opção de também excluir a branch, que mostra se os commits da branch já foram mesclados antes de você confirmar. Se a árvore de trabalho tiver alterações sem commit, faça o commit delas primeiro ou selecione explicitamente **Descartar alterações sem commit**.
 
 <Warning>
   Remover uma árvore de trabalho exclui seu diretório e fecha seu projeto. Os chats do projeto da árvore de trabalho são descartados com ele e não aparecem no Histórico de chats nem em Fechados recentemente. Se você quiser manter uma conversa, [divida-a para o workspace pai](/docs/pt/branching-chats) antes de finalizá-la.
@@ -117,6 +117,8 @@ Você também pode remover uma árvore de trabalho sem o diálogo de confirmaç�
 4. Use sua ação de remover e revise a confirmação.
 5. Confirme **Remover árvore de trabalho** quando já não precisar desse checkout.
 
-A remoção exclui o diretório da árvore de trabalho do disco. O Git impede a remoção quando ele contém alterações não commitadas. Retorne para esse projeto e revise as alterações antes de tentar novamente.
+A remoção exclui do disco o diretório da árvore de trabalho e os chats dela. Quando a árvore de trabalho tem alterações sem commit, **Remover árvore de trabalho** fica indisponível até você selecionar **Descartar alterações sem commit**. Se não tiver certeza, volte a esse projeto e revise as alterações antes.
+
+Você também pode remover uma árvore de trabalho ao [excluir a branch dela](/docs/pt/git-workflows#excluir-uma-branch-local) no seletor de branches.
 
 Fechar uma aba de projeto apenas a remove dela do workspace aberto; remover uma árvore de trabalho apaga seu checkout. Para etapas de commit e solicitação de alteração, veja [Fluxos de trabalho do Git](/docs/pt/git-workflows).

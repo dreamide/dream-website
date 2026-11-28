@@ -1,0 +1,39 @@
+---
+title: "Chats sem projeto"
+description: "Inicie uma conversa sem abrir uma pasta e transforme-a em projeto quando ela crescer."
+---
+
+Um chat avulso é uma conversa que não pertence a um projeto que você abriu. Use um para uma pergunta, um script rápido ou uma ideia que você ainda não decidiu onde colocar. O Dream dá a cada chat avulso uma pasta própria, para que o agente ainda tenha onde ler e gravar arquivos.
+
+## Iniciar um chat sem projeto
+
+- Na tela inicial, escolha **Iniciar um chat**.
+- Pressione **Command+Shift+N** no macOS ou **Ctrl+Shift+N** no Windows/Linux. A ação se chama **Novo chat sem projeto** em [Atalhos de teclado](/docs/pt/settings#atalhos-do-teclado).
+- Com a aba **Chats** selecionada, clique em **Novo chat** na barra de ferramentas esquerda.
+
+O Dream abre o chat em uma aba **Chats** ao lado das abas dos seus projetos. A aba é exibida enquanto um chat avulso está aberto. Fechar a aba não exclui seus chats.
+
+Para iniciar o chat em um [host remoto](/docs/pt/remote-hosts), use **Novo chat em…** no topo da lista de chats e escolha o host. A opção aparece quando há um host remoto conectado.
+
+## Encontrar um chat avulso
+
+Selecione a aba **Chats** e abra **Histórico de bate-papo** na barra de ferramentas esquerda. Nessa aba, o painel tem o título **Chats**. Ele lista os chats avulsos deste computador e de todos os hosts conectados, com o nome do host ao lado dos chats que estão em outro lugar.
+
+A [pesquisa de chats](/docs/pt/chats#voltar-para-uma-conversa) também encontra chats avulsos. Os resultados deles são identificados como **Chats** no lugar do nome de um projeto.
+
+## O que um chat avulso pode usar
+
+A pasta de cada chat é criada em `~/.dream/chats` no host em que você o iniciou. **Arquivos**, **Navegador**, **Terminal** e **Stash** funcionam nessa pasta, e os [checkpoints](/docs/pt/checkpoints) registram o que cada resposta alterou. **Git** fica oculto porque a pasta não é um repositório.
+
+Apenas um chat avulso fica aberto por vez. Com o [multi-chat](/docs/pt/multiple-chats) ativado, **Novo chat** adiciona uma conversa ao lado da que está aberta, e as duas compartilham a mesma pasta.
+
+O Dream remove uma pasta de chat que nenhum chat usa mais quando ela está vazia ou contém apenas `node_modules`, após um período de tolerância de uma hora.
+
+## Transformar um chat em projeto
+
+Quando um chat avulso virar trabalho de verdade, mantenha-o como projeto:
+
+1. Selecione a aba **Chats** e abra **Histórico de bate-papo**.
+2. Passe o ponteiro sobre o chat e clique em **Transformar em projeto**. A ação aparece quando o chat já tem uma mensagem.
+
+O Dream converte o chat no próprio local. A pasta dele se torna um projeto comum com o nome do chat, e o projeto abre em uma aba própria com a conversa dentro.

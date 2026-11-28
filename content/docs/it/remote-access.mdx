@@ -1,0 +1,70 @@
+---
+title: "Accesso remoto"
+description: "Usa i progetti di questo computer da un telefono o da un altro computer associando i dispositivi tramite Tailscale o Cloudflare Tunnel."
+---
+
+L'accesso remoto permette ad altri dispositivi di usare i progetti presenti su questo computer. Un dispositivo associato apre Dream nel proprio browser, oppure si connette da un'altra app desktop Dream, mentre agenti, file, terminali e comandi Git continuano a essere eseguiti qui.
+
+L'accesso remoto resta disattivato finché non lo attivi, e ogni dispositivo deve essere associato prima di potersi connettere. Dream non usa un account né un servizio di relay: sei tu a fornire il percorso di rete, e l'associazione stabilisce chi può entrare.
+
+## Scegliere come i dispositivi raggiungono questo computer
+
+| Opzione | Come funziona | Che cosa ti serve |
+| --- | --- | --- |
+| Tailscale | Serve Dream tramite HTTPS all'interno della tua tailnet | Tailscale su questo computer e su ogni dispositivo, con MagicDNS e i certificati HTTPS attivati per la tailnet |
+| Cloudflare Tunnel | Serve Dream su un nome host pubblico del tuo dominio | Un tunnel persistente nel tuo account Cloudflare e un connettore `cloudflared` eseguito da te |
+
+Puoi anche mettere un tuo reverse proxy davanti all'host. Consulta [Esecuzione dell'host](/docs/it/dream-host#accesso-remoto-dalla-riga-di-comando).
+
+## Attivare l'accesso remoto
+
+1. Apri **Impostazioni → Connessioni** e trova **Accesso remoto**.
+2. Fai clic su **Configura**.
+3. In **Raggiungi questo computer tramite**, scegli **Tailscale** o **Cloudflare Tunnel**.
+4. Per Tailscale, mantieni o modifica la **Porta HTTPS**. Per Cloudflare Tunnel, inserisci l'**Indirizzo pubblico**, ad esempio `https://dream.example.com`.
+5. Lascia vuoto **Porta locale** a meno che non ti serva una porta specifica, poi fai clic su **Attiva**.
+
+Lo stato accanto a **Consenti i dispositivi associati** indica **Pronto** quando Dream riesce a raggiungere questo computer tramite quell'indirizzo. Se indica **Non pronto**, segui il messaggio mostrato, correggi il problema e fai clic su **Verifica di nuovo**. Usa **Modifica** per cambiare la configurazione in seguito. Disattiva **Consenti i dispositivi associati** per smettere di servire i dispositivi senza annullarne l'associazione.
+
+### Configurare un tunnel Cloudflare
+
+Dream non installa né esegue `cloudflared` e non ha mai bisogno del token del tuo tunnel. Gli servono solo l'indirizzo pubblico e la porta locale verso cui è instradato il nome host.
+
+1. Nella dashboard di Cloudflare, crea un tunnel ed esegui su questo computer il comando di installazione che viene mostrato.
+2. Aggiungi una route per un nome host del tuo dominio. Imposta il suo servizio su `HTTP` e `127.0.0.1:5410`, oppure sulla **Porta locale** mostrata in Dream.
+3. Assicurati che il nome host accetti richieste API e WebSocket dirette. Non anteporre un accesso Cloudflare Access o una verifica del browser, e non applicare cache o buffering a `/api/*`.
+
+I Quick Tunnels non sono supportati. I loro indirizzi cambiano e non possono trasportare i flussi delle chat.
+
+## Associa un dispositivo
+
+1. Quando l'accesso remoto è pronto, fai clic su **Associa un dispositivo**.
+2. Scegli il livello di **Accesso** per il dispositivo.
+3. Fai clic su **Crea associazione**. Dream mostra un **Codice di associazione** e l'**Indirizzo dell’host**.
+4. Sull'altro dispositivo, apri l'indirizzo dell'host in un browser, inserisci il codice e un **Nome del dispositivo**, poi fai clic su **Associa**.
+
+Per connettere un'altra app desktop Dream anziché un browser, [aggiungi lì questo computer come host](/docs/it/remote-hosts#associarsi-a-un-host-tramite-https) con lo stesso indirizzo e lo stesso codice.
+
+Il codice funziona una sola volta e scade dopo 10 minuti. Chiunque lo inserisca ottiene l'accesso che hai scelto, quindi forniscilo solo al dispositivo che intendi associare.
+
+| Accesso | Che cosa può fare il dispositivo |
+| --- | --- |
+| Solo visualizzazione | Leggere progetti, chat e terminali |
+| Visualizza e lavora | Anche eseguire agenti, terminali e Git a tuo nome |
+| Completo | Anche associare e rimuovere dispositivi |
+
+## Usare Dream da un dispositivo associato
+
+Un browser associato mostra i progetti di questo computer con le relative chat, i file, i terminali e i pannelli Git. Alcune funzioni restano nell'app desktop: lo strumento **Browser** integrato, **Impostazioni → Connessioni**, l'apertura di cartelle su altri host e **Apri in** per gli editor esterni.
+
+Se il dispositivo perde la connessione, un banner segnala che si sta riconnettendo, oppure che non riesce a raggiungere l'host e sta mostrando ciò che ha salvato. In entrambi i casi il lavoro sull'host continua. Per annullare l'associazione dal dispositivo stesso, apri lì **Impostazioni** e scegli **Esci**.
+
+## Gestire i dispositivi associati
+
+**Dispositivi associati** elenca ogni dispositivo con il suo livello di accesso e il momento dell'ultimo utilizzo. Fai clic su **Revoca** per rimuoverne uno, oppure su **Revoca tutti** per rimuovere tutti i dispositivi. Un dispositivo revocato perde subito l'accesso e le sue pagine aperte smettono di funzionare; il lavoro su questo computer continua.
+
+## Mantenere disponibile questo computer
+
+I dispositivi possono connettersi solo mentre l'host di Dream è in esecuzione e questo computer non è in sospensione. L'host avviato dall'app desktop si arresta quando esci da Dream. Per mantenerne uno in esecuzione in background, o per condividere una macchina priva di sessione desktop, consulta [Esecuzione dell'host](/docs/it/dream-host).
+
+Se le Impostazioni segnalano che l'host di questo computer esegue una versione diversa da quella dell'app, aggiorna il meno recente dei due e riavvia l'host.

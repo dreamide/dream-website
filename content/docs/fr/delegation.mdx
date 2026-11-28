@@ -1,0 +1,30 @@
+---
+title: "Déléguer des tâches à d'autres agents"
+description: "Laissez un agent confier une partie d'une tâche à un autre fournisseur et vérifier le résultat plus tard."
+---
+
+Un agent peut confier une partie de son travail à un autre fournisseur d'agents que vous avez configuré. Par exemple, un chat Claude Code peut demander à Codex de relire une modification pendant qu'il écrit les tests. Il n'y a rien à activer ; demandez-le dans votre message.
+
+## Demander à un agent de déléguer
+
+Nommez le fournisseur et décrivez la partie du travail qu'il doit accomplir :
+
+> Demande à Codex de relire les modifications de cette branche pour y chercher des bugs pendant que tu écris les tests. Rapporte ses conclusions quand il a terminé.
+
+L'agent démarre la tâche, poursuit son propre travail et vérifie le résultat lors d'un tour ultérieur. Une tâche déléguée s'exécute dans le même projet et partage ses fichiers. Elle ne reçoit pas la conversation parente ; l'agent rédige donc des instructions propres à la tâche.
+
+Chaque tâche est un nouveau chat dans le même projet. Son titre commence par `Task:` suivi du début de ces instructions. Ouvrez ce chat pour suivre le travail de l'autre agent.
+
+## Fournisseurs capables de déléguer
+
+Les chats Claude Code, Codex, OpenCode et Grok Build peuvent déléguer. Les chats Cursor et Antigravity ne le peuvent pas. Chacun des six fournisseurs peut recevoir une tâche, à condition que son CLI soit installé et connecté. Consultez [Connecter un fournisseur](/docs/fr/providers).
+
+## Autorisations et limites
+
+- Une tâche déléguée démarre avec les [autorisations](/docs/fr/agent-modes) du chat parent et ne peut jamais en avoir de plus étendues.
+- Arrêter le tour du parent arrête aussi les tâches qu'il a déléguées.
+- Un chat peut avoir jusqu'à 8 tâches déléguées actives simultanément. Une tâche déléguée peut déléguer à son tour, jusqu'à 4 niveaux de profondeur.
+
+<Warning>
+  Les tâches déléguées modifient le même dossier de projet que le chat parent. Demandez une revue ou une recherche, ou indiquez à chaque agent les fichiers à modifier. Utilisez un [arbre de travail Git](/docs/fr/worktrees) lorsqu'une tâche nécessite une copie de travail indépendante.
+</Warning>

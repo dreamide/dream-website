@@ -13,8 +13,12 @@ tree to inspect it alongside your chat. File tabs let you move between several o
 3. Select a result to open it.
 4. Clear the search to return to browsing the tree.
 
-Use **Refresh files** in the file actions when changes made outside Dream are not reflected in the
-tree. Searching for a file locates its path; use **Find in files** to search project contents.
+The tree updates as files change, including after terminal commands finish and when you return to
+the Dream window. Searching for a file locates its path; use **Find in files** to search project
+contents.
+
+In a Git repository, the tree marks files with uncommitted changes, such as modified and new files,
+and the folders that contain them.
 
 <Frame caption="Search or browse the file tree, then open a file beside your chat.">
   <img
@@ -74,8 +78,8 @@ Click **Save** in the editor toolbar, or press **Command+S** on macOS or **Ctrl+
 while the editor is focused. Save each edited file before asking an agent or terminal command to
 use the new contents; those tools read files on disk.
 
-Switching file tabs lets you keep drafts while inspecting other files. Use **Discard changes** to
-abandon a local draft. This is separate from reverting changes through Git.
+Switching file tabs lets you keep drafts while inspecting other files. To abandon a draft, close its
+tab and choose **Don't Save**. This is separate from reverting changes through Git.
 
 Double-click a file tab to pin it so opening another preview does not replace it.
 
@@ -101,8 +105,12 @@ that newer version.
 
 ## Adjust the view
 
-Use **Enable word wrap** for long lines. Resize the file tree and editor panes to give the content
-more room. Use available **Open in** actions to continue in an external editor.
+**Word wrap** is on by default. Use its toggle in the panel header to turn it off for long lines you
+would rather scroll. Resize the file tree and editor panes to give the content more room.
+
+For a local project, click the path in the panel header to open the folder in your file manager. To
+continue in an external editor, use the project's
+[Open in](/docs/workspace#rename-or-open-a-project-externally) menu.
 
 After saving, open [Changes](/docs/git-workflows) to review the Git diff. To ask an agent about a
 file, [reference it with @](/docs/providing-context) in the chat composer.

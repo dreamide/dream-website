@@ -12,7 +12,9 @@ Haga clic en **Archivos** en la barra lateral derecha para navegar por el direct
 3. Selecciona un resultado para abrirlo.
 4. Borrar la búsqueda para volver a navegar por el árbol.
 
-Usa **Actualizar archivos** en las acciones de archivo cuando los cambios realizados fuera de Dream no se reflejan en el árbol. Buscar un archivo localiza su ruta; utiliza **Buscar en archivos** para buscar el contenido del proyecto.
+El árbol se actualiza a medida que cambian los archivos, también cuando terminan los comandos del terminal y cuando vuelves a la ventana de Dream. Buscar un archivo localiza su ruta; usa **Buscar en archivos** para buscar en el contenido del proyecto.
+
+En un repositorio de Git, el árbol marca los archivos con cambios sin confirmar, como los modificados y los nuevos, y las carpetas que los contienen.
 
 <Frame caption="Busca o navega por el árbol de archivos, luego abre un archivo junto a tu chat.">
   <img
@@ -65,7 +67,7 @@ Edite un archivo de texto escribible en el editor de código. Los cambios no gua
 
 Haga clic en **Guardar** en la barra de herramientas del editor, o presione **Command+S** en macOS o **Ctrl+S** en Windows/Linux mientras el editor esté enfocado. Guarde cada archivo editado antes de pedirle a un agente o a un comando terminal que use el nuevo contenido; esas herramientas leen los archivos en el disco.
 
-Cambiar entre pestañas de archivo te permite mantener bocetos mientras inspeccionas otros archivos. Utiliza **Descartar cambios** para abandonar un boceto local. Esto es distinto de revertir cambios a través de Git.
+Cambiar de pestaña de archivo te permite conservar los borradores mientras revisas otros archivos. Para descartar un borrador, cierra su pestaña y elige **No guardar**. Esto es independiente de revertir cambios mediante Git.
 
 Haz doble clic en una pestaña de archivo para fijarla de modo que al abrir otro previsualización no la reemplace.
 
@@ -86,6 +88,8 @@ Un agente, un comando terminal o un editor externo puede modificar el mismo arch
 
 ## Ajustar la vista
 
-Use **Activar ajuste de línea** para líneas largas. Ajuste el tamaño del árbol de archivos y de los paneles de editor para dar más espacio al contenido. Use las acciones disponibles **Abrir en** para continuar en un editor externo.
+**Ajuste de línea** está activado de forma predeterminada. Usa su interruptor en el encabezado del panel para desactivarlo en las líneas largas por las que prefieras desplazarte. Cambia el tamaño del árbol de archivos y de los paneles del editor para dar más espacio al contenido.
+
+En un proyecto local, haz clic en la ruta del encabezado del panel para abrir la carpeta en tu gestor de archivos. Para continuar en un editor externo, usa el menú [Abrir en](/docs/es/workspace#renombrar-o-abrir-un-proyecto-externamente) del proyecto.
 
 Después de guardar, abre [Cambios](/docs/es/git-workflows) para revisar el diff de Git. Para pedirle a un agente sobre un archivo, [referencialo con @](/docs/es/providing-context) en el compositor de chat.

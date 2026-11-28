@@ -45,7 +45,7 @@ The browser actions include:
 | Zoom in / Zoom out / Reset zoom | Adjust the preview's display scale |
 | Open in system browser | View the current URL in your regular browser |
 
-Use **Expand browser** when you need more room and **Collapse browser** to return to the smaller
+Use **Expand** in the panel header when you need more room and **Collapse** to return to the smaller
 view. To give an agent a screenshot of the whole page, use the chat's
 [attachment control](/docs/providing-context).
 
@@ -64,7 +64,12 @@ the element, so the agent can locate it in the code. See
 ## Ask an agent to use the browser
 
 Claude Code, Codex, OpenCode, and Grok Build chats receive tools for Dream's browser automatically.
-They work with the same project browser tabs you see. Cursor chats do not receive these tools.
+Cursor and Antigravity chats do not receive these tools.
+
+An agent works in a browser tab of its own in the background, so you can keep using another tab,
+panel, or project while it runs. The browser toolbar shows **Agent active** while an agent is using
+the browser. To have Dream bring the agent's tab to the front as it works, turn on
+**Follow agent in browser** under **Settings → General → Chat messages**. It is off by default.
 
 Give the agent the page URL and a concrete task, for example:
 
@@ -78,6 +83,16 @@ files from the project to upload controls. File uploads must use paths inside th
 Start the application before asking the agent to inspect its local URL. Browser actions follow the
 chat's [permissions](/docs/agent-modes); respond in the chat if approval is requested. These tools
 are built in and do not require a manual [MCP server definition](/docs/mcp-servers).
+
+## Use Claude in Chrome
+
+Claude chats can also work in your own Chrome through the Claude in Chrome extension, separately
+from Dream's browser. Install the extension, run `/chrome` in Claude Code, and choose
+**Enabled by default**. Dream then starts Claude turns with Chrome access; there is no separate
+setting for it in Dream.
+
+Use Dream's browser to preview and test pages inside the workspace. Use Chrome when the task needs
+a site you are already signed in to there.
 
 ## Reload and clear site data
 
@@ -93,3 +108,6 @@ authentication behavior.
 Check that the application is still running, confirm the full URL and port in its terminal output,
 and inspect any server error there. Try the same address in your system browser to narrow down
 whether the issue belongs to the application or the embedded preview.
+
+For a project on a [remote host](/docs/remote-hosts#routes), previewing a URL that the host serves
+locally needs an SSH route to that host. A host reached only over HTTPS cannot forward the page.

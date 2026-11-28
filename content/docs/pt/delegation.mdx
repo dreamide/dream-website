@@ -1,0 +1,30 @@
+---
+title: "Delegar tarefas a outros agentes"
+description: "Deixe um agente passar parte de uma tarefa a outro provedor e conferir o resultado depois."
+---
+
+Um agente pode passar parte do trabalho a outro provedor de agentes que você tenha configurado. Por exemplo, um chat do Claude Code pode pedir ao Codex que revise uma alteração enquanto escreve os testes. Não é preciso ativar nada; basta pedir na sua mensagem.
+
+## Pedir a um agente que delegue
+
+Indique o provedor e descreva a parte do trabalho que ele deve fazer:
+
+> Peça ao Codex que revise as alterações desta branch em busca de bugs enquanto você escreve os testes. Relate o que ele encontrou quando terminar.
+
+O agente inicia a tarefa, segue com o próprio trabalho e confere o resultado em um turno posterior. Uma tarefa delegada é executada no mesmo projeto e compartilha os arquivos dele. Ela não recebe a conversa pai, por isso o agente escreve instruções próprias para a tarefa.
+
+Cada tarefa é um novo chat no mesmo projeto. O título dele começa com `Task:`, seguido do início dessas instruções. Abra esse chat para acompanhar o trabalho do outro agente.
+
+## Quais provedores podem delegar
+
+Os chats do Claude Code, Codex, OpenCode e Grok Build podem delegar. Os chats do Cursor e do Antigravity não podem. Qualquer um dos seis provedores pode receber uma tarefa, desde que a CLI dele esteja instalada e com login feito. Consulte [Conectar um provedor](/docs/pt/providers).
+
+## Permissões e limites
+
+- Uma tarefa delegada começa com as [permissões](/docs/pt/agent-modes) do chat pai e nunca pode ter permissões mais amplas.
+- Interromper o turno do chat pai também interrompe as tarefas que ele delegou.
+- Um chat pode ter até 8 tarefas delegadas ativas ao mesmo tempo. Uma tarefa delegada pode, por sua vez, delegar, até 4 níveis de profundidade.
+
+<Warning>
+  As tarefas delegadas editam a mesma pasta de projeto que o chat pai. Peça uma revisão ou uma pesquisa, ou diga a cada agente quais arquivos alterar. Use uma [árvore de trabalho do Git](/docs/pt/worktrees) quando uma tarefa precisar de um checkout independente.
+</Warning>

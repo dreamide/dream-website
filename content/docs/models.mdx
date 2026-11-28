@@ -76,8 +76,11 @@ provider session for subsequent work; it does not change messages already genera
 | Speed | Selects a supported speed tier, such as Standard or Fast |
 
 These controls appear only when the selected model supports them. Available effort levels vary by
-model. Speed tiers can have different usage implications; use the option descriptions and your
-provider's usage information when choosing a tier.
+model. Speed tiers can have different usage implications; check your provider's usage information
+when choosing a tier.
+
+**Fast** is offered for supported OpenAI models and for supported Claude Opus and Fable models. If
+the speed control is missing, the selected model has a single speed.
 
 Default effort and speed apply to new chats. Changing either in a chat affects that conversation.
 Changing the speed also resets its provider session for subsequent work.

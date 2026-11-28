@@ -3,7 +3,9 @@ title: "Guida alle impostazioni"
 description: "Cerca i valori predefiniti del modello, i provider, i prompt, le competenze, i server MCP e i controlli per chat archiviate."
 ---
 
-Apri **Impostazioni** con l'icona a forma di chiave alla sommità di Dream. Il lato sinistro ha **Generale**, **Provider**, **Host SSH**, **Prompt**, **Skill**, **Server MCP**, **Scorciatoie da tastiera** e **Chat archiviate**. Le preferenze generali vengono applicate quando le selezioni vengono fatte. I formulari per i prompt, le competenze e le definizioni di server hanno ciascuno un'azione Create o Save.
+Apri **Impostazioni** con l'icona a forma di ingranaggio nella parte superiore di Dream. La barra laterale contiene **Generale**, **Provider**, **Scorciatoie da tastiera**, **Prompt**, **Skill**, **Server MCP**, **Connessioni** e **Chat archiviate**. Le preferenze generali vengono applicate non appena le selezioni. I moduli per prompt, skill e definizioni dei server hanno una propria azione Crea o Salva.
+
+Un clic sul numero di versione in fondo alla barra laterale avvia la verifica della disponibilità di un aggiornamento dell'applicazione.
 
 ## Generale
 
@@ -35,6 +37,9 @@ Cambiare lo shell del terminale influisce sulle nuove sessioni. Apri un nuovo te
 | Raggruppa chiamate agli strumenti | Off | Gruppo compatto dell'attività degli strumenti |
 | Espandi chiamate agli strumenti | Off | Se i dettagli dell'invocazione degli strumenti iniziano espansi |
 | Cambia checkpoint | Su | Fai un'immagine dei file del progetto prima di ogni risposta in modo da poterli revisionare e ripristinare. |
+| Notifiche desktop | Su | Avvisa quando una chat termina, non riesce o richiede un tuo intervento mentre Dream è in background |
+| Suono di notifica | Off | Riproduce un suono per gli stessi eventi, anche quando Dream è in primo piano |
+| Segui l’agente nel browser | Off | Porta in primo piano la scheda del [browser](/docs/it/browser#chiedi-a-un-agente-di-utilizzare-il-browser) usata da un agente |
 
 Le impostazioni di visualizzazione influiscono sulle conversazioni tra i progetti. Non modificano l'impegno del modello nel ragionamento né concedono autorizzazioni aggiuntive per gli strumenti. Disattivare **Checkpoint delle modifiche** interrompe la creazione di nuovi snapshot; vedi [Controllare e ripristinare le modifiche](/docs/it/checkpoints).
 
@@ -76,15 +81,17 @@ I chat esistenti mantengono le proprie selezioni. Abilita un modello sotto Provi
 
 ## Provider
 
-Ogni scheda del provider mostra lo stato del CLI rilevato, la versione installata, l'azione di aggiornamento e un interruttore di attivazione. Attiva il provider e i singoli modelli per renderli disponibili nei selettivi. Un'etichetta **Aggiornamento disponibile** mostra una versione più recente del CLI quando rilevata; aggiorna il CLI al di fuori di Dream e poi ripulisci la scheda.
+Ogni scheda del provider mostra lo stato della CLI rilevata, la versione installata, l'azione di ricarica e un interruttore di abilitazione. Abilita il provider, poi fai clic sui modelli che vuoi rendere disponibili nei selettori. Quando viene rilevata una versione più recente della CLI compare un pulsante **Aggiornamento disponibile**; fai clic sul pulsante per eseguire lo strumento di aggiornamento proprio di quella CLI.
 
 Dream salta i controlli degli aggiornamenti delle CLI per i provider disabilitati. Abilita un provider prima di controllare gli aggiornamenti disponibili.
 
 Installa e effettua l'accesso attraverso il CLI del provider esterno a Dream, poi aggiorna il suo cartello. Le impostazioni di Dream non sostituiscono il flusso di autenticazione del CLI. Vedere [Collegare un provider](/docs/it/providers).
 
-## Host SSH
+## Connessioni
 
-Aggiungi, modifica, connetti, disconnetti o rimuovi macchine remote in **Impostazioni → Host SSH**. Ogni voce mostra destinazione SSH, nome, comando host facoltativo, stato della connessione ed eventuali errori. Consulta [Spazi di lavoro remoti SSH](/docs/it/remote-hosts) per configurazione e ripristino.
+**Impostazioni → Connessioni** contiene due gruppi. **Host remoti** elenca le macchine su cui puoi aprire progetti: aggiungi un host SSH o associati a un host tramite HTTPS, poi connettilo, disconnettilo, modificane i percorsi o rimuovilo. Consulta [Host remoti](/docs/it/remote-hosts) per la configurazione e il ripristino.
+
+**Accesso remoto** permette ai dispositivi associati di usare i progetti di questo computer ed elenca i dispositivi che hai associato. Consulta [Accesso remoto](/docs/it/remote-access). La sezione **Connessioni** è disponibile nell'app desktop.
 
 ## Prompti, Competenze e server MCP
 

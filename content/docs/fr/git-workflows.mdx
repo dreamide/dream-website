@@ -5,6 +5,8 @@ description: "Revoir les modifications, travailler avec des branches et utiliser
 
 Ouvrir **Git** dans la barre d'outils de droite pour les onglets **Modifications**, **Historique** et **Pull request**. Le menu **Actions Git** situé sous le chat propose les prochaines étapes pour la branche actuelle.
 
+Le bouton **Actions Git** se trouve à droite du pied de page et est mis en évidence lorsqu'il y a des modifications à valider ou des commits à pousser. **Git** n'apparaît que pour les projets situés dans un dépôt Git.
+
 ## Avant de commencer
 
 Pour les commits, votre référentiel a besoin d'une identité Git author configurée. Pour les pushes, il faut un remote et des identifiants permettant d'y accéder. La création de pull request utilise GitHub CLI, qui doit être installé et authentifié pour le référentiel de destination.
@@ -15,8 +17,10 @@ Vous pouvez taper vous-mêmes les messages de commit et le texte de demande de m
 
 1. Ouvrir **Git → Modifications** pour inspecter les fichiers modifiés, ajoutés et supprimés.
 2. Développer un fichier pour examiner sa différence.
-3. Choisissez **Diff unifié** ou **Diff côte à côte** dans l'en-tête, et activez le wrap de mot dans **Actions Modifications** si nécessaire.
-4. Utilisez **Actions Modifications → Actualiser** si les modifications effectuées en dehors de Dream n'ont pas encore été reflétées.
+3. Choisissez **Diff unifié** ou **Diff côte à côte** dans l'en-tête. **Retour à la ligne** est activé par défaut et y dispose de son propre interrupteur, à côté de **Tout développer** et **Tout réduire**.
+4. Cliquez sur le chemin d'un fichier dans l'en-tête de son diff pour ouvrir ce fichier dans **Fichiers**.
+
+La liste se met à jour à mesure que les fichiers changent, à la fin des commandes du terminal et lorsque vous revenez à la fenêtre de Dream.
 
 Pour des différences très grandes, Dream peut afficher **Diff trop grand pour être rendu**. Utilisez **Rendre quand même** uniquement lorsque vous souhaitez charger cette vue plus large, ou inspecter le fichier dans votre éditeur ou terminal.
 
@@ -42,6 +46,8 @@ Pour demander à un agent de commenter des lignes spécifiques, glissez sur les 
 4. Vérifier **Générer automatiquement un message**, qui est activé par défaut. Pour écrire votre propre message, désactivez-le et saisissez le texte ; désactiver cela efface le message généré.
 5. Choisissez **Valider**, ou **Valider et pousser** si vous êtes prêt à publier le commit sur le distant.
 
+Lorsque **Générer automatiquement un message** est activé, Dream rédige le message en arrière-plan à la fin du dernier tour d'agent en cours du projet ; il est donc généralement prêt lorsque vous ouvrez le panneau. Appuyez sur **Command+Enter** sur macOS ou **Ctrl+Enter** sur Windows/Linux pour créer le commit, et ajoutez **Shift** pour créer le commit et le pousser.
+
 Pour commiter uniquement un sous-ensemble sélectionné, stagez ces fichiers en utilisant Git dans un terminal ou un éditeur externe et désactivez **Inclure les fichiers non préparés**. Le panneau des modifications ne fournit pas de contrôles individuels de staging.
 
 Dream refuse les commits lorsque des modifications stagées se trouvent en dehors du dossier projet actif. Commitez ces modifications séparément avant de continuer avec cette action.
@@ -62,14 +68,24 @@ Dream refuse les commits lorsque des modifications stagées se trouvent en dehor
   />
 </Frame>
 
-Utilisez **Publier la branche** pour une branche sans branche de suivi, ou **Pousser** pour envoyer les commits en attente. Ces actions en bas de la fenêtre effectuent l’envoi immédiatement. Vérifiez d’abord la branche, le dépôt distant et les commits dans **Historique** ; les nombres de commits en avance et en retard apparaissent lorsqu’une branche de suivi existe.
+Dans **Actions Git**, utilisez **Publier la branche** pour une branche sans branche amont, ou **Pousser** pour les commits sortants. L'une comme l'autre ouvre un aperçu **Pousser les modifications** qui affiche la branche, sa destination et les commits qui seront envoyés. Vérifiez-les, puis cliquez sur **Pousser**. Lorsqu'une branche amont existe, les éléments de menu **Pousser** et **Pull** indiquent le nombre de commits d'avance et de retard de la branche.
 
-Si l'envoi échoue, vérifiez l'erreur et confirmez votre accès au serveur distant. Un commit local réussi reste enregistré même si une mise à jour suivante échoue ; vérifiez l'état du branche avant de répéter une action combinée.
+Si le push échoue, examinez l'erreur et vérifiez votre accès au dépôt distant. Lorsque le dépôt distant contient des commits que vous n'avez pas encore, Dream vous invite à effectuer un pull, puis à pousser de nouveau. Un commit local réussi reste en place même si le push qui suit échoue ; vérifiez l'état de la branche avant de répéter une action combinée.
+
+## Fetch et pull
+
+**Actions Git → Fetch** télécharge les nouveaux commits depuis le dépôt distant sans modifier vos fichiers. **Pull** intègre en plus les commits de la branche amont dans votre branche.
+
+Après un pull, une notification indique le nombre de commits reçus. Choisissez-y **Voir les modifications** pour ouvrir **Modifications récupérées**, qui liste ces commits et les fichiers qu'ils ont modifiés.
+
+Si votre branche et sa branche amont ont toutes deux reçu des commits, Dream fusionne les commits amont dans votre branche ; il n'effectue pas de rebase. Lorsque cette fusion provoquerait un conflit, Dream l'annule, laisse vos fichiers tels qu'ils étaient et liste les fichiers en conflit. Résolvez la divergence avec Git dans un terminal, puis effectuez un nouveau pull.
+
+**Ouvrir le dépôt**, dans le même menu, ouvre le dépôt distant dans votre navigateur.
 
 ## Créer un pull request
 
 1. Travailler sur une branche de fonctionnalité dont le nom diffère de la branche de base de la demande de modification.
-2. Choisissez **Créer un PR** dans le pied de page, ou **Actions Git → Créer une demande d'extraction**.
+2. Choisissez **Actions Git → Créer une demande d'extraction**.
 3. Examine les branches source et de base ainsi que les modifications proposées.
 4. Saisissez un titre et une description, ou utilisez **Générer automatiquement les détails du PR** et vérifiez le texte généré.
 5. Sous **Étapes suivantes**, sélectionnez l'action qui correspond à l'état du branche.
@@ -101,7 +117,7 @@ Ouvrir **Git → Pull request** pour consulter la demande de fusion de la branch
 
 ## Passer ou créer des branches
 
-Ouvrir le commutateur de branche sous le chat, rechercher les branches locales et sélectionner une d'entre elles pour la sortir. Utiliser **Créer et basculer vers une nouvelle branche…** pour nommer et créer une branche. Actualiser la liste si une branche créée en dehors de Dream est manquante.
+Ouvrez le sélecteur de branche sous le chat, recherchez parmi les branches locales et sélectionnez-en une pour basculer dessus. Utilisez **Créer et basculer vers une nouvelle branche…** pour nommer et créer une branche. La liste se recharge à chaque ouverture ; elle inclut donc les branches créées en dehors de Dream.
 
 <Frame caption="Le signe de vérification identifie la branche actuelle. Rechercher une autre branche ou créer une nouvelle depuis ce même menu.">
   <img
@@ -114,6 +130,17 @@ Ouvrir le commutateur de branche sous le chat, rechercher les branches locales e
 </Frame>
 
 Changer de branche modifie les fichiers utilisés par chaque conversation dans ce projet. Vérifiez les travaux non terminés avant de les changer. Pour des tâches parallèles avec des checkouts indépendants, utilisez [Worktrees Git](/docs/fr/worktrees). Lorsqu'un arbre de travail est terminé, utilisez son pied de page pour le fusionner dans la branche principale, créer une demande de fusion, ou supprimer le checkout. Voir [Terminer un arbre de travail](/docs/fr/worktrees#compléter-un-arbre-de-travail).
+
+### Supprimer une branche locale
+
+1. Ouvrez le sélecteur de branche et survolez la branche, ou atteignez-la au clavier.
+2. Cliquez sur **Supprimer la branche**, l'icône de corbeille sur sa ligne.
+3. Lisez le résumé. Dream indique si les commits de la branche figurent dans la branche de base, l'état de sa pull request et si certains commits n'existent que sur cette branche.
+4. Cliquez sur **Supprimer la branche**. Lorsque des commits seraient perdus, le bouton indique **Supprimer quand même**.
+
+La suppression ne retire que la branche locale ; sa branche distante n'est pas modifiée. Vous ne pouvez pas supprimer la branche actuelle, la branche de base ni une branche ouverte dans la copie de travail principale.
+
+Si la branche est extraite dans un [arbre de travail](/docs/fr/worktrees), la boîte de dialogue propose à la place **Supprimer le worktree et la branche**. Cette action supprime également le dossier de l'arbre de travail et ses chats.
 
 ## Parcourir l'historique des commits
 

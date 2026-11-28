@@ -5,7 +5,7 @@ description: "Résoudre les modèles manquants et les conversations, les problè
 
 Commencez par l'erreur affichée dans le chat ou l'outil affecté. Vérifiez quel projet et quel fournisseur sont sélectionnés avant de modifier les paramètres, surtout lorsque plusieurs chats sont ouverts.
 
-Pour les projets distants, vérifiez l'état de connexion de l'hôte dans **Paramètres → Hôtes SSH**. Consultez [Problèmes de connexion SSH](/docs/fr/remote-hosts#problèmes-de-connexion) pour l'authentification, l'environnement d'exécution et les versions de développement.
+Pour les projets distants, vérifiez l'état de connexion de l'hôte dans **Paramètres → Connexions**. Consultez [Problèmes de connexion](/docs/fr/remote-hosts#problèmes-de-connexion) pour l'authentification, l'association et la configuration des versions de développement.
 
 ## Aucun CLI fourni n'est détecté
 
@@ -35,6 +35,12 @@ Ces paramètres dépendent des capacités du modèle sélectionné. Choisissez u
 5. Si son projet est fermé, le réouvrir à travers **Fermés récemment** sur l'écran de démarrage.
 
 Fermer une colonne multichat ne sauvegarde pas la conversation. Les chats vides sans messages ne sont pas listés dans l'historique. Un chat supprimé de manière permanente ne peut pas être restauré via Dream.
+
+Un chat démarré sans projet figure sous l'onglet **Discussions** plutôt que dans l'historique d'un projet. Consultez [Chats sans projet](/docs/fr/standalone-chats).
+
+## Un message en attente ne s'exécute pas
+
+Vérifiez la liste **File d’attente** au-dessus de la zone de message. Si son en-tête indique **File en pause**, cliquez sur **Reprendre**. Une exécution en échec ou interrompue met la file d'attente en pause jusqu'à ce que vous la relanciez, la supprimiez ou envoyiez un nouveau message. Consultez [Mettre des messages en file d'attente](/docs/fr/chats#mettre-des-messages-en-file-dattente).
 
 ## Un échange restauré a été archivé à nouveau
 
@@ -66,6 +72,10 @@ Vérifiez que le répertoire du projet existe encore. Choisissez un shell dispon
 
 Vérifiez que l'application est en cours d'exécution et utilisez l'URL et le port exacts indiqués dans son terminal. Vérifiez les erreurs dans le terminal, puis essayez **Actualiser le navigateur** ou **Forcer le rechargement**. Comparez l'URL dans votre navigateur système. Utilisez DevTools pour les erreurs de page ; réservez le nettoyage des cookies ou du cache aux problèmes spécifiques d'authentification ou de mise en cache. Voir [Aperçu dans le navigateur](/docs/fr/browser).
 
+## Un appareil associé ne parvient pas à se connecter
+
+Vérifiez que Dream ou `dream-host` est en cours d'exécution sur l'ordinateur hôte et que celui-ci n'est pas en veille. Sur cet ordinateur, dans **Paramètres → Connexions**, vérifiez que **Accès à distance** indique **Prêt**, et utilisez **Vérifier à nouveau** après avoir corrigé ce qu'il signale. Si l'appareil a été révoqué ou si son code d'association a expiré, créez un nouveau code avec **Associer un appareil**. Consultez [Accès à distance](/docs/fr/remote-access).
+
 ## Un fichier ne peut pas être sauvé
 
 Vérifiez si le fichier est écriturable et lisez l'erreur de l'éditeur. Si le fichier a été modifié sur disque pendant que vous éditez, préservez votre brouillon avant **Recharger depuis le disque**, puis réappliquez les modifications souhaitées. Voir [Fichiers et recherche](/docs/fr/files#gérer-un-fichier-modifié-en-dehors-de-léditeur).
@@ -80,6 +90,9 @@ Pour les problèmes liés aux commentaires, éditions ou fusion de PR, consultez
 | Aucune modification en attente à commiter | Vérifier l'inclusion des fichiers non stagés, ou stagner les fichiers intentionnés via Git |
 | Changements en attente en dehors du projet actif | Les commiter séparément avant d'utiliser l'action de commit de Dream |
 | Push n'a pas de destination | Configurer un remote Git et vérifier l'accès à celui-ci |
+| Le push est rejeté | Le dépôt distant contient des commits que vous n'avez pas encore ; effectuez un pull, puis poussez de nouveau |
+| Le pull signale des conflits | La fusion a été annulée et rien n'a changé ; résolvez la divergence avec Git dans un terminal, puis effectuez un nouveau pull |
+| Une branche ne peut pas être supprimée | Il s'agit de la branche actuelle, de la branche de base ou d'une branche ouverte dans la copie de travail principale |
 | La création d'un PR signale une erreur CLI | Vérifiez que GitHub CLI est installé, authentifié et peut accéder au dépôt |
 | La source et la base du PR sont les mêmes | Passer à une branche de fonctionnalité avant de créer la demande de modification |
 | Rapports de création de PR avec un HEAD détaché | Vérifiez une branche avant de créer la demande de modification |

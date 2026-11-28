@@ -1,0 +1,125 @@
+---
+title: "Esecuzione dell'host"
+description: "Installa ed esegui dream-host per far lavorare gli agenti senza la finestra desktop o su una macchina priva di sessione desktop."
+---
+
+L'host di Dream è il processo a cui fanno capo progetti, chat, CLI degli agenti, terminali e Git. L'app desktop ne avvia uno per te. Esegui `dream-host` tu stesso per far lavorare gli agenti dopo aver chiuso la finestra, per usare una macchina priva di sessione desktop o per gestire l'host con il tuo gestore di servizi.
+
+Una macchina che raggiungi tramite [SSH](/docs/it/remote-hosts#aggiungere-un-host-ssh) non richiede nulla di tutto questo. Quando si connette, Dream vi installa ed esegue il proprio host.
+
+## Installazione
+
+Ogni release pubblica un programma di installazione per l'host. Sostituisci `<version>` con la versione di Dream che usi, ad esempio `0.36.0`.
+
+Su macOS e Linux:
+
+```sh
+curl -fsSL https://github.com/dreamide/dream/releases/download/v<version>/install-host.sh | sh
+```
+
+Su Windows, in PowerShell:
+
+```powershell
+irm https://github.com/dreamide/dream/releases/download/v<version>/install-host.ps1 | iex
+```
+
+Il programma di installazione verifica il download con il file `SHA256SUMS` della release e lo installa in `~/.dream/host/versions/`. Crea un collegamento a `dream-host` in `~/.local/bin` su macOS e Linux e lo aggiunge al `PATH` utente su Windows. L'host è compilato per macOS con Apple silicon, Linux x64 e ARM64 e Windows x64.
+
+Le CLI degli agenti e i relativi accessi devono essere disponibili per lo stesso utente che esegue l'host.
+
+## Eseguire l'host
+
+| Comando | Cosa fa |
+| --- | --- |
+| `dream-host serve` | Esegue l'host in primo piano finché non premi Ctrl+C |
+| `dream-host ensure` | Avvia l'host in background oppure riutilizza quello già in esecuzione |
+| `dream-host status` | Indica se un host è in esecuzione |
+| `dream-host stop` | Arresta l'host dopo che ha salvato il proprio lavoro |
+| `dream-host help` | Elenca tutti i comandi e le opzioni |
+
+## Opzioni
+
+Ogni opzione può essere indicata come flag o come variabile d'ambiente. Il flag ha la precedenza sulla variabile.
+
+| Flag | Variabile d'ambiente | Predefinito | Finalità |
+| --- | --- | --- | --- |
+| `--home` | `DREAM_HOST_HOME` | `~/.dream/host` | Dove l'host conserva il record di esecuzione, il log e, per impostazione predefinita, i dati |
+| `--data-dir` | `DREAM_HOST_DATA_DIR` | `<home>/data` | L'identità dell'host, le impostazioni e, per impostazione predefinita, il database |
+| `--database` | `DREAM_HOST_DATABASE` | `<data dir>/dream.db` | Il database di progetti, chat e trascrizioni |
+| `--port` | `DREAM_HOST_PORT` | Una porta libera | La porta locale per i client su questa macchina |
+| `--idle-timeout` | `DREAM_HOST_IDLE_TIMEOUT` | `3600` | Secondi senza client, terminali, turni o accesso remoto prima che l'host termini. Usa `0` per mantenerlo in esecuzione |
+| `--remote-port` | `DREAM_HOST_REMOTE_PORT` | L'impostazione salvata | Una porta locale che serve i dispositivi associati, per un reverse proxy gestito da te |
+| `--remote-origin` | `DREAM_HOST_REMOTE_ORIGINS` | Nessuno | L'indirizzo pubblico servito dal tuo reverse proxy |
+
+Un database può essere usato da un solo host alla volta. `dream-host` non legge file `.env`: imposta le variabili nel suo ambiente.
+
+## Usarlo con l'app desktop
+
+L'app desktop usa l'host in esecuzione sui propri dati e ne avvia uno quando non ce n'è.
+
+- Un host avviato dall'app si arresta quando esci da Dream.
+- Un host avviato da te resta in esecuzione quando esci da Dream. Le chat proseguono, i terminali restano aperti e l'app vi si ricollega alla successiva apertura.
+
+Per eseguire tu stesso l'host dell'app desktop, esci da Dream, avvia `dream-host` sulla directory dei dati dell'app desktop e poi riapri Dream:
+
+```sh
+dream-host serve --data-dir "<desktop data directory>" --idle-timeout 0
+```
+
+| Piattaforma | Directory dei dati dell'app desktop |
+| --- | --- |
+| macOS | `~/Library/Application Support/dreamide` |
+| Windows | `%APPDATA%\dreamide` |
+| Linux | `~/.config/dreamide` |
+
+## Accesso remoto dalla riga di comando
+
+L'accesso remoto è un'impostazione salvata dell'host. Attivalo una volta mentre l'host è in esecuzione e verrà applicato a ogni avvio dell'host.
+
+```sh
+dream-host remote on --tailscale
+dream-host remote on --cloudflare --origin https://dream.example.com
+dream-host remote status
+dream-host pair
+dream-host devices
+dream-host revoke <id>
+```
+
+`dream-host pair` stampa un codice di associazione monouso, mentre `dream-host serve --pair` ne stampa uno non appena l'host si avvia. `dream-host devices` elenca i dispositivi associati e `dream-host revoke` ne rimuove uno. Consulta [Accesso remoto](/docs/it/remote-access) per sapere che cosa può fare un dispositivo associato.
+
+Per usare un tuo reverse proxy, avvia l'host con `--remote-port` e `--remote-origin`. Le Impostazioni mostrano allora che l'accesso remoto è definito da quelle opzioni e non può essere modificato da lì.
+
+## Mantenerlo in esecuzione
+
+Esegui `dream-host serve --idle-timeout 0` con il gestore di servizi del tuo sistema operativo e fai in modo che venga riavviato in caso di errore. Su Linux, salva un'unità systemd per utente come `~/.config/systemd/user/dream-host.service`:
+
+```ini
+[Unit]
+Description=Dream host
+
+[Service]
+ExecStart=%h/.local/bin/dream-host serve --idle-timeout 0
+Environment=PATH=%h/.local/bin:/usr/local/bin:/usr/bin:/bin
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+```
+
+Poi abilitala:
+
+```sh
+systemctl --user daemon-reload
+systemctl --user enable --now dream-host
+loginctl enable-linger "$USER"
+```
+
+Su macOS, usa un LaunchAgent. Su Windows, usa un'attività di Task Scheduler eseguita all'accesso. La [guida all'host nel repository di Dream](https://github.com/dreamide/dream/blob/main/docs/host-service.md) contiene esempi completi per entrambi. Aggiungi le voci di `PATH` e le variabili necessarie alle CLI degli agenti e verifica il risultato con `dream-host status`.
+
+<Note>
+  Dream v0.30 e v0.31 potevano installare l'host come servizio con `dream-host service`. Quel comando è stato rimosso nella v0.32. Un servizio installato da quelle versioni resta in esecuzione finché non lo rimuovi; la guida all'host spiega come fare.
+</Note>
+
+## Aggiornare l'host
+
+Esegui il programma di installazione della nuova versione, poi riavvia l'host: usa `dream-host stop` e avvialo di nuovo, oppure riavvia il suo servizio. Mantieni l'host e l'app desktop alla stessa versione. **Impostazioni → Connessioni** segnala quando le versioni sono diverse.

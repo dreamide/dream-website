@@ -37,6 +37,8 @@ Le fournisseur sélectionné détermine le comportement exact des autorisations.
 
 Un agent peut vous demander de préciser une exigence, de choisir une option ou d'approuver une action. Lisez la demande dans la conversation et répondez en utilisant les contrôles qu'elle vous fournit. Un onglet projet peut indiquer qu'un agent attend votre réponse. Ouvrez ce projet et retournez dans la conversation pour lire la demande.
 
+Vous ne pouvez répondre à une demande que tant que son tour est en cours. Si le tour a été interrompu entre-temps, par exemple parce que l'hôte a redémarré, Dream signale que l'approbation a expiré. Vérifiez ce que le tour interrompu a déjà fait, puis relancez-le depuis la [file d'attente](/docs/fr/chats#mettre-des-messages-en-file-dattente).
+
 Si la demande nécessite de modifier la tâche, donnez les nouvelles instructions à l’agent dans cette conversation. Utilisez le bouton d’arrêt pour interrompre une réponse si nécessaire. L’arrêt n’annule pas les modifications ni les commandes déjà exécutées ; consultez ensuite les [Modifications](/docs/fr/git-workflows), ou utilisez le [checkpoint](/docs/fr/checkpoints) de la réponse pour restaurer les fichiers qu’elle a modifiés.
 
 Pour des tâches parallèles nécessitant des fichiers séparés, utilisez [arbre de travail](/docs/fr/worktrees). Les paramètres de permission ne permettent pas deux discussions dans le même dossier d'indépendants checkouts.

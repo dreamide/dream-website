@@ -1,0 +1,30 @@
+---
+title: "Ủy thác tác vụ cho tác nhân khác"
+description: "Để một tác nhân giao một phần tác vụ cho nhà cung cấp khác và kiểm tra kết quả sau."
+---
+
+Một tác nhân có thể giao một phần công việc của mình cho một nhà cung cấp tác nhân khác mà bạn đã thiết lập. Ví dụ, một cuộc trò chuyện Claude Code có thể nhờ Codex xem xét một thay đổi trong lúc nó viết kiểm thử. Bạn không cần bật gì cả; chỉ cần yêu cầu điều đó trong tin nhắn.
+
+## Yêu cầu tác nhân ủy thác
+
+Nêu tên nhà cung cấp và mô tả phần việc mà nó cần làm:
+
+> Hãy nhờ Codex xem xét các thay đổi trên nhánh này để tìm lỗi trong lúc bạn viết kiểm thử. Báo cáo các phát hiện của nó khi nó hoàn tất.
+
+Tác nhân khởi chạy tác vụ, tiếp tục công việc của mình và kiểm tra kết quả ở một lượt sau. Tác vụ được ủy thác chạy trong cùng dự án và dùng chung tệp của dự án. Nó không nhận được cuộc trò chuyện cha, nên tác nhân sẽ viết chỉ dẫn riêng cho tác vụ.
+
+Mỗi tác vụ là một cuộc trò chuyện mới trong cùng dự án. Tiêu đề của nó bắt đầu bằng `Task:`, theo sau là phần đầu của các chỉ dẫn đó. Mở cuộc trò chuyện đó để theo dõi công việc của tác nhân kia.
+
+## Nhà cung cấp nào có thể ủy thác
+
+Các cuộc trò chuyện Claude Code, Codex, OpenCode và Grok Build có thể ủy thác. Các cuộc trò chuyện Cursor và Antigravity thì không. Bất kỳ nhà cung cấp nào trong sáu nhà cung cấp cũng có thể nhận tác vụ, miễn là CLI của nó đã được cài đặt và đăng nhập. Xem [Kết nối nhà cung cấp](/docs/vi/providers).
+
+## Quyền và giới hạn
+
+- Tác vụ được ủy thác bắt đầu với [quyền](/docs/vi/agent-modes) của cuộc trò chuyện cha và không bao giờ có quyền rộng hơn.
+- Dừng lượt của cuộc trò chuyện cha cũng sẽ dừng các tác vụ mà lượt đó đã ủy thác.
+- Một cuộc trò chuyện có thể có tối đa 8 tác vụ được ủy thác hoạt động cùng lúc. Tác vụ được ủy thác cũng có thể ủy thác tiếp, tối đa 4 cấp.
+
+<Warning>
+  Các tác vụ được ủy thác chỉnh sửa cùng thư mục dự án với cuộc trò chuyện cha. Hãy yêu cầu xem xét hoặc nghiên cứu, hoặc cho từng tác nhân biết cần thay đổi tệp nào. Dùng [Git worktree](/docs/vi/worktrees) khi một tác vụ cần bản checkout độc lập.
+</Warning>

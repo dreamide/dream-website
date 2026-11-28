@@ -37,6 +37,8 @@ O provedor selecionado determina o comportamento exato das permissões. **Pergun
 
 Um agente pode te pedir para esclarecer um requisito, escolher uma opção ou aprovar uma ação. Leia a solicitação na conversa e responda usando os controles que ela fornece. Uma guia de projeto pode indicar que um agente está aguardando sua resposta. Abra esse projeto e retorne à conversa para ler a solicitação.
 
+Uma solicitação só pode ser respondida enquanto o turno dela ainda está em execução. Se o turno foi interrompido antes, por exemplo porque o host reiniciou, o Dream informa que a aprovação expirou. Revise o que o turno interrompido já fez e depois tente executá-lo novamente a partir da [fila](/docs/pt/chats#colocar-mensagens-na-fila).
+
 Se a solicitação exigir uma mudança na tarefa, dê ao agente a instrução revisada nesse chat. Use o controle de parada para interromper uma resposta quando necessário. Parar não desfaz edições nem comandos já concluídos; verifique as [Alterações](/docs/pt/git-workflows) depois ou use o [checkpoint](/docs/pt/checkpoints) da resposta para restaurar os arquivos que ela alterou.
 
 Para tarefas paralelas que precisam de arquivos separados, use [árvore de trabalho](/docs/pt/worktrees). As configurações de permissão não permitem dois chats em mesmo diretório com checkouts independentes.

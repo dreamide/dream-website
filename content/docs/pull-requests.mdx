@@ -26,9 +26,10 @@ The checks summary shows failed check counts. Select a check to open its details
   />
 </Frame>
 
-If the branch has no PR, the panel offers **Create pull request**. Use **Pull request actions →
-Refresh** after changes made on GitHub, or **Open on GitHub** to view the PR in your browser.
-A merged PR stops appearing once the branch contains newer commits beyond that PR's head.
+If the branch has no PR, the panel says so; create one with **Git actions → Create pull request**.
+The panel refreshes as the branch changes and when you return to the Dream window. To view the PR in
+your browser, click the repository and PR number at the top of **Summary**. A merged PR stops
+appearing once the branch contains newer commits beyond that PR's head.
 
 ## Review code and post comments
 
@@ -38,6 +39,8 @@ Choose **Post comment** to publish it to GitHub.
 In **Code**, expand a file and select lines in its diff to write a **Post inline comment**.
 You can read existing review threads and use **Reply** to continue them. When a text patch is
 unavailable, open the PR on GitHub to inspect that file.
+
+The **Code** tab wraps long lines by default. Use **Word wrap** above the file list to turn that off.
 
 These comments are posted to GitHub. To ask your coding agent about local changes, use
 [diff feedback in Changes](/docs/feedback#comment-on-lines-in-a-diff).

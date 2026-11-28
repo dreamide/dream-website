@@ -33,16 +33,20 @@ Dream lleva tus proyectos, agentes de codificación con inteligencia artificial,
 ## ¿Qué incluye Dream?
 
 - Un espacio de trabajo multifunción con pestañas de proyecto persistentes
-- [Espacios de trabajo remotos por SSH](/docs/es/remote-hosts) con agentes, archivos, Git y terminales remotos
+- [Hosts remotos](/docs/es/remote-hosts) por SSH o HTTPS, con agentes, archivos, Git y terminales remotos
+- [Acceso remoto](/docs/es/remote-access) a los proyectos de este equipo desde un teléfono o un equipo vinculado
 - Múltiples chats lado a lado y ramificación de chats
+- [Colas de mensajes](/docs/es/chats#poner-mensajes-en-cola) para enviar instrucciones mientras un agente trabaja
+- [Chats sin proyecto](/docs/es/standalone-chats) para preguntas que no necesitan una carpeta
+- [Delegación](/docs/es/delegation) de tareas de un proveedor de agentes a otro
 - Prompts reutilizables entre proyectos y habilidades de agentes conscientes del proveedor
 - Puntos de control por respuesta para revisar y restaurar los archivos que cambió un agente
-- Soporte para Codex CLI, Claude Code CLI, OpenCode CLI, Cursor Agent CLI y Grok Build CLI
+- Compatibilidad con Codex CLI, Claude Code CLI, OpenCode CLI, Cursor Agent CLI, Grok Build CLI y Antigravity CLI
 - Un explorador de archivos, búsqueda y edición de archivos, terminales integrados y previsualización de navegadores
-- Estado de Git, rama, diferencia, commit, empuje, solicitud de incorporación y flujos de trabajo de árbol de trabajo, incluyendo la fusión de un árbol de trabajo terminado en su rama base
+- Flujos de trabajo de Git para estado, ramas, diffs, commits, fetch, pull, envío, solicitudes de extracción y árboles de trabajo, incluida la fusión de un árbol de trabajo terminado en su rama base
 - Comentarios de diferencia de nivel de línea y selección de elementos del navegador que envían mensajes dirigidos a un chat
 - Un panel unificado de Git con Cambios, un gráfico de Historia coloreado y revisión de solicitudes de incorporación
-- [Búsqueda de chat y notificaciones](/docs/es/chats) en proyectos locales y hosts SSH conectados
+- [Búsqueda de chats y notificaciones](/docs/es/chats) en proyectos locales y hosts remotos conectados
 - [Buscar en archivos](/docs/es/files#buscar-en-archivos) con expresiones regulares y filtros de archivo
 - [Atajos de teclado personalizables](/docs/es/settings#atajos-de-teclado)
 - Servidores MCP configurables y herramientas integradas de agentes para interacción con el navegador
@@ -60,6 +64,9 @@ Dream lleva tus proyectos, agentes de codificación con inteligencia artificial,
 | Elige un modelo de inicio y esfuerzo de razonamiento | [Modelos y valores predeterminados](/docs/es/models) |
 | Intente otro enfoque desde un mensaje anterior | [Conversaciones en ramas](/docs/es/branching-chats) |
 | Seguir el progreso de un agente o responder a una pregunta | [Trabajar con chats](/docs/es/chats#sigue-el-trabajo-en-progreso) |
+| Enviar la siguiente instrucción mientras un agente sigue trabajando | [Poner mensajes en cola](/docs/es/chats#poner-mensajes-en-cola) |
+| Hacer una pregunta rápida sin abrir una carpeta | [Chats sin proyecto](/docs/es/standalone-chats) |
+| Hacer que un agente pase trabajo a otro proveedor | [Delegar tareas en otros agentes](/docs/es/delegation) |
 | Verifica qué cambió en una respuesta y anula parte de ella | [Revisión y restauración de cambios](/docs/es/checkpoints) |
 | Comentar líneas específicas de diff o un elemento de página | [Envío de retroalimentación a un chat](/docs/es/feedback) |
 | Preparar una tarea para ejecutar más adelante | [Guardar prompts con Stash](/docs/es/stash) |
@@ -70,9 +77,12 @@ Dream lleva tus proyectos, agentes de codificación con inteligencia artificial,
 | Trabaja en un checkout independiente, luego intégralo de nuevo | [Árboles de trabajo de Git](/docs/es/worktrees) |
 | Revisar y publicar cambios de código | [Flujos de Git](/docs/es/git-workflows) |
 | Lee los comentarios de revisión y fusiona un pedido de cambios de GitHub | [Revisión de solicitudes de incorporación](/docs/es/pull-requests) |
+| Trabajar en un proyecto que está en otra máquina | [Hosts remotos](/docs/es/remote-hosts) |
+| Supervisar tus agentes desde un teléfono u otro equipo | [Acceso remoto](/docs/es/remote-access) |
+| Mantener los agentes trabajando tras cerrar la ventana de escritorio | [Ejecución del host](/docs/es/dream-host) |
 
 ## Entender el entorno de trabajo
 
-Un **proyecto** es una carpeta de tu equipo o de un host SSH con sus propios chats y herramientas. Un **chat** es una conversación con su propio modelo y configuración. Varios chats de un proyecto comparten sus archivos; un **árbol de trabajo** proporciona una copia de trabajo de Git independiente para una tarea.
+Un **proyecto** es una carpeta de tu equipo o de un host remoto con sus propios chats y herramientas. Un **chat** es una conversación con su propio modelo y configuración. Varios chats de un proyecto comparten sus archivos; un **árbol de trabajo** proporciona una copia de trabajo de Git independiente para una tarea.
 
 Use [Permisos del agente](/docs/es/agent-modes) para elegir cómo funciona un agente, y [Contexto y uso](/docs/es/context-and-usage) para comprender la información que se encuentra debajo del compositor. La [referencia de configuraciones](/docs/es/settings) lista las preferencias generales del aplicativo. Si algo está faltando o no se ejecuta, comienza con [Solución de problemas](/docs/es/troubleshooting).

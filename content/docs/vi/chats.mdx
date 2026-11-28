@@ -3,7 +3,9 @@ title: "Làm việc với cuộc trò chuyện"
 description: "Bắt đầu cuộc trò chuyện, tìm kiếm công việc trước đó, thay đổi tên cuộc trò chuyện và quản lý lịch sử cuộc trò chuyện của bạn."
 ---
 
-Một cuộc trò chuyện chứa một cuộc trò chuyện với một agent lập trình. Mỗi cuộc trò chuyện thuộc về một dự án và có mô hình, quyền hạn và lịch sử cuộc trò chuyện riêng. Sử dụng các cuộc trò chuyện riêng biệt cho các nhiệm vụ mà bạn muốn quay lại độc lập, chẳng hạn như sửa lỗi và kiểm tra tính năng.
+Mỗi cuộc trò chuyện chứa một cuộc hội thoại với một tác nhân lập trình. Cuộc trò chuyện thường thuộc về một dự án và có mô hình, quyền cùng lịch sử hội thoại riêng. Hãy dùng các cuộc trò chuyện riêng cho những tác vụ mà bạn muốn quay lại một cách độc lập, chẳng hạn sửa một lỗi và xem xét một tính năng.
+
+Để hỏi điều gì đó mà không cần mở thư mục, hãy bắt đầu một [cuộc trò chuyện không có dự án](/docs/vi/standalone-chats).
 
 ## Bắt đầu một cuộc trò chuyện
 
@@ -47,7 +49,7 @@ Sử dụng [tham chiếu tệp và file đính kèm](/docs/vi/providing-context
   />
 </Frame>
 
-Tìm kiếm lọc các tiêu đề của dự án này. Để tìm kiếm tiêu đề và nội dung tin nhắn trên nhiều dự án, hãy nhấp vào **Tìm kiếm cuộc trò chuyện** ở thanh đầu (mặc định **Command+Shift+F** trên macOS hoặc **Ctrl+Shift+F** trên Windows/Linux). Kết quả bao gồm các dự án cục bộ và các máy chủ kết nối qua SSH. Việc chọn kết quả đã được lưu trữ sẽ khôi phục nó; việc chọn cuộc trò chuyện của dự án đã đóng sẽ mở lại dự án đó.
+Tìm kiếm trong lịch sử lọc theo tiêu đề của dự án này. Để tìm tiêu đề và nội dung tin nhắn trên nhiều dự án, hãy nhấp **Tìm kiếm cuộc trò chuyện** ở thanh trên cùng (mặc định là **Command+Shift+F** trên macOS hoặc **Ctrl+Shift+F** trên Windows/Linux). Kết quả bao gồm các dự án cục bộ, các máy chủ từ xa đã kết nối và [các cuộc trò chuyện không có dự án](/docs/vi/standalone-chats). Chọn một kết quả đã lưu trữ sẽ khôi phục nó; chọn cuộc trò chuyện của một dự án đã đóng sẽ mở lại dự án đó.
 
 Nếu không thể tìm kiếm một host, hãy kết nối lại và thử lại. Rút gọn truy vấn khi kết quả bị cắt ngắn. Bạn cũng có thể quản lý các cuộc trò chuyện cũ tại [Chat đã lưu trữ](/docs/vi/archived-chats).
 
@@ -73,13 +75,39 @@ Các tên như “Sửa tính năng lưu cài đặt” và “Kiểm tra các t
 
 Bật **Thông báo trên màn hình** trong **Cài đặt → Chung → Tin nhắn chat** để nhận thông báo khi cuộc trò chuyện hoàn tất, gặp lỗi hoặc cần bạn trả lời trong lúc Dream chạy nền. Nhấp vào thông báo để mở cuộc trò chuyện tương ứng. **Âm thanh thông báo** là tùy chọn riêng và có thể phát ngay cả khi Dream đang được chọn.
 
+Thông báo cũng áp dụng cho các lượt vẫn chạy trên máy chủ khi cửa sổ này không theo dõi chúng. Lượt do chính bạn dừng sẽ không gửi thông báo.
+
 Biểu tượng đang tải đánh dấu các cuộc trò chuyện đang nhận phản hồi liên tục. Khi bạn gửi tin nhắn, Dream cuộn để đưa tin nhắn đó vào vùng hiển thị.
 
 Trong khi một agent trả lời, chat hiển thị tiến trình và hoạt động công cụ. Mở chi tiết công cụ để kiểm tra các lệnh, việc đọc tệp hoặc thay đổi. Khi agent cung cấp danh sách nhiệm vụ, thanh kiểm soát nhiệm vụ bên cạnh hộp tin nhắn sẽ hiển thị tiến trình của nó.
 
-Các tab Lịch sử và dự án bao gồm các chỉ báo trạng thái cho công việc đang được xử lý hoặc đã hoàn thành; các tab dự án cũng có thể chỉ ra rằng một agent đang chờ bạn trả lời. Chọn dự án và mở cuộc trò chuyện để đọc tin nhắn mới nhất. Sử dụng nút dừng trong composer để ngắt một phản hồi. Việc dừng một phản hồi không làm hủy bỏ các thay đổi tệp đã được thực hiện trước đó.
+Lịch sử trò chuyện và các thẻ dự án hiển thị trạng thái của từng cuộc trò chuyện: biểu tượng xoay khi đang phản hồi, chấm màu hổ phách khi tác nhân đang chờ bạn và chấm màu xanh lục khi nó đã hoàn tất mà bạn chưa mở. Chọn dự án và mở cuộc trò chuyện để đọc tin nhắn mới nhất. Dùng nút dừng trong khung soạn tin nhắn để ngắt một phản hồi. Việc dừng phản hồi không hoàn tác các thay đổi tệp đã được thực hiện.
+
+Mỗi lượt được chạy trên máy chủ của dự án chứ không phải trong cửa sổ. Nếu cửa sổ mất kết nối với máy chủ, lượt đó vẫn tiếp tục chạy và Dream tự động kết nối lại. Thoát Dream sẽ dừng máy chủ do ứng dụng khởi động cùng các lượt của nó; để tác nhân tiếp tục làm việc sau khi bạn đóng ứng dụng, hãy [tự chạy máy chủ](/docs/vi/dream-host).
 
 Sau khi một phản hồi kết thúc, hãy sử dụng **Xem các tệp thay đổi trong phản hồi này** ở phần chân để xem các tệp đã được thay đổi và [khôi phục một trong số chúng](/docs/vi/checkpoints).
+
+## Xếp tin nhắn vào hàng đợi
+
+Bạn không cần chờ phản hồi hoàn tất mới gửi chỉ dẫn tiếp theo. Hãy nhập tin nhắn trong lúc tác nhân đang làm việc rồi gửi đi. Dream thêm tin nhắn vào hàng đợi của cuộc trò chuyện và chạy nó khi lượt hiện tại kết thúc. Khi một lượt đang chạy, nút trong khung soạn tin nhắn sẽ dừng lượt đó nếu ô nhập tin nhắn trống và gửi tin nhắn khi bạn đã nhập nội dung.
+
+Danh sách **Hàng đợi** xuất hiện phía trên ô nhập tin nhắn khi có tin nhắn đang chờ hoặc có lượt chạy cần bạn chú ý. Mỗi hàng hiển thị tin nhắn, mô hình và trạng thái của nó.
+
+| Trạng thái | Ý nghĩa |
+| --- | --- |
+| Đang xếp hàng | Đang chờ các lượt phía trước |
+| Đang chạy | Lượt mà tác nhân đang thực hiện |
+| Đang chờ | Lượt đang chạy đang chờ bạn trả lời hoặc phê duyệt |
+| Bị gián đoạn | Đã dừng trước khi hoàn tất, chẳng hạn do nút dừng hoặc do máy chủ khởi động lại |
+| Thất bại | Kết thúc với lỗi |
+
+Dùng **Hủy** trên một tin nhắn đang xếp hàng để đưa nó ra khỏi hàng đợi. Lượt chạy thất bại hoặc bị gián đoạn sẽ có **Thử lại** và **Xóa**. Hãy đọc câu trả lời mà lượt chạy bị gián đoạn để lại trước khi thử lại, vì một phần công việc có thể đã được thực hiện.
+
+**Tạm dừng hàng đợi** giữ lại các tin nhắn đang xếp hàng và để lượt hiện tại hoàn tất. **Tiếp tục hàng đợi** cho chúng chạy trở lại. Nút dừng thì khác: nó kết thúc lượt đang chạy cùng mọi tác vụ mà lượt đó đã [ủy thác](/docs/vi/delegation), đồng thời tạm dừng hàng đợi.
+
+Lượt chạy thất bại hoặc bị gián đoạn cũng làm hàng đợi tạm dừng, khi đó tiêu đề hàng đợi hiển thị **Hàng đợi đã tạm dừng**. Gửi một tin nhắn mới sẽ tiếp tục hàng đợi và loại bỏ các lượt chạy đó.
+
+Hàng đợi được lưu trên máy chủ của dự án và vẫn còn sau khi khởi động lại Dream. Sau khi máy chủ khởi động lại, lượt đang chạy trước đó được đánh dấu là bị gián đoạn và hàng đợi vẫn tạm dừng cho đến khi bạn tiếp tục. Nếu một tin nhắn đang xếp hàng không gửi được, nội dung của nó sẽ trở lại ô nhập tin nhắn.
 
 ## Đóng, lưu trữ hoặc xóa?
 

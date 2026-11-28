@@ -247,10 +247,12 @@
             "group": "Chats",
             "pages": [
               "chats",
+              "standalone-chats",
               "multiple-chats",
               "providing-context",
               "feedback",
               "agent-modes",
+              "delegation",
               "branching-chats",
               "checkpoints",
               "stash",
@@ -262,16 +264,11 @@
           },
           {
             "group": "Workspace tools",
-            "pages": [
-              "workspace",
-              {
-                "page": "remote-hosts",
-                "title": "SSH remote workspaces"
-              },
-              "files",
-              "terminals",
-              "browser"
-            ]
+            "pages": ["workspace", "files", "terminals", "browser"]
+          },
+          {
+            "group": "Hosts and remote access",
+            "pages": ["remote-hosts", "remote-access", "dream-host"]
           },
           {
             "group": "Git",
@@ -324,6 +321,10 @@
                 "title": "Trabajar con chats"
               },
               {
+                "page": "es/standalone-chats",
+                "title": "Chats sin proyecto"
+              },
+              {
                 "page": "es/multiple-chats",
                 "title": "Usar varios chats"
               },
@@ -338,6 +339,10 @@
               {
                 "page": "es/agent-modes",
                 "title": "Permisos del agente"
+              },
+              {
+                "page": "es/delegation",
+                "title": "Delegar tareas en otros agentes"
               },
               {
                 "page": "es/branching-chats",
@@ -377,10 +382,6 @@
                 "title": "Proyectos y espacio de trabajo"
               },
               {
-                "page": "es/remote-hosts",
-                "title": "Espacios de trabajo remotos por SSH"
-              },
-              {
                 "page": "es/files",
                 "title": "Archivos"
               },
@@ -391,6 +392,23 @@
               {
                 "page": "es/browser",
                 "title": "Vista previa en el navegador"
+              }
+            ]
+          },
+          {
+            "group": "Hosts y acceso remoto",
+            "pages": [
+              {
+                "page": "es/remote-hosts",
+                "title": "Hosts remotos"
+              },
+              {
+                "page": "es/remote-access",
+                "title": "Acceso remoto"
+              },
+              {
+                "page": "es/dream-host",
+                "title": "Ejecución del host"
               }
             ]
           },
@@ -467,6 +485,10 @@
                 "title": "Travailler avec les conversations"
               },
               {
+                "page": "fr/standalone-chats",
+                "title": "Chats sans projet"
+              },
+              {
                 "page": "fr/multiple-chats",
                 "title": "Utiliser plusieurs conversations"
               },
@@ -481,6 +503,10 @@
               {
                 "page": "fr/agent-modes",
                 "title": "Autorisations des agents"
+              },
+              {
+                "page": "fr/delegation",
+                "title": "Déléguer des tâches à d'autres agents"
               },
               {
                 "page": "fr/branching-chats",
@@ -520,10 +546,6 @@
                 "title": "Projets et espace de travail"
               },
               {
-                "page": "fr/remote-hosts",
-                "title": "Espaces de travail distants SSH"
-              },
-              {
                 "page": "fr/files",
                 "title": "Fichiers"
               },
@@ -534,6 +556,23 @@
               {
                 "page": "fr/browser",
                 "title": "Aperçu dans le navigateur"
+              }
+            ]
+          },
+          {
+            "group": "Hôtes et accès à distance",
+            "pages": [
+              {
+                "page": "fr/remote-hosts",
+                "title": "Hôtes distants"
+              },
+              {
+                "page": "fr/remote-access",
+                "title": "Accès à distance"
+              },
+              {
+                "page": "fr/dream-host",
+                "title": "Exécuter l'hôte"
               }
             ]
           },
@@ -610,6 +649,10 @@
                 "title": "Mit Chats arbeiten"
               },
               {
+                "page": "de/standalone-chats",
+                "title": "Chats ohne Projekt"
+              },
+              {
                 "page": "de/multiple-chats",
                 "title": "Mehrere Chats verwenden"
               },
@@ -624,6 +667,10 @@
               {
                 "page": "de/agent-modes",
                 "title": "Agentenberechtigungen"
+              },
+              {
+                "page": "de/delegation",
+                "title": "Aufgaben an andere Agenten delegieren"
               },
               {
                 "page": "de/branching-chats",
@@ -663,10 +710,6 @@
                 "title": "Projekte und Arbeitsbereich"
               },
               {
-                "page": "de/remote-hosts",
-                "title": "Remote-Arbeitsbereiche über SSH"
-              },
-              {
                 "page": "de/files",
                 "title": "Dateien"
               },
@@ -677,6 +720,23 @@
               {
                 "page": "de/browser",
                 "title": "Browser-Vorschau"
+              }
+            ]
+          },
+          {
+            "group": "Hosts und Fernzugriff",
+            "pages": [
+              {
+                "page": "de/remote-hosts",
+                "title": "Remote-Hosts"
+              },
+              {
+                "page": "de/remote-access",
+                "title": "Fernzugriff"
+              },
+              {
+                "page": "de/dream-host",
+                "title": "Host betreiben"
               }
             ]
           },
@@ -753,6 +813,10 @@
                 "title": "Trabalhar com chats"
               },
               {
+                "page": "pt/standalone-chats",
+                "title": "Chats sem projeto"
+              },
+              {
                 "page": "pt/multiple-chats",
                 "title": "Usar vários chats"
               },
@@ -767,6 +831,10 @@
               {
                 "page": "pt/agent-modes",
                 "title": "Permissões dos agentes"
+              },
+              {
+                "page": "pt/delegation",
+                "title": "Delegar tarefas a outros agentes"
               },
               {
                 "page": "pt/branching-chats",
@@ -806,10 +874,6 @@
                 "title": "Projetos e espaço de trabalho"
               },
               {
-                "page": "pt/remote-hosts",
-                "title": "Espaços de trabalho remotos por SSH"
-              },
-              {
                 "page": "pt/files",
                 "title": "Arquivos"
               },
@@ -820,6 +884,23 @@
               {
                 "page": "pt/browser",
                 "title": "Prévia no navegador"
+              }
+            ]
+          },
+          {
+            "group": "Hosts e acesso remoto",
+            "pages": [
+              {
+                "page": "pt/remote-hosts",
+                "title": "Hosts remotos"
+              },
+              {
+                "page": "pt/remote-access",
+                "title": "Acesso remoto"
+              },
+              {
+                "page": "pt/dream-host",
+                "title": "Executar o host"
               }
             ]
           },
@@ -896,6 +977,10 @@
                 "title": "Lavorare con le chat"
               },
               {
+                "page": "it/standalone-chats",
+                "title": "Chat senza progetto"
+              },
+              {
                 "page": "it/multiple-chats",
                 "title": "Usare più chat"
               },
@@ -910,6 +995,10 @@
               {
                 "page": "it/agent-modes",
                 "title": "Autorizzazioni degli agenti"
+              },
+              {
+                "page": "it/delegation",
+                "title": "Delegare attività ad altri agenti"
               },
               {
                 "page": "it/branching-chats",
@@ -949,10 +1038,6 @@
                 "title": "Progetti e spazio di lavoro"
               },
               {
-                "page": "it/remote-hosts",
-                "title": "Spazi di lavoro remoti SSH"
-              },
-              {
                 "page": "it/files",
                 "title": "File"
               },
@@ -963,6 +1048,23 @@
               {
                 "page": "it/browser",
                 "title": "Anteprima nel browser"
+              }
+            ]
+          },
+          {
+            "group": "Host e accesso remoto",
+            "pages": [
+              {
+                "page": "it/remote-hosts",
+                "title": "Host remoti"
+              },
+              {
+                "page": "it/remote-access",
+                "title": "Accesso remoto"
+              },
+              {
+                "page": "it/dream-host",
+                "title": "Esecuzione dell'host"
               }
             ]
           },
@@ -1039,6 +1141,10 @@
                 "title": "チャットの使い方"
               },
               {
+                "page": "ja/standalone-chats",
+                "title": "プロジェクトのないチャット"
+              },
+              {
                 "page": "ja/multiple-chats",
                 "title": "複数のチャットを使う"
               },
@@ -1053,6 +1159,10 @@
               {
                 "page": "ja/agent-modes",
                 "title": "エージェントの権限"
+              },
+              {
+                "page": "ja/delegation",
+                "title": "他のエージェントへのタスクの委任"
               },
               {
                 "page": "ja/branching-chats",
@@ -1092,10 +1202,6 @@
                 "title": "プロジェクトとワークスペース"
               },
               {
-                "page": "ja/remote-hosts",
-                "title": "SSH リモートワークスペース"
-              },
-              {
                 "page": "ja/files",
                 "title": "ファイル"
               },
@@ -1106,6 +1212,23 @@
               {
                 "page": "ja/browser",
                 "title": "ブラウザープレビュー"
+              }
+            ]
+          },
+          {
+            "group": "ホストとリモートアクセス",
+            "pages": [
+              {
+                "page": "ja/remote-hosts",
+                "title": "リモートホスト"
+              },
+              {
+                "page": "ja/remote-access",
+                "title": "リモートアクセス"
+              },
+              {
+                "page": "ja/dream-host",
+                "title": "ホストの実行"
               }
             ]
           },
@@ -1182,6 +1305,10 @@
                 "title": "채팅 사용하기"
               },
               {
+                "page": "ko/standalone-chats",
+                "title": "프로젝트 없는 채팅"
+              },
+              {
                 "page": "ko/multiple-chats",
                 "title": "여러 채팅 사용하기"
               },
@@ -1196,6 +1323,10 @@
               {
                 "page": "ko/agent-modes",
                 "title": "에이전트 권한"
+              },
+              {
+                "page": "ko/delegation",
+                "title": "다른 에이전트에 작업 위임하기"
               },
               {
                 "page": "ko/branching-chats",
@@ -1235,10 +1366,6 @@
                 "title": "프로젝트와 작업 공간"
               },
               {
-                "page": "ko/remote-hosts",
-                "title": "SSH 원격 작업 공간"
-              },
-              {
                 "page": "ko/files",
                 "title": "파일"
               },
@@ -1249,6 +1376,23 @@
               {
                 "page": "ko/browser",
                 "title": "브라우저 미리 보기"
+              }
+            ]
+          },
+          {
+            "group": "호스트 및 원격 액세스",
+            "pages": [
+              {
+                "page": "ko/remote-hosts",
+                "title": "원격 호스트"
+              },
+              {
+                "page": "ko/remote-access",
+                "title": "원격 액세스"
+              },
+              {
+                "page": "ko/dream-host",
+                "title": "호스트 실행하기"
               }
             ]
           },
@@ -1325,6 +1469,10 @@
                 "title": "Làm việc với cuộc trò chuyện"
               },
               {
+                "page": "vi/standalone-chats",
+                "title": "Cuộc trò chuyện không có dự án"
+              },
+              {
                 "page": "vi/multiple-chats",
                 "title": "Sử dụng nhiều cuộc trò chuyện"
               },
@@ -1339,6 +1487,10 @@
               {
                 "page": "vi/agent-modes",
                 "title": "Quyền của tác nhân"
+              },
+              {
+                "page": "vi/delegation",
+                "title": "Ủy thác tác vụ cho tác nhân khác"
               },
               {
                 "page": "vi/branching-chats",
@@ -1378,10 +1530,6 @@
                 "title": "Dự án và không gian làm việc"
               },
               {
-                "page": "vi/remote-hosts",
-                "title": "Không gian làm việc từ xa qua SSH"
-              },
-              {
                 "page": "vi/files",
                 "title": "Tệp"
               },
@@ -1392,6 +1540,23 @@
               {
                 "page": "vi/browser",
                 "title": "Xem trước trong trình duyệt"
+              }
+            ]
+          },
+          {
+            "group": "Máy chủ và truy cập từ xa",
+            "pages": [
+              {
+                "page": "vi/remote-hosts",
+                "title": "Máy chủ từ xa"
+              },
+              {
+                "page": "vi/remote-access",
+                "title": "Truy cập từ xa"
+              },
+              {
+                "page": "vi/dream-host",
+                "title": "Chạy máy chủ"
               }
             ]
           },
@@ -1468,6 +1633,10 @@
                 "title": "使用聊天"
               },
               {
+                "page": "zh-Hans/standalone-chats",
+                "title": "无项目的聊天"
+              },
+              {
                 "page": "zh-Hans/multiple-chats",
                 "title": "使用多个聊天"
               },
@@ -1482,6 +1651,10 @@
               {
                 "page": "zh-Hans/agent-modes",
                 "title": "智能体权限"
+              },
+              {
+                "page": "zh-Hans/delegation",
+                "title": "将任务委派给其他代理"
               },
               {
                 "page": "zh-Hans/branching-chats",
@@ -1521,10 +1694,6 @@
                 "title": "项目与工作区"
               },
               {
-                "page": "zh-Hans/remote-hosts",
-                "title": "SSH 远程工作区"
-              },
-              {
                 "page": "zh-Hans/files",
                 "title": "文件"
               },
@@ -1535,6 +1704,23 @@
               {
                 "page": "zh-Hans/browser",
                 "title": "浏览器预览"
+              }
+            ]
+          },
+          {
+            "group": "主机与远端存取",
+            "pages": [
+              {
+                "page": "zh-Hans/remote-hosts",
+                "title": "远端主机"
+              },
+              {
+                "page": "zh-Hans/remote-access",
+                "title": "远端存取"
+              },
+              {
+                "page": "zh-Hans/dream-host",
+                "title": "运行主机"
               }
             ]
           },
@@ -1611,6 +1797,10 @@
                 "title": "使用聊天"
               },
               {
+                "page": "zh-Hant/standalone-chats",
+                "title": "無專案的聊天"
+              },
+              {
                 "page": "zh-Hant/multiple-chats",
                 "title": "使用多個聊天"
               },
@@ -1625,6 +1815,10 @@
               {
                 "page": "zh-Hant/agent-modes",
                 "title": "代理權限"
+              },
+              {
+                "page": "zh-Hant/delegation",
+                "title": "將任務委派給其他代理"
               },
               {
                 "page": "zh-Hant/branching-chats",
@@ -1664,10 +1858,6 @@
                 "title": "專案與工作區"
               },
               {
-                "page": "zh-Hant/remote-hosts",
-                "title": "SSH 遠端工作區"
-              },
-              {
                 "page": "zh-Hant/files",
                 "title": "檔案"
               },
@@ -1678,6 +1868,23 @@
               {
                 "page": "zh-Hant/browser",
                 "title": "瀏覽器預覽"
+              }
+            ]
+          },
+          {
+            "group": "主機與遠端存取",
+            "pages": [
+              {
+                "page": "zh-Hant/remote-hosts",
+                "title": "遠端主機"
+              },
+              {
+                "page": "zh-Hant/remote-access",
+                "title": "遠端存取"
+              },
+              {
+                "page": "zh-Hant/dream-host",
+                "title": "執行主機"
               }
             ]
           },

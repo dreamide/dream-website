@@ -12,7 +12,9 @@ Nhấn **Tệp** trong thanh công cụ bên phải để duyệt thư mục c�
 3. Chọn kết quả để mở nó.
 4. Xóa tìm kiếm để quay lại việc duyệt cây.
 
-Sử dụng **Làm mới tệp** trong các hành động tệp khi các thay đổi được thực hiện ngoài Dream không được phản ánh trong cây. Tìm kiếm một tệp sẽ xác định đường dẫn của nó; sử dụng **Tìm trong các tệp** để tìm nội dung dự án.
+Cây tệp cập nhật khi tệp thay đổi, kể cả sau khi lệnh terminal chạy xong và khi bạn quay lại cửa sổ Dream. Tìm kiếm một tệp sẽ xác định đường dẫn của nó; dùng **Tìm trong các tệp** để tìm trong nội dung dự án.
+
+Trong kho Git, cây tệp đánh dấu các tệp có thay đổi chưa commit, chẳng hạn tệp đã sửa và tệp mới, cùng các thư mục chứa chúng.
 
 <Frame caption="Tìm kiếm hoặc duyệt cây tệp, sau đó mở một tệp bên cạnh cuộc trò chuyện của bạn.">
   <img
@@ -65,7 +67,7 @@ Chỉnh sửa một tệp văn bản có thể ghi đè trong trình soạn th�
 
 Nhấn nút **Lưu** trong thanh công cụ biên tập, hoặc nhấn **Command+S** trên macOS hoặc **Ctrl+S** trên Windows/Linux khi thanh công cụ biên tập đang được tập trung. Lưu từng tệp đã được chỉnh sửa trước khi yêu cầu một agent hoặc lệnh terminal sử dụng nội dung mới; các công cụ này đọc tệp từ ổ đĩa.
 
-Việc chuyển tab file cho phép bạn giữ các bản nháp trong khi kiểm tra các file khác. Sử dụng **Hủy thay đổi** để từ chối bản nháp cục bộ. Điều này là riêng biệt với việc khôi phục thay đổi qua Git.
+Chuyển giữa các thẻ tệp cho phép bạn giữ bản nháp trong khi xem các tệp khác. Để bỏ một bản nháp, hãy đóng thẻ của nó và chọn **Không lưu**. Thao tác này không liên quan đến việc hoàn nguyên thay đổi qua Git.
 
 Nhấp đôi vào tab file để cố định nó để khi mở một bản xem khác thì nó không bị thay thế.
 
@@ -86,6 +88,8 @@ Một agent, lệnh terminal hoặc trình biên tập bên ngoài có thể tha
 
 ## Điều chỉnh chế độ xem
 
-Sử dụng **Bật ngắt dòng** cho các dòng dài. Thay đổi kích thước cây tệp và các khu vực biên tập để cho nội dung thêm không gian. Sử dụng các hành động **Mở trong** có sẵn để tiếp tục trong một trình biên tập bên ngoài.
+**Ngắt dòng** được bật theo mặc định. Dùng nút bật/tắt của nó ở phần đầu bảng điều khiển để tắt đi khi bạn muốn cuộn ngang các dòng dài. Thay đổi kích thước cây tệp và khung trình soạn thảo để nội dung có thêm không gian.
+
+Với dự án cục bộ, nhấp vào đường dẫn ở phần đầu bảng điều khiển để mở thư mục trong trình quản lý tệp. Để tiếp tục trong trình soạn thảo bên ngoài, hãy dùng menu [Mở trong](/docs/vi/workspace#đổi-tên-hoặc-mở-dự-án-bên-ngoài) của dự án.
 
 Sau khi lưu, mở [Thay đổi](/docs/vi/git-workflows) để xem xét diff Git. Để hỏi một agent về một tệp, [tham chiếu nó bằng @](/docs/vi/providing-context) trong composer trò chuyện.

@@ -45,6 +45,10 @@ request in the conversation and respond using the controls it provides. A projec
 that an agent is waiting for your answer. Open that project and return to the conversation to
 read the request.
 
+A request can only be answered while its turn is still running. If the turn was interrupted first,
+for example because the host restarted, Dream reports that the approval has expired. Review what
+the interrupted turn already did, then retry it from the [queue](/docs/chats#queue-messages).
+
 If the request requires changing the task, give the agent the revised instruction in that chat.
 Use the stop control to interrupt a response when necessary. Stopping does not roll back edits or
 commands that already completed; inspect [Changes](/docs/git-workflows) afterward, or use the

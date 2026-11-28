@@ -24,13 +24,15 @@ Il riassunto delle verifiche mostra il numero di verifiche fallite. Selezionare 
   />
 </Frame>
 
-Se il ramo non ha nessun richiesta di pull, il pannello offre **Crea richiesta pull**. Usa **Azioni della pull request → Aggiorna** dopo le modifiche apportate su GitHub, o **Apri su GitHub** per visualizzare la richiesta di pull nel browser. Una richiesta di pull fusionata smette di apparire una volta che il ramo contenga commit più recenti rispetto alla testa della richiesta di pull.
+Se il branch non ha una PR, il pannello lo indica; creane una con **Azioni Git → Crea richiesta pull**. Il pannello si aggiorna man mano che il branch cambia e quando torni alla finestra di Dream. Per visualizzare la PR nel browser, fai clic sul repository e sul numero della PR nella parte superiore di **Riepilogo**. Una PR unita smette di comparire quando il branch contiene commit più recenti rispetto alla head di quella PR.
 
 ## Revisione del codice e pubblicazione dei commenti
 
 Nel **Riepilogo**, leggi il discorso e usa **Scrivi** e **Anteprima** per comporre un commento in Markdown. Seleziona **Pubblica commento** per pubblicarlo su GitHub.
 
 In **Codice**, espandi un file e seleziona le righe nel suo diff per pubblicare un **Pubblica commento sulla riga**. Puoi leggere i thread di revisione esistenti e utilizzare **Rispondi** per continuarli. Quando un patch testuale non è disponibile, apri la richiesta di merge su GitHub per esaminare quel file.
+
+La scheda **Codice** manda a capo le righe lunghe per impostazione predefinita. Usa **A capo automatico** sopra l'elenco dei file per disattivare questo comportamento.
 
 Questi commenti vengono pubblicati su GitHub. Per chiedere al tuo agente di programmazione informazioni sulle modifiche locali, usa [diff feedback in Changes](/docs/it/feedback#commentare-le-righe-in-un-diff).
 

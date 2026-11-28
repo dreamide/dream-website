@@ -88,7 +88,7 @@ Fusionner, créer une demande de fusion et supprimer un arbre de travail sont de
 
 Pour publier pour révision, utilisez **Actions Git → Créer une demande d'extraction** et suivez [Flux de travail Git](/docs/fr/git-workflows#créer-un-pull-request). Créer une demande de fusion conserve l'arbre de travail.
 
-Utilisez **Actions Git → Supprimer l'arbre de travail** pour supprimer le checkout tout en conservant sa branche. Si il contient des modifications non commitées, commit-les d'abord ou sélectionnez explicitement **Abandonner les modifications non validées**.
+Utilisez **Actions Git → Supprimer l'arbre de travail** pour supprimer la copie de travail. Sa branche est conservée, sauf si vous sélectionnez l'option qui supprime aussi la branche ; celle-ci indique, avant votre confirmation, si les commits de la branche sont fusionnés. Si l'arbre de travail contient des modifications non validées, validez-les d'abord ou sélectionnez explicitement **Abandonner les modifications non validées**.
 
 <Warning>
   Supprimer un arbre de travail supprime son répertoire et ferme son projet. Les échanges du projet d'arbre de travail sont éliminés avec lui et n'apparaissent ni dans l'Historique des chats ni dans Fermés récemment. Si vous souhaitez conserver une conversation, [divisez-la dans l'espace de travail parent](/docs/fr/branching-chats) avant de la terminer.
@@ -117,6 +117,8 @@ Vous pouvez également supprimer un arbre de travail sans afficher la boîte de 
 4. Utilisez son action de suppression et vérifiez la confirmation.
 5. Confirmer **Supprimer l'arbre de travail** lorsque vous n'avez plus besoin de ce checkout.
 
-Le suppression supprime le répertoire arbre de travail du disque. Git refuse la suppression lorsque ce dernier contient des modifications non commitées. Retournez sur ce projet et vérifiez les modifications avant de réessayer.
+La suppression efface du disque le répertoire de l'arbre de travail et ses chats. Lorsque l'arbre de travail contient des modifications non validées, **Supprimer l'arbre de travail** reste indisponible tant que vous n'avez pas sélectionné **Abandonner les modifications non validées**. En cas de doute, revenez d'abord à ce projet et examinez les modifications.
+
+Vous pouvez aussi supprimer un arbre de travail en [supprimant sa branche](/docs/fr/git-workflows#supprimer-une-branche-locale) depuis le sélecteur de branche.
 
 Fermer une onglet de projet ne le retire qu de l'espace de travail ouvert ; supprimer un arbre de travail efface son checkout. Pour les étapes de commit et de demande de modification, voir [Flux de travail Git](/docs/fr/git-workflows).

@@ -1,0 +1,70 @@
+---
+title: "Acceso remoto"
+description: "Usa los proyectos de este equipo desde un teléfono u otro equipo vinculando dispositivos mediante Tailscale o Cloudflare Tunnel."
+---
+
+El acceso remoto permite que otros dispositivos usen los proyectos de este equipo. Un dispositivo vinculado abre Dream en su navegador, o se conecta desde otra aplicación de escritorio de Dream, mientras los agentes, los archivos, los terminales y los comandos de Git siguen ejecutándose aquí.
+
+El acceso remoto permanece desactivado hasta que lo activas, y cada dispositivo debe vincularse antes de poder conectarse. Dream no usa ninguna cuenta ni servicio de retransmisión: tú proporcionas la ruta de red y la vinculación controla quién entra.
+
+## Elegir cómo acceden los dispositivos a este equipo
+
+| Opción | Cómo funciona | Qué necesitas |
+| --- | --- | --- |
+| Tailscale | Sirve Dream por HTTPS dentro de tu tailnet | Tailscale en este equipo y en cada dispositivo, con MagicDNS y los certificados HTTPS activados en la tailnet |
+| Cloudflare Tunnel | Sirve Dream en un nombre de host público de tu propio dominio | Un túnel persistente en tu cuenta de Cloudflare y un conector `cloudflared` que ejecutas tú |
+
+También puedes poner tu propio proxy inverso delante del host. Consulta [Ejecución del host](/docs/es/dream-host#acceso-remoto-desde-la-línea-de-comandos).
+
+## Activar el acceso remoto
+
+1. Abre **Configuración → Conexiones** y busca **Acceso remoto**.
+2. Haz clic en **Configurar**.
+3. En **Acceder a este equipo mediante**, elige **Tailscale** o **Cloudflare Tunnel**.
+4. Para Tailscale, conserva o cambia el **Puerto HTTPS**. Para Cloudflare Tunnel, introduce la **Dirección pública**, por ejemplo `https://dream.example.com`.
+5. Deja **Puerto local** vacío a menos que necesites un puerto concreto y haz clic en **Activar**.
+
+El estado junto a **Permitir dispositivos vinculados** indica **Listo** cuando Dream puede acceder a este equipo mediante esa dirección. Si indica **No está listo**, sigue el mensaje que se muestra, corrige el problema y haz clic en **Comprobar de nuevo**. Usa **Cambiar** para editar la configuración más adelante. Desactiva **Permitir dispositivos vinculados** para dejar de atender a los dispositivos sin desvincularlos.
+
+### Configurar un túnel de Cloudflare
+
+Dream no instala ni ejecuta `cloudflared` y nunca necesita el token de tu túnel. Solo necesita la dirección pública y el puerto local al que se enruta el nombre de host.
+
+1. En el panel de Cloudflare, crea un túnel y ejecuta en este equipo el comando de instalación que muestra.
+2. Añade una ruta para un nombre de host de tu dominio. Establece su servicio en `HTTP` y `127.0.0.1:5410`, o en el **Puerto local** que se muestra en Dream.
+3. Asegúrate de que el nombre de host acepte solicitudes directas de API y de WebSocket. No pongas delante un inicio de sesión de Cloudflare Access ni una verificación del navegador, y no almacenes en caché ni en búfer `/api/*`.
+
+Los Quick Tunnels no son compatibles. Sus direcciones cambian y no pueden transportar los flujos de chat.
+
+## Vincular un dispositivo
+
+1. Cuando el acceso remoto esté listo, haz clic en **Vincular un dispositivo**.
+2. Elige el nivel de **Acceso** del dispositivo.
+3. Haz clic en **Crear vinculación**. Dream muestra un **Código de vinculación** y la **Dirección del host**.
+4. En el otro dispositivo, abre la dirección del host en un navegador, introduce el código y un **Nombre del dispositivo**, y haz clic en **Vincular**.
+
+Para conectar otra aplicación de escritorio de Dream en lugar de un navegador, [añade allí este equipo como host](/docs/es/remote-hosts#vincular-con-un-host-por-https) con la misma dirección y el mismo código.
+
+El código funciona una sola vez y caduca a los 10 minutos. Quien lo introduzca obtiene el acceso que elegiste, así que dáselo solo al dispositivo que quieres vincular.
+
+| Acceso | Qué puede hacer el dispositivo |
+| --- | --- |
+| Solo ver | Leer proyectos, chats y terminales |
+| Ver y trabajar | Además, ejecutar agentes, terminales y Git en tu nombre |
+| Completo | Además, vincular y quitar dispositivos |
+
+## Usar Dream desde un dispositivo vinculado
+
+Un navegador vinculado muestra los proyectos de este equipo con sus chats, archivos, terminales y paneles de Git. Algunas cosas siguen siendo exclusivas de la aplicación de escritorio: la herramienta integrada **Navegador**, **Configuración → Conexiones**, la apertura de carpetas en otros hosts y **Abrir en** para editores externos.
+
+Si el dispositivo pierde la conexión, un aviso indica que se está reconectando, o que no puede acceder al host y muestra lo que tenía guardado. En cualquier caso, el trabajo en el host continúa. Para desvincular desde el propio dispositivo, abre allí **Configuración** y elige **Cerrar sesión**.
+
+## Gestionar los dispositivos vinculados
+
+**Dispositivos vinculados** enumera cada dispositivo con su nivel de acceso y cuándo se usó por última vez. Haz clic en **Revocar** para quitar uno, o en **Revocar todos** para quitar todos los dispositivos. Un dispositivo revocado pierde el acceso de inmediato y sus páginas abiertas dejan de funcionar; el trabajo en este equipo continúa.
+
+## Mantener este equipo disponible
+
+Los dispositivos solo pueden conectarse mientras el host de Dream está en ejecución y este equipo no está en suspensión. El host que inicia la aplicación de escritorio se detiene al salir de Dream. Para mantener uno en ejecución en segundo plano, o para compartir una máquina sin sesión de escritorio, consulta [Ejecución del host](/docs/es/dream-host).
+
+Si Configuración indica que el host de este equipo ejecuta una versión distinta de la de la aplicación, actualiza el más antiguo de los dos y reinicia el host.

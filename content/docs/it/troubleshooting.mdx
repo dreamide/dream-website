@@ -5,7 +5,7 @@ description: "Risolvere modelli e chat mancanti, problemi relativi al terminale 
 
 Inizia con l'errore visualizzato nel chat o strumento interessato. Verifica quale progetto e fornitore sono selezionati prima di modificare le impostazioni, specialmente quando sono aperti diversi chat.
 
-Per i progetti remoti, controlla lo stato della connessione in **Impostazioni → Host SSH**. Consulta [Problemi di connessione SSH](/docs/it/remote-hosts#problemi-di-connessione) per autenticazione, runtime e build di sviluppo.
+Per i progetti remoti, controlla lo stato di connessione dell'host in **Impostazioni → Connessioni**. Consulta [problemi di connessione](/docs/it/remote-hosts#problemi-di-connessione) per autenticazione, associazione e configurazione delle build di sviluppo.
 
 ## Non è stato rilevato un provider CLI
 
@@ -35,6 +35,12 @@ Questi controlli dipendono dalle capacità del modello selezionato. Scegli un mo
 5. Se il progetto è stato chiuso, riprenderlo attraverso **Chiusi di recente** nella schermata di avvio.
 
 Chiudere una colonna multi-chat non archivia la conversazione. I chat vuoti senza messaggi non sono elencati nella storia. Un chat eliminato in modo permanente non può essere ripristinato attraverso Dream.
+
+Una chat avviata senza progetto è elencata nella scheda **Chat** anziché nella cronologia di un progetto. Consulta [Chat senza progetto](/docs/it/standalone-chats).
+
+## Un messaggio in coda non viene eseguito
+
+Controlla l'elenco **Coda** sopra la casella del messaggio. Se la sua intestazione indica **Coda in pausa**, fai clic su **Riprendi coda**. Un'esecuzione non riuscita o interrotta mette in pausa la coda finché non la riprovi, la rimuovi o invii un nuovo messaggio. Consulta [Mettere in coda i messaggi](/docs/it/chats#mettere-in-coda-i-messaggi).
 
 ## Un chat ripristinato è stato nuovamente archiviato
 
@@ -66,6 +72,10 @@ Verifica che la cartella del progetto esista ancora. Scegli un shell disponibile
 
 Conferma che l'applicazione stia funzionando e usa l'URL e la porta esatti mostrati nel terminale. Controlla gli errori nel terminale, poi prova **Aggiorna browser** o **Forza ricaricamento**. Confronta l'URL nel browser del tuo sistema. Usa DevTools per gli errori della pagina; riserva il pulito dei cookie o del cache per problemi di autenticazione o caching rilevanti. Vedi [Anteprima nel browser](/docs/it/browser).
 
+## Un dispositivo associato non riesce a connettersi
+
+Verifica che Dream o `dream-host` sia in esecuzione sul computer host e che il computer non sia in sospensione. Su quel computer, in **Impostazioni → Connessioni**, controlla che **Accesso remoto** indichi **Pronto** e usa **Verifica di nuovo** dopo aver corretto gli eventuali problemi segnalati. Se il dispositivo è stato revocato o il suo codice di associazione è scaduto, crea un nuovo codice con **Associa un dispositivo**. Consulta [Accesso remoto](/docs/it/remote-access).
+
 ## Un file non può essere salvato
 
 Verifica se il file è scrivibile e leggi l'errore dell'editor. Se è stato modificato sul disco mentre stavi editando, salva il tuo bozzolo prima di **Ricarica dal disco**, poi riapplica le modifiche intenzionate. Vedi [File e ricerca](/docs/it/files#gestire-un-file-modificato-esternamente-alleditor).
@@ -80,6 +90,9 @@ Per problemi relativi ai commenti, all'editing o all'aggiunta di PR, vedi [Esami
 | Nessun cambiamento in attesa per il commit | Revisione: includi i file non stage, oppure stage i file previsti attraverso Git |
 | Cambiamenti staged fuori dal progetto attivo | Committeli separatamente prima di utilizzare l'azione di commit di Dream |
 | Push non ha un destinazione | Configura un remoto Git e verifica l'accesso a esso |
+| Il push viene rifiutato | Il remoto contiene commit che non hai ancora; esegui il pull, poi di nuovo il push |
+| Il pull segnala conflitti | Il merge è stato annullato e nulla è cambiato; risolvi la divergenza con Git in un terminale, poi esegui di nuovo il pull |
+| Non è possibile eliminare un branch | È il branch corrente, il branch di base oppure è aperto nel checkout principale |
 | La creazione di un PR segnala un errore del CLI | Verificare che il CLI di GitHub sia installato, autenticato e possa accedere al repository |
 | PR source e base sono lo stesso | Passa a una ramifica caratteristica prima di creare il PR |
 | I reporti della creazione di PR indicano un HEAD separato | Esegui un checkout di un ramo prima di creare la richiesta di merge |

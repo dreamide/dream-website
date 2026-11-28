@@ -6,6 +6,9 @@ description: Review changes, work with branches, and use Git worktrees in Dream.
 Open **Git** in the right toolbar for the **Changes**, **History**, and **Pull request** tabs.
 The **Git actions** menu beneath the chat offers the next steps for the current branch.
 
+The **Git actions** button sits at the right of the footer and is highlighted when there are changes
+to commit or commits to push. **Git** appears only for projects inside a Git repository.
+
 ## Before you start
 
 For commits, your repository needs a Git author identity configured. For pushing, it needs a remote
@@ -19,8 +22,11 @@ choose **Settings → General → Models → Text generation model**.
 
 1. Open **Git → Changes** to inspect modified, added, and deleted files.
 2. Expand a file to review its diff.
-3. Choose **Unified diff** or **Split diff** in the header, and enable word wrap in **Changes actions** if useful.
-4. Use **Changes actions → Refresh** if work done outside Dream is not yet reflected.
+3. Choose **Unified diff** or **Split diff** in the header. **Word wrap** is on by default and has its own toggle there, beside **Expand all** and **Collapse all**.
+4. Click a file's path in its diff header to open that file in **Files**.
+
+The list updates as files change, after terminal commands finish, and when you return to the Dream
+window.
 
 For very large diffs, Dream may show **Diff too large to render**. Use **Render anyway** only when
 you want to load that larger view, or inspect the file in your editor or terminal.
@@ -52,6 +58,11 @@ To ask an agent about specific lines, drag across the line numbers in a diff or 
 4. Review **Auto generate message**, which is on by default. To write your own message, turn it off and enter the text; turning it off clears the generated message.
 5. Choose **Commit**, or **Commit & push** if you are ready to publish the commit to the remote.
 
+With **Auto generate message** on, Dream drafts the message in the background when the project's
+last running agent turn ends, so it is usually ready when you open the panel. Press
+**Command+Enter** on macOS or **Ctrl+Enter** on Windows/Linux to commit, and add **Shift** to commit
+and push.
+
 To commit only a selected subset, stage those files using Git in a terminal or external editor and
 turn **Include unstaged** off. The Changes panel does not provide individual staging controls.
 
@@ -75,18 +86,34 @@ those separately before continuing with this action.
   />
 </Frame>
 
-Use **Publish branch** for a branch without an upstream, or **Push** for outgoing commits.
-These footer actions push immediately. Check the branch, remote, and commits in **History** first;
-the footer shows ahead and behind counts when an upstream exists.
+In **Git actions**, use **Publish branch** for a branch without an upstream, or **Push** for outgoing
+commits. Either one opens a **Push changes** preview that shows the branch, its destination, and the
+commits that will be sent. Review them, then click **Push**. When an upstream exists, the **Push**
+and **Pull** menu items show how many commits the branch is ahead and behind.
 
-If pushing fails, inspect the error and confirm your remote access. A successful local commit
-remains committed even if a following push fails; check the branch state before repeating a
-combined action.
+If pushing fails, inspect the error and confirm your remote access. When the remote has commits you
+do not have yet, Dream tells you to pull and then push again. A successful local commit remains
+committed even if a following push fails; check the branch state before repeating a combined action.
+
+## Fetch and pull
+
+**Git actions → Fetch** downloads new commits from the remote without changing your files. **Pull**
+also brings the upstream branch's commits into your branch.
+
+After a pull, a notification reports how many commits arrived. Choose **View changes** in it to open
+**Pulled changes**, which lists those commits and the files they changed.
+
+If your branch and its upstream have both gained commits, Dream merges the upstream commits into
+your branch; it does not rebase. When that merge would conflict, Dream aborts it, leaves your files
+as they were, and lists the conflicting files. Resolve the difference with Git in a terminal, then
+pull again.
+
+**Open repository** in the same menu opens the remote repository in your browser.
 
 ## Create a pull request
 
 1. Work on a feature branch whose name differs from the PR's base branch.
-2. Choose **Create PR** in the footer, or **Git actions → Create pull request**.
+2. Choose **Git actions → Create pull request**.
 3. Review the source and base branches and the proposed changes.
 4. Enter a title and description, or use **Auto generate PR details** and review the generated text.
 5. Under **Next steps**, select the action that matches the branch's state.
@@ -124,8 +151,8 @@ See [Reviewing pull requests](/docs/pull-requests) for the full workflow.
 ## Switch or create branches
 
 Open the branch switcher beneath the chat, search local branches, and select one to check it out.
-Use **Create and checkout new branch…** to name and create a branch. Refresh the list if a branch
-created outside Dream is missing.
+Use **Create and checkout new branch…** to name and create a branch. The list reloads each time you
+open it, so it includes branches created outside Dream.
 
 <Frame caption="The checkmark identifies the current branch. Search for another branch or create a new one from the same menu.">
   <img
@@ -141,6 +168,20 @@ Changing branches changes the files used by every chat in that project. Review u
 before switching. For parallel tasks with independent checkouts, use [Git worktrees](/docs/worktrees).
 When a worktree is finished, use its footer to merge into the base branch, create a pull request,
 or remove the checkout. See [Complete a worktree](/docs/worktrees#complete-a-worktree).
+
+### Delete a local branch
+
+1. Open the branch switcher and hover over the branch, or move to it with the keyboard.
+2. Click **Delete branch**, the trash icon on its row.
+3. Read the summary. Dream reports whether the branch's commits are in the base branch, the state of
+   its pull request, and whether any commits exist only on this branch.
+4. Click **Delete branch**. When commits would be lost, the button reads **Delete anyway**.
+
+Deleting removes the local branch only; its remote branch is not changed. You cannot delete the
+current branch, the base branch, or a branch that is open in the main checkout.
+
+If the branch is checked out in a [worktree](/docs/worktrees), the dialog offers
+**Remove worktree and branch** instead. That also deletes the worktree's folder and its chats.
 
 ## Browse commit history
 

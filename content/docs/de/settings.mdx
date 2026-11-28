@@ -3,7 +3,9 @@ title: "Einstellungsreferenz"
 description: "Model-Standardwerte, Anbieter, Anweisungen, Fähigkeiten, MCP-Server und Steuerungen für archivierte Chats finden."
 ---
 
-Öffne die **Einstellungen** mit dem Zahnradsymbol oben in Dream. Die Seitenleiste enthält **Allgemein**, **Anbieter**, **SSH-Hosts**, **Prompts**, **Skills**, **MCP-Server**, **Tastenkürzel** und **Archivierte Chats**. Allgemeine Einstellungen gelten, sobald sie ausgewählt werden. Formulare für Prompts, Fähigkeiten und Serverdefinitionen verfügen über ihre eigenen Aktionen „Erstellen“ oder „Speichern“.
+Öffnen Sie **Einstellungen** über das Zahnrad. Die Seitenleiste enthält **Allgemein**, **Anbieter**, **Tastenkürzel**, **Prompts**, **Skills**, **MCP-Server**, **Verbindungen** und **Archivierte Chats**. Allgemeine Einstellungen gelten sofort. Prompts, Skills und Server speichern Sie im jeweiligen Formular.
+
+Klicken Sie unten in der Seitenleiste auf die Versionsnummer, um nach Updates zu suchen.
 
 ## Allgemein
 
@@ -35,6 +37,9 @@ Die Änderung des Terminal-Schells wirkt sich auf neue Sitzungen aus. Öffnen Si
 | Tool-Aufrufe gruppieren | Aus | Kompakte Gruppierung von Werkzeugaktivitäten |
 | Tool-Aufrufe erweitern | Aus | Ob Details zu Tool-Aufrufen beim Start ausgeweitet sind |
 | Checkpoint ändern | Auf | Projektdateien vor jeder Antwort sperren, damit Sie Änderungen überprüfen und wiederherstellen können |
+| Desktopbenachrichtigungen | Auf | Meldet Abschluss, Fehler oder Eingabebedarf, wenn Dream im Hintergrund ist |
+| Benachrichtigungston | Aus | Spielt auch bei aktivem Dream für diese Ereignisse einen Ton ab |
+| Agenten im Browser folgen | Aus | Holt den vom Agenten verwendeten [Browsertab](/docs/de/browser#befehle-einem-agenten-den-browser-zu-verwenden) in den Vordergrund |
 
 Die Anzeigestellungen beeinflussen die Gespräche innerhalb von Projekten. Sie ändern die Rechenleistung des Modells nicht und verleihen zusätzliche Werkzeugrechte nicht. Die Deaktivierung von **Änderungs-Checkpoints** beendet die Erstellung neuer Snapshots; siehe [Änderungen prüfen und wiederherstellen](/docs/de/checkpoints).
 
@@ -76,15 +81,17 @@ Bestehende Chats behalten ihre eigenen Auswahl. Aktivieren Sie ein Modell unter 
 
 ## Anbieter
 
-Jede Karten-Instanz des Anbieters zeigt ihren erkannten CLI-Status, die installierte Version, die Aktion zum Aktualisieren und einen Schalter zum Aktivieren. Aktivieren Sie den Anbieter und die einzelnen Modelle, damit sie in den Auswahlmöglichkeiten verfügbar sind. Ein **Aktualisierung verfügbar**-Badge zeigt eine neuere CLI-Version bei Erkennung; aktualisieren Sie die CLI außerhalb von Dream und aktualisieren Sie die Karte danach.
+Jede Karte zeigt CLI-Status, Version, Aktualisierung und Aktivierung. Aktivieren Sie den Anbieter und wählen Sie Modelle aus. **Update verfügbar** startet bei einer neueren Version den CLI-Updater.
 
 Dream überspringt CLI-Updateprüfungen für deaktivierte Anbieter. Aktiviere einen Anbieter, bevor du nach verfügbaren Updates suchst.
 
 Installieren und sich über die CLI des Anbieters außerhalb von Dream anmelden, dann aktualisieren Sie seine Karte. Die Dream-Einstellungen ersetzen den Authentifizierungsprozess der CLI nicht. Siehe [Anbieter verbinden](/docs/de/providers).
 
-## SSH-Hosts
+## Verbindungen
 
-Unter **Einstellungen → SSH-Hosts** kannst du entfernte Rechner hinzufügen, bearbeiten, verbinden, trennen oder entfernen. Jeder Eintrag zeigt SSH-Ziel, Anzeigename, optionalen Host-Befehl, Verbindungsstatus und etwaige Fehler. Einrichtung und Wiederherstellung beschreibt [Remote-Arbeitsbereiche über SSH](/docs/de/remote-hosts).
+**Einstellungen → Verbindungen** enthält zwei Gruppen. Unter **Remote-Hosts** können Sie Hosts per SSH oder HTTPS hinzufügen, verbinden, trennen, Routen bearbeiten und Hosts entfernen. Siehe [Remote-Hosts](/docs/de/remote-hosts).
+
+**Fernzugriff** gibt Projekte für gekoppelte Geräte frei und zeigt diese Geräte an. Siehe [Fernzugriff](/docs/de/remote-access). **Verbindungen** steht in der Desktop-App zur Verfügung.
 
 ## Prompts, Fähigkeiten und MCP-Server
 

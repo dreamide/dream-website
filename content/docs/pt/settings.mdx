@@ -3,7 +3,9 @@ title: "Referência de configurações"
 description: "Localizar padrões de modelo, provedores, prompts, habilidades, servidores MCP e controles de chat arquivado."
 ---
 
-Abra as **Configurações** com o ícone de engrenagem no topo do Dream. A barra lateral possui **Geral**, **Provedores**, **Hosts SSH**, **Prompts**, **Skills**, **Servidores MCP**, **Atalhos de teclado** e **Chats arquivados**. As preferências gerais são aplicadas conforme você as seleciona. Os formulários para prompts, habilidades e definições de servidor possuem suas próprias ações de Criar ou Salvar.
+Abra as **Configurações** com o ícone de engrenagem no topo do Dream. A barra lateral tem **Geral**, **Provedores**, **Atalhos de teclado**, **Prompts**, **Skills**, **Servidores MCP**, **Conexões** e **Chats arquivados**. As preferências gerais são aplicadas conforme você as seleciona. Os formulários de prompts, skills e definições de servidor têm sua própria ação Criar ou Salvar.
+
+O número da versão na parte inferior da barra lateral verifica se há uma atualização do aplicativo quando você clica nele.
 
 ## Geral
 
@@ -35,6 +37,9 @@ Mudar a shell do terminal afeta as novas sessões. Abra um novo terminal para us
 | Agrupar chamadas de ferramentas | Desligado | Agrupamento compacto de atividade de ferramentas |
 | Expandir chamadas de ferramentas | Desligado | Se os detalhes da chamada de ferramenta começam expandidos |
 | Mudar checkpoints | Em | Faça uma cópia de segurança dos arquivos do projeto antes de cada resposta para que você possa revisar e restaurar as alterações |
+| Notificações da área de trabalho | Em | Avisa quando um chat termina, falha ou precisa de uma resposta sua enquanto o Dream está em segundo plano |
+| Som de notificação | Desligado | Toca um som para os mesmos eventos, mesmo quando o Dream está em foco |
+| Seguir o agente no navegador | Desligado | Traz para a frente a aba do [navegador](/docs/pt/browser#pergunte-a-um-agente-para-usar-o-navegador) que um agente está usando |
 
 As configurações de exibição afetam as conversas entre projetos. Elas não alteram o esforço de raciocínio do modelo nem concedem permissões adicionais para ferramentas. Desligar **Checkpoints de alterações** para para novas instantâneas; veja [Revisar e restaurar alterações](/docs/pt/checkpoints).
 
@@ -76,15 +81,17 @@ As conversas existentes mantêm suas próprias seleções. Ative um modelo nos P
 
 ## Provedores
 
-Cada cartão de fornecedor exibe seu status de CLI detectado, a versão instalada, a ação de atualização e um interruptor de ativação. Ative o fornecedor e os modelos individuais para torná-los disponíveis em seletores. Um badge "Atualização disponível" indica uma versão mais recente do CLI quando detectada; atualize o CLI fora do Dream e refaça o cartão após isso.
+Cada cartão de provedor mostra o status de detecção da CLI, a versão instalada, a ação de recarregar e um interruptor de ativação. Ative o provedor e clique nos modelos que você quer disponibilizar nos seletores. Um botão **Atualização disponível** aparece quando uma versão mais recente da CLI é detectada; clique nele para executar o atualizador da própria CLI.
 
 O Dream não verifica atualizações de CLI para provedores desativados. Ative um provedor antes de verificar as atualizações disponíveis.
 
 Instale e faça login pelo CLI do provedor fora do Dream, depois atualize seu cartão. As configurações do Dream não substituem o fluxo de autenticação do CLI. Veja [Conectar um provedor](/docs/pt/providers).
 
-## Hosts SSH
+## Conexões
 
-Adicione, edite, conecte, desconecte ou remova máquinas remotas em **Configurações → Hosts SSH**. Cada entrada tem destino SSH, nome, comando do host opcional, estado da conexão e eventuais erros. Consulte [Espaços de trabalho remotos por SSH](/docs/pt/remote-hosts) para configuração e recuperação.
+**Configurações → Conexões** tem dois grupos. **Hosts remotos** lista as máquinas em que você pode abrir projetos: adicione um host SSH ou emparelhe com um host por HTTPS e depois conecte, desconecte, edite as rotas dele ou remova-o. Consulte [Hosts remotos](/docs/pt/remote-hosts) para ver as etapas de configuração e recuperação.
+
+**Acesso remoto** permite que dispositivos emparelhados usem os projetos deste computador e lista os dispositivos que você emparelhou. Consulte [Acesso remoto](/docs/pt/remote-access). A seção **Conexões** está disponível no aplicativo de desktop.
 
 ## Prompts, Habilidades e Servidores MCP
 
